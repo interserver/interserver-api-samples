@@ -36,14 +36,14 @@ type LicenseServiceInfo struct {
 	LicenseIp string `json:"license_ip"`
 	// License status
 	LicenseStatus string `json:"license_status"`
-	// License hostname
-	LicenseHostname *string `json:"license_hostname,omitempty"`
-	// License key
-	LicenseKey *string `json:"license_key,omitempty"`
 	// License invoice
 	LicenseInvoice string `json:"license_invoice"`
 	// License coupon
 	LicenseCoupon string `json:"license_coupon"`
+	// License hostname
+	LicenseHostname *string `json:"license_hostname,omitempty"`
+	// License key
+	LicenseKey *string `json:"license_key,omitempty"`
 	// Additional license information
 	LicenseExtra *string `json:"license_extra,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -245,6 +245,54 @@ func (o *LicenseServiceInfo) SetLicenseStatus(v string) {
 	o.LicenseStatus = v
 }
 
+// GetLicenseInvoice returns the LicenseInvoice field value
+func (o *LicenseServiceInfo) GetLicenseInvoice() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LicenseInvoice
+}
+
+// GetLicenseInvoiceOk returns a tuple with the LicenseInvoice field value
+// and a boolean to check if the value has been set.
+func (o *LicenseServiceInfo) GetLicenseInvoiceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LicenseInvoice, true
+}
+
+// SetLicenseInvoice sets field value
+func (o *LicenseServiceInfo) SetLicenseInvoice(v string) {
+	o.LicenseInvoice = v
+}
+
+// GetLicenseCoupon returns the LicenseCoupon field value
+func (o *LicenseServiceInfo) GetLicenseCoupon() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LicenseCoupon
+}
+
+// GetLicenseCouponOk returns a tuple with the LicenseCoupon field value
+// and a boolean to check if the value has been set.
+func (o *LicenseServiceInfo) GetLicenseCouponOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LicenseCoupon, true
+}
+
+// SetLicenseCoupon sets field value
+func (o *LicenseServiceInfo) SetLicenseCoupon(v string) {
+	o.LicenseCoupon = v
+}
+
 // GetLicenseHostname returns the LicenseHostname field value if set, zero value otherwise.
 func (o *LicenseServiceInfo) GetLicenseHostname() string {
 	if o == nil || IsNil(o.LicenseHostname) {
@@ -309,54 +357,6 @@ func (o *LicenseServiceInfo) SetLicenseKey(v string) {
 	o.LicenseKey = &v
 }
 
-// GetLicenseInvoice returns the LicenseInvoice field value
-func (o *LicenseServiceInfo) GetLicenseInvoice() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LicenseInvoice
-}
-
-// GetLicenseInvoiceOk returns a tuple with the LicenseInvoice field value
-// and a boolean to check if the value has been set.
-func (o *LicenseServiceInfo) GetLicenseInvoiceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LicenseInvoice, true
-}
-
-// SetLicenseInvoice sets field value
-func (o *LicenseServiceInfo) SetLicenseInvoice(v string) {
-	o.LicenseInvoice = v
-}
-
-// GetLicenseCoupon returns the LicenseCoupon field value
-func (o *LicenseServiceInfo) GetLicenseCoupon() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LicenseCoupon
-}
-
-// GetLicenseCouponOk returns a tuple with the LicenseCoupon field value
-// and a boolean to check if the value has been set.
-func (o *LicenseServiceInfo) GetLicenseCouponOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LicenseCoupon, true
-}
-
-// SetLicenseCoupon sets field value
-func (o *LicenseServiceInfo) SetLicenseCoupon(v string) {
-	o.LicenseCoupon = v
-}
-
 // GetLicenseExtra returns the LicenseExtra field value if set, zero value otherwise.
 func (o *LicenseServiceInfo) GetLicenseExtra() string {
 	if o == nil || IsNil(o.LicenseExtra) {
@@ -406,14 +406,14 @@ func (o LicenseServiceInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["license_custid"] = o.LicenseCustid
 	toSerialize["license_ip"] = o.LicenseIp
 	toSerialize["license_status"] = o.LicenseStatus
+	toSerialize["license_invoice"] = o.LicenseInvoice
+	toSerialize["license_coupon"] = o.LicenseCoupon
 	if !IsNil(o.LicenseHostname) {
 		toSerialize["license_hostname"] = o.LicenseHostname
 	}
 	if !IsNil(o.LicenseKey) {
 		toSerialize["license_key"] = o.LicenseKey
 	}
-	toSerialize["license_invoice"] = o.LicenseInvoice
-	toSerialize["license_coupon"] = o.LicenseCoupon
 	if !IsNil(o.LicenseExtra) {
 		toSerialize["license_extra"] = o.LicenseExtra
 	}
@@ -475,10 +475,10 @@ func (o *LicenseServiceInfo) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "license_custid")
 		delete(additionalProperties, "license_ip")
 		delete(additionalProperties, "license_status")
-		delete(additionalProperties, "license_hostname")
-		delete(additionalProperties, "license_key")
 		delete(additionalProperties, "license_invoice")
 		delete(additionalProperties, "license_coupon")
+		delete(additionalProperties, "license_hostname")
+		delete(additionalProperties, "license_key")
 		delete(additionalProperties, "license_extra")
 		o.AdditionalProperties = additionalProperties
 	}

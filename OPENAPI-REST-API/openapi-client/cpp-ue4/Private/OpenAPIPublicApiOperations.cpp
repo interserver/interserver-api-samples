@@ -135,6 +135,8 @@ inline FString ToString(const OpenAPIPublicApi::GetCountriesRequest::FetchByEnum
 		return TEXT("iso3");
 	case OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::Numcode:
 		return TEXT("numcode");
+	case OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIPublicApi::GetCountriesRequest::FetchByEnum Value (%d)"), (int)Value);
@@ -151,7 +153,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIPublicApi::GetCountri
 	static TMap<FString, OpenAPIPublicApi::GetCountriesRequest::FetchByEnum> StringToEnum = { 
 		{ TEXT("iso2"), OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::Iso2 },
 		{ TEXT("iso3"), OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::Iso3 },
-		{ TEXT("numcode"), OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::Numcode }, };
+		{ TEXT("numcode"), OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::Numcode },
+		{ TEXT("11184809"), OpenAPIPublicApi::GetCountriesRequest::FetchByEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

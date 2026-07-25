@@ -29,12 +29,12 @@ Blade name associated with the port.
 Port identifier.
 .PARAMETER GraphId
 Identifier for the graph associated with the switchport.
+.PARAMETER AssetId
+Unique identifier of the asset associated with the switchport.
 .PARAMETER Vlans
 List of VLANs associated with the switchport.
 .PARAMETER Vlans6
 List of IPv6 VLANs associated with the switchport.
-.PARAMETER AssetId
-Unique identifier of the asset associated with the switchport.
 .OUTPUTS
 
 ServerSwitchport<PSCustomObject>
@@ -65,14 +65,14 @@ function Initialize-ServerSwitchport {
         [String]
         ${GraphId},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        ${Vlans},
+        [Int32]
+        ${AssetId},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String[]]
-        ${Vlans6},
+        ${Vlans},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${AssetId}
+        [String[]]
+        ${Vlans6}
     )
 
     Process {
@@ -120,9 +120,9 @@ function Initialize-ServerSwitchport {
             'blade' = ${Blade}
             'justport' = ${Justport}
             'graph_id' = ${GraphId}
+            'asset_id' = ${AssetId}
             'vlans' = ${Vlans}
             'vlans6' = ${Vlans6}
-            'asset_id' = ${AssetId}
         }
 
 
@@ -160,7 +160,7 @@ function ConvertFrom-JsonToServerSwitchport {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServerSwitchport
-        $AllProperties = ('switchport_id', 'switch_id', 'switch', 'port', 'blade', 'justport', 'graph_id', 'vlans', 'vlans6', 'asset_id')
+        $AllProperties = ('switchport_id', 'switch_id', 'switch', 'port', 'blade', 'justport', 'graph_id', 'asset_id', 'vlans', 'vlans6')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -239,9 +239,9 @@ function ConvertFrom-JsonToServerSwitchport {
             'blade' = ${Blade}
             'justport' = ${Justport}
             'graph_id' = ${GraphId}
+            'asset_id' = ${AssetId}
             'vlans' = ${Vlans}
             'vlans6' = ${Vlans6}
-            'asset_id' = ${AssetId}
         }
 
         return $PSO

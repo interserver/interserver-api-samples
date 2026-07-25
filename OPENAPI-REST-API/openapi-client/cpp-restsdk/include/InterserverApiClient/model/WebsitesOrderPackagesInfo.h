@@ -104,6 +104,22 @@ public:
     void setServicesType(const utility::string_t& value);
 
     /// <summary>
+    /// The module of the package.
+    /// </summary>
+    utility::string_t getServicesModule() const;
+    bool servicesModuleIsSet() const;
+    void unsetServices_module();
+    void setServicesModule(const utility::string_t& value);
+
+    /// <summary>
+    /// Description of the package.
+    /// </summary>
+    utility::string_t getServicesDescription() const;
+    bool servicesDescriptionIsSet() const;
+    void unsetServices_description();
+    void setServicesDescription(const utility::string_t& value);
+
+    /// <summary>
     /// Additional field 1 for the package.
     /// </summary>
     utility::string_t getServicesField1() const;
@@ -120,28 +136,12 @@ public:
     void setServicesField2(const utility::string_t& value);
 
     /// <summary>
-    /// The module of the package.
-    /// </summary>
-    utility::string_t getServicesModule() const;
-    bool servicesModuleIsSet() const;
-    void unsetServices_module();
-    void setServicesModule(const utility::string_t& value);
-
-    /// <summary>
     /// HTML content for the package.
     /// </summary>
     utility::string_t getServicesHtml() const;
     bool servicesHtmlIsSet() const;
     void unsetServices_html();
     void setServicesHtml(const utility::string_t& value);
-
-    /// <summary>
-    /// Description of the package.
-    /// </summary>
-    utility::string_t getServicesDescription() const;
-    bool servicesDescriptionIsSet() const;
-    void unsetServices_description();
-    void setServicesDescription(const utility::string_t& value);
 
     /// <summary>
     /// URL for more information about the package.
@@ -179,20 +179,20 @@ protected:
     utility::string_t m_Services_type;
     bool m_Services_typeIsSet;
 
+    utility::string_t m_Services_module;
+    bool m_Services_moduleIsSet;
+
+    utility::string_t m_Services_description;
+    bool m_Services_descriptionIsSet;
+
     utility::string_t m_Services_field1;
     bool m_Services_field1IsSet;
 
     utility::string_t m_Services_field2;
     bool m_Services_field2IsSet;
 
-    utility::string_t m_Services_module;
-    bool m_Services_moduleIsSet;
-
     utility::string_t m_Services_html;
     bool m_Services_htmlIsSet;
-
-    utility::string_t m_Services_description;
-    bool m_Services_descriptionIsSet;
 
     utility::string_t m_Services_moreinfo_url;
     bool m_Services_moreinfo_urlIsSet;

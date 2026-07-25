@@ -6,31 +6,31 @@
 Create firewall rule for your ip
 
     CreateGeoFirewallRule(;
+        xdp_action=nothing,
         destination_port=80,
         country_code=nothing,
         asn=nothing,
-        xdp_action=nothing,
     )
 
+    - xdp_action::Int64 : 1 &#x3D; Block,  0 &#x3D; Whitelist
     - destination_port::Int64
     - country_code::Int64 : To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by&#x3D;numcode
     - asn::Int64 : ASN number
-    - xdp_action::Int64 : 1 &#x3D; Block,  0 &#x3D; Whitelist
 """
 Base.@kwdef mutable struct CreateGeoFirewallRule <: OpenAPI.APIModel
+    xdp_action::Union{Nothing, Int64} = nothing
     destination_port::Union{Nothing, Int64} = 80
     country_code::Union{Nothing, Int64} = nothing
     asn::Union{Nothing, Int64} = nothing
-    xdp_action::Union{Nothing, Int64} = nothing
 
-    function CreateGeoFirewallRule(destination_port, country_code, asn, xdp_action, )
-        o = new(destination_port, country_code, asn, xdp_action, )
+    function CreateGeoFirewallRule(xdp_action, destination_port, country_code, asn, )
+        o = new(xdp_action, destination_port, country_code, asn, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type CreateGeoFirewallRule
 
-const _property_types_CreateGeoFirewallRule = Dict{Symbol,String}(Symbol("destination_port")=>"Int64", Symbol("country_code")=>"Int64", Symbol("asn")=>"Int64", Symbol("xdp_action")=>"Int64", )
+const _property_types_CreateGeoFirewallRule = Dict{Symbol,String}(Symbol("xdp_action")=>"Int64", Symbol("destination_port")=>"Int64", Symbol("country_code")=>"Int64", Symbol("asn")=>"Int64", )
 OpenAPI.property_type(::Type{ CreateGeoFirewallRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateGeoFirewallRule[name]))}
 
 function OpenAPI.check_required(o::CreateGeoFirewallRule)
@@ -39,19 +39,19 @@ function OpenAPI.check_required(o::CreateGeoFirewallRule)
 end
 
 function OpenAPI.validate_properties(o::CreateGeoFirewallRule)
+    OpenAPI.validate_property(CreateGeoFirewallRule, Symbol("xdp_action"), o.xdp_action)
     OpenAPI.validate_property(CreateGeoFirewallRule, Symbol("destination_port"), o.destination_port)
     OpenAPI.validate_property(CreateGeoFirewallRule, Symbol("country_code"), o.country_code)
     OpenAPI.validate_property(CreateGeoFirewallRule, Symbol("asn"), o.asn)
-    OpenAPI.validate_property(CreateGeoFirewallRule, Symbol("xdp_action"), o.xdp_action)
 end
 
 function OpenAPI.validate_property(::Type{ CreateGeoFirewallRule }, name::Symbol, val)
 
-
-
-
     if name === Symbol("xdp_action")
-        OpenAPI.validate_param(name, "CreateGeoFirewallRule", :enum, val, [0, 1])
+        OpenAPI.validate_param(name, "CreateGeoFirewallRule", :enum, val, [0, 1, 11184809])
     end
+
+
+
 
 end

@@ -1,8 +1,8 @@
-# openapi.model.ReverseDnsEntries
+# interserver_api.model.ReverseDnsEntries
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

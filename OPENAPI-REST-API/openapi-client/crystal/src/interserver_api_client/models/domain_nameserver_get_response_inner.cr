@@ -24,7 +24,7 @@ module InterserverApiClient
     @[JSON::Field(key: "can_delete", emit_null: false)]
     property can_delete : String
 
-    validates(can_delete, String, false, enum: ["0", "1"])
+    validates(can_delete, String, false, enum: ["0", "1", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

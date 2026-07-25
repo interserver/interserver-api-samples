@@ -19,18 +19,34 @@ class CREATE_FIREWALL_RULE
 
 feature --Access
 
+    protocol_id: INTEGER_32
+      -- 1 = TCP, 2 = UDP
+    xdp_action: INTEGER_32
+      -- 1 = Block,  0 = Whitelist
     destination_port: INTEGER_32
       
     source_ip: detachable STRING_32
       -- Source IP address to match. Use '0.0.0.0' to match any source.
     source_port: INTEGER_32
       
-    protocol_id: INTEGER_32
-      -- 1 = TCP, 2 = UDP
-    xdp_action: INTEGER_32
-      -- 1 = Block,  0 = Whitelist
 
 feature -- Change Element
+
+    set_protocol_id (a_name: like protocol_id)
+        -- Set 'protocol_id' with 'a_name'.
+      do
+        protocol_id := a_name
+      ensure
+        protocol_id_set: protocol_id = a_name
+      end
+
+    set_xdp_action (a_name: like xdp_action)
+        -- Set 'xdp_action' with 'a_name'.
+      do
+        xdp_action := a_name
+      ensure
+        xdp_action_set: xdp_action = a_name
+      end
 
     set_destination_port (a_name: like destination_port)
         -- Set 'destination_port' with 'a_name'.
@@ -56,22 +72,6 @@ feature -- Change Element
         source_port_set: source_port = a_name
       end
 
-    set_protocol_id (a_name: like protocol_id)
-        -- Set 'protocol_id' with 'a_name'.
-      do
-        protocol_id := a_name
-      ensure
-        protocol_id_set: protocol_id = a_name
-      end
-
-    set_xdp_action (a_name: like xdp_action)
-        -- Set 'xdp_action' with 'a_name'.
-      do
-        xdp_action := a_name
-      ensure
-        xdp_action_set: xdp_action = a_name
-      end
-
 
  feature -- Status Report
 
@@ -80,6 +80,16 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass CREATE_FIREWALL_RULE%N")
+        if attached protocol_id as l_protocol_id then
+          Result.append ("%Nprotocol_id:")
+          Result.append (l_protocol_id.out)
+          Result.append ("%N")
+        end
+        if attached xdp_action as l_xdp_action then
+          Result.append ("%Nxdp_action:")
+          Result.append (l_xdp_action.out)
+          Result.append ("%N")
+        end
         if attached destination_port as l_destination_port then
           Result.append ("%Ndestination_port:")
           Result.append (l_destination_port.out)
@@ -93,16 +103,6 @@ feature -- Change Element
         if attached source_port as l_source_port then
           Result.append ("%Nsource_port:")
           Result.append (l_source_port.out)
-          Result.append ("%N")
-        end
-        if attached protocol_id as l_protocol_id then
-          Result.append ("%Nprotocol_id:")
-          Result.append (l_protocol_id.out)
-          Result.append ("%N")
-        end
-        if attached xdp_action as l_xdp_action then
-          Result.append ("%Nxdp_action:")
-          Result.append (l_xdp_action.out)
           Result.append ("%N")
         end
       end

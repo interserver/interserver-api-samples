@@ -9,9 +9,9 @@
 -export_type([openapi_ticket_new_response/0]).
 
 -type openapi_ticket_new_response() ::
-  [ {'ticket_id', integer() }
-  | {'text', binary() }
+  [ {'text', binary() }
   | {'success', boolean() }
+  | {'ticket_id', integer() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_ticket_new_response() ->
     openapi_ticket_new_response([]).
 
 openapi_ticket_new_response(Fields) ->
-  Default = [ {'ticket_id', integer() }
-            , {'text', binary() }
+  Default = [ {'text', binary() }
             , {'success', boolean() }
+            , {'ticket_id', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

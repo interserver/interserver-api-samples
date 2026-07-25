@@ -1092,7 +1092,7 @@ module InterServerClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling MailApi.get_stats"
       end
-      allowable_values = ["all", "billing", "month", "7d", "24h", "1d", "1h"]
+      allowable_values = ["all", "billing", "month", "7d", "24h", "1d", "1h", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'time'] && !allowable_values.include?(opts[:'time'])
         fail ArgumentError, "invalid value for \"time\", must be one of #{allowable_values}"
       end
@@ -1837,7 +1837,7 @@ module InterServerClient
         fail ArgumentError, 'invalid value for "opts[:"mailid"]" when calling MailApi.view_mail_log, the character length must be greater than or equal to 18.'
       end
 
-      allowable_values = [0, 1]
+      allowable_values = [0, 1, 11184809]
       if @api_client.config.client_side_validation && opts[:'delivered'] && !allowable_values.include?(opts[:'delivered'])
         fail ArgumentError, "invalid value for \"delivered\", must be one of #{allowable_values}"
       end
@@ -1853,15 +1853,15 @@ module InterServerClient
         fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling MailApi.view_mail_log, must be greater than or equal to 1.'
       end
 
-      allowable_values = ["time"]
+      allowable_values = ["time", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
         fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
       end
-      allowable_values = ["asc", "desc"]
+      allowable_values = ["asc", "desc", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'dir'] && !allowable_values.include?(opts[:'dir'])
         fail ArgumentError, "invalid value for \"dir\", must be one of #{allowable_values}"
       end
-      allowable_values = ["message", "recipient"]
+      allowable_values = ["message", "recipient", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'groupby'] && !allowable_values.include?(opts[:'groupby'])
         fail ArgumentError, "invalid value for \"groupby\", must be one of #{allowable_values}"
       end

@@ -46,6 +46,8 @@ pub enum Type {
     Register,
     #[serde(rename = "transfer")]
     Transfer,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Type {
@@ -60,6 +62,8 @@ pub enum WhoisPrivacy {
     Enable,
     #[serde(rename = "disable")]
     Disable,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for WhoisPrivacy {

@@ -72,12 +72,13 @@ data class TicketPostDetailsInner (
     /**
      * 
      *
-     * Values: user,staff
+     * Values: user,staff,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Creator(val value: kotlin.String) {
         @Json(name = "User") user("User"),
-        @Json(name = "Staff") staff("Staff");
+        @Json(name = "Staff") staff("Staff"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

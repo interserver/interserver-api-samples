@@ -58,13 +58,6 @@ describe("mail_schema", function()
     end)
   end)
 
-  -- unit tests for the property 'service_extra'
-  describe("property service_extra test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'extra_info_tables'
   describe("property extra_info_tables test", function()
     it("should work", function()
@@ -81,6 +74,13 @@ describe("mail_schema", function()
 
   -- unit tests for the property 'usage_count'
   describe("property usage_count test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'service_extra'
+  describe("property service_extra test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

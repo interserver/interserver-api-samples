@@ -1,8 +1,8 @@
-# openapi.api.ServersApi
+# interserver_api.api.ServersApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 All URIs are relative to *https://my.interserver.net/apiv2*
@@ -38,7 +38,7 @@ Submits a fully custom dedicated server order. Creates a `pending` `servers` row
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -93,7 +93,7 @@ Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -144,7 +144,7 @@ Use to browse pre-built dedicated servers ready for immediate provisioning (Rapi
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -195,7 +195,7 @@ Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to d
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -246,7 +246,7 @@ Use to fetch complete configuration for one dedicated server — hardware, netwo
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -301,7 +301,7 @@ Use to retrieve the invoice history for a single dedicated server — e.g. befor
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -356,7 +356,7 @@ Use to enumerate physical bare-metal dedicated servers on the calling account. N
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -407,7 +407,7 @@ Use to read the existing PTR/rDNS hostnames assigned to each public IP in the se
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -462,7 +462,7 @@ Use when the customer asks for the original setup/login info to be re-sent (root
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -517,7 +517,7 @@ Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR c
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -572,7 +572,7 @@ Use to set or remove PTR records for the server's public IPs. Path param: `id` (
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -629,7 +629,7 @@ Use when you need power status for several owned servers at once (dashboards, ma
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -684,7 +684,7 @@ Reads the active IPMI Live session for a dedicated server — the temporary whit
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -739,7 +739,7 @@ Allocates / refreshes an IPMI Live whitelist slot so the customer's specified IP
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -798,7 +798,7 @@ Use to check whether a server's chassis is currently `on`/`off` via IPMI before 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -853,7 +853,7 @@ Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -912,7 +912,7 @@ Submits a cancellation request for a dedicated server. The server is deprovision
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -967,7 +967,7 @@ Use to modify metadata on an existing dedicated server order. Path param: `id` (
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

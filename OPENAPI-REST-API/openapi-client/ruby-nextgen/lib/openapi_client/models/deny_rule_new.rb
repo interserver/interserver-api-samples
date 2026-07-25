@@ -16,7 +16,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'type',
         required: true,
-        enum: ['domain', 'email', 'startswith', 'destination']
+        enum: ['domain', 'email', 'startswith', 'destination', 'unknown_default_open_api']
 
       attribute :data,
         type: 'String',

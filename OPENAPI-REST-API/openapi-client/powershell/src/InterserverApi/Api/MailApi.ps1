@@ -1737,7 +1737,7 @@ function Get-Stats {
         [Int32]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("all", "billing", "month", "7d", "24h", "1d", "1h")]
+        [ValidateSet("all", "billing", "month", "7d", "24h", "1d", "1h", "unknown_default_open_api")]
         [String]
         ${Time},
         [Switch]
@@ -2949,7 +2949,7 @@ function Invoke-ViewMailLog {
         [String]
         ${Headerfrom},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("0", "1")]
+        [ValidateSet("0", "1", "11184809")]
         [System.Nullable[Int32]]
         ${Delivered},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
@@ -2965,15 +2965,15 @@ function Invoke-ViewMailLog {
         [PSCustomObject]
         ${EndDate},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("time")]
+        [ValidateSet("time", "unknown_default_open_api")]
         [String]
         ${Sort},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("asc", "desc")]
+        [ValidateSet("asc", "desc", "unknown_default_open_api")]
         [String]
         ${Dir},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("message", "recipient")]
+        [ValidateSet("message", "recipient", "unknown_default_open_api")]
         [String]
         ${Groupby},
         [Switch]

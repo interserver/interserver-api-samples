@@ -222,9 +222,6 @@ boost::json::object ServerAsset::toJsonObject_internal() const
         object["status"] = JsonValueConverter<std::string>::toJsonValue(getStatus());
         object["primary_ipv4"] = JsonValueConverter<std::string>::toJsonValue(getPrimaryIpv4());
         object["primary_ipv6"] = JsonValueConverter<std::string>::toJsonValue(getPrimaryIpv6());
-        if (m_MacIsSet) {
-            object["mac"] = JsonValueConverter<std::string>::toJsonValue(getMac());
-        }
         object["datacenter"] = JsonValueConverter<std::string>::toJsonValue(getDatacenter());
         object["type_id"] = JsonValueConverter<std::string>::toJsonValue(getTypeId());
         object["asset_tag"] = JsonValueConverter<std::string>::toJsonValue(getAssetTag());
@@ -236,6 +233,31 @@ boost::json::object ServerAsset::toJsonObject_internal() const
         object["unit_sub"] = JsonValueConverter<std::string>::toJsonValue(getUnitSub());
         object["ipmi_mac"] = JsonValueConverter<std::string>::toJsonValue(getIpmiMac());
         object["ipmi_ip"] = JsonValueConverter<std::string>::toJsonValue(getIpmiIp());
+        object["ipmi_working"] = JsonValueConverter<std::string>::toJsonValue(getIpmiWorking());
+        object["company"] = JsonValueConverter<std::string>::toJsonValue(getCompany());
+        object["comments"] = JsonValueConverter<std::string>::toJsonValue(getComments());
+        object["make"] = JsonValueConverter<std::string>::toJsonValue(getMake());
+        object["model"] = JsonValueConverter<std::string>::toJsonValue(getModel());
+        object["description"] = JsonValueConverter<std::string>::toJsonValue(getDescription());
+        object["customer_id"] = JsonValueConverter<std::string>::toJsonValue(getCustomerId());
+        object["external_id"] = JsonValueConverter<std::string>::toJsonValue(getExternalId());
+        object["billing_status"] = JsonValueConverter<std::string>::toJsonValue(getBillingStatus());
+        object["overdue"] = JsonValueConverter<std::string>::toJsonValue(getOverdue());
+        object["asset_id"] = JsonValueConverter<std::string>::toJsonValue(getAssetId());
+        object["asset_name"] = JsonValueConverter<std::string>::toJsonValue(getAssetName());
+        object["rack_id"] = JsonValueConverter<std::string>::toJsonValue(getRackId());
+        object["rack_name"] = JsonValueConverter<std::string>::toJsonValue(getRackName());
+        object["rack_location"] = JsonValueConverter<std::string>::toJsonValue(getRackLocation());
+        object["rack_size"] = JsonValueConverter<std::string>::toJsonValue(getRackSize());
+        object["rack_x"] = JsonValueConverter<std::string>::toJsonValue(getRackX());
+        object["rack_y"] = JsonValueConverter<std::string>::toJsonValue(getRackY());
+        object["switchports"] = JsonValueConverter<std::vector<int32_t>>::toJsonValue(getSwitchports());
+        object["vlans"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans());
+        object["vlans6"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans6());
+        object["lease"] = JsonValueConverter<std::shared_ptr<ServerLease>>::toJsonValue(getLease());
+        if (m_MacIsSet) {
+            object["mac"] = JsonValueConverter<std::string>::toJsonValue(getMac());
+        }
         if (m_Ipmi_admin_usernameIsSet) {
             object["ipmi_admin_username"] = JsonValueConverter<std::string>::toJsonValue(getIpmiAdminUsername());
         }
@@ -251,37 +273,15 @@ boost::json::object ServerAsset::toJsonObject_internal() const
         if (m_Ipmi_updatedIsSet) {
             object["ipmi_updated"] = JsonValueConverter<std::string>::toJsonValue(getIpmiUpdated());
         }
-        object["ipmi_working"] = JsonValueConverter<std::string>::toJsonValue(getIpmiWorking());
-        object["company"] = JsonValueConverter<std::string>::toJsonValue(getCompany());
-        object["comments"] = JsonValueConverter<std::string>::toJsonValue(getComments());
-        object["make"] = JsonValueConverter<std::string>::toJsonValue(getMake());
-        object["model"] = JsonValueConverter<std::string>::toJsonValue(getModel());
-        object["description"] = JsonValueConverter<std::string>::toJsonValue(getDescription());
-        object["customer_id"] = JsonValueConverter<std::string>::toJsonValue(getCustomerId());
-        object["external_id"] = JsonValueConverter<std::string>::toJsonValue(getExternalId());
-        object["billing_status"] = JsonValueConverter<std::string>::toJsonValue(getBillingStatus());
-        object["overdue"] = JsonValueConverter<std::string>::toJsonValue(getOverdue());
         if (m_Create_timestampIsSet) {
             object["create_timestamp"] = JsonValueConverter<std::string>::toJsonValue(getCreateTimestamp());
         }
         if (m_Update_timestampIsSet) {
             object["update_timestamp"] = JsonValueConverter<std::string>::toJsonValue(getUpdateTimestamp());
         }
-        object["asset_id"] = JsonValueConverter<std::string>::toJsonValue(getAssetId());
-        object["asset_name"] = JsonValueConverter<std::string>::toJsonValue(getAssetName());
-        object["rack_id"] = JsonValueConverter<std::string>::toJsonValue(getRackId());
-        object["rack_name"] = JsonValueConverter<std::string>::toJsonValue(getRackName());
-        object["rack_location"] = JsonValueConverter<std::string>::toJsonValue(getRackLocation());
-        object["rack_size"] = JsonValueConverter<std::string>::toJsonValue(getRackSize());
-        object["rack_x"] = JsonValueConverter<std::string>::toJsonValue(getRackX());
-        object["rack_y"] = JsonValueConverter<std::string>::toJsonValue(getRackY());
         if (m_CommentIsSet) {
             object["comment"] = JsonValueConverter<std::string>::toJsonValue(getComment());
         }
-        object["switchports"] = JsonValueConverter<std::vector<int32_t>>::toJsonValue(getSwitchports());
-        object["vlans"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans());
-        object["vlans6"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans6());
-        object["lease"] = JsonValueConverter<std::shared_ptr<ServerLease>>::toJsonValue(getLease());
     return object;
 }
 
@@ -330,12 +330,6 @@ void ServerAsset::fromJsonObject_internal(boost::json::object const& object)
         const auto Primary_ipv6It = object.find("primary_ipv6");
         if (Primary_ipv6It != object.end()) {
             setPrimaryIpv6(JsonValueConverter<std::string>::fromJsonValue(Primary_ipv6It->value()));
-        }
-    }
-    {
-        const auto MacIt = object.find("mac");
-        if (MacIt != object.end()) {
-            setMac(JsonValueConverter<std::string>::fromJsonValue(MacIt->value()));
         }
     }
     {
@@ -405,36 +399,6 @@ void ServerAsset::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto Ipmi_admin_usernameIt = object.find("ipmi_admin_username");
-        if (Ipmi_admin_usernameIt != object.end()) {
-            setIpmiAdminUsername(JsonValueConverter<std::string>::fromJsonValue(Ipmi_admin_usernameIt->value()));
-        }
-    }
-    {
-        const auto Ipmi_admin_passwordIt = object.find("ipmi_admin_password");
-        if (Ipmi_admin_passwordIt != object.end()) {
-            setIpmiAdminPassword(JsonValueConverter<std::string>::fromJsonValue(Ipmi_admin_passwordIt->value()));
-        }
-    }
-    {
-        const auto Ipmi_client_usernameIt = object.find("ipmi_client_username");
-        if (Ipmi_client_usernameIt != object.end()) {
-            setIpmiClientUsername(JsonValueConverter<std::string>::fromJsonValue(Ipmi_client_usernameIt->value()));
-        }
-    }
-    {
-        const auto Ipmi_client_passwordIt = object.find("ipmi_client_password");
-        if (Ipmi_client_passwordIt != object.end()) {
-            setIpmiClientPassword(JsonValueConverter<std::string>::fromJsonValue(Ipmi_client_passwordIt->value()));
-        }
-    }
-    {
-        const auto Ipmi_updatedIt = object.find("ipmi_updated");
-        if (Ipmi_updatedIt != object.end()) {
-            setIpmiUpdated(JsonValueConverter<std::string>::fromJsonValue(Ipmi_updatedIt->value()));
-        }
-    }
-    {
         const auto Ipmi_workingIt = object.find("ipmi_working");
         if (Ipmi_workingIt != object.end()) {
             setIpmiWorking(JsonValueConverter<std::string>::fromJsonValue(Ipmi_workingIt->value()));
@@ -495,18 +459,6 @@ void ServerAsset::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto Create_timestampIt = object.find("create_timestamp");
-        if (Create_timestampIt != object.end()) {
-            setCreateTimestamp(JsonValueConverter<std::string>::fromJsonValue(Create_timestampIt->value()));
-        }
-    }
-    {
-        const auto Update_timestampIt = object.find("update_timestamp");
-        if (Update_timestampIt != object.end()) {
-            setUpdateTimestamp(JsonValueConverter<std::string>::fromJsonValue(Update_timestampIt->value()));
-        }
-    }
-    {
         const auto Asset_idIt = object.find("asset_id");
         if (Asset_idIt != object.end()) {
             setAssetId(JsonValueConverter<std::string>::fromJsonValue(Asset_idIt->value()));
@@ -555,12 +507,6 @@ void ServerAsset::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto CommentIt = object.find("comment");
-        if (CommentIt != object.end()) {
-            setComment(JsonValueConverter<std::string>::fromJsonValue(CommentIt->value()));
-        }
-    }
-    {
         const auto SwitchportsIt = object.find("switchports");
         if (SwitchportsIt != object.end()) {
             setSwitchports(JsonValueConverter<std::vector<int32_t>>::fromJsonValue(SwitchportsIt->value()));
@@ -582,6 +528,60 @@ void ServerAsset::fromJsonObject_internal(boost::json::object const& object)
         const auto LeaseIt = object.find("lease");
         if (LeaseIt != object.end()) {
             setLease(JsonValueConverter<std::shared_ptr<ServerLease>>::fromJsonValue(LeaseIt->value()));
+        }
+    }
+    {
+        const auto MacIt = object.find("mac");
+        if (MacIt != object.end()) {
+            setMac(JsonValueConverter<std::string>::fromJsonValue(MacIt->value()));
+        }
+    }
+    {
+        const auto Ipmi_admin_usernameIt = object.find("ipmi_admin_username");
+        if (Ipmi_admin_usernameIt != object.end()) {
+            setIpmiAdminUsername(JsonValueConverter<std::string>::fromJsonValue(Ipmi_admin_usernameIt->value()));
+        }
+    }
+    {
+        const auto Ipmi_admin_passwordIt = object.find("ipmi_admin_password");
+        if (Ipmi_admin_passwordIt != object.end()) {
+            setIpmiAdminPassword(JsonValueConverter<std::string>::fromJsonValue(Ipmi_admin_passwordIt->value()));
+        }
+    }
+    {
+        const auto Ipmi_client_usernameIt = object.find("ipmi_client_username");
+        if (Ipmi_client_usernameIt != object.end()) {
+            setIpmiClientUsername(JsonValueConverter<std::string>::fromJsonValue(Ipmi_client_usernameIt->value()));
+        }
+    }
+    {
+        const auto Ipmi_client_passwordIt = object.find("ipmi_client_password");
+        if (Ipmi_client_passwordIt != object.end()) {
+            setIpmiClientPassword(JsonValueConverter<std::string>::fromJsonValue(Ipmi_client_passwordIt->value()));
+        }
+    }
+    {
+        const auto Ipmi_updatedIt = object.find("ipmi_updated");
+        if (Ipmi_updatedIt != object.end()) {
+            setIpmiUpdated(JsonValueConverter<std::string>::fromJsonValue(Ipmi_updatedIt->value()));
+        }
+    }
+    {
+        const auto Create_timestampIt = object.find("create_timestamp");
+        if (Create_timestampIt != object.end()) {
+            setCreateTimestamp(JsonValueConverter<std::string>::fromJsonValue(Create_timestampIt->value()));
+        }
+    }
+    {
+        const auto Update_timestampIt = object.find("update_timestamp");
+        if (Update_timestampIt != object.end()) {
+            setUpdateTimestamp(JsonValueConverter<std::string>::fromJsonValue(Update_timestampIt->value()));
+        }
+    }
+    {
+        const auto CommentIt = object.find("comment");
+        if (CommentIt != object.end()) {
+            setComment(JsonValueConverter<std::string>::fromJsonValue(CommentIt->value()));
         }
     }
 }
@@ -645,17 +645,6 @@ void ServerAsset::setPrimaryIpv6(std::string value)
 {
     
     m_Primary_ipv6 = std::move(value);
-}
-std::string ServerAsset::getMac() const
-{
-    return m_Mac;
-}
-
-void ServerAsset::setMac(std::string value)
-{
-    
-    m_Mac = std::move(value);
-    m_MacIsSet = true;
 }
 std::string ServerAsset::getDatacenter() const
 {
@@ -767,61 +756,6 @@ void ServerAsset::setIpmiIp(std::string value)
     
     m_Ipmi_ip = std::move(value);
 }
-std::string ServerAsset::getIpmiAdminUsername() const
-{
-    return m_Ipmi_admin_username;
-}
-
-void ServerAsset::setIpmiAdminUsername(std::string value)
-{
-    
-    m_Ipmi_admin_username = std::move(value);
-    m_Ipmi_admin_usernameIsSet = true;
-}
-std::string ServerAsset::getIpmiAdminPassword() const
-{
-    return m_Ipmi_admin_password;
-}
-
-void ServerAsset::setIpmiAdminPassword(std::string value)
-{
-    
-    m_Ipmi_admin_password = std::move(value);
-    m_Ipmi_admin_passwordIsSet = true;
-}
-std::string ServerAsset::getIpmiClientUsername() const
-{
-    return m_Ipmi_client_username;
-}
-
-void ServerAsset::setIpmiClientUsername(std::string value)
-{
-    
-    m_Ipmi_client_username = std::move(value);
-    m_Ipmi_client_usernameIsSet = true;
-}
-std::string ServerAsset::getIpmiClientPassword() const
-{
-    return m_Ipmi_client_password;
-}
-
-void ServerAsset::setIpmiClientPassword(std::string value)
-{
-    
-    m_Ipmi_client_password = std::move(value);
-    m_Ipmi_client_passwordIsSet = true;
-}
-std::string ServerAsset::getIpmiUpdated() const
-{
-    return m_Ipmi_updated;
-}
-
-void ServerAsset::setIpmiUpdated(std::string value)
-{
-    
-    m_Ipmi_updated = std::move(value);
-    m_Ipmi_updatedIsSet = true;
-}
 std::string ServerAsset::getIpmiWorking() const
 {
     return m_Ipmi_working;
@@ -922,28 +856,6 @@ void ServerAsset::setOverdue(std::string value)
     
     m_Overdue = std::move(value);
 }
-std::string ServerAsset::getCreateTimestamp() const
-{
-    return m_Create_timestamp;
-}
-
-void ServerAsset::setCreateTimestamp(std::string value)
-{
-    
-    m_Create_timestamp = std::move(value);
-    m_Create_timestampIsSet = true;
-}
-std::string ServerAsset::getUpdateTimestamp() const
-{
-    return m_Update_timestamp;
-}
-
-void ServerAsset::setUpdateTimestamp(std::string value)
-{
-    
-    m_Update_timestamp = std::move(value);
-    m_Update_timestampIsSet = true;
-}
 std::string ServerAsset::getAssetId() const
 {
     return m_Asset_id;
@@ -1024,17 +936,6 @@ void ServerAsset::setRackY(std::string value)
     
     m_Rack_y = std::move(value);
 }
-std::string ServerAsset::getComment() const
-{
-    return m_Comment;
-}
-
-void ServerAsset::setComment(std::string value)
-{
-    
-    m_Comment = std::move(value);
-    m_CommentIsSet = true;
-}
 std::vector<int32_t> ServerAsset::getSwitchports() const
 {
     return m_Switchports;
@@ -1074,6 +975,105 @@ void ServerAsset::setLease(std::shared_ptr<ServerLease> value)
 {
     
     m_Lease = std::move(value);
+}
+std::string ServerAsset::getMac() const
+{
+    return m_Mac;
+}
+
+void ServerAsset::setMac(std::string value)
+{
+    
+    m_Mac = std::move(value);
+    m_MacIsSet = true;
+}
+std::string ServerAsset::getIpmiAdminUsername() const
+{
+    return m_Ipmi_admin_username;
+}
+
+void ServerAsset::setIpmiAdminUsername(std::string value)
+{
+    
+    m_Ipmi_admin_username = std::move(value);
+    m_Ipmi_admin_usernameIsSet = true;
+}
+std::string ServerAsset::getIpmiAdminPassword() const
+{
+    return m_Ipmi_admin_password;
+}
+
+void ServerAsset::setIpmiAdminPassword(std::string value)
+{
+    
+    m_Ipmi_admin_password = std::move(value);
+    m_Ipmi_admin_passwordIsSet = true;
+}
+std::string ServerAsset::getIpmiClientUsername() const
+{
+    return m_Ipmi_client_username;
+}
+
+void ServerAsset::setIpmiClientUsername(std::string value)
+{
+    
+    m_Ipmi_client_username = std::move(value);
+    m_Ipmi_client_usernameIsSet = true;
+}
+std::string ServerAsset::getIpmiClientPassword() const
+{
+    return m_Ipmi_client_password;
+}
+
+void ServerAsset::setIpmiClientPassword(std::string value)
+{
+    
+    m_Ipmi_client_password = std::move(value);
+    m_Ipmi_client_passwordIsSet = true;
+}
+std::string ServerAsset::getIpmiUpdated() const
+{
+    return m_Ipmi_updated;
+}
+
+void ServerAsset::setIpmiUpdated(std::string value)
+{
+    
+    m_Ipmi_updated = std::move(value);
+    m_Ipmi_updatedIsSet = true;
+}
+std::string ServerAsset::getCreateTimestamp() const
+{
+    return m_Create_timestamp;
+}
+
+void ServerAsset::setCreateTimestamp(std::string value)
+{
+    
+    m_Create_timestamp = std::move(value);
+    m_Create_timestampIsSet = true;
+}
+std::string ServerAsset::getUpdateTimestamp() const
+{
+    return m_Update_timestamp;
+}
+
+void ServerAsset::setUpdateTimestamp(std::string value)
+{
+    
+    m_Update_timestamp = std::move(value);
+    m_Update_timestampIsSet = true;
+}
+std::string ServerAsset::getComment() const
+{
+    return m_Comment;
+}
+
+void ServerAsset::setComment(std::string value)
+{
+    
+    m_Comment = std::move(value);
+    m_CommentIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerAsset>>& data)

@@ -15,7 +15,7 @@ public class CreateGeoFirewallRule  {
   
 public enum XdpActionEnum {
 
-NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1));
+NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1)), NUMBER_unknown_default_open_api(Integer.valueOf(11184809));
 
 
     private Integer value;

@@ -50,7 +50,8 @@ Protected Class MailStatsType
         Escaped24h
         Today
         Escaped1h
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -72,7 +73,10 @@ Protected Class MailStatsType
 		      Return "today"
 		    Case TimeEnum.Escaped1h
 		      Return "1h"
-		    
+		    Case TimeEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

@@ -35,14 +35,14 @@ class CreateGeoFirewallRule : public oatpp::DTO {
 
   DTO_INIT(CreateGeoFirewallRule, DTO /* Extends */)
 
+  DTO_FIELD(oatpp::Int32, xdp_action);
+
   DTO_FIELD(oatpp::Int32, destination_port);
   DTO_FIELD(oatpp::Boolean, destination_portIsSet);
   DTO_FIELD(oatpp::Int32, country_code);
   DTO_FIELD(oatpp::Boolean, country_codeIsSet);
   DTO_FIELD(oatpp::Int32, asn);
   DTO_FIELD(oatpp::Boolean, asnIsSet);
-  DTO_FIELD(oatpp::Int32, xdp_action);
-
 
 };
 

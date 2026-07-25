@@ -4,6 +4,6 @@ package client
 
 // ServerIpmiLiveRequest - Request body to setup an IPMI Live connection.
 type ServerIpmiLiveRequest struct {
-	Asset int32 `json:"asset,omitempty"`
 	Ip string `json:"ip"`
+	Asset int32 `json:"asset,omitempty"`
 }

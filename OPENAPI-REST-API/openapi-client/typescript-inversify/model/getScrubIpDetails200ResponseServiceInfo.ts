@@ -26,11 +26,12 @@ export interface GetScrubIpDetails200ResponseServiceInfo {
     scrub_ip_comment?: string;
 }
 export namespace GetScrubIpDetails200ResponseServiceInfo {
-    export type ScrubIpStatusEnum = 'active' | 'pending' | 'canceled' | 'expired';
+    export type ScrubIpStatusEnum = 'active' | 'pending' | 'canceled' | 'expired' | '11184809';
     export const ScrubIpStatusEnum = {
         Active: 'active' as ScrubIpStatusEnum,
         Pending: 'pending' as ScrubIpStatusEnum,
         Canceled: 'canceled' as ScrubIpStatusEnum,
-        Expired: 'expired' as ScrubIpStatusEnum
+        Expired: 'expired' as ScrubIpStatusEnum,
+        UnknownDefaultOpenApi: '11184809' as ScrubIpStatusEnum
     }
 }

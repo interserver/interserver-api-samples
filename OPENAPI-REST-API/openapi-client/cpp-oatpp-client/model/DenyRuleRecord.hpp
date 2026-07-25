@@ -35,8 +35,6 @@ class DenyRuleRecord : public oatpp::DTO {
 
   DTO_INIT(DenyRuleRecord, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::String, user);
-  DTO_FIELD(oatpp::Boolean, userIsSet);
   DTO_FIELD(oatpp::String, type);
 
   DTO_FIELD(oatpp::String, data);
@@ -45,6 +43,8 @@ class DenyRuleRecord : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, created);
 
+  DTO_FIELD(oatpp::String, user);
+  DTO_FIELD(oatpp::Boolean, userIsSet);
 
 };
 

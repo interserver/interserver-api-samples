@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   GetScrubIpDetails200ResponseClientLinksInner.JSON_PROPERTY_OTHER_ATTR
 })
 @JsonTypeName("getScrubIpDetails_200_response_client_links_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class GetScrubIpDetails200ResponseClientLinksInner {
     public static final String JSON_PROPERTY_LABEL = "label";

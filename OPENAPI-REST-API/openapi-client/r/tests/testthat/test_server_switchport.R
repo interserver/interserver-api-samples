@@ -61,6 +61,14 @@ test_that("graph_id", {
   #expect_equal(model.instance$`graph_id`, "EXPECTED_RESULT")
 })
 
+test_that("asset_id", {
+  # tests for the property `asset_id` (integer)
+  # Unique identifier of the asset associated with the switchport.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset_id`, "EXPECTED_RESULT")
+})
+
 test_that("vlans", {
   # tests for the property `vlans` (array[character])
   # List of VLANs associated with the switchport.
@@ -75,12 +83,4 @@ test_that("vlans6", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`vlans6`, "EXPECTED_RESULT")
-})
-
-test_that("asset_id", {
-  # tests for the property `asset_id` (integer)
-  # Unique identifier of the asset associated with the switchport.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset_id`, "EXPECTED_RESULT")
 })

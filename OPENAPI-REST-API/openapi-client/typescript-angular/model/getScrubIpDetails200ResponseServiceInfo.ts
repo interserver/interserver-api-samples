@@ -28,7 +28,8 @@ export namespace GetScrubIpDetails200ResponseServiceInfo {
         Active: 'active',
         Pending: 'pending',
         Canceled: 'canceled',
-        Expired: 'expired'
+        Expired: 'expired',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type ScrubIpStatusEnum = typeof ScrubIpStatusEnum[keyof typeof ScrubIpStatusEnum];
 }

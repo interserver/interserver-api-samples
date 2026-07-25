@@ -6,8 +6,8 @@ IPMI Power command for servers
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset** | **int** | The Asset ID | [optional] 
 **action** | **str** | The power action to send to the ipmi controller. | 
+**asset** | **int** | The Asset ID | [optional] 
 
 ## Example
 

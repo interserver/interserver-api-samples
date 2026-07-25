@@ -19,7 +19,7 @@ local function cast_license_service_info(t)
 	return setmetatable(t, license_service_info_mt)
 end
 
-local function new_license_service_info(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_hostname, license_key, license_invoice, license_coupon, license_extra)
+local function new_license_service_info(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_invoice, license_coupon, license_hostname, license_key, license_extra)
 	return cast_license_service_info({
 		["license_id"] = license_id;
 		["license_type"] = license_type;
@@ -28,10 +28,10 @@ local function new_license_service_info(license_id, license_type, license_curren
 		["license_custid"] = license_custid;
 		["license_ip"] = license_ip;
 		["license_status"] = license_status;
-		["license_hostname"] = license_hostname;
-		["license_key"] = license_key;
 		["license_invoice"] = license_invoice;
 		["license_coupon"] = license_coupon;
+		["license_hostname"] = license_hostname;
+		["license_key"] = license_key;
 		["license_extra"] = license_extra;
 	})
 end

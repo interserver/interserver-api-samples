@@ -62,6 +62,7 @@ public:
     {
         _1,
         _2,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// 1 &#x3D; TCP, 2 &#x3D; UDP
@@ -70,6 +71,7 @@ public:
     {
         _0,
         _1,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// 1 &#x3D; Block,  0 &#x3D; Whitelist
@@ -82,24 +84,6 @@ public:
     Xdp_actionEnum toXdp_actionEnum(const utility::string_t& value) const;
     const utility::string_t fromXdp_actionEnum(const Xdp_actionEnum value) const;
 
-
-    int32_t getDestinationPort() const;
-    bool destinationPortIsSet() const;
-    void unsetDestination_port();
-    void setDestinationPort(int32_t value);
-
-    /// <summary>
-    /// Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
-    /// </summary>
-    utility::string_t getSourceIp() const;
-    bool sourceIpIsSet() const;
-    void unsetSource_ip();
-    void setSourceIp(const utility::string_t& value);
-
-    int32_t getSourcePort() const;
-    bool sourcePortIsSet() const;
-    void unsetSource_port();
-    void setSourcePort(int32_t value);
 
     /// <summary>
     /// 1 &#x3D; TCP, 2 &#x3D; UDP
@@ -119,8 +103,32 @@ public:
     void setXdpAction(int32_t value);
     void setXdpAction(const Xdp_actionEnum value);
 
+    int32_t getDestinationPort() const;
+    bool destinationPortIsSet() const;
+    void unsetDestination_port();
+    void setDestinationPort(int32_t value);
+
+    /// <summary>
+    /// Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
+    /// </summary>
+    utility::string_t getSourceIp() const;
+    bool sourceIpIsSet() const;
+    void unsetSource_ip();
+    void setSourceIp(const utility::string_t& value);
+
+    int32_t getSourcePort() const;
+    bool sourcePortIsSet() const;
+    void unsetSource_port();
+    void setSourcePort(int32_t value);
+
 
 protected:
+    Protocol_idEnum m_Protocol_id;
+    bool m_Protocol_idIsSet;
+
+    Xdp_actionEnum m_Xdp_action;
+    bool m_Xdp_actionIsSet;
+
     int32_t m_Destination_port;
     bool m_Destination_portIsSet;
 
@@ -129,12 +137,6 @@ protected:
 
     int32_t m_Source_port;
     bool m_Source_portIsSet;
-
-    Protocol_idEnum m_Protocol_id;
-    bool m_Protocol_idIsSet;
-
-    Xdp_actionEnum m_Xdp_action;
-    bool m_Xdp_actionIsSet;
 
 };
 

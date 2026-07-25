@@ -38,10 +38,11 @@ export interface InitiatePayment200Response {
     text?: string;
 }
 export namespace InitiatePayment200Response {
-    export type TypeEnum = 'redirect' | 'submit' | 'single';
+    export type TypeEnum = 'redirect' | 'submit' | 'single' | '11184809';
     export const TypeEnum = {
         Redirect: 'redirect' as TypeEnum,
         Submit: 'submit' as TypeEnum,
-        Single: 'single' as TypeEnum
+        Single: 'single' as TypeEnum,
+        UnknownDefaultOpenApi: '11184809' as TypeEnum
     }
 }

@@ -23,12 +23,8 @@ AccountInfoPost::AccountInfoPost()
 {
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
-    m_Company = utility::conversions::to_string_t("");
-    m_CompanyIsSet = false;
     m_Address = utility::conversions::to_string_t("");
     m_AddressIsSet = false;
-    m_Address2 = utility::conversions::to_string_t("");
-    m_Address2IsSet = false;
     m_City = utility::conversions::to_string_t("");
     m_CityIsSet = false;
     m_State = utility::conversions::to_string_t("");
@@ -39,6 +35,10 @@ AccountInfoPost::AccountInfoPost()
     m_CountryIsSet = false;
     m_Phone = utility::conversions::to_string_t("");
     m_PhoneIsSet = false;
+    m_Company = utility::conversions::to_string_t("");
+    m_CompanyIsSet = false;
+    m_Address2 = utility::conversions::to_string_t("");
+    m_Address2IsSet = false;
     m_Locale = utility::conversions::to_string_t("");
     m_LocaleIsSet = false;
     m_Email_invoices = utility::conversions::to_string_t("");
@@ -74,20 +74,10 @@ web::json::value AccountInfoPost::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("name"))] = ModelBase::toJson(m_Name);
     }
-    if(m_CompanyIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("company"))] = ModelBase::toJson(m_Company);
-    }
     if(m_AddressIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("address"))] = ModelBase::toJson(m_Address);
-    }
-    if(m_Address2IsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("address2"))] = ModelBase::toJson(m_Address2);
     }
     if(m_CityIsSet)
     {
@@ -113,6 +103,16 @@ web::json::value AccountInfoPost::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("phone"))] = ModelBase::toJson(m_Phone);
+    }
+    if(m_CompanyIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("company"))] = ModelBase::toJson(m_Company);
+    }
+    if(m_Address2IsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("address2"))] = ModelBase::toJson(m_Address2);
     }
     if(m_LocaleIsSet)
     {
@@ -172,17 +172,6 @@ bool AccountInfoPost::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("company"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("company")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setCompany;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setCompany);
-            setCompany(refVal_setCompany);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("address"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("address")));
@@ -191,17 +180,6 @@ bool AccountInfoPost::fromJson(const web::json::value& val)
             utility::string_t refVal_setAddress;
             ok &= ModelBase::fromJson(fieldValue, refVal_setAddress);
             setAddress(refVal_setAddress);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("address2"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("address2")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setAddress2;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setAddress2);
-            setAddress2(refVal_setAddress2);
             
         }
     }
@@ -257,6 +235,28 @@ bool AccountInfoPost::fromJson(const web::json::value& val)
             utility::string_t refVal_setPhone;
             ok &= ModelBase::fromJson(fieldValue, refVal_setPhone);
             setPhone(refVal_setPhone);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("company"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("company")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCompany;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCompany);
+            setCompany(refVal_setCompany);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("address2"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("address2")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setAddress2;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setAddress2);
+            setAddress2(refVal_setAddress2);
             
         }
     }
@@ -362,17 +362,9 @@ void AccountInfoPost::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("name")), m_Name));
     }
-    if(m_CompanyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("company")), m_Company));
-    }
     if(m_AddressIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("address")), m_Address));
-    }
-    if(m_Address2IsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("address2")), m_Address2));
     }
     if(m_CityIsSet)
     {
@@ -393,6 +385,14 @@ void AccountInfoPost::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     if(m_PhoneIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("phone")), m_Phone));
+    }
+    if(m_CompanyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("company")), m_Company));
+    }
+    if(m_Address2IsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("address2")), m_Address2));
     }
     if(m_LocaleIsSet)
     {
@@ -443,23 +443,11 @@ bool AccountInfoPost::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("name"))), refVal_setName );
         setName(refVal_setName);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("company"))))
-    {
-        utility::string_t refVal_setCompany;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("company"))), refVal_setCompany );
-        setCompany(refVal_setCompany);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("address"))))
     {
         utility::string_t refVal_setAddress;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("address"))), refVal_setAddress );
         setAddress(refVal_setAddress);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("address2"))))
-    {
-        utility::string_t refVal_setAddress2;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("address2"))), refVal_setAddress2 );
-        setAddress2(refVal_setAddress2);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("city"))))
     {
@@ -490,6 +478,18 @@ bool AccountInfoPost::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         utility::string_t refVal_setPhone;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("phone"))), refVal_setPhone );
         setPhone(refVal_setPhone);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("company"))))
+    {
+        utility::string_t refVal_setCompany;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("company"))), refVal_setCompany );
+        setCompany(refVal_setCompany);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("address2"))))
+    {
+        utility::string_t refVal_setAddress2;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("address2"))), refVal_setAddress2 );
+        setAddress2(refVal_setAddress2);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("locale"))))
     {
@@ -564,27 +564,6 @@ void AccountInfoPost::unsetName()
 {
     m_NameIsSet = false;
 }
-utility::string_t AccountInfoPost::getCompany() const
-{
-    return m_Company;
-}
-
-
-void AccountInfoPost::setCompany(const utility::string_t& value)
-{
-    m_Company = value;
-    m_CompanyIsSet = true;
-}
-
-bool AccountInfoPost::companyIsSet() const
-{
-    return m_CompanyIsSet;
-}
-
-void AccountInfoPost::unsetCompany()
-{
-    m_CompanyIsSet = false;
-}
 utility::string_t AccountInfoPost::getAddress() const
 {
     return m_Address;
@@ -605,27 +584,6 @@ bool AccountInfoPost::addressIsSet() const
 void AccountInfoPost::unsetAddress()
 {
     m_AddressIsSet = false;
-}
-utility::string_t AccountInfoPost::getAddress2() const
-{
-    return m_Address2;
-}
-
-
-void AccountInfoPost::setAddress2(const utility::string_t& value)
-{
-    m_Address2 = value;
-    m_Address2IsSet = true;
-}
-
-bool AccountInfoPost::address2IsSet() const
-{
-    return m_Address2IsSet;
-}
-
-void AccountInfoPost::unsetAddress2()
-{
-    m_Address2IsSet = false;
 }
 utility::string_t AccountInfoPost::getCity() const
 {
@@ -731,6 +689,48 @@ bool AccountInfoPost::phoneIsSet() const
 void AccountInfoPost::unsetPhone()
 {
     m_PhoneIsSet = false;
+}
+utility::string_t AccountInfoPost::getCompany() const
+{
+    return m_Company;
+}
+
+
+void AccountInfoPost::setCompany(const utility::string_t& value)
+{
+    m_Company = value;
+    m_CompanyIsSet = true;
+}
+
+bool AccountInfoPost::companyIsSet() const
+{
+    return m_CompanyIsSet;
+}
+
+void AccountInfoPost::unsetCompany()
+{
+    m_CompanyIsSet = false;
+}
+utility::string_t AccountInfoPost::getAddress2() const
+{
+    return m_Address2;
+}
+
+
+void AccountInfoPost::setAddress2(const utility::string_t& value)
+{
+    m_Address2 = value;
+    m_Address2IsSet = true;
+}
+
+bool AccountInfoPost::address2IsSet() const
+{
+    return m_Address2IsSet;
+}
+
+void AccountInfoPost::unsetAddress2()
+{
+    m_Address2IsSet = false;
 }
 utility::string_t AccountInfoPost::getLocale() const
 {

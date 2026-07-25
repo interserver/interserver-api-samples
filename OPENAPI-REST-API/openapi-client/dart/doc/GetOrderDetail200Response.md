@@ -1,8 +1,8 @@
-# openapi.model.GetOrderDetail200Response
+# interserver_api.model.GetOrderDetail200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Server** | **Int32** | QuickServer plan/server id from getNewQs. | 
 **Password** | **String** | Root password for the QuickServer. | 
-**Os** | **String** | OS template file name from getNewQs (falls back to a default if unrecognized). | [optional] [default to ""]
 **Tos** | **Boolean** | Terms-of-service acceptance. Must be true to place the order. | 
+**Os** | **String** | OS template file name from getNewQs (falls back to a default if unrecognized). | [optional] [default to ""]
 **Comment** | **String** | Free-form note saved on the service row. | [optional] [default to ""]
 
 ## Examples
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 ```powershell
 $QsOrderRequest = Initialize-InterserverApiQsOrderRequest  -Server null `
  -Password null `
- -Os null `
  -Tos null `
+ -Os null `
  -Comment null
 ```
 

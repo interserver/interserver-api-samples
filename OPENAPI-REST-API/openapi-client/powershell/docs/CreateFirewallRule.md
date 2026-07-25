@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProtocolId** | **Int32** | 1 &#x3D; TCP, 2 &#x3D; UDP | 
+**XdpAction** | **Int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 **DestinationPort** | **Int32** |  | [optional] [default to 80]
 **SourceIp** | **String** | Source IP address to match. Use &#39;0.0.0.0&#39; to match any source. | [optional] [default to "0.0.0.0"]
 **SourcePort** | **Int32** |  | [optional] [default to 0]
-**ProtocolId** | **Int32** | 1 &#x3D; TCP, 2 &#x3D; UDP | 
-**XdpAction** | **Int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CreateFirewallRule = Initialize-InterserverApiCreateFirewallRule  -DestinationPort 22 `
+$CreateFirewallRule = Initialize-InterserverApiCreateFirewallRule  -ProtocolId 1 `
+ -XdpAction 1 `
+ -DestinationPort 22 `
  -SourceIp 1.2.4.5 `
- -SourcePort 1302 `
- -ProtocolId 1 `
- -XdpAction 1
+ -SourcePort 1302
 ```
 
 - Convert the resource to JSON

@@ -70,13 +70,14 @@ data class InitiatePayment200Response (
     /**
      * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
      *
-     * Values: redirect,submit,single
+     * Values: redirect,submit,single,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Type(val value: kotlin.String) {
         @Json(name = "redirect") redirect("redirect"),
         @Json(name = "submit") submit("submit"),
-        @Json(name = "single") single("single");
+        @Json(name = "single") single("single"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

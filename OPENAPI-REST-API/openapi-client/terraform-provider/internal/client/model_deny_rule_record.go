@@ -4,9 +4,9 @@ package client
 
 // DenyRuleRecord - The data for a email deny rule record.
 type DenyRuleRecord struct {
-	User string `json:"user,omitempty"`
 	Type string `json:"type"`
 	Data string `json:"data"`
 	Id int32 `json:"id"`
 	Created string `json:"created"`
+	User string `json:"user,omitempty"`
 }

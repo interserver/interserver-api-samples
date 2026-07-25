@@ -21,10 +21,10 @@ Link label
 Link URL
 .PARAMETER Icon
 Link icon
-.PARAMETER IconText
-Icon text
 .PARAMETER HelpText
 Help text
+.PARAMETER IconText
+Icon text
 .PARAMETER OtherAttr
 Other attributes
 .OUTPUTS
@@ -46,10 +46,10 @@ function Initialize-LicenseClientLink {
         ${Icon},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IconText},
+        ${HelpText},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${HelpText},
+        ${IconText},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${OtherAttr}
@@ -80,8 +80,8 @@ function Initialize-LicenseClientLink {
             'label' = ${Label}
             'link' = ${Link}
             'icon' = ${Icon}
-            'icon_text' = ${IconText}
             'help_text' = ${HelpText}
+            'icon_text' = ${IconText}
             'other_attr' = ${OtherAttr}
         }
 
@@ -120,7 +120,7 @@ function ConvertFrom-JsonToLicenseClientLink {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in LicenseClientLink
-        $AllProperties = ('label', 'link', 'icon', 'icon_text', 'help_text', 'other_attr')
+        $AllProperties = ('label', 'link', 'icon', 'help_text', 'icon_text', 'other_attr')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -171,8 +171,8 @@ function ConvertFrom-JsonToLicenseClientLink {
             'label' = ${Label}
             'link' = ${Link}
             'icon' = ${Icon}
-            'icon_text' = ${IconText}
             'help_text' = ${HelpText}
+            'icon_text' = ${IconText}
             'other_attr' = ${OtherAttr}
         }
 

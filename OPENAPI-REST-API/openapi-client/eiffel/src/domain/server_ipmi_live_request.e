@@ -19,20 +19,12 @@ class SERVER_IPMI_LIVE_REQUEST
 
 feature --Access
 
-    asset: INTEGER_32
-      -- Asset ID
     ip: detachable STRING_32
       -- Your IP Address you wish to connect to the IPMI system from.
+    asset: INTEGER_32
+      -- Asset ID
 
 feature -- Change Element
-
-    set_asset (a_name: like asset)
-        -- Set 'asset' with 'a_name'.
-      do
-        asset := a_name
-      ensure
-        asset_set: asset = a_name
-      end
 
     set_ip (a_name: like ip)
         -- Set 'ip' with 'a_name'.
@@ -40,6 +32,14 @@ feature -- Change Element
         ip := a_name
       ensure
         ip_set: ip = a_name
+      end
+
+    set_asset (a_name: like asset)
+        -- Set 'asset' with 'a_name'.
+      do
+        asset := a_name
+      ensure
+        asset_set: asset = a_name
       end
 
 
@@ -50,14 +50,14 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass SERVER_IPMI_LIVE_REQUEST%N")
-        if attached asset as l_asset then
-          Result.append ("%Nasset:")
-          Result.append (l_asset.out)
-          Result.append ("%N")
-        end
         if attached ip as l_ip then
           Result.append ("%Nip:")
           Result.append (l_ip.out)
+          Result.append ("%N")
+        end
+        if attached asset as l_asset then
+          Result.append ("%Nasset:")
+          Result.append (l_asset.out)
           Result.append ("%N")
         end
       end

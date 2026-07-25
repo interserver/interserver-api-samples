@@ -1,8 +1,8 @@
-# openapi.model.TemplateRequest
+# interserver_api.model.TemplateRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

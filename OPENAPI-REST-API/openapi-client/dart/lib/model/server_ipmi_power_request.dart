@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class ServerIpmiPowerRequest {
   /// Returns a new [ServerIpmiPowerRequest] instance.
@@ -131,6 +131,7 @@ enum ServerIpmiPowerRequestActionEnum {
   on_._(r'on'),
   off._(r'off'),
   soft._(r'soft'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -194,6 +195,7 @@ class ServerIpmiPowerRequestActionEnumTypeTransformer {
         case r'on': return ServerIpmiPowerRequestActionEnum.on_;
         case r'off': return ServerIpmiPowerRequestActionEnum.off;
         case r'soft': return ServerIpmiPowerRequestActionEnum.soft;
+        case r'unknown_default_open_api': return ServerIpmiPowerRequestActionEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

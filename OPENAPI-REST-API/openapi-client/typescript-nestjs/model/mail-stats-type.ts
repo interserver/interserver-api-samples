@@ -32,7 +32,8 @@ export enum MailStatsTypeTime {
     _7d = '7d',
     _24h = '24h',
     Today = 'today',
-    _1h = '1h'
+    _1h = '1h',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

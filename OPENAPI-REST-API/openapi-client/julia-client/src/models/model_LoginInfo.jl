@@ -6,31 +6,31 @@
 Basic information useful for rendering a login page.
 
     LoginInfo(;
-        logo=nothing,
         captcha=nothing,
-        language=nothing,
         counts=nothing,
+        logo=nothing,
+        language=nothing,
     )
 
-    - logo::String : A logo image url.
     - captcha::String : A base64 encoded image to use for rendering the alternateive captcha.
-    - language::String : The desired langauge to render the site with.
     - counts::LoginServiceCounts
+    - logo::String : A logo image url.
+    - language::String : The desired langauge to render the site with.
 """
 Base.@kwdef mutable struct LoginInfo <: OpenAPI.APIModel
-    logo::Union{Nothing, String} = nothing
     captcha::Union{Nothing, String} = nothing
-    language::Union{Nothing, String} = nothing
     counts = nothing # spec type: Union{ Nothing, LoginServiceCounts }
+    logo::Union{Nothing, String} = nothing
+    language::Union{Nothing, String} = nothing
 
-    function LoginInfo(logo, captcha, language, counts, )
-        o = new(logo, captcha, language, counts, )
+    function LoginInfo(captcha, counts, logo, language, )
+        o = new(captcha, counts, logo, language, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type LoginInfo
 
-const _property_types_LoginInfo = Dict{Symbol,String}(Symbol("logo")=>"String", Symbol("captcha")=>"String", Symbol("language")=>"String", Symbol("counts")=>"LoginServiceCounts", )
+const _property_types_LoginInfo = Dict{Symbol,String}(Symbol("captcha")=>"String", Symbol("counts")=>"LoginServiceCounts", Symbol("logo")=>"String", Symbol("language")=>"String", )
 OpenAPI.property_type(::Type{ LoginInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoginInfo[name]))}
 
 function OpenAPI.check_required(o::LoginInfo)
@@ -40,10 +40,10 @@ function OpenAPI.check_required(o::LoginInfo)
 end
 
 function OpenAPI.validate_properties(o::LoginInfo)
-    OpenAPI.validate_property(LoginInfo, Symbol("logo"), o.logo)
     OpenAPI.validate_property(LoginInfo, Symbol("captcha"), o.captcha)
-    OpenAPI.validate_property(LoginInfo, Symbol("language"), o.language)
     OpenAPI.validate_property(LoginInfo, Symbol("counts"), o.counts)
+    OpenAPI.validate_property(LoginInfo, Symbol("logo"), o.logo)
+    OpenAPI.validate_property(LoginInfo, Symbol("language"), o.language)
 end
 
 function OpenAPI.validate_property(::Type{ LoginInfo }, name::Symbol, val)

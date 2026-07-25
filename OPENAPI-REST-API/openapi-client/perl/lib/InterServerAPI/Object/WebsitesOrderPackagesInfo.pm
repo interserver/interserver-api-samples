@@ -261,6 +261,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'services_module' => {
+        datatype => 'string',
+        base_name => 'services_module',
+        description => 'The module of the package.',
+        format => '',
+        read_only => '',
+            },
+    'services_description' => {
+        datatype => 'string',
+        base_name => 'services_description',
+        description => 'Description of the package.',
+        format => '',
+        read_only => '',
+            },
     'services_field1' => {
         datatype => 'string',
         base_name => 'services_field1',
@@ -275,24 +289,10 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'services_module' => {
-        datatype => 'string',
-        base_name => 'services_module',
-        description => 'The module of the package.',
-        format => '',
-        read_only => '',
-            },
     'services_html' => {
         datatype => 'string',
         base_name => 'services_html',
         description => 'HTML content for the package.',
-        format => '',
-        read_only => '',
-            },
-    'services_description' => {
-        datatype => 'string',
-        base_name => 'services_description',
-        description => 'Description of the package.',
         format => '',
         read_only => '',
             },
@@ -319,11 +319,11 @@ __PACKAGE__->openapi_types( {
     'services_category' => 'string',
     'services_buyable' => 'string',
     'services_type' => 'string',
+    'services_module' => 'string',
+    'services_description' => 'string',
     'services_field1' => 'string',
     'services_field2' => 'string',
-    'services_module' => 'string',
     'services_html' => 'string',
-    'services_description' => 'string',
     'services_moreinfo_url' => 'string',
     'services_hidden' => 'string'
 } );
@@ -335,11 +335,11 @@ __PACKAGE__->attribute_map( {
     'services_category' => 'services_category',
     'services_buyable' => 'services_buyable',
     'services_type' => 'services_type',
+    'services_module' => 'services_module',
+    'services_description' => 'services_description',
     'services_field1' => 'services_field1',
     'services_field2' => 'services_field2',
-    'services_module' => 'services_module',
     'services_html' => 'services_html',
-    'services_description' => 'services_description',
     'services_moreinfo_url' => 'services_moreinfo_url',
     'services_hidden' => 'services_hidden'
 } );

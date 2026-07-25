@@ -10,8 +10,8 @@ type MailSchema struct {
 	CustCurrency string `json:"custCurrency"`
 	CustCurrencySymbol string `json:"custCurrencySymbol"`
 	Package string `json:"package"`
-	ServiceExtra []string `json:"serviceExtra,omitempty"`
 	ExtraInfoTables MailSchemaExtraInfoTables `json:"extraInfoTables"`
 	ServiceType MailServiceType `json:"serviceType"`
 	UsageCount string `json:"usage_count"`
+	ServiceExtra []string `json:"serviceExtra,omitempty"`
 }

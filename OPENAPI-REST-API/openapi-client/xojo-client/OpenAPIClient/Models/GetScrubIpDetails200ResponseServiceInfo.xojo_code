@@ -67,7 +67,8 @@ Protected Class GetScrubIpDetails200ResponseServiceInfo
         Pending
         Canceled
         Expired
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -83,7 +84,10 @@ Protected Class GetScrubIpDetails200ResponseServiceInfo
 		      Return "canceled"
 		    Case Scrub_ip_statusEnum.Expired
 		      Return "expired"
-		    
+		    Case Scrub_ip_statusEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

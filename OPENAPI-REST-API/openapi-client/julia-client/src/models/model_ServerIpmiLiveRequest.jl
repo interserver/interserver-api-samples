@@ -6,25 +6,25 @@
 Request body to setup an IPMI Live connection.
 
     ServerIpmiLiveRequest(;
-        asset=nothing,
         ip=nothing,
+        asset=nothing,
     )
 
-    - asset::Int64 : Asset ID
     - ip::String : Your IP Address you wish to connect to the IPMI system from.
+    - asset::Int64 : Asset ID
 """
 Base.@kwdef mutable struct ServerIpmiLiveRequest <: OpenAPI.APIModel
-    asset::Union{Nothing, Int64} = nothing
     ip::Union{Nothing, String} = nothing
+    asset::Union{Nothing, Int64} = nothing
 
-    function ServerIpmiLiveRequest(asset, ip, )
-        o = new(asset, ip, )
+    function ServerIpmiLiveRequest(ip, asset, )
+        o = new(ip, asset, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ServerIpmiLiveRequest
 
-const _property_types_ServerIpmiLiveRequest = Dict{Symbol,String}(Symbol("asset")=>"Int64", Symbol("ip")=>"String", )
+const _property_types_ServerIpmiLiveRequest = Dict{Symbol,String}(Symbol("ip")=>"String", Symbol("asset")=>"Int64", )
 OpenAPI.property_type(::Type{ ServerIpmiLiveRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServerIpmiLiveRequest[name]))}
 
 function OpenAPI.check_required(o::ServerIpmiLiveRequest)
@@ -33,14 +33,14 @@ function OpenAPI.check_required(o::ServerIpmiLiveRequest)
 end
 
 function OpenAPI.validate_properties(o::ServerIpmiLiveRequest)
-    OpenAPI.validate_property(ServerIpmiLiveRequest, Symbol("asset"), o.asset)
     OpenAPI.validate_property(ServerIpmiLiveRequest, Symbol("ip"), o.ip)
+    OpenAPI.validate_property(ServerIpmiLiveRequest, Symbol("asset"), o.asset)
 end
 
 function OpenAPI.validate_property(::Type{ ServerIpmiLiveRequest }, name::Symbol, val)
 
+
     if name === Symbol("asset")
         OpenAPI.validate_param(name, "ServerIpmiLiveRequest", :format, val, "int32")
     end
-
 end

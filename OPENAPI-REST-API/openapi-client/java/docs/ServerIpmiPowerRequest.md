@@ -22,6 +22,7 @@ IPMI Power command for servers
 | on | &quot;on&quot; |
 | off | &quot;off&quot; |
 | soft | &quot;soft&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

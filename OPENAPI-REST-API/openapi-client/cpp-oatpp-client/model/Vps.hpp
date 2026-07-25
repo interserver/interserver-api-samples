@@ -59,14 +59,10 @@ class Vps : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, package);
 
-  DTO_FIELD(oatpp::String, os_template);
-  DTO_FIELD(oatpp::Boolean, os_templateIsSet);
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::VpsServiceExtra>, serviceExtra);
 
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::VpsExtraInfoTables>, extraInfoTables);
 
-  DTO_FIELD(oatpp::Any, cpu_graph_data);
-  DTO_FIELD(oatpp::Boolean, cpu_graph_dataIsSet);
   DTO_FIELD(oatpp::String, module);
 
   DTO_FIELD(oatpp::String, token);
@@ -83,6 +79,10 @@ class Vps : public oatpp::DTO {
 
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::VpsServiceAddons>, serviceAddons);
 
+  DTO_FIELD(oatpp::String, os_template);
+  DTO_FIELD(oatpp::Boolean, os_templateIsSet);
+  DTO_FIELD(oatpp::Any, cpu_graph_data);
+  DTO_FIELD(oatpp::Boolean, cpu_graph_dataIsSet);
 
 };
 

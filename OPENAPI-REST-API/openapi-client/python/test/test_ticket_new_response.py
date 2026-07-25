@@ -36,9 +36,9 @@ class TestTicketNewResponse(unittest.TestCase):
         model = TicketNewResponse()
         if include_optional:
             return TicketNewResponse(
-                ticket_id = 56,
                 text = '',
-                success = True
+                success = True,
+                ticket_id = 56
             )
         else:
             return TicketNewResponse(

@@ -1,8 +1,8 @@
-# openapi.model.ServerNetworkInfo
+# interserver_api.model.ServerNetworkInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

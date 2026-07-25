@@ -33,20 +33,20 @@ WebsitesOrderServiceTypes::WebsitesOrderServiceTypes()
     m_Services_buyableIsSet = false;
     m_Services_type = utility::conversions::to_string_t("");
     m_Services_typeIsSet = false;
+    m_Services_module = utility::conversions::to_string_t("");
+    m_Services_moduleIsSet = false;
+    m_Services_hidden = utility::conversions::to_string_t("");
+    m_Services_hiddenIsSet = false;
     m_Services_field1 = utility::conversions::to_string_t("");
     m_Services_field1IsSet = false;
     m_Services_field2 = utility::conversions::to_string_t("");
     m_Services_field2IsSet = false;
-    m_Services_module = utility::conversions::to_string_t("");
-    m_Services_moduleIsSet = false;
     m_Services_html = utility::conversions::to_string_t("");
     m_Services_htmlIsSet = false;
     m_Services_description = utility::conversions::to_string_t("");
     m_Services_descriptionIsSet = false;
     m_Services_moreinfo_url = utility::conversions::to_string_t("");
     m_Services_moreinfo_urlIsSet = false;
-    m_Services_hidden = utility::conversions::to_string_t("");
-    m_Services_hiddenIsSet = false;
 }
 
 WebsitesOrderServiceTypes::~WebsitesOrderServiceTypes()
@@ -91,6 +91,16 @@ web::json::value WebsitesOrderServiceTypes::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_type"))] = ModelBase::toJson(m_Services_type);
     }
+    if(m_Services_moduleIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("services_module"))] = ModelBase::toJson(m_Services_module);
+    }
+    if(m_Services_hiddenIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("services_hidden"))] = ModelBase::toJson(m_Services_hidden);
+    }
     if(m_Services_field1IsSet)
     {
         
@@ -100,11 +110,6 @@ web::json::value WebsitesOrderServiceTypes::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_field2"))] = ModelBase::toJson(m_Services_field2);
-    }
-    if(m_Services_moduleIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("services_module"))] = ModelBase::toJson(m_Services_module);
     }
     if(m_Services_htmlIsSet)
     {
@@ -120,11 +125,6 @@ web::json::value WebsitesOrderServiceTypes::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_moreinfo_url"))] = ModelBase::toJson(m_Services_moreinfo_url);
-    }
-    if(m_Services_hiddenIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("services_hidden"))] = ModelBase::toJson(m_Services_hidden);
     }
 
     return val;
@@ -199,6 +199,28 @@ bool WebsitesOrderServiceTypes::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_module")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setServicesModule;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesModule);
+            setServicesModule(refVal_setServicesModule);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_hidden")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setServicesHidden;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesHidden);
+            setServicesHidden(refVal_setServicesHidden);
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_field1"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_field1")));
@@ -218,17 +240,6 @@ bool WebsitesOrderServiceTypes::fromJson(const web::json::value& val)
             utility::string_t refVal_setServicesField2;
             ok &= ModelBase::fromJson(fieldValue, refVal_setServicesField2);
             setServicesField2(refVal_setServicesField2);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_module")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setServicesModule;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesModule);
-            setServicesModule(refVal_setServicesModule);
             
         }
     }
@@ -262,17 +273,6 @@ bool WebsitesOrderServiceTypes::fromJson(const web::json::value& val)
             utility::string_t refVal_setServicesMoreinfoUrl;
             ok &= ModelBase::fromJson(fieldValue, refVal_setServicesMoreinfoUrl);
             setServicesMoreinfoUrl(refVal_setServicesMoreinfoUrl);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_hidden")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setServicesHidden;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesHidden);
-            setServicesHidden(refVal_setServicesHidden);
             
         }
     }
@@ -310,6 +310,14 @@ void WebsitesOrderServiceTypes::toMultipart(std::shared_ptr<MultipartFormData> m
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_type")), m_Services_type));
     }
+    if(m_Services_moduleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_module")), m_Services_module));
+    }
+    if(m_Services_hiddenIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_hidden")), m_Services_hidden));
+    }
     if(m_Services_field1IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_field1")), m_Services_field1));
@@ -317,10 +325,6 @@ void WebsitesOrderServiceTypes::toMultipart(std::shared_ptr<MultipartFormData> m
     if(m_Services_field2IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_field2")), m_Services_field2));
-    }
-    if(m_Services_moduleIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_module")), m_Services_module));
     }
     if(m_Services_htmlIsSet)
     {
@@ -333,10 +337,6 @@ void WebsitesOrderServiceTypes::toMultipart(std::shared_ptr<MultipartFormData> m
     if(m_Services_moreinfo_urlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_moreinfo_url")), m_Services_moreinfo_url));
-    }
-    if(m_Services_hiddenIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_hidden")), m_Services_hidden));
     }
 }
 
@@ -385,6 +385,18 @@ bool WebsitesOrderServiceTypes::fromMultiPart(std::shared_ptr<MultipartFormData>
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_type"))), refVal_setServicesType );
         setServicesType(refVal_setServicesType);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
+    {
+        utility::string_t refVal_setServicesModule;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))), refVal_setServicesModule );
+        setServicesModule(refVal_setServicesModule);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))))
+    {
+        utility::string_t refVal_setServicesHidden;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))), refVal_setServicesHidden );
+        setServicesHidden(refVal_setServicesHidden);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_field1"))))
     {
         utility::string_t refVal_setServicesField1;
@@ -396,12 +408,6 @@ bool WebsitesOrderServiceTypes::fromMultiPart(std::shared_ptr<MultipartFormData>
         utility::string_t refVal_setServicesField2;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_field2"))), refVal_setServicesField2 );
         setServicesField2(refVal_setServicesField2);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
-    {
-        utility::string_t refVal_setServicesModule;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))), refVal_setServicesModule );
-        setServicesModule(refVal_setServicesModule);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_html"))))
     {
@@ -420,12 +426,6 @@ bool WebsitesOrderServiceTypes::fromMultiPart(std::shared_ptr<MultipartFormData>
         utility::string_t refVal_setServicesMoreinfoUrl;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_moreinfo_url"))), refVal_setServicesMoreinfoUrl );
         setServicesMoreinfoUrl(refVal_setServicesMoreinfoUrl);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))))
-    {
-        utility::string_t refVal_setServicesHidden;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_hidden"))), refVal_setServicesHidden );
-        setServicesHidden(refVal_setServicesHidden);
     }
     return ok;
 }
@@ -557,6 +557,48 @@ void WebsitesOrderServiceTypes::unsetServices_type()
 {
     m_Services_typeIsSet = false;
 }
+utility::string_t WebsitesOrderServiceTypes::getServicesModule() const
+{
+    return m_Services_module;
+}
+
+
+void WebsitesOrderServiceTypes::setServicesModule(const utility::string_t& value)
+{
+    m_Services_module = value;
+    m_Services_moduleIsSet = true;
+}
+
+bool WebsitesOrderServiceTypes::servicesModuleIsSet() const
+{
+    return m_Services_moduleIsSet;
+}
+
+void WebsitesOrderServiceTypes::unsetServices_module()
+{
+    m_Services_moduleIsSet = false;
+}
+utility::string_t WebsitesOrderServiceTypes::getServicesHidden() const
+{
+    return m_Services_hidden;
+}
+
+
+void WebsitesOrderServiceTypes::setServicesHidden(const utility::string_t& value)
+{
+    m_Services_hidden = value;
+    m_Services_hiddenIsSet = true;
+}
+
+bool WebsitesOrderServiceTypes::servicesHiddenIsSet() const
+{
+    return m_Services_hiddenIsSet;
+}
+
+void WebsitesOrderServiceTypes::unsetServices_hidden()
+{
+    m_Services_hiddenIsSet = false;
+}
 utility::string_t WebsitesOrderServiceTypes::getServicesField1() const
 {
     return m_Services_field1;
@@ -598,27 +640,6 @@ bool WebsitesOrderServiceTypes::servicesField2IsSet() const
 void WebsitesOrderServiceTypes::unsetServices_field2()
 {
     m_Services_field2IsSet = false;
-}
-utility::string_t WebsitesOrderServiceTypes::getServicesModule() const
-{
-    return m_Services_module;
-}
-
-
-void WebsitesOrderServiceTypes::setServicesModule(const utility::string_t& value)
-{
-    m_Services_module = value;
-    m_Services_moduleIsSet = true;
-}
-
-bool WebsitesOrderServiceTypes::servicesModuleIsSet() const
-{
-    return m_Services_moduleIsSet;
-}
-
-void WebsitesOrderServiceTypes::unsetServices_module()
-{
-    m_Services_moduleIsSet = false;
 }
 utility::string_t WebsitesOrderServiceTypes::getServicesHtml() const
 {
@@ -682,27 +703,6 @@ bool WebsitesOrderServiceTypes::servicesMoreinfoUrlIsSet() const
 void WebsitesOrderServiceTypes::unsetServices_moreinfo_url()
 {
     m_Services_moreinfo_urlIsSet = false;
-}
-utility::string_t WebsitesOrderServiceTypes::getServicesHidden() const
-{
-    return m_Services_hidden;
-}
-
-
-void WebsitesOrderServiceTypes::setServicesHidden(const utility::string_t& value)
-{
-    m_Services_hidden = value;
-    m_Services_hiddenIsSet = true;
-}
-
-bool WebsitesOrderServiceTypes::servicesHiddenIsSet() const
-{
-    return m_Services_hiddenIsSet;
-}
-
-void WebsitesOrderServiceTypes::unsetServices_hidden()
-{
-    m_Services_hiddenIsSet = false;
 }
 
 }

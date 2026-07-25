@@ -35,6 +35,7 @@ public:
 	{
 		Y,
 		N,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const CustomerServerAccessEnum& EnumValue);

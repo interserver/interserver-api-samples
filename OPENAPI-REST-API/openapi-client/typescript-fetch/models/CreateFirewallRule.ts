@@ -57,7 +57,8 @@ export interface CreateFirewallRule {
  */
 export const CreateFirewallRuleProtocolIdEnum = {
     NUMBER_1: 1,
-    NUMBER_2: 2
+    NUMBER_2: 2,
+    NUMBER_unknown_default_open_api: 11184809
 } as const;
 export type CreateFirewallRuleProtocolIdEnum = typeof CreateFirewallRuleProtocolIdEnum[keyof typeof CreateFirewallRuleProtocolIdEnum];
 
@@ -66,7 +67,8 @@ export type CreateFirewallRuleProtocolIdEnum = typeof CreateFirewallRuleProtocol
  */
 export const CreateFirewallRuleXdpActionEnum = {
     NUMBER_0: 0,
-    NUMBER_1: 1
+    NUMBER_1: 1,
+    NUMBER_unknown_default_open_api: 11184809
 } as const;
 export type CreateFirewallRuleXdpActionEnum = typeof CreateFirewallRuleXdpActionEnum[keyof typeof CreateFirewallRuleXdpActionEnum];
 

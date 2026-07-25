@@ -36,14 +36,14 @@ class LoginInfo : public oatpp::DTO {
 
   DTO_INIT(LoginInfo, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::String, logo);
-  DTO_FIELD(oatpp::Boolean, logoIsSet);
   DTO_FIELD(oatpp::String, captcha);
 
-  DTO_FIELD(oatpp::String, language);
-  DTO_FIELD(oatpp::Boolean, languageIsSet);
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::LoginServiceCounts>, counts);
 
+  DTO_FIELD(oatpp::String, logo);
+  DTO_FIELD(oatpp::Boolean, logoIsSet);
+  DTO_FIELD(oatpp::String, language);
+  DTO_FIELD(oatpp::Boolean, languageIsSet);
 
 };
 

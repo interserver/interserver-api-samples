@@ -22,7 +22,9 @@ class ChargeInvoiceRowsInvoicesValue {
     
         NUMBER_0(new BigDecimal("0")),
         
-        NUMBER_1(new BigDecimal("1"))
+        NUMBER_1(new BigDecimal("1")),
+        
+        NUMBER_unknown_default_open_api(new BigDecimal("11184809"))
     
         private final BigDecimal value
     

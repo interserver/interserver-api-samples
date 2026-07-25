@@ -23,10 +23,10 @@ var _ MappedNullable = &TemplateRequest{}
 type TemplateRequest struct {
 	// OS Template Filename
 	Template string `json:"template"`
-	// Password for Root / Administrator Account.
-	Password *string `json:"password,omitempty"`
 	// Password for this account.
 	LocalPassword string `json:"localPassword"`
+	// Password for Root / Administrator Account.
+	Password *string `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,30 @@ func (o *TemplateRequest) SetTemplate(v string) {
 	o.Template = v
 }
 
+// GetLocalPassword returns the LocalPassword field value
+func (o *TemplateRequest) GetLocalPassword() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LocalPassword
+}
+
+// GetLocalPasswordOk returns a tuple with the LocalPassword field value
+// and a boolean to check if the value has been set.
+func (o *TemplateRequest) GetLocalPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LocalPassword, true
+}
+
+// SetLocalPassword sets field value
+func (o *TemplateRequest) SetLocalPassword(v string) {
+	o.LocalPassword = v
+}
+
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *TemplateRequest) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
@@ -107,30 +131,6 @@ func (o *TemplateRequest) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetLocalPassword returns the LocalPassword field value
-func (o *TemplateRequest) GetLocalPassword() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LocalPassword
-}
-
-// GetLocalPasswordOk returns a tuple with the LocalPassword field value
-// and a boolean to check if the value has been set.
-func (o *TemplateRequest) GetLocalPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LocalPassword, true
-}
-
-// SetLocalPassword sets field value
-func (o *TemplateRequest) SetLocalPassword(v string) {
-	o.LocalPassword = v
-}
-
 func (o TemplateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -142,10 +142,10 @@ func (o TemplateRequest) MarshalJSON() ([]byte, error) {
 func (o TemplateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["template"] = o.Template
+	toSerialize["localPassword"] = o.LocalPassword
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	toSerialize["localPassword"] = o.LocalPassword
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -191,8 +191,8 @@ func (o *TemplateRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "template")
-		delete(additionalProperties, "password")
 		delete(additionalProperties, "localPassword")
+		delete(additionalProperties, "password")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPai
 		return TEXT("0");
 	case OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::_1:
 		return TEXT("1");
+	case OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIChargeInvoiceRowsInvo
 {
 	static TMap<FString, OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::_0 },
-		{ TEXT("1"), OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::_1 }, };
+		{ TEXT("1"), OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::_1 },
+		{ TEXT("11184809"), OpenAPIChargeInvoiceRowsInvoicesValue::InvoicesPaidEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

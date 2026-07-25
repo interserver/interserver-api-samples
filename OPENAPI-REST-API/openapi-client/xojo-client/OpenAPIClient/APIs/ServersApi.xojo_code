@@ -2338,7 +2338,10 @@ localVarFormParams.Value("action") = ActionEnum_ServerIpmiPowerPostToString(acti
 		      Return "off"
 		    Case ActionEnum_ServerIpmiPowerPost.Escapedsoft
 		      Return "soft"
-		    
+		    Case ActionEnum_ServerIpmiPowerPost.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -2731,6 +2734,7 @@ localVarFormParams.Value("action") = ActionEnum_ServerIpmiPowerPostToString(acti
         On
         Off
         Escapedsoft
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

@@ -34,7 +34,8 @@ Protected Class CreateGeoFirewallRule
         
         Escaped0 = "0"
         Escaped1 = "1"
-        
+        UnknownDefaultOpenApi = "11184809"
+        Unknown = 
     #tag EndEnum
 
 

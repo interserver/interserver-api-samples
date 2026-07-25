@@ -5,18 +5,18 @@ context("Test ServerIpmiPowerRequest")
 
 model_instance <- ServerIpmiPowerRequest$new()
 
-test_that("asset", {
-  # tests for the property `asset` (integer)
-  # The Asset ID
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset`, "EXPECTED_RESULT")
-})
-
 test_that("action", {
   # tests for the property `action` (character)
   # The power action to send to the ipmi controller.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`action`, "EXPECTED_RESULT")
+})
+
+test_that("asset", {
+  # tests for the property `asset` (integer)
+  # The Asset ID
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset`, "EXPECTED_RESULT")
 })

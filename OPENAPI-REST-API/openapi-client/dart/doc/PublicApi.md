@@ -1,8 +1,8 @@
-# openapi.api.PublicApi
+# interserver_api.api.PublicApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 All URIs are relative to *https://my.interserver.net/apiv2*
@@ -34,7 +34,7 @@ Populates a currency selector on signup, billing-preferences, or invoice-display
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -85,7 +85,7 @@ Renders the language-picker for account preferences or login pages. Public — n
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -136,7 +136,7 @@ Fetches a fresh captcha challenge image to display before submitting `submitSign
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -187,7 +187,7 @@ Populates country dropdowns in account registration, billing-address forms, and 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -242,7 +242,7 @@ Enumerates what services this MyAdmin install sells before placing orders or bui
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -293,7 +293,7 @@ Bootstraps an unauthenticated login page in one round-trip — branding logo, fr
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -344,7 +344,7 @@ Use to browse pre-built dedicated servers ready for immediate provisioning (Rapi
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -395,7 +395,7 @@ Use as step 1 of social login. Navigate the browser (typically a popup) to `/api
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -450,7 +450,7 @@ Populates a timezone picker for account preferences or for VPS / QuickServer tim
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -501,7 +501,7 @@ Final step of the OAuth login flow when the account has 2FA enabled. Called afte
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -556,7 +556,7 @@ Trivial GET that returns the JSON string `\"pong\"` so AI agents and monitors ca
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -607,7 +607,7 @@ Step 3 of the OAuth login flow. Called after `getOauthRedirect` returned `oauth_
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -664,7 +664,7 @@ Primary password→session-token exchange. Pass the returned session id back as 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -727,7 +727,7 @@ First step of the signup flow before adding payment or services. Public — no a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

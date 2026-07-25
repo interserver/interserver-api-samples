@@ -549,11 +549,11 @@ function Get-TicketsList {
         [System.Nullable[Int32]]
         ${Page},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("30", "90", "365", "1825", "all")]
+        [ValidateSet("30", "90", "365", "1825", "all", "unknown_default_open_api")]
         [String]
         ${Period},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("Open", "Closed", "On Hold", "In Progress")]
+        [ValidateSet("Open", "Closed", "On Hold", "In Progress", "unknown_default_open_api")]
         [String]
         ${View},
         [Switch]

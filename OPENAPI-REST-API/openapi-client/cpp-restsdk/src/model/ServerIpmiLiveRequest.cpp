@@ -21,10 +21,10 @@ namespace model {
 
 ServerIpmiLiveRequest::ServerIpmiLiveRequest()
 {
-    m_Asset = 0;
-    m_AssetIsSet = false;
     m_Ip = utility::conversions::to_string_t("");
     m_IpIsSet = false;
+    m_Asset = 0;
+    m_AssetIsSet = false;
 }
 
 ServerIpmiLiveRequest::~ServerIpmiLiveRequest()
@@ -39,15 +39,15 @@ void ServerIpmiLiveRequest::validate()
 web::json::value ServerIpmiLiveRequest::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_AssetIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("asset"))] = ModelBase::toJson(m_Asset);
-    }
     if(m_IpIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("ip"))] = ModelBase::toJson(m_Ip);
+    }
+    if(m_AssetIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("asset"))] = ModelBase::toJson(m_Asset);
     }
 
     return val;
@@ -56,17 +56,6 @@ web::json::value ServerIpmiLiveRequest::toJson() const
 bool ServerIpmiLiveRequest::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setAsset;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setAsset);
-            setAsset(refVal_setAsset);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ip"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ip")));
@@ -75,6 +64,17 @@ bool ServerIpmiLiveRequest::fromJson(const web::json::value& val)
             utility::string_t refVal_setIp;
             ok &= ModelBase::fromJson(fieldValue, refVal_setIp);
             setIp(refVal_setIp);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setAsset;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setAsset);
+            setAsset(refVal_setAsset);
             
         }
     }
@@ -88,13 +88,13 @@ void ServerIpmiLiveRequest::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
-    if(m_AssetIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset")), m_Asset));
-    }
     if(m_IpIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ip")), m_Ip));
+    }
+    if(m_AssetIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset")), m_Asset));
     }
 }
 
@@ -107,42 +107,22 @@ bool ServerIpmiLiveRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset"))))
-    {
-        int32_t refVal_setAsset;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset"))), refVal_setAsset );
-        setAsset(refVal_setAsset);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ip"))))
     {
         utility::string_t refVal_setIp;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ip"))), refVal_setIp );
         setIp(refVal_setIp);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset"))))
+    {
+        int32_t refVal_setAsset;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset"))), refVal_setAsset );
+        setAsset(refVal_setAsset);
+    }
     return ok;
 }
 
 
-int32_t ServerIpmiLiveRequest::getAsset() const
-{
-    return m_Asset;
-}
-
-void ServerIpmiLiveRequest::setAsset(int32_t value)
-{
-    m_Asset = value;
-    m_AssetIsSet = true;
-}
-
-bool ServerIpmiLiveRequest::assetIsSet() const
-{
-    return m_AssetIsSet;
-}
-
-void ServerIpmiLiveRequest::unsetAsset()
-{
-    m_AssetIsSet = false;
-}
 utility::string_t ServerIpmiLiveRequest::getIp() const
 {
     return m_Ip;
@@ -163,6 +143,26 @@ bool ServerIpmiLiveRequest::ipIsSet() const
 void ServerIpmiLiveRequest::unsetIp()
 {
     m_IpIsSet = false;
+}
+int32_t ServerIpmiLiveRequest::getAsset() const
+{
+    return m_Asset;
+}
+
+void ServerIpmiLiveRequest::setAsset(int32_t value)
+{
+    m_Asset = value;
+    m_AssetIsSet = true;
+}
+
+bool ServerIpmiLiveRequest::assetIsSet() const
+{
+    return m_AssetIsSet;
+}
+
+void ServerIpmiLiveRequest::unsetAsset()
+{
+    m_AssetIsSet = false;
 }
 
 }

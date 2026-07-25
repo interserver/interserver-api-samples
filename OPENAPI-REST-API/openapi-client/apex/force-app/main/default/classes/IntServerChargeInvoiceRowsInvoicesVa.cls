@@ -43,7 +43,8 @@ public class IntServerChargeInvoiceRowsInvoicesVa implements OAS.MappedPropertie
      */
     public enum InvoicesPaidEnum {
         NUMBER_0,
-        NUMBER_1
+        NUMBER_1,
+        NUMBER_unknown_default_open_api
     }
 
     /**

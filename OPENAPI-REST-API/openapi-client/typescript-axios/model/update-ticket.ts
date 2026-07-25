@@ -30,6 +30,7 @@ export interface UpdateTicket {
 export const UpdateTicketCustomerServerAccessEnum = {
     Y: 'y',
     N: 'n',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type UpdateTicketCustomerServerAccessEnum = typeof UpdateTicketCustomerServerAccessEnum[keyof typeof UpdateTicketCustomerServerAccessEnum];

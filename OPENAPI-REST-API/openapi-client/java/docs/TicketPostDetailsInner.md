@@ -24,6 +24,7 @@
 |---- | -----|
 | User | &quot;User&quot; |
 | Staff | &quot;Staff&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

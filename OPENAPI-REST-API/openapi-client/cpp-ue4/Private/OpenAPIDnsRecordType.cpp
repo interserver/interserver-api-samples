@@ -122,6 +122,8 @@ inline FString ToString(const OpenAPIDnsRecordType::Values& Value)
 		return TEXT("WKS");
 	case OpenAPIDnsRecordType::Values::Uri:
 		return TEXT("URI⏎");
+	case OpenAPIDnsRecordType::Values::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIDnsRecordType::Values Value (%d)"), (int)Value);
@@ -184,7 +186,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIDnsRecordType::Values
 		{ TEXT("TSIG"), OpenAPIDnsRecordType::Values::Tsig },
 		{ TEXT("TXT"), OpenAPIDnsRecordType::Values::Txt },
 		{ TEXT("WKS"), OpenAPIDnsRecordType::Values::Wks },
-		{ TEXT("URI⏎"), OpenAPIDnsRecordType::Values::Uri }, };
+		{ TEXT("URI⏎"), OpenAPIDnsRecordType::Values::Uri },
+		{ TEXT("11184809"), OpenAPIDnsRecordType::Values::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

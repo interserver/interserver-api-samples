@@ -17,12 +17,12 @@ pub struct ServerLocation1 {
     pub location_id: i32,
     #[serde(rename = "location_name")]
     pub location_name: String,
-    #[serde(rename = "location_description", skip_serializing_if = "Option::is_none")]
-    pub location_description: Option<String>,
     #[serde(rename = "location_lat")]
     pub location_lat: String,
     #[serde(rename = "location_long")]
     pub location_long: String,
+    #[serde(rename = "location_description", skip_serializing_if = "Option::is_none")]
+    pub location_description: Option<String>,
     #[serde(rename = "location_ipmi_group", skip_serializing_if = "Option::is_none")]
     pub location_ipmi_group: Option<i32>,
 }
@@ -32,9 +32,9 @@ impl ServerLocation1 {
         ServerLocation1 {
             location_id,
             location_name,
-            location_description: None,
             location_lat,
             location_long,
+            location_description: None,
             location_ipmi_group: None,
         }
     }

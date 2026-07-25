@@ -51,14 +51,6 @@ test_that("package", {
   #expect_equal(model.instance$`package`, "EXPECTED_RESULT")
 })
 
-test_that("serviceExtra", {
-  # tests for the property `serviceExtra` (array[character])
-  # Extra information for the mail service.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`serviceExtra`, "EXPECTED_RESULT")
-})
-
 test_that("extraInfoTables", {
   # tests for the property `extraInfoTables` (MailSchemaExtraInfoTables)
 
@@ -79,4 +71,12 @@ test_that("usage_count", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`usage_count`, "EXPECTED_RESULT")
+})
+
+test_that("serviceExtra", {
+  # tests for the property `serviceExtra` (array[character])
+  # Extra information for the mail service.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`serviceExtra`, "EXPECTED_RESULT")
 })

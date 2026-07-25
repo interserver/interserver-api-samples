@@ -22,11 +22,11 @@
 
 @interface ISAServerIpmiPowerRequest : ISAObject
 
-/* The Asset ID [optional]
- */
-@property(nonatomic) NSNumber* asset;
 /* The power action to send to the ipmi controller. 
  */
 @property(nonatomic) NSString* action;
+/* The Asset ID [optional]
+ */
+@property(nonatomic) NSNumber* asset;
 
 @end

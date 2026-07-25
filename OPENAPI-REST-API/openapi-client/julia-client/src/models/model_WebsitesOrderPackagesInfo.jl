@@ -11,11 +11,11 @@
         services_category=nothing,
         services_buyable=nothing,
         services_type=nothing,
+        services_module=nothing,
+        services_description=nothing,
         services_field1=nothing,
         services_field2=nothing,
-        services_module=nothing,
         services_html=nothing,
-        services_description=nothing,
         services_moreinfo_url=nothing,
         services_hidden=nothing,
     )
@@ -26,11 +26,11 @@
     - services_category::String : The category of the package.
     - services_buyable::String : Indicates if the package is buyable (1 for yes, 0 for no).
     - services_type::String : The type of the package.
+    - services_module::String : The module of the package.
+    - services_description::String : Description of the package.
     - services_field1::String : Additional field 1 for the package.
     - services_field2::String : Additional field 2 for the package.
-    - services_module::String : The module of the package.
     - services_html::String : HTML content for the package.
-    - services_description::String : Description of the package.
     - services_moreinfo_url::String : URL for more information about the package.
     - services_hidden::String : Indicates if the package is hidden (1 for yes, 0 for no).
 """
@@ -41,22 +41,22 @@ Base.@kwdef mutable struct WebsitesOrderPackagesInfo <: OpenAPI.APIModel
     services_category::Union{Nothing, String} = nothing
     services_buyable::Union{Nothing, String} = nothing
     services_type::Union{Nothing, String} = nothing
+    services_module::Union{Nothing, String} = nothing
+    services_description::Union{Nothing, String} = nothing
     services_field1::Union{Nothing, String} = nothing
     services_field2::Union{Nothing, String} = nothing
-    services_module::Union{Nothing, String} = nothing
     services_html::Union{Nothing, String} = nothing
-    services_description::Union{Nothing, String} = nothing
     services_moreinfo_url::Union{Nothing, String} = nothing
     services_hidden::Union{Nothing, String} = nothing
 
-    function WebsitesOrderPackagesInfo(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_field1, services_field2, services_module, services_html, services_description, services_moreinfo_url, services_hidden, )
-        o = new(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_field1, services_field2, services_module, services_html, services_description, services_moreinfo_url, services_hidden, )
+    function WebsitesOrderPackagesInfo(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_module, services_description, services_field1, services_field2, services_html, services_moreinfo_url, services_hidden, )
+        o = new(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_module, services_description, services_field1, services_field2, services_html, services_moreinfo_url, services_hidden, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type WebsitesOrderPackagesInfo
 
-const _property_types_WebsitesOrderPackagesInfo = Dict{Symbol,String}(Symbol("services_id")=>"String", Symbol("services_name")=>"String", Symbol("services_cost")=>"String", Symbol("services_category")=>"String", Symbol("services_buyable")=>"String", Symbol("services_type")=>"String", Symbol("services_field1")=>"String", Symbol("services_field2")=>"String", Symbol("services_module")=>"String", Symbol("services_html")=>"String", Symbol("services_description")=>"String", Symbol("services_moreinfo_url")=>"String", Symbol("services_hidden")=>"String", )
+const _property_types_WebsitesOrderPackagesInfo = Dict{Symbol,String}(Symbol("services_id")=>"String", Symbol("services_name")=>"String", Symbol("services_cost")=>"String", Symbol("services_category")=>"String", Symbol("services_buyable")=>"String", Symbol("services_type")=>"String", Symbol("services_module")=>"String", Symbol("services_description")=>"String", Symbol("services_field1")=>"String", Symbol("services_field2")=>"String", Symbol("services_html")=>"String", Symbol("services_moreinfo_url")=>"String", Symbol("services_hidden")=>"String", )
 OpenAPI.property_type(::Type{ WebsitesOrderPackagesInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_WebsitesOrderPackagesInfo[name]))}
 
 function OpenAPI.check_required(o::WebsitesOrderPackagesInfo)
@@ -78,11 +78,11 @@ function OpenAPI.validate_properties(o::WebsitesOrderPackagesInfo)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_category"), o.services_category)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_buyable"), o.services_buyable)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_type"), o.services_type)
+    OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_module"), o.services_module)
+    OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_description"), o.services_description)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_field1"), o.services_field1)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_field2"), o.services_field2)
-    OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_module"), o.services_module)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_html"), o.services_html)
-    OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_description"), o.services_description)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_moreinfo_url"), o.services_moreinfo_url)
     OpenAPI.validate_property(WebsitesOrderPackagesInfo, Symbol("services_hidden"), o.services_hidden)
 end

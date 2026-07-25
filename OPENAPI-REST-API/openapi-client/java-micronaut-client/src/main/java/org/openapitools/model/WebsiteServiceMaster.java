@@ -41,7 +41,7 @@ import javax.annotation.Generated;
   WebsiteServiceMaster.JSON_PROPERTY_WEBSITE_DNS2
 })
 @JsonTypeName("WebsiteServiceMaster")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class WebsiteServiceMaster {
     public static final String JSON_PROPERTY_WEBSITE_ID = "website_id";

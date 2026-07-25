@@ -219,6 +219,13 @@ __PACKAGE__->class_documentation({description => 'Create firewall rule for your 
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'xdp_action' => {
+        datatype => 'int',
+        base_name => 'xdp_action',
+        description => '1 &#x3D; Block,  0 &#x3D; Whitelist',
+        format => '',
+        read_only => '',
+            },
     'destination_port' => {
         datatype => 'int',
         base_name => 'destination_port',
@@ -240,27 +247,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'xdp_action' => {
-        datatype => 'int',
-        base_name => 'xdp_action',
-        description => '1 &#x3D; Block,  0 &#x3D; Whitelist',
-        format => '',
-        read_only => '',
-            },
 });
 
 __PACKAGE__->openapi_types( {
+    'xdp_action' => 'int',
     'destination_port' => 'int',
     'country_code' => 'int',
-    'asn' => 'int',
-    'xdp_action' => 'int'
+    'asn' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
+    'xdp_action' => 'xdp_action',
     'destination_port' => 'destination_port',
     'country_code' => 'country_code',
-    'asn' => 'asn',
-    'xdp_action' => 'xdp_action'
+    'asn' => 'asn'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

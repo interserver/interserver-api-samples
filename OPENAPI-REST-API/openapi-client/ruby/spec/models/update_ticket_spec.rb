@@ -42,7 +42,7 @@ describe InterServerClient::UpdateTicket do
   describe 'test attribute "customer_server_access"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["y", "n"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["y", "n", "unknown_default_open_api"])
       # validator.allowable_values.each do |value|
       #   expect { instance.customer_server_access = value }.not_to raise_error
       # end

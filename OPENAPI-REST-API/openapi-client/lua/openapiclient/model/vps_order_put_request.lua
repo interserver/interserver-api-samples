@@ -19,18 +19,18 @@ local function cast_vps_order_put_request(t)
 	return setmetatable(t, vps_order_put_request_mt)
 end
 
-local function new_vps_order_put_request(os_distro, slices, vps_platform, controlpanel, period, location, os_version, hostname, coupon, rootpass, comment)
+local function new_vps_order_put_request(os_distro, slices, vps_platform, period, location, os_version, hostname, rootpass, controlpanel, coupon, comment)
 	return cast_vps_order_put_request({
 		["osDistro"] = os_distro;
 		["slices"] = slices;
 		["vpsPlatform"] = vps_platform;
-		["controlpanel"] = controlpanel;
 		["period"] = period;
 		["location"] = location;
 		["osVersion"] = os_version;
 		["hostname"] = hostname;
-		["coupon"] = coupon;
 		["rootpass"] = rootpass;
+		["controlpanel"] = controlpanel;
+		["coupon"] = coupon;
 		["comment"] = comment;
 	})
 end

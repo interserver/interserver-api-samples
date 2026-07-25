@@ -74,6 +74,7 @@ export class TicketPostDetailsInner {
 export namespace TicketPostDetailsInner {
     export enum CreatorEnum {
         User = <any> 'User',
-        Staff = <any> 'Staff'
+        Staff = <any> 'Staff',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

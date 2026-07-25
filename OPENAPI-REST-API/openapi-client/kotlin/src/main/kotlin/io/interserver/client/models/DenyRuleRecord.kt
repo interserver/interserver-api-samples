@@ -65,14 +65,15 @@ data class DenyRuleRecord (
     /**
      * The type of deny rule.
      *
-     * Values: domain,email,startswith,destination
+     * Values: domain,email,startswith,destination,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Type(val value: kotlin.String) {
         @Json(name = "domain") domain("domain"),
         @Json(name = "email") email("email"),
         @Json(name = "startswith") startswith("startswith"),
-        @Json(name = "destination") destination("destination");
+        @Json(name = "destination") destination("destination"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

@@ -129,11 +129,13 @@ export namespace VpsOrderPutRequest {
     export enum VpsPlatformEnum {
         Kvm = <any> 'kvm',
         Hyperv = <any> 'hyperv',
-        Kvmstorage = <any> 'kvmstorage'
+        Kvmstorage = <any> 'kvmstorage',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
     export enum ControlpanelEnum {
         None = <any> 'none',
         Cpanel = <any> 'cpanel',
-        Da = <any> 'da'
+        Da = <any> 'da',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

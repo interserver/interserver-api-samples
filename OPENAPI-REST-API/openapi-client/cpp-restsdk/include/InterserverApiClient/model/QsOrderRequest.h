@@ -75,20 +75,20 @@ public:
     void setPassword(const utility::string_t& value);
 
     /// <summary>
-    /// OS template file name from getNewQs (falls back to a default if unrecognized).
-    /// </summary>
-    utility::string_t getOs() const;
-    bool osIsSet() const;
-    void unsetOs();
-    void setOs(const utility::string_t& value);
-
-    /// <summary>
     /// Terms-of-service acceptance. Must be true to place the order.
     /// </summary>
     bool isTos() const;
     bool tosIsSet() const;
     void unsetTos();
     void setTos(bool value);
+
+    /// <summary>
+    /// OS template file name from getNewQs (falls back to a default if unrecognized).
+    /// </summary>
+    utility::string_t getOs() const;
+    bool osIsSet() const;
+    void unsetOs();
+    void setOs(const utility::string_t& value);
 
     /// <summary>
     /// Free-form note saved on the service row.
@@ -106,11 +106,11 @@ protected:
     utility::string_t m_Password;
     bool m_PasswordIsSet;
 
-    utility::string_t m_Os;
-    bool m_OsIsSet;
-
     bool m_Tos;
     bool m_TosIsSet;
+
+    utility::string_t m_Os;
+    bool m_OsIsSet;
 
     utility::string_t m_Comment;
     bool m_CommentIsSet;

@@ -56,22 +56,10 @@ public:
     void setName(std::string value);
 
     /// <summary>
-    /// Your company name.
-    /// </summary>
-    std::string getCompany() const;
-    void setCompany(std::string value);
-
-    /// <summary>
     /// Your address.
     /// </summary>
     std::string getAddress() const;
     void setAddress(std::string value);
-
-    /// <summary>
-    /// Additional address information.
-    /// </summary>
-    std::string getAddress2() const;
-    void setAddress2(std::string value);
 
     /// <summary>
     /// Your city.
@@ -102,6 +90,18 @@ public:
     /// </summary>
     std::string getPhone() const;
     void setPhone(std::string value);
+
+    /// <summary>
+    /// Your company name.
+    /// </summary>
+    std::string getCompany() const;
+    void setCompany(std::string value);
+
+    /// <summary>
+    /// Additional address information.
+    /// </summary>
+    std::string getAddress2() const;
+    void setAddress2(std::string value);
 
     /// <summary>
     /// Your preferred locale.
@@ -162,16 +162,16 @@ protected:
 
 protected:
     std::string m_Name = "";
-    std::string m_Company = "";
-    bool m_CompanyIsSet = false;
     std::string m_Address = "";
-    std::string m_Address2 = "";
-    bool m_Address2IsSet = false;
     std::string m_City = "";
     std::string m_State = "";
     std::string m_Zip = "";
     std::string m_Country = "";
     std::string m_Phone = "";
+    std::string m_Company = "";
+    bool m_CompanyIsSet = false;
+    std::string m_Address2 = "";
+    bool m_Address2IsSet = false;
     std::string m_Locale = "";
     bool m_LocaleIsSet = false;
     std::string m_Email_invoices = "";

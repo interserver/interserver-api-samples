@@ -97,9 +97,10 @@ export interface SslOrderRequest {
     business_category?: string;
 }
 export namespace SslOrderRequest {
-    export type CsrTypeEnum = 'generated' | 'provided';
+    export type CsrTypeEnum = 'generated' | 'provided' | '11184809';
     export const CsrTypeEnum = {
         Generated: 'generated' as CsrTypeEnum,
-        Provided: 'provided' as CsrTypeEnum
+        Provided: 'provided' as CsrTypeEnum,
+        UnknownDefaultOpenApi: '11184809' as CsrTypeEnum
     }
 }

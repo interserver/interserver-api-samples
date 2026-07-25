@@ -31,9 +31,6 @@ pub struct ServerAsset {
     /// Primary IPv6 address of the asset.
     #[serde(rename = "primary_ipv6")]
     pub primary_ipv6: String,
-    /// MAC address associated with the asset.
-    #[serde(rename = "mac", skip_serializing_if = "Option::is_none")]
-    pub mac: Option<String>,
     /// Datacenter identifier for the asset.
     #[serde(rename = "datacenter")]
     pub datacenter: String,
@@ -67,21 +64,6 @@ pub struct ServerAsset {
     /// IPMI IP address associated with the asset.
     #[serde(rename = "ipmi_ip")]
     pub ipmi_ip: String,
-    /// IPMI admin username associated with the asset.
-    #[serde(rename = "ipmi_admin_username", skip_serializing_if = "Option::is_none")]
-    pub ipmi_admin_username: Option<String>,
-    /// IPMI admin password associated with the asset.
-    #[serde(rename = "ipmi_admin_password", skip_serializing_if = "Option::is_none")]
-    pub ipmi_admin_password: Option<String>,
-    /// IPMI client username associated with the asset.
-    #[serde(rename = "ipmi_client_username", skip_serializing_if = "Option::is_none")]
-    pub ipmi_client_username: Option<String>,
-    /// IPMI client password associated with the asset.
-    #[serde(rename = "ipmi_client_password", skip_serializing_if = "Option::is_none")]
-    pub ipmi_client_password: Option<String>,
-    /// IPMI update status associated with the asset.
-    #[serde(rename = "ipmi_updated", skip_serializing_if = "Option::is_none")]
-    pub ipmi_updated: Option<String>,
     /// IPMI working status associated with the asset.
     #[serde(rename = "ipmi_working")]
     pub ipmi_working: String,
@@ -112,12 +94,6 @@ pub struct ServerAsset {
     /// Overdue status of the asset.
     #[serde(rename = "overdue")]
     pub overdue: String,
-    /// Timestamp of asset creation.
-    #[serde(rename = "create_timestamp", skip_serializing_if = "Option::is_none")]
-    pub create_timestamp: Option<String>,
-    /// Timestamp of asset update.
-    #[serde(rename = "update_timestamp", skip_serializing_if = "Option::is_none")]
-    pub update_timestamp: Option<String>,
     /// Asset identifier for the asset.
     #[serde(rename = "asset_id")]
     pub asset_id: String,
@@ -142,9 +118,6 @@ pub struct ServerAsset {
     /// Y-coordinate of the asset within the rack.
     #[serde(rename = "rack_y")]
     pub rack_y: String,
-    /// Comment associated with the asset.
-    #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
-    pub comment: Option<String>,
     /// List of switchports associated with the asset.
     #[serde(rename = "switchports")]
     pub switchports: Vec<i32>,
@@ -156,6 +129,33 @@ pub struct ServerAsset {
     pub vlans6: Vec<String>,
     #[serde(rename = "lease")]
     pub lease: Box<models::ServerLease>,
+    /// MAC address associated with the asset.
+    #[serde(rename = "mac", skip_serializing_if = "Option::is_none")]
+    pub mac: Option<String>,
+    /// IPMI admin username associated with the asset.
+    #[serde(rename = "ipmi_admin_username", skip_serializing_if = "Option::is_none")]
+    pub ipmi_admin_username: Option<String>,
+    /// IPMI admin password associated with the asset.
+    #[serde(rename = "ipmi_admin_password", skip_serializing_if = "Option::is_none")]
+    pub ipmi_admin_password: Option<String>,
+    /// IPMI client username associated with the asset.
+    #[serde(rename = "ipmi_client_username", skip_serializing_if = "Option::is_none")]
+    pub ipmi_client_username: Option<String>,
+    /// IPMI client password associated with the asset.
+    #[serde(rename = "ipmi_client_password", skip_serializing_if = "Option::is_none")]
+    pub ipmi_client_password: Option<String>,
+    /// IPMI update status associated with the asset.
+    #[serde(rename = "ipmi_updated", skip_serializing_if = "Option::is_none")]
+    pub ipmi_updated: Option<String>,
+    /// Timestamp of asset creation.
+    #[serde(rename = "create_timestamp", skip_serializing_if = "Option::is_none")]
+    pub create_timestamp: Option<String>,
+    /// Timestamp of asset update.
+    #[serde(rename = "update_timestamp", skip_serializing_if = "Option::is_none")]
+    pub update_timestamp: Option<String>,
+    /// Comment associated with the asset.
+    #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
+    pub comment: Option<String>,
 }
 
 impl ServerAsset {
@@ -167,7 +167,6 @@ impl ServerAsset {
             status,
             primary_ipv4,
             primary_ipv6,
-            mac: None,
             datacenter,
             type_id,
             asset_tag,
@@ -179,11 +178,6 @@ impl ServerAsset {
             unit_sub,
             ipmi_mac,
             ipmi_ip,
-            ipmi_admin_username: None,
-            ipmi_admin_password: None,
-            ipmi_client_username: None,
-            ipmi_client_password: None,
-            ipmi_updated: None,
             ipmi_working,
             company,
             comments,
@@ -194,8 +188,6 @@ impl ServerAsset {
             external_id,
             billing_status,
             overdue,
-            create_timestamp: None,
-            update_timestamp: None,
             asset_id,
             asset_name,
             rack_id,
@@ -204,11 +196,19 @@ impl ServerAsset {
             rack_size,
             rack_x,
             rack_y,
-            comment: None,
             switchports,
             vlans,
             vlans6,
             lease: Box::new(lease),
+            mac: None,
+            ipmi_admin_username: None,
+            ipmi_admin_password: None,
+            ipmi_client_username: None,
+            ipmi_client_password: None,
+            ipmi_updated: None,
+            create_timestamp: None,
+            update_timestamp: None,
+            comment: None,
         }
     }
 }

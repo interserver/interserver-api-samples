@@ -19,11 +19,11 @@ local function cast_ticket_new_response(t)
 	return setmetatable(t, ticket_new_response_mt)
 end
 
-local function new_ticket_new_response(ticket_id, text, success)
+local function new_ticket_new_response(text, success, ticket_id)
 	return cast_ticket_new_response({
-		["ticket_id"] = ticket_id;
 		["text"] = text;
 		["success"] = success;
+		["ticket_id"] = ticket_id;
 	})
 end
 

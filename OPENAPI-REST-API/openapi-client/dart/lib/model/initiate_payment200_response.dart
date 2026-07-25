@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class InitiatePayment200Response {
   /// Returns a new [InitiatePayment200Response] instance.
@@ -202,6 +202,7 @@ enum InitiatePayment200ResponseTypeEnum {
   redirect._(r'redirect'),
   submit._(r'submit'),
   single._(r'single'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -263,6 +264,7 @@ class InitiatePayment200ResponseTypeEnumTypeTransformer {
         case r'redirect': return InitiatePayment200ResponseTypeEnum.redirect;
         case r'submit': return InitiatePayment200ResponseTypeEnum.submit;
         case r'single': return InitiatePayment200ResponseTypeEnum.single;
+        case r'unknown_default_open_api': return InitiatePayment200ResponseTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -21,6 +21,7 @@ Request body for the domain order flow: putDomains (returns required fields), pa
 |---- | -----|
 | register | &quot;register&quot; |
 | transfer | &quot;transfer&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 
@@ -30,6 +31,7 @@ Request body for the domain order flow: putDomains (returns required fields), pa
 |---- | -----|
 | enable | &quot;enable&quot; |
 | disable | &quot;disable&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

@@ -36,9 +36,9 @@ type ModuleSettings struct {
 	TBLNAME string `json:"TBLNAME"`
 	TABLE string `json:"TABLE"`
 	TITLE_FIELD string `json:"TITLE_FIELD"`
+	PREFIX string `json:"PREFIX"`
 	TITLEFIELD2 *string `json:"TITLE_FIELD2,omitempty"`
 	TITLEFIELD3 *string `json:"TITLE_FIELD3,omitempty"`
-	PREFIX string `json:"PREFIX"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -437,6 +437,30 @@ func (o *ModuleSettings) SetTITLE_FIELD(v string) {
 	o.TITLE_FIELD = v
 }
 
+// GetPREFIX returns the PREFIX field value
+func (o *ModuleSettings) GetPREFIX() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PREFIX
+}
+
+// GetPREFIXOk returns a tuple with the PREFIX field value
+// and a boolean to check if the value has been set.
+func (o *ModuleSettings) GetPREFIXOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PREFIX, true
+}
+
+// SetPREFIX sets field value
+func (o *ModuleSettings) SetPREFIX(v string) {
+	o.PREFIX = v
+}
+
 // GetTITLEFIELD2 returns the TITLEFIELD2 field value if set, zero value otherwise.
 func (o *ModuleSettings) GetTITLEFIELD2() string {
 	if o == nil || IsNil(o.TITLEFIELD2) {
@@ -501,30 +525,6 @@ func (o *ModuleSettings) SetTITLEFIELD3(v string) {
 	o.TITLEFIELD3 = &v
 }
 
-// GetPREFIX returns the PREFIX field value
-func (o *ModuleSettings) GetPREFIX() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PREFIX
-}
-
-// GetPREFIXOk returns a tuple with the PREFIX field value
-// and a boolean to check if the value has been set.
-func (o *ModuleSettings) GetPREFIXOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PREFIX, true
-}
-
-// SetPREFIX sets field value
-func (o *ModuleSettings) SetPREFIX(v string) {
-	o.PREFIX = v
-}
-
 func (o ModuleSettings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -550,13 +550,13 @@ func (o ModuleSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize["TBLNAME"] = o.TBLNAME
 	toSerialize["TABLE"] = o.TABLE
 	toSerialize["TITLE_FIELD"] = o.TITLE_FIELD
+	toSerialize["PREFIX"] = o.PREFIX
 	if !IsNil(o.TITLEFIELD2) {
 		toSerialize["TITLE_FIELD2"] = o.TITLEFIELD2
 	}
 	if !IsNil(o.TITLEFIELD3) {
 		toSerialize["TITLE_FIELD3"] = o.TITLEFIELD3
 	}
-	toSerialize["PREFIX"] = o.PREFIX
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -630,9 +630,9 @@ func (o *ModuleSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "TBLNAME")
 		delete(additionalProperties, "TABLE")
 		delete(additionalProperties, "TITLE_FIELD")
+		delete(additionalProperties, "PREFIX")
 		delete(additionalProperties, "TITLE_FIELD2")
 		delete(additionalProperties, "TITLE_FIELD3")
-		delete(additionalProperties, "PREFIX")
 		o.AdditionalProperties = additionalProperties
 	}
 

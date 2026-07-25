@@ -1,8 +1,8 @@
-# openapi.model.GetAccountLocales200ResponseValue
+# interserver_api.model.GetAccountLocales200ResponseValue
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

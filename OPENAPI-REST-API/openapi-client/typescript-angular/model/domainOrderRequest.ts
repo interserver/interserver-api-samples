@@ -36,12 +36,14 @@ export interface DomainOrderRequest {
 export namespace DomainOrderRequest {
     export const TypeEnum = {
         Register: 'register',
-        Transfer: 'transfer'
+        Transfer: 'transfer',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type TypeEnum = typeof TypeEnum[keyof typeof TypeEnum];
     export const WhoisPrivacyEnum = {
         Enable: 'enable',
-        Disable: 'disable'
+        Disable: 'disable',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type WhoisPrivacyEnum = typeof WhoisPrivacyEnum[keyof typeof WhoisPrivacyEnum];
 }

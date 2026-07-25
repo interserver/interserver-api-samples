@@ -61,22 +61,6 @@ test_that("license_status", {
   #expect_equal(model.instance$`license_status`, "EXPECTED_RESULT")
 })
 
-test_that("license_hostname", {
-  # tests for the property `license_hostname` (character)
-  # License hostname
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`license_hostname`, "EXPECTED_RESULT")
-})
-
-test_that("license_key", {
-  # tests for the property `license_key` (character)
-  # License key
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`license_key`, "EXPECTED_RESULT")
-})
-
 test_that("license_invoice", {
   # tests for the property `license_invoice` (character)
   # License invoice
@@ -91,6 +75,22 @@ test_that("license_coupon", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`license_coupon`, "EXPECTED_RESULT")
+})
+
+test_that("license_hostname", {
+  # tests for the property `license_hostname` (character)
+  # License hostname
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`license_hostname`, "EXPECTED_RESULT")
+})
+
+test_that("license_key", {
+  # tests for the property `license_key` (character)
+  # License key
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`license_key`, "EXPECTED_RESULT")
 })
 
 test_that("license_extra", {

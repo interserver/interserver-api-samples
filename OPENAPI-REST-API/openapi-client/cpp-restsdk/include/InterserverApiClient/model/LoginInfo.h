@@ -61,20 +61,25 @@ public:
 
 
     /// <summary>
-    /// A logo image url.
-    /// </summary>
-    utility::string_t getLogo() const;
-    bool logoIsSet() const;
-    void unsetLogo();
-    void setLogo(const utility::string_t& value);
-
-    /// <summary>
     /// A base64 encoded image to use for rendering the alternateive captcha.
     /// </summary>
     utility::string_t getCaptcha() const;
     bool captchaIsSet() const;
     void unsetCaptcha();
     void setCaptcha(const utility::string_t& value);
+
+    std::shared_ptr<LoginServiceCounts> getCounts() const;
+    bool countsIsSet() const;
+    void unsetCounts();
+    void setCounts(const std::shared_ptr<LoginServiceCounts>& value);
+
+    /// <summary>
+    /// A logo image url.
+    /// </summary>
+    utility::string_t getLogo() const;
+    bool logoIsSet() const;
+    void unsetLogo();
+    void setLogo(const utility::string_t& value);
 
     /// <summary>
     /// The desired langauge to render the site with.
@@ -84,24 +89,19 @@ public:
     void unsetLanguage();
     void setLanguage(const utility::string_t& value);
 
-    std::shared_ptr<LoginServiceCounts> getCounts() const;
-    bool countsIsSet() const;
-    void unsetCounts();
-    void setCounts(const std::shared_ptr<LoginServiceCounts>& value);
-
 
 protected:
-    utility::string_t m_Logo;
-    bool m_LogoIsSet;
-
     utility::string_t m_Captcha;
     bool m_CaptchaIsSet;
 
-    utility::string_t m_Language;
-    bool m_LanguageIsSet;
-
     std::shared_ptr<LoginServiceCounts> m_Counts;
     bool m_CountsIsSet;
+
+    utility::string_t m_Logo;
+    bool m_LogoIsSet;
+
+    utility::string_t m_Language;
+    bool m_LanguageIsSet;
 
 };
 

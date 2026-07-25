@@ -370,8 +370,8 @@ std::string UpdateTicket::getCustomerServerAccess() const
 
 void UpdateTicket::setCustomerServerAccess(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "y","n"
+    static const std::array<std::string, 3> allowedValues = {
+        "y","n","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

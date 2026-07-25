@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Your name. | 
-**Company** | Pointer to **string** | Your company name. | [optional] 
 **Address** | **string** | Your address. | 
-**Address2** | Pointer to **string** | Additional address information. | [optional] 
 **City** | **string** | Your city. | 
 **State** | **string** | Your state. | 
 **Zip** | **string** | Your ZIP code. | 
 **Country** | **string** | Your country. | 
 **Phone** | **string** | Your phone number. | 
+**Company** | Pointer to **string** | Your company name. | [optional] 
+**Address2** | Pointer to **string** | Additional address information. | [optional] 
 **Locale** | Pointer to **string** | Your preferred locale. | [optional] 
 **EmailInvoices** | Pointer to **string** | Your email for invoice notifications. | [optional] 
 **EmailAbuse** | Pointer to **string** | Your email for abuse notifications. | [optional] 
@@ -61,31 +61,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetCompany
-
-`func (o *AccountInfoPost) GetCompany() string`
-
-GetCompany returns the Company field if non-nil, zero value otherwise.
-
-### GetCompanyOk
-
-`func (o *AccountInfoPost) GetCompanyOk() (*string, bool)`
-
-GetCompanyOk returns a tuple with the Company field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompany
-
-`func (o *AccountInfoPost) SetCompany(v string)`
-
-SetCompany sets Company field to given value.
-
-### HasCompany
-
-`func (o *AccountInfoPost) HasCompany() bool`
-
-HasCompany returns a boolean if a field has been set.
-
 ### GetAddress
 
 `func (o *AccountInfoPost) GetAddress() string`
@@ -105,31 +80,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-
-### GetAddress2
-
-`func (o *AccountInfoPost) GetAddress2() string`
-
-GetAddress2 returns the Address2 field if non-nil, zero value otherwise.
-
-### GetAddress2Ok
-
-`func (o *AccountInfoPost) GetAddress2Ok() (*string, bool)`
-
-GetAddress2Ok returns a tuple with the Address2 field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress2
-
-`func (o *AccountInfoPost) SetAddress2(v string)`
-
-SetAddress2 sets Address2 field to given value.
-
-### HasAddress2
-
-`func (o *AccountInfoPost) HasAddress2() bool`
-
-HasAddress2 returns a boolean if a field has been set.
 
 ### GetCity
 
@@ -230,6 +180,56 @@ and a boolean to check if the value has been set.
 
 SetPhone sets Phone field to given value.
 
+
+### GetCompany
+
+`func (o *AccountInfoPost) GetCompany() string`
+
+GetCompany returns the Company field if non-nil, zero value otherwise.
+
+### GetCompanyOk
+
+`func (o *AccountInfoPost) GetCompanyOk() (*string, bool)`
+
+GetCompanyOk returns a tuple with the Company field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompany
+
+`func (o *AccountInfoPost) SetCompany(v string)`
+
+SetCompany sets Company field to given value.
+
+### HasCompany
+
+`func (o *AccountInfoPost) HasCompany() bool`
+
+HasCompany returns a boolean if a field has been set.
+
+### GetAddress2
+
+`func (o *AccountInfoPost) GetAddress2() string`
+
+GetAddress2 returns the Address2 field if non-nil, zero value otherwise.
+
+### GetAddress2Ok
+
+`func (o *AccountInfoPost) GetAddress2Ok() (*string, bool)`
+
+GetAddress2Ok returns a tuple with the Address2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress2
+
+`func (o *AccountInfoPost) SetAddress2(v string)`
+
+SetAddress2 sets Address2 field to given value.
+
+### HasAddress2
+
+`func (o *AccountInfoPost) HasAddress2() bool`
+
+HasAddress2 returns a boolean if a field has been set.
 
 ### GetLocale
 

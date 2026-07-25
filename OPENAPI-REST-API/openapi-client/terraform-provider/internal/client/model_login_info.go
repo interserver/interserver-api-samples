@@ -4,8 +4,8 @@ package client
 
 // LoginInfo - Basic information useful for rendering a login page.
 type LoginInfo struct {
-	Logo string `json:"logo,omitempty"`
 	Captcha string `json:"captcha"`
-	Language string `json:"language,omitempty"`
 	Counts LoginServiceCounts `json:"counts"`
+	Logo string `json:"logo,omitempty"`
+	Language string `json:"language,omitempty"`
 }

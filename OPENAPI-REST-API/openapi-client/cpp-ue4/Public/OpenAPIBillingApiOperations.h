@@ -200,6 +200,7 @@ public:
 		Xls,
 		Xlsx,
 		Pdf,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ExEnum& EnumValue);
@@ -482,6 +483,7 @@ public:
 		Cashfree,
 		Coinbase,
 		Btcpay,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const MethodEnum& EnumValue);

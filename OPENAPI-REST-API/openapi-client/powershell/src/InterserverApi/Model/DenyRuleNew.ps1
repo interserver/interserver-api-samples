@@ -15,12 +15,12 @@ No summary available.
 
 The data for a email deny rule record.
 
-.PARAMETER User
-Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 .PARAMETER Type
 The type of deny rule.
 .PARAMETER VarData
 The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.
+.PARAMETER User
+Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 .OUTPUTS
 
 DenyRuleNew<PSCustomObject>
@@ -30,15 +30,15 @@ function Initialize-DenyRuleNew {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${User},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("domain", "email", "startswith", "destination")]
         [String]
         ${Type},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${VarData},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${VarData}
+        ${User}
     )
 
     Process {
@@ -55,9 +55,9 @@ function Initialize-DenyRuleNew {
 
 
         $PSO = [PSCustomObject]@{
-            'user' = ${User}
             'type' = ${Type}
             'data' = ${VarData}
+            'user' = ${User}
         }
 
 
@@ -95,7 +95,7 @@ function ConvertFrom-JsonToDenyRuleNew {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in DenyRuleNew
-        $AllProperties = ('user', 'type', 'data')
+        $AllProperties = ('type', 'data', 'user')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -125,9 +125,9 @@ function ConvertFrom-JsonToDenyRuleNew {
         }
 
         $PSO = [PSCustomObject]@{
-            'user' = ${User}
             'type' = ${Type}
             'data' = ${VarData}
+            'user' = ${User}
         }
 
         return $PSO

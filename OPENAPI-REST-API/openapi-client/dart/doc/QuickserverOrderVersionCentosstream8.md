@@ -1,8 +1,8 @@
-# openapi.model.QuickserverOrderVersionCentosstream8
+# interserver_api.model.QuickserverOrderVersionCentosstream8
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

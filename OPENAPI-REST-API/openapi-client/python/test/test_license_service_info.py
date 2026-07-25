@@ -43,10 +43,10 @@ class TestLicenseServiceInfo(unittest.TestCase):
                 license_custid = '771282',
                 license_ip = '1.2.3.4',
                 license_status = 'active',
-                license_hostname = '',
-                license_key = '',
                 license_invoice = '18704419',
                 license_coupon = '1836',
+                license_hostname = '',
+                license_key = '',
                 license_extra = ''
             )
         else:

@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'MailLogEntry' {
     Context 'MailLogEntry' {
         It 'Initialize-MailLogEntry' {
             # a simple test to create an object
-            #$NewObject = Initialize-MailLogEntry -Id "TEST_VALUE" -Id "TEST_VALUE" -VarFrom "TEST_VALUE" -To "TEST_VALUE" -Subject "TEST_VALUE" -MessageId "TEST_VALUE" -Created "TEST_VALUE" -Time "TEST_VALUE" -User "TEST_VALUE" -Transtype "TEST_VALUE" -Origin "TEST_VALUE" -Interface "TEST_VALUE" -SendingZone "TEST_VALUE" -BodySize "TEST_VALUE" -Seq "TEST_VALUE" -Delivered "TEST_VALUE" -Code "TEST_VALUE" -Recipient "TEST_VALUE" -Response "TEST_VALUE" -Domain "TEST_VALUE" -Locked "TEST_VALUE" -LockTime "TEST_VALUE" -Assigned "TEST_VALUE" -Queued "TEST_VALUE" -MxHostname "TEST_VALUE"
+            #$NewObject = Initialize-MailLogEntry -Id "TEST_VALUE" -Id "TEST_VALUE" -VarFrom "TEST_VALUE" -To "TEST_VALUE" -Created "TEST_VALUE" -Time "TEST_VALUE" -User "TEST_VALUE" -Transtype "TEST_VALUE" -Origin "TEST_VALUE" -Interface "TEST_VALUE" -Subject "TEST_VALUE" -MessageId "TEST_VALUE" -SendingZone "TEST_VALUE" -BodySize "TEST_VALUE" -Seq "TEST_VALUE" -Delivered "TEST_VALUE" -Code "TEST_VALUE" -Recipient "TEST_VALUE" -Response "TEST_VALUE" -Domain "TEST_VALUE" -Locked "TEST_VALUE" -LockTime "TEST_VALUE" -Assigned "TEST_VALUE" -Queued "TEST_VALUE" -MxHostname "TEST_VALUE"
             #$NewObject | Should -BeOfType MailLogEntry
             #$NewObject.property | Should -Be 0
         }

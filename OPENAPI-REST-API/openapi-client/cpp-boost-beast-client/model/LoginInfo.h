@@ -51,28 +51,28 @@ public:
     /// LoginInfo members
 
     /// <summary>
-    /// A logo image url.
-    /// </summary>
-    std::string getLogo() const;
-    void setLogo(std::string value);
-
-    /// <summary>
     /// A base64 encoded image to use for rendering the alternateive captcha.
     /// </summary>
     std::string getCaptcha() const;
     void setCaptcha(std::string value);
 
     /// <summary>
-    /// The desired langauge to render the site with.
-    /// </summary>
-    std::string getLanguage() const;
-    void setLanguage(std::string value);
-
-    /// <summary>
     /// 
     /// </summary>
     std::shared_ptr<LoginServiceCounts> getCounts() const;
     void setCounts(std::shared_ptr<LoginServiceCounts> value);
+
+    /// <summary>
+    /// A logo image url.
+    /// </summary>
+    std::string getLogo() const;
+    void setLogo(std::string value);
+
+    /// <summary>
+    /// The desired langauge to render the site with.
+    /// </summary>
+    std::string getLanguage() const;
+    void setLanguage(std::string value);
 
 protected:
     //////////////////////////////////////
@@ -84,12 +84,12 @@ protected:
 
 
 protected:
+    std::string m_Captcha = "";
+    std::shared_ptr<LoginServiceCounts> m_Counts;
     std::string m_Logo = "";
     bool m_LogoIsSet = false;
-    std::string m_Captcha = "";
     std::string m_Language = "";
     bool m_LanguageIsSet = false;
-    std::shared_ptr<LoginServiceCounts> m_Counts;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<LoginInfo>>& data);

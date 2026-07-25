@@ -36,7 +36,7 @@ module InterserverApiClient
     @[JSON::Field(key: "port", emit_null: false)]
     property port : Int32?
 
-    validates(customer_server_access, String, true, enum: ["y", "n"])
+    validates(customer_server_access, String, true, enum: ["y", "n", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

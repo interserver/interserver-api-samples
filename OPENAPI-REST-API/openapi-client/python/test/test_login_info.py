@@ -36,10 +36,10 @@ class TestLoginInfo(unittest.TestCase):
         model = LoginInfo()
         if include_optional:
             return LoginInfo(
-                logo = '//my.interserver.net/images/logos/mystaging.png',
                 captcha = 'data:image/jpeg;base64,/9j/',
-                language = 'en-US',
-                counts = {"vps":290201,"websites":205172,"servers":27940}
+                counts = {"vps":290201,"websites":205172,"servers":27940},
+                logo = '//my.interserver.net/images/logos/mystaging.png',
+                language = 'en-US'
             )
         else:
             return LoginInfo(

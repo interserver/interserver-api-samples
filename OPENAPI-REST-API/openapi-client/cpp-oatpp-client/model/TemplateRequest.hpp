@@ -37,10 +37,10 @@ class TemplateRequest : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, template);
 
-  DTO_FIELD(oatpp::String, password);
-  DTO_FIELD(oatpp::Boolean, passwordIsSet);
   DTO_FIELD(oatpp::String, localPassword);
 
+  DTO_FIELD(oatpp::String, password);
+  DTO_FIELD(oatpp::Boolean, passwordIsSet);
 
 };
 

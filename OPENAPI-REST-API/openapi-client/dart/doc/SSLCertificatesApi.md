@@ -1,8 +1,8 @@
-# openapi.api.SSLCertificatesApi
+# interserver_api.api.SSLCertificatesApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 All URIs are relative to *https://my.interserver.net/apiv2*
@@ -29,7 +29,7 @@ Place a new SSL certificate order - creates invoice and queues issuance
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -84,7 +84,7 @@ Use before addSsl to discover which DV/OV/EV certificate types and validation ti
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -135,7 +135,7 @@ Use to inspect a single SSL cert after locating its id via getSslList. Path para
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -190,7 +190,7 @@ Use to retrieve the full invoice history for a single SSL cert - initial order, 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -245,7 +245,7 @@ Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns befo
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -295,7 +295,7 @@ Use when a customer lost the original welcome email containing CSR submission st
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -350,7 +350,7 @@ Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, fre
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -404,7 +404,7 @@ Cancel an SSL certificate service - stops renewals at end of billing cycle
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -459,7 +459,7 @@ Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, re
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

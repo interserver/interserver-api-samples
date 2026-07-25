@@ -967,7 +967,10 @@ Protected Class BillingApi
 		      Return "xlsx"
 		    Case ExEnum_GetAffiliateDownload.Pdf
 		      Return "pdf"
-		    
+		    Case ExEnum_GetAffiliateDownload.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -2582,7 +2585,10 @@ Protected Class BillingApi
 		      Return "coinbase"
 		    Case MethodEnum_InitiatePayment.Btcpay
 		      Return "btcpay"
-		    
+		    Case MethodEnum_InitiatePayment.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -3563,6 +3569,7 @@ If affiliatePaymentMethod <> nil Then localVarFormParams.Value("affiliate_paymen
         Xls
         Xlsx
         Pdf
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -3577,6 +3584,7 @@ If affiliatePaymentMethod <> nil Then localVarFormParams.Value("affiliate_paymen
         Cashfree
         Coinbase
         Btcpay
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

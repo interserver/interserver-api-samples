@@ -45,7 +45,8 @@ Protected Class TicketPostDetailsInner
         
         User
         Staff
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -57,7 +58,10 @@ Protected Class TicketPostDetailsInner
 		      Return "User"
 		    Case CreatorEnum.Staff
 		      Return "Staff"
-		    
+		    Case CreatorEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

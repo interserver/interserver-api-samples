@@ -22,9 +22,10 @@ export interface TicketPostDetailsInner {
     attachment_download?: string;
 }
 export namespace TicketPostDetailsInner {
-    export type CreatorEnum = 'User' | 'Staff';
+    export type CreatorEnum = 'User' | 'Staff' | '11184809';
     export const CreatorEnum = {
         User: 'User' as CreatorEnum,
-        Staff: 'Staff' as CreatorEnum
+        Staff: 'Staff' as CreatorEnum,
+        UnknownDefaultOpenApi: '11184809' as CreatorEnum
     }
 }

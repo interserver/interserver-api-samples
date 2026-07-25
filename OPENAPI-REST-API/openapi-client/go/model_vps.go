@@ -28,10 +28,8 @@ type Vps struct {
 	CustCurrencySymbol string `json:"custCurrencySymbol"`
 	ServiceMaster VpsServiceMaster `json:"serviceMaster"`
 	Package string `json:"package"`
-	OsTemplate *string `json:"os_template,omitempty"`
 	ServiceExtra VpsServiceExtra `json:"serviceExtra"`
 	ExtraInfoTables VpsExtraInfoTables `json:"extraInfoTables"`
-	CpuGraphData interface{} `json:"cpu_graph_data,omitempty"`
 	Module string `json:"module"`
 	Token string `json:"token"`
 	DaLink int32 `json:"da_link"`
@@ -40,6 +38,8 @@ type Vps struct {
 	DaData VpsDAData `json:"da_data"`
 	Plesk12Data VpsPlesk12Data `json:"plesk12_data"`
 	ServiceAddons VpsServiceAddons `json:"serviceAddons"`
+	OsTemplate *string `json:"os_template,omitempty"`
+	CpuGraphData interface{} `json:"cpu_graph_data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -247,38 +247,6 @@ func (o *Vps) SetPackage(v string) {
 	o.Package = v
 }
 
-// GetOsTemplate returns the OsTemplate field value if set, zero value otherwise.
-func (o *Vps) GetOsTemplate() string {
-	if o == nil || IsNil(o.OsTemplate) {
-		var ret string
-		return ret
-	}
-	return *o.OsTemplate
-}
-
-// GetOsTemplateOk returns a tuple with the OsTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Vps) GetOsTemplateOk() (*string, bool) {
-	if o == nil || IsNil(o.OsTemplate) {
-		return nil, false
-	}
-	return o.OsTemplate, true
-}
-
-// HasOsTemplate returns a boolean if a field has been set.
-func (o *Vps) HasOsTemplate() bool {
-	if o != nil && !IsNil(o.OsTemplate) {
-		return true
-	}
-
-	return false
-}
-
-// SetOsTemplate gets a reference to the given string and assigns it to the OsTemplate field.
-func (o *Vps) SetOsTemplate(v string) {
-	o.OsTemplate = &v
-}
-
 // GetServiceExtra returns the ServiceExtra field value
 func (o *Vps) GetServiceExtra() VpsServiceExtra {
 	if o == nil {
@@ -325,39 +293,6 @@ func (o *Vps) GetExtraInfoTablesOk() (*VpsExtraInfoTables, bool) {
 // SetExtraInfoTables sets field value
 func (o *Vps) SetExtraInfoTables(v VpsExtraInfoTables) {
 	o.ExtraInfoTables = v
-}
-
-// GetCpuGraphData returns the CpuGraphData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Vps) GetCpuGraphData() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.CpuGraphData
-}
-
-// GetCpuGraphDataOk returns a tuple with the CpuGraphData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Vps) GetCpuGraphDataOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.CpuGraphData) {
-		return nil, false
-	}
-	return &o.CpuGraphData, true
-}
-
-// HasCpuGraphData returns a boolean if a field has been set.
-func (o *Vps) HasCpuGraphData() bool {
-	if o != nil && !IsNil(o.CpuGraphData) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpuGraphData gets a reference to the given interface{} and assigns it to the CpuGraphData field.
-func (o *Vps) SetCpuGraphData(v interface{}) {
-	o.CpuGraphData = v
 }
 
 // GetModule returns the Module field value
@@ -552,6 +487,71 @@ func (o *Vps) SetServiceAddons(v VpsServiceAddons) {
 	o.ServiceAddons = v
 }
 
+// GetOsTemplate returns the OsTemplate field value if set, zero value otherwise.
+func (o *Vps) GetOsTemplate() string {
+	if o == nil || IsNil(o.OsTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.OsTemplate
+}
+
+// GetOsTemplateOk returns a tuple with the OsTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Vps) GetOsTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.OsTemplate) {
+		return nil, false
+	}
+	return o.OsTemplate, true
+}
+
+// HasOsTemplate returns a boolean if a field has been set.
+func (o *Vps) HasOsTemplate() bool {
+	if o != nil && !IsNil(o.OsTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetOsTemplate gets a reference to the given string and assigns it to the OsTemplate field.
+func (o *Vps) SetOsTemplate(v string) {
+	o.OsTemplate = &v
+}
+
+// GetCpuGraphData returns the CpuGraphData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Vps) GetCpuGraphData() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.CpuGraphData
+}
+
+// GetCpuGraphDataOk returns a tuple with the CpuGraphData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Vps) GetCpuGraphDataOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.CpuGraphData) {
+		return nil, false
+	}
+	return &o.CpuGraphData, true
+}
+
+// HasCpuGraphData returns a boolean if a field has been set.
+func (o *Vps) HasCpuGraphData() bool {
+	if o != nil && !IsNil(o.CpuGraphData) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuGraphData gets a reference to the given interface{} and assigns it to the CpuGraphData field.
+func (o *Vps) SetCpuGraphData(v interface{}) {
+	o.CpuGraphData = v
+}
+
 func (o Vps) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -569,14 +569,8 @@ func (o Vps) ToMap() (map[string]interface{}, error) {
 	toSerialize["custCurrencySymbol"] = o.CustCurrencySymbol
 	toSerialize["serviceMaster"] = o.ServiceMaster
 	toSerialize["package"] = o.Package
-	if !IsNil(o.OsTemplate) {
-		toSerialize["os_template"] = o.OsTemplate
-	}
 	toSerialize["serviceExtra"] = o.ServiceExtra
 	toSerialize["extraInfoTables"] = o.ExtraInfoTables
-	if o.CpuGraphData != nil {
-		toSerialize["cpu_graph_data"] = o.CpuGraphData
-	}
 	toSerialize["module"] = o.Module
 	toSerialize["token"] = o.Token
 	toSerialize["da_link"] = o.DaLink
@@ -585,6 +579,12 @@ func (o Vps) ToMap() (map[string]interface{}, error) {
 	toSerialize["da_data"] = o.DaData
 	toSerialize["plesk12_data"] = o.Plesk12Data
 	toSerialize["serviceAddons"] = o.ServiceAddons
+	if !IsNil(o.OsTemplate) {
+		toSerialize["os_template"] = o.OsTemplate
+	}
+	if o.CpuGraphData != nil {
+		toSerialize["cpu_graph_data"] = o.CpuGraphData
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -651,10 +651,8 @@ func (o *Vps) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "custCurrencySymbol")
 		delete(additionalProperties, "serviceMaster")
 		delete(additionalProperties, "package")
-		delete(additionalProperties, "os_template")
 		delete(additionalProperties, "serviceExtra")
 		delete(additionalProperties, "extraInfoTables")
-		delete(additionalProperties, "cpu_graph_data")
 		delete(additionalProperties, "module")
 		delete(additionalProperties, "token")
 		delete(additionalProperties, "da_link")
@@ -663,6 +661,8 @@ func (o *Vps) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "da_data")
 		delete(additionalProperties, "plesk12_data")
 		delete(additionalProperties, "serviceAddons")
+		delete(additionalProperties, "os_template")
+		delete(additionalProperties, "cpu_graph_data")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **CustCurrency** | **string** | The customer&#39;s currency. | 
 **CustCurrencySymbol** | **string** | The currency symbol for the customer. | 
 **Package** | **string** | The package of the mail service. | 
-**ServiceExtra** | Pointer to **[]string** | Extra information for the mail service. | [optional] 
 **ExtraInfoTables** | [**MailSchemaExtraInfoTables**](MailSchemaExtraInfoTables.md) |  | 
 **ServiceType** | [**MailServiceType**](MailServiceType.md) |  | 
 **UsageCount** | **string** | The usage count of the mail service. | 
+**ServiceExtra** | Pointer to **[]string** | Extra information for the mail service. | [optional] 
 
 ## Methods
 
@@ -154,31 +154,6 @@ and a boolean to check if the value has been set.
 SetPackage sets Package field to given value.
 
 
-### GetServiceExtra
-
-`func (o *MailSchema) GetServiceExtra() []string`
-
-GetServiceExtra returns the ServiceExtra field if non-nil, zero value otherwise.
-
-### GetServiceExtraOk
-
-`func (o *MailSchema) GetServiceExtraOk() (*[]string, bool)`
-
-GetServiceExtraOk returns a tuple with the ServiceExtra field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceExtra
-
-`func (o *MailSchema) SetServiceExtra(v []string)`
-
-SetServiceExtra sets ServiceExtra field to given value.
-
-### HasServiceExtra
-
-`func (o *MailSchema) HasServiceExtra() bool`
-
-HasServiceExtra returns a boolean if a field has been set.
-
 ### GetExtraInfoTables
 
 `func (o *MailSchema) GetExtraInfoTables() MailSchemaExtraInfoTables`
@@ -238,6 +213,31 @@ and a boolean to check if the value has been set.
 
 SetUsageCount sets UsageCount field to given value.
 
+
+### GetServiceExtra
+
+`func (o *MailSchema) GetServiceExtra() []string`
+
+GetServiceExtra returns the ServiceExtra field if non-nil, zero value otherwise.
+
+### GetServiceExtraOk
+
+`func (o *MailSchema) GetServiceExtraOk() (*[]string, bool)`
+
+GetServiceExtraOk returns a tuple with the ServiceExtra field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceExtra
+
+`func (o *MailSchema) SetServiceExtra(v []string)`
+
+SetServiceExtra sets ServiceExtra field to given value.
+
+### HasServiceExtra
+
+`func (o *MailSchema) HasServiceExtra() bool`
+
+HasServiceExtra returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

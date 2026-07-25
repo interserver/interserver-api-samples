@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class ChargeInvoiceRowsInvoicesValue {
   /// Returns a new [ChargeInvoiceRowsInvoicesValue] instance.
@@ -258,6 +258,7 @@ class ChargeInvoiceRowsInvoicesValue {
 enum ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum {
   n0._('0'),
   n1._('1'),
+  unknownDefaultOpenApi._('11184809'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -318,6 +319,7 @@ class ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer {
       switch (data) {
         case '0': return ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum.n0;
         case '1': return ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum.n1;
+        case '11184809': return ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

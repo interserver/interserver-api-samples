@@ -7,16 +7,16 @@
 #' @title ServerIpmiLiveRequest
 #' @description ServerIpmiLiveRequest Class
 #' @format An \code{R6Class} generator object
-#' @field asset Asset ID integer [optional]
 #' @field ip Your IP Address you wish to connect to the IPMI system from. character
+#' @field asset Asset ID integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ServerIpmiLiveRequest <- R6::R6Class(
   "ServerIpmiLiveRequest",
   public = list(
-    `asset` = NULL,
     `ip` = NULL,
+    `asset` = NULL,
 
     #' @description
     #' Initialize a new ServerIpmiLiveRequest class.
@@ -70,13 +70,13 @@ ServerIpmiLiveRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ServerIpmiLiveRequestObject <- list()
-      if (!is.null(self$`asset`)) {
-        ServerIpmiLiveRequestObject[["asset"]] <-
-          self$`asset`
-      }
       if (!is.null(self$`ip`)) {
         ServerIpmiLiveRequestObject[["ip"]] <-
           self$`ip`
+      }
+      if (!is.null(self$`asset`)) {
+        ServerIpmiLiveRequestObject[["asset"]] <-
+          self$`asset`
       }
       return(ServerIpmiLiveRequestObject)
     },
@@ -88,11 +88,11 @@ ServerIpmiLiveRequest <- R6::R6Class(
     #' @return the instance of ServerIpmiLiveRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`asset`)) {
-        self$`asset` <- this_object$`asset`
-      }
       if (!is.null(this_object$`ip`)) {
         self$`ip` <- this_object$`ip`
+      }
+      if (!is.null(this_object$`asset`)) {
+        self$`asset` <- this_object$`asset`
       }
       self
     },
@@ -115,8 +115,8 @@ ServerIpmiLiveRequest <- R6::R6Class(
     #' @return the instance of ServerIpmiLiveRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`asset` <- this_object$`asset`
       self$`ip` <- this_object$`ip`
+      self$`asset` <- this_object$`asset`
       self
     },
 

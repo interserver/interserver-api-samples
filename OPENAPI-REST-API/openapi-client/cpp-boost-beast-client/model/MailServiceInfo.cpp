@@ -217,19 +217,19 @@ boost::json::object MailServiceInfo::toJsonObject_internal() const
 {
     boost::json::object object;
         object["mail_id"] = JsonValueConverter<std::string>::toJsonValue(getMailId());
-        if (m_Mail_usernameIsSet) {
-            object["mail_username"] = JsonValueConverter<std::string>::toJsonValue(getMailUsername());
-        }
         object["mail_type"] = JsonValueConverter<std::string>::toJsonValue(getMailType());
         object["mail_currency"] = JsonValueConverter<std::string>::toJsonValue(getMailCurrency());
         object["mail_order_date"] = JsonValueConverter<std::string>::toJsonValue(getMailOrderDate());
         object["mail_custid"] = JsonValueConverter<std::string>::toJsonValue(getMailCustid());
         object["mail_quota"] = JsonValueConverter<std::string>::toJsonValue(getMailQuota());
+        object["mail_status"] = JsonValueConverter<std::string>::toJsonValue(getMailStatus());
+        object["mail_invoice"] = JsonValueConverter<std::string>::toJsonValue(getMailInvoice());
+        if (m_Mail_usernameIsSet) {
+            object["mail_username"] = JsonValueConverter<std::string>::toJsonValue(getMailUsername());
+        }
         if (m_Mail_ipIsSet) {
             object["mail_ip"] = JsonValueConverter<std::string>::toJsonValue(getMailIp());
         }
-        object["mail_status"] = JsonValueConverter<std::string>::toJsonValue(getMailStatus());
-        object["mail_invoice"] = JsonValueConverter<std::string>::toJsonValue(getMailInvoice());
         if (m_Mail_couponIsSet) {
             object["mail_coupon"] = JsonValueConverter<std::string>::toJsonValue(getMailCoupon());
         }
@@ -257,12 +257,6 @@ void MailServiceInfo::fromJsonObject_internal(boost::json::object const& object)
         const auto Mail_idIt = object.find("mail_id");
         if (Mail_idIt != object.end()) {
             setMailId(JsonValueConverter<std::string>::fromJsonValue(Mail_idIt->value()));
-        }
-    }
-    {
-        const auto Mail_usernameIt = object.find("mail_username");
-        if (Mail_usernameIt != object.end()) {
-            setMailUsername(JsonValueConverter<std::string>::fromJsonValue(Mail_usernameIt->value()));
         }
     }
     {
@@ -296,12 +290,6 @@ void MailServiceInfo::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto Mail_ipIt = object.find("mail_ip");
-        if (Mail_ipIt != object.end()) {
-            setMailIp(JsonValueConverter<std::string>::fromJsonValue(Mail_ipIt->value()));
-        }
-    }
-    {
         const auto Mail_statusIt = object.find("mail_status");
         if (Mail_statusIt != object.end()) {
             setMailStatus(JsonValueConverter<std::string>::fromJsonValue(Mail_statusIt->value()));
@@ -311,6 +299,18 @@ void MailServiceInfo::fromJsonObject_internal(boost::json::object const& object)
         const auto Mail_invoiceIt = object.find("mail_invoice");
         if (Mail_invoiceIt != object.end()) {
             setMailInvoice(JsonValueConverter<std::string>::fromJsonValue(Mail_invoiceIt->value()));
+        }
+    }
+    {
+        const auto Mail_usernameIt = object.find("mail_username");
+        if (Mail_usernameIt != object.end()) {
+            setMailUsername(JsonValueConverter<std::string>::fromJsonValue(Mail_usernameIt->value()));
+        }
+    }
+    {
+        const auto Mail_ipIt = object.find("mail_ip");
+        if (Mail_ipIt != object.end()) {
+            setMailIp(JsonValueConverter<std::string>::fromJsonValue(Mail_ipIt->value()));
         }
     }
     {
@@ -348,17 +348,6 @@ void MailServiceInfo::setMailId(std::string value)
 {
     
     m_Mail_id = std::move(value);
-}
-std::string MailServiceInfo::getMailUsername() const
-{
-    return m_Mail_username;
-}
-
-void MailServiceInfo::setMailUsername(std::string value)
-{
-    
-    m_Mail_username = std::move(value);
-    m_Mail_usernameIsSet = true;
 }
 std::string MailServiceInfo::getMailType() const
 {
@@ -410,17 +399,6 @@ void MailServiceInfo::setMailQuota(std::string value)
     
     m_Mail_quota = std::move(value);
 }
-std::string MailServiceInfo::getMailIp() const
-{
-    return m_Mail_ip;
-}
-
-void MailServiceInfo::setMailIp(std::string value)
-{
-    
-    m_Mail_ip = std::move(value);
-    m_Mail_ipIsSet = true;
-}
 std::string MailServiceInfo::getMailStatus() const
 {
     return m_Mail_status;
@@ -440,6 +418,28 @@ void MailServiceInfo::setMailInvoice(std::string value)
 {
     
     m_Mail_invoice = std::move(value);
+}
+std::string MailServiceInfo::getMailUsername() const
+{
+    return m_Mail_username;
+}
+
+void MailServiceInfo::setMailUsername(std::string value)
+{
+    
+    m_Mail_username = std::move(value);
+    m_Mail_usernameIsSet = true;
+}
+std::string MailServiceInfo::getMailIp() const
+{
+    return m_Mail_ip;
+}
+
+void MailServiceInfo::setMailIp(std::string value)
+{
+    
+    m_Mail_ip = std::move(value);
+    m_Mail_ipIsSet = true;
 }
 std::string MailServiceInfo::getMailCoupon() const
 {

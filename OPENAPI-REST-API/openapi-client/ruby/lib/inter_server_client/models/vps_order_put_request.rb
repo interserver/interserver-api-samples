@@ -275,7 +275,7 @@ module InterServerClient
       return false if @slices > 32
       return false if @slices < 1
       return false if @vps_platform.nil?
-      vps_platform_validator = EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage"])
+      vps_platform_validator = EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage", "unknown_default_open_api"])
       return false unless vps_platform_validator.valid?(@vps_platform)
       return false if @period.nil?
       return false if @period > 12
@@ -286,7 +286,7 @@ module InterServerClient
       return false if @os_version.nil?
       return false if @hostname.nil?
       return false if @rootpass.nil?
-      controlpanel_validator = EnumAttributeValidator.new('String', ["none", "cpanel", "da"])
+      controlpanel_validator = EnumAttributeValidator.new('String', ["none", "cpanel", "da", "unknown_default_open_api"])
       return false unless controlpanel_validator.valid?(@controlpanel)
       true
     end
@@ -322,7 +322,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] vps_platform Object to be assigned
     def vps_platform=(vps_platform)
-      validator = EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage"])
+      validator = EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage", "unknown_default_open_api"])
       unless validator.valid?(vps_platform)
         fail ArgumentError, "invalid value for \"vps_platform\", must be one of #{validator.allowable_values}."
       end
@@ -398,7 +398,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] controlpanel Object to be assigned
     def controlpanel=(controlpanel)
-      validator = EnumAttributeValidator.new('String', ["none", "cpanel", "da"])
+      validator = EnumAttributeValidator.new('String', ["none", "cpanel", "da", "unknown_default_open_api"])
       unless validator.valid?(controlpanel)
         fail ArgumentError, "invalid value for \"controlpanel\", must be one of #{validator.allowable_values}."
       end

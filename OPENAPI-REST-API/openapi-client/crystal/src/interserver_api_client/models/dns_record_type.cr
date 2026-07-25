@@ -7,7 +7,7 @@
 #
 
 module InterserverApiClient
-  # DnsRecordType (OpenAPI enum). Allowed values: "A", "A6", "AAAA", "AFSDB", "ALIAS", "CAA", "CDNSKEY", "CDS", "CERT", "CNAME", "DHCID", "DLV", "DNSKEY", "DNAME", "DS", "EUI48", "EUI64", "HINFO", "IPSECKEY", "KEY", "KX", "LOC", "MAILA", "MAILB", "MINFO", "MR", "MX", "NAPTR", "NS", "NSEC", "NSEC3", "NSEC3PARAM", "OPENPGPKEY", "OPT", "PTR", "RKEY", "RP", "RRSIG", "SIG", "SOA", "SPF", "SRV", "SSHFP", "TLSA", "TKEY", "TSIG", "TXT", "WKS", "URI⏎".
+  # DnsRecordType (OpenAPI enum). Allowed values: "A", "A6", "AAAA", "AFSDB", "ALIAS", "CAA", "CDNSKEY", "CDS", "CERT", "CNAME", "DHCID", "DLV", "DNSKEY", "DNAME", "DS", "EUI48", "EUI64", "HINFO", "IPSECKEY", "KEY", "KX", "LOC", "MAILA", "MAILB", "MINFO", "MR", "MX", "NAPTR", "NS", "NSEC", "NSEC3", "NSEC3PARAM", "OPENPGPKEY", "OPT", "PTR", "RKEY", "RP", "RRSIG", "SIG", "SOA", "SPF", "SRV", "SSHFP", "TLSA", "TKEY", "TSIG", "TXT", "WKS", "URI⏎", "unknown_default_open_api".
   # Represented as `String` so it (de)serialises transparently to/from JSON and YAML,
   # consistent with how inline enums are handled (see the `validates(..., enum: [...])` macro).
   alias DnsRecordType = String

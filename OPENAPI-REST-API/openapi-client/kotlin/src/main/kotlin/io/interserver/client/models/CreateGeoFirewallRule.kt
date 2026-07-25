@@ -59,12 +59,13 @@ data class CreateGeoFirewallRule (
     /**
      * 1 = Block,  0 = Whitelist
      *
-     * Values: _0,_1
+     * Values: _0,_1,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class XdpAction(val value: kotlin.Int) {
         @Json(name = "0") _0(0),
-        @Json(name = "1") _1(1);
+        @Json(name = "1") _1(1),
+        @Json(name = "11184809") unknownDefaultOpenApi(11184809);
     }
 
 }

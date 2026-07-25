@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 **Label** | **String** | Link label | 
 **Link** | **String** | Link URL | 
 **Icon** | **String** | Link icon | 
-**IconText** | **String** | Icon text | [optional] 
 **HelpText** | **String** | Help text | 
+**IconText** | **String** | Icon text | [optional] 
 **OtherAttr** | **String** | Other attributes | [optional] 
 
 ## Examples
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 $LicenseClientLink = Initialize-InterserverApiLicenseClientLink  -Label Invoices `
  -Link invoices `
  -Icon fas fa-file-invoice-dollar fa-w-12 `
- -IconText  `
  -HelpText Invoice History `
+ -IconText  `
  -OtherAttr 
 ```
 

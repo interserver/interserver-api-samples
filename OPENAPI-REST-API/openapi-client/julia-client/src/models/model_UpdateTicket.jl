@@ -61,7 +61,7 @@ function OpenAPI.validate_property(::Type{ UpdateTicket }, name::Symbol, val)
 
 
     if name === Symbol("customer_server_access")
-        OpenAPI.validate_param(name, "UpdateTicket", :enum, val, ["y", "n"])
+        OpenAPI.validate_param(name, "UpdateTicket", :enum, val, ["y", "n", "unknown_default_open_api"])
     end
 
 

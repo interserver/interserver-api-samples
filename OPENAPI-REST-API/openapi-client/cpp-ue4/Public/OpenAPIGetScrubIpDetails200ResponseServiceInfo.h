@@ -42,6 +42,7 @@ public:
 		Pending,
 		Canceled,
 		Expired,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ScrubIpStatusEnum& EnumValue);

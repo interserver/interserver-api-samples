@@ -264,6 +264,8 @@ void CreateFirewallRule::fromJsonValue(boost::json::value const& value)
 boost::json::object CreateFirewallRule::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["protocol_id"] = JsonValueConverter<int32_t>::toJsonValue(getProtocolId());
+        object["xdp_action"] = JsonValueConverter<int32_t>::toJsonValue(getXdpAction());
         if (m_Destination_portIsSet) {
             object["destination_port"] = JsonValueConverter<int32_t>::toJsonValue(getDestinationPort());
         }
@@ -273,8 +275,6 @@ boost::json::object CreateFirewallRule::toJsonObject_internal() const
         if (m_Source_portIsSet) {
             object["source_port"] = JsonValueConverter<int32_t>::toJsonValue(getSourcePort());
         }
-        object["protocol_id"] = JsonValueConverter<int32_t>::toJsonValue(getProtocolId());
-        object["xdp_action"] = JsonValueConverter<int32_t>::toJsonValue(getXdpAction());
     return object;
 }
 
@@ -283,6 +283,18 @@ void CreateFirewallRule::fromJsonObject_internal(boost::json::object const& obje
     m_Destination_portIsSet = false;
     m_Source_ipIsSet = false;
     m_Source_portIsSet = false;
+    {
+        const auto Protocol_idIt = object.find("protocol_id");
+        if (Protocol_idIt != object.end()) {
+            setProtocolId(JsonValueConverter<int32_t>::fromJsonValue(Protocol_idIt->value()));
+        }
+    }
+    {
+        const auto Xdp_actionIt = object.find("xdp_action");
+        if (Xdp_actionIt != object.end()) {
+            setXdpAction(JsonValueConverter<int32_t>::fromJsonValue(Xdp_actionIt->value()));
+        }
+    }
     {
         const auto Destination_portIt = object.find("destination_port");
         if (Destination_portIt != object.end()) {
@@ -301,20 +313,44 @@ void CreateFirewallRule::fromJsonObject_internal(boost::json::object const& obje
             setSourcePort(JsonValueConverter<int32_t>::fromJsonValue(Source_portIt->value()));
         }
     }
-    {
-        const auto Protocol_idIt = object.find("protocol_id");
-        if (Protocol_idIt != object.end()) {
-            setProtocolId(JsonValueConverter<int32_t>::fromJsonValue(Protocol_idIt->value()));
-        }
-    }
-    {
-        const auto Xdp_actionIt = object.find("xdp_action");
-        if (Xdp_actionIt != object.end()) {
-            setXdpAction(JsonValueConverter<int32_t>::fromJsonValue(Xdp_actionIt->value()));
-        }
-    }
 }
 
+int32_t CreateFirewallRule::getProtocolId() const
+{
+    return m_Protocol_id;
+}
+
+void CreateFirewallRule::setProtocolId(int32_t value)
+{
+    static const std::array<int32_t, 3> allowedValues = {
+        1,2,11184809
+    };
+    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
+        std::ostringstream errorMessage;
+        errorMessage << "Value " << value << " not allowed";
+        throw std::runtime_error(errorMessage.str());
+    }
+    
+    m_Protocol_id = std::move(value);
+}
+int32_t CreateFirewallRule::getXdpAction() const
+{
+    return m_Xdp_action;
+}
+
+void CreateFirewallRule::setXdpAction(int32_t value)
+{
+    static const std::array<int32_t, 3> allowedValues = {
+        0,1,11184809
+    };
+    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
+        std::ostringstream errorMessage;
+        errorMessage << "Value " << value << " not allowed";
+        throw std::runtime_error(errorMessage.str());
+    }
+    
+    m_Xdp_action = std::move(value);
+}
 int32_t CreateFirewallRule::getDestinationPort() const
 {
     return m_Destination_port;
@@ -347,42 +383,6 @@ void CreateFirewallRule::setSourcePort(int32_t value)
     
     m_Source_port = std::move(value);
     m_Source_portIsSet = true;
-}
-int32_t CreateFirewallRule::getProtocolId() const
-{
-    return m_Protocol_id;
-}
-
-void CreateFirewallRule::setProtocolId(int32_t value)
-{
-    static const std::array<int32_t, 2> allowedValues = {
-        1,2
-    };
-    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
-        std::ostringstream errorMessage;
-        errorMessage << "Value " << value << " not allowed";
-        throw std::runtime_error(errorMessage.str());
-    }
-    
-    m_Protocol_id = std::move(value);
-}
-int32_t CreateFirewallRule::getXdpAction() const
-{
-    return m_Xdp_action;
-}
-
-void CreateFirewallRule::setXdpAction(int32_t value)
-{
-    static const std::array<int32_t, 2> allowedValues = {
-        0,1
-    };
-    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
-        std::ostringstream errorMessage;
-        errorMessage << "Value " << value << " not allowed";
-        throw std::runtime_error(errorMessage.str());
-    }
-    
-    m_Xdp_action = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<CreateFirewallRule>>& data)

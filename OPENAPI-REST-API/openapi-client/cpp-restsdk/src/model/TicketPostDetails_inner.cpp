@@ -303,6 +303,10 @@ TicketPostDetails_inner::CreatorEnum TicketPostDetails_inner::toCreatorEnum(cons
         return CreatorEnum::STAFF;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return CreatorEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to CreatorEnum");
 }
 
@@ -315,6 +319,8 @@ const utility::string_t TicketPostDetails_inner::fromCreatorEnum(const CreatorEn
         case CreatorEnum::USER: return utility::conversions::to_string_t("User");
         
         case CreatorEnum::STAFF: return utility::conversions::to_string_t("Staff");
+        
+        case CreatorEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

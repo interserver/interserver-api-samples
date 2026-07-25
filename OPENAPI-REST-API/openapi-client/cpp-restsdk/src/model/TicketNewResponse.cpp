@@ -21,12 +21,12 @@ namespace model {
 
 TicketNewResponse::TicketNewResponse()
 {
-    m_Ticket_id = 0;
-    m_Ticket_idIsSet = false;
     m_Text = utility::conversions::to_string_t("");
     m_TextIsSet = false;
     m_Success = false;
     m_SuccessIsSet = false;
+    m_Ticket_id = 0;
+    m_Ticket_idIsSet = false;
 }
 
 TicketNewResponse::~TicketNewResponse()
@@ -41,11 +41,6 @@ void TicketNewResponse::validate()
 web::json::value TicketNewResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_Ticket_idIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ticket_id"))] = ModelBase::toJson(m_Ticket_id);
-    }
     if(m_TextIsSet)
     {
         
@@ -56,6 +51,11 @@ web::json::value TicketNewResponse::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("success"))] = ModelBase::toJson(m_Success);
     }
+    if(m_Ticket_idIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ticket_id"))] = ModelBase::toJson(m_Ticket_id);
+    }
 
     return val;
 }
@@ -63,17 +63,6 @@ web::json::value TicketNewResponse::toJson() const
 bool TicketNewResponse::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ticket_id")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setTicketId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setTicketId);
-            setTicketId(refVal_setTicketId);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("text"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("text")));
@@ -96,6 +85,17 @@ bool TicketNewResponse::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ticket_id")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setTicketId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setTicketId);
+            setTicketId(refVal_setTicketId);
+            
+        }
+    }
     return ok;
 }
 
@@ -106,10 +106,6 @@ void TicketNewResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
-    if(m_Ticket_idIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ticket_id")), m_Ticket_id));
-    }
     if(m_TextIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("text")), m_Text));
@@ -117,6 +113,10 @@ void TicketNewResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart
     if(m_SuccessIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("success")), m_Success));
+    }
+    if(m_Ticket_idIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ticket_id")), m_Ticket_id));
     }
 }
 
@@ -129,12 +129,6 @@ bool TicketNewResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))))
-    {
-        int32_t refVal_setTicketId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))), refVal_setTicketId );
-        setTicketId(refVal_setTicketId);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("text"))))
     {
         utility::string_t refVal_setText;
@@ -147,30 +141,16 @@ bool TicketNewResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("success"))), refVal_setSuccess );
         setSuccess(refVal_setSuccess);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))))
+    {
+        int32_t refVal_setTicketId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ticket_id"))), refVal_setTicketId );
+        setTicketId(refVal_setTicketId);
+    }
     return ok;
 }
 
 
-int32_t TicketNewResponse::getTicketId() const
-{
-    return m_Ticket_id;
-}
-
-void TicketNewResponse::setTicketId(int32_t value)
-{
-    m_Ticket_id = value;
-    m_Ticket_idIsSet = true;
-}
-
-bool TicketNewResponse::ticketIdIsSet() const
-{
-    return m_Ticket_idIsSet;
-}
-
-void TicketNewResponse::unsetTicket_id()
-{
-    m_Ticket_idIsSet = false;
-}
 utility::string_t TicketNewResponse::getText() const
 {
     return m_Text;
@@ -211,6 +191,26 @@ bool TicketNewResponse::successIsSet() const
 void TicketNewResponse::unsetSuccess()
 {
     m_SuccessIsSet = false;
+}
+int32_t TicketNewResponse::getTicketId() const
+{
+    return m_Ticket_id;
+}
+
+void TicketNewResponse::setTicketId(int32_t value)
+{
+    m_Ticket_id = value;
+    m_Ticket_idIsSet = true;
+}
+
+bool TicketNewResponse::ticketIdIsSet() const
+{
+    return m_Ticket_idIsSet;
+}
+
+void TicketNewResponse::unsetTicket_id()
+{
+    m_Ticket_idIsSet = false;
 }
 
 }

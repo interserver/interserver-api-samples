@@ -51,7 +51,8 @@ private class IntServerDnsRecordTypeTest {
             IntServerDnsRecordType.TSIG,
             IntServerDnsRecordType.TXT,
             IntServerDnsRecordType.WKS,
-            IntServerDnsRecordType.URI_
+            IntServerDnsRecordType.URI_,
+            IntServerDnsRecordType.UNKNOWN_DEFAULT_OPEN_API
         };
         Set<IntServerDnsRecordType> actual  = new Set<IntServerDnsRecordType>(IntServerDnsRecordType.values());
         System.assertEquals(expected, actual);

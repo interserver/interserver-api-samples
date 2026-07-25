@@ -1,8 +1,8 @@
-# openapi.model.GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
+# interserver_api.model.GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

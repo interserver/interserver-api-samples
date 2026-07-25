@@ -1,8 +1,8 @@
-# openapi.model.BuyItNowServerOrder200ResponseIpsInner
+# interserver_api.model.BuyItNowServerOrder200ResponseIpsInner
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

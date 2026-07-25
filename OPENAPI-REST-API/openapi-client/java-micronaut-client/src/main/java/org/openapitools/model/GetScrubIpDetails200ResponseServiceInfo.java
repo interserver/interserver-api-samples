@@ -40,7 +40,7 @@ import javax.annotation.Generated;
   GetScrubIpDetails200ResponseServiceInfo.JSON_PROPERTY_SCRUB_IP_COMMENT
 })
 @JsonTypeName("getScrubIpDetails_200_response_serviceInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class GetScrubIpDetails200ResponseServiceInfo {
     public static final String JSON_PROPERTY_SCRUB_IP_ID = "scrub_ip_id";
@@ -71,7 +71,8 @@ public class GetScrubIpDetails200ResponseServiceInfo {
         ACTIVE("active"),
         PENDING("pending"),
         CANCELED("canceled"),
-        EXPIRED("expired");
+        EXPIRED("expired"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

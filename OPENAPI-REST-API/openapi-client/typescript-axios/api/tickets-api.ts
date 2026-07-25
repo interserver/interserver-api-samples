@@ -1126,6 +1126,7 @@ export const GetTicketsListPeriodEnum = {
     _365: '365',
     _1825: '1825',
     All: 'all',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type GetTicketsListPeriodEnum = typeof GetTicketsListPeriodEnum[keyof typeof GetTicketsListPeriodEnum];
 export const GetTicketsListViewEnum = {
@@ -1133,5 +1134,6 @@ export const GetTicketsListViewEnum = {
     Closed: 'Closed',
     OnHold: 'On Hold',
     InProgress: 'In Progress',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type GetTicketsListViewEnum = typeof GetTicketsListViewEnum[keyof typeof GetTicketsListViewEnum];

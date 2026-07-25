@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class TicketCustomFieldDetails {
   /// Returns a new [TicketCustomFieldDetails] instance.
@@ -195,6 +195,7 @@ class TicketCustomFieldDetails {
 enum TicketCustomFieldDetailsCustomerServerAccessEnum {
   y._(r'y'),
   n._(r'n'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -255,6 +256,7 @@ class TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer {
       switch (data) {
         case r'y': return TicketCustomFieldDetailsCustomerServerAccessEnum.y;
         case r'n': return TicketCustomFieldDetailsCustomerServerAccessEnum.n;
+        case r'unknown_default_open_api': return TicketCustomFieldDetailsCustomerServerAccessEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -21,14 +21,14 @@ namespace model {
 
 CreateFirewallRule::CreateFirewallRule()
 {
+    m_Protocol_idIsSet = false;
+    m_Xdp_actionIsSet = false;
     m_Destination_port = 0;
     m_Destination_portIsSet = false;
     m_Source_ip = utility::conversions::to_string_t("");
     m_Source_ipIsSet = false;
     m_Source_port = 0;
     m_Source_portIsSet = false;
-    m_Protocol_idIsSet = false;
-    m_Xdp_actionIsSet = false;
 }
 
 CreateFirewallRule::~CreateFirewallRule()
@@ -43,6 +43,20 @@ void CreateFirewallRule::validate()
 web::json::value CreateFirewallRule::toJson() const
 {
     web::json::value val = web::json::value::object();
+    if(m_Protocol_idIsSet)
+    {
+        
+        utility::string_t refVal = fromProtocol_idEnum(m_Protocol_id);
+        val[utility::conversions::to_string_t(_XPLATSTR("protocol_id"))] = ModelBase::toJson(refVal);
+        
+    }
+    if(m_Xdp_actionIsSet)
+    {
+        
+        utility::string_t refVal = fromXdp_actionEnum(m_Xdp_action);
+        val[utility::conversions::to_string_t(_XPLATSTR("xdp_action"))] = ModelBase::toJson(refVal);
+        
+    }
     if(m_Destination_portIsSet)
     {
         
@@ -58,20 +72,6 @@ web::json::value CreateFirewallRule::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("source_port"))] = ModelBase::toJson(m_Source_port);
     }
-    if(m_Protocol_idIsSet)
-    {
-        
-        utility::string_t refVal = fromProtocol_idEnum(m_Protocol_id);
-        val[utility::conversions::to_string_t(_XPLATSTR("protocol_id"))] = ModelBase::toJson(refVal);
-        
-    }
-    if(m_Xdp_actionIsSet)
-    {
-        
-        utility::string_t refVal = fromXdp_actionEnum(m_Xdp_action);
-        val[utility::conversions::to_string_t(_XPLATSTR("xdp_action"))] = ModelBase::toJson(refVal);
-        
-    }
 
     return val;
 }
@@ -79,6 +79,30 @@ web::json::value CreateFirewallRule::toJson() const
 bool CreateFirewallRule::fromJson(const web::json::value& val)
 {
     bool ok = true;
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("protocol_id")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setProtocolId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setProtocolId);
+            
+            setProtocolId(toProtocol_idEnum(refVal_setProtocolId));
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("xdp_action")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setXdpAction;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setXdpAction);
+            
+            setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("destination_port"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("destination_port")));
@@ -112,30 +136,6 @@ bool CreateFirewallRule::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("protocol_id")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setProtocolId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setProtocolId);
-            
-            setProtocolId(toProtocol_idEnum(refVal_setProtocolId));
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("xdp_action")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setXdpAction;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setXdpAction);
-            
-            setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
-            
-        }
-    }
     return ok;
 }
 
@@ -145,6 +145,14 @@ void CreateFirewallRule::toMultipart(std::shared_ptr<MultipartFormData> multipar
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(_XPLATSTR(".")))
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
+    }
+    if(m_Protocol_idIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("protocol_id")), fromProtocol_idEnum(m_Protocol_id)));
+    }
+    if(m_Xdp_actionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("xdp_action")), fromXdp_actionEnum(m_Xdp_action)));
     }
     if(m_Destination_portIsSet)
     {
@@ -158,14 +166,6 @@ void CreateFirewallRule::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("source_port")), m_Source_port));
     }
-    if(m_Protocol_idIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("protocol_id")), fromProtocol_idEnum(m_Protocol_id)));
-    }
-    if(m_Xdp_actionIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("xdp_action")), fromXdp_actionEnum(m_Xdp_action)));
-    }
 }
 
 bool CreateFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -177,6 +177,18 @@ bool CreateFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))))
+    {
+        int32_t refVal_setProtocolId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))), refVal_setProtocolId );
+        setProtocolId(toProtocol_idEnum(refVal_setProtocolId));
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
+    {
+        int32_t refVal_setXdpAction;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))), refVal_setXdpAction );
+        setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("destination_port"))))
     {
         int32_t refVal_setDestinationPort;
@@ -195,18 +207,6 @@ bool CreateFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("source_port"))), refVal_setSourcePort );
         setSourcePort(refVal_setSourcePort);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))))
-    {
-        int32_t refVal_setProtocolId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("protocol_id"))), refVal_setProtocolId );
-        setProtocolId(toProtocol_idEnum(refVal_setProtocolId));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
-    {
-        int32_t refVal_setXdpAction;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))), refVal_setXdpAction );
-        setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
-    }
     return ok;
 }
 
@@ -219,6 +219,10 @@ CreateFirewallRule::Protocol_idEnum CreateFirewallRule::toProtocol_idEnum(const 
     
     if (value == utility::conversions::to_string_t("2")) {
         return Protocol_idEnum::_2;
+    }
+    
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Protocol_idEnum::UNKNOWN_DEFAULT_OPEN_API;
     }
     
     throw std::invalid_argument("Invalid value for conversion to Protocol_idEnum");
@@ -234,6 +238,8 @@ const int32_t CreateFirewallRule::fromProtocol_idEnum(const Protocol_idEnum valu
         
         case Protocol_idEnum::_2: return utility::conversions::to_string_t("2");
         
+        case Protocol_idEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
@@ -246,6 +252,10 @@ CreateFirewallRule::Xdp_actionEnum CreateFirewallRule::toXdp_actionEnum(const in
     
     if (value == utility::conversions::to_string_t("1")) {
         return Xdp_actionEnum::_1;
+    }
+    
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Xdp_actionEnum::UNKNOWN_DEFAULT_OPEN_API;
     }
     
     throw std::invalid_argument("Invalid value for conversion to Xdp_actionEnum");
@@ -261,10 +271,56 @@ const int32_t CreateFirewallRule::fromXdp_actionEnum(const Xdp_actionEnum value)
         
         case Xdp_actionEnum::_1: return utility::conversions::to_string_t("1");
         
+        case Xdp_actionEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
 
+CreateFirewallRule::Protocol_idEnum CreateFirewallRule::getProtocolId() const
+{
+    return m_Protocol_id;
+}
+
+void CreateFirewallRule::setProtocolId(int32_t value)
+
+void CreateFirewallRule::setProtocolId(const Protocol_idEnum value)
+{
+    m_Protocol_id = value;
+    m_Protocol_idIsSet = true;
+}
+
+bool CreateFirewallRule::protocolIdIsSet() const
+{
+    return m_Protocol_idIsSet;
+}
+
+void CreateFirewallRule::unsetProtocol_id()
+{
+    m_Protocol_idIsSet = false;
+}
+CreateFirewallRule::Xdp_actionEnum CreateFirewallRule::getXdpAction() const
+{
+    return m_Xdp_action;
+}
+
+void CreateFirewallRule::setXdpAction(int32_t value)
+
+void CreateFirewallRule::setXdpAction(const Xdp_actionEnum value)
+{
+    m_Xdp_action = value;
+    m_Xdp_actionIsSet = true;
+}
+
+bool CreateFirewallRule::xdpActionIsSet() const
+{
+    return m_Xdp_actionIsSet;
+}
+
+void CreateFirewallRule::unsetXdp_action()
+{
+    m_Xdp_actionIsSet = false;
+}
 int32_t CreateFirewallRule::getDestinationPort() const
 {
     return m_Destination_port;
@@ -325,50 +381,6 @@ bool CreateFirewallRule::sourcePortIsSet() const
 void CreateFirewallRule::unsetSource_port()
 {
     m_Source_portIsSet = false;
-}
-CreateFirewallRule::Protocol_idEnum CreateFirewallRule::getProtocolId() const
-{
-    return m_Protocol_id;
-}
-
-void CreateFirewallRule::setProtocolId(int32_t value)
-
-void CreateFirewallRule::setProtocolId(const Protocol_idEnum value)
-{
-    m_Protocol_id = value;
-    m_Protocol_idIsSet = true;
-}
-
-bool CreateFirewallRule::protocolIdIsSet() const
-{
-    return m_Protocol_idIsSet;
-}
-
-void CreateFirewallRule::unsetProtocol_id()
-{
-    m_Protocol_idIsSet = false;
-}
-CreateFirewallRule::Xdp_actionEnum CreateFirewallRule::getXdpAction() const
-{
-    return m_Xdp_action;
-}
-
-void CreateFirewallRule::setXdpAction(int32_t value)
-
-void CreateFirewallRule::setXdpAction(const Xdp_actionEnum value)
-{
-    m_Xdp_action = value;
-    m_Xdp_actionIsSet = true;
-}
-
-bool CreateFirewallRule::xdpActionIsSet() const
-{
-    return m_Xdp_actionIsSet;
-}
-
-void CreateFirewallRule::unsetXdp_action()
-{
-    m_Xdp_actionIsSet = false;
 }
 
 }

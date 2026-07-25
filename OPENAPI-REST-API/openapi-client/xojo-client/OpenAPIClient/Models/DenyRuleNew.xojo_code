@@ -31,7 +31,8 @@ Protected Class DenyRuleNew
         Email
         Startswith
         Destination
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -47,7 +48,10 @@ Protected Class DenyRuleNew
 		      Return "startswith"
 		    Case TypeEnum.Destination
 		      Return "destination"
-		    
+		    Case TypeEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

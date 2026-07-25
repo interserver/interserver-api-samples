@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'ServerIpmiLiveRequest' {
     Context 'ServerIpmiLiveRequest' {
         It 'Initialize-ServerIpmiLiveRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-ServerIpmiLiveRequest -Asset "TEST_VALUE" -Ip "TEST_VALUE"
+            #$NewObject = Initialize-ServerIpmiLiveRequest -Ip "TEST_VALUE" -Asset "TEST_VALUE"
             #$NewObject | Should -BeOfType ServerIpmiLiveRequest
             #$NewObject.property | Should -Be 0
         }

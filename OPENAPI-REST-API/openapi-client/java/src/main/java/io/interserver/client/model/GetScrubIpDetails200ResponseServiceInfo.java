@@ -99,7 +99,9 @@ public class GetScrubIpDetails200ResponseServiceInfo implements Serializable {
     
     canceled("canceled"),
     
-    expired("expired");
+    expired("expired"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -122,7 +124,7 @@ public class GetScrubIpDetails200ResponseServiceInfo implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<ScrubIpStatusEnum> {

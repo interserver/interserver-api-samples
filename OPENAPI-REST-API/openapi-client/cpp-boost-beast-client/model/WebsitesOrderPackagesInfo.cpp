@@ -222,17 +222,17 @@ boost::json::object WebsitesOrderPackagesInfo::toJsonObject_internal() const
         object["services_category"] = JsonValueConverter<std::string>::toJsonValue(getServicesCategory());
         object["services_buyable"] = JsonValueConverter<std::string>::toJsonValue(getServicesBuyable());
         object["services_type"] = JsonValueConverter<std::string>::toJsonValue(getServicesType());
+        object["services_module"] = JsonValueConverter<std::string>::toJsonValue(getServicesModule());
+        object["services_description"] = JsonValueConverter<std::string>::toJsonValue(getServicesDescription());
         if (m_Services_field1IsSet) {
             object["services_field1"] = JsonValueConverter<std::string>::toJsonValue(getServicesField1());
         }
         if (m_Services_field2IsSet) {
             object["services_field2"] = JsonValueConverter<std::string>::toJsonValue(getServicesField2());
         }
-        object["services_module"] = JsonValueConverter<std::string>::toJsonValue(getServicesModule());
         if (m_Services_htmlIsSet) {
             object["services_html"] = JsonValueConverter<std::string>::toJsonValue(getServicesHtml());
         }
-        object["services_description"] = JsonValueConverter<std::string>::toJsonValue(getServicesDescription());
         if (m_Services_moreinfo_urlIsSet) {
             object["services_moreinfo_url"] = JsonValueConverter<std::string>::toJsonValue(getServicesMoreinfoUrl());
         }
@@ -286,6 +286,18 @@ void WebsitesOrderPackagesInfo::fromJsonObject_internal(boost::json::object cons
         }
     }
     {
+        const auto Services_moduleIt = object.find("services_module");
+        if (Services_moduleIt != object.end()) {
+            setServicesModule(JsonValueConverter<std::string>::fromJsonValue(Services_moduleIt->value()));
+        }
+    }
+    {
+        const auto Services_descriptionIt = object.find("services_description");
+        if (Services_descriptionIt != object.end()) {
+            setServicesDescription(JsonValueConverter<std::string>::fromJsonValue(Services_descriptionIt->value()));
+        }
+    }
+    {
         const auto Services_field1It = object.find("services_field1");
         if (Services_field1It != object.end()) {
             setServicesField1(JsonValueConverter<std::string>::fromJsonValue(Services_field1It->value()));
@@ -298,21 +310,9 @@ void WebsitesOrderPackagesInfo::fromJsonObject_internal(boost::json::object cons
         }
     }
     {
-        const auto Services_moduleIt = object.find("services_module");
-        if (Services_moduleIt != object.end()) {
-            setServicesModule(JsonValueConverter<std::string>::fromJsonValue(Services_moduleIt->value()));
-        }
-    }
-    {
         const auto Services_htmlIt = object.find("services_html");
         if (Services_htmlIt != object.end()) {
             setServicesHtml(JsonValueConverter<std::string>::fromJsonValue(Services_htmlIt->value()));
-        }
-    }
-    {
-        const auto Services_descriptionIt = object.find("services_description");
-        if (Services_descriptionIt != object.end()) {
-            setServicesDescription(JsonValueConverter<std::string>::fromJsonValue(Services_descriptionIt->value()));
         }
     }
     {
@@ -389,6 +389,26 @@ void WebsitesOrderPackagesInfo::setServicesType(std::string value)
     
     m_Services_type = std::move(value);
 }
+std::string WebsitesOrderPackagesInfo::getServicesModule() const
+{
+    return m_Services_module;
+}
+
+void WebsitesOrderPackagesInfo::setServicesModule(std::string value)
+{
+    
+    m_Services_module = std::move(value);
+}
+std::string WebsitesOrderPackagesInfo::getServicesDescription() const
+{
+    return m_Services_description;
+}
+
+void WebsitesOrderPackagesInfo::setServicesDescription(std::string value)
+{
+    
+    m_Services_description = std::move(value);
+}
 std::string WebsitesOrderPackagesInfo::getServicesField1() const
 {
     return m_Services_field1;
@@ -411,16 +431,6 @@ void WebsitesOrderPackagesInfo::setServicesField2(std::string value)
     m_Services_field2 = std::move(value);
     m_Services_field2IsSet = true;
 }
-std::string WebsitesOrderPackagesInfo::getServicesModule() const
-{
-    return m_Services_module;
-}
-
-void WebsitesOrderPackagesInfo::setServicesModule(std::string value)
-{
-    
-    m_Services_module = std::move(value);
-}
 std::string WebsitesOrderPackagesInfo::getServicesHtml() const
 {
     return m_Services_html;
@@ -431,16 +441,6 @@ void WebsitesOrderPackagesInfo::setServicesHtml(std::string value)
     
     m_Services_html = std::move(value);
     m_Services_htmlIsSet = true;
-}
-std::string WebsitesOrderPackagesInfo::getServicesDescription() const
-{
-    return m_Services_description;
-}
-
-void WebsitesOrderPackagesInfo::setServicesDescription(std::string value)
-{
-    
-    m_Services_description = std::move(value);
 }
 std::string WebsitesOrderPackagesInfo::getServicesMoreinfoUrl() const
 {

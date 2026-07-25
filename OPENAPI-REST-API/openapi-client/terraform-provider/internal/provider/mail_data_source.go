@@ -55,10 +55,6 @@ func (d *MailDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, r
 				Required:    true,
 				Description: "The package of the mail service.",
 			},
-			"service_extra": schema.StringAttribute{
-				Computed:    true,
-				Description: "Extra information for the mail service.",
-			},
 			"extra_info_tables": schema.StringAttribute{
 				Required:    true,
 				Description: "",
@@ -70,6 +66,10 @@ func (d *MailDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, r
 			"usage_count": schema.StringAttribute{
 				Required:    true,
 				Description: "The usage count of the mail service.",
+			},
+			"service_extra": schema.StringAttribute{
+				Computed:    true,
+				Description: "Extra information for the mail service.",
 			},
 		},
 	}

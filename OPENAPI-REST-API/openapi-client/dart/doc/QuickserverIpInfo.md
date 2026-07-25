@@ -1,8 +1,8 @@
-# openapi.model.QuickserverIpInfo
+# interserver_api.model.QuickserverIpInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

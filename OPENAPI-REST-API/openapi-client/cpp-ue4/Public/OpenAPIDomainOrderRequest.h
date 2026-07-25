@@ -35,6 +35,7 @@ public:
 	{
 		_Register,
 		Transfer,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const TypeEnum& EnumValue);
@@ -47,6 +48,7 @@ public:
 	{
 		Enable,
 		Disable,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const WhoisPrivacyEnum& EnumValue);

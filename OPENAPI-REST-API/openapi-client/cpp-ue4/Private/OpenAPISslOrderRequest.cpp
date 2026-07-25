@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPISslOrderRequest::CsrTypeEnum& Value)
 		return TEXT("generated");
 	case OpenAPISslOrderRequest::CsrTypeEnum::Provided:
 		return TEXT("provided");
+	case OpenAPISslOrderRequest::CsrTypeEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPISslOrderRequest::CsrTypeEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPISslOrderRequest::CsrT
 {
 	static TMap<FString, OpenAPISslOrderRequest::CsrTypeEnum> StringToEnum = { 
 		{ TEXT("generated"), OpenAPISslOrderRequest::CsrTypeEnum::Generated },
-		{ TEXT("provided"), OpenAPISslOrderRequest::CsrTypeEnum::Provided }, };
+		{ TEXT("provided"), OpenAPISslOrderRequest::CsrTypeEnum::Provided },
+		{ TEXT("11184809"), OpenAPISslOrderRequest::CsrTypeEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

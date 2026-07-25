@@ -29,20 +29,20 @@ class MailServiceInfo(BaseModel):
     MailServiceInfo
     """ # noqa: E501
     mail_id: StrictStr = Field(description="The ID of the mail service.", json_schema_extra={"examples": ["43171"]})
-    mail_username: Optional[StrictStr] = Field(default=None, description="The username associated with the mail service.", json_schema_extra={"examples": [""]})
     mail_type: StrictStr = Field(description="The type of mail service.", json_schema_extra={"examples": ["10880"]})
     mail_currency: StrictStr = Field(description="The currency of the mail service.", json_schema_extra={"examples": ["USD"]})
     mail_order_date: StrictStr = Field(description="The order date of the mail service.", json_schema_extra={"examples": ["2023-07-16T00:55:05.000Z"]})
     mail_custid: StrictStr = Field(description="The customer ID associated with the mail service.", json_schema_extra={"examples": ["771282"]})
     mail_quota: StrictStr = Field(description="The mail quota for the service.", json_schema_extra={"examples": ["0"]})
-    mail_ip: Optional[StrictStr] = Field(default=None, description="The IP address associated with the mail service.", json_schema_extra={"examples": [""]})
     mail_status: StrictStr = Field(description="The status of the mail service.", json_schema_extra={"examples": ["expired"]})
     mail_invoice: StrictStr = Field(description="The invoice ID of the mail service.", json_schema_extra={"examples": ["20410322"]})
+    mail_username: Optional[StrictStr] = Field(default=None, description="The username associated with the mail service.", json_schema_extra={"examples": [""]})
+    mail_ip: Optional[StrictStr] = Field(default=None, description="The IP address associated with the mail service.", json_schema_extra={"examples": [""]})
     mail_coupon: Optional[StrictStr] = Field(default=None, description="The coupon associated with the mail service.", json_schema_extra={"examples": ["0"]})
     mail_extra: Optional[StrictStr] = Field(default=None, description="Additional information for the mail service.", json_schema_extra={"examples": ["[]"]})
     mail_server_status: Optional[StrictStr] = Field(default=None, description="The server status of the mail service.", json_schema_extra={"examples": [""]})
     mail_comment: Optional[StrictStr] = Field(default=None, description="Additional comments for the mail service.", json_schema_extra={"examples": [""]})
-    __properties: ClassVar[List[str]] = ["mail_id", "mail_username", "mail_type", "mail_currency", "mail_order_date", "mail_custid", "mail_quota", "mail_ip", "mail_status", "mail_invoice", "mail_coupon", "mail_extra", "mail_server_status", "mail_comment"]
+    __properties: ClassVar[List[str]] = ["mail_id", "mail_type", "mail_currency", "mail_order_date", "mail_custid", "mail_quota", "mail_status", "mail_invoice", "mail_username", "mail_ip", "mail_coupon", "mail_extra", "mail_server_status", "mail_comment"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,15 +96,15 @@ class MailServiceInfo(BaseModel):
 
         _obj = cls.model_validate({
             "mail_id": obj.get("mail_id"),
-            "mail_username": obj.get("mail_username"),
             "mail_type": obj.get("mail_type"),
             "mail_currency": obj.get("mail_currency"),
             "mail_order_date": obj.get("mail_order_date"),
             "mail_custid": obj.get("mail_custid"),
             "mail_quota": obj.get("mail_quota"),
-            "mail_ip": obj.get("mail_ip"),
             "mail_status": obj.get("mail_status"),
             "mail_invoice": obj.get("mail_invoice"),
+            "mail_username": obj.get("mail_username"),
+            "mail_ip": obj.get("mail_ip"),
             "mail_coupon": obj.get("mail_coupon"),
             "mail_extra": obj.get("mail_extra"),
             "mail_server_status": obj.get("mail_server_status"),

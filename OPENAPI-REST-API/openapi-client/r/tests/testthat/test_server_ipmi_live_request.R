@@ -5,18 +5,18 @@ context("Test ServerIpmiLiveRequest")
 
 model_instance <- ServerIpmiLiveRequest$new()
 
-test_that("asset", {
-  # tests for the property `asset` (integer)
-  # Asset ID
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset`, "EXPECTED_RESULT")
-})
-
 test_that("ip", {
   # tests for the property `ip` (character)
   # Your IP Address you wish to connect to the IPMI system from.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ip`, "EXPECTED_RESULT")
+})
+
+test_that("asset", {
+  # tests for the property `asset` (integer)
+  # Asset ID
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset`, "EXPECTED_RESULT")
 })

@@ -49,12 +49,12 @@ class ServerSwitchport : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, graph_id);
 
+  DTO_FIELD(oatpp::Int32, asset_id);
+
   DTO_FIELD(oatpp::Vector<oatpp::String>, vlans);
   DTO_FIELD(oatpp::Boolean, vlansIsSet);
   DTO_FIELD(oatpp::Vector<oatpp::String>, vlans6);
   DTO_FIELD(oatpp::Boolean, vlans6IsSet);
-  DTO_FIELD(oatpp::Int32, asset_id);
-
 
 };
 

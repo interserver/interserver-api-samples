@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class MailStatsType {
   /// Returns a new [MailStatsType] instance.
@@ -230,6 +230,7 @@ enum MailStatsTypeTimeEnum {
   n24h._(r'24h'),
   today._(r'today'),
   n1h._(r'1h'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -295,6 +296,7 @@ class MailStatsTypeTimeEnumTypeTransformer {
         case r'24h': return MailStatsTypeTimeEnum.n24h;
         case r'today': return MailStatsTypeTimeEnum.today;
         case r'1h': return MailStatsTypeTimeEnum.n1h;
+        case r'unknown_default_open_api': return MailStatsTypeTimeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

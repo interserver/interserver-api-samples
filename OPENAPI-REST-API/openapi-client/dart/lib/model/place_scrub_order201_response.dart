@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class PlaceScrubOrder201Response {
   /// Returns a new [PlaceScrubOrder201Response] instance.

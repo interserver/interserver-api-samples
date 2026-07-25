@@ -33,6 +33,7 @@ public:
 	{
 		_1,
 		_2,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ProtocolIdEnum& EnumValue);
@@ -43,6 +44,7 @@ public:
 	{
 		_0,
 		_1,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const XdpActionEnum& EnumValue);

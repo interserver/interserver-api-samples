@@ -1,8 +1,8 @@
-# openapi.api.TicketsApi
+# interserver_api.api.TicketsApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 All URIs are relative to *https://my.interserver.net/apiv2*
@@ -31,7 +31,7 @@ Use when the customer wants to contact support. Creates the Kayako ticket in the
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -86,7 +86,7 @@ Use to close a ticket from a link or one-click action â€” closure-only equivalen
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -141,7 +141,7 @@ Use when the customer marks a ticket resolved. IMPORTANT: despite the DELETE ver
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -196,7 +196,7 @@ Use to populate dropdowns before calling addNewTicket. Returns the customer's se
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -246,7 +246,7 @@ Use to render a ticket page or feed full context to an LLM. Path: id (int, ticke
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -301,7 +301,7 @@ Use to browse the customer's helpdesk tickets, paginated, with optional status a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -360,7 +360,7 @@ Use to post a customer reply on an existing ticket. Path: id (int ticket ID). Bo
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -415,7 +415,7 @@ Use when the user supplies a search term (subject keyword, email substring, or f
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -466,7 +466,7 @@ Reserved for future use to update ticket subject/status. The PHP handler is curr
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -521,7 +521,7 @@ Use this lightweight endpoint to add a reply to an existing ticket without attac
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -578,7 +578,7 @@ Use to save or change the structured custom-field values attached to a ticket â€
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

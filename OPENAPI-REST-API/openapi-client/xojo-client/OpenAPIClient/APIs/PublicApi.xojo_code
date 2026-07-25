@@ -579,7 +579,10 @@ Protected Class PublicApi
 		      Return "iso3"
 		    Case Fetch_byEnum_GetCountries.Numcode
 		      Return "numcode"
-		    
+		    Case Fetch_byEnum_GetCountries.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -2039,6 +2042,7 @@ If tfa <> nil Then localVarFormParams.Value("tfa") = tfa
         Iso2
         Iso3
         Numcode
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

@@ -27,8 +27,6 @@ type VpsOrderPostRequest struct {
 	Slices int32 `json:"slices"`
 	// VPS Platform
 	VpsPlatform string `json:"vpsPlatform"`
-	// Control Panel
-	Controlpanel *string `json:"controlpanel,omitempty"`
 	// Billing Period or Frequency
 	Period int32 `json:"period"`
 	// Location
@@ -37,10 +35,12 @@ type VpsOrderPostRequest struct {
 	OsVersion string `json:"osVersion"`
 	// The hostname to assign to the VPS
 	Hostname string `json:"hostname"`
-	// Coupon
-	Coupon *string `json:"coupon,omitempty"`
 	// Root password to assign to the VVPS
 	Rootpass string `json:"rootpass"`
+	// Control Panel
+	Controlpanel *string `json:"controlpanel,omitempty"`
+	// Coupon
+	Coupon *string `json:"coupon,omitempty"`
 	// Order comments or notes
 	Comment *string `json:"comment,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -61,9 +61,9 @@ func NewVpsOrderPostRequest(osDistro string, slices int32, vpsPlatform string, p
 	this.Location = location
 	this.OsVersion = osVersion
 	this.Hostname = hostname
+	this.Rootpass = rootpass
 	var coupon string = ""
 	this.Coupon = &coupon
-	this.Rootpass = rootpass
 	var comment string = ""
 	this.Comment = &comment
 	return &this
@@ -159,38 +159,6 @@ func (o *VpsOrderPostRequest) GetVpsPlatformOk() (*string, bool) {
 // SetVpsPlatform sets field value
 func (o *VpsOrderPostRequest) SetVpsPlatform(v string) {
 	o.VpsPlatform = v
-}
-
-// GetControlpanel returns the Controlpanel field value if set, zero value otherwise.
-func (o *VpsOrderPostRequest) GetControlpanel() string {
-	if o == nil || IsNil(o.Controlpanel) {
-		var ret string
-		return ret
-	}
-	return *o.Controlpanel
-}
-
-// GetControlpanelOk returns a tuple with the Controlpanel field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VpsOrderPostRequest) GetControlpanelOk() (*string, bool) {
-	if o == nil || IsNil(o.Controlpanel) {
-		return nil, false
-	}
-	return o.Controlpanel, true
-}
-
-// HasControlpanel returns a boolean if a field has been set.
-func (o *VpsOrderPostRequest) HasControlpanel() bool {
-	if o != nil && !IsNil(o.Controlpanel) {
-		return true
-	}
-
-	return false
-}
-
-// SetControlpanel gets a reference to the given string and assigns it to the Controlpanel field.
-func (o *VpsOrderPostRequest) SetControlpanel(v string) {
-	o.Controlpanel = &v
 }
 
 // GetPeriod returns the Period field value
@@ -289,6 +257,62 @@ func (o *VpsOrderPostRequest) SetHostname(v string) {
 	o.Hostname = v
 }
 
+// GetRootpass returns the Rootpass field value
+func (o *VpsOrderPostRequest) GetRootpass() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Rootpass
+}
+
+// GetRootpassOk returns a tuple with the Rootpass field value
+// and a boolean to check if the value has been set.
+func (o *VpsOrderPostRequest) GetRootpassOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Rootpass, true
+}
+
+// SetRootpass sets field value
+func (o *VpsOrderPostRequest) SetRootpass(v string) {
+	o.Rootpass = v
+}
+
+// GetControlpanel returns the Controlpanel field value if set, zero value otherwise.
+func (o *VpsOrderPostRequest) GetControlpanel() string {
+	if o == nil || IsNil(o.Controlpanel) {
+		var ret string
+		return ret
+	}
+	return *o.Controlpanel
+}
+
+// GetControlpanelOk returns a tuple with the Controlpanel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VpsOrderPostRequest) GetControlpanelOk() (*string, bool) {
+	if o == nil || IsNil(o.Controlpanel) {
+		return nil, false
+	}
+	return o.Controlpanel, true
+}
+
+// HasControlpanel returns a boolean if a field has been set.
+func (o *VpsOrderPostRequest) HasControlpanel() bool {
+	if o != nil && !IsNil(o.Controlpanel) {
+		return true
+	}
+
+	return false
+}
+
+// SetControlpanel gets a reference to the given string and assigns it to the Controlpanel field.
+func (o *VpsOrderPostRequest) SetControlpanel(v string) {
+	o.Controlpanel = &v
+}
+
 // GetCoupon returns the Coupon field value if set, zero value otherwise.
 func (o *VpsOrderPostRequest) GetCoupon() string {
 	if o == nil || IsNil(o.Coupon) {
@@ -319,30 +343,6 @@ func (o *VpsOrderPostRequest) HasCoupon() bool {
 // SetCoupon gets a reference to the given string and assigns it to the Coupon field.
 func (o *VpsOrderPostRequest) SetCoupon(v string) {
 	o.Coupon = &v
-}
-
-// GetRootpass returns the Rootpass field value
-func (o *VpsOrderPostRequest) GetRootpass() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Rootpass
-}
-
-// GetRootpassOk returns a tuple with the Rootpass field value
-// and a boolean to check if the value has been set.
-func (o *VpsOrderPostRequest) GetRootpassOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Rootpass, true
-}
-
-// SetRootpass sets field value
-func (o *VpsOrderPostRequest) SetRootpass(v string) {
-	o.Rootpass = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -390,17 +390,17 @@ func (o VpsOrderPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["osDistro"] = o.OsDistro
 	toSerialize["slices"] = o.Slices
 	toSerialize["vpsPlatform"] = o.VpsPlatform
-	if !IsNil(o.Controlpanel) {
-		toSerialize["controlpanel"] = o.Controlpanel
-	}
 	toSerialize["period"] = o.Period
 	toSerialize["location"] = o.Location
 	toSerialize["osVersion"] = o.OsVersion
 	toSerialize["hostname"] = o.Hostname
+	toSerialize["rootpass"] = o.Rootpass
+	if !IsNil(o.Controlpanel) {
+		toSerialize["controlpanel"] = o.Controlpanel
+	}
 	if !IsNil(o.Coupon) {
 		toSerialize["coupon"] = o.Coupon
 	}
-	toSerialize["rootpass"] = o.Rootpass
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
@@ -457,13 +457,13 @@ func (o *VpsOrderPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "osDistro")
 		delete(additionalProperties, "slices")
 		delete(additionalProperties, "vpsPlatform")
-		delete(additionalProperties, "controlpanel")
 		delete(additionalProperties, "period")
 		delete(additionalProperties, "location")
 		delete(additionalProperties, "osVersion")
 		delete(additionalProperties, "hostname")
-		delete(additionalProperties, "coupon")
 		delete(additionalProperties, "rootpass")
+		delete(additionalProperties, "controlpanel")
+		delete(additionalProperties, "coupon")
 		delete(additionalProperties, "comment")
 		o.AdditionalProperties = additionalProperties
 	}

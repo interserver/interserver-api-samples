@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asset** | **Int32** | The Asset ID | [optional] 
 **Action** | **String** | The power action to send to the ipmi controller. | 
+**Asset** | **Int32** | The Asset ID | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ServerIpmiPowerRequest = Initialize-InterserverApiServerIpmiPowerRequest  -Asset 5432 `
- -Action on
+$ServerIpmiPowerRequest = Initialize-InterserverApiServerIpmiPowerRequest  -Action on `
+ -Asset 5432
 ```
 
 - Convert the resource to JSON

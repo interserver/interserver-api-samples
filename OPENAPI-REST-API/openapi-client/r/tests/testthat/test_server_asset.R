@@ -53,14 +53,6 @@ test_that("primary_ipv6", {
   #expect_equal(model.instance$`primary_ipv6`, "EXPECTED_RESULT")
 })
 
-test_that("mac", {
-  # tests for the property `mac` (character)
-  # MAC address associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`mac`, "EXPECTED_RESULT")
-})
-
 test_that("datacenter", {
   # tests for the property `datacenter` (character)
   # Datacenter identifier for the asset.
@@ -149,46 +141,6 @@ test_that("ipmi_ip", {
   #expect_equal(model.instance$`ipmi_ip`, "EXPECTED_RESULT")
 })
 
-test_that("ipmi_admin_username", {
-  # tests for the property `ipmi_admin_username` (character)
-  # IPMI admin username associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ipmi_admin_username`, "EXPECTED_RESULT")
-})
-
-test_that("ipmi_admin_password", {
-  # tests for the property `ipmi_admin_password` (character)
-  # IPMI admin password associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ipmi_admin_password`, "EXPECTED_RESULT")
-})
-
-test_that("ipmi_client_username", {
-  # tests for the property `ipmi_client_username` (character)
-  # IPMI client username associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ipmi_client_username`, "EXPECTED_RESULT")
-})
-
-test_that("ipmi_client_password", {
-  # tests for the property `ipmi_client_password` (character)
-  # IPMI client password associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ipmi_client_password`, "EXPECTED_RESULT")
-})
-
-test_that("ipmi_updated", {
-  # tests for the property `ipmi_updated` (character)
-  # IPMI update status associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ipmi_updated`, "EXPECTED_RESULT")
-})
-
 test_that("ipmi_working", {
   # tests for the property `ipmi_working` (character)
   # IPMI working status associated with the asset.
@@ -269,22 +221,6 @@ test_that("overdue", {
   #expect_equal(model.instance$`overdue`, "EXPECTED_RESULT")
 })
 
-test_that("create_timestamp", {
-  # tests for the property `create_timestamp` (character)
-  # Timestamp of asset creation.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`create_timestamp`, "EXPECTED_RESULT")
-})
-
-test_that("update_timestamp", {
-  # tests for the property `update_timestamp` (character)
-  # Timestamp of asset update.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`update_timestamp`, "EXPECTED_RESULT")
-})
-
 test_that("asset_id", {
   # tests for the property `asset_id` (character)
   # Asset identifier for the asset.
@@ -349,14 +285,6 @@ test_that("rack_y", {
   #expect_equal(model.instance$`rack_y`, "EXPECTED_RESULT")
 })
 
-test_that("comment", {
-  # tests for the property `comment` (character)
-  # Comment associated with the asset.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`comment`, "EXPECTED_RESULT")
-})
-
 test_that("switchports", {
   # tests for the property `switchports` (array[integer])
   # List of switchports associated with the asset.
@@ -386,4 +314,76 @@ test_that("lease", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`lease`, "EXPECTED_RESULT")
+})
+
+test_that("mac", {
+  # tests for the property `mac` (character)
+  # MAC address associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`mac`, "EXPECTED_RESULT")
+})
+
+test_that("ipmi_admin_username", {
+  # tests for the property `ipmi_admin_username` (character)
+  # IPMI admin username associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ipmi_admin_username`, "EXPECTED_RESULT")
+})
+
+test_that("ipmi_admin_password", {
+  # tests for the property `ipmi_admin_password` (character)
+  # IPMI admin password associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ipmi_admin_password`, "EXPECTED_RESULT")
+})
+
+test_that("ipmi_client_username", {
+  # tests for the property `ipmi_client_username` (character)
+  # IPMI client username associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ipmi_client_username`, "EXPECTED_RESULT")
+})
+
+test_that("ipmi_client_password", {
+  # tests for the property `ipmi_client_password` (character)
+  # IPMI client password associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ipmi_client_password`, "EXPECTED_RESULT")
+})
+
+test_that("ipmi_updated", {
+  # tests for the property `ipmi_updated` (character)
+  # IPMI update status associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ipmi_updated`, "EXPECTED_RESULT")
+})
+
+test_that("create_timestamp", {
+  # tests for the property `create_timestamp` (character)
+  # Timestamp of asset creation.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`create_timestamp`, "EXPECTED_RESULT")
+})
+
+test_that("update_timestamp", {
+  # tests for the property `update_timestamp` (character)
+  # Timestamp of asset update.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`update_timestamp`, "EXPECTED_RESULT")
+})
+
+test_that("comment", {
+  # tests for the property `comment` (character)
+  # Comment associated with the asset.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`comment`, "EXPECTED_RESULT")
 })

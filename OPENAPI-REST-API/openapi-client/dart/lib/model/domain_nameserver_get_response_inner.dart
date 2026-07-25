@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class DomainNameserverGetResponseInner {
   /// Returns a new [DomainNameserverGetResponseInner] instance.
@@ -130,6 +130,7 @@ class DomainNameserverGetResponseInner {
 enum DomainNameserverGetResponseInnerCanDeleteEnum {
   n0._(r'0'),
   n1._(r'1'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -190,6 +191,7 @@ class DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer {
       switch (data) {
         case r'0': return DomainNameserverGetResponseInnerCanDeleteEnum.n0;
         case r'1': return DomainNameserverGetResponseInnerCanDeleteEnum.n1;
+        case r'unknown_default_open_api': return DomainNameserverGetResponseInnerCanDeleteEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

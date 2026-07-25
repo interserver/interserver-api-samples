@@ -6,15 +6,15 @@
 
 -type interserver_api_template_request() ::
     #{ 'template' := binary(),
-       'password' => binary(),
-       'localPassword' := binary()
+       'localPassword' := binary(),
+       'password' => binary()
      }.
 
 encode(#{ 'template' := Template,
-          'password' := Password,
-          'localPassword' := LocalPassword
+          'localPassword' := LocalPassword,
+          'password' := Password
         }) ->
     #{ 'template' => Template,
-       'password' => Password,
-       'localPassword' => LocalPassword
+       'localPassword' => LocalPassword,
+       'password' => Password
      }.

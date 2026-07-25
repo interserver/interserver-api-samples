@@ -237,6 +237,10 @@ void OAIDnsRecordType::fromJson(const QString &jsonString) {
         m_value = eOAIDnsRecordType::URI_;
         m_value_isSet = m_value_isValid = true;
     }
+    else if ( jsonString.compare("unknown_default_open_api", Qt::CaseInsensitive) == 0) {
+        m_value = eOAIDnsRecordType::UNKNOWN_DEFAULT_OPEN_API;
+        m_value_isSet = m_value_isValid = true;
+    }
 }
 
 void OAIDnsRecordType::fromJsonValue(QJsonValue json) {
@@ -393,6 +397,9 @@ QString OAIDnsRecordType::asJson() const {
             break;
         case eOAIDnsRecordType::URI_:
             val = "URI⏎";
+            break;
+        case eOAIDnsRecordType::UNKNOWN_DEFAULT_OPEN_API:
+            val = "unknown_default_open_api";
             break;
         default:
             break;

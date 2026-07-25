@@ -59,14 +59,6 @@ public:
 
 
     /// <summary>
-    /// Asset ID
-    /// </summary>
-    int32_t getAsset() const;
-    bool assetIsSet() const;
-    void unsetAsset();
-    void setAsset(int32_t value);
-
-    /// <summary>
     /// Your IP Address you wish to connect to the IPMI system from.
     /// </summary>
     utility::string_t getIp() const;
@@ -74,13 +66,21 @@ public:
     void unsetIp();
     void setIp(const utility::string_t& value);
 
+    /// <summary>
+    /// Asset ID
+    /// </summary>
+    int32_t getAsset() const;
+    bool assetIsSet() const;
+    void unsetAsset();
+    void setAsset(int32_t value);
+
 
 protected:
-    int32_t m_Asset;
-    bool m_AssetIsSet;
-
     utility::string_t m_Ip;
     bool m_IpIsSet;
+
+    int32_t m_Asset;
+    bool m_AssetIsSet;
 
 };
 

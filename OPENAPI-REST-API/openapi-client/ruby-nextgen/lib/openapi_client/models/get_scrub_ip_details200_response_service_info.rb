@@ -51,7 +51,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'scrub_ip_status',
         required: false,
-        enum: ['active', 'pending', 'canceled', 'expired']
+        enum: ['active', 'pending', 'canceled', 'expired', 'unknown_default_open_api']
 
       attribute :scrub_ip_invoice,
         type: 'String',

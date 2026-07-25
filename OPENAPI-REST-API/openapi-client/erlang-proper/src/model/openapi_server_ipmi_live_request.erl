@@ -9,8 +9,8 @@
 -export_type([openapi_server_ipmi_live_request/0]).
 
 -type openapi_server_ipmi_live_request() ::
-  [ {'asset', integer() }
-  | {'ip', binary() }
+  [ {'ip', binary() }
+  | {'asset', integer() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_server_ipmi_live_request() ->
     openapi_server_ipmi_live_request([]).
 
 openapi_server_ipmi_live_request(Fields) ->
-  Default = [ {'asset', integer() }
-            , {'ip', binary() }
+  Default = [ {'ip', binary() }
+            , {'asset', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

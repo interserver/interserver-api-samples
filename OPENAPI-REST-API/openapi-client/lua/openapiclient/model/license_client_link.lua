@@ -19,13 +19,13 @@ local function cast_license_client_link(t)
 	return setmetatable(t, license_client_link_mt)
 end
 
-local function new_license_client_link(label, link, icon, icon_text, help_text, other_attr)
+local function new_license_client_link(label, link, icon, help_text, icon_text, other_attr)
 	return cast_license_client_link({
 		["label"] = label;
 		["link"] = link;
 		["icon"] = icon;
-		["icon_text"] = icon_text;
 		["help_text"] = help_text;
+		["icon_text"] = icon_text;
 		["other_attr"] = other_attr;
 	})
 end

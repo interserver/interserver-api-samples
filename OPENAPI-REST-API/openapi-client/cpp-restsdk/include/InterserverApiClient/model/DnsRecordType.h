@@ -105,6 +105,7 @@ public:
         TXT,
         WKS,
         URI_,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     eDnsRecordType getValue() const;
@@ -161,7 +162,8 @@ public:
         { eDnsRecordType::TSIG, _XPLATSTR("TSIG") },
         { eDnsRecordType::TXT, _XPLATSTR("TXT") },
         { eDnsRecordType::WKS, _XPLATSTR("WKS") },
-        { eDnsRecordType::URI_, _XPLATSTR("URI_") }
+        { eDnsRecordType::URI_, _XPLATSTR("URI_") },
+        { eDnsRecordType::UNKNOWN_DEFAULT_OPEN_API, _XPLATSTR("UNKNOWN_DEFAULT_OPEN_API") }
 };
         std::map<utility::string_t,eDnsRecordType> strToEnumMap = {
         { _XPLATSTR("A"), eDnsRecordType::A },
@@ -212,7 +214,8 @@ public:
         { _XPLATSTR("TSIG"), eDnsRecordType::TSIG },
         { _XPLATSTR("TXT"), eDnsRecordType::TXT },
         { _XPLATSTR("WKS"), eDnsRecordType::WKS },
-        { _XPLATSTR("URI_"), eDnsRecordType::URI_ }
+        { _XPLATSTR("URI_"), eDnsRecordType::URI_ },
+        { _XPLATSTR("UNKNOWN_DEFAULT_OPEN_API"), eDnsRecordType::UNKNOWN_DEFAULT_OPEN_API }
 };
 
 };

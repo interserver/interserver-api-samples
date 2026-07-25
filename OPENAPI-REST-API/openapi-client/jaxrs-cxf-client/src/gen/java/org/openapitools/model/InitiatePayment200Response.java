@@ -10,7 +10,7 @@ public class InitiatePayment200Response  {
   
 public enum TypeEnum {
 
-REDIRECT(String.valueOf("redirect")), SUBMIT(String.valueOf("submit")), SINGLE(String.valueOf("single"));
+REDIRECT(String.valueOf("redirect")), SUBMIT(String.valueOf("submit")), SINGLE(String.valueOf("single")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

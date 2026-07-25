@@ -264,10 +264,10 @@ void ServerIpmiPowerRequest::fromJsonValue(boost::json::value const& value)
 boost::json::object ServerIpmiPowerRequest::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["action"] = JsonValueConverter<std::string>::toJsonValue(getAction());
         if (m_AssetIsSet) {
             object["asset"] = JsonValueConverter<int32_t>::toJsonValue(getAsset());
         }
-        object["action"] = JsonValueConverter<std::string>::toJsonValue(getAction());
     return object;
 }
 
@@ -275,19 +275,37 @@ void ServerIpmiPowerRequest::fromJsonObject_internal(boost::json::object const& 
 {
     m_AssetIsSet = false;
     {
-        const auto AssetIt = object.find("asset");
-        if (AssetIt != object.end()) {
-            setAsset(JsonValueConverter<int32_t>::fromJsonValue(AssetIt->value()));
-        }
-    }
-    {
         const auto ActionIt = object.find("action");
         if (ActionIt != object.end()) {
             setAction(JsonValueConverter<std::string>::fromJsonValue(ActionIt->value()));
         }
     }
+    {
+        const auto AssetIt = object.find("asset");
+        if (AssetIt != object.end()) {
+            setAsset(JsonValueConverter<int32_t>::fromJsonValue(AssetIt->value()));
+        }
+    }
 }
 
+std::string ServerIpmiPowerRequest::getAction() const
+{
+    return m_Action;
+}
+
+void ServerIpmiPowerRequest::setAction(std::string value)
+{
+    static const std::array<std::string, 6> allowedValues = {
+        "cycle","reset","on","off","soft","11184809"
+    };
+    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
+        std::ostringstream errorMessage;
+        errorMessage << "Value " << value << " not allowed";
+        throw std::runtime_error(errorMessage.str());
+    }
+    
+    m_Action = std::move(value);
+}
 int32_t ServerIpmiPowerRequest::getAsset() const
 {
     return m_Asset;
@@ -298,24 +316,6 @@ void ServerIpmiPowerRequest::setAsset(int32_t value)
     
     m_Asset = std::move(value);
     m_AssetIsSet = true;
-}
-std::string ServerIpmiPowerRequest::getAction() const
-{
-    return m_Action;
-}
-
-void ServerIpmiPowerRequest::setAction(std::string value)
-{
-    static const std::array<std::string, 5> allowedValues = {
-        "cycle","reset","on","off","soft"
-    };
-    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
-        std::ostringstream errorMessage;
-        errorMessage << "Value " << value << " not allowed";
-        throw std::runtime_error(errorMessage.str());
-    }
-    
-    m_Action = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerIpmiPowerRequest>>& data)

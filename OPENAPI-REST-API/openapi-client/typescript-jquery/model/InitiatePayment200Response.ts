@@ -48,6 +48,7 @@ export namespace InitiatePayment200Response {
     export enum TypeEnum {
         Redirect = <any> 'redirect',
         Submit = <any> 'submit',
-        Single = <any> 'single'
+        Single = <any> 'single',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

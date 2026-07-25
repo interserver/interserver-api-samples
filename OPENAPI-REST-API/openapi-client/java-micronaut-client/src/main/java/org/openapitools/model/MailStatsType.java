@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   MailStatsType.JSON_PROPERTY_VOLUME
 })
 @JsonTypeName("MailStatsType")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class MailStatsType {
     /**
@@ -49,7 +49,8 @@ public class MailStatsType {
         _7D("7d"),
         _24H("24h"),
         TODAY("today"),
-        _1H("1h");
+        _1H("1h"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

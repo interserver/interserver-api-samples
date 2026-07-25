@@ -147,7 +147,8 @@ export interface SslOrderRequest {
  */
 export const SslOrderRequestCsrTypeEnum = {
     Generated: 'generated',
-    Provided: 'provided'
+    Provided: 'provided',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type SslOrderRequestCsrTypeEnum = typeof SslOrderRequestCsrTypeEnum[keyof typeof SslOrderRequestCsrTypeEnum];
 

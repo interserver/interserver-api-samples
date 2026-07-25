@@ -36,7 +36,7 @@ module OpenapiClient
         type: 'Float',
         json_key: 'invoices_paid',
         required: false,
-        enum: [0, 1]
+        enum: [0, 1, 11184809]
 
       attribute :invoices_due_date,
         type: 'String',

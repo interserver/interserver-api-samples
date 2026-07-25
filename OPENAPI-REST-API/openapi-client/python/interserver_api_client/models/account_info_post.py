@@ -29,14 +29,14 @@ class AccountInfoPost(BaseModel):
     Request to update account information.
     """ # noqa: E501
     name: StrictStr = Field(description="Your name.", json_schema_extra={"examples": ["John Doe"]})
-    company: Optional[StrictStr] = Field(default=None, description="Your company name.", json_schema_extra={"examples": ["My Company"]})
     address: StrictStr = Field(description="Your address.", json_schema_extra={"examples": ["124 My St"]})
-    address2: Optional[StrictStr] = Field(default=None, description="Additional address information.")
     city: StrictStr = Field(description="Your city.", json_schema_extra={"examples": ["My Town"]})
     state: StrictStr = Field(description="Your state.", json_schema_extra={"examples": ["PA"]})
     zip: StrictStr = Field(description="Your ZIP code.", json_schema_extra={"examples": ["17522"]})
     country: StrictStr = Field(description="Your country.", json_schema_extra={"examples": ["US"]})
     phone: StrictStr = Field(description="Your phone number.", json_schema_extra={"examples": ["8675309"]})
+    company: Optional[StrictStr] = Field(default=None, description="Your company name.", json_schema_extra={"examples": ["My Company"]})
+    address2: Optional[StrictStr] = Field(default=None, description="Additional address information.")
     locale: Optional[StrictStr] = Field(default=None, description="Your preferred locale.")
     email_invoices: Optional[StrictStr] = Field(default=None, description="Your email for invoice notifications.")
     email_abuse: Optional[StrictStr] = Field(default=None, description="Your email for abuse notifications.")
@@ -45,7 +45,7 @@ class AccountInfoPost(BaseModel):
     disable_server_notifications: Optional[StrictBool] = Field(default=None, description="Set to `true` to disable server notifications, or `false` to enable them.")
     disable_email_notifications: Optional[StrictBool] = Field(default=None, description="Set to `true` to disable email notifications, or `false` to enable them.")
     gstin: Optional[StrictStr] = Field(default=None, description="Your GST identification number (if applicable).")
-    __properties: ClassVar[List[str]] = ["name", "company", "address", "address2", "city", "state", "zip", "country", "phone", "locale", "email_invoices", "email_abuse", "disable_reset", "disable_reinstall", "disable_server_notifications", "disable_email_notifications", "gstin"]
+    __properties: ClassVar[List[str]] = ["name", "address", "city", "state", "zip", "country", "phone", "company", "address2", "locale", "email_invoices", "email_abuse", "disable_reset", "disable_reinstall", "disable_server_notifications", "disable_email_notifications", "gstin"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -99,14 +99,14 @@ class AccountInfoPost(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "company": obj.get("company"),
             "address": obj.get("address"),
-            "address2": obj.get("address2"),
             "city": obj.get("city"),
             "state": obj.get("state"),
             "zip": obj.get("zip"),
             "country": obj.get("country"),
             "phone": obj.get("phone"),
+            "company": obj.get("company"),
+            "address2": obj.get("address2"),
             "locale": obj.get("locale"),
             "email_invoices": obj.get("email_invoices"),
             "email_abuse": obj.get("email_abuse"),

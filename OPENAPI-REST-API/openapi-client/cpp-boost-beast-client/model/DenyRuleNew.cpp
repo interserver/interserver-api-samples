@@ -264,23 +264,17 @@ void DenyRuleNew::fromJsonValue(boost::json::value const& value)
 boost::json::object DenyRuleNew::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["type"] = JsonValueConverter<std::string>::toJsonValue(getType());
+        object["data"] = JsonValueConverter<std::string>::toJsonValue(getData());
         if (m_UserIsSet) {
             object["user"] = JsonValueConverter<std::string>::toJsonValue(getUser());
         }
-        object["type"] = JsonValueConverter<std::string>::toJsonValue(getType());
-        object["data"] = JsonValueConverter<std::string>::toJsonValue(getData());
     return object;
 }
 
 void DenyRuleNew::fromJsonObject_internal(boost::json::object const& object)
 {
     m_UserIsSet = false;
-    {
-        const auto UserIt = object.find("user");
-        if (UserIt != object.end()) {
-            setUser(JsonValueConverter<std::string>::fromJsonValue(UserIt->value()));
-        }
-    }
     {
         const auto TypeIt = object.find("type");
         if (TypeIt != object.end()) {
@@ -293,19 +287,14 @@ void DenyRuleNew::fromJsonObject_internal(boost::json::object const& object)
             setData(JsonValueConverter<std::string>::fromJsonValue(DataIt->value()));
         }
     }
+    {
+        const auto UserIt = object.find("user");
+        if (UserIt != object.end()) {
+            setUser(JsonValueConverter<std::string>::fromJsonValue(UserIt->value()));
+        }
+    }
 }
 
-std::string DenyRuleNew::getUser() const
-{
-    return m_User;
-}
-
-void DenyRuleNew::setUser(std::string value)
-{
-    
-    m_User = std::move(value);
-    m_UserIsSet = true;
-}
 std::string DenyRuleNew::getType() const
 {
     return m_Type;
@@ -313,8 +302,8 @@ std::string DenyRuleNew::getType() const
 
 void DenyRuleNew::setType(std::string value)
 {
-    static const std::array<std::string, 4> allowedValues = {
-        "domain","email","startswith","destination"
+    static const std::array<std::string, 5> allowedValues = {
+        "domain","email","startswith","destination","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;
@@ -333,6 +322,17 @@ void DenyRuleNew::setData(std::string value)
 {
     
     m_Data = std::move(value);
+}
+std::string DenyRuleNew::getUser() const
+{
+    return m_User;
+}
+
+void DenyRuleNew::setUser(std::string value)
+{
+    
+    m_User = std::move(value);
+    m_UserIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<DenyRuleNew>>& data)

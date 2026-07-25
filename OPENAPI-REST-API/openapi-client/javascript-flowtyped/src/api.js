@@ -2696,7 +2696,7 @@ export type ChargeInvoiceRows = {
 }
 
 
-            export type ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum = 0 | 1;
+            export type ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum = 0 | 1 | 11184809;
 /**
  * 
  * @export
@@ -2976,9 +2976,9 @@ export type CreateFilter500Response = {
 }
 
 
-            export type CreateFirewallRuleProtocolIdEnum = 1 | 2;
+            export type CreateFirewallRuleProtocolIdEnum = 1 | 2 | 11184809;
 
-            export type CreateFirewallRuleXdpActionEnum = 0 | 1;
+            export type CreateFirewallRuleXdpActionEnum = 0 | 1 | 11184809;
 /**
  * Create firewall rule for your ip
  * @export
@@ -3017,7 +3017,7 @@ export type CreateFirewallRule = {
 }
 
 
-            export type CreateGeoFirewallRuleXdpActionEnum = 0 | 1;
+            export type CreateGeoFirewallRuleXdpActionEnum = 0 | 1 | 11184809;
 /**
  * Create firewall rule for your ip
  * @export
@@ -3234,7 +3234,7 @@ export type DeleteMailAlertRequest = {
 }
 
 
-            export type DenyRuleNewTypeEnum = 'domain' | 'email' | 'startswith' | 'destination';
+            export type DenyRuleNewTypeEnum = 'domain' | 'email' | 'startswith' | 'destination' | '11184809';
 /**
  * The data for a email deny rule record.
  * @export
@@ -3261,7 +3261,7 @@ export type DenyRuleNew = {
 }
 
 
-            export type DenyRuleRecordTypeEnum = 'domain' | 'email' | 'startswith' | 'destination';
+            export type DenyRuleRecordTypeEnum = 'domain' | 'email' | 'startswith' | 'destination' | '11184809';
 /**
  * The data for a email deny rule record.
  * @export
@@ -3509,7 +3509,7 @@ export type DnsRecord = {
  * @export
  * @enum {string}
  */
-export type DnsRecordType = 'A' | 'A6' | 'AAAA' | 'AFSDB' | 'ALIAS' | 'CAA' | 'CDNSKEY' | 'CDS' | 'CERT' | 'CNAME' | 'DHCID' | 'DLV' | 'DNSKEY' | 'DNAME' | 'DS' | 'EUI48' | 'EUI64' | 'HINFO' | 'IPSECKEY' | 'KEY' | 'KX' | 'LOC' | 'MAILA' | 'MAILB' | 'MINFO' | 'MR' | 'MX' | 'NAPTR' | 'NS' | 'NSEC' | 'NSEC3' | 'NSEC3PARAM' | 'OPENPGPKEY' | 'OPT' | 'PTR' | 'RKEY' | 'RP' | 'RRSIG' | 'SIG' | 'SOA' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TKEY' | 'TSIG' | 'TXT' | 'WKS' | 'URI⏎';
+export type DnsRecordType = 'A' | 'A6' | 'AAAA' | 'AFSDB' | 'ALIAS' | 'CAA' | 'CDNSKEY' | 'CDS' | 'CERT' | 'CNAME' | 'DHCID' | 'DLV' | 'DNSKEY' | 'DNAME' | 'DS' | 'EUI48' | 'EUI64' | 'HINFO' | 'IPSECKEY' | 'KEY' | 'KX' | 'LOC' | 'MAILA' | 'MAILB' | 'MINFO' | 'MR' | 'MX' | 'NAPTR' | 'NS' | 'NSEC' | 'NSEC3' | 'NSEC3PARAM' | 'OPENPGPKEY' | 'OPT' | 'PTR' | 'RKEY' | 'RP' | 'RRSIG' | 'SIG' | 'SOA' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TKEY' | 'TSIG' | 'TXT' | 'WKS' | 'URI⏎' | '11184809';
 
 /**
  * The request data to update a dns record.
@@ -4416,7 +4416,7 @@ export type DomainNameserverGetResponse = {
 } & Array&lt;DomainNameserverGetResponseInner&gt;
 
 
-            export type DomainNameserverGetResponseInnerCanDeleteEnum = '0' | '1';
+            export type DomainNameserverGetResponseInnerCanDeleteEnum = '0' | '1' | '11184809';
 /**
  * 
  * @export
@@ -4500,9 +4500,9 @@ export type DomainOrder = {
 }
 
 
-            export type DomainOrderRequestTypeEnum = 'register' | 'transfer';
+            export type DomainOrderRequestTypeEnum = 'register' | 'transfer' | '11184809';
 
-            export type DomainOrderRequestWhoisPrivacyEnum = 'enable' | 'disable';
+            export type DomainOrderRequestWhoisPrivacyEnum = 'enable' | 'disable' | '11184809';
 /**
  * Request body for the domain order flow: putDomains (returns required fields), patchDomains (validates fields), addDomain (places the order). The TLD is resolved from hostname. Per-TLD registrant/contact fields returned by putDomains may be supplied as additional properties on patchDomains/addDomain.
  * @export
@@ -5981,7 +5981,7 @@ export type GetScrubIpDetails200ResponseFilterFirewallRulesInner = {
 }
 
 
-            export type GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum = 'active' | 'pending' | 'canceled' | 'expired';
+            export type GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum = 'active' | 'pending' | 'canceled' | 'expired' | '11184809';
 /**
  * 
  * @export
@@ -6802,7 +6802,7 @@ export type HostnameObject = {
 }
 
 
-            export type InitiatePayment200ResponseTypeEnum = 'redirect' | 'submit' | 'single';
+            export type InitiatePayment200ResponseTypeEnum = 'redirect' | 'submit' | 'single' | '11184809';
 /**
  * 
  * @export
@@ -8710,7 +8710,7 @@ export type MailServiceType = {
 }
 
 
-            export type MailStatsTypeTimeEnum = 'all' | 'billing' | 'month' | '7d' | '24h' | 'today' | '1h';
+            export type MailStatsTypeTimeEnum = 'all' | 'billing' | 'month' | '7d' | '24h' | 'today' | '1h' | '11184809';
 /**
  * Statistics about the mail usage including volume by IP, To address, and From address; as well as total sent / delivered counts and cost.
  * @export
@@ -11456,7 +11456,7 @@ export type ServerIpmiLiveRequest = {
 }
 
 
-            export type ServerIpmiPowerRequestActionEnum = 'cycle' | 'reset' | 'on' | 'off' | 'soft';
+            export type ServerIpmiPowerRequestActionEnum = 'cycle' | 'reset' | 'on' | 'off' | 'soft' | '11184809';
 /**
  * IPMI Power command for servers
  * @export
@@ -13266,7 +13266,7 @@ export type SslCancel200Response = {
 }
 
 
-            export type SslOrderRequestCsrTypeEnum = 'generated' | 'provided';
+            export type SslOrderRequestCsrTypeEnum = 'generated' | 'provided' | '11184809';
 /**
  * Request body to validate (putSsl) or place (addSsl) an SSL certificate order. Contact fields default from the account if omitted. Package ids come from getNewSsl.serviceTypes.
  * @export
@@ -13507,7 +13507,7 @@ export type TextResponse = {
 }
 
 
-            export type TicketCustomFieldDetailsCustomerServerAccessEnum = 'y' | 'n';
+            export type TicketCustomFieldDetailsCustomerServerAccessEnum = 'y' | 'n' | '11184809';
 /**
  * Optional fields providing additional info in ticket
  * @export
@@ -13670,7 +13670,7 @@ export type TicketPostDetails = {
 } & Array&lt;TicketPostDetailsInner&gt;
 
 
-            export type TicketPostDetailsInnerCreatorEnum = 'User' | 'Staff';
+            export type TicketPostDetailsInnerCreatorEnum = 'User' | 'Staff' | '11184809';
 /**
  * 
  * @export
@@ -13954,7 +13954,7 @@ export type UpdateAccountTfaRequest = {
 }
 
 
-            export type UpdateTicketCustomerServerAccessEnum = 'y' | 'n';
+            export type UpdateTicketCustomerServerAccessEnum = 'y' | 'n' | '11184809';
 /**
  * Update custom fields of the ticket
  * @export
@@ -14829,9 +14829,9 @@ export type VpsOrderPlatformPackages = {
 }
 
 
-            export type VpsOrderPostRequestVpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage';
+            export type VpsOrderPostRequestVpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage' | '11184809';
 
-            export type VpsOrderPostRequestControlpanelEnum = 'none' | 'cpanel' | 'da';
+            export type VpsOrderPostRequestControlpanelEnum = 'none' | 'cpanel' | 'da' | '11184809';
 /**
  * request to validate a vps order
  * @export
@@ -14906,9 +14906,9 @@ export type VpsOrderPostRequest = {
 }
 
 
-            export type VpsOrderPutRequestVpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage';
+            export type VpsOrderPutRequestVpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage' | '11184809';
 
-            export type VpsOrderPutRequestControlpanelEnum = 'none' | 'cpanel' | 'da';
+            export type VpsOrderPutRequestControlpanelEnum = 'none' | 'cpanel' | 'da' | '11184809';
 /**
  * request to validate a vps order
  * @export

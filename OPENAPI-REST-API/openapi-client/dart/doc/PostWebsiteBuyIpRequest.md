@@ -1,8 +1,8 @@
-# openapi.model.PostWebsiteBuyIpRequest
+# interserver_api.model.PostWebsiteBuyIpRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

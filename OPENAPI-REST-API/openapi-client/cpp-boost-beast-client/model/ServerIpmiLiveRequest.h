@@ -50,16 +50,16 @@ public:
     /// ServerIpmiLiveRequest members
 
     /// <summary>
-    /// Asset ID
-    /// </summary>
-    int32_t getAsset() const;
-    void setAsset(int32_t value);
-
-    /// <summary>
     /// Your IP Address you wish to connect to the IPMI system from.
     /// </summary>
     std::string getIp() const;
     void setIp(std::string value);
+
+    /// <summary>
+    /// Asset ID
+    /// </summary>
+    int32_t getAsset() const;
+    void setAsset(int32_t value);
 
 protected:
     //////////////////////////////////////
@@ -71,9 +71,9 @@ protected:
 
 
 protected:
+    std::string m_Ip = "";
     int32_t m_Asset = 0;
     bool m_AssetIsSet = false;
-    std::string m_Ip = "";
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerIpmiLiveRequest>>& data);

@@ -19,6 +19,7 @@
 |---- | -----|
 | _0 | &quot;0&quot; |
 | _1 | &quot;1&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

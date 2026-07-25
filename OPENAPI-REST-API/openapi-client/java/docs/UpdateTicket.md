@@ -24,6 +24,7 @@ Update custom fields of the ticket
 |---- | -----|
 | y | &quot;y&quot; |
 | n | &quot;n&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

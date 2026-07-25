@@ -21,8 +21,6 @@ namespace model {
 
 DenyRuleRecord::DenyRuleRecord()
 {
-    m_User = utility::conversions::to_string_t("");
-    m_UserIsSet = false;
     m_TypeIsSet = false;
     m_Data = utility::conversions::to_string_t("");
     m_DataIsSet = false;
@@ -30,6 +28,8 @@ DenyRuleRecord::DenyRuleRecord()
     m_IdIsSet = false;
     m_Created = utility::conversions::to_string_t("");
     m_CreatedIsSet = false;
+    m_User = utility::conversions::to_string_t("");
+    m_UserIsSet = false;
 }
 
 DenyRuleRecord::~DenyRuleRecord()
@@ -44,11 +44,6 @@ void DenyRuleRecord::validate()
 web::json::value DenyRuleRecord::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_UserIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("user"))] = ModelBase::toJson(m_User);
-    }
     if(m_TypeIsSet)
     {
         
@@ -71,6 +66,11 @@ web::json::value DenyRuleRecord::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("created"))] = ModelBase::toJson(m_Created);
     }
+    if(m_UserIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("user"))] = ModelBase::toJson(m_User);
+    }
 
     return val;
 }
@@ -78,17 +78,6 @@ web::json::value DenyRuleRecord::toJson() const
 bool DenyRuleRecord::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("user"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("user")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setUser;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setUser);
-            setUser(refVal_setUser);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("type"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("type")));
@@ -134,6 +123,17 @@ bool DenyRuleRecord::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("user"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("user")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setUser;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setUser);
+            setUser(refVal_setUser);
+            
+        }
+    }
     return ok;
 }
 
@@ -143,10 +143,6 @@ void DenyRuleRecord::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(_XPLATSTR(".")))
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
-    }
-    if(m_UserIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("user")), m_User));
     }
     if(m_TypeIsSet)
     {
@@ -164,6 +160,10 @@ void DenyRuleRecord::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("created")), m_Created));
     }
+    if(m_UserIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("user")), m_User));
+    }
 }
 
 bool DenyRuleRecord::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -175,12 +175,6 @@ bool DenyRuleRecord::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("user"))))
-    {
-        utility::string_t refVal_setUser;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("user"))), refVal_setUser );
-        setUser(refVal_setUser);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("type"))))
     {
         utility::string_t refVal_setType;
@@ -205,6 +199,12 @@ bool DenyRuleRecord::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("created"))), refVal_setCreated );
         setCreated(refVal_setCreated);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("user"))))
+    {
+        utility::string_t refVal_setUser;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("user"))), refVal_setUser );
+        setUser(refVal_setUser);
+    }
     return ok;
 }
 
@@ -227,6 +227,10 @@ DenyRuleRecord::TypeEnum DenyRuleRecord::toTypeEnum(const utility::string_t& val
         return TypeEnum::DESTINATION;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return TypeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to TypeEnum");
 }
 
@@ -244,31 +248,12 @@ const utility::string_t DenyRuleRecord::fromTypeEnum(const TypeEnum value) const
         
         case TypeEnum::DESTINATION: return utility::conversions::to_string_t("destination");
         
+        case TypeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
 
-utility::string_t DenyRuleRecord::getUser() const
-{
-    return m_User;
-}
-
-
-void DenyRuleRecord::setUser(const utility::string_t& value)
-{
-    m_User = value;
-    m_UserIsSet = true;
-}
-
-bool DenyRuleRecord::userIsSet() const
-{
-    return m_UserIsSet;
-}
-
-void DenyRuleRecord::unsetUser()
-{
-    m_UserIsSet = false;
-}
 DenyRuleRecord::TypeEnum DenyRuleRecord::getType() const
 {
     return m_Type;
@@ -351,6 +336,27 @@ bool DenyRuleRecord::createdIsSet() const
 void DenyRuleRecord::unsetCreated()
 {
     m_CreatedIsSet = false;
+}
+utility::string_t DenyRuleRecord::getUser() const
+{
+    return m_User;
+}
+
+
+void DenyRuleRecord::setUser(const utility::string_t& value)
+{
+    m_User = value;
+    m_UserIsSet = true;
+}
+
+bool DenyRuleRecord::userIsSet() const
+{
+    return m_UserIsSet;
+}
+
+void DenyRuleRecord::unsetUser()
+{
+    m_UserIsSet = false;
 }
 
 }

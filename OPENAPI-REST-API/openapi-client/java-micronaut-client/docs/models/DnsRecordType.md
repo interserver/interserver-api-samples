@@ -105,5 +105,7 @@ The class is defined in **[DnsRecordType.java](../../src/main/java/org/openapito
 
 * `URI_` (value: `"URI⏎"`)
 
+* `UNKNOWN_DEFAULT_OPEN_API` (value: `"unknown_default_open_api"`)
+
 
 

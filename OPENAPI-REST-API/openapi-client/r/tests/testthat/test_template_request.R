@@ -13,18 +13,18 @@ test_that("template", {
   #expect_equal(model.instance$`template`, "EXPECTED_RESULT")
 })
 
-test_that("password", {
-  # tests for the property `password` (character)
-  # Password for Root / Administrator Account.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`password`, "EXPECTED_RESULT")
-})
-
 test_that("localPassword", {
   # tests for the property `localPassword` (character)
   # Password for this account.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`localPassword`, "EXPECTED_RESULT")
+})
+
+test_that("password", {
+  # tests for the property `password` (character)
+  # Password for Root / Administrator Account.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`password`, "EXPECTED_RESULT")
 })

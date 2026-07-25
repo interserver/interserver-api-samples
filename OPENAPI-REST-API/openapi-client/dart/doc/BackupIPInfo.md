@@ -1,8 +1,8 @@
-# openapi.model.BackupIPInfo
+# interserver_api.model.BackupIPInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

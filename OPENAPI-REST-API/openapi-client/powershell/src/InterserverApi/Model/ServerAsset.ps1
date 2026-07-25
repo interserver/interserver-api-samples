@@ -27,8 +27,6 @@ Status of the asset.
 Primary IPv4 address of the asset.
 .PARAMETER PrimaryIpv6
 Primary IPv6 address of the asset.
-.PARAMETER Mac
-MAC address associated with the asset.
 .PARAMETER Datacenter
 Datacenter identifier for the asset.
 .PARAMETER TypeId
@@ -51,16 +49,6 @@ Subunit identifier for the asset.
 IPMI MAC address associated with the asset.
 .PARAMETER IpmiIp
 IPMI IP address associated with the asset.
-.PARAMETER IpmiAdminUsername
-IPMI admin username associated with the asset.
-.PARAMETER IpmiAdminPassword
-IPMI admin password associated with the asset.
-.PARAMETER IpmiClientUsername
-IPMI client username associated with the asset.
-.PARAMETER IpmiClientPassword
-IPMI client password associated with the asset.
-.PARAMETER IpmiUpdated
-IPMI update status associated with the asset.
 .PARAMETER IpmiWorking
 IPMI working status associated with the asset.
 .PARAMETER Company
@@ -81,10 +69,6 @@ External identifier for the asset.
 Billing status of the asset.
 .PARAMETER Overdue
 Overdue status of the asset.
-.PARAMETER CreateTimestamp
-Timestamp of asset creation.
-.PARAMETER UpdateTimestamp
-Timestamp of asset update.
 .PARAMETER AssetId
 Asset identifier for the asset.
 .PARAMETER AssetName
@@ -101,8 +85,6 @@ Size of the rack associated with the asset.
 X-coordinate of the asset within the rack.
 .PARAMETER RackY
 Y-coordinate of the asset within the rack.
-.PARAMETER Comment
-Comment associated with the asset.
 .PARAMETER Switchports
 List of switchports associated with the asset.
 .PARAMETER Vlans
@@ -111,6 +93,24 @@ List of VLANs associated with the asset.
 List of IPv6 VLANs associated with the asset.
 .PARAMETER Lease
 No description available.
+.PARAMETER Mac
+MAC address associated with the asset.
+.PARAMETER IpmiAdminUsername
+IPMI admin username associated with the asset.
+.PARAMETER IpmiAdminPassword
+IPMI admin password associated with the asset.
+.PARAMETER IpmiClientUsername
+IPMI client username associated with the asset.
+.PARAMETER IpmiClientPassword
+IPMI client password associated with the asset.
+.PARAMETER IpmiUpdated
+IPMI update status associated with the asset.
+.PARAMETER CreateTimestamp
+Timestamp of asset creation.
+.PARAMETER UpdateTimestamp
+Timestamp of asset update.
+.PARAMETER Comment
+Comment associated with the asset.
 .OUTPUTS
 
 ServerAsset<PSCustomObject>
@@ -139,130 +139,130 @@ function Initialize-ServerAsset {
         ${PrimaryIpv6},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Mac},
+        ${Datacenter},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Datacenter},
+        ${TypeId},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${TypeId},
+        ${AssetTag},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${AssetTag},
+        ${Rack},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Rack},
+        ${Row},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Row},
+        ${Col},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Col},
+        ${UnitStart},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${UnitStart},
+        ${UnitEnd},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${UnitEnd},
+        ${UnitSub},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${UnitSub},
+        ${IpmiMac},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiMac},
+        ${IpmiIp},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiIp},
+        ${IpmiWorking},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiAdminUsername},
+        ${Company},
         [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiAdminPassword},
+        ${Comments},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiClientUsername},
+        ${Make},
         [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiClientPassword},
+        ${Model},
         [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiUpdated},
+        ${Description},
         [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${IpmiWorking},
+        ${CustomerId},
         [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Company},
+        ${ExternalId},
         [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Comments},
+        ${BillingStatus},
         [Parameter(Position = 26, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Make},
+        ${Overdue},
         [Parameter(Position = 27, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Model},
+        ${AssetId},
         [Parameter(Position = 28, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Description},
+        ${AssetName},
         [Parameter(Position = 29, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${CustomerId},
+        ${RackId},
         [Parameter(Position = 30, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ExternalId},
+        ${RackName},
         [Parameter(Position = 31, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${BillingStatus},
+        ${RackLocation},
         [Parameter(Position = 32, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Overdue},
+        ${RackSize},
         [Parameter(Position = 33, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${CreateTimestamp},
+        ${RackX},
         [Parameter(Position = 34, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${UpdateTimestamp},
-        [Parameter(Position = 35, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${AssetId},
-        [Parameter(Position = 36, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${AssetName},
-        [Parameter(Position = 37, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RackId},
-        [Parameter(Position = 38, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RackName},
-        [Parameter(Position = 39, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RackLocation},
-        [Parameter(Position = 40, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RackSize},
-        [Parameter(Position = 41, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RackX},
-        [Parameter(Position = 42, ValueFromPipelineByPropertyName = $true)]
-        [String]
         ${RackY},
-        [Parameter(Position = 43, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Comment},
-        [Parameter(Position = 44, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 35, ValueFromPipelineByPropertyName = $true)]
         [Int32[]]
         ${Switchports},
-        [Parameter(Position = 45, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 36, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${Vlans},
-        [Parameter(Position = 46, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 37, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${Vlans6},
-        [Parameter(Position = 47, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 38, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Lease}
+        ${Lease},
+        [Parameter(Position = 39, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Mac},
+        [Parameter(Position = 40, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${IpmiAdminUsername},
+        [Parameter(Position = 41, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${IpmiAdminPassword},
+        [Parameter(Position = 42, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${IpmiClientUsername},
+        [Parameter(Position = 43, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${IpmiClientPassword},
+        [Parameter(Position = 44, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${IpmiUpdated},
+        [Parameter(Position = 45, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CreateTimestamp},
+        [Parameter(Position = 46, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${UpdateTimestamp},
+        [Parameter(Position = 47, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Comment}
     )
 
     Process {
@@ -433,7 +433,6 @@ function Initialize-ServerAsset {
             'status' = ${Status}
             'primary_ipv4' = ${PrimaryIpv4}
             'primary_ipv6' = ${PrimaryIpv6}
-            'mac' = ${Mac}
             'datacenter' = ${Datacenter}
             'type_id' = ${TypeId}
             'asset_tag' = ${AssetTag}
@@ -445,11 +444,6 @@ function Initialize-ServerAsset {
             'unit_sub' = ${UnitSub}
             'ipmi_mac' = ${IpmiMac}
             'ipmi_ip' = ${IpmiIp}
-            'ipmi_admin_username' = ${IpmiAdminUsername}
-            'ipmi_admin_password' = ${IpmiAdminPassword}
-            'ipmi_client_username' = ${IpmiClientUsername}
-            'ipmi_client_password' = ${IpmiClientPassword}
-            'ipmi_updated' = ${IpmiUpdated}
             'ipmi_working' = ${IpmiWorking}
             'company' = ${Company}
             'comments' = ${Comments}
@@ -460,8 +454,6 @@ function Initialize-ServerAsset {
             'external_id' = ${ExternalId}
             'billing_status' = ${BillingStatus}
             'overdue' = ${Overdue}
-            'create_timestamp' = ${CreateTimestamp}
-            'update_timestamp' = ${UpdateTimestamp}
             'asset_id' = ${AssetId}
             'asset_name' = ${AssetName}
             'rack_id' = ${RackId}
@@ -470,11 +462,19 @@ function Initialize-ServerAsset {
             'rack_size' = ${RackSize}
             'rack_x' = ${RackX}
             'rack_y' = ${RackY}
-            'comment' = ${Comment}
             'switchports' = ${Switchports}
             'vlans' = ${Vlans}
             'vlans6' = ${Vlans6}
             'lease' = ${Lease}
+            'mac' = ${Mac}
+            'ipmi_admin_username' = ${IpmiAdminUsername}
+            'ipmi_admin_password' = ${IpmiAdminPassword}
+            'ipmi_client_username' = ${IpmiClientUsername}
+            'ipmi_client_password' = ${IpmiClientPassword}
+            'ipmi_updated' = ${IpmiUpdated}
+            'create_timestamp' = ${CreateTimestamp}
+            'update_timestamp' = ${UpdateTimestamp}
+            'comment' = ${Comment}
         }
 
 
@@ -512,7 +512,7 @@ function ConvertFrom-JsonToServerAsset {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServerAsset
-        $AllProperties = ('id', 'order_id', 'hostname', 'status', 'primary_ipv4', 'primary_ipv6', 'mac', 'datacenter', 'type_id', 'asset_tag', 'rack', 'row', 'col', 'unit_start', 'unit_end', 'unit_sub', 'ipmi_mac', 'ipmi_ip', 'ipmi_admin_username', 'ipmi_admin_password', 'ipmi_client_username', 'ipmi_client_password', 'ipmi_updated', 'ipmi_working', 'company', 'comments', 'make', 'model', 'description', 'customer_id', 'external_id', 'billing_status', 'overdue', 'create_timestamp', 'update_timestamp', 'asset_id', 'asset_name', 'rack_id', 'rack_name', 'rack_location', 'rack_size', 'rack_x', 'rack_y', 'comment', 'switchports', 'vlans', 'vlans6', 'lease')
+        $AllProperties = ('id', 'order_id', 'hostname', 'status', 'primary_ipv4', 'primary_ipv6', 'datacenter', 'type_id', 'asset_tag', 'rack', 'row', 'col', 'unit_start', 'unit_end', 'unit_sub', 'ipmi_mac', 'ipmi_ip', 'ipmi_working', 'company', 'comments', 'make', 'model', 'description', 'customer_id', 'external_id', 'billing_status', 'overdue', 'asset_id', 'asset_name', 'rack_id', 'rack_name', 'rack_location', 'rack_size', 'rack_x', 'rack_y', 'switchports', 'vlans', 'vlans6', 'lease', 'mac', 'ipmi_admin_username', 'ipmi_admin_password', 'ipmi_client_username', 'ipmi_client_password', 'ipmi_updated', 'create_timestamp', 'update_timestamp', 'comment')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -818,7 +818,6 @@ function ConvertFrom-JsonToServerAsset {
             'status' = ${Status}
             'primary_ipv4' = ${PrimaryIpv4}
             'primary_ipv6' = ${PrimaryIpv6}
-            'mac' = ${Mac}
             'datacenter' = ${Datacenter}
             'type_id' = ${TypeId}
             'asset_tag' = ${AssetTag}
@@ -830,11 +829,6 @@ function ConvertFrom-JsonToServerAsset {
             'unit_sub' = ${UnitSub}
             'ipmi_mac' = ${IpmiMac}
             'ipmi_ip' = ${IpmiIp}
-            'ipmi_admin_username' = ${IpmiAdminUsername}
-            'ipmi_admin_password' = ${IpmiAdminPassword}
-            'ipmi_client_username' = ${IpmiClientUsername}
-            'ipmi_client_password' = ${IpmiClientPassword}
-            'ipmi_updated' = ${IpmiUpdated}
             'ipmi_working' = ${IpmiWorking}
             'company' = ${Company}
             'comments' = ${Comments}
@@ -845,8 +839,6 @@ function ConvertFrom-JsonToServerAsset {
             'external_id' = ${ExternalId}
             'billing_status' = ${BillingStatus}
             'overdue' = ${Overdue}
-            'create_timestamp' = ${CreateTimestamp}
-            'update_timestamp' = ${UpdateTimestamp}
             'asset_id' = ${AssetId}
             'asset_name' = ${AssetName}
             'rack_id' = ${RackId}
@@ -855,11 +847,19 @@ function ConvertFrom-JsonToServerAsset {
             'rack_size' = ${RackSize}
             'rack_x' = ${RackX}
             'rack_y' = ${RackY}
-            'comment' = ${Comment}
             'switchports' = ${Switchports}
             'vlans' = ${Vlans}
             'vlans6' = ${Vlans6}
             'lease' = ${Lease}
+            'mac' = ${Mac}
+            'ipmi_admin_username' = ${IpmiAdminUsername}
+            'ipmi_admin_password' = ${IpmiAdminPassword}
+            'ipmi_client_username' = ${IpmiClientUsername}
+            'ipmi_client_password' = ${IpmiClientPassword}
+            'ipmi_updated' = ${IpmiUpdated}
+            'create_timestamp' = ${CreateTimestamp}
+            'update_timestamp' = ${UpdateTimestamp}
+            'comment' = ${Comment}
         }
 
         return $PSO

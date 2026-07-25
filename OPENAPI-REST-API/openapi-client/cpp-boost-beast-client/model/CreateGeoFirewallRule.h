@@ -49,6 +49,12 @@ public:
     /// CreateGeoFirewallRule members
 
     /// <summary>
+    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
+    /// </summary>
+    int32_t getXdpAction() const;
+    void setXdpAction(int32_t value);
+
+    /// <summary>
     /// 
     /// </summary>
     int32_t getDestinationPort() const;
@@ -66,12 +72,6 @@ public:
     int32_t getAsn() const;
     void setAsn(int32_t value);
 
-    /// <summary>
-    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
-    /// </summary>
-    int32_t getXdpAction() const;
-    void setXdpAction(int32_t value);
-
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -82,13 +82,13 @@ protected:
 
 
 protected:
+    int32_t m_Xdp_action = 0;
     int32_t m_Destination_port = 80;
     bool m_Destination_portIsSet = false;
     int32_t m_Country_code = 0;
     bool m_Country_codeIsSet = false;
     int32_t m_Asn = 0;
     bool m_AsnIsSet = false;
-    int32_t m_Xdp_action = 0;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<CreateGeoFirewallRule>>& data);

@@ -40,9 +40,10 @@ export interface ChargeInvoiceRowsInvoicesValue {
     paid_invoices?: { [key: string]: ChargeInvoiceRowsInvoicesValuePaidInvoicesValue; };
 }
 export namespace ChargeInvoiceRowsInvoicesValue {
-    export type InvoicesPaidEnum = 0 | 1;
+    export type InvoicesPaidEnum = 0 | 1 | 11184809;
     export const InvoicesPaidEnum = {
         NUMBER_0: 0 as InvoicesPaidEnum,
-        NUMBER_1: 1 as InvoicesPaidEnum
+        NUMBER_1: 1 as InvoicesPaidEnum,
+        NUMBER_unknown_default_open_api: 11184809 as InvoicesPaidEnum
     }
 }

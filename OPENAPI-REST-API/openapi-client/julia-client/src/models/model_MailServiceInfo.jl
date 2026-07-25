@@ -6,15 +6,15 @@
 
     MailServiceInfo(;
         mail_id=nothing,
-        mail_username=nothing,
         mail_type=nothing,
         mail_currency=nothing,
         mail_order_date=nothing,
         mail_custid=nothing,
         mail_quota=nothing,
-        mail_ip=nothing,
         mail_status=nothing,
         mail_invoice=nothing,
+        mail_username=nothing,
+        mail_ip=nothing,
         mail_coupon=nothing,
         mail_extra=nothing,
         mail_server_status=nothing,
@@ -22,15 +22,15 @@
     )
 
     - mail_id::String : The ID of the mail service.
-    - mail_username::String : The username associated with the mail service.
     - mail_type::String : The type of mail service.
     - mail_currency::String : The currency of the mail service.
     - mail_order_date::String : The order date of the mail service.
     - mail_custid::String : The customer ID associated with the mail service.
     - mail_quota::String : The mail quota for the service.
-    - mail_ip::String : The IP address associated with the mail service.
     - mail_status::String : The status of the mail service.
     - mail_invoice::String : The invoice ID of the mail service.
+    - mail_username::String : The username associated with the mail service.
+    - mail_ip::String : The IP address associated with the mail service.
     - mail_coupon::String : The coupon associated with the mail service.
     - mail_extra::String : Additional information for the mail service.
     - mail_server_status::String : The server status of the mail service.
@@ -38,28 +38,28 @@
 """
 Base.@kwdef mutable struct MailServiceInfo <: OpenAPI.APIModel
     mail_id::Union{Nothing, String} = nothing
-    mail_username::Union{Nothing, String} = nothing
     mail_type::Union{Nothing, String} = nothing
     mail_currency::Union{Nothing, String} = nothing
     mail_order_date::Union{Nothing, String} = nothing
     mail_custid::Union{Nothing, String} = nothing
     mail_quota::Union{Nothing, String} = nothing
-    mail_ip::Union{Nothing, String} = nothing
     mail_status::Union{Nothing, String} = nothing
     mail_invoice::Union{Nothing, String} = nothing
+    mail_username::Union{Nothing, String} = nothing
+    mail_ip::Union{Nothing, String} = nothing
     mail_coupon::Union{Nothing, String} = nothing
     mail_extra::Union{Nothing, String} = nothing
     mail_server_status::Union{Nothing, String} = nothing
     mail_comment::Union{Nothing, String} = nothing
 
-    function MailServiceInfo(mail_id, mail_username, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_ip, mail_status, mail_invoice, mail_coupon, mail_extra, mail_server_status, mail_comment, )
-        o = new(mail_id, mail_username, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_ip, mail_status, mail_invoice, mail_coupon, mail_extra, mail_server_status, mail_comment, )
+    function MailServiceInfo(mail_id, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_status, mail_invoice, mail_username, mail_ip, mail_coupon, mail_extra, mail_server_status, mail_comment, )
+        o = new(mail_id, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_status, mail_invoice, mail_username, mail_ip, mail_coupon, mail_extra, mail_server_status, mail_comment, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type MailServiceInfo
 
-const _property_types_MailServiceInfo = Dict{Symbol,String}(Symbol("mail_id")=>"String", Symbol("mail_username")=>"String", Symbol("mail_type")=>"String", Symbol("mail_currency")=>"String", Symbol("mail_order_date")=>"String", Symbol("mail_custid")=>"String", Symbol("mail_quota")=>"String", Symbol("mail_ip")=>"String", Symbol("mail_status")=>"String", Symbol("mail_invoice")=>"String", Symbol("mail_coupon")=>"String", Symbol("mail_extra")=>"String", Symbol("mail_server_status")=>"String", Symbol("mail_comment")=>"String", )
+const _property_types_MailServiceInfo = Dict{Symbol,String}(Symbol("mail_id")=>"String", Symbol("mail_type")=>"String", Symbol("mail_currency")=>"String", Symbol("mail_order_date")=>"String", Symbol("mail_custid")=>"String", Symbol("mail_quota")=>"String", Symbol("mail_status")=>"String", Symbol("mail_invoice")=>"String", Symbol("mail_username")=>"String", Symbol("mail_ip")=>"String", Symbol("mail_coupon")=>"String", Symbol("mail_extra")=>"String", Symbol("mail_server_status")=>"String", Symbol("mail_comment")=>"String", )
 OpenAPI.property_type(::Type{ MailServiceInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MailServiceInfo[name]))}
 
 function OpenAPI.check_required(o::MailServiceInfo)
@@ -76,15 +76,15 @@ end
 
 function OpenAPI.validate_properties(o::MailServiceInfo)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_id"), o.mail_id)
-    OpenAPI.validate_property(MailServiceInfo, Symbol("mail_username"), o.mail_username)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_type"), o.mail_type)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_currency"), o.mail_currency)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_order_date"), o.mail_order_date)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_custid"), o.mail_custid)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_quota"), o.mail_quota)
-    OpenAPI.validate_property(MailServiceInfo, Symbol("mail_ip"), o.mail_ip)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_status"), o.mail_status)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_invoice"), o.mail_invoice)
+    OpenAPI.validate_property(MailServiceInfo, Symbol("mail_username"), o.mail_username)
+    OpenAPI.validate_property(MailServiceInfo, Symbol("mail_ip"), o.mail_ip)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_coupon"), o.mail_coupon)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_extra"), o.mail_extra)
     OpenAPI.validate_property(MailServiceInfo, Symbol("mail_server_status"), o.mail_server_status)

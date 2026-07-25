@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProtocolId** | **int32** | 1 &#x3D; TCP, 2 &#x3D; UDP | 
+**XdpAction** | **int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 **DestinationPort** | Pointer to **int32** |  | [optional] [default to 80]
 **SourceIp** | Pointer to **string** | Source IP address to match. Use &#39;0.0.0.0&#39; to match any source. | [optional] [default to "0.0.0.0"]
 **SourcePort** | Pointer to **int32** |  | [optional] [default to 0]
-**ProtocolId** | **int32** | 1 &#x3D; TCP, 2 &#x3D; UDP | 
-**XdpAction** | **int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 
 ## Methods
 
@@ -28,6 +28,46 @@ will change when the set of required properties is changed
 NewCreateFirewallRuleWithDefaults instantiates a new CreateFirewallRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProtocolId
+
+`func (o *CreateFirewallRule) GetProtocolId() int32`
+
+GetProtocolId returns the ProtocolId field if non-nil, zero value otherwise.
+
+### GetProtocolIdOk
+
+`func (o *CreateFirewallRule) GetProtocolIdOk() (*int32, bool)`
+
+GetProtocolIdOk returns a tuple with the ProtocolId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocolId
+
+`func (o *CreateFirewallRule) SetProtocolId(v int32)`
+
+SetProtocolId sets ProtocolId field to given value.
+
+
+### GetXdpAction
+
+`func (o *CreateFirewallRule) GetXdpAction() int32`
+
+GetXdpAction returns the XdpAction field if non-nil, zero value otherwise.
+
+### GetXdpActionOk
+
+`func (o *CreateFirewallRule) GetXdpActionOk() (*int32, bool)`
+
+GetXdpActionOk returns a tuple with the XdpAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetXdpAction
+
+`func (o *CreateFirewallRule) SetXdpAction(v int32)`
+
+SetXdpAction sets XdpAction field to given value.
+
 
 ### GetDestinationPort
 
@@ -103,46 +143,6 @@ SetSourcePort sets SourcePort field to given value.
 `func (o *CreateFirewallRule) HasSourcePort() bool`
 
 HasSourcePort returns a boolean if a field has been set.
-
-### GetProtocolId
-
-`func (o *CreateFirewallRule) GetProtocolId() int32`
-
-GetProtocolId returns the ProtocolId field if non-nil, zero value otherwise.
-
-### GetProtocolIdOk
-
-`func (o *CreateFirewallRule) GetProtocolIdOk() (*int32, bool)`
-
-GetProtocolIdOk returns a tuple with the ProtocolId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProtocolId
-
-`func (o *CreateFirewallRule) SetProtocolId(v int32)`
-
-SetProtocolId sets ProtocolId field to given value.
-
-
-### GetXdpAction
-
-`func (o *CreateFirewallRule) GetXdpAction() int32`
-
-GetXdpAction returns the XdpAction field if non-nil, zero value otherwise.
-
-### GetXdpActionOk
-
-`func (o *CreateFirewallRule) GetXdpActionOk() (*int32, bool)`
-
-GetXdpActionOk returns a tuple with the XdpAction field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetXdpAction
-
-`func (o *CreateFirewallRule) SetXdpAction(v int32)`
-
-SetXdpAction sets XdpAction field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

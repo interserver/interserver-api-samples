@@ -219,13 +219,6 @@ __PACKAGE__->class_documentation({description => 'Response returned after creati
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'ticket_id' => {
-        datatype => 'int',
-        base_name => 'ticket_id',
-        description => '',
-        format => '',
-        read_only => '',
-            },
     'text' => {
         datatype => 'string',
         base_name => 'text',
@@ -240,18 +233,25 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'ticket_id' => {
+        datatype => 'int',
+        base_name => 'ticket_id',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'ticket_id' => 'int',
     'text' => 'string',
-    'success' => 'boolean'
+    'success' => 'boolean',
+    'ticket_id' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'ticket_id' => 'ticket_id',
     'text' => 'text',
-    'success' => 'success'
+    'success' => 'success',
+    'ticket_id' => 'ticket_id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

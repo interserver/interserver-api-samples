@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'CreateGeoFirewallRule' {
     Context 'CreateGeoFirewallRule' {
         It 'Initialize-CreateGeoFirewallRule' {
             # a simple test to create an object
-            #$NewObject = Initialize-CreateGeoFirewallRule -DestinationPort "TEST_VALUE" -CountryCode "TEST_VALUE" -Asn "TEST_VALUE" -XdpAction "TEST_VALUE"
+            #$NewObject = Initialize-CreateGeoFirewallRule -XdpAction "TEST_VALUE" -DestinationPort "TEST_VALUE" -CountryCode "TEST_VALUE" -Asn "TEST_VALUE"
             #$NewObject | Should -BeOfType CreateGeoFirewallRule
             #$NewObject.property | Should -Be 0
         }

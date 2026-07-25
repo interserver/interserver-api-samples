@@ -219,13 +219,6 @@ __PACKAGE__->class_documentation({description => 'The data for a email deny rule
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'user' => {
-        datatype => 'string',
-        base_name => 'user',
-        description => 'Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.',
-        format => '',
-        read_only => '',
-            },
     'type' => {
         datatype => 'string',
         base_name => 'type',
@@ -240,18 +233,25 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'user' => {
+        datatype => 'string',
+        base_name => 'user',
+        description => 'Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'user' => 'string',
     'type' => 'string',
-    'data' => 'string'
+    'data' => 'string',
+    'user' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'user' => 'user',
     'type' => 'type',
-    'data' => 'data'
+    'data' => 'data',
+    'user' => 'user'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

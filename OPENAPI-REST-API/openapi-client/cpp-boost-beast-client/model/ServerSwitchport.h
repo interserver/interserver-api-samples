@@ -92,6 +92,12 @@ public:
     void setGraphId(std::string value);
 
     /// <summary>
+    /// Unique identifier of the asset associated with the switchport.
+    /// </summary>
+    int32_t getAssetId() const;
+    void setAssetId(int32_t value);
+
+    /// <summary>
     /// List of VLANs associated with the switchport.
     /// </summary>
     std::vector<std::string> getVlans() const;
@@ -102,12 +108,6 @@ public:
     /// </summary>
     std::vector<std::string> getVlans6() const;
     void setVlans6(std::vector<std::string> value);
-
-    /// <summary>
-    /// Unique identifier of the asset associated with the switchport.
-    /// </summary>
-    int32_t getAssetId() const;
-    void setAssetId(int32_t value);
 
 protected:
     //////////////////////////////////////
@@ -126,11 +126,11 @@ protected:
     std::string m_Blade = "";
     std::string m_Justport = "";
     std::string m_Graph_id = "";
+    int32_t m_Asset_id = 0;
     std::vector<std::string> m_Vlans;
     bool m_VlansIsSet = false;
     std::vector<std::string> m_Vlans6;
     bool m_Vlans6IsSet = false;
-    int32_t m_Asset_id = 0;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerSwitchport>>& data);

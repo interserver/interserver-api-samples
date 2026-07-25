@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   DomainNameserverGetResponseInner.JSON_PROPERTY_CAN_DELETE
 })
 @JsonTypeName("DomainNameserverGetResponse_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class DomainNameserverGetResponseInner {
     public static final String JSON_PROPERTY_NAME = "name";
@@ -45,7 +45,8 @@ public class DomainNameserverGetResponseInner {
      */
     public enum CanDeleteEnum {
         _0("0"),
-        _1("1");
+        _1("1"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

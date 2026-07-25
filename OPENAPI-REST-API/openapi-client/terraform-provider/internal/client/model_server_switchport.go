@@ -11,7 +11,7 @@ type ServerSwitchport struct {
 	Blade string `json:"blade"`
 	Justport string `json:"justport"`
 	GraphId string `json:"graph_id"`
+	AssetId int32 `json:"asset_id"`
 	Vlans []string `json:"vlans,omitempty"`
 	Vlans6 []string `json:"vlans6,omitempty"`
-	AssetId int32 `json:"asset_id"`
 }

@@ -324,6 +324,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'prefix' => {
+        datatype => 'string',
+        base_name => 'PREFIX',
+        description => '',
+        format => '',
+        read_only => '',
+            },
     'title_field2' => {
         datatype => 'string',
         base_name => 'TITLE_FIELD2',
@@ -334,13 +341,6 @@ __PACKAGE__->method_documentation({
     'title_field3' => {
         datatype => 'string',
         base_name => 'TITLE_FIELD3',
-        description => '',
-        format => '',
-        read_only => '',
-            },
-    'prefix' => {
-        datatype => 'string',
-        base_name => 'PREFIX',
         description => '',
         format => '',
         read_only => '',
@@ -363,9 +363,9 @@ __PACKAGE__->openapi_types( {
     'tblname' => 'string',
     'table' => 'string',
     'title_field' => 'string',
+    'prefix' => 'string',
     'title_field2' => 'string',
-    'title_field3' => 'string',
-    'prefix' => 'string'
+    'title_field3' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -384,9 +384,9 @@ __PACKAGE__->attribute_map( {
     'tblname' => 'TBLNAME',
     'table' => 'TABLE',
     'title_field' => 'TITLE_FIELD',
+    'prefix' => 'PREFIX',
     'title_field2' => 'TITLE_FIELD2',
-    'title_field3' => 'TITLE_FIELD3',
-    'prefix' => 'PREFIX'
+    'title_field3' => 'TITLE_FIELD3'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

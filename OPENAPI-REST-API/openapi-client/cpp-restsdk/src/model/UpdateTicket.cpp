@@ -275,6 +275,10 @@ UpdateTicket::Customer_server_accessEnum UpdateTicket::toCustomer_server_accessE
         return Customer_server_accessEnum::N;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Customer_server_accessEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Customer_server_accessEnum");
 }
 
@@ -287,6 +291,8 @@ const utility::string_t UpdateTicket::fromCustomer_server_accessEnum(const Custo
         case Customer_server_accessEnum::Y: return utility::conversions::to_string_t("y");
         
         case Customer_server_accessEnum::N: return utility::conversions::to_string_t("n");
+        
+        case Customer_server_accessEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

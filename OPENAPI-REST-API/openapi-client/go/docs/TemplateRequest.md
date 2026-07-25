@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Template** | **string** | OS Template Filename | 
-**Password** | Pointer to **string** | Password for Root / Administrator Account. | [optional] 
 **LocalPassword** | **string** | Password for this account. | 
+**Password** | Pointer to **string** | Password for Root / Administrator Account. | [optional] 
 
 ## Methods
 
@@ -47,6 +47,26 @@ and a boolean to check if the value has been set.
 SetTemplate sets Template field to given value.
 
 
+### GetLocalPassword
+
+`func (o *TemplateRequest) GetLocalPassword() string`
+
+GetLocalPassword returns the LocalPassword field if non-nil, zero value otherwise.
+
+### GetLocalPasswordOk
+
+`func (o *TemplateRequest) GetLocalPasswordOk() (*string, bool)`
+
+GetLocalPasswordOk returns a tuple with the LocalPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocalPassword
+
+`func (o *TemplateRequest) SetLocalPassword(v string)`
+
+SetLocalPassword sets LocalPassword field to given value.
+
+
 ### GetPassword
 
 `func (o *TemplateRequest) GetPassword() string`
@@ -71,26 +91,6 @@ SetPassword sets Password field to given value.
 `func (o *TemplateRequest) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
-### GetLocalPassword
-
-`func (o *TemplateRequest) GetLocalPassword() string`
-
-GetLocalPassword returns the LocalPassword field if non-nil, zero value otherwise.
-
-### GetLocalPasswordOk
-
-`func (o *TemplateRequest) GetLocalPasswordOk() (*string, bool)`
-
-GetLocalPasswordOk returns a tuple with the LocalPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocalPassword
-
-`func (o *TemplateRequest) SetLocalPassword(v string)`
-
-SetLocalPassword sets LocalPassword field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

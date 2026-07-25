@@ -33,13 +33,9 @@ feature --Access
       
     package: detachable STRING_32
       
-    os_template: detachable STRING_32
-      
     service_extra: detachable VPS_SERVICE_EXTRA
       
     extra_info_tables: detachable VPS_EXTRA_INFO_TABLES
-      
-    cpu_graph_data: detachable ANY
       
     module: detachable STRING_32
       
@@ -56,6 +52,10 @@ feature --Access
     plesk12_data: detachable VPS_PLESK12_DATA
       
     service_addons: detachable VPS_SERVICE_ADDONS
+      
+    os_template: detachable STRING_32
+      
+    cpu_graph_data: detachable ANY
       
 
 feature -- Change Element
@@ -116,14 +116,6 @@ feature -- Change Element
         package_set: package = a_name
       end
 
-    set_os_template (a_name: like os_template)
-        -- Set 'os_template' with 'a_name'.
-      do
-        os_template := a_name
-      ensure
-        os_template_set: os_template = a_name
-      end
-
     set_service_extra (a_name: like service_extra)
         -- Set 'service_extra' with 'a_name'.
       do
@@ -138,14 +130,6 @@ feature -- Change Element
         extra_info_tables := a_name
       ensure
         extra_info_tables_set: extra_info_tables = a_name
-      end
-
-    set_cpu_graph_data (a_name: like cpu_graph_data)
-        -- Set 'cpu_graph_data' with 'a_name'.
-      do
-        cpu_graph_data := a_name
-      ensure
-        cpu_graph_data_set: cpu_graph_data = a_name
       end
 
     set_module (a_name: like module)
@@ -212,6 +196,22 @@ feature -- Change Element
         service_addons_set: service_addons = a_name
       end
 
+    set_os_template (a_name: like os_template)
+        -- Set 'os_template' with 'a_name'.
+      do
+        os_template := a_name
+      ensure
+        os_template_set: os_template = a_name
+      end
+
+    set_cpu_graph_data (a_name: like cpu_graph_data)
+        -- Set 'cpu_graph_data' with 'a_name'.
+      do
+        cpu_graph_data := a_name
+      ensure
+        cpu_graph_data_set: cpu_graph_data = a_name
+      end
+
 
  feature -- Status Report
 
@@ -257,11 +257,6 @@ feature -- Change Element
           Result.append (l_package.out)
           Result.append ("%N")
         end
-        if attached os_template as l_os_template then
-          Result.append ("%Nos_template:")
-          Result.append (l_os_template.out)
-          Result.append ("%N")
-        end
         if attached service_extra as l_service_extra then
           Result.append ("%Nservice_extra:")
           Result.append (l_service_extra.out)
@@ -270,11 +265,6 @@ feature -- Change Element
         if attached extra_info_tables as l_extra_info_tables then
           Result.append ("%Nextra_info_tables:")
           Result.append (l_extra_info_tables.out)
-          Result.append ("%N")
-        end
-        if attached cpu_graph_data as l_cpu_graph_data then
-          Result.append ("%Ncpu_graph_data:")
-          Result.append (l_cpu_graph_data.out)
           Result.append ("%N")
         end
         if attached module as l_module then
@@ -315,6 +305,16 @@ feature -- Change Element
         if attached service_addons as l_service_addons then
           Result.append ("%Nservice_addons:")
           Result.append (l_service_addons.out)
+          Result.append ("%N")
+        end
+        if attached os_template as l_os_template then
+          Result.append ("%Nos_template:")
+          Result.append (l_os_template.out)
+          Result.append ("%N")
+        end
+        if attached cpu_graph_data as l_cpu_graph_data then
+          Result.append ("%Ncpu_graph_data:")
+          Result.append (l_cpu_graph_data.out)
           Result.append ("%N")
         end
       end

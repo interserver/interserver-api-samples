@@ -90,6 +90,8 @@ inline FString ToString(const OpenAPIQuickServersApi::DeleteQsBackupRequest::All
 		return TEXT("0");
 	case OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum Value (%d)"), (int)Value);
@@ -105,7 +107,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIQuickServersApi::Dele
 {
 	static TMap<FString, OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIQuickServersApi::DeleteQsBackupRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -494,6 +497,8 @@ inline FString ToString(const OpenAPIQuickServersApi::DownloadQsBackupRequest::A
 		return TEXT("0");
 	case OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum Value (%d)"), (int)Value);
@@ -509,7 +514,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIQuickServersApi::Down
 {
 	static TMap<FString, OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIQuickServersApi::DownloadQsBackupRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -690,6 +696,8 @@ inline FString ToString(const OpenAPIQuickServersApi::GetQsBackupsRequest::AllEn
 		return TEXT("0");
 	case OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum Value (%d)"), (int)Value);
@@ -705,7 +713,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIQuickServersApi::GetQ
 {
 	static TMap<FString, OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIQuickServersApi::GetQsBackupsRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

@@ -34,12 +34,6 @@
 /* SMTP envelope `RCPT TO` address. 
  */
 @property(nonatomic) NSString* to;
-/* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. [optional]
- */
-@property(nonatomic) NSString* subject;
-/* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. [optional]
- */
-@property(nonatomic) NSString* messageId;
 /* Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. 
  */
 @property(nonatomic) NSString* created;
@@ -58,6 +52,12 @@
 /* Relay interface name that accepted the message. 
  */
 @property(nonatomic) NSString* _interface;
+/* The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. [optional]
+ */
+@property(nonatomic) NSString* subject;
+/* The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. [optional]
+ */
+@property(nonatomic) NSString* messageId;
 /* The sending zone assigned by the relay for outbound delivery. [optional]
  */
 @property(nonatomic) NSString* sendingZone;

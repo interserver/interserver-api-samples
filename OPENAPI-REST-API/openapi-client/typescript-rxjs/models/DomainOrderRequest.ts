@@ -50,7 +50,8 @@ export interface DomainOrderRequest {
  */
 export enum DomainOrderRequestTypeEnum {
     Register = 'register',
-    Transfer = 'transfer'
+    Transfer = 'transfer',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -58,6 +59,7 @@ export enum DomainOrderRequestTypeEnum {
  */
 export enum DomainOrderRequestWhoisPrivacyEnum {
     Enable = 'enable',
-    Disable = 'disable'
+    Disable = 'disable',
+    UnknownDefaultOpenApi = '11184809'
 }
 

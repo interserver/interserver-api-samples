@@ -7,12 +7,12 @@ type VpsOrderPostRequest struct {
 	OsDistro string `json:"osDistro"`
 	Slices int32 `json:"slices"`
 	VpsPlatform string `json:"vpsPlatform"`
-	Controlpanel string `json:"controlpanel,omitempty"`
 	Period int32 `json:"period"`
 	Location int32 `json:"location"`
 	OsVersion string `json:"osVersion"`
 	Hostname string `json:"hostname"`
-	Coupon string `json:"coupon,omitempty"`
 	Rootpass string `json:"rootpass"`
+	Controlpanel string `json:"controlpanel,omitempty"`
+	Coupon string `json:"coupon,omitempty"`
 	Comment string `json:"comment,omitempty"`
 }

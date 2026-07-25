@@ -17,8 +17,6 @@ No description available.
 
 .PARAMETER MailId
 The ID of the mail service.
-.PARAMETER MailUsername
-The username associated with the mail service.
 .PARAMETER MailType
 The type of mail service.
 .PARAMETER MailCurrency
@@ -29,12 +27,14 @@ The order date of the mail service.
 The customer ID associated with the mail service.
 .PARAMETER MailQuota
 The mail quota for the service.
-.PARAMETER MailIp
-The IP address associated with the mail service.
 .PARAMETER MailStatus
 The status of the mail service.
 .PARAMETER MailInvoice
 The invoice ID of the mail service.
+.PARAMETER MailUsername
+The username associated with the mail service.
+.PARAMETER MailIp
+The IP address associated with the mail service.
 .PARAMETER MailCoupon
 The coupon associated with the mail service.
 .PARAMETER MailExtra
@@ -56,31 +56,31 @@ function Initialize-MailServiceInfo {
         ${MailId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailUsername},
+        ${MailType},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailType},
+        ${MailCurrency},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailCurrency},
+        ${MailOrderDate},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailOrderDate},
+        ${MailCustid},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailCustid},
+        ${MailQuota},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailQuota},
+        ${MailStatus},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailIp},
+        ${MailInvoice},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailStatus},
+        ${MailUsername},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${MailInvoice},
+        ${MailIp},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${MailCoupon},
@@ -134,15 +134,15 @@ function Initialize-MailServiceInfo {
 
         $PSO = [PSCustomObject]@{
             'mail_id' = ${MailId}
-            'mail_username' = ${MailUsername}
             'mail_type' = ${MailType}
             'mail_currency' = ${MailCurrency}
             'mail_order_date' = ${MailOrderDate}
             'mail_custid' = ${MailCustid}
             'mail_quota' = ${MailQuota}
-            'mail_ip' = ${MailIp}
             'mail_status' = ${MailStatus}
             'mail_invoice' = ${MailInvoice}
+            'mail_username' = ${MailUsername}
+            'mail_ip' = ${MailIp}
             'mail_coupon' = ${MailCoupon}
             'mail_extra' = ${MailExtra}
             'mail_server_status' = ${MailServerStatus}
@@ -184,7 +184,7 @@ function ConvertFrom-JsonToMailServiceInfo {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in MailServiceInfo
-        $AllProperties = ('mail_id', 'mail_username', 'mail_type', 'mail_currency', 'mail_order_date', 'mail_custid', 'mail_quota', 'mail_ip', 'mail_status', 'mail_invoice', 'mail_coupon', 'mail_extra', 'mail_server_status', 'mail_comment')
+        $AllProperties = ('mail_id', 'mail_type', 'mail_currency', 'mail_order_date', 'mail_custid', 'mail_quota', 'mail_status', 'mail_invoice', 'mail_username', 'mail_ip', 'mail_coupon', 'mail_extra', 'mail_server_status', 'mail_comment')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -281,15 +281,15 @@ function ConvertFrom-JsonToMailServiceInfo {
 
         $PSO = [PSCustomObject]@{
             'mail_id' = ${MailId}
-            'mail_username' = ${MailUsername}
             'mail_type' = ${MailType}
             'mail_currency' = ${MailCurrency}
             'mail_order_date' = ${MailOrderDate}
             'mail_custid' = ${MailCustid}
             'mail_quota' = ${MailQuota}
-            'mail_ip' = ${MailIp}
             'mail_status' = ${MailStatus}
             'mail_invoice' = ${MailInvoice}
+            'mail_username' = ${MailUsername}
+            'mail_ip' = ${MailIp}
             'mail_coupon' = ${MailCoupon}
             'mail_extra' = ${MailExtra}
             'mail_server_status' = ${MailServerStatus}

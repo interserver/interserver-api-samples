@@ -1,8 +1,8 @@
-# openapi.model.QuickserverOrderDistroSel
+# interserver_api.model.QuickserverOrderDistroSel
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

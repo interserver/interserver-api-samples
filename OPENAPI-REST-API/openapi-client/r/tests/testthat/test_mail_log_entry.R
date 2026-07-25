@@ -37,22 +37,6 @@ test_that("to", {
   #expect_equal(model.instance$`to`, "EXPECTED_RESULT")
 })
 
-test_that("subject", {
-  # tests for the property `subject` (character)
-  # The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`subject`, "EXPECTED_RESULT")
-})
-
-test_that("messageId", {
-  # tests for the property `messageId` (character)
-  # The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`messageId`, "EXPECTED_RESULT")
-})
-
 test_that("created", {
   # tests for the property `created` (character)
   # Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
@@ -99,6 +83,22 @@ test_that("interface", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`interface`, "EXPECTED_RESULT")
+})
+
+test_that("subject", {
+  # tests for the property `subject` (character)
+  # The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`subject`, "EXPECTED_RESULT")
+})
+
+test_that("messageId", {
+  # tests for the property `messageId` (character)
+  # The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`messageId`, "EXPECTED_RESULT")
 })
 
 test_that("sendingZone", {

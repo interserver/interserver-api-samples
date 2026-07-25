@@ -24,9 +24,9 @@
   | {'TBLNAME', binary() }
   | {'TABLE', binary() }
   | {'TITLE_FIELD', binary() }
+  | {'PREFIX', binary() }
   | {'TITLE_FIELD2', binary() }
   | {'TITLE_FIELD3', binary() }
-  | {'PREFIX', binary() }
   ].
 
 
@@ -49,9 +49,9 @@ openapi_module_settings(Fields) ->
             , {'TBLNAME', binary() }
             , {'TABLE', binary() }
             , {'TITLE_FIELD', binary() }
+            , {'PREFIX', binary() }
             , {'TITLE_FIELD2', binary() }
             , {'TITLE_FIELD3', binary() }
-            , {'PREFIX', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

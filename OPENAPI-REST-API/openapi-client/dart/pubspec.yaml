@@ -2,10 +2,11 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'openapi'
+name: 'interserver_api'
 version: '1.0.0'
-description: 'OpenAPI API client'
-homepage: 'homepage'
+description: 'Interserver API client generated from OpenAPI spec'
+homepage: 'https://interserver.net'
+repository: https://github.com/interserver/interserver-api-samples
 environment:
   sdk: '>=2.17.0 <4.0.0'
 dependencies:

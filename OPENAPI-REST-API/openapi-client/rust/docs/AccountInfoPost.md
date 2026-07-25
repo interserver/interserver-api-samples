@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Your name. | 
-**company** | Option<**String**> | Your company name. | [optional]
 **address** | **String** | Your address. | 
-**address2** | Option<**String**> | Additional address information. | [optional]
 **city** | **String** | Your city. | 
 **state** | **String** | Your state. | 
 **zip** | **String** | Your ZIP code. | 
 **country** | **String** | Your country. | 
 **phone** | **String** | Your phone number. | 
+**company** | Option<**String**> | Your company name. | [optional]
+**address2** | Option<**String**> | Additional address information. | [optional]
 **locale** | Option<**String**> | Your preferred locale. | [optional]
 **email_invoices** | Option<**String**> | Your email for invoice notifications. | [optional]
 **email_abuse** | Option<**String**> | Your email for abuse notifications. | [optional]

@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'LoginInfo' {
     Context 'LoginInfo' {
         It 'Initialize-LoginInfo' {
             # a simple test to create an object
-            #$NewObject = Initialize-LoginInfo -Logo "TEST_VALUE" -Captcha "TEST_VALUE" -Language "TEST_VALUE" -Counts "TEST_VALUE"
+            #$NewObject = Initialize-LoginInfo -Captcha "TEST_VALUE" -Counts "TEST_VALUE" -Logo "TEST_VALUE" -Language "TEST_VALUE"
             #$NewObject | Should -BeOfType LoginInfo
             #$NewObject.property | Should -Be 0
         }

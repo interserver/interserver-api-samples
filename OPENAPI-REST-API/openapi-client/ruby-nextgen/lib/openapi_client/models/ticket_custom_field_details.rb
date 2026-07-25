@@ -16,7 +16,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'Customer Server Access',
         required: false,
-        enum: ['y', 'n']
+        enum: ['y', 'n', 'unknown_default_open_api']
 
       attribute :ip_address,
         type: 'String',

@@ -43,10 +43,6 @@ class MailLogEntry : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, to);
 
-  DTO_FIELD(oatpp::String, subject);
-  DTO_FIELD(oatpp::Boolean, subjectIsSet);
-  DTO_FIELD(oatpp::String, messageId);
-  DTO_FIELD(oatpp::Boolean, messageIdIsSet);
   DTO_FIELD(oatpp::String, created);
 
   DTO_FIELD(oatpp::Int32, time);
@@ -59,6 +55,10 @@ class MailLogEntry : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, interface);
 
+  DTO_FIELD(oatpp::String, subject);
+  DTO_FIELD(oatpp::Boolean, subjectIsSet);
+  DTO_FIELD(oatpp::String, messageId);
+  DTO_FIELD(oatpp::Boolean, messageIdIsSet);
   DTO_FIELD(oatpp::String, sendingZone);
   DTO_FIELD(oatpp::Boolean, sendingZoneIsSet);
   DTO_FIELD(oatpp::Int32, bodySize);

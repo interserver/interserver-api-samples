@@ -10,8 +10,8 @@
 
 -type openapi_template_request() ::
   [ {'template', binary() }
-  | {'password', binary() }
   | {'localPassword', binary() }
+  | {'password', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_template_request() ->
 
 openapi_template_request(Fields) ->
   Default = [ {'template', binary() }
-            , {'password', binary(6) }
             , {'localPassword', binary() }
+            , {'password', binary(6) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

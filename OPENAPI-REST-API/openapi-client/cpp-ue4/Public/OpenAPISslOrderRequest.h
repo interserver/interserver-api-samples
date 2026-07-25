@@ -43,6 +43,7 @@ public:
 	{
 		Generated,
 		Provided,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const CsrTypeEnum& EnumValue);

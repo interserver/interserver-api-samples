@@ -27,10 +27,10 @@ LicenseClientLink::LicenseClientLink()
     m_LinkIsSet = false;
     m_Icon = utility::conversions::to_string_t("");
     m_IconIsSet = false;
-    m_Icon_text = utility::conversions::to_string_t("");
-    m_Icon_textIsSet = false;
     m_Help_text = utility::conversions::to_string_t("");
     m_Help_textIsSet = false;
+    m_Icon_text = utility::conversions::to_string_t("");
+    m_Icon_textIsSet = false;
     m_Other_attr = utility::conversions::to_string_t("");
     m_Other_attrIsSet = false;
 }
@@ -62,15 +62,15 @@ web::json::value LicenseClientLink::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("icon"))] = ModelBase::toJson(m_Icon);
     }
-    if(m_Icon_textIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("icon_text"))] = ModelBase::toJson(m_Icon_text);
-    }
     if(m_Help_textIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("help_text"))] = ModelBase::toJson(m_Help_text);
+    }
+    if(m_Icon_textIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("icon_text"))] = ModelBase::toJson(m_Icon_text);
     }
     if(m_Other_attrIsSet)
     {
@@ -117,17 +117,6 @@ bool LicenseClientLink::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("icon_text"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("icon_text")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIconText;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIconText);
-            setIconText(refVal_setIconText);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("help_text"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("help_text")));
@@ -136,6 +125,17 @@ bool LicenseClientLink::fromJson(const web::json::value& val)
             utility::string_t refVal_setHelpText;
             ok &= ModelBase::fromJson(fieldValue, refVal_setHelpText);
             setHelpText(refVal_setHelpText);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("icon_text"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("icon_text")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIconText;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIconText);
+            setIconText(refVal_setIconText);
             
         }
     }
@@ -172,13 +172,13 @@ void LicenseClientLink::toMultipart(std::shared_ptr<MultipartFormData> multipart
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("icon")), m_Icon));
     }
-    if(m_Icon_textIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("icon_text")), m_Icon_text));
-    }
     if(m_Help_textIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("help_text")), m_Help_text));
+    }
+    if(m_Icon_textIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("icon_text")), m_Icon_text));
     }
     if(m_Other_attrIsSet)
     {
@@ -213,17 +213,17 @@ bool LicenseClientLink::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("icon"))), refVal_setIcon );
         setIcon(refVal_setIcon);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("icon_text"))))
-    {
-        utility::string_t refVal_setIconText;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("icon_text"))), refVal_setIconText );
-        setIconText(refVal_setIconText);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("help_text"))))
     {
         utility::string_t refVal_setHelpText;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("help_text"))), refVal_setHelpText );
         setHelpText(refVal_setHelpText);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("icon_text"))))
+    {
+        utility::string_t refVal_setIconText;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("icon_text"))), refVal_setIconText );
+        setIconText(refVal_setIconText);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("other_attr"))))
     {
@@ -298,27 +298,6 @@ void LicenseClientLink::unsetIcon()
 {
     m_IconIsSet = false;
 }
-utility::string_t LicenseClientLink::getIconText() const
-{
-    return m_Icon_text;
-}
-
-
-void LicenseClientLink::setIconText(const utility::string_t& value)
-{
-    m_Icon_text = value;
-    m_Icon_textIsSet = true;
-}
-
-bool LicenseClientLink::iconTextIsSet() const
-{
-    return m_Icon_textIsSet;
-}
-
-void LicenseClientLink::unsetIcon_text()
-{
-    m_Icon_textIsSet = false;
-}
 utility::string_t LicenseClientLink::getHelpText() const
 {
     return m_Help_text;
@@ -339,6 +318,27 @@ bool LicenseClientLink::helpTextIsSet() const
 void LicenseClientLink::unsetHelp_text()
 {
     m_Help_textIsSet = false;
+}
+utility::string_t LicenseClientLink::getIconText() const
+{
+    return m_Icon_text;
+}
+
+
+void LicenseClientLink::setIconText(const utility::string_t& value)
+{
+    m_Icon_text = value;
+    m_Icon_textIsSet = true;
+}
+
+bool LicenseClientLink::iconTextIsSet() const
+{
+    return m_Icon_textIsSet;
+}
+
+void LicenseClientLink::unsetIcon_text()
+{
+    m_Icon_textIsSet = false;
 }
 utility::string_t LicenseClientLink::getOtherAttr() const
 {

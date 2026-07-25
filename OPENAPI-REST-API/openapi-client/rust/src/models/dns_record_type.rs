@@ -113,6 +113,8 @@ pub enum DnsRecordType {
     Wks,
     #[serde(rename = "URI⏎")]
     Uri,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 
 }
 
@@ -168,6 +170,7 @@ impl std::fmt::Display for DnsRecordType {
             Self::Txt => write!(f, "TXT"),
             Self::Wks => write!(f, "WKS"),
             Self::Uri => write!(f, "URI⏎"),
+            Self::UnknownDefaultOpenApi => write!(f, "unknown_default_open_api"),
         }
     }
 }

@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   LicensesOrderServiceCategories509.JSON_PROPERTY_CATEGORY_MODULE
 })
 @JsonTypeName("LicensesOrderServiceCategories509")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class LicensesOrderServiceCategories509 {
     public static final String JSON_PROPERTY_CATEGORY_ID = "category_id";

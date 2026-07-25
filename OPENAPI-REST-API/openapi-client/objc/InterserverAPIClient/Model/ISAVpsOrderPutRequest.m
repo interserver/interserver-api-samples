@@ -23,7 +23,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"osDistro": @"osDistro", @"slices": @"slices", @"vpsPlatform": @"vpsPlatform", @"controlpanel": @"controlpanel", @"period": @"period", @"location": @"location", @"osVersion": @"osVersion", @"hostname": @"hostname", @"coupon": @"coupon", @"rootpass": @"rootpass", @"comment": @"comment" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"osDistro": @"osDistro", @"slices": @"slices", @"vpsPlatform": @"vpsPlatform", @"period": @"period", @"location": @"location", @"osVersion": @"osVersion", @"hostname": @"hostname", @"rootpass": @"rootpass", @"controlpanel": @"controlpanel", @"coupon": @"coupon", @"comment": @"comment" }];
 }
 
 /**

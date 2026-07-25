@@ -86,6 +86,18 @@ public:
     void setServicesType(std::string value);
 
     /// <summary>
+    /// The module of the package.
+    /// </summary>
+    std::string getServicesModule() const;
+    void setServicesModule(std::string value);
+
+    /// <summary>
+    /// Description of the package.
+    /// </summary>
+    std::string getServicesDescription() const;
+    void setServicesDescription(std::string value);
+
+    /// <summary>
     /// Additional field 1 for the package.
     /// </summary>
     std::string getServicesField1() const;
@@ -98,22 +110,10 @@ public:
     void setServicesField2(std::string value);
 
     /// <summary>
-    /// The module of the package.
-    /// </summary>
-    std::string getServicesModule() const;
-    void setServicesModule(std::string value);
-
-    /// <summary>
     /// HTML content for the package.
     /// </summary>
     std::string getServicesHtml() const;
     void setServicesHtml(std::string value);
-
-    /// <summary>
-    /// Description of the package.
-    /// </summary>
-    std::string getServicesDescription() const;
-    void setServicesDescription(std::string value);
 
     /// <summary>
     /// URL for more information about the package.
@@ -143,14 +143,14 @@ protected:
     std::string m_Services_category = "";
     std::string m_Services_buyable = "";
     std::string m_Services_type = "";
+    std::string m_Services_module = "";
+    std::string m_Services_description = "";
     std::string m_Services_field1 = "";
     bool m_Services_field1IsSet = false;
     std::string m_Services_field2 = "";
     bool m_Services_field2IsSet = false;
-    std::string m_Services_module = "";
     std::string m_Services_html = "";
     bool m_Services_htmlIsSet = false;
-    std::string m_Services_description = "";
     std::string m_Services_moreinfo_url = "";
     bool m_Services_moreinfo_urlIsSet = false;
     std::string m_Services_hidden = "";

@@ -113,6 +113,14 @@ public:
     void setGraphId(const utility::string_t& value);
 
     /// <summary>
+    /// Unique identifier of the asset associated with the switchport.
+    /// </summary>
+    int32_t getAssetId() const;
+    bool assetIdIsSet() const;
+    void unsetAsset_id();
+    void setAssetId(int32_t value);
+
+    /// <summary>
     /// List of VLANs associated with the switchport.
     /// </summary>
     std::vector<utility::string_t> getVlans() const;
@@ -127,14 +135,6 @@ public:
     bool vlans6IsSet() const;
     void unsetVlans6();
     void setVlans6(const std::vector<utility::string_t>& value);
-
-    /// <summary>
-    /// Unique identifier of the asset associated with the switchport.
-    /// </summary>
-    int32_t getAssetId() const;
-    bool assetIdIsSet() const;
-    void unsetAsset_id();
-    void setAssetId(int32_t value);
 
 
 protected:
@@ -159,14 +159,14 @@ protected:
     utility::string_t m_Graph_id;
     bool m_Graph_idIsSet;
 
+    int32_t m_Asset_id;
+    bool m_Asset_idIsSet;
+
     std::vector<utility::string_t> m_Vlans;
     bool m_VlansIsSet;
 
     std::vector<utility::string_t> m_Vlans6;
     bool m_Vlans6IsSet;
-
-    int32_t m_Asset_id;
-    bool m_Asset_idIsSet;
 
 };
 

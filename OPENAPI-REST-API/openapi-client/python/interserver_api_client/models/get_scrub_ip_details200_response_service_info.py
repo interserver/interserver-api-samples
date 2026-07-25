@@ -48,8 +48,8 @@ class GetScrubIpDetails200ResponseServiceInfo(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['active', 'pending', 'canceled', 'expired']):
-            raise ValueError("must be one of enum values ('active', 'pending', 'canceled', 'expired')")
+        if value not in set(['active', 'pending', 'canceled', 'expired', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('active', 'pending', 'canceled', 'expired', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

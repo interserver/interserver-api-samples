@@ -42,7 +42,7 @@ import javax.annotation.Generated;
   ChargeInvoiceRowsInvoicesValue.JSON_PROPERTY_PAID_INVOICES
 })
 @JsonTypeName("ChargeInvoiceRows_invoices_value")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class ChargeInvoiceRowsInvoicesValue {
     public static final String JSON_PROPERTY_INVOICES_ID = "invoices_id";
@@ -62,7 +62,8 @@ public class ChargeInvoiceRowsInvoicesValue {
      */
     public enum InvoicesPaidEnum {
         NUMBER_0(new BigDecimal("0")),
-        NUMBER_1(new BigDecimal("1"));
+        NUMBER_1(new BigDecimal("1")),
+        NUMBER_unknown_default_open_api(new BigDecimal("11184809"));
 
         private BigDecimal value;
 

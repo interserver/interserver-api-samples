@@ -1,8 +1,8 @@
-# openapi.api.AccountApi
+# interserver_api.api.AccountApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 All URIs are relative to *https://my.interserver.net/apiv2*
@@ -36,7 +36,7 @@ DESTRUCTIVE: removes the linked provider's tokens from `accounts_ext` (rows wher
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -91,7 +91,7 @@ DESTRUCTIVE: removes the 2FA secret from `account_security` and clears the in-se
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -142,7 +142,7 @@ DESTRUCTIVE: deletes the matching `{start, end}` entry from `accounts.session_li
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -197,7 +197,7 @@ Use to render the account-settings page or to verify current state before mutati
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -248,7 +248,7 @@ Use as step 1 of 2FA enrollment. The 160-bit secret is generated on first call a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -299,7 +299,7 @@ Use to render the post-login client portal home/dashboard. No body, no params. R
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -350,7 +350,7 @@ Use to power the global search box in the client portal — typeahead across ser
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -401,7 +401,7 @@ DESTRUCTIVE: invalidates the caller's session record and appsession bag. After t
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -452,7 +452,7 @@ Soft de-authorization for a linked OAuth provider — terminates only the upstre
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -507,7 +507,7 @@ DESTRUCTIVE: generates a new 128-character random API key and overwrites the exi
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -558,7 +558,7 @@ Updates account-level feature flags that gate destructive service operations acr
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -615,7 +615,7 @@ Use to change the customer's name, company, mailing address, phone, GSTIN, local
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -702,7 +702,7 @@ DESTRUCTIVE / LOCKOUT-RISK: appends an IP range to `accounts.session_limit`. Onc
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -759,7 +759,7 @@ DESTRUCTIVE: changes the account login password and invalidates all OTHER active
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -814,7 +814,7 @@ Stores or replaces the SSH public key on `account_security` (type `ssh_key`, lab
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -869,7 +869,7 @@ Use as step 2 of 2FA enrollment, after `getAccountTfaSetup`. Body: `{2fa_google_
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

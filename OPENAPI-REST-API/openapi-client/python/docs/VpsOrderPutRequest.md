@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **os_distro** | **str** | OS Distribution | 
 **slices** | **int** | Number of slices | [default to 1]
 **vps_platform** | **str** | VPS Platform | 
-**controlpanel** | **str** | Control Panel | [optional] 
 **period** | **int** | Billing Period or Frequency | [default to 1]
 **location** | **int** | Location | [default to 1]
 **os_version** | **str** | OS Version | 
 **hostname** | **str** | The hostname to assign to the VPS | [default to '']
-**coupon** | **str** | Coupon | [optional] [default to '']
 **rootpass** | **str** | Root password to assign to the VVPS | 
+**controlpanel** | **str** | Control Panel | [optional] 
+**coupon** | **str** | Coupon | [optional] [default to '']
 **comment** | **str** | Order comments or notes | [optional] [default to '']
 
 ## Example

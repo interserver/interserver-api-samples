@@ -5,6 +5,6 @@ package client
 // TemplateRequest - VPS OS Template Request
 type TemplateRequest struct {
 	Template string `json:"template"`
-	Password string `json:"password,omitempty"`
 	LocalPassword string `json:"localPassword"`
+	Password string `json:"password,omitempty"`
 }

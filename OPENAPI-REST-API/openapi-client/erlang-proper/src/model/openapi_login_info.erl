@@ -9,10 +9,10 @@
 -export_type([openapi_login_info/0]).
 
 -type openapi_login_info() ::
-  [ {'logo', binary() }
-  | {'captcha', binary() }
-  | {'language', binary() }
+  [ {'captcha', binary() }
   | {'counts', openapi_login_service_counts:openapi_login_service_counts() }
+  | {'logo', binary() }
+  | {'language', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_login_info() ->
     openapi_login_info([]).
 
 openapi_login_info(Fields) ->
-  Default = [ {'logo', binary() }
-            , {'captcha', binary() }
-            , {'language', binary() }
+  Default = [ {'captcha', binary() }
             , {'counts', openapi_login_service_counts:openapi_login_service_counts() }
+            , {'logo', binary() }
+            , {'language', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

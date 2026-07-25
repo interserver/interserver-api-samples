@@ -58,6 +58,20 @@ describe("websites_order_packages_info", function()
     end)
   end)
 
+  -- unit tests for the property 'services_module'
+  describe("property services_module test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'services_description'
+  describe("property services_description test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'services_field1'
   describe("property services_field1 test", function()
     it("should work", function()
@@ -72,22 +86,8 @@ describe("websites_order_packages_info", function()
     end)
   end)
 
-  -- unit tests for the property 'services_module'
-  describe("property services_module test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'services_html'
   describe("property services_html test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'services_description'
-  describe("property services_description test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

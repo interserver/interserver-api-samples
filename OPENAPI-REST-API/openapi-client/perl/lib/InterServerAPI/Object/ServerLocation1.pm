@@ -233,13 +233,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'location_description' => {
-        datatype => 'string',
-        base_name => 'location_description',
-        description => '',
-        format => '',
-        read_only => '',
-            },
     'location_lat' => {
         datatype => 'string',
         base_name => 'location_lat',
@@ -250,6 +243,13 @@ __PACKAGE__->method_documentation({
     'location_long' => {
         datatype => 'string',
         base_name => 'location_long',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'location_description' => {
+        datatype => 'string',
+        base_name => 'location_description',
         description => '',
         format => '',
         read_only => '',
@@ -266,18 +266,18 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'location_id' => 'int',
     'location_name' => 'string',
-    'location_description' => 'string',
     'location_lat' => 'string',
     'location_long' => 'string',
+    'location_description' => 'string',
     'location_ipmi_group' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
     'location_id' => 'location_id',
     'location_name' => 'location_name',
-    'location_description' => 'location_description',
     'location_lat' => 'location_lat',
     'location_long' => 'location_long',
+    'location_description' => 'location_description',
     'location_ipmi_group' => 'location_ipmi_group'
 } );
 

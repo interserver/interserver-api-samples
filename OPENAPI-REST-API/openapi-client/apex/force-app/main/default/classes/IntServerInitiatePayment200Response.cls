@@ -20,7 +20,8 @@ public class IntServerInitiatePayment200Response {
     public enum TypeEnum {
         REDIRECT,
         SUBMIT,
-        SINGLE
+        SINGLE,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

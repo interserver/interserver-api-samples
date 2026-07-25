@@ -25,10 +25,10 @@ QsOrderRequest::QsOrderRequest()
     m_ServerIsSet = false;
     m_Password = utility::conversions::to_string_t("");
     m_PasswordIsSet = false;
-    m_Os = utility::conversions::to_string_t("");
-    m_OsIsSet = false;
     m_Tos = false;
     m_TosIsSet = false;
+    m_Os = utility::conversions::to_string_t("");
+    m_OsIsSet = false;
     m_Comment = utility::conversions::to_string_t("");
     m_CommentIsSet = false;
 }
@@ -55,15 +55,15 @@ web::json::value QsOrderRequest::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("password"))] = ModelBase::toJson(m_Password);
     }
-    if(m_OsIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("os"))] = ModelBase::toJson(m_Os);
-    }
     if(m_TosIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("tos"))] = ModelBase::toJson(m_Tos);
+    }
+    if(m_OsIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("os"))] = ModelBase::toJson(m_Os);
     }
     if(m_CommentIsSet)
     {
@@ -99,17 +99,6 @@ bool QsOrderRequest::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("os"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("os")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setOs;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setOs);
-            setOs(refVal_setOs);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("tos"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("tos")));
@@ -118,6 +107,17 @@ bool QsOrderRequest::fromJson(const web::json::value& val)
             bool refVal_setTos;
             ok &= ModelBase::fromJson(fieldValue, refVal_setTos);
             setTos(refVal_setTos);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("os"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("os")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setOs;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setOs);
+            setOs(refVal_setOs);
             
         }
     }
@@ -150,13 +150,13 @@ void QsOrderRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("password")), m_Password));
     }
-    if(m_OsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("os")), m_Os));
-    }
     if(m_TosIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("tos")), m_Tos));
+    }
+    if(m_OsIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("os")), m_Os));
     }
     if(m_CommentIsSet)
     {
@@ -185,17 +185,17 @@ bool QsOrderRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("password"))), refVal_setPassword );
         setPassword(refVal_setPassword);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("os"))))
-    {
-        utility::string_t refVal_setOs;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("os"))), refVal_setOs );
-        setOs(refVal_setOs);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("tos"))))
     {
         bool refVal_setTos;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("tos"))), refVal_setTos );
         setTos(refVal_setTos);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("os"))))
+    {
+        utility::string_t refVal_setOs;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("os"))), refVal_setOs );
+        setOs(refVal_setOs);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("comment"))))
     {
@@ -248,6 +248,26 @@ void QsOrderRequest::unsetPassword()
 {
     m_PasswordIsSet = false;
 }
+bool QsOrderRequest::isTos() const
+{
+    return m_Tos;
+}
+
+void QsOrderRequest::setTos(bool value)
+{
+    m_Tos = value;
+    m_TosIsSet = true;
+}
+
+bool QsOrderRequest::tosIsSet() const
+{
+    return m_TosIsSet;
+}
+
+void QsOrderRequest::unsetTos()
+{
+    m_TosIsSet = false;
+}
 utility::string_t QsOrderRequest::getOs() const
 {
     return m_Os;
@@ -268,26 +288,6 @@ bool QsOrderRequest::osIsSet() const
 void QsOrderRequest::unsetOs()
 {
     m_OsIsSet = false;
-}
-bool QsOrderRequest::isTos() const
-{
-    return m_Tos;
-}
-
-void QsOrderRequest::setTos(bool value)
-{
-    m_Tos = value;
-    m_TosIsSet = true;
-}
-
-bool QsOrderRequest::tosIsSet() const
-{
-    return m_TosIsSet;
-}
-
-void QsOrderRequest::unsetTos()
-{
-    m_TosIsSet = false;
 }
 utility::string_t QsOrderRequest::getComment() const
 {

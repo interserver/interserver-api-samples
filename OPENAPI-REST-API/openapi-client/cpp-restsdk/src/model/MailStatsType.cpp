@@ -322,6 +322,10 @@ MailStatsType::TimeEnum MailStatsType::toTimeEnum(const utility::string_t& value
         return TimeEnum::_1H;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return TimeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to TimeEnum");
 }
 
@@ -344,6 +348,8 @@ const utility::string_t MailStatsType::fromTimeEnum(const TimeEnum value) const
         case TimeEnum::TODAY: return utility::conversions::to_string_t("today");
         
         case TimeEnum::_1H: return utility::conversions::to_string_t("1h");
+        
+        case TimeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

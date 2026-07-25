@@ -121,6 +121,13 @@ describe("module_settings", function()
     end)
   end)
 
+  -- unit tests for the property 'PREFIX'
+  describe("property PREFIX test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'title_field2'
   describe("property title_field2 test", function()
     it("should work", function()
@@ -130,13 +137,6 @@ describe("module_settings", function()
 
   -- unit tests for the property 'title_field3'
   describe("property title_field3 test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'PREFIX'
-  describe("property PREFIX test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

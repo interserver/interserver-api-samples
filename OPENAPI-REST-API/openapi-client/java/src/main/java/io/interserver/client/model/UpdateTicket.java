@@ -70,7 +70,9 @@ public class UpdateTicket implements Serializable {
   public enum CustomerServerAccessEnum {
     y("y"),
     
-    n("n");
+    n("n"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -93,7 +95,7 @@ public class UpdateTicket implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<CustomerServerAccessEnum> {

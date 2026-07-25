@@ -29,7 +29,7 @@ public class VpsOrderPutRequest  {
 
 public enum VpsPlatformEnum {
 
-KVM(String.valueOf("kvm")), HYPERV(String.valueOf("hyperv")), KVMSTORAGE(String.valueOf("kvmstorage"));
+KVM(String.valueOf("kvm")), HYPERV(String.valueOf("hyperv")), KVMSTORAGE(String.valueOf("kvmstorage")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;
@@ -101,7 +101,7 @@ KVM(String.valueOf("kvm")), HYPERV(String.valueOf("hyperv")), KVMSTORAGE(String.
 
 public enum ControlpanelEnum {
 
-NONE(String.valueOf("none")), CPANEL(String.valueOf("cpanel")), DA(String.valueOf("da"));
+NONE(String.valueOf("none")), CPANEL(String.valueOf("cpanel")), DA(String.valueOf("da")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

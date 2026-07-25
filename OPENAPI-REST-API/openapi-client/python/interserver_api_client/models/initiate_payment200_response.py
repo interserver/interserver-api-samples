@@ -42,8 +42,8 @@ class InitiatePayment200Response(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['redirect', 'submit', 'single']):
-            raise ValueError("must be one of enum values ('redirect', 'submit', 'single')")
+        if value not in set(['redirect', 'submit', 'single', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('redirect', 'submit', 'single', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

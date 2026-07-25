@@ -31,8 +31,6 @@ feature --Access
       -- Primary IPv4 address of the asset.
     primary_ipv6: detachable STRING_32
       -- Primary IPv6 address of the asset.
-    mac: detachable STRING_32
-      -- MAC address associated with the asset.
     datacenter: detachable STRING_32
       -- Datacenter identifier for the asset.
     type_id: detachable STRING_32
@@ -55,16 +53,6 @@ feature --Access
       -- IPMI MAC address associated with the asset.
     ipmi_ip: detachable STRING_32
       -- IPMI IP address associated with the asset.
-    ipmi_admin_username: detachable STRING_32
-      -- IPMI admin username associated with the asset.
-    ipmi_admin_password: detachable STRING_32
-      -- IPMI admin password associated with the asset.
-    ipmi_client_username: detachable STRING_32
-      -- IPMI client username associated with the asset.
-    ipmi_client_password: detachable STRING_32
-      -- IPMI client password associated with the asset.
-    ipmi_updated: detachable STRING_32
-      -- IPMI update status associated with the asset.
     ipmi_working: detachable STRING_32
       -- IPMI working status associated with the asset.
     company: detachable STRING_32
@@ -85,10 +73,6 @@ feature --Access
       -- Billing status of the asset.
     overdue: detachable STRING_32
       -- Overdue status of the asset.
-    create_timestamp: detachable STRING_32
-      -- Timestamp of asset creation.
-    update_timestamp: detachable STRING_32
-      -- Timestamp of asset update.
     asset_id: detachable STRING_32
       -- Asset identifier for the asset.
     asset_name: detachable STRING_32
@@ -105,8 +89,6 @@ feature --Access
       -- X-coordinate of the asset within the rack.
     rack_y: detachable STRING_32
       -- Y-coordinate of the asset within the rack.
-    comment: detachable STRING_32
-      -- Comment associated with the asset.
     switchports: detachable LIST [INTEGER_32]
       -- List of switchports associated with the asset.
     vlans: detachable LIST [STRING_32]
@@ -115,6 +97,24 @@ feature --Access
       -- List of IPv6 VLANs associated with the asset.
     lease: detachable SERVER_LEASE
       
+    mac: detachable STRING_32
+      -- MAC address associated with the asset.
+    ipmi_admin_username: detachable STRING_32
+      -- IPMI admin username associated with the asset.
+    ipmi_admin_password: detachable STRING_32
+      -- IPMI admin password associated with the asset.
+    ipmi_client_username: detachable STRING_32
+      -- IPMI client username associated with the asset.
+    ipmi_client_password: detachable STRING_32
+      -- IPMI client password associated with the asset.
+    ipmi_updated: detachable STRING_32
+      -- IPMI update status associated with the asset.
+    create_timestamp: detachable STRING_32
+      -- Timestamp of asset creation.
+    update_timestamp: detachable STRING_32
+      -- Timestamp of asset update.
+    comment: detachable STRING_32
+      -- Comment associated with the asset.
 
 feature -- Change Element
 
@@ -164,14 +164,6 @@ feature -- Change Element
         primary_ipv6 := a_name
       ensure
         primary_ipv6_set: primary_ipv6 = a_name
-      end
-
-    set_mac (a_name: like mac)
-        -- Set 'mac' with 'a_name'.
-      do
-        mac := a_name
-      ensure
-        mac_set: mac = a_name
       end
 
     set_datacenter (a_name: like datacenter)
@@ -262,46 +254,6 @@ feature -- Change Element
         ipmi_ip_set: ipmi_ip = a_name
       end
 
-    set_ipmi_admin_username (a_name: like ipmi_admin_username)
-        -- Set 'ipmi_admin_username' with 'a_name'.
-      do
-        ipmi_admin_username := a_name
-      ensure
-        ipmi_admin_username_set: ipmi_admin_username = a_name
-      end
-
-    set_ipmi_admin_password (a_name: like ipmi_admin_password)
-        -- Set 'ipmi_admin_password' with 'a_name'.
-      do
-        ipmi_admin_password := a_name
-      ensure
-        ipmi_admin_password_set: ipmi_admin_password = a_name
-      end
-
-    set_ipmi_client_username (a_name: like ipmi_client_username)
-        -- Set 'ipmi_client_username' with 'a_name'.
-      do
-        ipmi_client_username := a_name
-      ensure
-        ipmi_client_username_set: ipmi_client_username = a_name
-      end
-
-    set_ipmi_client_password (a_name: like ipmi_client_password)
-        -- Set 'ipmi_client_password' with 'a_name'.
-      do
-        ipmi_client_password := a_name
-      ensure
-        ipmi_client_password_set: ipmi_client_password = a_name
-      end
-
-    set_ipmi_updated (a_name: like ipmi_updated)
-        -- Set 'ipmi_updated' with 'a_name'.
-      do
-        ipmi_updated := a_name
-      ensure
-        ipmi_updated_set: ipmi_updated = a_name
-      end
-
     set_ipmi_working (a_name: like ipmi_working)
         -- Set 'ipmi_working' with 'a_name'.
       do
@@ -382,22 +334,6 @@ feature -- Change Element
         overdue_set: overdue = a_name
       end
 
-    set_create_timestamp (a_name: like create_timestamp)
-        -- Set 'create_timestamp' with 'a_name'.
-      do
-        create_timestamp := a_name
-      ensure
-        create_timestamp_set: create_timestamp = a_name
-      end
-
-    set_update_timestamp (a_name: like update_timestamp)
-        -- Set 'update_timestamp' with 'a_name'.
-      do
-        update_timestamp := a_name
-      ensure
-        update_timestamp_set: update_timestamp = a_name
-      end
-
     set_asset_id (a_name: like asset_id)
         -- Set 'asset_id' with 'a_name'.
       do
@@ -462,14 +398,6 @@ feature -- Change Element
         rack_y_set: rack_y = a_name
       end
 
-    set_comment (a_name: like comment)
-        -- Set 'comment' with 'a_name'.
-      do
-        comment := a_name
-      ensure
-        comment_set: comment = a_name
-      end
-
     set_switchports (a_name: like switchports)
         -- Set 'switchports' with 'a_name'.
       do
@@ -500,6 +428,78 @@ feature -- Change Element
         lease := a_name
       ensure
         lease_set: lease = a_name
+      end
+
+    set_mac (a_name: like mac)
+        -- Set 'mac' with 'a_name'.
+      do
+        mac := a_name
+      ensure
+        mac_set: mac = a_name
+      end
+
+    set_ipmi_admin_username (a_name: like ipmi_admin_username)
+        -- Set 'ipmi_admin_username' with 'a_name'.
+      do
+        ipmi_admin_username := a_name
+      ensure
+        ipmi_admin_username_set: ipmi_admin_username = a_name
+      end
+
+    set_ipmi_admin_password (a_name: like ipmi_admin_password)
+        -- Set 'ipmi_admin_password' with 'a_name'.
+      do
+        ipmi_admin_password := a_name
+      ensure
+        ipmi_admin_password_set: ipmi_admin_password = a_name
+      end
+
+    set_ipmi_client_username (a_name: like ipmi_client_username)
+        -- Set 'ipmi_client_username' with 'a_name'.
+      do
+        ipmi_client_username := a_name
+      ensure
+        ipmi_client_username_set: ipmi_client_username = a_name
+      end
+
+    set_ipmi_client_password (a_name: like ipmi_client_password)
+        -- Set 'ipmi_client_password' with 'a_name'.
+      do
+        ipmi_client_password := a_name
+      ensure
+        ipmi_client_password_set: ipmi_client_password = a_name
+      end
+
+    set_ipmi_updated (a_name: like ipmi_updated)
+        -- Set 'ipmi_updated' with 'a_name'.
+      do
+        ipmi_updated := a_name
+      ensure
+        ipmi_updated_set: ipmi_updated = a_name
+      end
+
+    set_create_timestamp (a_name: like create_timestamp)
+        -- Set 'create_timestamp' with 'a_name'.
+      do
+        create_timestamp := a_name
+      ensure
+        create_timestamp_set: create_timestamp = a_name
+      end
+
+    set_update_timestamp (a_name: like update_timestamp)
+        -- Set 'update_timestamp' with 'a_name'.
+      do
+        update_timestamp := a_name
+      ensure
+        update_timestamp_set: update_timestamp = a_name
+      end
+
+    set_comment (a_name: like comment)
+        -- Set 'comment' with 'a_name'.
+      do
+        comment := a_name
+      ensure
+        comment_set: comment = a_name
       end
 
 
@@ -538,11 +538,6 @@ feature -- Change Element
         if attached primary_ipv6 as l_primary_ipv6 then
           Result.append ("%Nprimary_ipv6:")
           Result.append (l_primary_ipv6.out)
-          Result.append ("%N")
-        end
-        if attached mac as l_mac then
-          Result.append ("%Nmac:")
-          Result.append (l_mac.out)
           Result.append ("%N")
         end
         if attached datacenter as l_datacenter then
@@ -600,31 +595,6 @@ feature -- Change Element
           Result.append (l_ipmi_ip.out)
           Result.append ("%N")
         end
-        if attached ipmi_admin_username as l_ipmi_admin_username then
-          Result.append ("%Nipmi_admin_username:")
-          Result.append (l_ipmi_admin_username.out)
-          Result.append ("%N")
-        end
-        if attached ipmi_admin_password as l_ipmi_admin_password then
-          Result.append ("%Nipmi_admin_password:")
-          Result.append (l_ipmi_admin_password.out)
-          Result.append ("%N")
-        end
-        if attached ipmi_client_username as l_ipmi_client_username then
-          Result.append ("%Nipmi_client_username:")
-          Result.append (l_ipmi_client_username.out)
-          Result.append ("%N")
-        end
-        if attached ipmi_client_password as l_ipmi_client_password then
-          Result.append ("%Nipmi_client_password:")
-          Result.append (l_ipmi_client_password.out)
-          Result.append ("%N")
-        end
-        if attached ipmi_updated as l_ipmi_updated then
-          Result.append ("%Nipmi_updated:")
-          Result.append (l_ipmi_updated.out)
-          Result.append ("%N")
-        end
         if attached ipmi_working as l_ipmi_working then
           Result.append ("%Nipmi_working:")
           Result.append (l_ipmi_working.out)
@@ -675,16 +645,6 @@ feature -- Change Element
           Result.append (l_overdue.out)
           Result.append ("%N")
         end
-        if attached create_timestamp as l_create_timestamp then
-          Result.append ("%Ncreate_timestamp:")
-          Result.append (l_create_timestamp.out)
-          Result.append ("%N")
-        end
-        if attached update_timestamp as l_update_timestamp then
-          Result.append ("%Nupdate_timestamp:")
-          Result.append (l_update_timestamp.out)
-          Result.append ("%N")
-        end
         if attached asset_id as l_asset_id then
           Result.append ("%Nasset_id:")
           Result.append (l_asset_id.out)
@@ -725,11 +685,6 @@ feature -- Change Element
           Result.append (l_rack_y.out)
           Result.append ("%N")
         end
-        if attached comment as l_comment then
-          Result.append ("%Ncomment:")
-          Result.append (l_comment.out)
-          Result.append ("%N")
-        end
         if attached switchports as l_switchports then
           across l_switchports as ic loop
             Result.append ("%N switchports:")
@@ -754,6 +709,51 @@ feature -- Change Element
         if attached lease as l_lease then
           Result.append ("%Nlease:")
           Result.append (l_lease.out)
+          Result.append ("%N")
+        end
+        if attached mac as l_mac then
+          Result.append ("%Nmac:")
+          Result.append (l_mac.out)
+          Result.append ("%N")
+        end
+        if attached ipmi_admin_username as l_ipmi_admin_username then
+          Result.append ("%Nipmi_admin_username:")
+          Result.append (l_ipmi_admin_username.out)
+          Result.append ("%N")
+        end
+        if attached ipmi_admin_password as l_ipmi_admin_password then
+          Result.append ("%Nipmi_admin_password:")
+          Result.append (l_ipmi_admin_password.out)
+          Result.append ("%N")
+        end
+        if attached ipmi_client_username as l_ipmi_client_username then
+          Result.append ("%Nipmi_client_username:")
+          Result.append (l_ipmi_client_username.out)
+          Result.append ("%N")
+        end
+        if attached ipmi_client_password as l_ipmi_client_password then
+          Result.append ("%Nipmi_client_password:")
+          Result.append (l_ipmi_client_password.out)
+          Result.append ("%N")
+        end
+        if attached ipmi_updated as l_ipmi_updated then
+          Result.append ("%Nipmi_updated:")
+          Result.append (l_ipmi_updated.out)
+          Result.append ("%N")
+        end
+        if attached create_timestamp as l_create_timestamp then
+          Result.append ("%Ncreate_timestamp:")
+          Result.append (l_create_timestamp.out)
+          Result.append ("%N")
+        end
+        if attached update_timestamp as l_update_timestamp then
+          Result.append ("%Nupdate_timestamp:")
+          Result.append (l_update_timestamp.out)
+          Result.append ("%N")
+        end
+        if attached comment as l_comment then
+          Result.append ("%Ncomment:")
+          Result.append (l_comment.out)
           Result.append ("%N")
         end
       end

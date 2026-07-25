@@ -391,8 +391,8 @@ std::string TicketPostDetails_inner::getCreator() const
 
 void TicketPostDetails_inner::setCreator(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "User","Staff"
+    static const std::array<std::string, 3> allowedValues = {
+        "User","Staff","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

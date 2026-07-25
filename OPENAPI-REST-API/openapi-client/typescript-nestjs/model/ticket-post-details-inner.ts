@@ -23,7 +23,8 @@ export interface TicketPostDetailsInner {
 }
 export enum TicketPostDetailsInnerCreator {
     User = 'User',
-    Staff = 'Staff'
+    Staff = 'Staff',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

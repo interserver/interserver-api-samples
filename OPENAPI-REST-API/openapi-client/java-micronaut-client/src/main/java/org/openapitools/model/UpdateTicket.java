@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   UpdateTicket.JSON_PROPERTY_PORT
 })
 @JsonTypeName("UpdateTicket")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class UpdateTicket {
     public static final String JSON_PROPERTY_IP = "ip";
@@ -48,7 +48,8 @@ public class UpdateTicket {
      */
     public enum CustomerServerAccessEnum {
         Y("y"),
-        N("n");
+        N("n"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Type of DNS Record
  *
- * Values: a,a6,aAAA,aFSDB,aLIAS,cAA,cDNSKEY,cDS,cERT,cNAME,dHCID,dLV,dNSKEY,dNAME,dS,eUI48,eUI64,hINFO,iPSECKEY,kEY,kX,lOC,mAILA,mAILB,mINFO,mR,mX,nAPTR,nS,nSEC,nSEC3,nSEC3PARAM,oPENPGPKEY,oPT,pTR,rKEY,rP,rRSIG,sIG,sOA,sPF,sRV,sSHFP,tLSA,tKEY,tSIG,tXT,wKS,uRI
+ * Values: a,a6,aAAA,aFSDB,aLIAS,cAA,cDNSKEY,cDS,cERT,cNAME,dHCID,dLV,dNSKEY,dNAME,dS,eUI48,eUI64,hINFO,iPSECKEY,kEY,kX,lOC,mAILA,mAILB,mINFO,mR,mX,nAPTR,nS,nSEC,nSEC3,nSEC3PARAM,oPENPGPKEY,oPT,pTR,rKEY,rP,rRSIG,sIG,sOA,sPF,sRV,sSHFP,tLSA,tKEY,tSIG,tXT,wKS,uRI,unknownDefaultOpenApi
  */
 
 @JsonClass(generateAdapter = false)
@@ -181,7 +181,10 @@ enum class DnsRecordType(val value: kotlin.String) {
     wKS("WKS"),
 
     @Json(name = "URI⏎")
-    uRI("URI⏎");
+    uRI("URI⏎"),
+
+    @Json(name = "unknown_default_open_api")
+    unknownDefaultOpenApi("unknown_default_open_api");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

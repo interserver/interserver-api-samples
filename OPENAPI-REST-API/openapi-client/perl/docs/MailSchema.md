@@ -14,10 +14,10 @@ Name | Type | Description | Notes
 **cust_currency** | **string** | The customer&#39;s currency. | 
 **cust_currency_symbol** | **string** | The currency symbol for the customer. | 
 **package** | **string** | The package of the mail service. | 
-**service_extra** | **ARRAY[string]** | Extra information for the mail service. | [optional] 
 **extra_info_tables** | [**MailSchemaExtraInfoTables**](MailSchemaExtraInfoTables.md) |  | 
 **service_type** | [**MailServiceType**](MailServiceType.md) |  | 
 **usage_count** | **string** | The usage count of the mail service. | 
+**service_extra** | **ARRAY[string]** | Extra information for the mail service. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,8 +1,8 @@
-# openapi.model.AccountInfoDataEmailSettings
+# interserver_api.model.AccountInfoDataEmailSettings
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

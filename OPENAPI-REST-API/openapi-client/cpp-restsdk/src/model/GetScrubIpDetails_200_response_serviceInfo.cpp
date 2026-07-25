@@ -423,6 +423,10 @@ GetScrubIpDetails_200_response_serviceInfo::Scrub_ip_statusEnum GetScrubIpDetail
         return Scrub_ip_statusEnum::EXPIRED;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Scrub_ip_statusEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Scrub_ip_statusEnum");
 }
 
@@ -439,6 +443,8 @@ const utility::string_t GetScrubIpDetails_200_response_serviceInfo::fromScrub_ip
         case Scrub_ip_statusEnum::CANCELED: return utility::conversions::to_string_t("canceled");
         
         case Scrub_ip_statusEnum::EXPIRED: return utility::conversions::to_string_t("expired");
+        
+        case Scrub_ip_statusEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

@@ -521,8 +521,8 @@ std::string SslOrderRequest::getCsrType() const
 
 void SslOrderRequest::setCsrType(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "generated","provided"
+    static const std::array<std::string, 3> allowedValues = {
+        "generated","provided","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

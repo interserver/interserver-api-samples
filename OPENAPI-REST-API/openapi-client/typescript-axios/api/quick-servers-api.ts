@@ -4324,15 +4324,18 @@ export class QuickServersApi extends BaseAPI implements QuickServersApiInterface
 export const DeleteQsBackupAllEnum = {
     _0: '0',
     _1: '1',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type DeleteQsBackupAllEnum = typeof DeleteQsBackupAllEnum[keyof typeof DeleteQsBackupAllEnum];
 export const DownloadQsBackupAllEnum = {
     _0: '0',
     _1: '1',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type DownloadQsBackupAllEnum = typeof DownloadQsBackupAllEnum[keyof typeof DownloadQsBackupAllEnum];
 export const GetQsBackupsAllEnum = {
     _0: '0',
     _1: '1',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type GetQsBackupsAllEnum = typeof GetQsBackupsAllEnum[keyof typeof GetQsBackupsAllEnum];

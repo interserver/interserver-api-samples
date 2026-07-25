@@ -264,6 +264,7 @@ void CreateGeoFirewallRule::fromJsonValue(boost::json::value const& value)
 boost::json::object CreateGeoFirewallRule::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["xdp_action"] = JsonValueConverter<int32_t>::toJsonValue(getXdpAction());
         if (m_Destination_portIsSet) {
             object["destination_port"] = JsonValueConverter<int32_t>::toJsonValue(getDestinationPort());
         }
@@ -273,7 +274,6 @@ boost::json::object CreateGeoFirewallRule::toJsonObject_internal() const
         if (m_AsnIsSet) {
             object["asn"] = JsonValueConverter<int32_t>::toJsonValue(getAsn());
         }
-        object["xdp_action"] = JsonValueConverter<int32_t>::toJsonValue(getXdpAction());
     return object;
 }
 
@@ -282,6 +282,12 @@ void CreateGeoFirewallRule::fromJsonObject_internal(boost::json::object const& o
     m_Destination_portIsSet = false;
     m_Country_codeIsSet = false;
     m_AsnIsSet = false;
+    {
+        const auto Xdp_actionIt = object.find("xdp_action");
+        if (Xdp_actionIt != object.end()) {
+            setXdpAction(JsonValueConverter<int32_t>::fromJsonValue(Xdp_actionIt->value()));
+        }
+    }
     {
         const auto Destination_portIt = object.find("destination_port");
         if (Destination_portIt != object.end()) {
@@ -300,14 +306,26 @@ void CreateGeoFirewallRule::fromJsonObject_internal(boost::json::object const& o
             setAsn(JsonValueConverter<int32_t>::fromJsonValue(AsnIt->value()));
         }
     }
-    {
-        const auto Xdp_actionIt = object.find("xdp_action");
-        if (Xdp_actionIt != object.end()) {
-            setXdpAction(JsonValueConverter<int32_t>::fromJsonValue(Xdp_actionIt->value()));
-        }
-    }
 }
 
+int32_t CreateGeoFirewallRule::getXdpAction() const
+{
+    return m_Xdp_action;
+}
+
+void CreateGeoFirewallRule::setXdpAction(int32_t value)
+{
+    static const std::array<int32_t, 3> allowedValues = {
+        0,1,11184809
+    };
+    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
+        std::ostringstream errorMessage;
+        errorMessage << "Value " << value << " not allowed";
+        throw std::runtime_error(errorMessage.str());
+    }
+    
+    m_Xdp_action = std::move(value);
+}
 int32_t CreateGeoFirewallRule::getDestinationPort() const
 {
     return m_Destination_port;
@@ -340,24 +358,6 @@ void CreateGeoFirewallRule::setAsn(int32_t value)
     
     m_Asn = std::move(value);
     m_AsnIsSet = true;
-}
-int32_t CreateGeoFirewallRule::getXdpAction() const
-{
-    return m_Xdp_action;
-}
-
-void CreateGeoFirewallRule::setXdpAction(int32_t value)
-{
-    static const std::array<int32_t, 2> allowedValues = {
-        0,1
-    };
-    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
-        std::ostringstream errorMessage;
-        errorMessage << "Value " << value << " not allowed";
-        throw std::runtime_error(errorMessage.str());
-    }
-    
-    m_Xdp_action = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<CreateGeoFirewallRule>>& data)

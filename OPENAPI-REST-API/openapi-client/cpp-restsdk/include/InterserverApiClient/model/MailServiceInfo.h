@@ -64,14 +64,6 @@ public:
     void setMailId(const utility::string_t& value);
 
     /// <summary>
-    /// The username associated with the mail service.
-    /// </summary>
-    utility::string_t getMailUsername() const;
-    bool mailUsernameIsSet() const;
-    void unsetMail_username();
-    void setMailUsername(const utility::string_t& value);
-
-    /// <summary>
     /// The type of mail service.
     /// </summary>
     utility::string_t getMailType() const;
@@ -112,14 +104,6 @@ public:
     void setMailQuota(const utility::string_t& value);
 
     /// <summary>
-    /// The IP address associated with the mail service.
-    /// </summary>
-    utility::string_t getMailIp() const;
-    bool mailIpIsSet() const;
-    void unsetMail_ip();
-    void setMailIp(const utility::string_t& value);
-
-    /// <summary>
     /// The status of the mail service.
     /// </summary>
     utility::string_t getMailStatus() const;
@@ -134,6 +118,22 @@ public:
     bool mailInvoiceIsSet() const;
     void unsetMail_invoice();
     void setMailInvoice(const utility::string_t& value);
+
+    /// <summary>
+    /// The username associated with the mail service.
+    /// </summary>
+    utility::string_t getMailUsername() const;
+    bool mailUsernameIsSet() const;
+    void unsetMail_username();
+    void setMailUsername(const utility::string_t& value);
+
+    /// <summary>
+    /// The IP address associated with the mail service.
+    /// </summary>
+    utility::string_t getMailIp() const;
+    bool mailIpIsSet() const;
+    void unsetMail_ip();
+    void setMailIp(const utility::string_t& value);
 
     /// <summary>
     /// The coupon associated with the mail service.
@@ -172,9 +172,6 @@ protected:
     utility::string_t m_Mail_id;
     bool m_Mail_idIsSet;
 
-    utility::string_t m_Mail_username;
-    bool m_Mail_usernameIsSet;
-
     utility::string_t m_Mail_type;
     bool m_Mail_typeIsSet;
 
@@ -190,14 +187,17 @@ protected:
     utility::string_t m_Mail_quota;
     bool m_Mail_quotaIsSet;
 
-    utility::string_t m_Mail_ip;
-    bool m_Mail_ipIsSet;
-
     utility::string_t m_Mail_status;
     bool m_Mail_statusIsSet;
 
     utility::string_t m_Mail_invoice;
     bool m_Mail_invoiceIsSet;
+
+    utility::string_t m_Mail_username;
+    bool m_Mail_usernameIsSet;
+
+    utility::string_t m_Mail_ip;
+    bool m_Mail_ipIsSet;
 
     utility::string_t m_Mail_coupon;
     bool m_Mail_couponIsSet;

@@ -5,6 +5,22 @@ context("Test CreateFirewallRule")
 
 model_instance <- CreateFirewallRule$new()
 
+test_that("protocol_id", {
+  # tests for the property `protocol_id` (integer)
+  # 1 &#x3D; TCP, 2 &#x3D; UDP
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`protocol_id`, "EXPECTED_RESULT")
+})
+
+test_that("xdp_action", {
+  # tests for the property `xdp_action` (integer)
+  # 1 &#x3D; Block,  0 &#x3D; Whitelist
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`xdp_action`, "EXPECTED_RESULT")
+})
+
 test_that("destination_port", {
   # tests for the property `destination_port` (integer)
 
@@ -25,20 +41,4 @@ test_that("source_port", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`source_port`, "EXPECTED_RESULT")
-})
-
-test_that("protocol_id", {
-  # tests for the property `protocol_id` (integer)
-  # 1 &#x3D; TCP, 2 &#x3D; UDP
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`protocol_id`, "EXPECTED_RESULT")
-})
-
-test_that("xdp_action", {
-  # tests for the property `xdp_action` (integer)
-  # 1 &#x3D; Block,  0 &#x3D; Whitelist
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`xdp_action`, "EXPECTED_RESULT")
 })

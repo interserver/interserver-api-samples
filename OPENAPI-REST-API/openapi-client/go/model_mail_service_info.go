@@ -23,8 +23,6 @@ var _ MappedNullable = &MailServiceInfo{}
 type MailServiceInfo struct {
 	// The ID of the mail service.
 	MailId string `json:"mail_id"`
-	// The username associated with the mail service.
-	MailUsername *string `json:"mail_username,omitempty"`
 	// The type of mail service.
 	MailType string `json:"mail_type"`
 	// The currency of the mail service.
@@ -35,12 +33,14 @@ type MailServiceInfo struct {
 	MailCustid string `json:"mail_custid"`
 	// The mail quota for the service.
 	MailQuota string `json:"mail_quota"`
-	// The IP address associated with the mail service.
-	MailIp *string `json:"mail_ip,omitempty"`
 	// The status of the mail service.
 	MailStatus string `json:"mail_status"`
 	// The invoice ID of the mail service.
 	MailInvoice string `json:"mail_invoice"`
+	// The username associated with the mail service.
+	MailUsername *string `json:"mail_username,omitempty"`
+	// The IP address associated with the mail service.
+	MailIp *string `json:"mail_ip,omitempty"`
 	// The coupon associated with the mail service.
 	MailCoupon *string `json:"mail_coupon,omitempty"`
 	// Additional information for the mail service.
@@ -101,38 +101,6 @@ func (o *MailServiceInfo) GetMailIdOk() (*string, bool) {
 // SetMailId sets field value
 func (o *MailServiceInfo) SetMailId(v string) {
 	o.MailId = v
-}
-
-// GetMailUsername returns the MailUsername field value if set, zero value otherwise.
-func (o *MailServiceInfo) GetMailUsername() string {
-	if o == nil || IsNil(o.MailUsername) {
-		var ret string
-		return ret
-	}
-	return *o.MailUsername
-}
-
-// GetMailUsernameOk returns a tuple with the MailUsername field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MailServiceInfo) GetMailUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.MailUsername) {
-		return nil, false
-	}
-	return o.MailUsername, true
-}
-
-// HasMailUsername returns a boolean if a field has been set.
-func (o *MailServiceInfo) HasMailUsername() bool {
-	if o != nil && !IsNil(o.MailUsername) {
-		return true
-	}
-
-	return false
-}
-
-// SetMailUsername gets a reference to the given string and assigns it to the MailUsername field.
-func (o *MailServiceInfo) SetMailUsername(v string) {
-	o.MailUsername = &v
 }
 
 // GetMailType returns the MailType field value
@@ -255,38 +223,6 @@ func (o *MailServiceInfo) SetMailQuota(v string) {
 	o.MailQuota = v
 }
 
-// GetMailIp returns the MailIp field value if set, zero value otherwise.
-func (o *MailServiceInfo) GetMailIp() string {
-	if o == nil || IsNil(o.MailIp) {
-		var ret string
-		return ret
-	}
-	return *o.MailIp
-}
-
-// GetMailIpOk returns a tuple with the MailIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MailServiceInfo) GetMailIpOk() (*string, bool) {
-	if o == nil || IsNil(o.MailIp) {
-		return nil, false
-	}
-	return o.MailIp, true
-}
-
-// HasMailIp returns a boolean if a field has been set.
-func (o *MailServiceInfo) HasMailIp() bool {
-	if o != nil && !IsNil(o.MailIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetMailIp gets a reference to the given string and assigns it to the MailIp field.
-func (o *MailServiceInfo) SetMailIp(v string) {
-	o.MailIp = &v
-}
-
 // GetMailStatus returns the MailStatus field value
 func (o *MailServiceInfo) GetMailStatus() string {
 	if o == nil {
@@ -333,6 +269,70 @@ func (o *MailServiceInfo) GetMailInvoiceOk() (*string, bool) {
 // SetMailInvoice sets field value
 func (o *MailServiceInfo) SetMailInvoice(v string) {
 	o.MailInvoice = v
+}
+
+// GetMailUsername returns the MailUsername field value if set, zero value otherwise.
+func (o *MailServiceInfo) GetMailUsername() string {
+	if o == nil || IsNil(o.MailUsername) {
+		var ret string
+		return ret
+	}
+	return *o.MailUsername
+}
+
+// GetMailUsernameOk returns a tuple with the MailUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MailServiceInfo) GetMailUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.MailUsername) {
+		return nil, false
+	}
+	return o.MailUsername, true
+}
+
+// HasMailUsername returns a boolean if a field has been set.
+func (o *MailServiceInfo) HasMailUsername() bool {
+	if o != nil && !IsNil(o.MailUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetMailUsername gets a reference to the given string and assigns it to the MailUsername field.
+func (o *MailServiceInfo) SetMailUsername(v string) {
+	o.MailUsername = &v
+}
+
+// GetMailIp returns the MailIp field value if set, zero value otherwise.
+func (o *MailServiceInfo) GetMailIp() string {
+	if o == nil || IsNil(o.MailIp) {
+		var ret string
+		return ret
+	}
+	return *o.MailIp
+}
+
+// GetMailIpOk returns a tuple with the MailIp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MailServiceInfo) GetMailIpOk() (*string, bool) {
+	if o == nil || IsNil(o.MailIp) {
+		return nil, false
+	}
+	return o.MailIp, true
+}
+
+// HasMailIp returns a boolean if a field has been set.
+func (o *MailServiceInfo) HasMailIp() bool {
+	if o != nil && !IsNil(o.MailIp) {
+		return true
+	}
+
+	return false
+}
+
+// SetMailIp gets a reference to the given string and assigns it to the MailIp field.
+func (o *MailServiceInfo) SetMailIp(v string) {
+	o.MailIp = &v
 }
 
 // GetMailCoupon returns the MailCoupon field value if set, zero value otherwise.
@@ -474,19 +474,19 @@ func (o MailServiceInfo) MarshalJSON() ([]byte, error) {
 func (o MailServiceInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["mail_id"] = o.MailId
-	if !IsNil(o.MailUsername) {
-		toSerialize["mail_username"] = o.MailUsername
-	}
 	toSerialize["mail_type"] = o.MailType
 	toSerialize["mail_currency"] = o.MailCurrency
 	toSerialize["mail_order_date"] = o.MailOrderDate
 	toSerialize["mail_custid"] = o.MailCustid
 	toSerialize["mail_quota"] = o.MailQuota
+	toSerialize["mail_status"] = o.MailStatus
+	toSerialize["mail_invoice"] = o.MailInvoice
+	if !IsNil(o.MailUsername) {
+		toSerialize["mail_username"] = o.MailUsername
+	}
 	if !IsNil(o.MailIp) {
 		toSerialize["mail_ip"] = o.MailIp
 	}
-	toSerialize["mail_status"] = o.MailStatus
-	toSerialize["mail_invoice"] = o.MailInvoice
 	if !IsNil(o.MailCoupon) {
 		toSerialize["mail_coupon"] = o.MailCoupon
 	}
@@ -550,15 +550,15 @@ func (o *MailServiceInfo) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mail_id")
-		delete(additionalProperties, "mail_username")
 		delete(additionalProperties, "mail_type")
 		delete(additionalProperties, "mail_currency")
 		delete(additionalProperties, "mail_order_date")
 		delete(additionalProperties, "mail_custid")
 		delete(additionalProperties, "mail_quota")
-		delete(additionalProperties, "mail_ip")
 		delete(additionalProperties, "mail_status")
 		delete(additionalProperties, "mail_invoice")
+		delete(additionalProperties, "mail_username")
+		delete(additionalProperties, "mail_ip")
 		delete(additionalProperties, "mail_coupon")
 		delete(additionalProperties, "mail_extra")
 		delete(additionalProperties, "mail_server_status")

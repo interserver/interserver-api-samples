@@ -16,6 +16,13 @@ Please update as you see appropriate
 describe("create_geo_firewall_rule", function()
   local openapiclient_create_geo_firewall_rule = require "openapiclient.model.create_geo_firewall_rule"
 
+  -- unit tests for the property 'xdp_action'
+  describe("property xdp_action test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'destination_port'
   describe("property destination_port test", function()
     it("should work", function()
@@ -32,13 +39,6 @@ describe("create_geo_firewall_rule", function()
 
   -- unit tests for the property 'asn'
   describe("property asn test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'xdp_action'
-  describe("property xdp_action test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

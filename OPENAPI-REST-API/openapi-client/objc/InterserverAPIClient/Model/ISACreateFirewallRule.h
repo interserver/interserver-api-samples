@@ -22,6 +22,12 @@
 
 @interface ISACreateFirewallRule : ISAObject
 
+/* 1 = TCP, 2 = UDP 
+ */
+@property(nonatomic) NSNumber* protocolId;
+/* 1 = Block,  0 = Whitelist 
+ */
+@property(nonatomic) NSNumber* xdpAction;
 
 @property(nonatomic) NSNumber* destinationPort;
 /* Source IP address to match. Use '0.0.0.0' to match any source. [optional]
@@ -29,11 +35,5 @@
 @property(nonatomic) NSString* sourceIp;
 
 @property(nonatomic) NSNumber* sourcePort;
-/* 1 = TCP, 2 = UDP 
- */
-@property(nonatomic) NSNumber* protocolId;
-/* 1 = Block,  0 = Whitelist 
- */
-@property(nonatomic) NSNumber* xdpAction;
 
 @end

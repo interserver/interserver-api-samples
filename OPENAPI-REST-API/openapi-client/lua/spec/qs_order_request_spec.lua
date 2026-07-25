@@ -30,15 +30,15 @@ describe("qs_order_request", function()
     end)
   end)
 
-  -- unit tests for the property 'os'
-  describe("property os test", function()
+  -- unit tests for the property 'tos'
+  describe("property tos test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
   end)
 
-  -- unit tests for the property 'tos'
-  describe("property tos test", function()
+  -- unit tests for the property 'os'
+  describe("property os test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

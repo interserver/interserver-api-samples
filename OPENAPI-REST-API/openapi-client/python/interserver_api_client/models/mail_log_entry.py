@@ -32,14 +32,14 @@ class MailLogEntry(BaseModel):
     id: StrictStr = Field(description="The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints.", json_schema_extra={"examples": ["17c7eda538e0005d03"]})
     var_from: StrictStr = Field(description="SMTP envelope `MAIL FROM` address.", alias="from", json_schema_extra={"examples": ["person@mysite.com"]})
     to: StrictStr = Field(description="SMTP envelope `RCPT TO` address.", json_schema_extra={"examples": ["client@isp.com"]})
-    subject: Optional[StrictStr] = Field(default=None, description="The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.", json_schema_extra={"examples": ["sell 0.005 shares"]})
-    message_id: Optional[StrictStr] = Field(default=None, description="The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.", alias="messageId", json_schema_extra={"examples": ["<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>"]})
     created: StrictStr = Field(description="Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.", json_schema_extra={"examples": ["2021-10-14 08:50:10"]})
     time: StrictInt = Field(description="Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.", json_schema_extra={"examples": [1634215809]})
     user: StrictStr = Field(description="The SMTP AUTH username used to submit the message (e.g. `mb5658`).", json_schema_extra={"examples": ["mb5658"]})
     transtype: StrictStr = Field(description="SMTP transaction type negotiated with the relay.", json_schema_extra={"examples": ["ESMTPSA"]})
     origin: StrictStr = Field(description="IP address of the client that submitted the message to the relay.", json_schema_extra={"examples": ["199.231.189.154"]})
     interface: StrictStr = Field(description="Relay interface name that accepted the message.", json_schema_extra={"examples": ["feeder"]})
+    subject: Optional[StrictStr] = Field(default=None, description="The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.", json_schema_extra={"examples": ["sell 0.005 shares"]})
+    message_id: Optional[StrictStr] = Field(default=None, description="The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.", alias="messageId", json_schema_extra={"examples": ["<vmiLEebsuCbSpUxD7oN3REpaN4VbN6BrdCAbNKIrdAo@relay0.mailbaby.net>"]})
     sending_zone: Optional[StrictStr] = Field(default=None, description="The sending zone assigned by the relay for outbound delivery.", alias="sendingZone", json_schema_extra={"examples": ["interserver"]})
     body_size: Optional[StrictInt] = Field(default=None, description="Size of the message body in bytes.", alias="bodySize", json_schema_extra={"examples": [63]})
     seq: Optional[StrictInt] = Field(default=None, description="Sequence index of this recipient in a multi-recipient message. Starts at 1.", json_schema_extra={"examples": [1]})
@@ -53,7 +53,7 @@ class MailLogEntry(BaseModel):
     assigned: Optional[StrictStr] = Field(default=None, description="The relay server node assigned to deliver this message.", json_schema_extra={"examples": ["relay1"]})
     queued: Optional[StrictStr] = Field(default=None, description="ISO 8601 timestamp when the message was placed into the delivery queue.", json_schema_extra={"examples": ["2021-10-14T12:50:15.487Z"]})
     mx_hostname: Optional[StrictStr] = Field(default=None, description="The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.", alias="mxHostname", json_schema_extra={"examples": ["mx.j.is.cc"]})
-    __properties: ClassVar[List[str]] = ["_id", "id", "from", "to", "subject", "messageId", "created", "time", "user", "transtype", "origin", "interface", "sendingZone", "bodySize", "seq", "delivered", "code", "recipient", "response", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname"]
+    __properties: ClassVar[List[str]] = ["_id", "id", "from", "to", "created", "time", "user", "transtype", "origin", "interface", "subject", "messageId", "sendingZone", "bodySize", "seq", "delivered", "code", "recipient", "response", "domain", "locked", "lockTime", "assigned", "queued", "mxHostname"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -185,14 +185,14 @@ class MailLogEntry(BaseModel):
             "id": obj.get("id"),
             "from": obj.get("from"),
             "to": obj.get("to"),
-            "subject": obj.get("subject"),
-            "messageId": obj.get("messageId"),
             "created": obj.get("created"),
             "time": obj.get("time"),
             "user": obj.get("user"),
             "transtype": obj.get("transtype"),
             "origin": obj.get("origin"),
             "interface": obj.get("interface"),
+            "subject": obj.get("subject"),
+            "messageId": obj.get("messageId"),
             "sendingZone": obj.get("sendingZone"),
             "bodySize": obj.get("bodySize"),
             "seq": obj.get("seq"),

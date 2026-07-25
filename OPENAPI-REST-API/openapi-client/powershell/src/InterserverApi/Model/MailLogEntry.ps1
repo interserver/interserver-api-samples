@@ -23,10 +23,6 @@ The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter 
 SMTP envelope `MAIL FROM` address.
 .PARAMETER To
 SMTP envelope `RCPT TO` address.
-.PARAMETER Subject
-The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-.PARAMETER MessageId
-The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
 .PARAMETER Created
 Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 .PARAMETER Time
@@ -39,6 +35,10 @@ SMTP transaction type negotiated with the relay.
 IP address of the client that submitted the message to the relay.
 .PARAMETER Interface
 Relay interface name that accepted the message.
+.PARAMETER Subject
+The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+.PARAMETER MessageId
+The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
 .PARAMETER SendingZone
 The sending zone assigned by the relay for outbound delivery.
 .PARAMETER BodySize
@@ -87,28 +87,28 @@ function Initialize-MailLogEntry {
         ${To},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Subject},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${MessageId},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [String]
         ${Created},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Int32]
         ${Time},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${User},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Transtype},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Origin},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Interface},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Subject},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${MessageId},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${SendingZone},
@@ -200,14 +200,14 @@ function Initialize-MailLogEntry {
             'id' = ${Id}
             'from' = ${VarFrom}
             'to' = ${To}
-            'subject' = ${Subject}
-            'messageId' = ${MessageId}
             'created' = ${Created}
             'time' = ${Time}
             'user' = ${User}
             'transtype' = ${Transtype}
             'origin' = ${Origin}
             'interface' = ${Interface}
+            'subject' = ${Subject}
+            'messageId' = ${MessageId}
             'sendingZone' = ${SendingZone}
             'bodySize' = ${BodySize}
             'seq' = ${Seq}
@@ -258,7 +258,7 @@ function ConvertFrom-JsonToMailLogEntry {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in MailLogEntry
-        $AllProperties = ('_id', 'id', 'from', 'to', 'subject', 'messageId', 'created', 'time', 'user', 'transtype', 'origin', 'interface', 'sendingZone', 'bodySize', 'seq', 'delivered', 'code', 'recipient', 'response', 'domain', 'locked', 'lockTime', 'assigned', 'queued', 'mxHostname')
+        $AllProperties = ('_id', 'id', 'from', 'to', 'created', 'time', 'user', 'transtype', 'origin', 'interface', 'subject', 'messageId', 'sendingZone', 'bodySize', 'seq', 'delivered', 'code', 'recipient', 'response', 'domain', 'locked', 'lockTime', 'assigned', 'queued', 'mxHostname')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -424,14 +424,14 @@ function ConvertFrom-JsonToMailLogEntry {
             'id' = ${Id}
             'from' = ${VarFrom}
             'to' = ${To}
-            'subject' = ${Subject}
-            'messageId' = ${MessageId}
             'created' = ${Created}
             'time' = ${Time}
             'user' = ${User}
             'transtype' = ${Transtype}
             'origin' = ${Origin}
             'interface' = ${Interface}
+            'subject' = ${Subject}
+            'messageId' = ${MessageId}
             'sendingZone' = ${SendingZone}
             'bodySize' = ${BodySize}
             'seq' = ${Seq}

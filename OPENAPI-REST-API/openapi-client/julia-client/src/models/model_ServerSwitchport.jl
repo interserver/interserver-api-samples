@@ -12,9 +12,9 @@
         blade=nothing,
         justport=nothing,
         graph_id=nothing,
+        asset_id=nothing,
         vlans=nothing,
         vlans6=nothing,
-        asset_id=nothing,
     )
 
     - switchport_id::Int64 : Unique identifier for the switchport.
@@ -24,9 +24,9 @@
     - blade::String : Blade name associated with the port.
     - justport::String : Port identifier.
     - graph_id::String : Identifier for the graph associated with the switchport.
+    - asset_id::Int64 : Unique identifier of the asset associated with the switchport.
     - vlans::Vector{String} : List of VLANs associated with the switchport.
     - vlans6::Vector{String} : List of IPv6 VLANs associated with the switchport.
-    - asset_id::Int64 : Unique identifier of the asset associated with the switchport.
 """
 Base.@kwdef mutable struct ServerSwitchport <: OpenAPI.APIModel
     switchport_id::Union{Nothing, Int64} = nothing
@@ -36,18 +36,18 @@ Base.@kwdef mutable struct ServerSwitchport <: OpenAPI.APIModel
     blade::Union{Nothing, String} = nothing
     justport::Union{Nothing, String} = nothing
     graph_id::Union{Nothing, String} = nothing
+    asset_id::Union{Nothing, Int64} = nothing
     vlans::Union{Nothing, Vector{String}} = nothing
     vlans6::Union{Nothing, Vector{String}} = nothing
-    asset_id::Union{Nothing, Int64} = nothing
 
-    function ServerSwitchport(switchport_id, switch_id, switch, port, blade, justport, graph_id, vlans, vlans6, asset_id, )
-        o = new(switchport_id, switch_id, switch, port, blade, justport, graph_id, vlans, vlans6, asset_id, )
+    function ServerSwitchport(switchport_id, switch_id, switch, port, blade, justport, graph_id, asset_id, vlans, vlans6, )
+        o = new(switchport_id, switch_id, switch, port, blade, justport, graph_id, asset_id, vlans, vlans6, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ServerSwitchport
 
-const _property_types_ServerSwitchport = Dict{Symbol,String}(Symbol("switchport_id")=>"Int64", Symbol("switch_id")=>"String", Symbol("switch")=>"String", Symbol("port")=>"String", Symbol("blade")=>"String", Symbol("justport")=>"String", Symbol("graph_id")=>"String", Symbol("vlans")=>"Vector{String}", Symbol("vlans6")=>"Vector{String}", Symbol("asset_id")=>"Int64", )
+const _property_types_ServerSwitchport = Dict{Symbol,String}(Symbol("switchport_id")=>"Int64", Symbol("switch_id")=>"String", Symbol("switch")=>"String", Symbol("port")=>"String", Symbol("blade")=>"String", Symbol("justport")=>"String", Symbol("graph_id")=>"String", Symbol("asset_id")=>"Int64", Symbol("vlans")=>"Vector{String}", Symbol("vlans6")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ServerSwitchport }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServerSwitchport[name]))}
 
 function OpenAPI.check_required(o::ServerSwitchport)
@@ -70,9 +70,9 @@ function OpenAPI.validate_properties(o::ServerSwitchport)
     OpenAPI.validate_property(ServerSwitchport, Symbol("blade"), o.blade)
     OpenAPI.validate_property(ServerSwitchport, Symbol("justport"), o.justport)
     OpenAPI.validate_property(ServerSwitchport, Symbol("graph_id"), o.graph_id)
+    OpenAPI.validate_property(ServerSwitchport, Symbol("asset_id"), o.asset_id)
     OpenAPI.validate_property(ServerSwitchport, Symbol("vlans"), o.vlans)
     OpenAPI.validate_property(ServerSwitchport, Symbol("vlans6"), o.vlans6)
-    OpenAPI.validate_property(ServerSwitchport, Symbol("asset_id"), o.asset_id)
 end
 
 function OpenAPI.validate_property(::Type{ ServerSwitchport }, name::Symbol, val)

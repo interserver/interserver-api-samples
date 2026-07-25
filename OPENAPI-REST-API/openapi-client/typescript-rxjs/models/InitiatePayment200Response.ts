@@ -61,6 +61,7 @@ export interface InitiatePayment200Response {
 export enum InitiatePayment200ResponseTypeEnum {
     Redirect = 'redirect',
     Submit = 'submit',
-    Single = 'single'
+    Single = 'single',
+    UnknownDefaultOpenApi = '11184809'
 }
 

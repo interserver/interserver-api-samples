@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 **TBLNAME** | **string** |  | 
 **TABLE** | **string** |  | 
 **TITLE_FIELD** | **string** |  | 
+**PREFIX** | **string** |  | 
 **TITLEFIELD2** | Pointer to **string** |  | [optional] 
 **TITLEFIELD3** | Pointer to **string** |  | [optional] 
-**PREFIX** | **string** |  | 
 
 ## Methods
 
@@ -342,6 +342,26 @@ and a boolean to check if the value has been set.
 SetTITLE_FIELD sets TITLE_FIELD field to given value.
 
 
+### GetPREFIX
+
+`func (o *ModuleSettings) GetPREFIX() string`
+
+GetPREFIX returns the PREFIX field if non-nil, zero value otherwise.
+
+### GetPREFIXOk
+
+`func (o *ModuleSettings) GetPREFIXOk() (*string, bool)`
+
+GetPREFIXOk returns a tuple with the PREFIX field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPREFIX
+
+`func (o *ModuleSettings) SetPREFIX(v string)`
+
+SetPREFIX sets PREFIX field to given value.
+
+
 ### GetTITLEFIELD2
 
 `func (o *ModuleSettings) GetTITLEFIELD2() string`
@@ -391,26 +411,6 @@ SetTITLEFIELD3 sets TITLEFIELD3 field to given value.
 `func (o *ModuleSettings) HasTITLEFIELD3() bool`
 
 HasTITLEFIELD3 returns a boolean if a field has been set.
-
-### GetPREFIX
-
-`func (o *ModuleSettings) GetPREFIX() string`
-
-GetPREFIX returns the PREFIX field if non-nil, zero value otherwise.
-
-### GetPREFIXOk
-
-`func (o *ModuleSettings) GetPREFIXOk() (*string, bool)`
-
-GetPREFIXOk returns a tuple with the PREFIX field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPREFIX
-
-`func (o *ModuleSettings) SetPREFIX(v string)`
-
-SetPREFIX sets PREFIX field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

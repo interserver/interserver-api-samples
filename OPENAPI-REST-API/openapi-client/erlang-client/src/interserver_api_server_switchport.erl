@@ -12,9 +12,9 @@
        'blade' := binary(),
        'justport' := binary(),
        'graph_id' := binary(),
+       'asset_id' := integer(),
        'vlans' => list(),
-       'vlans6' => list(),
-       'asset_id' := integer()
+       'vlans6' => list()
      }.
 
 encode(#{ 'switchport_id' := SwitchportId,
@@ -24,9 +24,9 @@ encode(#{ 'switchport_id' := SwitchportId,
           'blade' := Blade,
           'justport' := Justport,
           'graph_id' := GraphId,
+          'asset_id' := AssetId,
           'vlans' := Vlans,
-          'vlans6' := Vlans6,
-          'asset_id' := AssetId
+          'vlans6' := Vlans6
         }) ->
     #{ 'switchport_id' => SwitchportId,
        'switch_id' => SwitchId,
@@ -35,7 +35,7 @@ encode(#{ 'switchport_id' := SwitchportId,
        'blade' => Blade,
        'justport' => Justport,
        'graph_id' => GraphId,
+       'asset_id' => AssetId,
        'vlans' => Vlans,
-       'vlans6' => Vlans6,
-       'asset_id' => AssetId
+       'vlans6' => Vlans6
      }.

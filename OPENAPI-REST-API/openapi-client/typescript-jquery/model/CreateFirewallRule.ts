@@ -39,10 +39,12 @@ export interface CreateFirewallRule {
 export namespace CreateFirewallRule {
     export enum ProtocolIdEnum {
         NUMBER_1 = <any> 1,
-        NUMBER_2 = <any> 2
+        NUMBER_2 = <any> 2,
+        NUMBER_unknown_default_open_api = <any> 11184809
     }
     export enum XdpActionEnum {
         NUMBER_0 = <any> 0,
-        NUMBER_1 = <any> 1
+        NUMBER_1 = <any> 1,
+        NUMBER_unknown_default_open_api = <any> 11184809
     }
 }

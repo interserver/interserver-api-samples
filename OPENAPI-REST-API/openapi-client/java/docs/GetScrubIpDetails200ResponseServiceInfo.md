@@ -30,6 +30,7 @@
 | pending | &quot;pending&quot; |
 | canceled | &quot;canceled&quot; |
 | expired | &quot;expired&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

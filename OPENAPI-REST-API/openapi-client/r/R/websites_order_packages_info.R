@@ -13,11 +13,11 @@
 #' @field services_category The category of the package. character
 #' @field services_buyable Indicates if the package is buyable (1 for yes, 0 for no). character
 #' @field services_type The type of the package. character
+#' @field services_module The module of the package. character
+#' @field services_description Description of the package. character
 #' @field services_field1 Additional field 1 for the package. character [optional]
 #' @field services_field2 Additional field 2 for the package. character [optional]
-#' @field services_module The module of the package. character
 #' @field services_html HTML content for the package. character [optional]
-#' @field services_description Description of the package. character
 #' @field services_moreinfo_url URL for more information about the package. character [optional]
 #' @field services_hidden Indicates if the package is hidden (1 for yes, 0 for no). character [optional]
 #' @importFrom R6 R6Class
@@ -32,11 +32,11 @@ WebsitesOrderPackagesInfo <- R6::R6Class(
     `services_category` = NULL,
     `services_buyable` = NULL,
     `services_type` = NULL,
+    `services_module` = NULL,
+    `services_description` = NULL,
     `services_field1` = NULL,
     `services_field2` = NULL,
-    `services_module` = NULL,
     `services_html` = NULL,
-    `services_description` = NULL,
     `services_moreinfo_url` = NULL,
     `services_hidden` = NULL,
 
@@ -193,6 +193,14 @@ WebsitesOrderPackagesInfo <- R6::R6Class(
         WebsitesOrderPackagesInfoObject[["services_type"]] <-
           self$`services_type`
       }
+      if (!is.null(self$`services_module`)) {
+        WebsitesOrderPackagesInfoObject[["services_module"]] <-
+          self$`services_module`
+      }
+      if (!is.null(self$`services_description`)) {
+        WebsitesOrderPackagesInfoObject[["services_description"]] <-
+          self$`services_description`
+      }
       if (!is.null(self$`services_field1`)) {
         WebsitesOrderPackagesInfoObject[["services_field1"]] <-
           self$`services_field1`
@@ -201,17 +209,9 @@ WebsitesOrderPackagesInfo <- R6::R6Class(
         WebsitesOrderPackagesInfoObject[["services_field2"]] <-
           self$`services_field2`
       }
-      if (!is.null(self$`services_module`)) {
-        WebsitesOrderPackagesInfoObject[["services_module"]] <-
-          self$`services_module`
-      }
       if (!is.null(self$`services_html`)) {
         WebsitesOrderPackagesInfoObject[["services_html"]] <-
           self$`services_html`
-      }
-      if (!is.null(self$`services_description`)) {
-        WebsitesOrderPackagesInfoObject[["services_description"]] <-
-          self$`services_description`
       }
       if (!is.null(self$`services_moreinfo_url`)) {
         WebsitesOrderPackagesInfoObject[["services_moreinfo_url"]] <-
@@ -249,20 +249,20 @@ WebsitesOrderPackagesInfo <- R6::R6Class(
       if (!is.null(this_object$`services_type`)) {
         self$`services_type` <- this_object$`services_type`
       }
+      if (!is.null(this_object$`services_module`)) {
+        self$`services_module` <- this_object$`services_module`
+      }
+      if (!is.null(this_object$`services_description`)) {
+        self$`services_description` <- this_object$`services_description`
+      }
       if (!is.null(this_object$`services_field1`)) {
         self$`services_field1` <- this_object$`services_field1`
       }
       if (!is.null(this_object$`services_field2`)) {
         self$`services_field2` <- this_object$`services_field2`
       }
-      if (!is.null(this_object$`services_module`)) {
-        self$`services_module` <- this_object$`services_module`
-      }
       if (!is.null(this_object$`services_html`)) {
         self$`services_html` <- this_object$`services_html`
-      }
-      if (!is.null(this_object$`services_description`)) {
-        self$`services_description` <- this_object$`services_description`
       }
       if (!is.null(this_object$`services_moreinfo_url`)) {
         self$`services_moreinfo_url` <- this_object$`services_moreinfo_url`
@@ -297,11 +297,11 @@ WebsitesOrderPackagesInfo <- R6::R6Class(
       self$`services_category` <- this_object$`services_category`
       self$`services_buyable` <- this_object$`services_buyable`
       self$`services_type` <- this_object$`services_type`
+      self$`services_module` <- this_object$`services_module`
+      self$`services_description` <- this_object$`services_description`
       self$`services_field1` <- this_object$`services_field1`
       self$`services_field2` <- this_object$`services_field2`
-      self$`services_module` <- this_object$`services_module`
       self$`services_html` <- this_object$`services_html`
-      self$`services_description` <- this_object$`services_description`
       self$`services_moreinfo_url` <- this_object$`services_moreinfo_url`
       self$`services_hidden` <- this_object$`services_hidden`
       self

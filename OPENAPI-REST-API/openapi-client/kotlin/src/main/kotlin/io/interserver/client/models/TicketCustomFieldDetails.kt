@@ -64,12 +64,13 @@ data class TicketCustomFieldDetails (
     /**
      * 
      *
-     * Values: y,n
+     * Values: y,n,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class CustomerServerAccess(val value: kotlin.String) {
         @Json(name = "y") y("y"),
-        @Json(name = "n") n("n");
+        @Json(name = "n") n("n"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

@@ -101,7 +101,8 @@ export const GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum = {
     Active: 'active',
     Pending: 'pending',
     Canceled: 'canceled',
-    Expired: 'expired'
+    Expired: 'expired',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum = typeof GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum[keyof typeof GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum];
 

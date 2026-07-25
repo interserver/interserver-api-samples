@@ -27,16 +27,16 @@ The category of the package.
 Indicates if the package is buyable (1 for yes, 0 for no).
 .PARAMETER ServicesType
 The type of the package.
+.PARAMETER ServicesModule
+The module of the package.
+.PARAMETER ServicesDescription
+Description of the package.
 .PARAMETER ServicesField1
 Additional field 1 for the package.
 .PARAMETER ServicesField2
 Additional field 2 for the package.
-.PARAMETER ServicesModule
-The module of the package.
 .PARAMETER ServicesHtml
 HTML content for the package.
-.PARAMETER ServicesDescription
-Description of the package.
 .PARAMETER ServicesMoreinfoUrl
 URL for more information about the package.
 .PARAMETER ServicesHidden
@@ -69,19 +69,19 @@ function Initialize-WebsitesOrderPackagesInfo {
         ${ServicesType},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ServicesField1},
+        ${ServicesModule},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ServicesField2},
+        ${ServicesDescription},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ServicesModule},
+        ${ServicesField1},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ServicesHtml},
+        ${ServicesField2},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${ServicesDescription},
+        ${ServicesHtml},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${ServicesMoreinfoUrl},
@@ -134,11 +134,11 @@ function Initialize-WebsitesOrderPackagesInfo {
             'services_category' = ${ServicesCategory}
             'services_buyable' = ${ServicesBuyable}
             'services_type' = ${ServicesType}
+            'services_module' = ${ServicesModule}
+            'services_description' = ${ServicesDescription}
             'services_field1' = ${ServicesField1}
             'services_field2' = ${ServicesField2}
-            'services_module' = ${ServicesModule}
             'services_html' = ${ServicesHtml}
-            'services_description' = ${ServicesDescription}
             'services_moreinfo_url' = ${ServicesMoreinfoUrl}
             'services_hidden' = ${ServicesHidden}
         }
@@ -178,7 +178,7 @@ function ConvertFrom-JsonToWebsitesOrderPackagesInfo {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in WebsitesOrderPackagesInfo
-        $AllProperties = ('services_id', 'services_name', 'services_cost', 'services_category', 'services_buyable', 'services_type', 'services_field1', 'services_field2', 'services_module', 'services_html', 'services_description', 'services_moreinfo_url', 'services_hidden')
+        $AllProperties = ('services_id', 'services_name', 'services_cost', 'services_category', 'services_buyable', 'services_type', 'services_module', 'services_description', 'services_field1', 'services_field2', 'services_html', 'services_moreinfo_url', 'services_hidden')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -274,11 +274,11 @@ function ConvertFrom-JsonToWebsitesOrderPackagesInfo {
             'services_category' = ${ServicesCategory}
             'services_buyable' = ${ServicesBuyable}
             'services_type' = ${ServicesType}
+            'services_module' = ${ServicesModule}
+            'services_description' = ${ServicesDescription}
             'services_field1' = ${ServicesField1}
             'services_field2' = ${ServicesField2}
-            'services_module' = ${ServicesModule}
             'services_html' = ${ServicesHtml}
-            'services_description' = ${ServicesDescription}
             'services_moreinfo_url' = ${ServicesMoreinfoUrl}
             'services_hidden' = ${ServicesHidden}
         }

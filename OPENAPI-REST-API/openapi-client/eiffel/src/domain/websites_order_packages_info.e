@@ -31,16 +31,16 @@ feature --Access
       -- Indicates if the package is buyable (1 for yes, 0 for no).
     services_type: detachable STRING_32
       -- The type of the package.
+    services_module: detachable STRING_32
+      -- The module of the package.
+    services_description: detachable STRING_32
+      -- Description of the package.
     services_field1: detachable STRING_32
       -- Additional field 1 for the package.
     services_field2: detachable STRING_32
       -- Additional field 2 for the package.
-    services_module: detachable STRING_32
-      -- The module of the package.
     services_html: detachable STRING_32
       -- HTML content for the package.
-    services_description: detachable STRING_32
-      -- Description of the package.
     services_moreinfo_url: detachable STRING_32
       -- URL for more information about the package.
     services_hidden: detachable STRING_32
@@ -96,6 +96,22 @@ feature -- Change Element
         services_type_set: services_type = a_name
       end
 
+    set_services_module (a_name: like services_module)
+        -- Set 'services_module' with 'a_name'.
+      do
+        services_module := a_name
+      ensure
+        services_module_set: services_module = a_name
+      end
+
+    set_services_description (a_name: like services_description)
+        -- Set 'services_description' with 'a_name'.
+      do
+        services_description := a_name
+      ensure
+        services_description_set: services_description = a_name
+      end
+
     set_services_field1 (a_name: like services_field1)
         -- Set 'services_field1' with 'a_name'.
       do
@@ -112,28 +128,12 @@ feature -- Change Element
         services_field2_set: services_field2 = a_name
       end
 
-    set_services_module (a_name: like services_module)
-        -- Set 'services_module' with 'a_name'.
-      do
-        services_module := a_name
-      ensure
-        services_module_set: services_module = a_name
-      end
-
     set_services_html (a_name: like services_html)
         -- Set 'services_html' with 'a_name'.
       do
         services_html := a_name
       ensure
         services_html_set: services_html = a_name
-      end
-
-    set_services_description (a_name: like services_description)
-        -- Set 'services_description' with 'a_name'.
-      do
-        services_description := a_name
-      ensure
-        services_description_set: services_description = a_name
       end
 
     set_services_moreinfo_url (a_name: like services_moreinfo_url)
@@ -190,6 +190,16 @@ feature -- Change Element
           Result.append (l_services_type.out)
           Result.append ("%N")
         end
+        if attached services_module as l_services_module then
+          Result.append ("%Nservices_module:")
+          Result.append (l_services_module.out)
+          Result.append ("%N")
+        end
+        if attached services_description as l_services_description then
+          Result.append ("%Nservices_description:")
+          Result.append (l_services_description.out)
+          Result.append ("%N")
+        end
         if attached services_field1 as l_services_field1 then
           Result.append ("%Nservices_field1:")
           Result.append (l_services_field1.out)
@@ -200,19 +210,9 @@ feature -- Change Element
           Result.append (l_services_field2.out)
           Result.append ("%N")
         end
-        if attached services_module as l_services_module then
-          Result.append ("%Nservices_module:")
-          Result.append (l_services_module.out)
-          Result.append ("%N")
-        end
         if attached services_html as l_services_html then
           Result.append ("%Nservices_html:")
           Result.append (l_services_html.out)
-          Result.append ("%N")
-        end
-        if attached services_description as l_services_description then
-          Result.append ("%Nservices_description:")
-          Result.append (l_services_description.out)
           Result.append ("%N")
         end
         if attached services_moreinfo_url as l_services_moreinfo_url then

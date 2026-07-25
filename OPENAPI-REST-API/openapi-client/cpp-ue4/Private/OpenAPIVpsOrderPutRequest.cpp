@@ -30,6 +30,8 @@ inline FString ToString(const OpenAPIVpsOrderPutRequest::VpsPlatformEnum& Value)
 		return TEXT("hyperv");
 	case OpenAPIVpsOrderPutRequest::VpsPlatformEnum::Kvmstorage:
 		return TEXT("kvmstorage");
+	case OpenAPIVpsOrderPutRequest::VpsPlatformEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIVpsOrderPutRequest::VpsPlatformEnum Value (%d)"), (int)Value);
@@ -46,7 +48,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIVpsOrderPutRequest::V
 	static TMap<FString, OpenAPIVpsOrderPutRequest::VpsPlatformEnum> StringToEnum = { 
 		{ TEXT("kvm"), OpenAPIVpsOrderPutRequest::VpsPlatformEnum::Kvm },
 		{ TEXT("hyperv"), OpenAPIVpsOrderPutRequest::VpsPlatformEnum::Hyperv },
-		{ TEXT("kvmstorage"), OpenAPIVpsOrderPutRequest::VpsPlatformEnum::Kvmstorage }, };
+		{ TEXT("kvmstorage"), OpenAPIVpsOrderPutRequest::VpsPlatformEnum::Kvmstorage },
+		{ TEXT("11184809"), OpenAPIVpsOrderPutRequest::VpsPlatformEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -86,6 +89,8 @@ inline FString ToString(const OpenAPIVpsOrderPutRequest::ControlpanelEnum& Value
 		return TEXT("cpanel");
 	case OpenAPIVpsOrderPutRequest::ControlpanelEnum::Da:
 		return TEXT("da");
+	case OpenAPIVpsOrderPutRequest::ControlpanelEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIVpsOrderPutRequest::ControlpanelEnum Value (%d)"), (int)Value);
@@ -102,7 +107,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIVpsOrderPutRequest::C
 	static TMap<FString, OpenAPIVpsOrderPutRequest::ControlpanelEnum> StringToEnum = { 
 		{ TEXT("none"), OpenAPIVpsOrderPutRequest::ControlpanelEnum::None },
 		{ TEXT("cpanel"), OpenAPIVpsOrderPutRequest::ControlpanelEnum::Cpanel },
-		{ TEXT("da"), OpenAPIVpsOrderPutRequest::ControlpanelEnum::Da }, };
+		{ TEXT("da"), OpenAPIVpsOrderPutRequest::ControlpanelEnum::Da },
+		{ TEXT("11184809"), OpenAPIVpsOrderPutRequest::ControlpanelEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

@@ -285,7 +285,8 @@ open class PublicApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      enum class FetchByGetCountries(val value: kotlin.String) {
          @Json(name = "iso2") iso2("iso2"),
          @Json(name = "iso3") iso3("iso3"),
-         @Json(name = "numcode") numcode("numcode");
+         @Json(name = "numcode") numcode("numcode"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use

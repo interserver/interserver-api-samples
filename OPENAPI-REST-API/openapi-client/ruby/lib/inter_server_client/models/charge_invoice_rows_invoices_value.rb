@@ -181,7 +181,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      invoices_paid_validator = EnumAttributeValidator.new('Float', [0, 1])
+      invoices_paid_validator = EnumAttributeValidator.new('Float', [0, 1, 11184809])
       return false unless invoices_paid_validator.valid?(@invoices_paid)
       true
     end
@@ -189,7 +189,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] invoices_paid Object to be assigned
     def invoices_paid=(invoices_paid)
-      validator = EnumAttributeValidator.new('Float', [0, 1])
+      validator = EnumAttributeValidator.new('Float', [0, 1, 11184809])
       unless validator.valid?(invoices_paid)
         fail ArgumentError, "invalid value for \"invoices_paid\", must be one of #{validator.allowable_values}."
       end

@@ -37,14 +37,16 @@ Protected Class DomainOrderRequest
         
         Register
         Transfer
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
     #tag Enum, Name = Whois_privacyEnum, Type = Integer, Flags = &h0
         
         Enable
         Disable
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -56,7 +58,10 @@ Protected Class DomainOrderRequest
 		      Return "register"
 		    Case TypeEnum.Transfer
 		      Return "transfer"
-		    
+		    Case TypeEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -69,7 +74,10 @@ Protected Class DomainOrderRequest
 		      Return "enable"
 		    Case Whois_privacyEnum.Disable
 		      Return "disable"
-		    
+		    Case Whois_privacyEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

@@ -1,8 +1,8 @@
-# openapi.model.DomainDnssecRequest
+# interserver_api.model.DomainDnssecRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

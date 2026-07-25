@@ -67,5 +67,6 @@ export enum DnsRecordType {
     Tsig = <any> 'TSIG',
     Txt = <any> 'TXT',
     Wks = <any> 'WKS',
-    Uri = <any> 'URI⏎'
+    Uri = <any> 'URI⏎',
+    UnknownDefaultOpenApi = <any> '11184809'
 }

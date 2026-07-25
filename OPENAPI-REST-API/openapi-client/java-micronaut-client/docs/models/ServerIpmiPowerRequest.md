@@ -22,6 +22,7 @@ RESET | `"reset"`
 ON | `"on"`
 OFF | `"off"`
 SOFT | `"soft"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

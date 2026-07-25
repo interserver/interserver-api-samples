@@ -19,18 +19,18 @@ local function cast_mail_service_info(t)
 	return setmetatable(t, mail_service_info_mt)
 end
 
-local function new_mail_service_info(mail_id, mail_username, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_ip, mail_status, mail_invoice, mail_coupon, mail_extra, mail_server_status, mail_comment)
+local function new_mail_service_info(mail_id, mail_type, mail_currency, mail_order_date, mail_custid, mail_quota, mail_status, mail_invoice, mail_username, mail_ip, mail_coupon, mail_extra, mail_server_status, mail_comment)
 	return cast_mail_service_info({
 		["mail_id"] = mail_id;
-		["mail_username"] = mail_username;
 		["mail_type"] = mail_type;
 		["mail_currency"] = mail_currency;
 		["mail_order_date"] = mail_order_date;
 		["mail_custid"] = mail_custid;
 		["mail_quota"] = mail_quota;
-		["mail_ip"] = mail_ip;
 		["mail_status"] = mail_status;
 		["mail_invoice"] = mail_invoice;
+		["mail_username"] = mail_username;
+		["mail_ip"] = mail_ip;
 		["mail_coupon"] = mail_coupon;
 		["mail_extra"] = mail_extra;
 		["mail_server_status"] = mail_server_status;

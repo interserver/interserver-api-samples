@@ -165,7 +165,8 @@ Protected Class SslOrderRequest
         
         Generated
         Provided
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -177,7 +178,10 @@ Protected Class SslOrderRequest
 		      Return "generated"
 		    Case Csr_typeEnum.Provided
 		      Return "provided"
-		    
+		    Case Csr_typeEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

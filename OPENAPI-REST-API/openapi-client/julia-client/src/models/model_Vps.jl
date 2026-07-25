@@ -12,10 +12,8 @@
         custCurrencySymbol=nothing,
         serviceMaster=nothing,
         package=nothing,
-        os_template=nothing,
         serviceExtra=nothing,
         extraInfoTables=nothing,
-        cpu_graph_data=nothing,
         var"module"=nothing,
         token=nothing,
         da_link=nothing,
@@ -24,6 +22,8 @@
         da_data=nothing,
         plesk12_data=nothing,
         serviceAddons=nothing,
+        os_template=nothing,
+        cpu_graph_data=nothing,
     )
 
     - serviceInfo::VpsServiceInfo
@@ -33,10 +33,8 @@
     - custCurrencySymbol::String
     - serviceMaster::VpsServiceMaster
     - package::String
-    - os_template::String
     - serviceExtra::VpsServiceExtra
     - extraInfoTables::VpsExtraInfoTables
-    - cpu_graph_data::Any
     - var"module"::String
     - token::String
     - da_link::Int64
@@ -45,6 +43,8 @@
     - da_data::VpsDAData
     - plesk12_data::VpsPlesk12Data
     - serviceAddons::VpsServiceAddons
+    - os_template::String
+    - cpu_graph_data::Any
 """
 Base.@kwdef mutable struct Vps <: OpenAPI.APIModel
     serviceInfo = nothing # spec type: Union{ Nothing, VpsServiceInfo }
@@ -54,10 +54,8 @@ Base.@kwdef mutable struct Vps <: OpenAPI.APIModel
     custCurrencySymbol::Union{Nothing, String} = nothing
     serviceMaster = nothing # spec type: Union{ Nothing, VpsServiceMaster }
     package::Union{Nothing, String} = nothing
-    os_template::Union{Nothing, String} = nothing
     serviceExtra = nothing # spec type: Union{ Nothing, VpsServiceExtra }
     extraInfoTables = nothing # spec type: Union{ Nothing, VpsExtraInfoTables }
-    cpu_graph_data::Union{Nothing, Any} = nothing
     var"module"::Union{Nothing, String} = nothing
     token::Union{Nothing, String} = nothing
     da_link::Union{Nothing, Int64} = nothing
@@ -66,15 +64,17 @@ Base.@kwdef mutable struct Vps <: OpenAPI.APIModel
     da_data = nothing # spec type: Union{ Nothing, VpsDAData }
     plesk12_data = nothing # spec type: Union{ Nothing, VpsPlesk12Data }
     serviceAddons = nothing # spec type: Union{ Nothing, VpsServiceAddons }
+    os_template::Union{Nothing, String} = nothing
+    cpu_graph_data::Union{Nothing, Any} = nothing
 
-    function Vps(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, package, os_template, serviceExtra, extraInfoTables, cpu_graph_data, var"module", token, da_link, sr_link, cp_data, da_data, plesk12_data, serviceAddons, )
-        o = new(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, package, os_template, serviceExtra, extraInfoTables, cpu_graph_data, var"module", token, da_link, sr_link, cp_data, da_data, plesk12_data, serviceAddons, )
+    function Vps(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, package, serviceExtra, extraInfoTables, var"module", token, da_link, sr_link, cp_data, da_data, plesk12_data, serviceAddons, os_template, cpu_graph_data, )
+        o = new(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, package, serviceExtra, extraInfoTables, var"module", token, da_link, sr_link, cp_data, da_data, plesk12_data, serviceAddons, os_template, cpu_graph_data, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type Vps
 
-const _property_types_Vps = Dict{Symbol,String}(Symbol("serviceInfo")=>"VpsServiceInfo", Symbol("client_links")=>"Vector{VpsClientLink}", Symbol("billingDetails")=>"VpsBillingDetails", Symbol("custCurrency")=>"String", Symbol("custCurrencySymbol")=>"String", Symbol("serviceMaster")=>"VpsServiceMaster", Symbol("package")=>"String", Symbol("os_template")=>"String", Symbol("serviceExtra")=>"VpsServiceExtra", Symbol("extraInfoTables")=>"VpsExtraInfoTables", Symbol("cpu_graph_data")=>"Any", Symbol("module")=>"String", Symbol("token")=>"String", Symbol("da_link")=>"Int64", Symbol("sr_link")=>"Int64", Symbol("cp_data")=>"VpsCPData", Symbol("da_data")=>"VpsDAData", Symbol("plesk12_data")=>"VpsPlesk12Data", Symbol("serviceAddons")=>"VpsServiceAddons", )
+const _property_types_Vps = Dict{Symbol,String}(Symbol("serviceInfo")=>"VpsServiceInfo", Symbol("client_links")=>"Vector{VpsClientLink}", Symbol("billingDetails")=>"VpsBillingDetails", Symbol("custCurrency")=>"String", Symbol("custCurrencySymbol")=>"String", Symbol("serviceMaster")=>"VpsServiceMaster", Symbol("package")=>"String", Symbol("serviceExtra")=>"VpsServiceExtra", Symbol("extraInfoTables")=>"VpsExtraInfoTables", Symbol("module")=>"String", Symbol("token")=>"String", Symbol("da_link")=>"Int64", Symbol("sr_link")=>"Int64", Symbol("cp_data")=>"VpsCPData", Symbol("da_data")=>"VpsDAData", Symbol("plesk12_data")=>"VpsPlesk12Data", Symbol("serviceAddons")=>"VpsServiceAddons", Symbol("os_template")=>"String", Symbol("cpu_graph_data")=>"Any", )
 OpenAPI.property_type(::Type{ Vps }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Vps[name]))}
 
 function OpenAPI.check_required(o::Vps)
@@ -106,10 +106,8 @@ function OpenAPI.validate_properties(o::Vps)
     OpenAPI.validate_property(Vps, Symbol("custCurrencySymbol"), o.custCurrencySymbol)
     OpenAPI.validate_property(Vps, Symbol("serviceMaster"), o.serviceMaster)
     OpenAPI.validate_property(Vps, Symbol("package"), o.package)
-    OpenAPI.validate_property(Vps, Symbol("os_template"), o.os_template)
     OpenAPI.validate_property(Vps, Symbol("serviceExtra"), o.serviceExtra)
     OpenAPI.validate_property(Vps, Symbol("extraInfoTables"), o.extraInfoTables)
-    OpenAPI.validate_property(Vps, Symbol("cpu_graph_data"), o.cpu_graph_data)
     OpenAPI.validate_property(Vps, Symbol("module"), o.var"module")
     OpenAPI.validate_property(Vps, Symbol("token"), o.token)
     OpenAPI.validate_property(Vps, Symbol("da_link"), o.da_link)
@@ -118,6 +116,8 @@ function OpenAPI.validate_properties(o::Vps)
     OpenAPI.validate_property(Vps, Symbol("da_data"), o.da_data)
     OpenAPI.validate_property(Vps, Symbol("plesk12_data"), o.plesk12_data)
     OpenAPI.validate_property(Vps, Symbol("serviceAddons"), o.serviceAddons)
+    OpenAPI.validate_property(Vps, Symbol("os_template"), o.os_template)
+    OpenAPI.validate_property(Vps, Symbol("cpu_graph_data"), o.cpu_graph_data)
 end
 
 function OpenAPI.validate_property(::Type{ Vps }, name::Symbol, val)

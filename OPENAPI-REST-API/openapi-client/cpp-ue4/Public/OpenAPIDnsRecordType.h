@@ -80,6 +80,7 @@ public:
 		Txt,
 		Wks,
 		Uri,
+		UnknownDefaultOpenApi,
   	};
 
 	Values Value;

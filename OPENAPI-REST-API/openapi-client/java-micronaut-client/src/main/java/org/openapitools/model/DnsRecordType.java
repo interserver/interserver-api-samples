@@ -77,7 +77,8 @@ public enum DnsRecordType {
     TSIG("TSIG"),
     TXT("TXT"),
     WKS("WKS"),
-    URI_("URI⏎");
+    URI_("URI⏎"),
+    UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
     private String value;
 

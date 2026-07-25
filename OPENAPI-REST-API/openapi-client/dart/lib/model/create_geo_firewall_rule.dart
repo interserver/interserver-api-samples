@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class CreateGeoFirewallRule {
   /// Returns a new [CreateGeoFirewallRule] instance.
@@ -153,6 +153,7 @@ class CreateGeoFirewallRule {
 enum CreateGeoFirewallRuleXdpActionEnum {
   number0._(0),
   number1._(1),
+  unknownDefaultOpenApi._(11184809),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -213,6 +214,7 @@ class CreateGeoFirewallRuleXdpActionEnumTypeTransformer {
       switch (data) {
         case 0: return CreateGeoFirewallRuleXdpActionEnum.number0;
         case 1: return CreateGeoFirewallRuleXdpActionEnum.number1;
+        case 11184809: return CreateGeoFirewallRuleXdpActionEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

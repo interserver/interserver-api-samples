@@ -19,13 +19,13 @@ local function cast_create_firewall_rule(t)
 	return setmetatable(t, create_firewall_rule_mt)
 end
 
-local function new_create_firewall_rule(destination_port, source_ip, source_port, protocol_id, xdp_action)
+local function new_create_firewall_rule(protocol_id, xdp_action, destination_port, source_ip, source_port)
 	return cast_create_firewall_rule({
+		["protocol_id"] = protocol_id;
+		["xdp_action"] = xdp_action;
 		["destination_port"] = destination_port;
 		["source_ip"] = source_ip;
 		["source_port"] = source_port;
-		["protocol_id"] = protocol_id;
-		["xdp_action"] = xdp_action;
 	})
 end
 

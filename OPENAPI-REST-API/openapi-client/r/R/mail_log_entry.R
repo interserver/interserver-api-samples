@@ -11,14 +11,14 @@
 #' @field id The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. character
 #' @field from SMTP envelope `MAIL FROM` address. character
 #' @field to SMTP envelope `RCPT TO` address. character
-#' @field subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. character [optional]
-#' @field messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. character [optional]
 #' @field created Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. character
 #' @field time Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. integer
 #' @field user The SMTP AUTH username used to submit the message (e.g. `mb5658`). character
 #' @field transtype SMTP transaction type negotiated with the relay. character
 #' @field origin IP address of the client that submitted the message to the relay. character
 #' @field interface Relay interface name that accepted the message. character
+#' @field subject The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. character [optional]
+#' @field messageId The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. character [optional]
 #' @field sendingZone The sending zone assigned by the relay for outbound delivery. character [optional]
 #' @field bodySize Size of the message body in bytes. integer [optional]
 #' @field seq Sequence index of this recipient in a multi-recipient message. Starts at 1. integer [optional]
@@ -42,14 +42,14 @@ MailLogEntry <- R6::R6Class(
     `id` = NULL,
     `from` = NULL,
     `to` = NULL,
-    `subject` = NULL,
-    `messageId` = NULL,
     `created` = NULL,
     `time` = NULL,
     `user` = NULL,
     `transtype` = NULL,
     `origin` = NULL,
     `interface` = NULL,
+    `subject` = NULL,
+    `messageId` = NULL,
     `sendingZone` = NULL,
     `bodySize` = NULL,
     `seq` = NULL,
@@ -293,14 +293,6 @@ MailLogEntry <- R6::R6Class(
         MailLogEntryObject[["to"]] <-
           self$`to`
       }
-      if (!is.null(self$`subject`)) {
-        MailLogEntryObject[["subject"]] <-
-          self$`subject`
-      }
-      if (!is.null(self$`messageId`)) {
-        MailLogEntryObject[["messageId"]] <-
-          self$`messageId`
-      }
       if (!is.null(self$`created`)) {
         MailLogEntryObject[["created"]] <-
           self$`created`
@@ -324,6 +316,14 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(self$`interface`)) {
         MailLogEntryObject[["interface"]] <-
           self$`interface`
+      }
+      if (!is.null(self$`subject`)) {
+        MailLogEntryObject[["subject"]] <-
+          self$`subject`
+      }
+      if (!is.null(self$`messageId`)) {
+        MailLogEntryObject[["messageId"]] <-
+          self$`messageId`
       }
       if (!is.null(self$`sendingZone`)) {
         MailLogEntryObject[["sendingZone"]] <-
@@ -399,12 +399,6 @@ MailLogEntry <- R6::R6Class(
       if (!is.null(this_object$`to`)) {
         self$`to` <- this_object$`to`
       }
-      if (!is.null(this_object$`subject`)) {
-        self$`subject` <- this_object$`subject`
-      }
-      if (!is.null(this_object$`messageId`)) {
-        self$`messageId` <- this_object$`messageId`
-      }
       if (!is.null(this_object$`created`)) {
         self$`created` <- this_object$`created`
       }
@@ -422,6 +416,12 @@ MailLogEntry <- R6::R6Class(
       }
       if (!is.null(this_object$`interface`)) {
         self$`interface` <- this_object$`interface`
+      }
+      if (!is.null(this_object$`subject`)) {
+        self$`subject` <- this_object$`subject`
+      }
+      if (!is.null(this_object$`messageId`)) {
+        self$`messageId` <- this_object$`messageId`
       }
       if (!is.null(this_object$`sendingZone`)) {
         self$`sendingZone` <- this_object$`sendingZone`
@@ -487,14 +487,14 @@ MailLogEntry <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`from` <- this_object$`from`
       self$`to` <- this_object$`to`
-      self$`subject` <- this_object$`subject`
-      self$`messageId` <- this_object$`messageId`
       self$`created` <- this_object$`created`
       self$`time` <- this_object$`time`
       self$`user` <- this_object$`user`
       self$`transtype` <- this_object$`transtype`
       self$`origin` <- this_object$`origin`
       self$`interface` <- this_object$`interface`
+      self$`subject` <- this_object$`subject`
+      self$`messageId` <- this_object$`messageId`
       self$`sendingZone` <- this_object$`sendingZone`
       self$`bodySize` <- this_object$`bodySize`
       self$`seq` <- this_object$`seq`

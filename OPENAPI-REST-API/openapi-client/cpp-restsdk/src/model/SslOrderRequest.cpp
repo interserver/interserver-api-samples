@@ -639,6 +639,10 @@ SslOrderRequest::Csr_typeEnum SslOrderRequest::toCsr_typeEnum(const utility::str
         return Csr_typeEnum::PROVIDED;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Csr_typeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Csr_typeEnum");
 }
 
@@ -651,6 +655,8 @@ const utility::string_t SslOrderRequest::fromCsr_typeEnum(const Csr_typeEnum val
         case Csr_typeEnum::GENERATED: return utility::conversions::to_string_t("generated");
         
         case Csr_typeEnum::PROVIDED: return utility::conversions::to_string_t("provided");
+        
+        case Csr_typeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

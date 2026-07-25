@@ -16,6 +16,9 @@ use serde_repr::{Serialize_repr,Deserialize_repr};
 /// CreateGeoFirewallRule : Create firewall rule for your ip
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateGeoFirewallRule {
+    /// 1 = Block,  0 = Whitelist
+    #[serde(rename = "xdp_action")]
+    pub xdp_action: XdpAction,
     #[serde(rename = "destination_port", skip_serializing_if = "Option::is_none")]
     pub destination_port: Option<i32>,
     /// To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode
@@ -24,19 +27,16 @@ pub struct CreateGeoFirewallRule {
     /// ASN number
     #[serde(rename = "asn", skip_serializing_if = "Option::is_none")]
     pub asn: Option<i32>,
-    /// 1 = Block,  0 = Whitelist
-    #[serde(rename = "xdp_action")]
-    pub xdp_action: XdpAction,
 }
 
 impl CreateGeoFirewallRule {
     /// Create firewall rule for your ip
     pub fn new(xdp_action: XdpAction) -> CreateGeoFirewallRule {
         CreateGeoFirewallRule {
+            xdp_action,
             destination_port: None,
             country_code: None,
             asn: None,
-            xdp_action,
         }
     }
 }
@@ -46,6 +46,7 @@ impl CreateGeoFirewallRule {
 pub enum XdpAction {
     Variant0 = 0,
     Variant1 = 1,
+    UnknownDefaultOpenApi = 11184809,
 }
 
 impl std::fmt::Display for XdpAction {
@@ -53,6 +54,7 @@ impl std::fmt::Display for XdpAction {
         write!(f, "{}", match self {
             Self::Variant0 => "0",
             Self::Variant1 => "1",
+            Self::UnknownDefaultOpenApi => "11184809",
         })
     }
 }

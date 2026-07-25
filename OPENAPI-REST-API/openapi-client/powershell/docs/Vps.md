@@ -10,10 +10,8 @@ Name | Type | Description | Notes
 **CustCurrencySymbol** | **String** |  | 
 **ServiceMaster** | [**VpsServiceMaster**](VpsServiceMaster.md) |  | 
 **Package** | **String** |  | 
-**OsTemplate** | **String** |  | [optional] 
 **ServiceExtra** | [**VpsServiceExtra**](VpsServiceExtra.md) |  | 
 **ExtraInfoTables** | [**VpsExtraInfoTables**](VpsExtraInfoTables.md) |  | 
-**CpuGraphData** | [**AnyType**](.md) |  | [optional] 
 **Module** | **String** |  | 
 **Token** | **String** |  | 
 **DaLink** | **Int32** |  | 
@@ -22,6 +20,8 @@ Name | Type | Description | Notes
 **DaData** | [**VpsDAData**](VpsDAData.md) |  | 
 **Plesk12Data** | [**VpsPlesk12Data**](VpsPlesk12Data.md) |  | 
 **ServiceAddons** | [**VpsServiceAddons**](VpsServiceAddons.md) |  | 
+**OsTemplate** | **String** |  | [optional] 
+**CpuGraphData** | [**AnyType**](.md) |  | [optional] 
 
 ## Examples
 
@@ -34,10 +34,8 @@ $Vps = Initialize-InterserverApiVps  -ServiceInfo null `
  -CustCurrencySymbol null `
  -ServiceMaster null `
  -Package null `
- -OsTemplate null `
  -ServiceExtra null `
  -ExtraInfoTables null `
- -CpuGraphData null `
  -Module null `
  -Token null `
  -DaLink null `
@@ -45,7 +43,9 @@ $Vps = Initialize-InterserverApiVps  -ServiceInfo null `
  -CpData null `
  -DaData null `
  -Plesk12Data null `
- -ServiceAddons null
+ -ServiceAddons null `
+ -OsTemplate null `
+ -CpuGraphData null
 ```
 
 - Convert the resource to JSON

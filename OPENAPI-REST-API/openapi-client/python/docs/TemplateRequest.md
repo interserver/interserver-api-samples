@@ -7,8 +7,8 @@ VPS OS Template Request
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **template** | **str** | OS Template Filename | 
-**password** | **str** | Password for Root / Administrator Account. | [optional] 
 **local_password** | **str** | Password for this account. | 
+**password** | **str** | Password for Root / Administrator Account. | [optional] 
 
 ## Example
 

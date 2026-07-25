@@ -1,8 +1,8 @@
-# openapi.model.TicketDetails
+# interserver_api.model.TicketDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

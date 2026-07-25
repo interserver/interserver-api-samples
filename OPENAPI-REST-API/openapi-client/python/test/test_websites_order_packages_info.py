@@ -42,11 +42,11 @@ class TestWebsitesOrderPackagesInfo(unittest.TestCase):
                 services_category = '204',
                 services_buyable = '1',
                 services_type = '206',
+                services_module = 'webhosting',
+                services_description = 'Direct Admin Web hosting package with 10x more resources over our standard web hosting package.',
                 services_field1 = '',
                 services_field2 = 'BoostX',
-                services_module = 'webhosting',
                 services_html = '',
-                services_description = 'Direct Admin Web hosting package with 10x more resources over our standard web hosting package.',
                 services_moreinfo_url = '',
                 services_hidden = '0'
             )

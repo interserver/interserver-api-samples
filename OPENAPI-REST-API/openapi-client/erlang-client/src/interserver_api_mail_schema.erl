@@ -11,10 +11,10 @@
        'custCurrency' := binary(),
        'custCurrencySymbol' := binary(),
        'package' := binary(),
-       'serviceExtra' => list(),
        'extraInfoTables' := interserver_api_mail_schema_extra_info_tables:interserver_api_mail_schema_extra_info_tables(),
        'serviceType' := interserver_api_mail_service_type:interserver_api_mail_service_type(),
-       'usage_count' := binary()
+       'usage_count' := binary(),
+       'serviceExtra' => list()
      }.
 
 encode(#{ 'serviceInfo' := ServiceInfo,
@@ -23,10 +23,10 @@ encode(#{ 'serviceInfo' := ServiceInfo,
           'custCurrency' := CustCurrency,
           'custCurrencySymbol' := CustCurrencySymbol,
           'package' := Package,
-          'serviceExtra' := ServiceExtra,
           'extraInfoTables' := ExtraInfoTables,
           'serviceType' := ServiceType,
-          'usage_count' := UsageCount
+          'usage_count' := UsageCount,
+          'serviceExtra' := ServiceExtra
         }) ->
     #{ 'serviceInfo' => ServiceInfo,
        'client_links' => ClientLinks,
@@ -34,8 +34,8 @@ encode(#{ 'serviceInfo' := ServiceInfo,
        'custCurrency' => CustCurrency,
        'custCurrencySymbol' => CustCurrencySymbol,
        'package' => Package,
-       'serviceExtra' => ServiceExtra,
        'extraInfoTables' => ExtraInfoTables,
        'serviceType' => ServiceType,
-       'usage_count' => UsageCount
+       'usage_count' => UsageCount,
+       'serviceExtra' => ServiceExtra
      }.

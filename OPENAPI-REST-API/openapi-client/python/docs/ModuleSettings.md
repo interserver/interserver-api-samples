@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **tblname** | **str** |  | 
 **table** | **str** |  | 
 **title_field** | **str** |  | 
+**prefix** | **str** |  | 
 **title_field2** | **str** |  | [optional] 
 **title_field3** | **str** |  | [optional] 
-**prefix** | **str** |  | 
 
 ## Example
 

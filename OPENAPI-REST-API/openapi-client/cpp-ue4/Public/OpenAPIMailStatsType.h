@@ -39,6 +39,7 @@ public:
 		_24h,
 		Today,
 		_1h,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const TimeEnum& EnumValue);

@@ -240,13 +240,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'controlpanel' => {
-        datatype => 'string',
-        base_name => 'controlpanel',
-        description => 'Control Panel',
-        format => '',
-        read_only => '',
-            },
     'period' => {
         datatype => 'int',
         base_name => 'period',
@@ -275,17 +268,24 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'coupon' => {
-        datatype => 'string',
-        base_name => 'coupon',
-        description => 'Coupon',
-        format => '',
-        read_only => '',
-            },
     'rootpass' => {
         datatype => 'string',
         base_name => 'rootpass',
         description => 'Root password to assign to the VVPS',
+        format => '',
+        read_only => '',
+            },
+    'controlpanel' => {
+        datatype => 'string',
+        base_name => 'controlpanel',
+        description => 'Control Panel',
+        format => '',
+        read_only => '',
+            },
+    'coupon' => {
+        datatype => 'string',
+        base_name => 'coupon',
+        description => 'Coupon',
         format => '',
         read_only => '',
             },
@@ -302,13 +302,13 @@ __PACKAGE__->openapi_types( {
     'os_distro' => 'string',
     'slices' => 'int',
     'vps_platform' => 'string',
-    'controlpanel' => 'string',
     'period' => 'int',
     'location' => 'int',
     'os_version' => 'string',
     'hostname' => 'string',
-    'coupon' => 'string',
     'rootpass' => 'string',
+    'controlpanel' => 'string',
+    'coupon' => 'string',
     'comment' => 'string'
 } );
 
@@ -316,13 +316,13 @@ __PACKAGE__->attribute_map( {
     'os_distro' => 'osDistro',
     'slices' => 'slices',
     'vps_platform' => 'vpsPlatform',
-    'controlpanel' => 'controlpanel',
     'period' => 'period',
     'location' => 'location',
     'os_version' => 'osVersion',
     'hostname' => 'hostname',
-    'coupon' => 'coupon',
     'rootpass' => 'rootpass',
+    'controlpanel' => 'controlpanel',
+    'coupon' => 'coupon',
     'comment' => 'comment'
 } );
 

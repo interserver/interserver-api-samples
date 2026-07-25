@@ -5,15 +5,15 @@ package client
 // MailServiceInfo - MailServiceInfo struct
 type MailServiceInfo struct {
 	MailId string `json:"mail_id"`
-	MailUsername string `json:"mail_username,omitempty"`
 	MailType string `json:"mail_type"`
 	MailCurrency string `json:"mail_currency"`
 	MailOrderDate string `json:"mail_order_date"`
 	MailCustid string `json:"mail_custid"`
 	MailQuota string `json:"mail_quota"`
-	MailIp string `json:"mail_ip,omitempty"`
 	MailStatus string `json:"mail_status"`
 	MailInvoice string `json:"mail_invoice"`
+	MailUsername string `json:"mail_username,omitempty"`
+	MailIp string `json:"mail_ip,omitempty"`
 	MailCoupon string `json:"mail_coupon,omitempty"`
 	MailExtra string `json:"mail_extra,omitempty"`
 	MailServerStatus string `json:"mail_server_status,omitempty"`

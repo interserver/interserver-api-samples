@@ -6,34 +6,34 @@
 Create firewall rule for your ip
 
     CreateFirewallRule(;
+        protocol_id=nothing,
+        xdp_action=nothing,
         destination_port=80,
         source_ip="0.0.0.0",
         source_port=0,
-        protocol_id=nothing,
-        xdp_action=nothing,
     )
 
+    - protocol_id::Int64 : 1 &#x3D; TCP, 2 &#x3D; UDP
+    - xdp_action::Int64 : 1 &#x3D; Block,  0 &#x3D; Whitelist
     - destination_port::Int64
     - source_ip::String : Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
     - source_port::Int64
-    - protocol_id::Int64 : 1 &#x3D; TCP, 2 &#x3D; UDP
-    - xdp_action::Int64 : 1 &#x3D; Block,  0 &#x3D; Whitelist
 """
 Base.@kwdef mutable struct CreateFirewallRule <: OpenAPI.APIModel
+    protocol_id::Union{Nothing, Int64} = nothing
+    xdp_action::Union{Nothing, Int64} = nothing
     destination_port::Union{Nothing, Int64} = 80
     source_ip::Union{Nothing, String} = "0.0.0.0"
     source_port::Union{Nothing, Int64} = 0
-    protocol_id::Union{Nothing, Int64} = nothing
-    xdp_action::Union{Nothing, Int64} = nothing
 
-    function CreateFirewallRule(destination_port, source_ip, source_port, protocol_id, xdp_action, )
-        o = new(destination_port, source_ip, source_port, protocol_id, xdp_action, )
+    function CreateFirewallRule(protocol_id, xdp_action, destination_port, source_ip, source_port, )
+        o = new(protocol_id, xdp_action, destination_port, source_ip, source_port, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type CreateFirewallRule
 
-const _property_types_CreateFirewallRule = Dict{Symbol,String}(Symbol("destination_port")=>"Int64", Symbol("source_ip")=>"String", Symbol("source_port")=>"Int64", Symbol("protocol_id")=>"Int64", Symbol("xdp_action")=>"Int64", )
+const _property_types_CreateFirewallRule = Dict{Symbol,String}(Symbol("protocol_id")=>"Int64", Symbol("xdp_action")=>"Int64", Symbol("destination_port")=>"Int64", Symbol("source_ip")=>"String", Symbol("source_port")=>"Int64", )
 OpenAPI.property_type(::Type{ CreateFirewallRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateFirewallRule[name]))}
 
 function OpenAPI.check_required(o::CreateFirewallRule)
@@ -43,25 +43,25 @@ function OpenAPI.check_required(o::CreateFirewallRule)
 end
 
 function OpenAPI.validate_properties(o::CreateFirewallRule)
+    OpenAPI.validate_property(CreateFirewallRule, Symbol("protocol_id"), o.protocol_id)
+    OpenAPI.validate_property(CreateFirewallRule, Symbol("xdp_action"), o.xdp_action)
     OpenAPI.validate_property(CreateFirewallRule, Symbol("destination_port"), o.destination_port)
     OpenAPI.validate_property(CreateFirewallRule, Symbol("source_ip"), o.source_ip)
     OpenAPI.validate_property(CreateFirewallRule, Symbol("source_port"), o.source_port)
-    OpenAPI.validate_property(CreateFirewallRule, Symbol("protocol_id"), o.protocol_id)
-    OpenAPI.validate_property(CreateFirewallRule, Symbol("xdp_action"), o.xdp_action)
 end
 
 function OpenAPI.validate_property(::Type{ CreateFirewallRule }, name::Symbol, val)
 
-
-
-
     if name === Symbol("protocol_id")
-        OpenAPI.validate_param(name, "CreateFirewallRule", :enum, val, [1, 2])
+        OpenAPI.validate_param(name, "CreateFirewallRule", :enum, val, [1, 2, 11184809])
     end
 
 
     if name === Symbol("xdp_action")
-        OpenAPI.validate_param(name, "CreateFirewallRule", :enum, val, [0, 1])
+        OpenAPI.validate_param(name, "CreateFirewallRule", :enum, val, [0, 1, 11184809])
     end
+
+
+
 
 end

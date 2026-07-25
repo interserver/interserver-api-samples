@@ -30,11 +30,11 @@ MailSchema::MailSchema()
     m_CustCurrencySymbolIsSet = false;
     m_Package = utility::conversions::to_string_t("");
     m_PackageIsSet = false;
-    m_ServiceExtraIsSet = false;
     m_ExtraInfoTablesIsSet = false;
     m_ServiceTypeIsSet = false;
     m_Usage_count = utility::conversions::to_string_t("");
     m_Usage_countIsSet = false;
+    m_ServiceExtraIsSet = false;
 }
 
 MailSchema::~MailSchema()
@@ -79,11 +79,6 @@ web::json::value MailSchema::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("package"))] = ModelBase::toJson(m_Package);
     }
-    if(m_ServiceExtraIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))] = ModelBase::toJson(m_ServiceExtra);
-    }
     if(m_ExtraInfoTablesIsSet)
     {
         
@@ -98,6 +93,11 @@ web::json::value MailSchema::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("usage_count"))] = ModelBase::toJson(m_Usage_count);
+    }
+    if(m_ServiceExtraIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))] = ModelBase::toJson(m_ServiceExtra);
     }
 
     return val;
@@ -172,17 +172,6 @@ bool MailSchema::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("serviceExtra")));
-        if(!fieldValue.is_null())
-        {
-            std::vector<utility::string_t> refVal_setServiceExtra;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setServiceExtra);
-            setServiceExtra(refVal_setServiceExtra);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("extraInfoTables"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("extraInfoTables")));
@@ -213,6 +202,17 @@ bool MailSchema::fromJson(const web::json::value& val)
             utility::string_t refVal_setUsageCount;
             ok &= ModelBase::fromJson(fieldValue, refVal_setUsageCount);
             setUsageCount(refVal_setUsageCount);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("serviceExtra")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<utility::string_t> refVal_setServiceExtra;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setServiceExtra);
+            setServiceExtra(refVal_setServiceExtra);
             
         }
     }
@@ -250,10 +250,6 @@ void MailSchema::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("package")), m_Package));
     }
-    if(m_ServiceExtraIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("serviceExtra")), m_ServiceExtra));
-    }
     if(m_ExtraInfoTablesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("extraInfoTables")), m_ExtraInfoTables));
@@ -265,6 +261,10 @@ void MailSchema::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     if(m_Usage_countIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("usage_count")), m_Usage_count));
+    }
+    if(m_ServiceExtraIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("serviceExtra")), m_ServiceExtra));
     }
 }
 
@@ -313,12 +313,6 @@ bool MailSchema::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("package"))), refVal_setPackage );
         setPackage(refVal_setPackage);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
-    {
-        std::vector<utility::string_t> refVal_setServiceExtra;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))), refVal_setServiceExtra );
-        setServiceExtra(refVal_setServiceExtra);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("extraInfoTables"))))
     {
         std::shared_ptr<MailSchema_extraInfoTables> refVal_setExtraInfoTables;
@@ -336,6 +330,12 @@ bool MailSchema::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
         utility::string_t refVal_setUsageCount;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("usage_count"))), refVal_setUsageCount );
         setUsageCount(refVal_setUsageCount);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
+    {
+        std::vector<utility::string_t> refVal_setServiceExtra;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))), refVal_setServiceExtra );
+        setServiceExtra(refVal_setServiceExtra);
     }
     return ok;
 }
@@ -467,27 +467,6 @@ void MailSchema::unsetPackage()
 {
     m_PackageIsSet = false;
 }
-std::vector<utility::string_t> MailSchema::getServiceExtra() const
-{
-    return m_ServiceExtra;
-}
-
-
-void MailSchema::setServiceExtra(const std::vector<utility::string_t>& value)
-{
-    m_ServiceExtra = value;
-    m_ServiceExtraIsSet = true;
-}
-
-bool MailSchema::serviceExtraIsSet() const
-{
-    return m_ServiceExtraIsSet;
-}
-
-void MailSchema::unsetServiceExtra()
-{
-    m_ServiceExtraIsSet = false;
-}
 std::shared_ptr<MailSchema_extraInfoTables> MailSchema::getExtraInfoTables() const
 {
     return m_ExtraInfoTables;
@@ -550,6 +529,27 @@ bool MailSchema::usageCountIsSet() const
 void MailSchema::unsetUsage_count()
 {
     m_Usage_countIsSet = false;
+}
+std::vector<utility::string_t> MailSchema::getServiceExtra() const
+{
+    return m_ServiceExtra;
+}
+
+
+void MailSchema::setServiceExtra(const std::vector<utility::string_t>& value)
+{
+    m_ServiceExtra = value;
+    m_ServiceExtraIsSet = true;
+}
+
+bool MailSchema::serviceExtraIsSet() const
+{
+    return m_ServiceExtraIsSet;
+}
+
+void MailSchema::unsetServiceExtra()
+{
+    m_ServiceExtraIsSet = false;
 }
 
 }

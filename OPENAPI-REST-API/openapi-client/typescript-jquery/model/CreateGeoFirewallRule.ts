@@ -37,6 +37,7 @@ export interface CreateGeoFirewallRule {
 export namespace CreateGeoFirewallRule {
     export enum XdpActionEnum {
         NUMBER_0 = <any> 0,
-        NUMBER_1 = <any> 1
+        NUMBER_1 = <any> 1,
+        NUMBER_unknown_default_open_api = <any> 11184809
     }
 }

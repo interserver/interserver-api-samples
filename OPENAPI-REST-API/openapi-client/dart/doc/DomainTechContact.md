@@ -1,8 +1,8 @@
-# openapi.model.DomainTechContact
+# interserver_api.model.DomainTechContact
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

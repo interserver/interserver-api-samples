@@ -4,6 +4,6 @@ package client
 
 // ServerIpmiPowerRequest - IPMI Power command for servers
 type ServerIpmiPowerRequest struct {
-	Asset int32 `json:"asset,omitempty"`
 	Action string `json:"action"`
+	Asset int32 `json:"asset,omitempty"`
 }

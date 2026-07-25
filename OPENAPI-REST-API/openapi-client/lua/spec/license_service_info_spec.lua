@@ -65,20 +65,6 @@ describe("license_service_info", function()
     end)
   end)
 
-  -- unit tests for the property 'license_hostname'
-  describe("property license_hostname test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'license_key'
-  describe("property license_key test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'license_invoice'
   describe("property license_invoice test", function()
     it("should work", function()
@@ -88,6 +74,20 @@ describe("license_service_info", function()
 
   -- unit tests for the property 'license_coupon'
   describe("property license_coupon test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'license_hostname'
+  describe("property license_hostname test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'license_key'
+  describe("property license_key test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

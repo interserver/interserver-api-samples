@@ -41,10 +41,10 @@ class LicenseClientLink : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, icon);
 
-  DTO_FIELD(oatpp::String, icon_text);
-  DTO_FIELD(oatpp::Boolean, icon_textIsSet);
   DTO_FIELD(oatpp::String, help_text);
 
+  DTO_FIELD(oatpp::String, icon_text);
+  DTO_FIELD(oatpp::Boolean, icon_textIsSet);
   DTO_FIELD(oatpp::String, other_attr);
   DTO_FIELD(oatpp::Boolean, other_attrIsSet);
 

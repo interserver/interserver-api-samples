@@ -27,11 +27,11 @@
 
 @property(nonatomic) NSString* locationName;
 
-@property(nonatomic) NSString* locationDescription;
-
 @property(nonatomic) NSString* locationLat;
 
 @property(nonatomic) NSString* locationLong;
+
+@property(nonatomic) NSString* locationDescription;
 
 @property(nonatomic) NSNumber* locationIpmiGroup;
 

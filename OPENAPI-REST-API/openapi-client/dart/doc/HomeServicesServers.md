@@ -1,8 +1,8 @@
-# openapi.model.HomeServicesServers
+# interserver_api.model.HomeServicesServers
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -65,11 +65,6 @@ func (r *MailResource) Schema(_ context.Context, _ resource.SchemaRequest, resp 
 				Required:    true,
 				Description: "The package of the mail service.",
 			},
-			"service_extra": schema.ListAttribute{
-				Optional:    true,
-				ElementType: types.StringType,
-				Description: "Extra information for the mail service.",
-			},
 			"extra_info_tables": schema.StringAttribute{
 				Required:    true,
 				Description: "",
@@ -81,6 +76,11 @@ func (r *MailResource) Schema(_ context.Context, _ resource.SchemaRequest, resp 
 			"usage_count": schema.StringAttribute{
 				Required:    true,
 				Description: "The usage count of the mail service.",
+			},
+			"service_extra": schema.ListAttribute{
+				Optional:    true,
+				ElementType: types.StringType,
+				Description: "Extra information for the mail service.",
 			},
 		},
 	}

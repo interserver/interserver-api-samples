@@ -11,9 +11,9 @@ type LicenseServiceInfo struct {
 	LicenseCustid string `json:"license_custid"`
 	LicenseIp string `json:"license_ip"`
 	LicenseStatus string `json:"license_status"`
-	LicenseHostname string `json:"license_hostname,omitempty"`
-	LicenseKey string `json:"license_key,omitempty"`
 	LicenseInvoice string `json:"license_invoice"`
 	LicenseCoupon string `json:"license_coupon"`
+	LicenseHostname string `json:"license_hostname,omitempty"`
+	LicenseKey string `json:"license_key,omitempty"`
 	LicenseExtra string `json:"license_extra,omitempty"`
 }

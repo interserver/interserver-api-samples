@@ -28,18 +28,18 @@ class DenyRuleRecord(BaseModel):
     """
     The data for a email deny rule record.
     """ # noqa: E501
-    user: Optional[StrictStr] = Field(default=None, description="Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.", json_schema_extra={"examples": ["mb20682"]})
     type: StrictStr = Field(description="The type of deny rule.", json_schema_extra={"examples": ["email"]})
     data: StrictStr = Field(description="The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.", json_schema_extra={"examples": ["domeinwo@server.guesshost.net"]})
     id: StrictInt = Field(description="The deny rule Id number.", json_schema_extra={"examples": [41124]})
     created: StrictStr = Field(description="the date the rule was created.", json_schema_extra={"examples": ["2022-03-22 19:16:35"]})
-    __properties: ClassVar[List[str]] = ["user", "type", "data", "id", "created"]
+    user: Optional[StrictStr] = Field(default=None, description="Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.", json_schema_extra={"examples": ["mb20682"]})
+    __properties: ClassVar[List[str]] = ["type", "data", "id", "created", "user"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['domain', 'email', 'startswith', 'destination']):
-            raise ValueError("must be one of enum values ('domain', 'email', 'startswith', 'destination')")
+        if value not in set(['domain', 'email', 'startswith', 'destination', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('domain', 'email', 'startswith', 'destination', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -93,11 +93,11 @@ class DenyRuleRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "user": obj.get("user"),
             "type": obj.get("type"),
             "data": obj.get("data"),
             "id": obj.get("id"),
-            "created": obj.get("created")
+            "created": obj.get("created"),
+            "user": obj.get("user")
         })
         return _obj
 

@@ -36,10 +36,10 @@ class TestCreateGeoFirewallRule(unittest.TestCase):
         model = CreateGeoFirewallRule()
         if include_optional:
             return CreateGeoFirewallRule(
+                xdp_action = 1,
                 destination_port = 22,
                 country_code = 10,
-                asn = 1331,
-                xdp_action = 1
+                asn = 1331
             )
         else:
             return CreateGeoFirewallRule(

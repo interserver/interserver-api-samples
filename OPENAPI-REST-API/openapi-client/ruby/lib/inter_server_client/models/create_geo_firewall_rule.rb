@@ -139,7 +139,7 @@ module InterServerClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @xdp_action.nil?
-      xdp_action_validator = EnumAttributeValidator.new('Integer', [0, 1])
+      xdp_action_validator = EnumAttributeValidator.new('Integer', [0, 1, 11184809])
       return false unless xdp_action_validator.valid?(@xdp_action)
       true
     end
@@ -147,7 +147,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] xdp_action Object to be assigned
     def xdp_action=(xdp_action)
-      validator = EnumAttributeValidator.new('Integer', [0, 1])
+      validator = EnumAttributeValidator.new('Integer', [0, 1, 11184809])
       unless validator.valid?(xdp_action)
         fail ArgumentError, "invalid value for \"xdp_action\", must be one of #{validator.allowable_values}."
       end

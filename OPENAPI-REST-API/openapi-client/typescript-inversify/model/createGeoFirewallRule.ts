@@ -30,9 +30,10 @@ export interface CreateGeoFirewallRule {
     asn?: number;
 }
 export namespace CreateGeoFirewallRule {
-    export type XdpActionEnum = 0 | 1;
+    export type XdpActionEnum = 0 | 1 | 11184809;
     export const XdpActionEnum = {
         NUMBER_0: 0 as XdpActionEnum,
-        NUMBER_1: 1 as XdpActionEnum
+        NUMBER_1: 1 as XdpActionEnum,
+        NUMBER_unknown_default_open_api: 11184809 as XdpActionEnum
     }
 }

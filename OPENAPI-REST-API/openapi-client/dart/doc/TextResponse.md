@@ -1,8 +1,8 @@
-# openapi.model.TextResponse
+# interserver_api.model.TextResponse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

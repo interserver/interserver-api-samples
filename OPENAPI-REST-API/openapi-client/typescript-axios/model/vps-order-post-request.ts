@@ -68,6 +68,7 @@ export const VpsOrderPostRequestVpsPlatformEnum = {
     Kvm: 'kvm',
     Hyperv: 'hyperv',
     Kvmstorage: 'kvmstorage',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type VpsOrderPostRequestVpsPlatformEnum = typeof VpsOrderPostRequestVpsPlatformEnum[keyof typeof VpsOrderPostRequestVpsPlatformEnum];
@@ -75,6 +76,7 @@ export const VpsOrderPostRequestControlpanelEnum = {
     None: 'none',
     Cpanel: 'cpanel',
     Da: 'da',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type VpsOrderPostRequestControlpanelEnum = typeof VpsOrderPostRequestControlpanelEnum[keyof typeof VpsOrderPostRequestControlpanelEnum];

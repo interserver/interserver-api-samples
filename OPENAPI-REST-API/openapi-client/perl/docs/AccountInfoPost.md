@@ -9,14 +9,14 @@ use InterServerAPI::Object::AccountInfoPost;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Your name. | 
-**company** | **string** | Your company name. | [optional] 
 **address** | **string** | Your address. | 
-**address2** | **string** | Additional address information. | [optional] 
 **city** | **string** | Your city. | 
 **state** | **string** | Your state. | 
 **zip** | **string** | Your ZIP code. | 
 **country** | **string** | Your country. | 
 **phone** | **string** | Your phone number. | 
+**company** | **string** | Your company name. | [optional] 
+**address2** | **string** | Additional address information. | [optional] 
 **locale** | **string** | Your preferred locale. | [optional] 
 **email_invoices** | **string** | Your email for invoice notifications. | [optional] 
 **email_abuse** | **string** | Your email for abuse notifications. | [optional] 

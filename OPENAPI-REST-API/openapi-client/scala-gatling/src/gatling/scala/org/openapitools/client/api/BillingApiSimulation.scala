@@ -186,9 +186,9 @@ class BillingApiSimulation extends Simulation {
         .feed(getAffiliateDownloadQUERYFeeder)
         .exec(http("getAffiliateDownload")
         .httpRequest("GET","/affiliate/download")
-        .queryParam("st","${st}")
-        .queryParam("year","${year}")
         .queryParam("ex","${ex}")
+        .queryParam("year","${year}")
+        .queryParam("st","${st}")
 )
 
     // Run scngetAffiliateDownload with warm up and reach a constant rate for entire duration

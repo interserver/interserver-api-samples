@@ -42,7 +42,7 @@ describe InterServerClient::VpsOrderPutRequest do
   describe 'test attribute "vps_platform"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["kvm", "hyperv", "kvmstorage", "unknown_default_open_api"])
       # validator.allowable_values.each do |value|
       #   expect { instance.vps_platform = value }.not_to raise_error
       # end
@@ -82,7 +82,7 @@ describe InterServerClient::VpsOrderPutRequest do
   describe 'test attribute "controlpanel"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["none", "cpanel", "da"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["none", "cpanel", "da", "unknown_default_open_api"])
       # validator.allowable_values.each do |value|
       #   expect { instance.controlpanel = value }.not_to raise_error
       # end

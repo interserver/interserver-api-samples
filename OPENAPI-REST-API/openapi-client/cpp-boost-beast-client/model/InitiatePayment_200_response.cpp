@@ -338,8 +338,8 @@ std::string InitiatePayment_200_response::getType() const
 
 void InitiatePayment_200_response::setType(std::string value)
 {
-    static const std::array<std::string, 3> allowedValues = {
-        "redirect","submit","single"
+    static const std::array<std::string, 4> allowedValues = {
+        "redirect","submit","single","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

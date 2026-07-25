@@ -70,13 +70,9 @@
 
 @property(nonatomic) NSString* package;
 
-@property(nonatomic) NSString* osTemplate;
-
 @property(nonatomic) ISAVpsServiceExtra* serviceExtra;
 
 @property(nonatomic) ISAVpsExtraInfoTables* extraInfoTables;
-
-@property(nonatomic) ISAAnyType* cpuGraphData;
 
 @property(nonatomic) NSString* module;
 
@@ -93,5 +89,9 @@
 @property(nonatomic) ISAVpsPlesk12Data* plesk12Data;
 
 @property(nonatomic) ISAVpsServiceAddons* serviceAddons;
+
+@property(nonatomic) NSString* osTemplate;
+
+@property(nonatomic) ISAAnyType* cpuGraphData;
 
 @end

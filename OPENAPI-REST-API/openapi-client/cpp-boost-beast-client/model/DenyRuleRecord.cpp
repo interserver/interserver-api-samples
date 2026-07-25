@@ -264,25 +264,19 @@ void DenyRuleRecord::fromJsonValue(boost::json::value const& value)
 boost::json::object DenyRuleRecord::toJsonObject_internal() const
 {
     boost::json::object object;
-        if (m_UserIsSet) {
-            object["user"] = JsonValueConverter<std::string>::toJsonValue(getUser());
-        }
         object["type"] = JsonValueConverter<std::string>::toJsonValue(getType());
         object["data"] = JsonValueConverter<std::string>::toJsonValue(getData());
         object["id"] = JsonValueConverter<int32_t>::toJsonValue(getId());
         object["created"] = JsonValueConverter<std::string>::toJsonValue(getCreated());
+        if (m_UserIsSet) {
+            object["user"] = JsonValueConverter<std::string>::toJsonValue(getUser());
+        }
     return object;
 }
 
 void DenyRuleRecord::fromJsonObject_internal(boost::json::object const& object)
 {
     m_UserIsSet = false;
-    {
-        const auto UserIt = object.find("user");
-        if (UserIt != object.end()) {
-            setUser(JsonValueConverter<std::string>::fromJsonValue(UserIt->value()));
-        }
-    }
     {
         const auto TypeIt = object.find("type");
         if (TypeIt != object.end()) {
@@ -307,19 +301,14 @@ void DenyRuleRecord::fromJsonObject_internal(boost::json::object const& object)
             setCreated(JsonValueConverter<std::string>::fromJsonValue(CreatedIt->value()));
         }
     }
+    {
+        const auto UserIt = object.find("user");
+        if (UserIt != object.end()) {
+            setUser(JsonValueConverter<std::string>::fromJsonValue(UserIt->value()));
+        }
+    }
 }
 
-std::string DenyRuleRecord::getUser() const
-{
-    return m_User;
-}
-
-void DenyRuleRecord::setUser(std::string value)
-{
-    
-    m_User = std::move(value);
-    m_UserIsSet = true;
-}
 std::string DenyRuleRecord::getType() const
 {
     return m_Type;
@@ -327,8 +316,8 @@ std::string DenyRuleRecord::getType() const
 
 void DenyRuleRecord::setType(std::string value)
 {
-    static const std::array<std::string, 4> allowedValues = {
-        "domain","email","startswith","destination"
+    static const std::array<std::string, 5> allowedValues = {
+        "domain","email","startswith","destination","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;
@@ -367,6 +356,17 @@ void DenyRuleRecord::setCreated(std::string value)
 {
     
     m_Created = std::move(value);
+}
+std::string DenyRuleRecord::getUser() const
+{
+    return m_User;
+}
+
+void DenyRuleRecord::setUser(std::string value)
+{
+    
+    m_User = std::move(value);
+    m_UserIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<DenyRuleRecord>>& data)

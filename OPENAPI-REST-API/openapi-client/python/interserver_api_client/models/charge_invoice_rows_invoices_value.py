@@ -47,8 +47,8 @@ class ChargeInvoiceRowsInvoicesValue(BaseModel):
         if value is None:
             return value
 
-        if value not in set([0, 1]):
-            raise ValueError("must be one of enum values (0, 1)")
+        if value not in set([0, 1, 11184809]):
+            raise ValueError("must be one of enum values (0, 1, 11184809)")
         return value
 
     model_config = ConfigDict(

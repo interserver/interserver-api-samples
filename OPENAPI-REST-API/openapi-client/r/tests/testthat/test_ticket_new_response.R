@@ -5,13 +5,6 @@ context("Test TicketNewResponse")
 
 model_instance <- TicketNewResponse$new()
 
-test_that("ticket_id", {
-  # tests for the property `ticket_id` (integer)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ticket_id`, "EXPECTED_RESULT")
-})
-
 test_that("text", {
   # tests for the property `text` (character)
 
@@ -24,4 +17,11 @@ test_that("success", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`success`, "EXPECTED_RESULT")
+})
+
+test_that("ticket_id", {
+  # tests for the property `ticket_id` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ticket_id`, "EXPECTED_RESULT")
 })

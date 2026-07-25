@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **services_category** | **String** | The category of the package. | 
 **services_buyable** | **String** | Indicates if the package is buyable (1 for yes, 0 for no). | 
 **services_type** | **String** | The type of the package. | 
+**services_module** | **String** | The module of the package. | 
+**services_description** | **String** | Description of the package. | 
 **services_field1** | Option<**String**> | Additional field 1 for the package. | [optional]
 **services_field2** | Option<**String**> | Additional field 2 for the package. | [optional]
-**services_module** | **String** | The module of the package. | 
 **services_html** | Option<**String**> | HTML content for the package. | [optional]
-**services_description** | **String** | Description of the package. | 
 **services_moreinfo_url** | Option<**String**> | URL for more information about the package. | [optional]
 **services_hidden** | Option<**String**> | Indicates if the package is hidden (1 for yes, 0 for no). | [optional]
 

@@ -7,20 +7,20 @@
 -type interserver_api_qs_order_request() ::
     #{ 'server' := integer(),
        'password' := binary(),
-       'os' => binary(),
        'tos' := boolean(),
+       'os' => binary(),
        'comment' => binary()
      }.
 
 encode(#{ 'server' := Server,
           'password' := Password,
-          'os' := Os,
           'tos' := Tos,
+          'os' := Os,
           'comment' := Comment
         }) ->
     #{ 'server' => Server,
        'password' => Password,
-       'os' => Os,
        'tos' => Tos,
+       'os' => Os,
        'comment' => Comment
      }.

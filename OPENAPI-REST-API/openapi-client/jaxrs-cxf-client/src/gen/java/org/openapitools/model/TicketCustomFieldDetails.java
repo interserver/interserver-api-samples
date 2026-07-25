@@ -15,7 +15,7 @@ public class TicketCustomFieldDetails  {
   
 public enum CustomerServerAccessEnum {
 
-Y(String.valueOf("y")), N(String.valueOf("n"));
+Y(String.valueOf("y")), N(String.valueOf("n")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

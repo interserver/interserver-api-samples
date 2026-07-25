@@ -717,6 +717,8 @@ inline FString ToString(const OpenAPIServersApi::ServerIpmiPowerPostRequest::Act
 		return TEXT("off");
 	case OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::Soft:
 		return TEXT("soft");
+	case OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum Value (%d)"), (int)Value);
@@ -735,7 +737,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIServersApi::ServerIpm
 		{ TEXT("reset"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::Reset },
 		{ TEXT("on"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::On },
 		{ TEXT("off"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::Off },
-		{ TEXT("soft"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::Soft }, };
+		{ TEXT("soft"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::Soft },
+		{ TEXT("11184809"), OpenAPIServersApi::ServerIpmiPowerPostRequest::ActionEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **id** | **String** | The relay-assigned mail ID (18-19 hex characters).  Matches the `mailid` filter parameter and the `text` value returned by send endpoints. | 
 **from** | **String** | SMTP envelope `MAIL FROM` address. | 
 **to** | **String** | SMTP envelope `RCPT TO` address. | 
-**subject** | Option<**String**> | The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. | [optional]
-**message_id** | Option<**String**> | The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. | [optional]
 **created** | **String** | Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format. | 
 **time** | **i32** | Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters. | 
 **user** | **String** | The SMTP AUTH username used to submit the message (e.g. `mb5658`). | 
 **transtype** | **String** | SMTP transaction type negotiated with the relay. | 
 **origin** | **String** | IP address of the client that submitted the message to the relay. | 
 **interface** | **String** | Relay interface name that accepted the message. | 
+**subject** | Option<**String**> | The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. | [optional]
+**message_id** | Option<**String**> | The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups. | [optional]
 **sending_zone** | Option<**String**> | The sending zone assigned by the relay for outbound delivery. | [optional]
 **body_size** | Option<**i32**> | Size of the message body in bytes. | [optional]
 **seq** | Option<**i32**> | Sequence index of this recipient in a multi-recipient message. Starts at 1. | [optional]

@@ -37,8 +37,6 @@ class MailServiceInfo : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, mail_id);
 
-  DTO_FIELD(oatpp::String, mail_username);
-  DTO_FIELD(oatpp::Boolean, mail_usernameIsSet);
   DTO_FIELD(oatpp::String, mail_type);
 
   DTO_FIELD(oatpp::String, mail_currency);
@@ -49,12 +47,14 @@ class MailServiceInfo : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, mail_quota);
 
-  DTO_FIELD(oatpp::String, mail_ip);
-  DTO_FIELD(oatpp::Boolean, mail_ipIsSet);
   DTO_FIELD(oatpp::String, mail_status);
 
   DTO_FIELD(oatpp::String, mail_invoice);
 
+  DTO_FIELD(oatpp::String, mail_username);
+  DTO_FIELD(oatpp::Boolean, mail_usernameIsSet);
+  DTO_FIELD(oatpp::String, mail_ip);
+  DTO_FIELD(oatpp::Boolean, mail_ipIsSet);
   DTO_FIELD(oatpp::String, mail_coupon);
   DTO_FIELD(oatpp::Boolean, mail_couponIsSet);
   DTO_FIELD(oatpp::String, mail_extra);

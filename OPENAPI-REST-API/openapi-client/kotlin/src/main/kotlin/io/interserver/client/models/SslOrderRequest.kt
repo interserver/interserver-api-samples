@@ -140,12 +140,13 @@ data class SslOrderRequest (
     /**
      * Whether the CSR is server-generated or customer-provided.
      *
-     * Values: generated,provided
+     * Values: generated,provided,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class CsrType(val value: kotlin.String) {
         @Json(name = "generated") generated("generated"),
-        @Json(name = "provided") provided("provided");
+        @Json(name = "provided") provided("provided"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

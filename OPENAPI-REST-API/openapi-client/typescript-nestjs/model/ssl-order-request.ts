@@ -98,7 +98,8 @@ export interface SslOrderRequest {
 }
 export enum SslOrderRequestCsrType {
     Generated = 'generated',
-    Provided = 'provided'
+    Provided = 'provided',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

@@ -23,7 +23,8 @@ Protected Class DomainNameserverGetResponseInner
         
         Escaped0
         Escaped1
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -35,7 +36,10 @@ Protected Class DomainNameserverGetResponseInner
 		      Return "0"
 		    Case Can_deleteEnum.Escaped1
 		      Return "1"
-		    
+		    Case Can_deleteEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

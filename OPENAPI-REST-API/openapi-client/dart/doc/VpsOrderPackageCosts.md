@@ -1,8 +1,8 @@
-# openapi.model.VpsOrderPackageCosts
+# interserver_api.model.VpsOrderPackageCosts
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

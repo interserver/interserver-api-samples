@@ -105,12 +105,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::string getOsTemplate() const;
-    void setOsTemplate(std::string value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     std::shared_ptr<VpsServiceExtra> getServiceExtra() const;
     void setServiceExtra(std::shared_ptr<VpsServiceExtra> value);
 
@@ -119,12 +113,6 @@ public:
     /// </summary>
     std::shared_ptr<VpsExtraInfoTables> getExtraInfoTables() const;
     void setExtraInfoTables(std::shared_ptr<VpsExtraInfoTables> value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    boost::json::value getCpuGraphData() const;
-    void setCpuGraphData(boost::json::value value);
 
     /// <summary>
     /// 
@@ -174,6 +162,18 @@ public:
     std::shared_ptr<VpsServiceAddons> getServiceAddons() const;
     void setServiceAddons(std::shared_ptr<VpsServiceAddons> value);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    std::string getOsTemplate() const;
+    void setOsTemplate(std::string value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    boost::json::value getCpuGraphData() const;
+    void setCpuGraphData(boost::json::value value);
+
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -191,12 +191,8 @@ protected:
     std::string m_CustCurrencySymbol = "";
     std::shared_ptr<VpsServiceMaster> m_ServiceMaster;
     std::string m_Package = "";
-    std::string m_Os_template = "";
-    bool m_Os_templateIsSet = false;
     std::shared_ptr<VpsServiceExtra> m_ServiceExtra;
     std::shared_ptr<VpsExtraInfoTables> m_ExtraInfoTables;
-    boost::json::value m_Cpu_graph_data = boost::json::value();
-    bool m_Cpu_graph_dataIsSet = false;
     std::string m_Module = "";
     std::string m_Token = "";
     int32_t m_Da_link = 0;
@@ -205,6 +201,10 @@ protected:
     std::shared_ptr<VpsDAData> m_Da_data;
     std::shared_ptr<VpsPlesk12Data> m_Plesk12_data;
     std::shared_ptr<VpsServiceAddons> m_ServiceAddons;
+    std::string m_Os_template = "";
+    bool m_Os_templateIsSet = false;
+    boost::json::value m_Cpu_graph_data = boost::json::value();
+    bool m_Cpu_graph_dataIsSet = false;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<Vps>>& data);

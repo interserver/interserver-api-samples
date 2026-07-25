@@ -100,6 +100,7 @@ export namespace GetScrubIpDetails200ResponseServiceInfo {
         Active = <any> 'active',
         Pending = <any> 'pending',
         Canceled = <any> 'canceled',
-        Expired = <any> 'expired'
+        Expired = <any> 'expired',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

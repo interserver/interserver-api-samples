@@ -20,9 +20,9 @@
        'TBLNAME' := binary(),
        'TABLE' := binary(),
        'TITLE_FIELD' := binary(),
+       'PREFIX' := binary(),
        'TITLE_FIELD2' => binary(),
-       'TITLE_FIELD3' => binary(),
-       'PREFIX' := binary()
+       'TITLE_FIELD3' => binary()
      }.
 
 encode(#{ 'SERVICE_ID_OFFSET' := SERVICEIDOFFSET,
@@ -40,9 +40,9 @@ encode(#{ 'SERVICE_ID_OFFSET' := SERVICEIDOFFSET,
           'TBLNAME' := TBLNAME,
           'TABLE' := TABLE,
           'TITLE_FIELD' := TITLEFIELD,
+          'PREFIX' := PREFIX,
           'TITLE_FIELD2' := TITLEFIELD2,
-          'TITLE_FIELD3' := TITLEFIELD3,
-          'PREFIX' := PREFIX
+          'TITLE_FIELD3' := TITLEFIELD3
         }) ->
     #{ 'SERVICE_ID_OFFSET' => SERVICEIDOFFSET,
        'USE_REPEAT_INVOICE' => USEREPEATINVOICE,
@@ -59,7 +59,7 @@ encode(#{ 'SERVICE_ID_OFFSET' := SERVICEIDOFFSET,
        'TBLNAME' => TBLNAME,
        'TABLE' => TABLE,
        'TITLE_FIELD' => TITLEFIELD,
+       'PREFIX' => PREFIX,
        'TITLE_FIELD2' => TITLEFIELD2,
-       'TITLE_FIELD3' => TITLEFIELD3,
-       'PREFIX' => PREFIX
+       'TITLE_FIELD3' => TITLEFIELD3
      }.

@@ -40,21 +40,21 @@
 /* The type of the package. 
  */
 @property(nonatomic) NSString* servicesType;
+/* The module of the package. 
+ */
+@property(nonatomic) NSString* servicesModule;
+/* Description of the package. 
+ */
+@property(nonatomic) NSString* servicesDescription;
 /* Additional field 1 for the package. [optional]
  */
 @property(nonatomic) NSString* servicesField1;
 /* Additional field 2 for the package. [optional]
  */
 @property(nonatomic) NSString* servicesField2;
-/* The module of the package. 
- */
-@property(nonatomic) NSString* servicesModule;
 /* HTML content for the package. [optional]
  */
 @property(nonatomic) NSString* servicesHtml;
-/* Description of the package. 
- */
-@property(nonatomic) NSString* servicesDescription;
 /* URL for more information about the package. [optional]
  */
 @property(nonatomic) NSString* servicesMoreinfoUrl;

@@ -114,7 +114,7 @@ module InterServerClient
       if @api_client.config.client_side_validation && file.nil?
         fail ArgumentError, "Missing the required parameter 'file' when calling VPSApi.delete_vps_backup"
       end
-      allowable_values = ["0", "1"]
+      allowable_values = ["0", "1", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'all'] && !allowable_values.include?(opts[:'all'])
         fail ArgumentError, "invalid value for \"all\", must be one of #{allowable_values}"
       end
@@ -695,7 +695,7 @@ module InterServerClient
       if @api_client.config.client_side_validation && download_qs_backup_request.nil?
         fail ArgumentError, "Missing the required parameter 'download_qs_backup_request' when calling VPSApi.download_vps_backup"
       end
-      allowable_values = ["0", "1"]
+      allowable_values = ["0", "1", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'all'] && !allowable_values.include?(opts[:'all'])
         fail ArgumentError, "invalid value for \"all\", must be one of #{allowable_values}"
       end
@@ -890,7 +890,7 @@ module InterServerClient
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling VPSApi.get_vps_backups"
       end
-      allowable_values = ["0", "1"]
+      allowable_values = ["0", "1", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'all'] && !allowable_values.include?(opts[:'all'])
         fail ArgumentError, "invalid value for \"all\", must be one of #{allowable_values}"
       end

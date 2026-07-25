@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'TemplateRequest' {
     Context 'TemplateRequest' {
         It 'Initialize-TemplateRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-TemplateRequest -Template "TEST_VALUE" -Password "TEST_VALUE" -LocalPassword "TEST_VALUE"
+            #$NewObject = Initialize-TemplateRequest -Template "TEST_VALUE" -LocalPassword "TEST_VALUE" -Password "TEST_VALUE"
             #$NewObject | Should -BeOfType TemplateRequest
             #$NewObject.property | Should -Be 0
         }

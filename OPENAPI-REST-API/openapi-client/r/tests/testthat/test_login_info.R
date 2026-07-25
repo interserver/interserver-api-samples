@@ -5,14 +5,6 @@ context("Test LoginInfo")
 
 model_instance <- LoginInfo$new()
 
-test_that("logo", {
-  # tests for the property `logo` (character)
-  # A logo image url.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`logo`, "EXPECTED_RESULT")
-})
-
 test_that("captcha", {
   # tests for the property `captcha` (character)
   # A base64 encoded image to use for rendering the alternateive captcha.
@@ -21,17 +13,25 @@ test_that("captcha", {
   #expect_equal(model.instance$`captcha`, "EXPECTED_RESULT")
 })
 
+test_that("counts", {
+  # tests for the property `counts` (LoginServiceCounts)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`counts`, "EXPECTED_RESULT")
+})
+
+test_that("logo", {
+  # tests for the property `logo` (character)
+  # A logo image url.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`logo`, "EXPECTED_RESULT")
+})
+
 test_that("language", {
   # tests for the property `language` (character)
   # The desired langauge to render the site with.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
-})
-
-test_that("counts", {
-  # tests for the property `counts` (LoginServiceCounts)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`counts`, "EXPECTED_RESULT")
 })

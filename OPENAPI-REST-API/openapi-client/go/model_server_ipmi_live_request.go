@@ -21,10 +21,10 @@ var _ MappedNullable = &ServerIpmiLiveRequest{}
 
 // ServerIpmiLiveRequest Request body to setup an IPMI Live connection.
 type ServerIpmiLiveRequest struct {
-	// Asset ID
-	Asset *int32 `json:"asset,omitempty"`
 	// Your IP Address you wish to connect to the IPMI system from.
 	Ip string `json:"ip"`
+	// Asset ID
+	Asset *int32 `json:"asset,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,6 +46,30 @@ func NewServerIpmiLiveRequest(ip string) *ServerIpmiLiveRequest {
 func NewServerIpmiLiveRequestWithDefaults() *ServerIpmiLiveRequest {
 	this := ServerIpmiLiveRequest{}
 	return &this
+}
+
+// GetIp returns the Ip field value
+func (o *ServerIpmiLiveRequest) GetIp() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Ip
+}
+
+// GetIpOk returns a tuple with the Ip field value
+// and a boolean to check if the value has been set.
+func (o *ServerIpmiLiveRequest) GetIpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Ip, true
+}
+
+// SetIp sets field value
+func (o *ServerIpmiLiveRequest) SetIp(v string) {
+	o.Ip = v
 }
 
 // GetAsset returns the Asset field value if set, zero value otherwise.
@@ -80,30 +104,6 @@ func (o *ServerIpmiLiveRequest) SetAsset(v int32) {
 	o.Asset = &v
 }
 
-// GetIp returns the Ip field value
-func (o *ServerIpmiLiveRequest) GetIp() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Ip
-}
-
-// GetIpOk returns a tuple with the Ip field value
-// and a boolean to check if the value has been set.
-func (o *ServerIpmiLiveRequest) GetIpOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Ip, true
-}
-
-// SetIp sets field value
-func (o *ServerIpmiLiveRequest) SetIp(v string) {
-	o.Ip = v
-}
-
 func (o ServerIpmiLiveRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,10 +114,10 @@ func (o ServerIpmiLiveRequest) MarshalJSON() ([]byte, error) {
 
 func (o ServerIpmiLiveRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["ip"] = o.Ip
 	if !IsNil(o.Asset) {
 		toSerialize["asset"] = o.Asset
 	}
-	toSerialize["ip"] = o.Ip
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -161,8 +161,8 @@ func (o *ServerIpmiLiveRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "asset")
 		delete(additionalProperties, "ip")
+		delete(additionalProperties, "asset")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -41,8 +41,8 @@ class DomainOrderRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['register', 'transfer']):
-            raise ValueError("must be one of enum values ('register', 'transfer')")
+        if value not in set(['register', 'transfer', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('register', 'transfer', 'unknown_default_open_api')")
         return value
 
     @field_validator('whois_privacy')
@@ -51,8 +51,8 @@ class DomainOrderRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['enable', 'disable']):
-            raise ValueError("must be one of enum values ('enable', 'disable')")
+        if value not in set(['enable', 'disable', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('enable', 'disable', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

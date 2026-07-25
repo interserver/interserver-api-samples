@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **id** | **character** | The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints. | 
 **from** | **character** | SMTP envelope &#x60;MAIL FROM&#x60; address. | 
 **to** | **character** | SMTP envelope &#x60;RCPT TO&#x60; address. | 
-**subject** | **character** | The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. | [optional] 
-**messageId** | **character** | The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups. | [optional] 
 **created** | **character** | Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format. | 
 **time** | **integer** | Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters. | 
 **user** | **character** | The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;). | 
 **transtype** | **character** | SMTP transaction type negotiated with the relay. | 
 **origin** | **character** | IP address of the client that submitted the message to the relay. | 
 **interface** | **character** | Relay interface name that accepted the message. | 
+**subject** | **character** | The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded. | [optional] 
+**messageId** | **character** | The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups. | [optional] 
 **sendingZone** | **character** | The sending zone assigned by the relay for outbound delivery. | [optional] 
 **bodySize** | **integer** | Size of the message body in bytes. | [optional] 
 **seq** | **integer** | Sequence index of this recipient in a multi-recipient message. Starts at 1. | [optional] 

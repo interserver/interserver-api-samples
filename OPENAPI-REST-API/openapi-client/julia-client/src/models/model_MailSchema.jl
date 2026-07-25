@@ -11,10 +11,10 @@
         custCurrency=nothing,
         custCurrencySymbol=nothing,
         package=nothing,
-        serviceExtra=nothing,
         extraInfoTables=nothing,
         serviceType=nothing,
         usage_count=nothing,
+        serviceExtra=nothing,
     )
 
     - serviceInfo::MailServiceInfo
@@ -23,10 +23,10 @@
     - custCurrency::String : The customer&#39;s currency.
     - custCurrencySymbol::String : The currency symbol for the customer.
     - package::String : The package of the mail service.
-    - serviceExtra::Vector{String} : Extra information for the mail service.
     - extraInfoTables::MailSchemaExtraInfoTables
     - serviceType::MailServiceType
     - usage_count::String : The usage count of the mail service.
+    - serviceExtra::Vector{String} : Extra information for the mail service.
 """
 Base.@kwdef mutable struct MailSchema <: OpenAPI.APIModel
     serviceInfo = nothing # spec type: Union{ Nothing, MailServiceInfo }
@@ -35,19 +35,19 @@ Base.@kwdef mutable struct MailSchema <: OpenAPI.APIModel
     custCurrency::Union{Nothing, String} = nothing
     custCurrencySymbol::Union{Nothing, String} = nothing
     package::Union{Nothing, String} = nothing
-    serviceExtra::Union{Nothing, Vector{String}} = nothing
     extraInfoTables = nothing # spec type: Union{ Nothing, MailSchemaExtraInfoTables }
     serviceType = nothing # spec type: Union{ Nothing, MailServiceType }
     usage_count::Union{Nothing, String} = nothing
+    serviceExtra::Union{Nothing, Vector{String}} = nothing
 
-    function MailSchema(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, package, serviceExtra, extraInfoTables, serviceType, usage_count, )
-        o = new(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, package, serviceExtra, extraInfoTables, serviceType, usage_count, )
+    function MailSchema(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, package, extraInfoTables, serviceType, usage_count, serviceExtra, )
+        o = new(serviceInfo, client_links, billingDetails, custCurrency, custCurrencySymbol, package, extraInfoTables, serviceType, usage_count, serviceExtra, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type MailSchema
 
-const _property_types_MailSchema = Dict{Symbol,String}(Symbol("serviceInfo")=>"MailServiceInfo", Symbol("client_links")=>"Vector{MailClientLink}", Symbol("billingDetails")=>"MailBillingDetails", Symbol("custCurrency")=>"String", Symbol("custCurrencySymbol")=>"String", Symbol("package")=>"String", Symbol("serviceExtra")=>"Vector{String}", Symbol("extraInfoTables")=>"MailSchemaExtraInfoTables", Symbol("serviceType")=>"MailServiceType", Symbol("usage_count")=>"String", )
+const _property_types_MailSchema = Dict{Symbol,String}(Symbol("serviceInfo")=>"MailServiceInfo", Symbol("client_links")=>"Vector{MailClientLink}", Symbol("billingDetails")=>"MailBillingDetails", Symbol("custCurrency")=>"String", Symbol("custCurrencySymbol")=>"String", Symbol("package")=>"String", Symbol("extraInfoTables")=>"MailSchemaExtraInfoTables", Symbol("serviceType")=>"MailServiceType", Symbol("usage_count")=>"String", Symbol("serviceExtra")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ MailSchema }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MailSchema[name]))}
 
 function OpenAPI.check_required(o::MailSchema)
@@ -70,10 +70,10 @@ function OpenAPI.validate_properties(o::MailSchema)
     OpenAPI.validate_property(MailSchema, Symbol("custCurrency"), o.custCurrency)
     OpenAPI.validate_property(MailSchema, Symbol("custCurrencySymbol"), o.custCurrencySymbol)
     OpenAPI.validate_property(MailSchema, Symbol("package"), o.package)
-    OpenAPI.validate_property(MailSchema, Symbol("serviceExtra"), o.serviceExtra)
     OpenAPI.validate_property(MailSchema, Symbol("extraInfoTables"), o.extraInfoTables)
     OpenAPI.validate_property(MailSchema, Symbol("serviceType"), o.serviceType)
     OpenAPI.validate_property(MailSchema, Symbol("usage_count"), o.usage_count)
+    OpenAPI.validate_property(MailSchema, Symbol("serviceExtra"), o.serviceExtra)
 end
 
 function OpenAPI.validate_property(::Type{ MailSchema }, name::Symbol, val)

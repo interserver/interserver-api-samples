@@ -6,25 +6,25 @@
 IPMI Power command for servers
 
     ServerIpmiPowerRequest(;
-        asset=nothing,
         action=nothing,
+        asset=nothing,
     )
 
-    - asset::Int64 : The Asset ID
     - action::String : The power action to send to the ipmi controller.
+    - asset::Int64 : The Asset ID
 """
 Base.@kwdef mutable struct ServerIpmiPowerRequest <: OpenAPI.APIModel
-    asset::Union{Nothing, Int64} = nothing
     action::Union{Nothing, String} = nothing
+    asset::Union{Nothing, Int64} = nothing
 
-    function ServerIpmiPowerRequest(asset, action, )
-        o = new(asset, action, )
+    function ServerIpmiPowerRequest(action, asset, )
+        o = new(action, asset, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ServerIpmiPowerRequest
 
-const _property_types_ServerIpmiPowerRequest = Dict{Symbol,String}(Symbol("asset")=>"Int64", Symbol("action")=>"String", )
+const _property_types_ServerIpmiPowerRequest = Dict{Symbol,String}(Symbol("action")=>"String", Symbol("asset")=>"Int64", )
 OpenAPI.property_type(::Type{ ServerIpmiPowerRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServerIpmiPowerRequest[name]))}
 
 function OpenAPI.check_required(o::ServerIpmiPowerRequest)
@@ -33,18 +33,18 @@ function OpenAPI.check_required(o::ServerIpmiPowerRequest)
 end
 
 function OpenAPI.validate_properties(o::ServerIpmiPowerRequest)
-    OpenAPI.validate_property(ServerIpmiPowerRequest, Symbol("asset"), o.asset)
     OpenAPI.validate_property(ServerIpmiPowerRequest, Symbol("action"), o.action)
+    OpenAPI.validate_property(ServerIpmiPowerRequest, Symbol("asset"), o.asset)
 end
 
 function OpenAPI.validate_property(::Type{ ServerIpmiPowerRequest }, name::Symbol, val)
 
+    if name === Symbol("action")
+        OpenAPI.validate_param(name, "ServerIpmiPowerRequest", :enum, val, ["cycle", "reset", "on", "off", "soft", "unknown_default_open_api"])
+    end
+
+
     if name === Symbol("asset")
         OpenAPI.validate_param(name, "ServerIpmiPowerRequest", :format, val, "int32")
     end
-
-    if name === Symbol("action")
-        OpenAPI.validate_param(name, "ServerIpmiPowerRequest", :enum, val, ["cycle", "reset", "on", "off", "soft"])
-    end
-
 end

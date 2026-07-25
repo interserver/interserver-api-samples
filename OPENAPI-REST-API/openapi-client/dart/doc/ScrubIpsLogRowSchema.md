@@ -1,8 +1,8 @@
-# openapi.model.ScrubIpsLogRowSchema
+# interserver_api.model.ScrubIpsLogRowSchema
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

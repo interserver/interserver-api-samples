@@ -51,9 +51,9 @@ class TestModuleSettings(unittest.TestCase):
                 tblname = 'VPS',
                 table = 'vps',
                 title_field = 'vps_hostname',
+                prefix = 'vps',
                 title_field2 = 'vps_ip',
-                title_field3 = 'vps_vzid',
-                prefix = 'vps'
+                title_field3 = 'vps_vzid'
             )
         else:
             return ModuleSettings(

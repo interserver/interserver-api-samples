@@ -22,6 +22,7 @@ Name | Value
 ---- | -----
 REGISTER | `"register"`
 TRANSFER | `"transfer"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 ## WhoisPrivacyEnum
@@ -30,5 +31,6 @@ Name | Value
 ---- | -----
 ENABLE | `"enable"`
 DISABLE | `"disable"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 

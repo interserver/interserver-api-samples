@@ -33,16 +33,16 @@ type WebsitesOrderPackagesInfo struct {
 	ServicesBuyable string `json:"services_buyable"`
 	// The type of the package.
 	ServicesType string `json:"services_type"`
+	// The module of the package.
+	ServicesModule string `json:"services_module"`
+	// Description of the package.
+	ServicesDescription string `json:"services_description"`
 	// Additional field 1 for the package.
 	ServicesField1 *string `json:"services_field1,omitempty"`
 	// Additional field 2 for the package.
 	ServicesField2 *string `json:"services_field2,omitempty"`
-	// The module of the package.
-	ServicesModule string `json:"services_module"`
 	// HTML content for the package.
 	ServicesHtml *string `json:"services_html,omitempty"`
-	// Description of the package.
-	ServicesDescription string `json:"services_description"`
 	// URL for more information about the package.
 	ServicesMoreinfoUrl *string `json:"services_moreinfo_url,omitempty"`
 	// Indicates if the package is hidden (1 for yes, 0 for no).
@@ -221,6 +221,54 @@ func (o *WebsitesOrderPackagesInfo) SetServicesType(v string) {
 	o.ServicesType = v
 }
 
+// GetServicesModule returns the ServicesModule field value
+func (o *WebsitesOrderPackagesInfo) GetServicesModule() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ServicesModule
+}
+
+// GetServicesModuleOk returns a tuple with the ServicesModule field value
+// and a boolean to check if the value has been set.
+func (o *WebsitesOrderPackagesInfo) GetServicesModuleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServicesModule, true
+}
+
+// SetServicesModule sets field value
+func (o *WebsitesOrderPackagesInfo) SetServicesModule(v string) {
+	o.ServicesModule = v
+}
+
+// GetServicesDescription returns the ServicesDescription field value
+func (o *WebsitesOrderPackagesInfo) GetServicesDescription() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ServicesDescription
+}
+
+// GetServicesDescriptionOk returns a tuple with the ServicesDescription field value
+// and a boolean to check if the value has been set.
+func (o *WebsitesOrderPackagesInfo) GetServicesDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServicesDescription, true
+}
+
+// SetServicesDescription sets field value
+func (o *WebsitesOrderPackagesInfo) SetServicesDescription(v string) {
+	o.ServicesDescription = v
+}
+
 // GetServicesField1 returns the ServicesField1 field value if set, zero value otherwise.
 func (o *WebsitesOrderPackagesInfo) GetServicesField1() string {
 	if o == nil || IsNil(o.ServicesField1) {
@@ -285,30 +333,6 @@ func (o *WebsitesOrderPackagesInfo) SetServicesField2(v string) {
 	o.ServicesField2 = &v
 }
 
-// GetServicesModule returns the ServicesModule field value
-func (o *WebsitesOrderPackagesInfo) GetServicesModule() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ServicesModule
-}
-
-// GetServicesModuleOk returns a tuple with the ServicesModule field value
-// and a boolean to check if the value has been set.
-func (o *WebsitesOrderPackagesInfo) GetServicesModuleOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServicesModule, true
-}
-
-// SetServicesModule sets field value
-func (o *WebsitesOrderPackagesInfo) SetServicesModule(v string) {
-	o.ServicesModule = v
-}
-
 // GetServicesHtml returns the ServicesHtml field value if set, zero value otherwise.
 func (o *WebsitesOrderPackagesInfo) GetServicesHtml() string {
 	if o == nil || IsNil(o.ServicesHtml) {
@@ -339,30 +363,6 @@ func (o *WebsitesOrderPackagesInfo) HasServicesHtml() bool {
 // SetServicesHtml gets a reference to the given string and assigns it to the ServicesHtml field.
 func (o *WebsitesOrderPackagesInfo) SetServicesHtml(v string) {
 	o.ServicesHtml = &v
-}
-
-// GetServicesDescription returns the ServicesDescription field value
-func (o *WebsitesOrderPackagesInfo) GetServicesDescription() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ServicesDescription
-}
-
-// GetServicesDescriptionOk returns a tuple with the ServicesDescription field value
-// and a boolean to check if the value has been set.
-func (o *WebsitesOrderPackagesInfo) GetServicesDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServicesDescription, true
-}
-
-// SetServicesDescription sets field value
-func (o *WebsitesOrderPackagesInfo) SetServicesDescription(v string) {
-	o.ServicesDescription = v
 }
 
 // GetServicesMoreinfoUrl returns the ServicesMoreinfoUrl field value if set, zero value otherwise.
@@ -445,17 +445,17 @@ func (o WebsitesOrderPackagesInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["services_category"] = o.ServicesCategory
 	toSerialize["services_buyable"] = o.ServicesBuyable
 	toSerialize["services_type"] = o.ServicesType
+	toSerialize["services_module"] = o.ServicesModule
+	toSerialize["services_description"] = o.ServicesDescription
 	if !IsNil(o.ServicesField1) {
 		toSerialize["services_field1"] = o.ServicesField1
 	}
 	if !IsNil(o.ServicesField2) {
 		toSerialize["services_field2"] = o.ServicesField2
 	}
-	toSerialize["services_module"] = o.ServicesModule
 	if !IsNil(o.ServicesHtml) {
 		toSerialize["services_html"] = o.ServicesHtml
 	}
-	toSerialize["services_description"] = o.ServicesDescription
 	if !IsNil(o.ServicesMoreinfoUrl) {
 		toSerialize["services_moreinfo_url"] = o.ServicesMoreinfoUrl
 	}
@@ -518,11 +518,11 @@ func (o *WebsitesOrderPackagesInfo) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "services_category")
 		delete(additionalProperties, "services_buyable")
 		delete(additionalProperties, "services_type")
+		delete(additionalProperties, "services_module")
+		delete(additionalProperties, "services_description")
 		delete(additionalProperties, "services_field1")
 		delete(additionalProperties, "services_field2")
-		delete(additionalProperties, "services_module")
 		delete(additionalProperties, "services_html")
-		delete(additionalProperties, "services_description")
 		delete(additionalProperties, "services_moreinfo_url")
 		delete(additionalProperties, "services_hidden")
 		o.AdditionalProperties = additionalProperties

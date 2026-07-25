@@ -65,13 +65,6 @@ describe("vps", function()
     end)
   end)
 
-  -- unit tests for the property 'os_template'
-  describe("property os_template test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'service_extra'
   describe("property service_extra test", function()
     it("should work", function()
@@ -81,13 +74,6 @@ describe("vps", function()
 
   -- unit tests for the property 'extra_info_tables'
   describe("property extra_info_tables test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'cpu_graph_data'
-  describe("property cpu_graph_data test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -144,6 +130,20 @@ describe("vps", function()
 
   -- unit tests for the property 'service_addons'
   describe("property service_addons test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'os_template'
+  describe("property os_template test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'cpu_graph_data'
+  describe("property cpu_graph_data test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

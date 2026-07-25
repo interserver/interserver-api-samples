@@ -15,10 +15,10 @@ No summary available.
 
 Request body to setup an IPMI Live connection.
 
-.PARAMETER Asset
-Asset ID
 .PARAMETER Ip
 Your IP Address you wish to connect to the IPMI system from.
+.PARAMETER Asset
+Asset ID
 .OUTPUTS
 
 ServerIpmiLiveRequest<PSCustomObject>
@@ -28,11 +28,11 @@ function Initialize-ServerIpmiLiveRequest {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${Asset},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Ip}
+        ${Ip},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${Asset}
     )
 
     Process {
@@ -45,8 +45,8 @@ function Initialize-ServerIpmiLiveRequest {
 
 
         $PSO = [PSCustomObject]@{
-            'asset' = ${Asset}
             'ip' = ${Ip}
+            'asset' = ${Asset}
         }
 
 
@@ -84,7 +84,7 @@ function ConvertFrom-JsonToServerIpmiLiveRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServerIpmiLiveRequest
-        $AllProperties = ('asset', 'ip')
+        $AllProperties = ('ip', 'asset')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -108,8 +108,8 @@ function ConvertFrom-JsonToServerIpmiLiveRequest {
         }
 
         $PSO = [PSCustomObject]@{
-            'asset' = ${Asset}
             'ip' = ${Ip}
+            'asset' = ${Asset}
         }
 
         return $PSO

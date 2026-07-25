@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'MailSchema' {
     Context 'MailSchema' {
         It 'Initialize-MailSchema' {
             # a simple test to create an object
-            #$NewObject = Initialize-MailSchema -ServiceInfo "TEST_VALUE" -ClientLinks "TEST_VALUE" -BillingDetails "TEST_VALUE" -CustCurrency "TEST_VALUE" -CustCurrencySymbol "TEST_VALUE" -Package "TEST_VALUE" -ServiceExtra "TEST_VALUE" -ExtraInfoTables "TEST_VALUE" -ServiceType "TEST_VALUE" -UsageCount "TEST_VALUE"
+            #$NewObject = Initialize-MailSchema -ServiceInfo "TEST_VALUE" -ClientLinks "TEST_VALUE" -BillingDetails "TEST_VALUE" -CustCurrency "TEST_VALUE" -CustCurrencySymbol "TEST_VALUE" -Package "TEST_VALUE" -ExtraInfoTables "TEST_VALUE" -ServiceType "TEST_VALUE" -UsageCount "TEST_VALUE" -ServiceExtra "TEST_VALUE"
             #$NewObject | Should -BeOfType MailSchema
             #$NewObject.property | Should -Be 0
         }

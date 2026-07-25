@@ -74,7 +74,7 @@ function OpenAPI.validate_property(::Type{ ChargeInvoiceRowsInvoicesValue }, nam
 
 
     if name === Symbol("invoices_paid")
-        OpenAPI.validate_param(name, "ChargeInvoiceRowsInvoicesValue", :enum, val, [0, 1])
+        OpenAPI.validate_param(name, "ChargeInvoiceRowsInvoicesValue", :enum, val, [0, 1, 11184809])
     end
 
 

@@ -37,7 +37,8 @@ public class IntServerTicketPostDetailsInner implements OAS.MappedProperties {
      */
     public enum CreatorEnum {
         USER,
-        STAFF
+        STAFF,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

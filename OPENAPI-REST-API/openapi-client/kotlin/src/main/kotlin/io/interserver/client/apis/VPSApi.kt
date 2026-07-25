@@ -153,7 +153,8 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
      enum class AllDeleteVpsBackup(val value: kotlin.String) {
          @Json(name = "0") _0("0"),
-         @Json(name = "1") _1("1");
+         @Json(name = "1") _1("1"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -839,7 +840,8 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
      enum class AllDownloadVpsBackup(val value: kotlin.String) {
          @Json(name = "0") _0("0"),
-         @Json(name = "1") _1("1");
+         @Json(name = "1") _1("1"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1084,7 +1086,8 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      */
      enum class AllGetVpsBackups(val value: kotlin.String) {
          @Json(name = "0") _0("0"),
-         @Json(name = "1") _1("1");
+         @Json(name = "1") _1("1"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use

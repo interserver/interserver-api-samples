@@ -122,7 +122,7 @@ function OpenAPI.validate_property(::Type{ SslOrderRequest }, name::Symbol, val)
 
 
     if name === Symbol("csr_type")
-        OpenAPI.validate_param(name, "SslOrderRequest", :enum, val, ["generated", "provided"])
+        OpenAPI.validate_param(name, "SslOrderRequest", :enum, val, ["generated", "provided", "unknown_default_open_api"])
     end
 
 

@@ -38,6 +38,8 @@ pub enum CanDelete {
     Variant0,
     #[serde(rename = "1")]
     Variant1,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for CanDelete {

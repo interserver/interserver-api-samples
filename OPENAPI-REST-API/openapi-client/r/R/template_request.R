@@ -8,8 +8,8 @@
 #' @description TemplateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field template OS Template Filename character
-#' @field password Password for Root / Administrator Account. character [optional]
 #' @field localPassword Password for this account. character
+#' @field password Password for Root / Administrator Account. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,8 +17,8 @@ TemplateRequest <- R6::R6Class(
   "TemplateRequest",
   public = list(
     `template` = NULL,
-    `password` = NULL,
     `localPassword` = NULL,
+    `password` = NULL,
 
     #' @description
     #' Initialize a new TemplateRequest class.
@@ -83,13 +83,13 @@ TemplateRequest <- R6::R6Class(
         TemplateRequestObject[["template"]] <-
           self$`template`
       }
-      if (!is.null(self$`password`)) {
-        TemplateRequestObject[["password"]] <-
-          self$`password`
-      }
       if (!is.null(self$`localPassword`)) {
         TemplateRequestObject[["localPassword"]] <-
           self$`localPassword`
+      }
+      if (!is.null(self$`password`)) {
+        TemplateRequestObject[["password"]] <-
+          self$`password`
       }
       return(TemplateRequestObject)
     },
@@ -104,11 +104,11 @@ TemplateRequest <- R6::R6Class(
       if (!is.null(this_object$`template`)) {
         self$`template` <- this_object$`template`
       }
-      if (!is.null(this_object$`password`)) {
-        self$`password` <- this_object$`password`
-      }
       if (!is.null(this_object$`localPassword`)) {
         self$`localPassword` <- this_object$`localPassword`
+      }
+      if (!is.null(this_object$`password`)) {
+        self$`password` <- this_object$`password`
       }
       self
     },
@@ -132,8 +132,8 @@ TemplateRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`template` <- this_object$`template`
-      self$`password` <- this_object$`password`
       self$`localPassword` <- this_object$`localPassword`
+      self$`password` <- this_object$`password`
       self
     },
 
@@ -179,12 +179,12 @@ TemplateRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`password`) < 6) {
+      # check if the required `localPassword` is null
+      if (is.null(self$`localPassword`)) {
         return(FALSE)
       }
 
-      # check if the required `localPassword` is null
-      if (is.null(self$`localPassword`)) {
+      if (nchar(self$`password`) < 6) {
         return(FALSE)
       }
 
@@ -202,13 +202,13 @@ TemplateRequest <- R6::R6Class(
         invalid_fields["template"] <- "Non-nullable required field `template` cannot be null."
       }
 
-      if (nchar(self$`password`) < 6) {
-        invalid_fields["password"] <- "Invalid length for `password`, must be bigger than or equal to 6."
-      }
-
       # check if the required `localPassword` is null
       if (is.null(self$`localPassword`)) {
         invalid_fields["localPassword"] <- "Non-nullable required field `localPassword` cannot be null."
+      }
+
+      if (nchar(self$`password`) < 6) {
+        invalid_fields["password"] <- "Invalid length for `password`, must be bigger than or equal to 6."
       }
 
       invalid_fields

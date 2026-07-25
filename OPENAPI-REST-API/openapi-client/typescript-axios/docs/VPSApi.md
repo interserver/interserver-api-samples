@@ -141,7 +141,7 @@ const { status, data } = await apiInstance.deleteVpsBackup(
 |------------- | ------------- | ------------- | -------------|
 | **id** | [**number**] | VPS ID number | defaults to undefined|
 | **file** | [**string**] | The backup filename to delete. | defaults to undefined|
-| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
+| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39; &#124; &#39;11184809&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -616,7 +616,7 @@ const { status, data } = await apiInstance.downloadVpsBackup(
 |------------- | ------------- | ------------- | -------------|
 | **downloadQsBackupRequest** | **DownloadQsBackupRequest**|  | |
 | **id** | [**number**] | VPS ID number | defaults to undefined|
-| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
+| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39; &#124; &#39;11184809&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -768,7 +768,7 @@ const { status, data } = await apiInstance.getVpsBackups(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **id** | [**number**] | VPS ID number | defaults to undefined|
-| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
+| **all** | [**&#39;0&#39; | &#39;1&#39;**]**Array<&#39;0&#39; &#124; &#39;1&#39; &#124; &#39;11184809&#39;>** | Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. | (optional) defaults to undefined|
 
 
 ### Return type

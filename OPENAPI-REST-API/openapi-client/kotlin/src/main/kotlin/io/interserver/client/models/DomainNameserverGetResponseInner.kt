@@ -53,12 +53,13 @@ data class DomainNameserverGetResponseInner (
     /**
      * Whether the registrar allows deletion of this nameserver entry.
      *
-     * Values: _0,_1
+     * Values: _0,_1,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class CanDelete(val value: kotlin.String) {
         @Json(name = "0") _0("0"),
-        @Json(name = "1") _1("1");
+        @Json(name = "1") _1("1"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

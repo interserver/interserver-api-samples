@@ -303,7 +303,10 @@ Protected Class QuickServersApi
 		      Return "0"
 		    Case AllEnum_DeleteQsBackup.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_DeleteQsBackup.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -1635,7 +1638,10 @@ Protected Class QuickServersApi
 		      Return "0"
 		    Case AllEnum_DownloadQsBackup.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_DownloadQsBackup.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -2086,7 +2092,10 @@ Protected Class QuickServersApi
 		      Return "0"
 		    Case AllEnum_GetQsBackups.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_GetQsBackups.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -5899,6 +5908,7 @@ Protected Class QuickServersApi
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -5906,6 +5916,7 @@ Protected Class QuickServersApi
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -5913,6 +5924,7 @@ Protected Class QuickServersApi
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

@@ -65,6 +65,13 @@ describe("server_switchport", function()
     end)
   end)
 
+  -- unit tests for the property 'asset_id'
+  describe("property asset_id test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'vlans'
   describe("property vlans test", function()
     it("should work", function()
@@ -74,13 +81,6 @@ describe("server_switchport", function()
 
   -- unit tests for the property 'vlans6'
   describe("property vlans6 test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'asset_id'
-  describe("property asset_id test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

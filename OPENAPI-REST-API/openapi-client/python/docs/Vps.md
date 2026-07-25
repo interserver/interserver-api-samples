@@ -12,10 +12,8 @@ Name | Type | Description | Notes
 **cust_currency_symbol** | **str** |  | 
 **service_master** | [**VpsServiceMaster**](VpsServiceMaster.md) |  | 
 **package** | **str** |  | 
-**os_template** | **str** |  | [optional] 
 **service_extra** | [**VpsServiceExtra**](VpsServiceExtra.md) |  | 
 **extra_info_tables** | [**VpsExtraInfoTables**](VpsExtraInfoTables.md) |  | 
-**cpu_graph_data** | **object** |  | [optional] 
 **module** | **str** |  | 
 **token** | **str** |  | 
 **da_link** | **int** |  | 
@@ -24,6 +22,8 @@ Name | Type | Description | Notes
 **da_data** | [**VpsDAData**](VpsDAData.md) |  | 
 **plesk12_data** | [**VpsPlesk12Data**](VpsPlesk12Data.md) |  | 
 **service_addons** | [**VpsServiceAddons**](VpsServiceAddons.md) |  | 
+**os_template** | **str** |  | [optional] 
+**cpu_graph_data** | **object** |  | [optional] 
 
 ## Example
 

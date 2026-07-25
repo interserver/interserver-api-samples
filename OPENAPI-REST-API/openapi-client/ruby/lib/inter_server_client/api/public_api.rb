@@ -209,7 +209,7 @@ module InterServerClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.get_countries ...'
       end
-      allowable_values = ["iso2", "iso3", "numcode"]
+      allowable_values = ["iso2", "iso3", "numcode", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'fetch_by'] && !allowable_values.include?(opts[:'fetch_by'])
         fail ArgumentError, "invalid value for \"fetch_by\", must be one of #{allowable_values}"
       end

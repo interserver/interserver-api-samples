@@ -223,13 +223,13 @@ boost::json::object ServerSwitchport::toJsonObject_internal() const
         object["blade"] = JsonValueConverter<std::string>::toJsonValue(getBlade());
         object["justport"] = JsonValueConverter<std::string>::toJsonValue(getJustport());
         object["graph_id"] = JsonValueConverter<std::string>::toJsonValue(getGraphId());
+        object["asset_id"] = JsonValueConverter<int32_t>::toJsonValue(getAssetId());
         if (m_VlansIsSet) {
             object["vlans"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans());
         }
         if (m_Vlans6IsSet) {
             object["vlans6"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getVlans6());
         }
-        object["asset_id"] = JsonValueConverter<int32_t>::toJsonValue(getAssetId());
     return object;
 }
 
@@ -280,6 +280,12 @@ void ServerSwitchport::fromJsonObject_internal(boost::json::object const& object
         }
     }
     {
+        const auto Asset_idIt = object.find("asset_id");
+        if (Asset_idIt != object.end()) {
+            setAssetId(JsonValueConverter<int32_t>::fromJsonValue(Asset_idIt->value()));
+        }
+    }
+    {
         const auto VlansIt = object.find("vlans");
         if (VlansIt != object.end()) {
             setVlans(JsonValueConverter<std::vector<std::string>>::fromJsonValue(VlansIt->value()));
@@ -289,12 +295,6 @@ void ServerSwitchport::fromJsonObject_internal(boost::json::object const& object
         const auto Vlans6It = object.find("vlans6");
         if (Vlans6It != object.end()) {
             setVlans6(JsonValueConverter<std::vector<std::string>>::fromJsonValue(Vlans6It->value()));
-        }
-    }
-    {
-        const auto Asset_idIt = object.find("asset_id");
-        if (Asset_idIt != object.end()) {
-            setAssetId(JsonValueConverter<int32_t>::fromJsonValue(Asset_idIt->value()));
         }
     }
 }
@@ -369,6 +369,16 @@ void ServerSwitchport::setGraphId(std::string value)
     
     m_Graph_id = std::move(value);
 }
+int32_t ServerSwitchport::getAssetId() const
+{
+    return m_Asset_id;
+}
+
+void ServerSwitchport::setAssetId(int32_t value)
+{
+    
+    m_Asset_id = std::move(value);
+}
 std::vector<std::string> ServerSwitchport::getVlans() const
 {
     return m_Vlans;
@@ -390,16 +400,6 @@ void ServerSwitchport::setVlans6(std::vector<std::string> value)
     
     m_Vlans6 = std::move(value);
     m_Vlans6IsSet = true;
-}
-int32_t ServerSwitchport::getAssetId() const
-{
-    return m_Asset_id;
-}
-
-void ServerSwitchport::setAssetId(int32_t value)
-{
-    
-    m_Asset_id = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerSwitchport>>& data)

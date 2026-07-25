@@ -101,7 +101,10 @@ Protected Module Models
 		      Return "WKS"
 		    Case DnsRecordType.Uri
 		      Return "URI⏎"
-		    
+		    Case DnsRecordType.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case DnsRecordType.
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -159,7 +162,8 @@ Protected Module Models
 		Txt
 		Wks
 		Uri
-		
+		UnknownDefaultOpenApi
+		Unknown
 	#tag EndEnum
 
 

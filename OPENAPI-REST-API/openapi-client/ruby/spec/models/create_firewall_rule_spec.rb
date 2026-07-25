@@ -30,7 +30,7 @@ describe InterServerClient::CreateFirewallRule do
   describe 'test attribute "protocol_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Integer', [1, 2])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Integer', [1, 2, 11184809])
       # validator.allowable_values.each do |value|
       #   expect { instance.protocol_id = value }.not_to raise_error
       # end
@@ -40,7 +40,7 @@ describe InterServerClient::CreateFirewallRule do
   describe 'test attribute "xdp_action"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Integer', [0, 1])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Integer', [0, 1, 11184809])
       # validator.allowable_values.each do |value|
       #   expect { instance.xdp_action = value }.not_to raise_error
       # end

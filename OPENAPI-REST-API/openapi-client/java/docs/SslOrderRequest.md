@@ -37,6 +37,7 @@ Request body to validate (putSsl) or place (addSsl) an SSL certificate order. Co
 |---- | -----|
 | generated | &quot;generated&quot; |
 | provided | &quot;provided&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

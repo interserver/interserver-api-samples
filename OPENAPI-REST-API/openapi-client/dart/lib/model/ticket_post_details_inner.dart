@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class TicketPostDetailsInner {
   /// Returns a new [TicketPostDetailsInner] instance.
@@ -229,6 +229,7 @@ class TicketPostDetailsInner {
 enum TicketPostDetailsInnerCreatorEnum {
   user._(r'User'),
   staff._(r'Staff'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -289,6 +290,7 @@ class TicketPostDetailsInnerCreatorEnumTypeTransformer {
       switch (data) {
         case r'User': return TicketPostDetailsInnerCreatorEnum.user;
         case r'Staff': return TicketPostDetailsInnerCreatorEnum.staff;
+        case r'unknown_default_open_api': return TicketPostDetailsInnerCreatorEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

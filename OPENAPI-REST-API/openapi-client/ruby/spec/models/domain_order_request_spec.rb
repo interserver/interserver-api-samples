@@ -36,7 +36,7 @@ describe InterServerClient::DomainOrderRequest do
   describe 'test attribute "type"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["register", "transfer"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["register", "transfer", "unknown_default_open_api"])
       # validator.allowable_values.each do |value|
       #   expect { instance.type = value }.not_to raise_error
       # end
@@ -52,7 +52,7 @@ describe InterServerClient::DomainOrderRequest do
   describe 'test attribute "whois_privacy"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["enable", "disable"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["enable", "disable", "unknown_default_open_api"])
       # validator.allowable_values.each do |value|
       #   expect { instance.whois_privacy = value }.not_to raise_error
       # end

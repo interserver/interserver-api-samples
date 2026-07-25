@@ -19,13 +19,6 @@ test_that("location_name", {
   #expect_equal(model.instance$`location_name`, "EXPECTED_RESULT")
 })
 
-test_that("location_description", {
-  # tests for the property `location_description` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`location_description`, "EXPECTED_RESULT")
-})
-
 test_that("location_lat", {
   # tests for the property `location_lat` (character)
 
@@ -38,6 +31,13 @@ test_that("location_long", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`location_long`, "EXPECTED_RESULT")
+})
+
+test_that("location_description", {
+  # tests for the property `location_description` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`location_description`, "EXPECTED_RESULT")
 })
 
 test_that("location_ipmi_group", {

@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'ServerIpmiPowerRequest' {
     Context 'ServerIpmiPowerRequest' {
         It 'Initialize-ServerIpmiPowerRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-ServerIpmiPowerRequest -Asset "TEST_VALUE" -Action "TEST_VALUE"
+            #$NewObject = Initialize-ServerIpmiPowerRequest -Action "TEST_VALUE" -Asset "TEST_VALUE"
             #$NewObject | Should -BeOfType ServerIpmiPowerRequest
             #$NewObject.property | Should -Be 0
         }

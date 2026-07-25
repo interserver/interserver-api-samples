@@ -38,7 +38,7 @@ module InterserverApiClient
     @[JSON::Field(key: "attachment_download", emit_null: false)]
     property attachment_download : String?
 
-    validates(creator, String, true, enum: ["User", "Staff"])
+    validates(creator, String, true, enum: ["User", "Staff", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

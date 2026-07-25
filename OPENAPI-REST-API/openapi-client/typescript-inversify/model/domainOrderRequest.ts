@@ -36,14 +36,16 @@ export interface DomainOrderRequest {
     whois_privacy?: DomainOrderRequest.WhoisPrivacyEnum;
 }
 export namespace DomainOrderRequest {
-    export type TypeEnum = 'register' | 'transfer';
+    export type TypeEnum = 'register' | 'transfer' | '11184809';
     export const TypeEnum = {
         Register: 'register' as TypeEnum,
-        Transfer: 'transfer' as TypeEnum
+        Transfer: 'transfer' as TypeEnum,
+        UnknownDefaultOpenApi: '11184809' as TypeEnum
     }
-    export type WhoisPrivacyEnum = 'enable' | 'disable';
+    export type WhoisPrivacyEnum = 'enable' | 'disable' | '11184809';
     export const WhoisPrivacyEnum = {
         Enable: 'enable' as WhoisPrivacyEnum,
-        Disable: 'disable' as WhoisPrivacyEnum
+        Disable: 'disable' as WhoisPrivacyEnum,
+        UnknownDefaultOpenApi: '11184809' as WhoisPrivacyEnum
     }
 }

@@ -15,11 +15,11 @@ No summary available.
 
 Response returned after creating a new support ticket.
 
-.PARAMETER TicketId
-No description available.
 .PARAMETER Text
 No description available.
 .PARAMETER Success
+No description available.
+.PARAMETER TicketId
 No description available.
 .OUTPUTS
 
@@ -30,14 +30,14 @@ function Initialize-TicketNewResponse {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${TicketId},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Text},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${Success}
+        ${Success},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${TicketId}
     )
 
     Process {
@@ -54,9 +54,9 @@ function Initialize-TicketNewResponse {
 
 
         $PSO = [PSCustomObject]@{
-            'ticket_id' = ${TicketId}
             'text' = ${Text}
             'success' = ${Success}
+            'ticket_id' = ${TicketId}
         }
 
 
@@ -94,7 +94,7 @@ function ConvertFrom-JsonToTicketNewResponse {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in TicketNewResponse
-        $AllProperties = ('ticket_id', 'text', 'success')
+        $AllProperties = ('text', 'success', 'ticket_id')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -124,9 +124,9 @@ function ConvertFrom-JsonToTicketNewResponse {
         }
 
         $PSO = [PSCustomObject]@{
-            'ticket_id' = ${TicketId}
             'text' = ${Text}
             'success' = ${Success}
+            'ticket_id' = ${TicketId}
         }
 
         return $PSO

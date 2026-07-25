@@ -23,8 +23,6 @@ MailServiceInfo::MailServiceInfo()
 {
     m_Mail_id = utility::conversions::to_string_t("");
     m_Mail_idIsSet = false;
-    m_Mail_username = utility::conversions::to_string_t("");
-    m_Mail_usernameIsSet = false;
     m_Mail_type = utility::conversions::to_string_t("");
     m_Mail_typeIsSet = false;
     m_Mail_currency = utility::conversions::to_string_t("");
@@ -35,12 +33,14 @@ MailServiceInfo::MailServiceInfo()
     m_Mail_custidIsSet = false;
     m_Mail_quota = utility::conversions::to_string_t("");
     m_Mail_quotaIsSet = false;
-    m_Mail_ip = utility::conversions::to_string_t("");
-    m_Mail_ipIsSet = false;
     m_Mail_status = utility::conversions::to_string_t("");
     m_Mail_statusIsSet = false;
     m_Mail_invoice = utility::conversions::to_string_t("");
     m_Mail_invoiceIsSet = false;
+    m_Mail_username = utility::conversions::to_string_t("");
+    m_Mail_usernameIsSet = false;
+    m_Mail_ip = utility::conversions::to_string_t("");
+    m_Mail_ipIsSet = false;
     m_Mail_coupon = utility::conversions::to_string_t("");
     m_Mail_couponIsSet = false;
     m_Mail_extra = utility::conversions::to_string_t("");
@@ -68,11 +68,6 @@ web::json::value MailServiceInfo::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("mail_id"))] = ModelBase::toJson(m_Mail_id);
     }
-    if(m_Mail_usernameIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("mail_username"))] = ModelBase::toJson(m_Mail_username);
-    }
     if(m_Mail_typeIsSet)
     {
         
@@ -98,11 +93,6 @@ web::json::value MailServiceInfo::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("mail_quota"))] = ModelBase::toJson(m_Mail_quota);
     }
-    if(m_Mail_ipIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("mail_ip"))] = ModelBase::toJson(m_Mail_ip);
-    }
     if(m_Mail_statusIsSet)
     {
         
@@ -112,6 +102,16 @@ web::json::value MailServiceInfo::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("mail_invoice"))] = ModelBase::toJson(m_Mail_invoice);
+    }
+    if(m_Mail_usernameIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("mail_username"))] = ModelBase::toJson(m_Mail_username);
+    }
+    if(m_Mail_ipIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("mail_ip"))] = ModelBase::toJson(m_Mail_ip);
     }
     if(m_Mail_couponIsSet)
     {
@@ -148,17 +148,6 @@ bool MailServiceInfo::fromJson(const web::json::value& val)
             utility::string_t refVal_setMailId;
             ok &= ModelBase::fromJson(fieldValue, refVal_setMailId);
             setMailId(refVal_setMailId);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mail_username"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mail_username")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setMailUsername;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setMailUsername);
-            setMailUsername(refVal_setMailUsername);
             
         }
     }
@@ -217,17 +206,6 @@ bool MailServiceInfo::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mail_ip")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setMailIp;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setMailIp);
-            setMailIp(refVal_setMailIp);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mail_status"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mail_status")));
@@ -247,6 +225,28 @@ bool MailServiceInfo::fromJson(const web::json::value& val)
             utility::string_t refVal_setMailInvoice;
             ok &= ModelBase::fromJson(fieldValue, refVal_setMailInvoice);
             setMailInvoice(refVal_setMailInvoice);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mail_username"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mail_username")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setMailUsername;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setMailUsername);
+            setMailUsername(refVal_setMailUsername);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mail_ip")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setMailIp;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setMailIp);
+            setMailIp(refVal_setMailIp);
             
         }
     }
@@ -308,10 +308,6 @@ void MailServiceInfo::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_id")), m_Mail_id));
     }
-    if(m_Mail_usernameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_username")), m_Mail_username));
-    }
     if(m_Mail_typeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_type")), m_Mail_type));
@@ -332,10 +328,6 @@ void MailServiceInfo::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_quota")), m_Mail_quota));
     }
-    if(m_Mail_ipIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_ip")), m_Mail_ip));
-    }
     if(m_Mail_statusIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_status")), m_Mail_status));
@@ -343,6 +335,14 @@ void MailServiceInfo::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     if(m_Mail_invoiceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_invoice")), m_Mail_invoice));
+    }
+    if(m_Mail_usernameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_username")), m_Mail_username));
+    }
+    if(m_Mail_ipIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mail_ip")), m_Mail_ip));
     }
     if(m_Mail_couponIsSet)
     {
@@ -377,12 +377,6 @@ bool MailServiceInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_id"))), refVal_setMailId );
         setMailId(refVal_setMailId);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_username"))))
-    {
-        utility::string_t refVal_setMailUsername;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_username"))), refVal_setMailUsername );
-        setMailUsername(refVal_setMailUsername);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_type"))))
     {
         utility::string_t refVal_setMailType;
@@ -413,12 +407,6 @@ bool MailServiceInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_quota"))), refVal_setMailQuota );
         setMailQuota(refVal_setMailQuota);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))))
-    {
-        utility::string_t refVal_setMailIp;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))), refVal_setMailIp );
-        setMailIp(refVal_setMailIp);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_status"))))
     {
         utility::string_t refVal_setMailStatus;
@@ -430,6 +418,18 @@ bool MailServiceInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         utility::string_t refVal_setMailInvoice;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_invoice"))), refVal_setMailInvoice );
         setMailInvoice(refVal_setMailInvoice);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_username"))))
+    {
+        utility::string_t refVal_setMailUsername;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_username"))), refVal_setMailUsername );
+        setMailUsername(refVal_setMailUsername);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))))
+    {
+        utility::string_t refVal_setMailIp;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mail_ip"))), refVal_setMailIp );
+        setMailIp(refVal_setMailIp);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mail_coupon"))))
     {
@@ -479,27 +479,6 @@ bool MailServiceInfo::mailIdIsSet() const
 void MailServiceInfo::unsetMail_id()
 {
     m_Mail_idIsSet = false;
-}
-utility::string_t MailServiceInfo::getMailUsername() const
-{
-    return m_Mail_username;
-}
-
-
-void MailServiceInfo::setMailUsername(const utility::string_t& value)
-{
-    m_Mail_username = value;
-    m_Mail_usernameIsSet = true;
-}
-
-bool MailServiceInfo::mailUsernameIsSet() const
-{
-    return m_Mail_usernameIsSet;
-}
-
-void MailServiceInfo::unsetMail_username()
-{
-    m_Mail_usernameIsSet = false;
 }
 utility::string_t MailServiceInfo::getMailType() const
 {
@@ -606,27 +585,6 @@ void MailServiceInfo::unsetMail_quota()
 {
     m_Mail_quotaIsSet = false;
 }
-utility::string_t MailServiceInfo::getMailIp() const
-{
-    return m_Mail_ip;
-}
-
-
-void MailServiceInfo::setMailIp(const utility::string_t& value)
-{
-    m_Mail_ip = value;
-    m_Mail_ipIsSet = true;
-}
-
-bool MailServiceInfo::mailIpIsSet() const
-{
-    return m_Mail_ipIsSet;
-}
-
-void MailServiceInfo::unsetMail_ip()
-{
-    m_Mail_ipIsSet = false;
-}
 utility::string_t MailServiceInfo::getMailStatus() const
 {
     return m_Mail_status;
@@ -668,6 +626,48 @@ bool MailServiceInfo::mailInvoiceIsSet() const
 void MailServiceInfo::unsetMail_invoice()
 {
     m_Mail_invoiceIsSet = false;
+}
+utility::string_t MailServiceInfo::getMailUsername() const
+{
+    return m_Mail_username;
+}
+
+
+void MailServiceInfo::setMailUsername(const utility::string_t& value)
+{
+    m_Mail_username = value;
+    m_Mail_usernameIsSet = true;
+}
+
+bool MailServiceInfo::mailUsernameIsSet() const
+{
+    return m_Mail_usernameIsSet;
+}
+
+void MailServiceInfo::unsetMail_username()
+{
+    m_Mail_usernameIsSet = false;
+}
+utility::string_t MailServiceInfo::getMailIp() const
+{
+    return m_Mail_ip;
+}
+
+
+void MailServiceInfo::setMailIp(const utility::string_t& value)
+{
+    m_Mail_ip = value;
+    m_Mail_ipIsSet = true;
+}
+
+bool MailServiceInfo::mailIpIsSet() const
+{
+    return m_Mail_ipIsSet;
+}
+
+void MailServiceInfo::unsetMail_ip()
+{
+    m_Mail_ipIsSet = false;
 }
 utility::string_t MailServiceInfo::getMailCoupon() const
 {

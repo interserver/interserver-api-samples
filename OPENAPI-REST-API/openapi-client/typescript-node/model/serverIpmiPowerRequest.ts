@@ -50,6 +50,7 @@ export namespace ServerIpmiPowerRequest {
         Reset = <any> 'reset',
         On = <any> 'on',
         Off = <any> 'off',
-        Soft = <any> 'soft'
+        Soft = <any> 'soft',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

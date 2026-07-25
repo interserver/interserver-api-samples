@@ -142,9 +142,9 @@ module InterServerClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @hostname.nil?
-      type_validator = EnumAttributeValidator.new('String', ["register", "transfer"])
+      type_validator = EnumAttributeValidator.new('String', ["register", "transfer", "unknown_default_open_api"])
       return false unless type_validator.valid?(@type)
-      whois_privacy_validator = EnumAttributeValidator.new('String', ["enable", "disable"])
+      whois_privacy_validator = EnumAttributeValidator.new('String', ["enable", "disable", "unknown_default_open_api"])
       return false unless whois_privacy_validator.valid?(@whois_privacy)
       true
     end
@@ -162,7 +162,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["register", "transfer"])
+      validator = EnumAttributeValidator.new('String', ["register", "transfer", "unknown_default_open_api"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
@@ -172,7 +172,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] whois_privacy Object to be assigned
     def whois_privacy=(whois_privacy)
-      validator = EnumAttributeValidator.new('String', ["enable", "disable"])
+      validator = EnumAttributeValidator.new('String', ["enable", "disable", "unknown_default_open_api"])
       unless validator.valid?(whois_privacy)
         fail ArgumentError, "invalid value for \"whois_privacy\", must be one of #{validator.allowable_values}."
       end

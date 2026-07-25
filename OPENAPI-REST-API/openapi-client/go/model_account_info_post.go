@@ -23,12 +23,8 @@ var _ MappedNullable = &AccountInfoPost{}
 type AccountInfoPost struct {
 	// Your name.
 	Name string `json:"name"`
-	// Your company name.
-	Company *string `json:"company,omitempty"`
 	// Your address.
 	Address string `json:"address"`
-	// Additional address information.
-	Address2 *string `json:"address2,omitempty"`
 	// Your city.
 	City string `json:"city"`
 	// Your state.
@@ -39,6 +35,10 @@ type AccountInfoPost struct {
 	Country string `json:"country"`
 	// Your phone number.
 	Phone string `json:"phone"`
+	// Your company name.
+	Company *string `json:"company,omitempty"`
+	// Additional address information.
+	Address2 *string `json:"address2,omitempty"`
 	// Your preferred locale.
 	Locale *string `json:"locale,omitempty"`
 	// Your email for invoice notifications.
@@ -108,38 +108,6 @@ func (o *AccountInfoPost) SetName(v string) {
 	o.Name = v
 }
 
-// GetCompany returns the Company field value if set, zero value otherwise.
-func (o *AccountInfoPost) GetCompany() string {
-	if o == nil || IsNil(o.Company) {
-		var ret string
-		return ret
-	}
-	return *o.Company
-}
-
-// GetCompanyOk returns a tuple with the Company field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountInfoPost) GetCompanyOk() (*string, bool) {
-	if o == nil || IsNil(o.Company) {
-		return nil, false
-	}
-	return o.Company, true
-}
-
-// HasCompany returns a boolean if a field has been set.
-func (o *AccountInfoPost) HasCompany() bool {
-	if o != nil && !IsNil(o.Company) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompany gets a reference to the given string and assigns it to the Company field.
-func (o *AccountInfoPost) SetCompany(v string) {
-	o.Company = &v
-}
-
 // GetAddress returns the Address field value
 func (o *AccountInfoPost) GetAddress() string {
 	if o == nil {
@@ -162,38 +130,6 @@ func (o *AccountInfoPost) GetAddressOk() (*string, bool) {
 // SetAddress sets field value
 func (o *AccountInfoPost) SetAddress(v string) {
 	o.Address = v
-}
-
-// GetAddress2 returns the Address2 field value if set, zero value otherwise.
-func (o *AccountInfoPost) GetAddress2() string {
-	if o == nil || IsNil(o.Address2) {
-		var ret string
-		return ret
-	}
-	return *o.Address2
-}
-
-// GetAddress2Ok returns a tuple with the Address2 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountInfoPost) GetAddress2Ok() (*string, bool) {
-	if o == nil || IsNil(o.Address2) {
-		return nil, false
-	}
-	return o.Address2, true
-}
-
-// HasAddress2 returns a boolean if a field has been set.
-func (o *AccountInfoPost) HasAddress2() bool {
-	if o != nil && !IsNil(o.Address2) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress2 gets a reference to the given string and assigns it to the Address2 field.
-func (o *AccountInfoPost) SetAddress2(v string) {
-	o.Address2 = &v
 }
 
 // GetCity returns the City field value
@@ -314,6 +250,70 @@ func (o *AccountInfoPost) GetPhoneOk() (*string, bool) {
 // SetPhone sets field value
 func (o *AccountInfoPost) SetPhone(v string) {
 	o.Phone = v
+}
+
+// GetCompany returns the Company field value if set, zero value otherwise.
+func (o *AccountInfoPost) GetCompany() string {
+	if o == nil || IsNil(o.Company) {
+		var ret string
+		return ret
+	}
+	return *o.Company
+}
+
+// GetCompanyOk returns a tuple with the Company field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountInfoPost) GetCompanyOk() (*string, bool) {
+	if o == nil || IsNil(o.Company) {
+		return nil, false
+	}
+	return o.Company, true
+}
+
+// HasCompany returns a boolean if a field has been set.
+func (o *AccountInfoPost) HasCompany() bool {
+	if o != nil && !IsNil(o.Company) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompany gets a reference to the given string and assigns it to the Company field.
+func (o *AccountInfoPost) SetCompany(v string) {
+	o.Company = &v
+}
+
+// GetAddress2 returns the Address2 field value if set, zero value otherwise.
+func (o *AccountInfoPost) GetAddress2() string {
+	if o == nil || IsNil(o.Address2) {
+		var ret string
+		return ret
+	}
+	return *o.Address2
+}
+
+// GetAddress2Ok returns a tuple with the Address2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountInfoPost) GetAddress2Ok() (*string, bool) {
+	if o == nil || IsNil(o.Address2) {
+		return nil, false
+	}
+	return o.Address2, true
+}
+
+// HasAddress2 returns a boolean if a field has been set.
+func (o *AccountInfoPost) HasAddress2() bool {
+	if o != nil && !IsNil(o.Address2) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress2 gets a reference to the given string and assigns it to the Address2 field.
+func (o *AccountInfoPost) SetAddress2(v string) {
+	o.Address2 = &v
 }
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
@@ -583,18 +583,18 @@ func (o AccountInfoPost) MarshalJSON() ([]byte, error) {
 func (o AccountInfoPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Company) {
-		toSerialize["company"] = o.Company
-	}
 	toSerialize["address"] = o.Address
-	if !IsNil(o.Address2) {
-		toSerialize["address2"] = o.Address2
-	}
 	toSerialize["city"] = o.City
 	toSerialize["state"] = o.State
 	toSerialize["zip"] = o.Zip
 	toSerialize["country"] = o.Country
 	toSerialize["phone"] = o.Phone
+	if !IsNil(o.Company) {
+		toSerialize["company"] = o.Company
+	}
+	if !IsNil(o.Address2) {
+		toSerialize["address2"] = o.Address2
+	}
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
@@ -669,14 +669,14 @@ func (o *AccountInfoPost) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "company")
 		delete(additionalProperties, "address")
-		delete(additionalProperties, "address2")
 		delete(additionalProperties, "city")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "zip")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "phone")
+		delete(additionalProperties, "company")
+		delete(additionalProperties, "address2")
 		delete(additionalProperties, "locale")
 		delete(additionalProperties, "email_invoices")
 		delete(additionalProperties, "email_abuse")

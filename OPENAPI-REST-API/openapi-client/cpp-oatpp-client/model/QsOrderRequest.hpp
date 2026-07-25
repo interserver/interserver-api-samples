@@ -39,10 +39,10 @@ class QsOrderRequest : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, password);
 
-  DTO_FIELD(oatpp::String, os);
-  DTO_FIELD(oatpp::Boolean, osIsSet);
   DTO_FIELD(oatpp::Boolean, tos);
 
+  DTO_FIELD(oatpp::String, os);
+  DTO_FIELD(oatpp::Boolean, osIsSet);
   DTO_FIELD(oatpp::String, comment);
   DTO_FIELD(oatpp::Boolean, commentIsSet);
 

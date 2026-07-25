@@ -11,10 +11,8 @@ Name | Type | Description | Notes
 **CustCurrencySymbol** | **string** |  | 
 **ServiceMaster** | [**VpsServiceMaster**](VpsServiceMaster.md) |  | 
 **Package** | **string** |  | 
-**OsTemplate** | Pointer to **string** |  | [optional] 
 **ServiceExtra** | [**VpsServiceExtra**](VpsServiceExtra.md) |  | 
 **ExtraInfoTables** | [**VpsExtraInfoTables**](VpsExtraInfoTables.md) |  | 
-**CpuGraphData** | Pointer to **interface{}** |  | [optional] 
 **Module** | **string** |  | 
 **Token** | **string** |  | 
 **DaLink** | **int32** |  | 
@@ -23,6 +21,8 @@ Name | Type | Description | Notes
 **DaData** | [**VpsDAData**](VpsDAData.md) |  | 
 **Plesk12Data** | [**VpsPlesk12Data**](VpsPlesk12Data.md) |  | 
 **ServiceAddons** | [**VpsServiceAddons**](VpsServiceAddons.md) |  | 
+**OsTemplate** | Pointer to **string** |  | [optional] 
+**CpuGraphData** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -183,31 +183,6 @@ and a boolean to check if the value has been set.
 SetPackage sets Package field to given value.
 
 
-### GetOsTemplate
-
-`func (o *Vps) GetOsTemplate() string`
-
-GetOsTemplate returns the OsTemplate field if non-nil, zero value otherwise.
-
-### GetOsTemplateOk
-
-`func (o *Vps) GetOsTemplateOk() (*string, bool)`
-
-GetOsTemplateOk returns a tuple with the OsTemplate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOsTemplate
-
-`func (o *Vps) SetOsTemplate(v string)`
-
-SetOsTemplate sets OsTemplate field to given value.
-
-### HasOsTemplate
-
-`func (o *Vps) HasOsTemplate() bool`
-
-HasOsTemplate returns a boolean if a field has been set.
-
 ### GetServiceExtra
 
 `func (o *Vps) GetServiceExtra() VpsServiceExtra`
@@ -248,41 +223,6 @@ and a boolean to check if the value has been set.
 SetExtraInfoTables sets ExtraInfoTables field to given value.
 
 
-### GetCpuGraphData
-
-`func (o *Vps) GetCpuGraphData() interface{}`
-
-GetCpuGraphData returns the CpuGraphData field if non-nil, zero value otherwise.
-
-### GetCpuGraphDataOk
-
-`func (o *Vps) GetCpuGraphDataOk() (*interface{}, bool)`
-
-GetCpuGraphDataOk returns a tuple with the CpuGraphData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCpuGraphData
-
-`func (o *Vps) SetCpuGraphData(v interface{})`
-
-SetCpuGraphData sets CpuGraphData field to given value.
-
-### HasCpuGraphData
-
-`func (o *Vps) HasCpuGraphData() bool`
-
-HasCpuGraphData returns a boolean if a field has been set.
-
-### SetCpuGraphDataNil
-
-`func (o *Vps) SetCpuGraphDataNil(b bool)`
-
- SetCpuGraphDataNil sets the value for CpuGraphData to be an explicit nil
-
-### UnsetCpuGraphData
-`func (o *Vps) UnsetCpuGraphData()`
-
-UnsetCpuGraphData ensures that no value is present for CpuGraphData, not even an explicit nil
 ### GetModule
 
 `func (o *Vps) GetModule() string`
@@ -443,6 +383,66 @@ and a boolean to check if the value has been set.
 SetServiceAddons sets ServiceAddons field to given value.
 
 
+### GetOsTemplate
+
+`func (o *Vps) GetOsTemplate() string`
+
+GetOsTemplate returns the OsTemplate field if non-nil, zero value otherwise.
+
+### GetOsTemplateOk
+
+`func (o *Vps) GetOsTemplateOk() (*string, bool)`
+
+GetOsTemplateOk returns a tuple with the OsTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsTemplate
+
+`func (o *Vps) SetOsTemplate(v string)`
+
+SetOsTemplate sets OsTemplate field to given value.
+
+### HasOsTemplate
+
+`func (o *Vps) HasOsTemplate() bool`
+
+HasOsTemplate returns a boolean if a field has been set.
+
+### GetCpuGraphData
+
+`func (o *Vps) GetCpuGraphData() interface{}`
+
+GetCpuGraphData returns the CpuGraphData field if non-nil, zero value otherwise.
+
+### GetCpuGraphDataOk
+
+`func (o *Vps) GetCpuGraphDataOk() (*interface{}, bool)`
+
+GetCpuGraphDataOk returns a tuple with the CpuGraphData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuGraphData
+
+`func (o *Vps) SetCpuGraphData(v interface{})`
+
+SetCpuGraphData sets CpuGraphData field to given value.
+
+### HasCpuGraphData
+
+`func (o *Vps) HasCpuGraphData() bool`
+
+HasCpuGraphData returns a boolean if a field has been set.
+
+### SetCpuGraphDataNil
+
+`func (o *Vps) SetCpuGraphDataNil(b bool)`
+
+ SetCpuGraphDataNil sets the value for CpuGraphData to be an explicit nil
+
+### UnsetCpuGraphData
+`func (o *Vps) UnsetCpuGraphData()`
+
+UnsetCpuGraphData ensures that no value is present for CpuGraphData, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

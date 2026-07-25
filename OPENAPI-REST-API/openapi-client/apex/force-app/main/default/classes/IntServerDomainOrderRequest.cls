@@ -25,7 +25,8 @@ public class IntServerDomainOrderRequest extends Map<String, oas_any_type_not_ma
      */
     public enum TypeEnum {
         REGISTER,
-        TRANSFER
+        TRANSFER,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**
@@ -45,7 +46,8 @@ public class IntServerDomainOrderRequest extends Map<String, oas_any_type_not_ma
      */
     public enum WhoisPrivacyEnum {
         ENABLE,
-        DISABLE
+        DISABLE,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

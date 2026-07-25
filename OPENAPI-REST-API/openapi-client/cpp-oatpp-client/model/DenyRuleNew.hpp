@@ -35,12 +35,12 @@ class DenyRuleNew : public oatpp::DTO {
 
   DTO_INIT(DenyRuleNew, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::String, user);
-  DTO_FIELD(oatpp::Boolean, userIsSet);
   DTO_FIELD(oatpp::String, type);
 
   DTO_FIELD(oatpp::String, data);
 
+  DTO_FIELD(oatpp::String, user);
+  DTO_FIELD(oatpp::Boolean, userIsSet);
 
 };
 

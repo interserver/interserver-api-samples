@@ -222,12 +222,12 @@ boost::json::object MailSchema::toJsonObject_internal() const
         object["custCurrency"] = JsonValueConverter<std::string>::toJsonValue(getCustCurrency());
         object["custCurrencySymbol"] = JsonValueConverter<std::string>::toJsonValue(getCustCurrencySymbol());
         object["package"] = JsonValueConverter<std::string>::toJsonValue(getPackage());
-        if (m_ServiceExtraIsSet) {
-            object["serviceExtra"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getServiceExtra());
-        }
         object["extraInfoTables"] = JsonValueConverter<std::shared_ptr<MailSchema_extraInfoTables>>::toJsonValue(getExtraInfoTables());
         object["serviceType"] = JsonValueConverter<std::shared_ptr<MailServiceType>>::toJsonValue(getServiceType());
         object["usage_count"] = JsonValueConverter<std::string>::toJsonValue(getUsageCount());
+        if (m_ServiceExtraIsSet) {
+            object["serviceExtra"] = JsonValueConverter<std::vector<std::string>>::toJsonValue(getServiceExtra());
+        }
     return object;
 }
 
@@ -271,12 +271,6 @@ void MailSchema::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto ServiceExtraIt = object.find("serviceExtra");
-        if (ServiceExtraIt != object.end()) {
-            setServiceExtra(JsonValueConverter<std::vector<std::string>>::fromJsonValue(ServiceExtraIt->value()));
-        }
-    }
-    {
         const auto ExtraInfoTablesIt = object.find("extraInfoTables");
         if (ExtraInfoTablesIt != object.end()) {
             setExtraInfoTables(JsonValueConverter<std::shared_ptr<MailSchema_extraInfoTables>>::fromJsonValue(ExtraInfoTablesIt->value()));
@@ -292,6 +286,12 @@ void MailSchema::fromJsonObject_internal(boost::json::object const& object)
         const auto Usage_countIt = object.find("usage_count");
         if (Usage_countIt != object.end()) {
             setUsageCount(JsonValueConverter<std::string>::fromJsonValue(Usage_countIt->value()));
+        }
+    }
+    {
+        const auto ServiceExtraIt = object.find("serviceExtra");
+        if (ServiceExtraIt != object.end()) {
+            setServiceExtra(JsonValueConverter<std::vector<std::string>>::fromJsonValue(ServiceExtraIt->value()));
         }
     }
 }
@@ -356,17 +356,6 @@ void MailSchema::setPackage(std::string value)
     
     m_Package = std::move(value);
 }
-std::vector<std::string> MailSchema::getServiceExtra() const
-{
-    return m_ServiceExtra;
-}
-
-void MailSchema::setServiceExtra(std::vector<std::string> value)
-{
-    
-    m_ServiceExtra = std::move(value);
-    m_ServiceExtraIsSet = true;
-}
 std::shared_ptr<MailSchema_extraInfoTables> MailSchema::getExtraInfoTables() const
 {
     return m_ExtraInfoTables;
@@ -396,6 +385,17 @@ void MailSchema::setUsageCount(std::string value)
 {
     
     m_Usage_count = std::move(value);
+}
+std::vector<std::string> MailSchema::getServiceExtra() const
+{
+    return m_ServiceExtra;
+}
+
+void MailSchema::setServiceExtra(std::vector<std::string> value)
+{
+    
+    m_ServiceExtra = std::move(value);
+    m_ServiceExtraIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<MailSchema>>& data)

@@ -4,15 +4,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mailId** | **NSString*** | The ID of the mail service. | 
-**mailUsername** | **NSString*** | The username associated with the mail service. | [optional] 
 **mailType** | **NSString*** | The type of mail service. | 
 **mailCurrency** | **NSString*** | The currency of the mail service. | 
 **mailOrderDate** | **NSString*** | The order date of the mail service. | 
 **mailCustid** | **NSString*** | The customer ID associated with the mail service. | 
 **mailQuota** | **NSString*** | The mail quota for the service. | 
-**mailIp** | **NSString*** | The IP address associated with the mail service. | [optional] 
 **mailStatus** | **NSString*** | The status of the mail service. | 
 **mailInvoice** | **NSString*** | The invoice ID of the mail service. | 
+**mailUsername** | **NSString*** | The username associated with the mail service. | [optional] 
+**mailIp** | **NSString*** | The IP address associated with the mail service. | [optional] 
 **mailCoupon** | **NSString*** | The coupon associated with the mail service. | [optional] 
 **mailExtra** | **NSString*** | Additional information for the mail service. | [optional] 
 **mailServerStatus** | **NSString*** | The server status of the mail service. | [optional] 

@@ -31,7 +31,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'creator',
         required: false,
-        enum: ['User', 'Staff']
+        enum: ['User', 'Staff', 'unknown_default_open_api']
 
       attribute :creator_email,
         type: 'String',

@@ -1,8 +1,8 @@
-# openapi.model.CancelScrubIp200Response
+# interserver_api.model.CancelScrubIp200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

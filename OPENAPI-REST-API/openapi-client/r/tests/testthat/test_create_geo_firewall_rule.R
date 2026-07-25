@@ -5,6 +5,14 @@ context("Test CreateGeoFirewallRule")
 
 model_instance <- CreateGeoFirewallRule$new()
 
+test_that("xdp_action", {
+  # tests for the property `xdp_action` (integer)
+  # 1 &#x3D; Block,  0 &#x3D; Whitelist
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`xdp_action`, "EXPECTED_RESULT")
+})
+
 test_that("destination_port", {
   # tests for the property `destination_port` (integer)
 
@@ -26,12 +34,4 @@ test_that("asn", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`asn`, "EXPECTED_RESULT")
-})
-
-test_that("xdp_action", {
-  # tests for the property `xdp_action` (integer)
-  # 1 &#x3D; Block,  0 &#x3D; Whitelist
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`xdp_action`, "EXPECTED_RESULT")
 })

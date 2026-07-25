@@ -10,13 +10,13 @@
 #' @field osDistro OS Distribution character
 #' @field slices Number of slices integer
 #' @field vpsPlatform VPS Platform character
-#' @field controlpanel Control Panel character [optional]
 #' @field period Billing Period or Frequency integer
 #' @field location Location integer
 #' @field osVersion OS Version character
 #' @field hostname The hostname to assign to the VPS character
-#' @field coupon Coupon character [optional]
 #' @field rootpass Root password to assign to the VVPS character
+#' @field controlpanel Control Panel character [optional]
+#' @field coupon Coupon character [optional]
 #' @field comment Order comments or notes character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -27,13 +27,13 @@ VpsOrderPutRequest <- R6::R6Class(
     `osDistro` = NULL,
     `slices` = NULL,
     `vpsPlatform` = NULL,
-    `controlpanel` = NULL,
     `period` = NULL,
     `location` = NULL,
     `osVersion` = NULL,
     `hostname` = NULL,
-    `coupon` = NULL,
     `rootpass` = NULL,
+    `controlpanel` = NULL,
+    `coupon` = NULL,
     `comment` = NULL,
 
     #' @description
@@ -169,10 +169,6 @@ VpsOrderPutRequest <- R6::R6Class(
         VpsOrderPutRequestObject[["vpsPlatform"]] <-
           self$`vpsPlatform`
       }
-      if (!is.null(self$`controlpanel`)) {
-        VpsOrderPutRequestObject[["controlpanel"]] <-
-          self$`controlpanel`
-      }
       if (!is.null(self$`period`)) {
         VpsOrderPutRequestObject[["period"]] <-
           self$`period`
@@ -189,13 +185,17 @@ VpsOrderPutRequest <- R6::R6Class(
         VpsOrderPutRequestObject[["hostname"]] <-
           self$`hostname`
       }
-      if (!is.null(self$`coupon`)) {
-        VpsOrderPutRequestObject[["coupon"]] <-
-          self$`coupon`
-      }
       if (!is.null(self$`rootpass`)) {
         VpsOrderPutRequestObject[["rootpass"]] <-
           self$`rootpass`
+      }
+      if (!is.null(self$`controlpanel`)) {
+        VpsOrderPutRequestObject[["controlpanel"]] <-
+          self$`controlpanel`
+      }
+      if (!is.null(self$`coupon`)) {
+        VpsOrderPutRequestObject[["coupon"]] <-
+          self$`coupon`
       }
       if (!is.null(self$`comment`)) {
         VpsOrderPutRequestObject[["comment"]] <-
@@ -223,12 +223,6 @@ VpsOrderPutRequest <- R6::R6Class(
         }
         self$`vpsPlatform` <- this_object$`vpsPlatform`
       }
-      if (!is.null(this_object$`controlpanel`)) {
-        if (!is.null(this_object$`controlpanel`) && !(this_object$`controlpanel` %in% c("none", "cpanel", "da"))) {
-          stop(paste("Error! \"", this_object$`controlpanel`, "\" cannot be assigned to `controlpanel`. Must be \"none\", \"cpanel\", \"da\".", sep = ""))
-        }
-        self$`controlpanel` <- this_object$`controlpanel`
-      }
       if (!is.null(this_object$`period`)) {
         self$`period` <- this_object$`period`
       }
@@ -241,11 +235,17 @@ VpsOrderPutRequest <- R6::R6Class(
       if (!is.null(this_object$`hostname`)) {
         self$`hostname` <- this_object$`hostname`
       }
-      if (!is.null(this_object$`coupon`)) {
-        self$`coupon` <- this_object$`coupon`
-      }
       if (!is.null(this_object$`rootpass`)) {
         self$`rootpass` <- this_object$`rootpass`
+      }
+      if (!is.null(this_object$`controlpanel`)) {
+        if (!is.null(this_object$`controlpanel`) && !(this_object$`controlpanel` %in% c("none", "cpanel", "da"))) {
+          stop(paste("Error! \"", this_object$`controlpanel`, "\" cannot be assigned to `controlpanel`. Must be \"none\", \"cpanel\", \"da\".", sep = ""))
+        }
+        self$`controlpanel` <- this_object$`controlpanel`
+      }
+      if (!is.null(this_object$`coupon`)) {
+        self$`coupon` <- this_object$`coupon`
       }
       if (!is.null(this_object$`comment`)) {
         self$`comment` <- this_object$`comment`
@@ -277,16 +277,16 @@ VpsOrderPutRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`vpsPlatform`, "\" cannot be assigned to `vpsPlatform`. Must be \"kvm\", \"hyperv\", \"kvmstorage\".", sep = ""))
       }
       self$`vpsPlatform` <- this_object$`vpsPlatform`
-      if (!is.null(this_object$`controlpanel`) && !(this_object$`controlpanel` %in% c("none", "cpanel", "da"))) {
-        stop(paste("Error! \"", this_object$`controlpanel`, "\" cannot be assigned to `controlpanel`. Must be \"none\", \"cpanel\", \"da\".", sep = ""))
-      }
-      self$`controlpanel` <- this_object$`controlpanel`
       self$`period` <- this_object$`period`
       self$`location` <- this_object$`location`
       self$`osVersion` <- this_object$`osVersion`
       self$`hostname` <- this_object$`hostname`
-      self$`coupon` <- this_object$`coupon`
       self$`rootpass` <- this_object$`rootpass`
+      if (!is.null(this_object$`controlpanel`) && !(this_object$`controlpanel` %in% c("none", "cpanel", "da"))) {
+        stop(paste("Error! \"", this_object$`controlpanel`, "\" cannot be assigned to `controlpanel`. Must be \"none\", \"cpanel\", \"da\".", sep = ""))
+      }
+      self$`controlpanel` <- this_object$`controlpanel`
+      self$`coupon` <- this_object$`coupon`
       self$`comment` <- this_object$`comment`
       self
     },

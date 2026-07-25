@@ -58,13 +58,6 @@ describe("server_asset", function()
     end)
   end)
 
-  -- unit tests for the property 'mac'
-  describe("property mac test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'datacenter'
   describe("property datacenter test", function()
     it("should work", function()
@@ -142,41 +135,6 @@ describe("server_asset", function()
     end)
   end)
 
-  -- unit tests for the property 'ipmi_admin_username'
-  describe("property ipmi_admin_username test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'ipmi_admin_password'
-  describe("property ipmi_admin_password test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'ipmi_client_username'
-  describe("property ipmi_client_username test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'ipmi_client_password'
-  describe("property ipmi_client_password test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'ipmi_updated'
-  describe("property ipmi_updated test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'ipmi_working'
   describe("property ipmi_working test", function()
     it("should work", function()
@@ -247,20 +205,6 @@ describe("server_asset", function()
     end)
   end)
 
-  -- unit tests for the property 'create_timestamp'
-  describe("property create_timestamp test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'update_timestamp'
-  describe("property update_timestamp test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'asset_id'
   describe("property asset_id test", function()
     it("should work", function()
@@ -317,13 +261,6 @@ describe("server_asset", function()
     end)
   end)
 
-  -- unit tests for the property 'comment'
-  describe("property comment test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'switchports'
   describe("property switchports test", function()
     it("should work", function()
@@ -347,6 +284,69 @@ describe("server_asset", function()
 
   -- unit tests for the property 'lease'
   describe("property lease test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'mac'
+  describe("property mac test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ipmi_admin_username'
+  describe("property ipmi_admin_username test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ipmi_admin_password'
+  describe("property ipmi_admin_password test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ipmi_client_username'
+  describe("property ipmi_client_username test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ipmi_client_password'
+  describe("property ipmi_client_password test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ipmi_updated'
+  describe("property ipmi_updated test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'create_timestamp'
+  describe("property create_timestamp test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'update_timestamp'
+  describe("property update_timestamp test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'comment'
+  describe("property comment test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

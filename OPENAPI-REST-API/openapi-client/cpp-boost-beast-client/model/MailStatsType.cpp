@@ -358,8 +358,8 @@ std::string MailStatsType::getTime() const
 
 void MailStatsType::setTime(std::string value)
 {
-    static const std::array<std::string, 7> allowedValues = {
-        "all","billing","month","7d","24h","today","1h"
+    static const std::array<std::string, 8> allowedValues = {
+        "all","billing","month","7d","24h","today","1h","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

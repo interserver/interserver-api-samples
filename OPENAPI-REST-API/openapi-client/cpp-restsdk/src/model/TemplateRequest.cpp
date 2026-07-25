@@ -23,10 +23,10 @@ TemplateRequest::TemplateRequest()
 {
     m_r_template = utility::conversions::to_string_t("");
     m_r_templateIsSet = false;
-    m_Password = utility::conversions::to_string_t("");
-    m_PasswordIsSet = false;
     m_LocalPassword = utility::conversions::to_string_t("");
     m_LocalPasswordIsSet = false;
+    m_Password = utility::conversions::to_string_t("");
+    m_PasswordIsSet = false;
 }
 
 TemplateRequest::~TemplateRequest()
@@ -46,15 +46,15 @@ web::json::value TemplateRequest::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("template"))] = ModelBase::toJson(m_r_template);
     }
-    if(m_PasswordIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("password"))] = ModelBase::toJson(m_Password);
-    }
     if(m_LocalPasswordIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("localPassword"))] = ModelBase::toJson(m_LocalPassword);
+    }
+    if(m_PasswordIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("password"))] = ModelBase::toJson(m_Password);
     }
 
     return val;
@@ -74,17 +74,6 @@ bool TemplateRequest::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("password"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("password")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setPassword;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setPassword);
-            setPassword(refVal_setPassword);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("localPassword"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("localPassword")));
@@ -93,6 +82,17 @@ bool TemplateRequest::fromJson(const web::json::value& val)
             utility::string_t refVal_setLocalPassword;
             ok &= ModelBase::fromJson(fieldValue, refVal_setLocalPassword);
             setLocalPassword(refVal_setLocalPassword);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("password"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("password")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setPassword;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setPassword);
+            setPassword(refVal_setPassword);
             
         }
     }
@@ -110,13 +110,13 @@ void TemplateRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("template")), m_r_template));
     }
-    if(m_PasswordIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("password")), m_Password));
-    }
     if(m_LocalPasswordIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("localPassword")), m_LocalPassword));
+    }
+    if(m_PasswordIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("password")), m_Password));
     }
 }
 
@@ -135,17 +135,17 @@ bool TemplateRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("template"))), refVal_setRTemplate );
         setRTemplate(refVal_setRTemplate);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("password"))))
-    {
-        utility::string_t refVal_setPassword;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("password"))), refVal_setPassword );
-        setPassword(refVal_setPassword);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("localPassword"))))
     {
         utility::string_t refVal_setLocalPassword;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("localPassword"))), refVal_setLocalPassword );
         setLocalPassword(refVal_setLocalPassword);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("password"))))
+    {
+        utility::string_t refVal_setPassword;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("password"))), refVal_setPassword );
+        setPassword(refVal_setPassword);
     }
     return ok;
 }
@@ -172,27 +172,6 @@ void TemplateRequest::unsetr_template()
 {
     m_r_templateIsSet = false;
 }
-utility::string_t TemplateRequest::getPassword() const
-{
-    return m_Password;
-}
-
-
-void TemplateRequest::setPassword(const utility::string_t& value)
-{
-    m_Password = value;
-    m_PasswordIsSet = true;
-}
-
-bool TemplateRequest::passwordIsSet() const
-{
-    return m_PasswordIsSet;
-}
-
-void TemplateRequest::unsetPassword()
-{
-    m_PasswordIsSet = false;
-}
 utility::string_t TemplateRequest::getLocalPassword() const
 {
     return m_LocalPassword;
@@ -213,6 +192,27 @@ bool TemplateRequest::localPasswordIsSet() const
 void TemplateRequest::unsetLocalPassword()
 {
     m_LocalPasswordIsSet = false;
+}
+utility::string_t TemplateRequest::getPassword() const
+{
+    return m_Password;
+}
+
+
+void TemplateRequest::setPassword(const utility::string_t& value)
+{
+    m_Password = value;
+    m_PasswordIsSet = true;
+}
+
+bool TemplateRequest::passwordIsSet() const
+{
+    return m_PasswordIsSet;
+}
+
+void TemplateRequest::unsetPassword()
+{
+    m_PasswordIsSet = false;
 }
 
 }

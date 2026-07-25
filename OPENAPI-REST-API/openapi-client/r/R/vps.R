@@ -14,10 +14,8 @@
 #' @field custCurrencySymbol  character
 #' @field serviceMaster  \link{VpsServiceMaster}
 #' @field package  character
-#' @field os_template  character [optional]
 #' @field serviceExtra  \link{VpsServiceExtra}
 #' @field extraInfoTables  \link{VpsExtraInfoTables}
-#' @field cpu_graph_data  \link{AnyType} [optional]
 #' @field module  character
 #' @field token  character
 #' @field da_link  integer
@@ -26,6 +24,8 @@
 #' @field da_data  \link{VpsDAData}
 #' @field plesk12_data  \link{VpsPlesk12Data}
 #' @field serviceAddons  \link{VpsServiceAddons}
+#' @field os_template  character [optional]
+#' @field cpu_graph_data  \link{AnyType} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -39,10 +39,8 @@ Vps <- R6::R6Class(
     `custCurrencySymbol` = NULL,
     `serviceMaster` = NULL,
     `package` = NULL,
-    `os_template` = NULL,
     `serviceExtra` = NULL,
     `extraInfoTables` = NULL,
-    `cpu_graph_data` = NULL,
     `module` = NULL,
     `token` = NULL,
     `da_link` = NULL,
@@ -51,6 +49,8 @@ Vps <- R6::R6Class(
     `da_data` = NULL,
     `plesk12_data` = NULL,
     `serviceAddons` = NULL,
+    `os_template` = NULL,
+    `cpu_graph_data` = NULL,
 
     #' @description
     #' Initialize a new Vps class.
@@ -230,10 +230,6 @@ Vps <- R6::R6Class(
         VpsObject[["package"]] <-
           self$`package`
       }
-      if (!is.null(self$`os_template`)) {
-        VpsObject[["os_template"]] <-
-          self$`os_template`
-      }
       if (!is.null(self$`serviceExtra`)) {
         VpsObject[["serviceExtra"]] <-
           self$extractSimpleType(self$`serviceExtra`)
@@ -241,10 +237,6 @@ Vps <- R6::R6Class(
       if (!is.null(self$`extraInfoTables`)) {
         VpsObject[["extraInfoTables"]] <-
           self$extractSimpleType(self$`extraInfoTables`)
-      }
-      if (!is.null(self$`cpu_graph_data`)) {
-        VpsObject[["cpu_graph_data"]] <-
-          self$extractSimpleType(self$`cpu_graph_data`)
       }
       if (!is.null(self$`module`)) {
         VpsObject[["module"]] <-
@@ -277,6 +269,14 @@ Vps <- R6::R6Class(
       if (!is.null(self$`serviceAddons`)) {
         VpsObject[["serviceAddons"]] <-
           self$extractSimpleType(self$`serviceAddons`)
+      }
+      if (!is.null(self$`os_template`)) {
+        VpsObject[["os_template"]] <-
+          self$`os_template`
+      }
+      if (!is.null(self$`cpu_graph_data`)) {
+        VpsObject[["cpu_graph_data"]] <-
+          self$extractSimpleType(self$`cpu_graph_data`)
       }
       return(VpsObject)
     },
@@ -338,9 +338,6 @@ Vps <- R6::R6Class(
       if (!is.null(this_object$`package`)) {
         self$`package` <- this_object$`package`
       }
-      if (!is.null(this_object$`os_template`)) {
-        self$`os_template` <- this_object$`os_template`
-      }
       if (!is.null(this_object$`serviceExtra`)) {
         `serviceextra_object` <- VpsServiceExtra$new()
         `serviceextra_object`$fromJSON(jsonlite::toJSON(this_object$`serviceExtra`, auto_unbox = TRUE, digits = NA))
@@ -350,11 +347,6 @@ Vps <- R6::R6Class(
         `extrainfotables_object` <- VpsExtraInfoTables$new()
         `extrainfotables_object`$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))
         self$`extraInfoTables` <- `extrainfotables_object`
-      }
-      if (!is.null(this_object$`cpu_graph_data`)) {
-        `cpu_graph_data_object` <- AnyType$new()
-        `cpu_graph_data_object`$fromJSON(jsonlite::toJSON(this_object$`cpu_graph_data`, auto_unbox = TRUE, digits = NA))
-        self$`cpu_graph_data` <- `cpu_graph_data_object`
       }
       if (!is.null(this_object$`module`)) {
         self$`module` <- this_object$`module`
@@ -388,6 +380,14 @@ Vps <- R6::R6Class(
         `serviceaddons_object`$fromJSON(jsonlite::toJSON(this_object$`serviceAddons`, auto_unbox = TRUE, digits = NA))
         self$`serviceAddons` <- `serviceaddons_object`
       }
+      if (!is.null(this_object$`os_template`)) {
+        self$`os_template` <- this_object$`os_template`
+      }
+      if (!is.null(this_object$`cpu_graph_data`)) {
+        `cpu_graph_data_object` <- AnyType$new()
+        `cpu_graph_data_object`$fromJSON(jsonlite::toJSON(this_object$`cpu_graph_data`, auto_unbox = TRUE, digits = NA))
+        self$`cpu_graph_data` <- `cpu_graph_data_object`
+      }
       self
     },
 
@@ -416,10 +416,8 @@ Vps <- R6::R6Class(
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`
       self$`serviceMaster` <- VpsServiceMaster$new()$fromJSON(jsonlite::toJSON(this_object$`serviceMaster`, auto_unbox = TRUE, digits = NA))
       self$`package` <- this_object$`package`
-      self$`os_template` <- this_object$`os_template`
       self$`serviceExtra` <- VpsServiceExtra$new()$fromJSON(jsonlite::toJSON(this_object$`serviceExtra`, auto_unbox = TRUE, digits = NA))
       self$`extraInfoTables` <- VpsExtraInfoTables$new()$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))
-      self$`cpu_graph_data` <- AnyType$new()$fromJSON(jsonlite::toJSON(this_object$`cpu_graph_data`, auto_unbox = TRUE, digits = NA))
       self$`module` <- this_object$`module`
       self$`token` <- this_object$`token`
       self$`da_link` <- this_object$`da_link`
@@ -428,6 +426,8 @@ Vps <- R6::R6Class(
       self$`da_data` <- VpsDAData$new()$fromJSON(jsonlite::toJSON(this_object$`da_data`, auto_unbox = TRUE, digits = NA))
       self$`plesk12_data` <- VpsPlesk12Data$new()$fromJSON(jsonlite::toJSON(this_object$`plesk12_data`, auto_unbox = TRUE, digits = NA))
       self$`serviceAddons` <- VpsServiceAddons$new()$fromJSON(jsonlite::toJSON(this_object$`serviceAddons`, auto_unbox = TRUE, digits = NA))
+      self$`os_template` <- this_object$`os_template`
+      self$`cpu_graph_data` <- AnyType$new()$fromJSON(jsonlite::toJSON(this_object$`cpu_graph_data`, auto_unbox = TRUE, digits = NA))
       self
     },
 

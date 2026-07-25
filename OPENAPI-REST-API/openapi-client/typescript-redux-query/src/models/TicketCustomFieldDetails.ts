@@ -87,7 +87,8 @@ export function TicketCustomFieldDetailsToJSON(value?: TicketCustomFieldDetails)
 */
 export enum TicketCustomFieldDetailsCustomerServerAccessEnum {
     Y = 'y',
-    N = 'n'
+    N = 'n',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 

@@ -84,7 +84,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
-$VpsOrderPostRequest = Initialize-VpsOrderPostRequest -OsDistro "MyOsDistro" -Slices 0 -VpsPlatform "kvm" -Controlpanel "none" -Period 0 -Location 0 -OsVersion "MyOsVersion" -Hostname "MyHostname" -Coupon "MyCoupon" -Rootpass "MyRootpass" -Comment "MyComment" # VpsOrderPostRequest |  (optional)
+$VpsOrderPostRequest = Initialize-VpsOrderPostRequest -OsDistro "MyOsDistro" -Slices 0 -VpsPlatform "kvm" -Period 0 -Location 0 -OsVersion "MyOsVersion" -Hostname "MyHostname" -Rootpass "MyRootpass" -Controlpanel "none" -Coupon "MyCoupon" -Comment "MyComment" # VpsOrderPostRequest |  (optional)
 
 # Place a new VPS order, create the invoice, and queue provisioning
 try {
@@ -2879,7 +2879,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
-$VpsOrderPutRequest = Initialize-VpsOrderPutRequest -OsDistro "MyOsDistro" -Slices 0 -VpsPlatform "kvm" -Controlpanel "none" -Period 0 -Location 0 -OsVersion "MyOsVersion" -Hostname "MyHostname" -Coupon "MyCoupon" -Rootpass "MyRootpass" -Comment "MyComment" # VpsOrderPutRequest |  (optional)
+$VpsOrderPutRequest = Initialize-VpsOrderPutRequest -OsDistro "MyOsDistro" -Slices 0 -VpsPlatform "kvm" -Period 0 -Location 0 -OsVersion "MyOsVersion" -Hostname "MyHostname" -Rootpass "MyRootpass" -Controlpanel "none" -Coupon "MyCoupon" -Comment "MyComment" # VpsOrderPutRequest |  (optional)
 
 # Validate a VPS order configuration and quote the cost — dry run, no charge
 try {

@@ -103,7 +103,8 @@ export function TicketPostDetailsInnerToJSON(value?: TicketPostDetailsInner): an
 */
 export enum TicketPostDetailsInnerCreatorEnum {
     User = 'User',
-    Staff = 'Staff'
+    Staff = 'Staff',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 

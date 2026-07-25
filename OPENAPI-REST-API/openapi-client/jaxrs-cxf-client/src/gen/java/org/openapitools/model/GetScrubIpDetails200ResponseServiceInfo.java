@@ -38,7 +38,7 @@ public class GetScrubIpDetails200ResponseServiceInfo  {
 
 public enum ScrubIpStatusEnum {
 
-ACTIVE(String.valueOf("active")), PENDING(String.valueOf("pending")), CANCELED(String.valueOf("canceled")), EXPIRED(String.valueOf("expired"));
+ACTIVE(String.valueOf("active")), PENDING(String.valueOf("pending")), CANCELED(String.valueOf("canceled")), EXPIRED(String.valueOf("expired")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

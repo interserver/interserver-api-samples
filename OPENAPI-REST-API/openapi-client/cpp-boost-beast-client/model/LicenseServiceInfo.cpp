@@ -223,14 +223,14 @@ boost::json::object LicenseServiceInfo::toJsonObject_internal() const
         object["license_custid"] = JsonValueConverter<std::string>::toJsonValue(getLicenseCustid());
         object["license_ip"] = JsonValueConverter<std::string>::toJsonValue(getLicenseIp());
         object["license_status"] = JsonValueConverter<std::string>::toJsonValue(getLicenseStatus());
+        object["license_invoice"] = JsonValueConverter<std::string>::toJsonValue(getLicenseInvoice());
+        object["license_coupon"] = JsonValueConverter<std::string>::toJsonValue(getLicenseCoupon());
         if (m_License_hostnameIsSet) {
             object["license_hostname"] = JsonValueConverter<std::string>::toJsonValue(getLicenseHostname());
         }
         if (m_License_keyIsSet) {
             object["license_key"] = JsonValueConverter<std::string>::toJsonValue(getLicenseKey());
         }
-        object["license_invoice"] = JsonValueConverter<std::string>::toJsonValue(getLicenseInvoice());
-        object["license_coupon"] = JsonValueConverter<std::string>::toJsonValue(getLicenseCoupon());
         if (m_License_extraIsSet) {
             object["license_extra"] = JsonValueConverter<std::string>::toJsonValue(getLicenseExtra());
         }
@@ -285,18 +285,6 @@ void LicenseServiceInfo::fromJsonObject_internal(boost::json::object const& obje
         }
     }
     {
-        const auto License_hostnameIt = object.find("license_hostname");
-        if (License_hostnameIt != object.end()) {
-            setLicenseHostname(JsonValueConverter<std::string>::fromJsonValue(License_hostnameIt->value()));
-        }
-    }
-    {
-        const auto License_keyIt = object.find("license_key");
-        if (License_keyIt != object.end()) {
-            setLicenseKey(JsonValueConverter<std::string>::fromJsonValue(License_keyIt->value()));
-        }
-    }
-    {
         const auto License_invoiceIt = object.find("license_invoice");
         if (License_invoiceIt != object.end()) {
             setLicenseInvoice(JsonValueConverter<std::string>::fromJsonValue(License_invoiceIt->value()));
@@ -306,6 +294,18 @@ void LicenseServiceInfo::fromJsonObject_internal(boost::json::object const& obje
         const auto License_couponIt = object.find("license_coupon");
         if (License_couponIt != object.end()) {
             setLicenseCoupon(JsonValueConverter<std::string>::fromJsonValue(License_couponIt->value()));
+        }
+    }
+    {
+        const auto License_hostnameIt = object.find("license_hostname");
+        if (License_hostnameIt != object.end()) {
+            setLicenseHostname(JsonValueConverter<std::string>::fromJsonValue(License_hostnameIt->value()));
+        }
+    }
+    {
+        const auto License_keyIt = object.find("license_key");
+        if (License_keyIt != object.end()) {
+            setLicenseKey(JsonValueConverter<std::string>::fromJsonValue(License_keyIt->value()));
         }
     }
     {
@@ -386,6 +386,26 @@ void LicenseServiceInfo::setLicenseStatus(std::string value)
     
     m_License_status = std::move(value);
 }
+std::string LicenseServiceInfo::getLicenseInvoice() const
+{
+    return m_License_invoice;
+}
+
+void LicenseServiceInfo::setLicenseInvoice(std::string value)
+{
+    
+    m_License_invoice = std::move(value);
+}
+std::string LicenseServiceInfo::getLicenseCoupon() const
+{
+    return m_License_coupon;
+}
+
+void LicenseServiceInfo::setLicenseCoupon(std::string value)
+{
+    
+    m_License_coupon = std::move(value);
+}
 std::string LicenseServiceInfo::getLicenseHostname() const
 {
     return m_License_hostname;
@@ -407,26 +427,6 @@ void LicenseServiceInfo::setLicenseKey(std::string value)
     
     m_License_key = std::move(value);
     m_License_keyIsSet = true;
-}
-std::string LicenseServiceInfo::getLicenseInvoice() const
-{
-    return m_License_invoice;
-}
-
-void LicenseServiceInfo::setLicenseInvoice(std::string value)
-{
-    
-    m_License_invoice = std::move(value);
-}
-std::string LicenseServiceInfo::getLicenseCoupon() const
-{
-    return m_License_coupon;
-}
-
-void LicenseServiceInfo::setLicenseCoupon(std::string value)
-{
-    
-    m_License_coupon = std::move(value);
 }
 std::string LicenseServiceInfo::getLicenseExtra() const
 {

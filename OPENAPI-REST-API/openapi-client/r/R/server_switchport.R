@@ -14,9 +14,9 @@
 #' @field blade Blade name associated with the port. character
 #' @field justport Port identifier. character
 #' @field graph_id Identifier for the graph associated with the switchport. character
+#' @field asset_id Unique identifier of the asset associated with the switchport. integer
 #' @field vlans List of VLANs associated with the switchport. list(character) [optional]
 #' @field vlans6 List of IPv6 VLANs associated with the switchport. list(character) [optional]
-#' @field asset_id Unique identifier of the asset associated with the switchport. integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -30,9 +30,9 @@ ServerSwitchport <- R6::R6Class(
     `blade` = NULL,
     `justport` = NULL,
     `graph_id` = NULL,
+    `asset_id` = NULL,
     `vlans` = NULL,
     `vlans6` = NULL,
-    `asset_id` = NULL,
 
     #' @description
     #' Initialize a new ServerSwitchport class.
@@ -168,6 +168,10 @@ ServerSwitchport <- R6::R6Class(
         ServerSwitchportObject[["graph_id"]] <-
           self$`graph_id`
       }
+      if (!is.null(self$`asset_id`)) {
+        ServerSwitchportObject[["asset_id"]] <-
+          self$`asset_id`
+      }
       if (!is.null(self$`vlans`)) {
         ServerSwitchportObject[["vlans"]] <-
           self$`vlans`
@@ -175,10 +179,6 @@ ServerSwitchport <- R6::R6Class(
       if (!is.null(self$`vlans6`)) {
         ServerSwitchportObject[["vlans6"]] <-
           self$`vlans6`
-      }
-      if (!is.null(self$`asset_id`)) {
-        ServerSwitchportObject[["asset_id"]] <-
-          self$`asset_id`
       }
       return(ServerSwitchportObject)
     },
@@ -211,14 +211,14 @@ ServerSwitchport <- R6::R6Class(
       if (!is.null(this_object$`graph_id`)) {
         self$`graph_id` <- this_object$`graph_id`
       }
+      if (!is.null(this_object$`asset_id`)) {
+        self$`asset_id` <- this_object$`asset_id`
+      }
       if (!is.null(this_object$`vlans`)) {
         self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`vlans6`)) {
         self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
-      }
-      if (!is.null(this_object$`asset_id`)) {
-        self$`asset_id` <- this_object$`asset_id`
       }
       self
     },
@@ -248,9 +248,9 @@ ServerSwitchport <- R6::R6Class(
       self$`blade` <- this_object$`blade`
       self$`justport` <- this_object$`justport`
       self$`graph_id` <- this_object$`graph_id`
+      self$`asset_id` <- this_object$`asset_id`
       self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
-      self$`asset_id` <- this_object$`asset_id`
       self
     },
 

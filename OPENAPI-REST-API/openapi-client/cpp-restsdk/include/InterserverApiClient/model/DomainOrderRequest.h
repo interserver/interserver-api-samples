@@ -65,6 +65,7 @@ public:
     {
         REGISTER,
         TRANSFER,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// Order type.
@@ -73,6 +74,7 @@ public:
     {
         ENABLE,
         DISABLE,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// Set to \&quot;enable\&quot; to add Whois privacy (addDomain only).

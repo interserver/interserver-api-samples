@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   VpsOrderPutRequest.JSON_PROPERTY_COMMENT
 })
 @JsonTypeName("VpsOrderPutRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class VpsOrderPutRequest {
     public static final String JSON_PROPERTY_OS_DISTRO = "osDistro";
@@ -53,7 +53,8 @@ public class VpsOrderPutRequest {
     public enum VpsPlatformEnum {
         KVM("kvm"),
         HYPERV("hyperv"),
-        KVMSTORAGE("kvmstorage");
+        KVMSTORAGE("kvmstorage"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 
@@ -105,7 +106,8 @@ public class VpsOrderPutRequest {
     public enum ControlpanelEnum {
         NONE("none"),
         CPANEL("cpanel"),
-        DA("da");
+        DA("da"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

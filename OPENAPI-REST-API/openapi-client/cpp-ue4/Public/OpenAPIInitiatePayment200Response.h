@@ -34,6 +34,7 @@ public:
 		Redirect,
 		Submit,
 		Single,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const TypeEnum& EnumValue);

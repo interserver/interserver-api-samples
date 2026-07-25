@@ -1,8 +1,8 @@
-# openapi.model.MailSchemaExtraInfoTables
+# interserver_api.model.MailSchemaExtraInfoTables
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

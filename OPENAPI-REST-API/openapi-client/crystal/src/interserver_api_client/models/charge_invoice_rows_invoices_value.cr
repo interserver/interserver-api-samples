@@ -49,7 +49,7 @@ module InterserverApiClient
     @[JSON::Field(key: "paid_invoices", emit_null: false)]
     property paid_invoices : Hash(String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValue)?
 
-    validates(invoices_paid, Float64, true, enum: [0, 1])
+    validates(invoices_paid, Float64, true, enum: [0, 1, 11184809])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

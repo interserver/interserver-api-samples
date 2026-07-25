@@ -21,13 +21,13 @@ var _ MappedNullable = &LoginInfo{}
 
 // LoginInfo Basic information useful for rendering a login page.
 type LoginInfo struct {
-	// A logo image url.
-	Logo *string `json:"logo,omitempty"`
 	// A base64 encoded image to use for rendering the alternateive captcha.
 	Captcha string `json:"captcha"`
+	Counts LoginServiceCounts `json:"counts"`
+	// A logo image url.
+	Logo *string `json:"logo,omitempty"`
 	// The desired langauge to render the site with.
 	Language *string `json:"language,omitempty"`
-	Counts LoginServiceCounts `json:"counts"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -50,6 +50,54 @@ func NewLoginInfo(captcha string, counts LoginServiceCounts) *LoginInfo {
 func NewLoginInfoWithDefaults() *LoginInfo {
 	this := LoginInfo{}
 	return &this
+}
+
+// GetCaptcha returns the Captcha field value
+func (o *LoginInfo) GetCaptcha() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Captcha
+}
+
+// GetCaptchaOk returns a tuple with the Captcha field value
+// and a boolean to check if the value has been set.
+func (o *LoginInfo) GetCaptchaOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Captcha, true
+}
+
+// SetCaptcha sets field value
+func (o *LoginInfo) SetCaptcha(v string) {
+	o.Captcha = v
+}
+
+// GetCounts returns the Counts field value
+func (o *LoginInfo) GetCounts() LoginServiceCounts {
+	if o == nil {
+		var ret LoginServiceCounts
+		return ret
+	}
+
+	return o.Counts
+}
+
+// GetCountsOk returns a tuple with the Counts field value
+// and a boolean to check if the value has been set.
+func (o *LoginInfo) GetCountsOk() (*LoginServiceCounts, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Counts, true
+}
+
+// SetCounts sets field value
+func (o *LoginInfo) SetCounts(v LoginServiceCounts) {
+	o.Counts = v
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise.
@@ -84,30 +132,6 @@ func (o *LoginInfo) SetLogo(v string) {
 	o.Logo = &v
 }
 
-// GetCaptcha returns the Captcha field value
-func (o *LoginInfo) GetCaptcha() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Captcha
-}
-
-// GetCaptchaOk returns a tuple with the Captcha field value
-// and a boolean to check if the value has been set.
-func (o *LoginInfo) GetCaptchaOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Captcha, true
-}
-
-// SetCaptcha sets field value
-func (o *LoginInfo) SetCaptcha(v string) {
-	o.Captcha = v
-}
-
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *LoginInfo) GetLanguage() string {
 	if o == nil || IsNil(o.Language) {
@@ -140,30 +164,6 @@ func (o *LoginInfo) SetLanguage(v string) {
 	o.Language = &v
 }
 
-// GetCounts returns the Counts field value
-func (o *LoginInfo) GetCounts() LoginServiceCounts {
-	if o == nil {
-		var ret LoginServiceCounts
-		return ret
-	}
-
-	return o.Counts
-}
-
-// GetCountsOk returns a tuple with the Counts field value
-// and a boolean to check if the value has been set.
-func (o *LoginInfo) GetCountsOk() (*LoginServiceCounts, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Counts, true
-}
-
-// SetCounts sets field value
-func (o *LoginInfo) SetCounts(v LoginServiceCounts) {
-	o.Counts = v
-}
-
 func (o LoginInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -174,14 +174,14 @@ func (o LoginInfo) MarshalJSON() ([]byte, error) {
 
 func (o LoginInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["captcha"] = o.Captcha
+	toSerialize["counts"] = o.Counts
 	if !IsNil(o.Logo) {
 		toSerialize["logo"] = o.Logo
 	}
-	toSerialize["captcha"] = o.Captcha
 	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	toSerialize["counts"] = o.Counts
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -226,10 +226,10 @@ func (o *LoginInfo) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "logo")
 		delete(additionalProperties, "captcha")
-		delete(additionalProperties, "language")
 		delete(additionalProperties, "counts")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "language")
 		o.AdditionalProperties = additionalProperties
 	}
 

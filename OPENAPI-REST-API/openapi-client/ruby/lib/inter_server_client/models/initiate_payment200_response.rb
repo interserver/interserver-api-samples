@@ -148,7 +148,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      type_validator = EnumAttributeValidator.new('String', ["redirect", "submit", "single"])
+      type_validator = EnumAttributeValidator.new('String', ["redirect", "submit", "single", "unknown_default_open_api"])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -156,7 +156,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["redirect", "submit", "single"])
+      validator = EnumAttributeValidator.new('String', ["redirect", "submit", "single", "unknown_default_open_api"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end

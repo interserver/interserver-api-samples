@@ -35,10 +35,10 @@ class ServerSwitchport(BaseModel):
     blade: StrictStr = Field(description="Blade name associated with the port.", json_schema_extra={"examples": ["Ethernet1"]})
     justport: StrictStr = Field(description="Port identifier.", json_schema_extra={"examples": ["33"]})
     graph_id: StrictStr = Field(description="Identifier for the graph associated with the switchport.", json_schema_extra={"examples": ["12622"]})
+    asset_id: StrictInt = Field(description="Unique identifier of the asset associated with the switchport.", json_schema_extra={"examples": [3497]})
     vlans: Optional[List[StrictStr]] = Field(default=None, description="List of VLANs associated with the switchport.", json_schema_extra={"examples": [[]]})
     vlans6: Optional[List[StrictStr]] = Field(default=None, description="List of IPv6 VLANs associated with the switchport.", json_schema_extra={"examples": [[]]})
-    asset_id: StrictInt = Field(description="Unique identifier of the asset associated with the switchport.", json_schema_extra={"examples": [3497]})
-    __properties: ClassVar[List[str]] = ["switchport_id", "switch_id", "switch", "port", "blade", "justport", "graph_id", "vlans", "vlans6", "asset_id"]
+    __properties: ClassVar[List[str]] = ["switchport_id", "switch_id", "switch", "port", "blade", "justport", "graph_id", "asset_id", "vlans", "vlans6"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -98,9 +98,9 @@ class ServerSwitchport(BaseModel):
             "blade": obj.get("blade"),
             "justport": obj.get("justport"),
             "graph_id": obj.get("graph_id"),
+            "asset_id": obj.get("asset_id"),
             "vlans": obj.get("vlans"),
-            "vlans6": obj.get("vlans6"),
-            "asset_id": obj.get("asset_id")
+            "vlans6": obj.get("vlans6")
         })
         return _obj
 

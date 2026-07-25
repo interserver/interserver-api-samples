@@ -63,6 +63,7 @@ public:
         KVM,
         HYPERV,
         KVMSTORAGE,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// VPS Platform
@@ -72,6 +73,7 @@ public:
         NONE,
         CPANEL,
         DA,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// Control Panel
@@ -110,14 +112,6 @@ public:
     void setVpsPlatform(const VpsPlatformEnum value);
 
     /// <summary>
-    /// Control Panel
-    /// </summary>
-    ControlpanelEnum getControlpanel() const;
-    bool controlpanelIsSet() const;
-    void unsetControlpanel();
-    void setControlpanel(const ControlpanelEnum value);
-
-    /// <summary>
     /// Billing Period or Frequency
     /// </summary>
     int32_t getPeriod() const;
@@ -150,20 +144,28 @@ public:
     void setHostname(const utility::string_t& value);
 
     /// <summary>
-    /// Coupon
-    /// </summary>
-    utility::string_t getCoupon() const;
-    bool couponIsSet() const;
-    void unsetCoupon();
-    void setCoupon(const utility::string_t& value);
-
-    /// <summary>
     /// Root password to assign to the VVPS
     /// </summary>
     utility::string_t getRootpass() const;
     bool rootpassIsSet() const;
     void unsetRootpass();
     void setRootpass(const utility::string_t& value);
+
+    /// <summary>
+    /// Control Panel
+    /// </summary>
+    ControlpanelEnum getControlpanel() const;
+    bool controlpanelIsSet() const;
+    void unsetControlpanel();
+    void setControlpanel(const ControlpanelEnum value);
+
+    /// <summary>
+    /// Coupon
+    /// </summary>
+    utility::string_t getCoupon() const;
+    bool couponIsSet() const;
+    void unsetCoupon();
+    void setCoupon(const utility::string_t& value);
 
     /// <summary>
     /// Order comments or notes
@@ -184,9 +186,6 @@ protected:
     VpsPlatformEnum m_VpsPlatform;
     bool m_VpsPlatformIsSet;
 
-    ControlpanelEnum m_Controlpanel;
-    bool m_ControlpanelIsSet;
-
     int32_t m_Period;
     bool m_PeriodIsSet;
 
@@ -199,11 +198,14 @@ protected:
     utility::string_t m_Hostname;
     bool m_HostnameIsSet;
 
-    utility::string_t m_Coupon;
-    bool m_CouponIsSet;
-
     utility::string_t m_Rootpass;
     bool m_RootpassIsSet;
+
+    ControlpanelEnum m_Controlpanel;
+    bool m_ControlpanelIsSet;
+
+    utility::string_t m_Coupon;
+    bool m_CouponIsSet;
 
     utility::string_t m_Comment;
     bool m_CommentIsSet;

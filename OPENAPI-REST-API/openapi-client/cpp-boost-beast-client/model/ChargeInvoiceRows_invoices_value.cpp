@@ -422,8 +422,8 @@ double ChargeInvoiceRows_invoices_value::getInvoicesPaid() const
 
 void ChargeInvoiceRows_invoices_value::setInvoicesPaid(double value)
 {
-    static const std::array<double, 2> allowedValues = {
-        0,1
+    static const std::array<double, 3> allowedValues = {
+        0,1,11184809
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

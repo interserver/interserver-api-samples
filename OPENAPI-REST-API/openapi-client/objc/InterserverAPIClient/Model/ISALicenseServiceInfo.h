@@ -43,18 +43,18 @@
 /* License status 
  */
 @property(nonatomic) NSString* licenseStatus;
-/* License hostname [optional]
- */
-@property(nonatomic) NSString* licenseHostname;
-/* License key [optional]
- */
-@property(nonatomic) NSString* licenseKey;
 /* License invoice 
  */
 @property(nonatomic) NSString* licenseInvoice;
 /* License coupon 
  */
 @property(nonatomic) NSString* licenseCoupon;
+/* License hostname [optional]
+ */
+@property(nonatomic) NSString* licenseHostname;
+/* License key [optional]
+ */
+@property(nonatomic) NSString* licenseKey;
 /* Additional license information [optional]
  */
 @property(nonatomic) NSString* licenseExtra;

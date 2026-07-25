@@ -87,12 +87,6 @@ public:
     void setPrimaryIpv6(std::string value);
 
     /// <summary>
-    /// MAC address associated with the asset.
-    /// </summary>
-    std::string getMac() const;
-    void setMac(std::string value);
-
-    /// <summary>
     /// Datacenter identifier for the asset.
     /// </summary>
     std::string getDatacenter() const;
@@ -159,36 +153,6 @@ public:
     void setIpmiIp(std::string value);
 
     /// <summary>
-    /// IPMI admin username associated with the asset.
-    /// </summary>
-    std::string getIpmiAdminUsername() const;
-    void setIpmiAdminUsername(std::string value);
-
-    /// <summary>
-    /// IPMI admin password associated with the asset.
-    /// </summary>
-    std::string getIpmiAdminPassword() const;
-    void setIpmiAdminPassword(std::string value);
-
-    /// <summary>
-    /// IPMI client username associated with the asset.
-    /// </summary>
-    std::string getIpmiClientUsername() const;
-    void setIpmiClientUsername(std::string value);
-
-    /// <summary>
-    /// IPMI client password associated with the asset.
-    /// </summary>
-    std::string getIpmiClientPassword() const;
-    void setIpmiClientPassword(std::string value);
-
-    /// <summary>
-    /// IPMI update status associated with the asset.
-    /// </summary>
-    std::string getIpmiUpdated() const;
-    void setIpmiUpdated(std::string value);
-
-    /// <summary>
     /// IPMI working status associated with the asset.
     /// </summary>
     std::string getIpmiWorking() const;
@@ -249,18 +213,6 @@ public:
     void setOverdue(std::string value);
 
     /// <summary>
-    /// Timestamp of asset creation.
-    /// </summary>
-    std::string getCreateTimestamp() const;
-    void setCreateTimestamp(std::string value);
-
-    /// <summary>
-    /// Timestamp of asset update.
-    /// </summary>
-    std::string getUpdateTimestamp() const;
-    void setUpdateTimestamp(std::string value);
-
-    /// <summary>
     /// Asset identifier for the asset.
     /// </summary>
     std::string getAssetId() const;
@@ -309,12 +261,6 @@ public:
     void setRackY(std::string value);
 
     /// <summary>
-    /// Comment associated with the asset.
-    /// </summary>
-    std::string getComment() const;
-    void setComment(std::string value);
-
-    /// <summary>
     /// List of switchports associated with the asset.
     /// </summary>
     std::vector<int32_t> getSwitchports() const;
@@ -338,6 +284,60 @@ public:
     std::shared_ptr<ServerLease> getLease() const;
     void setLease(std::shared_ptr<ServerLease> value);
 
+    /// <summary>
+    /// MAC address associated with the asset.
+    /// </summary>
+    std::string getMac() const;
+    void setMac(std::string value);
+
+    /// <summary>
+    /// IPMI admin username associated with the asset.
+    /// </summary>
+    std::string getIpmiAdminUsername() const;
+    void setIpmiAdminUsername(std::string value);
+
+    /// <summary>
+    /// IPMI admin password associated with the asset.
+    /// </summary>
+    std::string getIpmiAdminPassword() const;
+    void setIpmiAdminPassword(std::string value);
+
+    /// <summary>
+    /// IPMI client username associated with the asset.
+    /// </summary>
+    std::string getIpmiClientUsername() const;
+    void setIpmiClientUsername(std::string value);
+
+    /// <summary>
+    /// IPMI client password associated with the asset.
+    /// </summary>
+    std::string getIpmiClientPassword() const;
+    void setIpmiClientPassword(std::string value);
+
+    /// <summary>
+    /// IPMI update status associated with the asset.
+    /// </summary>
+    std::string getIpmiUpdated() const;
+    void setIpmiUpdated(std::string value);
+
+    /// <summary>
+    /// Timestamp of asset creation.
+    /// </summary>
+    std::string getCreateTimestamp() const;
+    void setCreateTimestamp(std::string value);
+
+    /// <summary>
+    /// Timestamp of asset update.
+    /// </summary>
+    std::string getUpdateTimestamp() const;
+    void setUpdateTimestamp(std::string value);
+
+    /// <summary>
+    /// Comment associated with the asset.
+    /// </summary>
+    std::string getComment() const;
+    void setComment(std::string value);
+
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -354,8 +354,6 @@ protected:
     std::string m_Status = "";
     std::string m_Primary_ipv4 = "";
     std::string m_Primary_ipv6 = "";
-    std::string m_Mac = "";
-    bool m_MacIsSet = false;
     std::string m_Datacenter = "";
     std::string m_Type_id = "";
     std::string m_Asset_tag = "";
@@ -367,16 +365,6 @@ protected:
     std::string m_Unit_sub = "";
     std::string m_Ipmi_mac = "";
     std::string m_Ipmi_ip = "";
-    std::string m_Ipmi_admin_username = "";
-    bool m_Ipmi_admin_usernameIsSet = false;
-    std::string m_Ipmi_admin_password = "";
-    bool m_Ipmi_admin_passwordIsSet = false;
-    std::string m_Ipmi_client_username = "";
-    bool m_Ipmi_client_usernameIsSet = false;
-    std::string m_Ipmi_client_password = "";
-    bool m_Ipmi_client_passwordIsSet = false;
-    std::string m_Ipmi_updated = "";
-    bool m_Ipmi_updatedIsSet = false;
     std::string m_Ipmi_working = "";
     std::string m_Company = "";
     std::string m_Comments = "";
@@ -387,10 +375,6 @@ protected:
     std::string m_External_id = "";
     std::string m_Billing_status = "";
     std::string m_Overdue = "";
-    std::string m_Create_timestamp = "";
-    bool m_Create_timestampIsSet = false;
-    std::string m_Update_timestamp = "";
-    bool m_Update_timestampIsSet = false;
     std::string m_Asset_id = "";
     std::string m_Asset_name = "";
     std::string m_Rack_id = "";
@@ -399,12 +383,28 @@ protected:
     std::string m_Rack_size = "";
     std::string m_Rack_x = "";
     std::string m_Rack_y = "";
-    std::string m_Comment = "";
-    bool m_CommentIsSet = false;
     std::vector<int32_t> m_Switchports;
     std::vector<std::string> m_Vlans;
     std::vector<std::string> m_Vlans6;
     std::shared_ptr<ServerLease> m_Lease;
+    std::string m_Mac = "";
+    bool m_MacIsSet = false;
+    std::string m_Ipmi_admin_username = "";
+    bool m_Ipmi_admin_usernameIsSet = false;
+    std::string m_Ipmi_admin_password = "";
+    bool m_Ipmi_admin_passwordIsSet = false;
+    std::string m_Ipmi_client_username = "";
+    bool m_Ipmi_client_usernameIsSet = false;
+    std::string m_Ipmi_client_password = "";
+    bool m_Ipmi_client_passwordIsSet = false;
+    std::string m_Ipmi_updated = "";
+    bool m_Ipmi_updatedIsSet = false;
+    std::string m_Create_timestamp = "";
+    bool m_Create_timestampIsSet = false;
+    std::string m_Update_timestamp = "";
+    bool m_Update_timestampIsSet = false;
+    std::string m_Comment = "";
+    bool m_CommentIsSet = false;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerAsset>>& data);

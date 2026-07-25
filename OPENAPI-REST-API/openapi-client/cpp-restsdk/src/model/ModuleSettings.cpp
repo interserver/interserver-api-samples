@@ -51,12 +51,12 @@ ModuleSettings::ModuleSettings()
     m_TABLEIsSet = false;
     m_TITLE_FIELD = utility::conversions::to_string_t("");
     m_TITLE_FIELDIsSet = false;
+    m_PREFIX = utility::conversions::to_string_t("");
+    m_PREFIXIsSet = false;
     m_TITLE_FIELD2 = utility::conversions::to_string_t("");
     m_TITLE_FIELD2IsSet = false;
     m_TITLE_FIELD3 = utility::conversions::to_string_t("");
     m_TITLE_FIELD3IsSet = false;
-    m_PREFIX = utility::conversions::to_string_t("");
-    m_PREFIXIsSet = false;
 }
 
 ModuleSettings::~ModuleSettings()
@@ -146,6 +146,11 @@ web::json::value ModuleSettings::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD"))] = ModelBase::toJson(m_TITLE_FIELD);
     }
+    if(m_PREFIXIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("PREFIX"))] = ModelBase::toJson(m_PREFIX);
+    }
     if(m_TITLE_FIELD2IsSet)
     {
         
@@ -155,11 +160,6 @@ web::json::value ModuleSettings::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD3"))] = ModelBase::toJson(m_TITLE_FIELD3);
-    }
-    if(m_PREFIXIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("PREFIX"))] = ModelBase::toJson(m_PREFIX);
     }
 
     return val;
@@ -333,6 +333,17 @@ bool ModuleSettings::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("PREFIX")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setPREFIX;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setPREFIX);
+            setPREFIX(refVal_setPREFIX);
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD2"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD2")));
@@ -352,17 +363,6 @@ bool ModuleSettings::fromJson(const web::json::value& val)
             utility::string_t refVal_setTITLEFIELD3;
             ok &= ModelBase::fromJson(fieldValue, refVal_setTITLEFIELD3);
             setTITLEFIELD3(refVal_setTITLEFIELD3);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("PREFIX")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setPREFIX;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setPREFIX);
-            setPREFIX(refVal_setPREFIX);
             
         }
     }
@@ -436,6 +436,10 @@ void ModuleSettings::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD")), m_TITLE_FIELD));
     }
+    if(m_PREFIXIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("PREFIX")), m_PREFIX));
+    }
     if(m_TITLE_FIELD2IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD2")), m_TITLE_FIELD2));
@@ -443,10 +447,6 @@ void ModuleSettings::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     if(m_TITLE_FIELD3IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD3")), m_TITLE_FIELD3));
-    }
-    if(m_PREFIXIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("PREFIX")), m_PREFIX));
     }
 }
 
@@ -549,6 +549,12 @@ bool ModuleSettings::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD"))), refVal_setTITLEFIELD );
         setTITLEFIELD(refVal_setTITLEFIELD);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))))
+    {
+        utility::string_t refVal_setPREFIX;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))), refVal_setPREFIX );
+        setPREFIX(refVal_setPREFIX);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD2"))))
     {
         utility::string_t refVal_setTITLEFIELD2;
@@ -560,12 +566,6 @@ bool ModuleSettings::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         utility::string_t refVal_setTITLEFIELD3;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("TITLE_FIELD3"))), refVal_setTITLEFIELD3 );
         setTITLEFIELD3(refVal_setTITLEFIELD3);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))))
-    {
-        utility::string_t refVal_setPREFIX;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("PREFIX"))), refVal_setPREFIX );
-        setPREFIX(refVal_setPREFIX);
     }
     return ok;
 }
@@ -878,6 +878,27 @@ void ModuleSettings::unsetTITLE_FIELD()
 {
     m_TITLE_FIELDIsSet = false;
 }
+utility::string_t ModuleSettings::getPREFIX() const
+{
+    return m_PREFIX;
+}
+
+
+void ModuleSettings::setPREFIX(const utility::string_t& value)
+{
+    m_PREFIX = value;
+    m_PREFIXIsSet = true;
+}
+
+bool ModuleSettings::pREFIXIsSet() const
+{
+    return m_PREFIXIsSet;
+}
+
+void ModuleSettings::unsetPREFIX()
+{
+    m_PREFIXIsSet = false;
+}
 utility::string_t ModuleSettings::getTITLEFIELD2() const
 {
     return m_TITLE_FIELD2;
@@ -919,27 +940,6 @@ bool ModuleSettings::tITLEFIELD3IsSet() const
 void ModuleSettings::unsetTITLE_FIELD3()
 {
     m_TITLE_FIELD3IsSet = false;
-}
-utility::string_t ModuleSettings::getPREFIX() const
-{
-    return m_PREFIX;
-}
-
-
-void ModuleSettings::setPREFIX(const utility::string_t& value)
-{
-    m_PREFIX = value;
-    m_PREFIXIsSet = true;
-}
-
-bool ModuleSettings::pREFIXIsSet() const
-{
-    return m_PREFIXIsSet;
-}
-
-void ModuleSettings::unsetPREFIX()
-{
-    m_PREFIXIsSet = false;
 }
 
 }

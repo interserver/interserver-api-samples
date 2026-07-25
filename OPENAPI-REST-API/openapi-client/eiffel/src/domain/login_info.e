@@ -19,24 +19,16 @@ class LOGIN_INFO
 
 feature --Access
 
-    logo: detachable STRING_32
-      -- A logo image url.
     captcha: detachable STRING_32
       -- A base64 encoded image to use for rendering the alternateive captcha.
-    language: detachable STRING_32
-      -- The desired langauge to render the site with.
     counts: detachable LOGIN_SERVICE_COUNTS
       
+    logo: detachable STRING_32
+      -- A logo image url.
+    language: detachable STRING_32
+      -- The desired langauge to render the site with.
 
 feature -- Change Element
-
-    set_logo (a_name: like logo)
-        -- Set 'logo' with 'a_name'.
-      do
-        logo := a_name
-      ensure
-        logo_set: logo = a_name
-      end
 
     set_captcha (a_name: like captcha)
         -- Set 'captcha' with 'a_name'.
@@ -44,14 +36,6 @@ feature -- Change Element
         captcha := a_name
       ensure
         captcha_set: captcha = a_name
-      end
-
-    set_language (a_name: like language)
-        -- Set 'language' with 'a_name'.
-      do
-        language := a_name
-      ensure
-        language_set: language = a_name
       end
 
     set_counts (a_name: like counts)
@@ -62,6 +46,22 @@ feature -- Change Element
         counts_set: counts = a_name
       end
 
+    set_logo (a_name: like logo)
+        -- Set 'logo' with 'a_name'.
+      do
+        logo := a_name
+      ensure
+        logo_set: logo = a_name
+      end
+
+    set_language (a_name: like language)
+        -- Set 'language' with 'a_name'.
+      do
+        language := a_name
+      ensure
+        language_set: language = a_name
+      end
+
 
  feature -- Status Report
 
@@ -70,24 +70,24 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass LOGIN_INFO%N")
-        if attached logo as l_logo then
-          Result.append ("%Nlogo:")
-          Result.append (l_logo.out)
-          Result.append ("%N")
-        end
         if attached captcha as l_captcha then
           Result.append ("%Ncaptcha:")
           Result.append (l_captcha.out)
           Result.append ("%N")
         end
-        if attached language as l_language then
-          Result.append ("%Nlanguage:")
-          Result.append (l_language.out)
-          Result.append ("%N")
-        end
         if attached counts as l_counts then
           Result.append ("%Ncounts:")
           Result.append (l_counts.out)
+          Result.append ("%N")
+        end
+        if attached logo as l_logo then
+          Result.append ("%Nlogo:")
+          Result.append (l_logo.out)
+          Result.append ("%N")
+        end
+        if attached language as l_language then
+          Result.append ("%Nlanguage:")
+          Result.append (l_language.out)
           Result.append ("%N")
         end
       end

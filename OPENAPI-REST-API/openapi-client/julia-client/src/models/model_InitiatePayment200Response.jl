@@ -54,7 +54,7 @@ end
 function OpenAPI.validate_property(::Type{ InitiatePayment200Response }, name::Symbol, val)
 
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "InitiatePayment200Response", :enum, val, ["redirect", "submit", "single"])
+        OpenAPI.validate_param(name, "InitiatePayment200Response", :enum, val, ["redirect", "submit", "single", "unknown_default_open_api"])
     end
 
 

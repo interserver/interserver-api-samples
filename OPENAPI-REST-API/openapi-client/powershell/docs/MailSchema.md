@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **CustCurrency** | **String** | The customer&#39;s currency. | 
 **CustCurrencySymbol** | **String** | The currency symbol for the customer. | 
 **Package** | **String** | The package of the mail service. | 
-**ServiceExtra** | **String[]** | Extra information for the mail service. | [optional] 
 **ExtraInfoTables** | [**MailSchemaExtraInfoTables**](MailSchemaExtraInfoTables.md) |  | 
 **ServiceType** | [**MailServiceType**](MailServiceType.md) |  | 
 **UsageCount** | **String** | The usage count of the mail service. | 
+**ServiceExtra** | **String[]** | Extra information for the mail service. | [optional] 
 
 ## Examples
 
@@ -24,10 +24,10 @@ $MailSchema = Initialize-InterserverApiMailSchema  -ServiceInfo null `
  -CustCurrency USD `
  -CustCurrencySymbol $ `
  -Package MailBaby Mail `
- -ServiceExtra [] `
  -ExtraInfoTables null `
  -ServiceType null `
- -UsageCount 0
+ -UsageCount 0 `
+ -ServiceExtra []
 ```
 
 - Convert the resource to JSON

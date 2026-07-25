@@ -123,6 +123,8 @@ DnsRecordType::eDnsRecordType toEnum(const EnumUnderlyingType& val)
         return DnsRecordType::eDnsRecordType::WKS;
     if (val == utility::conversions::to_string_t(_XPLATSTR("URI⏎")))
         return DnsRecordType::eDnsRecordType::URI_;
+    if (val == utility::conversions::to_string_t(_XPLATSTR("11184809")))
+        return DnsRecordType::eDnsRecordType::UNKNOWN_DEFAULT_OPEN_API;
     return {};
 }
 
@@ -228,6 +230,8 @@ EnumUnderlyingType fromEnum(DnsRecordType::eDnsRecordType e)
         return _XPLATSTR("WKS");
     case DnsRecordType::eDnsRecordType::URI_:
         return _XPLATSTR("URI⏎");
+    case DnsRecordType::eDnsRecordType::UNKNOWN_DEFAULT_OPEN_API:
+        return _XPLATSTR("11184809");
     default:
         break;
     }

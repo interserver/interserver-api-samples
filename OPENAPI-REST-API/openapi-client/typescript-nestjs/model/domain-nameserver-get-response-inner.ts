@@ -21,7 +21,8 @@ export interface DomainNameserverGetResponseInner {
 }
 export enum DomainNameserverGetResponseInnerCanDelete {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

@@ -31,9 +31,6 @@
 /* VPS Platform 
  */
 @property(nonatomic) NSString* vpsPlatform;
-/* Control Panel [optional]
- */
-@property(nonatomic) NSString* controlpanel;
 /* Billing Period or Frequency 
  */
 @property(nonatomic) NSNumber* period;
@@ -46,12 +43,15 @@
 /* The hostname to assign to the VPS 
  */
 @property(nonatomic) NSString* hostname;
-/* Coupon [optional]
- */
-@property(nonatomic) NSString* coupon;
 /* Root password to assign to the VVPS 
  */
 @property(nonatomic) NSString* rootpass;
+/* Control Panel [optional]
+ */
+@property(nonatomic) NSString* controlpanel;
+/* Coupon [optional]
+ */
+@property(nonatomic) NSString* coupon;
 /* Order comments or notes [optional]
  */
 @property(nonatomic) NSString* comment;

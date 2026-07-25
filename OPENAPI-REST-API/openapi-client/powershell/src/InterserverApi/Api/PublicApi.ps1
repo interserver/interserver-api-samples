@@ -309,7 +309,7 @@ function Get-Countries {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("iso2", "iso3", "numcode")]
+        [ValidateSet("iso2", "iso3", "numcode", "unknown_default_open_api")]
         [String]
         ${FetchBy},
         [Switch]

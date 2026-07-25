@@ -31,12 +31,12 @@
 /* Link icon 
  */
 @property(nonatomic) NSString* icon;
-/* Icon text [optional]
- */
-@property(nonatomic) NSString* iconText;
 /* Help text 
  */
 @property(nonatomic) NSString* helpText;
+/* Icon text [optional]
+ */
+@property(nonatomic) NSString* iconText;
 /* Other attributes [optional]
  */
 @property(nonatomic) NSString* otherAttr;

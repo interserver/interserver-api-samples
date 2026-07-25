@@ -84,7 +84,9 @@ public class ChargeInvoiceRowsInvoicesValue implements Serializable {
   public enum InvoicesPaidEnum {
     NUMBER_0(new BigDecimal("0")),
     
-    NUMBER_1(new BigDecimal("1"));
+    NUMBER_1(new BigDecimal("1")),
+    
+    NUMBER_unknown_default_open_api(new BigDecimal("11184809"));
 
     private BigDecimal value;
 
@@ -107,7 +109,7 @@ public class ChargeInvoiceRowsInvoicesValue implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return NUMBER_unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<InvoicesPaidEnum> {

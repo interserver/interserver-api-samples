@@ -382,5 +382,6 @@ export class PublicApi extends BaseAPI {
 export enum GetCountriesFetchByEnum {
     Iso2 = 'iso2',
     Iso3 = 'iso3',
-    Numcode = 'numcode'
+    Numcode = 'numcode',
+    UnknownDefaultOpenApi = '11184809'
 }

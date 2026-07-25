@@ -71,7 +71,8 @@ export function CreateGeoFirewallRuleToJSON(value?: CreateGeoFirewallRule): any 
 */
 export enum CreateGeoFirewallRuleXdpActionEnum {
     NUMBER_0 = 0,
-    NUMBER_1 = 1
+    NUMBER_1 = 1,
+    NUMBER_unknown_default_open_api = 11184809
 }
 
 

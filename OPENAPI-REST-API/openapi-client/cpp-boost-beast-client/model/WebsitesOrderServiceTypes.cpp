@@ -222,13 +222,14 @@ boost::json::object WebsitesOrderServiceTypes::toJsonObject_internal() const
         object["services_category"] = JsonValueConverter<std::string>::toJsonValue(getServicesCategory());
         object["services_buyable"] = JsonValueConverter<std::string>::toJsonValue(getServicesBuyable());
         object["services_type"] = JsonValueConverter<std::string>::toJsonValue(getServicesType());
+        object["services_module"] = JsonValueConverter<std::string>::toJsonValue(getServicesModule());
+        object["services_hidden"] = JsonValueConverter<std::string>::toJsonValue(getServicesHidden());
         if (m_Services_field1IsSet) {
             object["services_field1"] = JsonValueConverter<std::string>::toJsonValue(getServicesField1());
         }
         if (m_Services_field2IsSet) {
             object["services_field2"] = JsonValueConverter<std::string>::toJsonValue(getServicesField2());
         }
-        object["services_module"] = JsonValueConverter<std::string>::toJsonValue(getServicesModule());
         if (m_Services_htmlIsSet) {
             object["services_html"] = JsonValueConverter<std::string>::toJsonValue(getServicesHtml());
         }
@@ -238,7 +239,6 @@ boost::json::object WebsitesOrderServiceTypes::toJsonObject_internal() const
         if (m_Services_moreinfo_urlIsSet) {
             object["services_moreinfo_url"] = JsonValueConverter<std::string>::toJsonValue(getServicesMoreinfoUrl());
         }
-        object["services_hidden"] = JsonValueConverter<std::string>::toJsonValue(getServicesHidden());
     return object;
 }
 
@@ -286,6 +286,18 @@ void WebsitesOrderServiceTypes::fromJsonObject_internal(boost::json::object cons
         }
     }
     {
+        const auto Services_moduleIt = object.find("services_module");
+        if (Services_moduleIt != object.end()) {
+            setServicesModule(JsonValueConverter<std::string>::fromJsonValue(Services_moduleIt->value()));
+        }
+    }
+    {
+        const auto Services_hiddenIt = object.find("services_hidden");
+        if (Services_hiddenIt != object.end()) {
+            setServicesHidden(JsonValueConverter<std::string>::fromJsonValue(Services_hiddenIt->value()));
+        }
+    }
+    {
         const auto Services_field1It = object.find("services_field1");
         if (Services_field1It != object.end()) {
             setServicesField1(JsonValueConverter<std::string>::fromJsonValue(Services_field1It->value()));
@@ -295,12 +307,6 @@ void WebsitesOrderServiceTypes::fromJsonObject_internal(boost::json::object cons
         const auto Services_field2It = object.find("services_field2");
         if (Services_field2It != object.end()) {
             setServicesField2(JsonValueConverter<std::string>::fromJsonValue(Services_field2It->value()));
-        }
-    }
-    {
-        const auto Services_moduleIt = object.find("services_module");
-        if (Services_moduleIt != object.end()) {
-            setServicesModule(JsonValueConverter<std::string>::fromJsonValue(Services_moduleIt->value()));
         }
     }
     {
@@ -319,12 +325,6 @@ void WebsitesOrderServiceTypes::fromJsonObject_internal(boost::json::object cons
         const auto Services_moreinfo_urlIt = object.find("services_moreinfo_url");
         if (Services_moreinfo_urlIt != object.end()) {
             setServicesMoreinfoUrl(JsonValueConverter<std::string>::fromJsonValue(Services_moreinfo_urlIt->value()));
-        }
-    }
-    {
-        const auto Services_hiddenIt = object.find("services_hidden");
-        if (Services_hiddenIt != object.end()) {
-            setServicesHidden(JsonValueConverter<std::string>::fromJsonValue(Services_hiddenIt->value()));
         }
     }
 }
@@ -389,6 +389,26 @@ void WebsitesOrderServiceTypes::setServicesType(std::string value)
     
     m_Services_type = std::move(value);
 }
+std::string WebsitesOrderServiceTypes::getServicesModule() const
+{
+    return m_Services_module;
+}
+
+void WebsitesOrderServiceTypes::setServicesModule(std::string value)
+{
+    
+    m_Services_module = std::move(value);
+}
+std::string WebsitesOrderServiceTypes::getServicesHidden() const
+{
+    return m_Services_hidden;
+}
+
+void WebsitesOrderServiceTypes::setServicesHidden(std::string value)
+{
+    
+    m_Services_hidden = std::move(value);
+}
 std::string WebsitesOrderServiceTypes::getServicesField1() const
 {
     return m_Services_field1;
@@ -410,16 +430,6 @@ void WebsitesOrderServiceTypes::setServicesField2(std::string value)
     
     m_Services_field2 = std::move(value);
     m_Services_field2IsSet = true;
-}
-std::string WebsitesOrderServiceTypes::getServicesModule() const
-{
-    return m_Services_module;
-}
-
-void WebsitesOrderServiceTypes::setServicesModule(std::string value)
-{
-    
-    m_Services_module = std::move(value);
 }
 std::string WebsitesOrderServiceTypes::getServicesHtml() const
 {
@@ -453,16 +463,6 @@ void WebsitesOrderServiceTypes::setServicesMoreinfoUrl(std::string value)
     
     m_Services_moreinfo_url = std::move(value);
     m_Services_moreinfo_urlIsSet = true;
-}
-std::string WebsitesOrderServiceTypes::getServicesHidden() const
-{
-    return m_Services_hidden;
-}
-
-void WebsitesOrderServiceTypes::setServicesHidden(std::string value)
-{
-    
-    m_Services_hidden = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<WebsitesOrderServiceTypes>>& data)

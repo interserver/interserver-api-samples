@@ -22,6 +22,7 @@ The data for a email deny rule record.
 | email | &quot;email&quot; |
 | startswith | &quot;startswith&quot; |
 | destination | &quot;destination&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

@@ -49,7 +49,8 @@ public class IntServerSslOrderRequest implements OAS.MappedProperties {
      */
     public enum CsrTypeEnum {
         GENERATED,
-        PROVIDED
+        PROVIDED,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

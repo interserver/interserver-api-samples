@@ -74,7 +74,6 @@ class TestMailSchema(unittest.TestCase):
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
                 package = 'MailBaby Mail',
-                service_extra = [],
                 extra_info_tables = interserver_api_client.models.mail_schema_extra_info_tables.MailSchema_extraInfoTables(
                     mail = interserver_api_client.models.mail_extra_info_table.MailExtraInfoTable(
                         title = 'Connection Information', 
@@ -95,7 +94,8 @@ class TestMailSchema(unittest.TestCase):
                     services_field1 = '', 
                     services_field2 = '', 
                     services_module = 'mail', ),
-                usage_count = '0'
+                usage_count = '0',
+                service_extra = []
             )
         else:
             return MailSchema(

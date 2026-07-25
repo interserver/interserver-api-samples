@@ -233,17 +233,17 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'os' => {
-        datatype => 'string',
-        base_name => 'os',
-        description => 'OS template file name from getNewQs (falls back to a default if unrecognized).',
-        format => '',
-        read_only => '',
-            },
     'tos' => {
         datatype => 'boolean',
         base_name => 'tos',
         description => 'Terms-of-service acceptance. Must be true to place the order.',
+        format => '',
+        read_only => '',
+            },
+    'os' => {
+        datatype => 'string',
+        base_name => 'os',
+        description => 'OS template file name from getNewQs (falls back to a default if unrecognized).',
         format => '',
         read_only => '',
             },
@@ -259,16 +259,16 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'server' => 'int',
     'password' => 'string',
-    'os' => 'string',
     'tos' => 'boolean',
+    'os' => 'string',
     'comment' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'server' => 'server',
     'password' => 'password',
-    'os' => 'os',
     'tos' => 'tos',
+    'os' => 'os',
     'comment' => 'comment'
 } );
 

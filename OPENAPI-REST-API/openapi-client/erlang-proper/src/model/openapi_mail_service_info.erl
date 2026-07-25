@@ -10,15 +10,15 @@
 
 -type openapi_mail_service_info() ::
   [ {'mail_id', binary() }
-  | {'mail_username', binary() }
   | {'mail_type', binary() }
   | {'mail_currency', binary() }
   | {'mail_order_date', binary() }
   | {'mail_custid', binary() }
   | {'mail_quota', binary() }
-  | {'mail_ip', binary() }
   | {'mail_status', binary() }
   | {'mail_invoice', binary() }
+  | {'mail_username', binary() }
+  | {'mail_ip', binary() }
   | {'mail_coupon', binary() }
   | {'mail_extra', binary() }
   | {'mail_server_status', binary() }
@@ -31,15 +31,15 @@ openapi_mail_service_info() ->
 
 openapi_mail_service_info(Fields) ->
   Default = [ {'mail_id', binary() }
-            , {'mail_username', binary() }
             , {'mail_type', binary() }
             , {'mail_currency', binary() }
             , {'mail_order_date', binary() }
             , {'mail_custid', binary() }
             , {'mail_quota', binary() }
-            , {'mail_ip', binary() }
             , {'mail_status', binary() }
             , {'mail_invoice', binary() }
+            , {'mail_username', binary() }
+            , {'mail_ip', binary() }
             , {'mail_coupon', binary() }
             , {'mail_extra', binary() }
             , {'mail_server_status', binary() }

@@ -26,12 +26,6 @@ pub struct MailLogEntry {
     /// SMTP envelope `RCPT TO` address.
     #[serde(rename = "to")]
     pub to: String,
-    /// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    #[serde(rename = "subject", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub subject: Option<Option<String>>,
-    /// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
-    #[serde(rename = "messageId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub message_id: Option<Option<String>>,
     /// Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
     #[serde(rename = "created")]
     pub created: String,
@@ -50,6 +44,12 @@ pub struct MailLogEntry {
     /// Relay interface name that accepted the message.
     #[serde(rename = "interface")]
     pub interface: String,
+    /// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    #[serde(rename = "subject", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub subject: Option<Option<String>>,
+    /// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+    #[serde(rename = "messageId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub message_id: Option<Option<String>>,
     /// The sending zone assigned by the relay for outbound delivery.
     #[serde(rename = "sendingZone", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub sending_zone: Option<Option<String>>,
@@ -99,14 +99,14 @@ impl MailLogEntry {
             id,
             from,
             to,
-            subject: None,
-            message_id: None,
             created,
             time,
             user,
             transtype,
             origin,
             interface,
+            subject: None,
+            message_id: None,
             sending_zone: None,
             body_size: None,
             seq: None,

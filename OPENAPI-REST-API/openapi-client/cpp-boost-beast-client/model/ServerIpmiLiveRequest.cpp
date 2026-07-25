@@ -216,10 +216,10 @@ void ServerIpmiLiveRequest::fromJsonValue(boost::json::value const& value)
 boost::json::object ServerIpmiLiveRequest::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["ip"] = JsonValueConverter<std::string>::toJsonValue(getIp());
         if (m_AssetIsSet) {
             object["asset"] = JsonValueConverter<int32_t>::toJsonValue(getAsset());
         }
-        object["ip"] = JsonValueConverter<std::string>::toJsonValue(getIp());
     return object;
 }
 
@@ -227,19 +227,29 @@ void ServerIpmiLiveRequest::fromJsonObject_internal(boost::json::object const& o
 {
     m_AssetIsSet = false;
     {
-        const auto AssetIt = object.find("asset");
-        if (AssetIt != object.end()) {
-            setAsset(JsonValueConverter<int32_t>::fromJsonValue(AssetIt->value()));
-        }
-    }
-    {
         const auto IpIt = object.find("ip");
         if (IpIt != object.end()) {
             setIp(JsonValueConverter<std::string>::fromJsonValue(IpIt->value()));
         }
     }
+    {
+        const auto AssetIt = object.find("asset");
+        if (AssetIt != object.end()) {
+            setAsset(JsonValueConverter<int32_t>::fromJsonValue(AssetIt->value()));
+        }
+    }
 }
 
+std::string ServerIpmiLiveRequest::getIp() const
+{
+    return m_Ip;
+}
+
+void ServerIpmiLiveRequest::setIp(std::string value)
+{
+    
+    m_Ip = std::move(value);
+}
 int32_t ServerIpmiLiveRequest::getAsset() const
 {
     return m_Asset;
@@ -250,16 +260,6 @@ void ServerIpmiLiveRequest::setAsset(int32_t value)
     
     m_Asset = std::move(value);
     m_AssetIsSet = true;
-}
-std::string ServerIpmiLiveRequest::getIp() const
-{
-    return m_Ip;
-}
-
-void ServerIpmiLiveRequest::setIp(std::string value)
-{
-    
-    m_Ip = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ServerIpmiLiveRequest>>& data)

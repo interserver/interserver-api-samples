@@ -25,11 +25,11 @@
 /* OS Template Filename 
  */
 @property(nonatomic) NSString* template;
-/* Password for Root / Administrator Account. [optional]
- */
-@property(nonatomic) NSString* password;
 /* Password for this account. 
  */
 @property(nonatomic) NSString* localPassword;
+/* Password for Root / Administrator Account. [optional]
+ */
+@property(nonatomic) NSString* password;
 
 @end

@@ -35,7 +35,6 @@ class ServerAsset(BaseModel):
     status: StrictStr = Field(description="Status of the asset.", json_schema_extra={"examples": ["active"]})
     primary_ipv4: StrictStr = Field(description="Primary IPv4 address of the asset.", json_schema_extra={"examples": ["1.2.3.250"]})
     primary_ipv6: StrictStr = Field(description="Primary IPv6 address of the asset.", json_schema_extra={"examples": [""]})
-    mac: Optional[StrictStr] = Field(default=None, description="MAC address associated with the asset.")
     datacenter: StrictStr = Field(description="Datacenter identifier for the asset.", json_schema_extra={"examples": ["2"]})
     type_id: StrictStr = Field(description="Type identifier for the asset.", json_schema_extra={"examples": ["1"]})
     asset_tag: StrictStr = Field(description="Asset tag associated with the asset.", json_schema_extra={"examples": [""]})
@@ -47,11 +46,6 @@ class ServerAsset(BaseModel):
     unit_sub: StrictStr = Field(description="Subunit identifier for the asset.", json_schema_extra={"examples": ["0"]})
     ipmi_mac: StrictStr = Field(description="IPMI MAC address associated with the asset.", json_schema_extra={"examples": ["0c:c4:7a:af:35:00"]})
     ipmi_ip: StrictStr = Field(description="IPMI IP address associated with the asset.", json_schema_extra={"examples": ["10.8.69.7"]})
-    ipmi_admin_username: Optional[StrictStr] = Field(default=None, description="IPMI admin username associated with the asset.")
-    ipmi_admin_password: Optional[StrictStr] = Field(default=None, description="IPMI admin password associated with the asset.")
-    ipmi_client_username: Optional[StrictStr] = Field(default=None, description="IPMI client username associated with the asset.")
-    ipmi_client_password: Optional[StrictStr] = Field(default=None, description="IPMI client password associated with the asset.")
-    ipmi_updated: Optional[StrictStr] = Field(default=None, description="IPMI update status associated with the asset.")
     ipmi_working: StrictStr = Field(description="IPMI working status associated with the asset.", json_schema_extra={"examples": ["0"]})
     company: StrictStr = Field(description="Company associated with the asset.", json_schema_extra={"examples": ["int"]})
     comments: StrictStr = Field(description="Comments associated with the asset.", json_schema_extra={"examples": [""]})
@@ -62,8 +56,6 @@ class ServerAsset(BaseModel):
     external_id: StrictStr = Field(description="External identifier for the asset.", json_schema_extra={"examples": [""]})
     billing_status: StrictStr = Field(description="Billing status of the asset.", json_schema_extra={"examples": ["active"]})
     overdue: StrictStr = Field(description="Overdue status of the asset.", json_schema_extra={"examples": ["0"]})
-    create_timestamp: Optional[StrictStr] = Field(default=None, description="Timestamp of asset creation.")
-    update_timestamp: Optional[StrictStr] = Field(default=None, description="Timestamp of asset update.")
     asset_id: StrictStr = Field(description="Asset identifier for the asset.", json_schema_extra={"examples": ["1"]})
     asset_name: StrictStr = Field(description="Name of the asset.", json_schema_extra={"examples": ["server"]})
     rack_id: StrictStr = Field(description="Rack identifier for the asset.", json_schema_extra={"examples": ["68"]})
@@ -72,12 +64,20 @@ class ServerAsset(BaseModel):
     rack_size: StrictStr = Field(description="Size of the rack associated with the asset.", json_schema_extra={"examples": ["44"]})
     rack_x: StrictStr = Field(description="X-coordinate of the asset within the rack.", json_schema_extra={"examples": ["25"]})
     rack_y: StrictStr = Field(description="Y-coordinate of the asset within the rack.", json_schema_extra={"examples": ["5"]})
-    comment: Optional[StrictStr] = Field(default=None, description="Comment associated with the asset.")
     switchports: List[StrictInt] = Field(description="List of switchports associated with the asset.", json_schema_extra={"examples": [[10414]]})
     vlans: List[StrictStr] = Field(description="List of VLANs associated with the asset.", json_schema_extra={"examples": [[]]})
     vlans6: List[StrictStr] = Field(description="List of IPv6 VLANs associated with the asset.", json_schema_extra={"examples": [[]]})
     lease: ServerLease
-    __properties: ClassVar[List[str]] = ["id", "order_id", "hostname", "status", "primary_ipv4", "primary_ipv6", "mac", "datacenter", "type_id", "asset_tag", "rack", "row", "col", "unit_start", "unit_end", "unit_sub", "ipmi_mac", "ipmi_ip", "ipmi_admin_username", "ipmi_admin_password", "ipmi_client_username", "ipmi_client_password", "ipmi_updated", "ipmi_working", "company", "comments", "make", "model", "description", "customer_id", "external_id", "billing_status", "overdue", "create_timestamp", "update_timestamp", "asset_id", "asset_name", "rack_id", "rack_name", "rack_location", "rack_size", "rack_x", "rack_y", "comment", "switchports", "vlans", "vlans6", "lease"]
+    mac: Optional[StrictStr] = Field(default=None, description="MAC address associated with the asset.")
+    ipmi_admin_username: Optional[StrictStr] = Field(default=None, description="IPMI admin username associated with the asset.")
+    ipmi_admin_password: Optional[StrictStr] = Field(default=None, description="IPMI admin password associated with the asset.")
+    ipmi_client_username: Optional[StrictStr] = Field(default=None, description="IPMI client username associated with the asset.")
+    ipmi_client_password: Optional[StrictStr] = Field(default=None, description="IPMI client password associated with the asset.")
+    ipmi_updated: Optional[StrictStr] = Field(default=None, description="IPMI update status associated with the asset.")
+    create_timestamp: Optional[StrictStr] = Field(default=None, description="Timestamp of asset creation.")
+    update_timestamp: Optional[StrictStr] = Field(default=None, description="Timestamp of asset update.")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment associated with the asset.")
+    __properties: ClassVar[List[str]] = ["id", "order_id", "hostname", "status", "primary_ipv4", "primary_ipv6", "datacenter", "type_id", "asset_tag", "rack", "row", "col", "unit_start", "unit_end", "unit_sub", "ipmi_mac", "ipmi_ip", "ipmi_working", "company", "comments", "make", "model", "description", "customer_id", "external_id", "billing_status", "overdue", "asset_id", "asset_name", "rack_id", "rack_name", "rack_location", "rack_size", "rack_x", "rack_y", "switchports", "vlans", "vlans6", "lease", "mac", "ipmi_admin_username", "ipmi_admin_password", "ipmi_client_username", "ipmi_client_password", "ipmi_updated", "create_timestamp", "update_timestamp", "comment"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -139,7 +139,6 @@ class ServerAsset(BaseModel):
             "status": obj.get("status"),
             "primary_ipv4": obj.get("primary_ipv4"),
             "primary_ipv6": obj.get("primary_ipv6"),
-            "mac": obj.get("mac"),
             "datacenter": obj.get("datacenter"),
             "type_id": obj.get("type_id"),
             "asset_tag": obj.get("asset_tag"),
@@ -151,11 +150,6 @@ class ServerAsset(BaseModel):
             "unit_sub": obj.get("unit_sub"),
             "ipmi_mac": obj.get("ipmi_mac"),
             "ipmi_ip": obj.get("ipmi_ip"),
-            "ipmi_admin_username": obj.get("ipmi_admin_username"),
-            "ipmi_admin_password": obj.get("ipmi_admin_password"),
-            "ipmi_client_username": obj.get("ipmi_client_username"),
-            "ipmi_client_password": obj.get("ipmi_client_password"),
-            "ipmi_updated": obj.get("ipmi_updated"),
             "ipmi_working": obj.get("ipmi_working"),
             "company": obj.get("company"),
             "comments": obj.get("comments"),
@@ -166,8 +160,6 @@ class ServerAsset(BaseModel):
             "external_id": obj.get("external_id"),
             "billing_status": obj.get("billing_status"),
             "overdue": obj.get("overdue"),
-            "create_timestamp": obj.get("create_timestamp"),
-            "update_timestamp": obj.get("update_timestamp"),
             "asset_id": obj.get("asset_id"),
             "asset_name": obj.get("asset_name"),
             "rack_id": obj.get("rack_id"),
@@ -176,11 +168,19 @@ class ServerAsset(BaseModel):
             "rack_size": obj.get("rack_size"),
             "rack_x": obj.get("rack_x"),
             "rack_y": obj.get("rack_y"),
-            "comment": obj.get("comment"),
             "switchports": obj.get("switchports"),
             "vlans": obj.get("vlans"),
             "vlans6": obj.get("vlans6"),
-            "lease": ServerLease.from_dict(obj["lease"]) if obj.get("lease") is not None else None
+            "lease": ServerLease.from_dict(obj["lease"]) if obj.get("lease") is not None else None,
+            "mac": obj.get("mac"),
+            "ipmi_admin_username": obj.get("ipmi_admin_username"),
+            "ipmi_admin_password": obj.get("ipmi_admin_password"),
+            "ipmi_client_username": obj.get("ipmi_client_username"),
+            "ipmi_client_password": obj.get("ipmi_client_password"),
+            "ipmi_updated": obj.get("ipmi_updated"),
+            "create_timestamp": obj.get("create_timestamp"),
+            "update_timestamp": obj.get("update_timestamp"),
+            "comment": obj.get("comment")
         })
         return _obj
 

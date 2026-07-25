@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Status** | **string** | Status of the asset. | 
 **PrimaryIpv4** | **string** | Primary IPv4 address of the asset. | 
 **PrimaryIpv6** | **string** | Primary IPv6 address of the asset. | 
-**Mac** | Pointer to **string** | MAC address associated with the asset. | [optional] 
 **Datacenter** | **string** | Datacenter identifier for the asset. | 
 **TypeId** | **string** | Type identifier for the asset. | 
 **AssetTag** | **string** | Asset tag associated with the asset. | 
@@ -22,11 +21,6 @@ Name | Type | Description | Notes
 **UnitSub** | **string** | Subunit identifier for the asset. | 
 **IpmiMac** | **string** | IPMI MAC address associated with the asset. | 
 **IpmiIp** | **string** | IPMI IP address associated with the asset. | 
-**IpmiAdminUsername** | Pointer to **string** | IPMI admin username associated with the asset. | [optional] 
-**IpmiAdminPassword** | Pointer to **string** | IPMI admin password associated with the asset. | [optional] 
-**IpmiClientUsername** | Pointer to **string** | IPMI client username associated with the asset. | [optional] 
-**IpmiClientPassword** | Pointer to **string** | IPMI client password associated with the asset. | [optional] 
-**IpmiUpdated** | Pointer to **string** | IPMI update status associated with the asset. | [optional] 
 **IpmiWorking** | **string** | IPMI working status associated with the asset. | 
 **Company** | **string** | Company associated with the asset. | 
 **Comments** | **string** | Comments associated with the asset. | 
@@ -37,8 +31,6 @@ Name | Type | Description | Notes
 **ExternalId** | **string** | External identifier for the asset. | 
 **BillingStatus** | **string** | Billing status of the asset. | 
 **Overdue** | **string** | Overdue status of the asset. | 
-**CreateTimestamp** | Pointer to **string** | Timestamp of asset creation. | [optional] 
-**UpdateTimestamp** | Pointer to **string** | Timestamp of asset update. | [optional] 
 **AssetId** | **string** | Asset identifier for the asset. | 
 **AssetName** | **string** | Name of the asset. | 
 **RackId** | **string** | Rack identifier for the asset. | 
@@ -47,11 +39,19 @@ Name | Type | Description | Notes
 **RackSize** | **string** | Size of the rack associated with the asset. | 
 **RackX** | **string** | X-coordinate of the asset within the rack. | 
 **RackY** | **string** | Y-coordinate of the asset within the rack. | 
-**Comment** | Pointer to **string** | Comment associated with the asset. | [optional] 
 **Switchports** | **[]int32** | List of switchports associated with the asset. | 
 **Vlans** | **[]string** | List of VLANs associated with the asset. | 
 **Vlans6** | **[]string** | List of IPv6 VLANs associated with the asset. | 
 **Lease** | [**ServerLease**](ServerLease.md) |  | 
+**Mac** | Pointer to **string** | MAC address associated with the asset. | [optional] 
+**IpmiAdminUsername** | Pointer to **string** | IPMI admin username associated with the asset. | [optional] 
+**IpmiAdminPassword** | Pointer to **string** | IPMI admin password associated with the asset. | [optional] 
+**IpmiClientUsername** | Pointer to **string** | IPMI client username associated with the asset. | [optional] 
+**IpmiClientPassword** | Pointer to **string** | IPMI client password associated with the asset. | [optional] 
+**IpmiUpdated** | Pointer to **string** | IPMI update status associated with the asset. | [optional] 
+**CreateTimestamp** | Pointer to **string** | Timestamp of asset creation. | [optional] 
+**UpdateTimestamp** | Pointer to **string** | Timestamp of asset update. | [optional] 
+**Comment** | Pointer to **string** | Comment associated with the asset. | [optional] 
 
 ## Methods
 
@@ -191,31 +191,6 @@ and a boolean to check if the value has been set.
 
 SetPrimaryIpv6 sets PrimaryIpv6 field to given value.
 
-
-### GetMac
-
-`func (o *ServerAsset) GetMac() string`
-
-GetMac returns the Mac field if non-nil, zero value otherwise.
-
-### GetMacOk
-
-`func (o *ServerAsset) GetMacOk() (*string, bool)`
-
-GetMacOk returns a tuple with the Mac field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMac
-
-`func (o *ServerAsset) SetMac(v string)`
-
-SetMac sets Mac field to given value.
-
-### HasMac
-
-`func (o *ServerAsset) HasMac() bool`
-
-HasMac returns a boolean if a field has been set.
 
 ### GetDatacenter
 
@@ -437,131 +412,6 @@ and a boolean to check if the value has been set.
 SetIpmiIp sets IpmiIp field to given value.
 
 
-### GetIpmiAdminUsername
-
-`func (o *ServerAsset) GetIpmiAdminUsername() string`
-
-GetIpmiAdminUsername returns the IpmiAdminUsername field if non-nil, zero value otherwise.
-
-### GetIpmiAdminUsernameOk
-
-`func (o *ServerAsset) GetIpmiAdminUsernameOk() (*string, bool)`
-
-GetIpmiAdminUsernameOk returns a tuple with the IpmiAdminUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpmiAdminUsername
-
-`func (o *ServerAsset) SetIpmiAdminUsername(v string)`
-
-SetIpmiAdminUsername sets IpmiAdminUsername field to given value.
-
-### HasIpmiAdminUsername
-
-`func (o *ServerAsset) HasIpmiAdminUsername() bool`
-
-HasIpmiAdminUsername returns a boolean if a field has been set.
-
-### GetIpmiAdminPassword
-
-`func (o *ServerAsset) GetIpmiAdminPassword() string`
-
-GetIpmiAdminPassword returns the IpmiAdminPassword field if non-nil, zero value otherwise.
-
-### GetIpmiAdminPasswordOk
-
-`func (o *ServerAsset) GetIpmiAdminPasswordOk() (*string, bool)`
-
-GetIpmiAdminPasswordOk returns a tuple with the IpmiAdminPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpmiAdminPassword
-
-`func (o *ServerAsset) SetIpmiAdminPassword(v string)`
-
-SetIpmiAdminPassword sets IpmiAdminPassword field to given value.
-
-### HasIpmiAdminPassword
-
-`func (o *ServerAsset) HasIpmiAdminPassword() bool`
-
-HasIpmiAdminPassword returns a boolean if a field has been set.
-
-### GetIpmiClientUsername
-
-`func (o *ServerAsset) GetIpmiClientUsername() string`
-
-GetIpmiClientUsername returns the IpmiClientUsername field if non-nil, zero value otherwise.
-
-### GetIpmiClientUsernameOk
-
-`func (o *ServerAsset) GetIpmiClientUsernameOk() (*string, bool)`
-
-GetIpmiClientUsernameOk returns a tuple with the IpmiClientUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpmiClientUsername
-
-`func (o *ServerAsset) SetIpmiClientUsername(v string)`
-
-SetIpmiClientUsername sets IpmiClientUsername field to given value.
-
-### HasIpmiClientUsername
-
-`func (o *ServerAsset) HasIpmiClientUsername() bool`
-
-HasIpmiClientUsername returns a boolean if a field has been set.
-
-### GetIpmiClientPassword
-
-`func (o *ServerAsset) GetIpmiClientPassword() string`
-
-GetIpmiClientPassword returns the IpmiClientPassword field if non-nil, zero value otherwise.
-
-### GetIpmiClientPasswordOk
-
-`func (o *ServerAsset) GetIpmiClientPasswordOk() (*string, bool)`
-
-GetIpmiClientPasswordOk returns a tuple with the IpmiClientPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpmiClientPassword
-
-`func (o *ServerAsset) SetIpmiClientPassword(v string)`
-
-SetIpmiClientPassword sets IpmiClientPassword field to given value.
-
-### HasIpmiClientPassword
-
-`func (o *ServerAsset) HasIpmiClientPassword() bool`
-
-HasIpmiClientPassword returns a boolean if a field has been set.
-
-### GetIpmiUpdated
-
-`func (o *ServerAsset) GetIpmiUpdated() string`
-
-GetIpmiUpdated returns the IpmiUpdated field if non-nil, zero value otherwise.
-
-### GetIpmiUpdatedOk
-
-`func (o *ServerAsset) GetIpmiUpdatedOk() (*string, bool)`
-
-GetIpmiUpdatedOk returns a tuple with the IpmiUpdated field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpmiUpdated
-
-`func (o *ServerAsset) SetIpmiUpdated(v string)`
-
-SetIpmiUpdated sets IpmiUpdated field to given value.
-
-### HasIpmiUpdated
-
-`func (o *ServerAsset) HasIpmiUpdated() bool`
-
-HasIpmiUpdated returns a boolean if a field has been set.
-
 ### GetIpmiWorking
 
 `func (o *ServerAsset) GetIpmiWorking() string`
@@ -762,56 +612,6 @@ and a boolean to check if the value has been set.
 SetOverdue sets Overdue field to given value.
 
 
-### GetCreateTimestamp
-
-`func (o *ServerAsset) GetCreateTimestamp() string`
-
-GetCreateTimestamp returns the CreateTimestamp field if non-nil, zero value otherwise.
-
-### GetCreateTimestampOk
-
-`func (o *ServerAsset) GetCreateTimestampOk() (*string, bool)`
-
-GetCreateTimestampOk returns a tuple with the CreateTimestamp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreateTimestamp
-
-`func (o *ServerAsset) SetCreateTimestamp(v string)`
-
-SetCreateTimestamp sets CreateTimestamp field to given value.
-
-### HasCreateTimestamp
-
-`func (o *ServerAsset) HasCreateTimestamp() bool`
-
-HasCreateTimestamp returns a boolean if a field has been set.
-
-### GetUpdateTimestamp
-
-`func (o *ServerAsset) GetUpdateTimestamp() string`
-
-GetUpdateTimestamp returns the UpdateTimestamp field if non-nil, zero value otherwise.
-
-### GetUpdateTimestampOk
-
-`func (o *ServerAsset) GetUpdateTimestampOk() (*string, bool)`
-
-GetUpdateTimestampOk returns a tuple with the UpdateTimestamp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdateTimestamp
-
-`func (o *ServerAsset) SetUpdateTimestamp(v string)`
-
-SetUpdateTimestamp sets UpdateTimestamp field to given value.
-
-### HasUpdateTimestamp
-
-`func (o *ServerAsset) HasUpdateTimestamp() bool`
-
-HasUpdateTimestamp returns a boolean if a field has been set.
-
 ### GetAssetId
 
 `func (o *ServerAsset) GetAssetId() string`
@@ -972,31 +772,6 @@ and a boolean to check if the value has been set.
 SetRackY sets RackY field to given value.
 
 
-### GetComment
-
-`func (o *ServerAsset) GetComment() string`
-
-GetComment returns the Comment field if non-nil, zero value otherwise.
-
-### GetCommentOk
-
-`func (o *ServerAsset) GetCommentOk() (*string, bool)`
-
-GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetComment
-
-`func (o *ServerAsset) SetComment(v string)`
-
-SetComment sets Comment field to given value.
-
-### HasComment
-
-`func (o *ServerAsset) HasComment() bool`
-
-HasComment returns a boolean if a field has been set.
-
 ### GetSwitchports
 
 `func (o *ServerAsset) GetSwitchports() []int32`
@@ -1076,6 +851,231 @@ and a boolean to check if the value has been set.
 
 SetLease sets Lease field to given value.
 
+
+### GetMac
+
+`func (o *ServerAsset) GetMac() string`
+
+GetMac returns the Mac field if non-nil, zero value otherwise.
+
+### GetMacOk
+
+`func (o *ServerAsset) GetMacOk() (*string, bool)`
+
+GetMacOk returns a tuple with the Mac field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMac
+
+`func (o *ServerAsset) SetMac(v string)`
+
+SetMac sets Mac field to given value.
+
+### HasMac
+
+`func (o *ServerAsset) HasMac() bool`
+
+HasMac returns a boolean if a field has been set.
+
+### GetIpmiAdminUsername
+
+`func (o *ServerAsset) GetIpmiAdminUsername() string`
+
+GetIpmiAdminUsername returns the IpmiAdminUsername field if non-nil, zero value otherwise.
+
+### GetIpmiAdminUsernameOk
+
+`func (o *ServerAsset) GetIpmiAdminUsernameOk() (*string, bool)`
+
+GetIpmiAdminUsernameOk returns a tuple with the IpmiAdminUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpmiAdminUsername
+
+`func (o *ServerAsset) SetIpmiAdminUsername(v string)`
+
+SetIpmiAdminUsername sets IpmiAdminUsername field to given value.
+
+### HasIpmiAdminUsername
+
+`func (o *ServerAsset) HasIpmiAdminUsername() bool`
+
+HasIpmiAdminUsername returns a boolean if a field has been set.
+
+### GetIpmiAdminPassword
+
+`func (o *ServerAsset) GetIpmiAdminPassword() string`
+
+GetIpmiAdminPassword returns the IpmiAdminPassword field if non-nil, zero value otherwise.
+
+### GetIpmiAdminPasswordOk
+
+`func (o *ServerAsset) GetIpmiAdminPasswordOk() (*string, bool)`
+
+GetIpmiAdminPasswordOk returns a tuple with the IpmiAdminPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpmiAdminPassword
+
+`func (o *ServerAsset) SetIpmiAdminPassword(v string)`
+
+SetIpmiAdminPassword sets IpmiAdminPassword field to given value.
+
+### HasIpmiAdminPassword
+
+`func (o *ServerAsset) HasIpmiAdminPassword() bool`
+
+HasIpmiAdminPassword returns a boolean if a field has been set.
+
+### GetIpmiClientUsername
+
+`func (o *ServerAsset) GetIpmiClientUsername() string`
+
+GetIpmiClientUsername returns the IpmiClientUsername field if non-nil, zero value otherwise.
+
+### GetIpmiClientUsernameOk
+
+`func (o *ServerAsset) GetIpmiClientUsernameOk() (*string, bool)`
+
+GetIpmiClientUsernameOk returns a tuple with the IpmiClientUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpmiClientUsername
+
+`func (o *ServerAsset) SetIpmiClientUsername(v string)`
+
+SetIpmiClientUsername sets IpmiClientUsername field to given value.
+
+### HasIpmiClientUsername
+
+`func (o *ServerAsset) HasIpmiClientUsername() bool`
+
+HasIpmiClientUsername returns a boolean if a field has been set.
+
+### GetIpmiClientPassword
+
+`func (o *ServerAsset) GetIpmiClientPassword() string`
+
+GetIpmiClientPassword returns the IpmiClientPassword field if non-nil, zero value otherwise.
+
+### GetIpmiClientPasswordOk
+
+`func (o *ServerAsset) GetIpmiClientPasswordOk() (*string, bool)`
+
+GetIpmiClientPasswordOk returns a tuple with the IpmiClientPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpmiClientPassword
+
+`func (o *ServerAsset) SetIpmiClientPassword(v string)`
+
+SetIpmiClientPassword sets IpmiClientPassword field to given value.
+
+### HasIpmiClientPassword
+
+`func (o *ServerAsset) HasIpmiClientPassword() bool`
+
+HasIpmiClientPassword returns a boolean if a field has been set.
+
+### GetIpmiUpdated
+
+`func (o *ServerAsset) GetIpmiUpdated() string`
+
+GetIpmiUpdated returns the IpmiUpdated field if non-nil, zero value otherwise.
+
+### GetIpmiUpdatedOk
+
+`func (o *ServerAsset) GetIpmiUpdatedOk() (*string, bool)`
+
+GetIpmiUpdatedOk returns a tuple with the IpmiUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpmiUpdated
+
+`func (o *ServerAsset) SetIpmiUpdated(v string)`
+
+SetIpmiUpdated sets IpmiUpdated field to given value.
+
+### HasIpmiUpdated
+
+`func (o *ServerAsset) HasIpmiUpdated() bool`
+
+HasIpmiUpdated returns a boolean if a field has been set.
+
+### GetCreateTimestamp
+
+`func (o *ServerAsset) GetCreateTimestamp() string`
+
+GetCreateTimestamp returns the CreateTimestamp field if non-nil, zero value otherwise.
+
+### GetCreateTimestampOk
+
+`func (o *ServerAsset) GetCreateTimestampOk() (*string, bool)`
+
+GetCreateTimestampOk returns a tuple with the CreateTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreateTimestamp
+
+`func (o *ServerAsset) SetCreateTimestamp(v string)`
+
+SetCreateTimestamp sets CreateTimestamp field to given value.
+
+### HasCreateTimestamp
+
+`func (o *ServerAsset) HasCreateTimestamp() bool`
+
+HasCreateTimestamp returns a boolean if a field has been set.
+
+### GetUpdateTimestamp
+
+`func (o *ServerAsset) GetUpdateTimestamp() string`
+
+GetUpdateTimestamp returns the UpdateTimestamp field if non-nil, zero value otherwise.
+
+### GetUpdateTimestampOk
+
+`func (o *ServerAsset) GetUpdateTimestampOk() (*string, bool)`
+
+GetUpdateTimestampOk returns a tuple with the UpdateTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdateTimestamp
+
+`func (o *ServerAsset) SetUpdateTimestamp(v string)`
+
+SetUpdateTimestamp sets UpdateTimestamp field to given value.
+
+### HasUpdateTimestamp
+
+`func (o *ServerAsset) HasUpdateTimestamp() bool`
+
+HasUpdateTimestamp returns a boolean if a field has been set.
+
+### GetComment
+
+`func (o *ServerAsset) GetComment() string`
+
+GetComment returns the Comment field if non-nil, zero value otherwise.
+
+### GetCommentOk
+
+`func (o *ServerAsset) GetCommentOk() (*string, bool)`
+
+GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComment
+
+`func (o *ServerAsset) SetComment(v string)`
+
+SetComment sets Comment field to given value.
+
+### HasComment
+
+`func (o *ServerAsset) HasComment() bool`
+
+HasComment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

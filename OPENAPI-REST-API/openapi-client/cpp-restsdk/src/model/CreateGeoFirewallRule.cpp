@@ -21,13 +21,13 @@ namespace model {
 
 CreateGeoFirewallRule::CreateGeoFirewallRule()
 {
+    m_Xdp_actionIsSet = false;
     m_Destination_port = 0;
     m_Destination_portIsSet = false;
     m_Country_code = 0;
     m_Country_codeIsSet = false;
     m_Asn = 0;
     m_AsnIsSet = false;
-    m_Xdp_actionIsSet = false;
 }
 
 CreateGeoFirewallRule::~CreateGeoFirewallRule()
@@ -42,6 +42,13 @@ void CreateGeoFirewallRule::validate()
 web::json::value CreateGeoFirewallRule::toJson() const
 {
     web::json::value val = web::json::value::object();
+    if(m_Xdp_actionIsSet)
+    {
+        
+        utility::string_t refVal = fromXdp_actionEnum(m_Xdp_action);
+        val[utility::conversions::to_string_t(_XPLATSTR("xdp_action"))] = ModelBase::toJson(refVal);
+        
+    }
     if(m_Destination_portIsSet)
     {
         
@@ -57,13 +64,6 @@ web::json::value CreateGeoFirewallRule::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("asn"))] = ModelBase::toJson(m_Asn);
     }
-    if(m_Xdp_actionIsSet)
-    {
-        
-        utility::string_t refVal = fromXdp_actionEnum(m_Xdp_action);
-        val[utility::conversions::to_string_t(_XPLATSTR("xdp_action"))] = ModelBase::toJson(refVal);
-        
-    }
 
     return val;
 }
@@ -71,6 +71,18 @@ web::json::value CreateGeoFirewallRule::toJson() const
 bool CreateGeoFirewallRule::fromJson(const web::json::value& val)
 {
     bool ok = true;
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("xdp_action")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setXdpAction;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setXdpAction);
+            
+            setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("destination_port"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("destination_port")));
@@ -104,18 +116,6 @@ bool CreateGeoFirewallRule::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("xdp_action")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setXdpAction;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setXdpAction);
-            
-            setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
-            
-        }
-    }
     return ok;
 }
 
@@ -125,6 +125,10 @@ void CreateGeoFirewallRule::toMultipart(std::shared_ptr<MultipartFormData> multi
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(_XPLATSTR(".")))
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
+    }
+    if(m_Xdp_actionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("xdp_action")), fromXdp_actionEnum(m_Xdp_action)));
     }
     if(m_Destination_portIsSet)
     {
@@ -138,10 +142,6 @@ void CreateGeoFirewallRule::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asn")), m_Asn));
     }
-    if(m_Xdp_actionIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("xdp_action")), fromXdp_actionEnum(m_Xdp_action)));
-    }
 }
 
 bool CreateGeoFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -153,6 +153,12 @@ bool CreateGeoFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
+    {
+        int32_t refVal_setXdpAction;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))), refVal_setXdpAction );
+        setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("destination_port"))))
     {
         int32_t refVal_setDestinationPort;
@@ -171,12 +177,6 @@ bool CreateGeoFirewallRule::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asn"))), refVal_setAsn );
         setAsn(refVal_setAsn);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))))
-    {
-        int32_t refVal_setXdpAction;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("xdp_action"))), refVal_setXdpAction );
-        setXdpAction(toXdp_actionEnum(refVal_setXdpAction));
-    }
     return ok;
 }
 
@@ -189,6 +189,10 @@ CreateGeoFirewallRule::Xdp_actionEnum CreateGeoFirewallRule::toXdp_actionEnum(co
     
     if (value == utility::conversions::to_string_t("1")) {
         return Xdp_actionEnum::_1;
+    }
+    
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Xdp_actionEnum::UNKNOWN_DEFAULT_OPEN_API;
     }
     
     throw std::invalid_argument("Invalid value for conversion to Xdp_actionEnum");
@@ -204,10 +208,34 @@ const int32_t CreateGeoFirewallRule::fromXdp_actionEnum(const Xdp_actionEnum val
         
         case Xdp_actionEnum::_1: return utility::conversions::to_string_t("1");
         
+        case Xdp_actionEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
 
+CreateGeoFirewallRule::Xdp_actionEnum CreateGeoFirewallRule::getXdpAction() const
+{
+    return m_Xdp_action;
+}
+
+void CreateGeoFirewallRule::setXdpAction(int32_t value)
+
+void CreateGeoFirewallRule::setXdpAction(const Xdp_actionEnum value)
+{
+    m_Xdp_action = value;
+    m_Xdp_actionIsSet = true;
+}
+
+bool CreateGeoFirewallRule::xdpActionIsSet() const
+{
+    return m_Xdp_actionIsSet;
+}
+
+void CreateGeoFirewallRule::unsetXdp_action()
+{
+    m_Xdp_actionIsSet = false;
+}
 int32_t CreateGeoFirewallRule::getDestinationPort() const
 {
     return m_Destination_port;
@@ -267,28 +295,6 @@ bool CreateGeoFirewallRule::asnIsSet() const
 void CreateGeoFirewallRule::unsetAsn()
 {
     m_AsnIsSet = false;
-}
-CreateGeoFirewallRule::Xdp_actionEnum CreateGeoFirewallRule::getXdpAction() const
-{
-    return m_Xdp_action;
-}
-
-void CreateGeoFirewallRule::setXdpAction(int32_t value)
-
-void CreateGeoFirewallRule::setXdpAction(const Xdp_actionEnum value)
-{
-    m_Xdp_action = value;
-    m_Xdp_actionIsSet = true;
-}
-
-bool CreateGeoFirewallRule::xdpActionIsSet() const
-{
-    return m_Xdp_actionIsSet;
-}
-
-void CreateGeoFirewallRule::unsetXdp_action()
-{
-    m_Xdp_actionIsSet = false;
 }
 
 }

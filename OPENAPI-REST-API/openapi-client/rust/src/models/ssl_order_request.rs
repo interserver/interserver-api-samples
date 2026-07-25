@@ -110,6 +110,8 @@ pub enum CsrType {
     Generated,
     #[serde(rename = "provided")]
     Provided,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for CsrType {

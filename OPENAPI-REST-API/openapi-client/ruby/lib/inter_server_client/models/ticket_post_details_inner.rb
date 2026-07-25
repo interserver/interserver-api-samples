@@ -158,7 +158,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      creator_validator = EnumAttributeValidator.new('String', ["User", "Staff"])
+      creator_validator = EnumAttributeValidator.new('String', ["User", "Staff", "unknown_default_open_api"])
       return false unless creator_validator.valid?(@creator)
       true
     end
@@ -166,7 +166,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] creator Object to be assigned
     def creator=(creator)
-      validator = EnumAttributeValidator.new('String', ["User", "Staff"])
+      validator = EnumAttributeValidator.new('String', ["User", "Staff", "unknown_default_open_api"])
       unless validator.valid?(creator)
         fail ArgumentError, "invalid value for \"creator\", must be one of #{validator.allowable_values}."
       end

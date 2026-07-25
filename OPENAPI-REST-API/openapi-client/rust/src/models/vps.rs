@@ -27,14 +27,10 @@ pub struct Vps {
     pub service_master: Box<models::VpsServiceMaster>,
     #[serde(rename = "package")]
     pub package: String,
-    #[serde(rename = "os_template", skip_serializing_if = "Option::is_none")]
-    pub os_template: Option<String>,
     #[serde(rename = "serviceExtra")]
     pub service_extra: Box<models::VpsServiceExtra>,
     #[serde(rename = "extraInfoTables")]
     pub extra_info_tables: Box<models::VpsExtraInfoTables>,
-    #[serde(rename = "cpu_graph_data", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub cpu_graph_data: Option<Option<serde_json::Value>>,
     #[serde(rename = "module")]
     pub module: String,
     #[serde(rename = "token")]
@@ -51,6 +47,10 @@ pub struct Vps {
     pub plesk12_data: Box<models::VpsPlesk12Data>,
     #[serde(rename = "serviceAddons")]
     pub service_addons: Box<models::VpsServiceAddons>,
+    #[serde(rename = "os_template", skip_serializing_if = "Option::is_none")]
+    pub os_template: Option<String>,
+    #[serde(rename = "cpu_graph_data", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub cpu_graph_data: Option<Option<serde_json::Value>>,
 }
 
 impl Vps {
@@ -63,10 +63,8 @@ impl Vps {
             cust_currency_symbol,
             service_master: Box::new(service_master),
             package,
-            os_template: None,
             service_extra: Box::new(service_extra),
             extra_info_tables: Box::new(extra_info_tables),
-            cpu_graph_data: None,
             module,
             token,
             da_link,
@@ -75,6 +73,8 @@ impl Vps {
             da_data: Box::new(da_data),
             plesk12_data: Box::new(plesk12_data),
             service_addons: Box::new(service_addons),
+            os_template: None,
+            cpu_graph_data: None,
         }
     }
 }

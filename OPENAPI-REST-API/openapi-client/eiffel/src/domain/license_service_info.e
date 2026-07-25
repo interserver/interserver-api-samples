@@ -33,14 +33,14 @@ feature --Access
       -- License IP
     license_status: detachable STRING_32
       -- License status
-    license_hostname: detachable STRING_32
-      -- License hostname
-    license_key: detachable STRING_32
-      -- License key
     license_invoice: detachable STRING_32
       -- License invoice
     license_coupon: detachable STRING_32
       -- License coupon
+    license_hostname: detachable STRING_32
+      -- License hostname
+    license_key: detachable STRING_32
+      -- License key
     license_extra: detachable STRING_32
       -- Additional license information
 
@@ -102,22 +102,6 @@ feature -- Change Element
         license_status_set: license_status = a_name
       end
 
-    set_license_hostname (a_name: like license_hostname)
-        -- Set 'license_hostname' with 'a_name'.
-      do
-        license_hostname := a_name
-      ensure
-        license_hostname_set: license_hostname = a_name
-      end
-
-    set_license_key (a_name: like license_key)
-        -- Set 'license_key' with 'a_name'.
-      do
-        license_key := a_name
-      ensure
-        license_key_set: license_key = a_name
-      end
-
     set_license_invoice (a_name: like license_invoice)
         -- Set 'license_invoice' with 'a_name'.
       do
@@ -132,6 +116,22 @@ feature -- Change Element
         license_coupon := a_name
       ensure
         license_coupon_set: license_coupon = a_name
+      end
+
+    set_license_hostname (a_name: like license_hostname)
+        -- Set 'license_hostname' with 'a_name'.
+      do
+        license_hostname := a_name
+      ensure
+        license_hostname_set: license_hostname = a_name
+      end
+
+    set_license_key (a_name: like license_key)
+        -- Set 'license_key' with 'a_name'.
+      do
+        license_key := a_name
+      ensure
+        license_key_set: license_key = a_name
       end
 
     set_license_extra (a_name: like license_extra)
@@ -185,16 +185,6 @@ feature -- Change Element
           Result.append (l_license_status.out)
           Result.append ("%N")
         end
-        if attached license_hostname as l_license_hostname then
-          Result.append ("%Nlicense_hostname:")
-          Result.append (l_license_hostname.out)
-          Result.append ("%N")
-        end
-        if attached license_key as l_license_key then
-          Result.append ("%Nlicense_key:")
-          Result.append (l_license_key.out)
-          Result.append ("%N")
-        end
         if attached license_invoice as l_license_invoice then
           Result.append ("%Nlicense_invoice:")
           Result.append (l_license_invoice.out)
@@ -203,6 +193,16 @@ feature -- Change Element
         if attached license_coupon as l_license_coupon then
           Result.append ("%Nlicense_coupon:")
           Result.append (l_license_coupon.out)
+          Result.append ("%N")
+        end
+        if attached license_hostname as l_license_hostname then
+          Result.append ("%Nlicense_hostname:")
+          Result.append (l_license_hostname.out)
+          Result.append ("%N")
+        end
+        if attached license_key as l_license_key then
+          Result.append ("%Nlicense_key:")
+          Result.append (l_license_key.out)
           Result.append ("%N")
         end
         if attached license_extra as l_license_extra then

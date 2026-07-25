@@ -30,9 +30,9 @@ class TemplateRequest(BaseModel):
     VPS OS Template Request
     """ # noqa: E501
     template: StrictStr = Field(description="OS Template Filename", json_schema_extra={"examples": ["ubuntu24"]})
-    password: Optional[Annotated[str, Field(min_length=6, strict=True)]] = Field(default=None, description="Password for Root / Administrator Account.", json_schema_extra={"examples": ["myUserPassword"]})
     local_password: SecretStr = Field(description="Password for this account.", alias="localPassword")
-    __properties: ClassVar[List[str]] = ["template", "password", "localPassword"]
+    password: Optional[Annotated[str, Field(min_length=6, strict=True)]] = Field(default=None, description="Password for Root / Administrator Account.", json_schema_extra={"examples": ["myUserPassword"]})
+    __properties: ClassVar[List[str]] = ["template", "localPassword", "password"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,8 +86,8 @@ class TemplateRequest(BaseModel):
 
         _obj = cls.model_validate({
             "template": obj.get("template"),
-            "password": obj.get("password"),
-            "localPassword": obj.get("localPassword")
+            "localPassword": obj.get("localPassword"),
+            "password": obj.get("password")
         })
         return _obj
 

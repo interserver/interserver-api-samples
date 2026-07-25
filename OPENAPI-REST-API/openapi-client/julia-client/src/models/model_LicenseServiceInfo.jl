@@ -12,10 +12,10 @@
         license_custid=nothing,
         license_ip=nothing,
         license_status=nothing,
-        license_hostname=nothing,
-        license_key=nothing,
         license_invoice=nothing,
         license_coupon=nothing,
+        license_hostname=nothing,
+        license_key=nothing,
         license_extra=nothing,
     )
 
@@ -26,10 +26,10 @@
     - license_custid::String : Customer ID
     - license_ip::String : License IP
     - license_status::String : License status
-    - license_hostname::String : License hostname
-    - license_key::String : License key
     - license_invoice::String : License invoice
     - license_coupon::String : License coupon
+    - license_hostname::String : License hostname
+    - license_key::String : License key
     - license_extra::String : Additional license information
 """
 Base.@kwdef mutable struct LicenseServiceInfo <: OpenAPI.APIModel
@@ -40,20 +40,20 @@ Base.@kwdef mutable struct LicenseServiceInfo <: OpenAPI.APIModel
     license_custid::Union{Nothing, String} = nothing
     license_ip::Union{Nothing, String} = nothing
     license_status::Union{Nothing, String} = nothing
-    license_hostname::Union{Nothing, String} = nothing
-    license_key::Union{Nothing, String} = nothing
     license_invoice::Union{Nothing, String} = nothing
     license_coupon::Union{Nothing, String} = nothing
+    license_hostname::Union{Nothing, String} = nothing
+    license_key::Union{Nothing, String} = nothing
     license_extra::Union{Nothing, String} = nothing
 
-    function LicenseServiceInfo(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_hostname, license_key, license_invoice, license_coupon, license_extra, )
-        o = new(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_hostname, license_key, license_invoice, license_coupon, license_extra, )
+    function LicenseServiceInfo(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_invoice, license_coupon, license_hostname, license_key, license_extra, )
+        o = new(license_id, license_type, license_currency, license_order_date, license_custid, license_ip, license_status, license_invoice, license_coupon, license_hostname, license_key, license_extra, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type LicenseServiceInfo
 
-const _property_types_LicenseServiceInfo = Dict{Symbol,String}(Symbol("license_id")=>"String", Symbol("license_type")=>"String", Symbol("license_currency")=>"String", Symbol("license_order_date")=>"ZonedDateTime", Symbol("license_custid")=>"String", Symbol("license_ip")=>"String", Symbol("license_status")=>"String", Symbol("license_hostname")=>"String", Symbol("license_key")=>"String", Symbol("license_invoice")=>"String", Symbol("license_coupon")=>"String", Symbol("license_extra")=>"String", )
+const _property_types_LicenseServiceInfo = Dict{Symbol,String}(Symbol("license_id")=>"String", Symbol("license_type")=>"String", Symbol("license_currency")=>"String", Symbol("license_order_date")=>"ZonedDateTime", Symbol("license_custid")=>"String", Symbol("license_ip")=>"String", Symbol("license_status")=>"String", Symbol("license_invoice")=>"String", Symbol("license_coupon")=>"String", Symbol("license_hostname")=>"String", Symbol("license_key")=>"String", Symbol("license_extra")=>"String", )
 OpenAPI.property_type(::Type{ LicenseServiceInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LicenseServiceInfo[name]))}
 
 function OpenAPI.check_required(o::LicenseServiceInfo)
@@ -77,10 +77,10 @@ function OpenAPI.validate_properties(o::LicenseServiceInfo)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_custid"), o.license_custid)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_ip"), o.license_ip)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_status"), o.license_status)
-    OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_hostname"), o.license_hostname)
-    OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_key"), o.license_key)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_invoice"), o.license_invoice)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_coupon"), o.license_coupon)
+    OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_hostname"), o.license_hostname)
+    OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_key"), o.license_key)
     OpenAPI.validate_property(LicenseServiceInfo, Symbol("license_extra"), o.license_extra)
 end
 

@@ -151,7 +151,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      customer_server_access_validator = EnumAttributeValidator.new('String', ["y", "n"])
+      customer_server_access_validator = EnumAttributeValidator.new('String', ["y", "n", "unknown_default_open_api"])
       return false unless customer_server_access_validator.valid?(@customer_server_access)
       true
     end
@@ -159,7 +159,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] customer_server_access Object to be assigned
     def customer_server_access=(customer_server_access)
-      validator = EnumAttributeValidator.new('String', ["y", "n"])
+      validator = EnumAttributeValidator.new('String', ["y", "n", "unknown_default_open_api"])
       unless validator.valid?(customer_server_access)
         fail ArgumentError, "invalid value for \"customer_server_access\", must be one of #{validator.allowable_values}."
       end

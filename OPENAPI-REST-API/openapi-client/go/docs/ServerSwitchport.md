@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **Blade** | **string** | Blade name associated with the port. | 
 **Justport** | **string** | Port identifier. | 
 **GraphId** | **string** | Identifier for the graph associated with the switchport. | 
+**AssetId** | **int32** | Unique identifier of the asset associated with the switchport. | 
 **Vlans** | Pointer to **[]string** | List of VLANs associated with the switchport. | [optional] 
 **Vlans6** | Pointer to **[]string** | List of IPv6 VLANs associated with the switchport. | [optional] 
-**AssetId** | **int32** | Unique identifier of the asset associated with the switchport. | 
 
 ## Methods
 
@@ -174,6 +174,26 @@ and a boolean to check if the value has been set.
 SetGraphId sets GraphId field to given value.
 
 
+### GetAssetId
+
+`func (o *ServerSwitchport) GetAssetId() int32`
+
+GetAssetId returns the AssetId field if non-nil, zero value otherwise.
+
+### GetAssetIdOk
+
+`func (o *ServerSwitchport) GetAssetIdOk() (*int32, bool)`
+
+GetAssetIdOk returns a tuple with the AssetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetId
+
+`func (o *ServerSwitchport) SetAssetId(v int32)`
+
+SetAssetId sets AssetId field to given value.
+
+
 ### GetVlans
 
 `func (o *ServerSwitchport) GetVlans() []string`
@@ -223,26 +243,6 @@ SetVlans6 sets Vlans6 field to given value.
 `func (o *ServerSwitchport) HasVlans6() bool`
 
 HasVlans6 returns a boolean if a field has been set.
-
-### GetAssetId
-
-`func (o *ServerSwitchport) GetAssetId() int32`
-
-GetAssetId returns the AssetId field if non-nil, zero value otherwise.
-
-### GetAssetIdOk
-
-`func (o *ServerSwitchport) GetAssetIdOk() (*int32, bool)`
-
-GetAssetIdOk returns a tuple with the AssetId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssetId
-
-`func (o *ServerSwitchport) SetAssetId(v int32)`
-
-SetAssetId sets AssetId field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

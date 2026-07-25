@@ -36,9 +36,9 @@ class TestDenyRuleNew(unittest.TestCase):
         model = DenyRuleNew()
         if include_optional:
             return DenyRuleNew(
-                user = 'mb20682',
                 type = 'email',
-                data = 'domeinwo@server.guesshost.net'
+                data = 'domeinwo@server.guesshost.net',
+                user = 'mb20682'
             )
         else:
             return DenyRuleNew(

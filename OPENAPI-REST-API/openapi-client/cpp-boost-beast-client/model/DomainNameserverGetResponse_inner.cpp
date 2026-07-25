@@ -319,8 +319,8 @@ std::string DomainNameserverGetResponse_inner::getCanDelete() const
 
 void DomainNameserverGetResponse_inner::setCanDelete(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "0","1"
+    static const std::array<std::string, 3> allowedValues = {
+        "0","1","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

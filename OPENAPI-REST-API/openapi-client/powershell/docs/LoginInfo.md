@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Logo** | **String** | A logo image url. | [optional] 
 **Captcha** | **String** | A base64 encoded image to use for rendering the alternateive captcha. | 
-**Language** | **String** | The desired langauge to render the site with. | [optional] 
 **Counts** | [**LoginServiceCounts**](LoginServiceCounts.md) |  | 
+**Logo** | **String** | A logo image url. | [optional] 
+**Language** | **String** | The desired langauge to render the site with. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LoginInfo = Initialize-InterserverApiLoginInfo  -Logo //my.interserver.net/images/logos/mystaging.png `
- -Captcha data:image/jpeg;base64,/9j/ `
- -Language en-US `
- -Counts null
+$LoginInfo = Initialize-InterserverApiLoginInfo  -Captcha data:image/jpeg;base64,/9j/ `
+ -Counts null `
+ -Logo //my.interserver.net/images/logos/mystaging.png `
+ -Language en-US
 ```
 
 - Convert the resource to JSON

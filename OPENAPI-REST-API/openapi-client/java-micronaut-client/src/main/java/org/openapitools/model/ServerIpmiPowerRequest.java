@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   ServerIpmiPowerRequest.JSON_PROPERTY_ASSET
 })
 @JsonTypeName("ServerIpmiPowerRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class ServerIpmiPowerRequest {
     /**
@@ -40,7 +40,8 @@ public class ServerIpmiPowerRequest {
         RESET("reset"),
         ON("on"),
         OFF("off"),
-        SOFT("soft");
+        SOFT("soft"),
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
         private String value;
 

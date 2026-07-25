@@ -61,6 +61,7 @@ public:
     {
         _0,
         _1,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// 1 &#x3D; Block,  0 &#x3D; Whitelist
@@ -69,6 +70,15 @@ public:
     Xdp_actionEnum toXdp_actionEnum(const utility::string_t& value) const;
     const utility::string_t fromXdp_actionEnum(const Xdp_actionEnum value) const;
 
+
+    /// <summary>
+    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
+    /// </summary>
+    Xdp_actionEnum getXdpAction() const;
+    bool xdpActionIsSet() const;
+    void unsetXdp_action();
+    void setXdpAction(int32_t value);
+    void setXdpAction(const Xdp_actionEnum value);
 
     int32_t getDestinationPort() const;
     bool destinationPortIsSet() const;
@@ -91,17 +101,11 @@ public:
     void unsetAsn();
     void setAsn(int32_t value);
 
-    /// <summary>
-    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
-    /// </summary>
-    Xdp_actionEnum getXdpAction() const;
-    bool xdpActionIsSet() const;
-    void unsetXdp_action();
-    void setXdpAction(int32_t value);
-    void setXdpAction(const Xdp_actionEnum value);
-
 
 protected:
+    Xdp_actionEnum m_Xdp_action;
+    bool m_Xdp_actionIsSet;
+
     int32_t m_Destination_port;
     bool m_Destination_portIsSet;
 
@@ -110,9 +114,6 @@ protected:
 
     int32_t m_Asn;
     bool m_AsnIsSet;
-
-    Xdp_actionEnum m_Xdp_action;
-    bool m_Xdp_actionIsSet;
 
 };
 

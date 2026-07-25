@@ -29,14 +29,14 @@ Customer ID
 License IP
 .PARAMETER LicenseStatus
 License status
-.PARAMETER LicenseHostname
-License hostname
-.PARAMETER LicenseKey
-License key
 .PARAMETER LicenseInvoice
 License invoice
 .PARAMETER LicenseCoupon
 License coupon
+.PARAMETER LicenseHostname
+License hostname
+.PARAMETER LicenseKey
+License key
 .PARAMETER LicenseExtra
 Additional license information
 .OUTPUTS
@@ -70,16 +70,16 @@ function Initialize-LicenseServiceInfo {
         ${LicenseStatus},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LicenseHostname},
+        ${LicenseInvoice},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LicenseKey},
+        ${LicenseCoupon},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LicenseInvoice},
+        ${LicenseHostname},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LicenseCoupon},
+        ${LicenseKey},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${LicenseExtra}
@@ -134,10 +134,10 @@ function Initialize-LicenseServiceInfo {
             'license_custid' = ${LicenseCustid}
             'license_ip' = ${LicenseIp}
             'license_status' = ${LicenseStatus}
-            'license_hostname' = ${LicenseHostname}
-            'license_key' = ${LicenseKey}
             'license_invoice' = ${LicenseInvoice}
             'license_coupon' = ${LicenseCoupon}
+            'license_hostname' = ${LicenseHostname}
+            'license_key' = ${LicenseKey}
             'license_extra' = ${LicenseExtra}
         }
 
@@ -176,7 +176,7 @@ function ConvertFrom-JsonToLicenseServiceInfo {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in LicenseServiceInfo
-        $AllProperties = ('license_id', 'license_type', 'license_currency', 'license_order_date', 'license_custid', 'license_ip', 'license_status', 'license_hostname', 'license_key', 'license_invoice', 'license_coupon', 'license_extra')
+        $AllProperties = ('license_id', 'license_type', 'license_currency', 'license_order_date', 'license_custid', 'license_ip', 'license_status', 'license_invoice', 'license_coupon', 'license_hostname', 'license_key', 'license_extra')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -267,10 +267,10 @@ function ConvertFrom-JsonToLicenseServiceInfo {
             'license_custid' = ${LicenseCustid}
             'license_ip' = ${LicenseIp}
             'license_status' = ${LicenseStatus}
-            'license_hostname' = ${LicenseHostname}
-            'license_key' = ${LicenseKey}
             'license_invoice' = ${LicenseInvoice}
             'license_coupon' = ${LicenseCoupon}
+            'license_hostname' = ${LicenseHostname}
+            'license_key' = ${LicenseKey}
             'license_extra' = ${LicenseExtra}
         }
 

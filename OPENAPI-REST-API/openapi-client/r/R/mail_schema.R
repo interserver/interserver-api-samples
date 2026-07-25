@@ -13,10 +13,10 @@
 #' @field custCurrency The customer's currency. character
 #' @field custCurrencySymbol The currency symbol for the customer. character
 #' @field package The package of the mail service. character
-#' @field serviceExtra Extra information for the mail service. list(character) [optional]
 #' @field extraInfoTables  \link{MailSchemaExtraInfoTables}
 #' @field serviceType  \link{MailServiceType}
 #' @field usage_count The usage count of the mail service. character
+#' @field serviceExtra Extra information for the mail service. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -29,10 +29,10 @@ MailSchema <- R6::R6Class(
     `custCurrency` = NULL,
     `custCurrencySymbol` = NULL,
     `package` = NULL,
-    `serviceExtra` = NULL,
     `extraInfoTables` = NULL,
     `serviceType` = NULL,
     `usage_count` = NULL,
+    `serviceExtra` = NULL,
 
     #' @description
     #' Initialize a new MailSchema class.
@@ -156,10 +156,6 @@ MailSchema <- R6::R6Class(
         MailSchemaObject[["package"]] <-
           self$`package`
       }
-      if (!is.null(self$`serviceExtra`)) {
-        MailSchemaObject[["serviceExtra"]] <-
-          self$`serviceExtra`
-      }
       if (!is.null(self$`extraInfoTables`)) {
         MailSchemaObject[["extraInfoTables"]] <-
           self$extractSimpleType(self$`extraInfoTables`)
@@ -171,6 +167,10 @@ MailSchema <- R6::R6Class(
       if (!is.null(self$`usage_count`)) {
         MailSchemaObject[["usage_count"]] <-
           self$`usage_count`
+      }
+      if (!is.null(self$`serviceExtra`)) {
+        MailSchemaObject[["serviceExtra"]] <-
+          self$`serviceExtra`
       }
       return(MailSchemaObject)
     },
@@ -227,9 +227,6 @@ MailSchema <- R6::R6Class(
       if (!is.null(this_object$`package`)) {
         self$`package` <- this_object$`package`
       }
-      if (!is.null(this_object$`serviceExtra`)) {
-        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
-      }
       if (!is.null(this_object$`extraInfoTables`)) {
         `extrainfotables_object` <- MailSchemaExtraInfoTables$new()
         `extrainfotables_object`$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))
@@ -242,6 +239,9 @@ MailSchema <- R6::R6Class(
       }
       if (!is.null(this_object$`usage_count`)) {
         self$`usage_count` <- this_object$`usage_count`
+      }
+      if (!is.null(this_object$`serviceExtra`)) {
+        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -270,10 +270,10 @@ MailSchema <- R6::R6Class(
       self$`custCurrency` <- this_object$`custCurrency`
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`
       self$`package` <- this_object$`package`
-      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
       self$`extraInfoTables` <- MailSchemaExtraInfoTables$new()$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))
       self$`serviceType` <- MailServiceType$new()$fromJSON(jsonlite::toJSON(this_object$`serviceType`, auto_unbox = TRUE, digits = NA))
       self$`usage_count` <- this_object$`usage_count`
+      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

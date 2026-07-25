@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'WebsitesOrderPackagesInfo' {
     Context 'WebsitesOrderPackagesInfo' {
         It 'Initialize-WebsitesOrderPackagesInfo' {
             # a simple test to create an object
-            #$NewObject = Initialize-WebsitesOrderPackagesInfo -ServicesId "TEST_VALUE" -ServicesName "TEST_VALUE" -ServicesCost "TEST_VALUE" -ServicesCategory "TEST_VALUE" -ServicesBuyable "TEST_VALUE" -ServicesType "TEST_VALUE" -ServicesField1 "TEST_VALUE" -ServicesField2 "TEST_VALUE" -ServicesModule "TEST_VALUE" -ServicesHtml "TEST_VALUE" -ServicesDescription "TEST_VALUE" -ServicesMoreinfoUrl "TEST_VALUE" -ServicesHidden "TEST_VALUE"
+            #$NewObject = Initialize-WebsitesOrderPackagesInfo -ServicesId "TEST_VALUE" -ServicesName "TEST_VALUE" -ServicesCost "TEST_VALUE" -ServicesCategory "TEST_VALUE" -ServicesBuyable "TEST_VALUE" -ServicesType "TEST_VALUE" -ServicesModule "TEST_VALUE" -ServicesDescription "TEST_VALUE" -ServicesField1 "TEST_VALUE" -ServicesField2 "TEST_VALUE" -ServicesHtml "TEST_VALUE" -ServicesMoreinfoUrl "TEST_VALUE" -ServicesHidden "TEST_VALUE"
             #$NewObject | Should -BeOfType WebsitesOrderPackagesInfo
             #$NewObject.property | Should -Be 0
         }

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Label** | **string** | Link label | 
 **Link** | **string** | Link URL | 
 **Icon** | **string** | Link icon | 
-**IconText** | Pointer to **string** | Icon text | [optional] 
 **HelpText** | **string** | Help text | 
+**IconText** | Pointer to **string** | Icon text | [optional] 
 **OtherAttr** | Pointer to **string** | Other attributes | [optional] 
 
 ## Methods
@@ -90,6 +90,26 @@ and a boolean to check if the value has been set.
 SetIcon sets Icon field to given value.
 
 
+### GetHelpText
+
+`func (o *LicenseClientLink) GetHelpText() string`
+
+GetHelpText returns the HelpText field if non-nil, zero value otherwise.
+
+### GetHelpTextOk
+
+`func (o *LicenseClientLink) GetHelpTextOk() (*string, bool)`
+
+GetHelpTextOk returns a tuple with the HelpText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelpText
+
+`func (o *LicenseClientLink) SetHelpText(v string)`
+
+SetHelpText sets HelpText field to given value.
+
+
 ### GetIconText
 
 `func (o *LicenseClientLink) GetIconText() string`
@@ -114,26 +134,6 @@ SetIconText sets IconText field to given value.
 `func (o *LicenseClientLink) HasIconText() bool`
 
 HasIconText returns a boolean if a field has been set.
-
-### GetHelpText
-
-`func (o *LicenseClientLink) GetHelpText() string`
-
-GetHelpText returns the HelpText field if non-nil, zero value otherwise.
-
-### GetHelpTextOk
-
-`func (o *LicenseClientLink) GetHelpTextOk() (*string, bool)`
-
-GetHelpTextOk returns a tuple with the HelpText field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHelpText
-
-`func (o *LicenseClientLink) SetHelpText(v string)`
-
-SetHelpText sets HelpText field to given value.
-
 
 ### GetOtherAttr
 

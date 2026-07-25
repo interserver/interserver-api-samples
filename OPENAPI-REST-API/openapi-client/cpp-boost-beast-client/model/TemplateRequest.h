@@ -56,16 +56,16 @@ public:
     void setRTemplate(std::string value);
 
     /// <summary>
-    /// Password for Root / Administrator Account.
-    /// </summary>
-    std::string getPassword() const;
-    void setPassword(std::string value);
-
-    /// <summary>
     /// Password for this account.
     /// </summary>
     std::string getLocalPassword() const;
     void setLocalPassword(std::string value);
+
+    /// <summary>
+    /// Password for Root / Administrator Account.
+    /// </summary>
+    std::string getPassword() const;
+    void setPassword(std::string value);
 
 protected:
     //////////////////////////////////////
@@ -78,9 +78,9 @@ protected:
 
 protected:
     std::string m_r_template = "";
+    std::string m_LocalPassword = "";
     std::string m_Password = "";
     bool m_PasswordIsSet = false;
-    std::string m_LocalPassword = "";
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<TemplateRequest>>& data);

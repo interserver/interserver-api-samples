@@ -71,7 +71,9 @@ public class MailStatsType implements Serializable {
     
     today("today"),
     
-    _1h("1h");
+    _1h("1h"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -94,7 +96,7 @@ public class MailStatsType implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<TimeEnum> {

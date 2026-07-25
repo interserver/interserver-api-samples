@@ -26,6 +26,7 @@ Name | Value
 ---- | -----
 USER | `"User"`
 STAFF | `"Staff"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

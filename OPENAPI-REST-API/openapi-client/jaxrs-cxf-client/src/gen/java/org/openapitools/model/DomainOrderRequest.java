@@ -24,7 +24,7 @@ public class DomainOrderRequest extends HashMap<String, Object> {
 
 public enum TypeEnum {
 
-REGISTER(String.valueOf("register")), TRANSFER(String.valueOf("transfer"));
+REGISTER(String.valueOf("register")), TRANSFER(String.valueOf("transfer")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;
@@ -68,7 +68,7 @@ REGISTER(String.valueOf("register")), TRANSFER(String.valueOf("transfer"));
 
 public enum WhoisPrivacyEnum {
 
-ENABLE(String.valueOf("enable")), DISABLE(String.valueOf("disable"));
+ENABLE(String.valueOf("enable")), DISABLE(String.valueOf("disable")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

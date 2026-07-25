@@ -6,28 +6,28 @@
 The data for a email deny rule record.
 
     DenyRuleNew(;
-        user=nothing,
         type=nothing,
         data=nothing,
+        user=nothing,
     )
 
-    - user::String : Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
     - type::String : The type of deny rule.
     - data::String : The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.
+    - user::String : Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 """
 Base.@kwdef mutable struct DenyRuleNew <: OpenAPI.APIModel
-    user::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     data::Union{Nothing, String} = nothing
+    user::Union{Nothing, String} = nothing
 
-    function DenyRuleNew(user, type, data, )
-        o = new(user, type, data, )
+    function DenyRuleNew(type, data, user, )
+        o = new(type, data, user, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type DenyRuleNew
 
-const _property_types_DenyRuleNew = Dict{Symbol,String}(Symbol("user")=>"String", Symbol("type")=>"String", Symbol("data")=>"String", )
+const _property_types_DenyRuleNew = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("data")=>"String", Symbol("user")=>"String", )
 OpenAPI.property_type(::Type{ DenyRuleNew }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DenyRuleNew[name]))}
 
 function OpenAPI.check_required(o::DenyRuleNew)
@@ -37,17 +37,17 @@ function OpenAPI.check_required(o::DenyRuleNew)
 end
 
 function OpenAPI.validate_properties(o::DenyRuleNew)
-    OpenAPI.validate_property(DenyRuleNew, Symbol("user"), o.user)
     OpenAPI.validate_property(DenyRuleNew, Symbol("type"), o.type)
     OpenAPI.validate_property(DenyRuleNew, Symbol("data"), o.data)
+    OpenAPI.validate_property(DenyRuleNew, Symbol("user"), o.user)
 end
 
 function OpenAPI.validate_property(::Type{ DenyRuleNew }, name::Symbol, val)
 
-
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "DenyRuleNew", :enum, val, ["domain", "email", "startswith", "destination"])
+        OpenAPI.validate_param(name, "DenyRuleNew", :enum, val, ["domain", "email", "startswith", "destination", "unknown_default_open_api"])
     end
+
 
 
 end

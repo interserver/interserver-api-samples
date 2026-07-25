@@ -11,7 +11,6 @@
         status=nothing,
         primary_ipv4=nothing,
         primary_ipv6=nothing,
-        mac=nothing,
         datacenter=nothing,
         type_id=nothing,
         asset_tag=nothing,
@@ -23,11 +22,6 @@
         unit_sub=nothing,
         ipmi_mac=nothing,
         ipmi_ip=nothing,
-        ipmi_admin_username=nothing,
-        ipmi_admin_password=nothing,
-        ipmi_client_username=nothing,
-        ipmi_client_password=nothing,
-        ipmi_updated=nothing,
         ipmi_working=nothing,
         company=nothing,
         comments=nothing,
@@ -38,8 +32,6 @@
         external_id=nothing,
         billing_status=nothing,
         overdue=nothing,
-        create_timestamp=nothing,
-        update_timestamp=nothing,
         asset_id=nothing,
         asset_name=nothing,
         rack_id=nothing,
@@ -48,11 +40,19 @@
         rack_size=nothing,
         rack_x=nothing,
         rack_y=nothing,
-        comment=nothing,
         switchports=nothing,
         vlans=nothing,
         vlans6=nothing,
         lease=nothing,
+        mac=nothing,
+        ipmi_admin_username=nothing,
+        ipmi_admin_password=nothing,
+        ipmi_client_username=nothing,
+        ipmi_client_password=nothing,
+        ipmi_updated=nothing,
+        create_timestamp=nothing,
+        update_timestamp=nothing,
+        comment=nothing,
     )
 
     - id::Int64 : Unique identifier for the asset.
@@ -61,7 +61,6 @@
     - status::String : Status of the asset.
     - primary_ipv4::String : Primary IPv4 address of the asset.
     - primary_ipv6::String : Primary IPv6 address of the asset.
-    - mac::String : MAC address associated with the asset.
     - datacenter::String : Datacenter identifier for the asset.
     - type_id::String : Type identifier for the asset.
     - asset_tag::String : Asset tag associated with the asset.
@@ -73,11 +72,6 @@
     - unit_sub::String : Subunit identifier for the asset.
     - ipmi_mac::String : IPMI MAC address associated with the asset.
     - ipmi_ip::String : IPMI IP address associated with the asset.
-    - ipmi_admin_username::String : IPMI admin username associated with the asset.
-    - ipmi_admin_password::String : IPMI admin password associated with the asset.
-    - ipmi_client_username::String : IPMI client username associated with the asset.
-    - ipmi_client_password::String : IPMI client password associated with the asset.
-    - ipmi_updated::String : IPMI update status associated with the asset.
     - ipmi_working::String : IPMI working status associated with the asset.
     - company::String : Company associated with the asset.
     - comments::String : Comments associated with the asset.
@@ -88,8 +82,6 @@
     - external_id::String : External identifier for the asset.
     - billing_status::String : Billing status of the asset.
     - overdue::String : Overdue status of the asset.
-    - create_timestamp::String : Timestamp of asset creation.
-    - update_timestamp::String : Timestamp of asset update.
     - asset_id::String : Asset identifier for the asset.
     - asset_name::String : Name of the asset.
     - rack_id::String : Rack identifier for the asset.
@@ -98,11 +90,19 @@
     - rack_size::String : Size of the rack associated with the asset.
     - rack_x::String : X-coordinate of the asset within the rack.
     - rack_y::String : Y-coordinate of the asset within the rack.
-    - comment::String : Comment associated with the asset.
     - switchports::Vector{Int64} : List of switchports associated with the asset.
     - vlans::Vector{String} : List of VLANs associated with the asset.
     - vlans6::Vector{String} : List of IPv6 VLANs associated with the asset.
     - lease::ServerLease
+    - mac::String : MAC address associated with the asset.
+    - ipmi_admin_username::String : IPMI admin username associated with the asset.
+    - ipmi_admin_password::String : IPMI admin password associated with the asset.
+    - ipmi_client_username::String : IPMI client username associated with the asset.
+    - ipmi_client_password::String : IPMI client password associated with the asset.
+    - ipmi_updated::String : IPMI update status associated with the asset.
+    - create_timestamp::String : Timestamp of asset creation.
+    - update_timestamp::String : Timestamp of asset update.
+    - comment::String : Comment associated with the asset.
 """
 Base.@kwdef mutable struct ServerAsset <: OpenAPI.APIModel
     id::Union{Nothing, Int64} = nothing
@@ -111,7 +111,6 @@ Base.@kwdef mutable struct ServerAsset <: OpenAPI.APIModel
     status::Union{Nothing, String} = nothing
     primary_ipv4::Union{Nothing, String} = nothing
     primary_ipv6::Union{Nothing, String} = nothing
-    mac::Union{Nothing, String} = nothing
     datacenter::Union{Nothing, String} = nothing
     type_id::Union{Nothing, String} = nothing
     asset_tag::Union{Nothing, String} = nothing
@@ -123,11 +122,6 @@ Base.@kwdef mutable struct ServerAsset <: OpenAPI.APIModel
     unit_sub::Union{Nothing, String} = nothing
     ipmi_mac::Union{Nothing, String} = nothing
     ipmi_ip::Union{Nothing, String} = nothing
-    ipmi_admin_username::Union{Nothing, String} = nothing
-    ipmi_admin_password::Union{Nothing, String} = nothing
-    ipmi_client_username::Union{Nothing, String} = nothing
-    ipmi_client_password::Union{Nothing, String} = nothing
-    ipmi_updated::Union{Nothing, String} = nothing
     ipmi_working::Union{Nothing, String} = nothing
     company::Union{Nothing, String} = nothing
     comments::Union{Nothing, String} = nothing
@@ -138,8 +132,6 @@ Base.@kwdef mutable struct ServerAsset <: OpenAPI.APIModel
     external_id::Union{Nothing, String} = nothing
     billing_status::Union{Nothing, String} = nothing
     overdue::Union{Nothing, String} = nothing
-    create_timestamp::Union{Nothing, String} = nothing
-    update_timestamp::Union{Nothing, String} = nothing
     asset_id::Union{Nothing, String} = nothing
     asset_name::Union{Nothing, String} = nothing
     rack_id::Union{Nothing, String} = nothing
@@ -148,20 +140,28 @@ Base.@kwdef mutable struct ServerAsset <: OpenAPI.APIModel
     rack_size::Union{Nothing, String} = nothing
     rack_x::Union{Nothing, String} = nothing
     rack_y::Union{Nothing, String} = nothing
-    comment::Union{Nothing, String} = nothing
     switchports::Union{Nothing, Vector{Int64}} = nothing
     vlans::Union{Nothing, Vector{String}} = nothing
     vlans6::Union{Nothing, Vector{String}} = nothing
     lease = nothing # spec type: Union{ Nothing, ServerLease }
+    mac::Union{Nothing, String} = nothing
+    ipmi_admin_username::Union{Nothing, String} = nothing
+    ipmi_admin_password::Union{Nothing, String} = nothing
+    ipmi_client_username::Union{Nothing, String} = nothing
+    ipmi_client_password::Union{Nothing, String} = nothing
+    ipmi_updated::Union{Nothing, String} = nothing
+    create_timestamp::Union{Nothing, String} = nothing
+    update_timestamp::Union{Nothing, String} = nothing
+    comment::Union{Nothing, String} = nothing
 
-    function ServerAsset(id, order_id, hostname, status, primary_ipv4, primary_ipv6, mac, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, create_timestamp, update_timestamp, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, comment, switchports, vlans, vlans6, lease, )
-        o = new(id, order_id, hostname, status, primary_ipv4, primary_ipv6, mac, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, create_timestamp, update_timestamp, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, comment, switchports, vlans, vlans6, lease, )
+    function ServerAsset(id, order_id, hostname, status, primary_ipv4, primary_ipv6, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, switchports, vlans, vlans6, lease, mac, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, create_timestamp, update_timestamp, comment, )
+        o = new(id, order_id, hostname, status, primary_ipv4, primary_ipv6, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, switchports, vlans, vlans6, lease, mac, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, create_timestamp, update_timestamp, comment, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ServerAsset
 
-const _property_types_ServerAsset = Dict{Symbol,String}(Symbol("id")=>"Int64", Symbol("order_id")=>"String", Symbol("hostname")=>"String", Symbol("status")=>"String", Symbol("primary_ipv4")=>"String", Symbol("primary_ipv6")=>"String", Symbol("mac")=>"String", Symbol("datacenter")=>"String", Symbol("type_id")=>"String", Symbol("asset_tag")=>"String", Symbol("rack")=>"String", Symbol("row")=>"String", Symbol("col")=>"String", Symbol("unit_start")=>"String", Symbol("unit_end")=>"String", Symbol("unit_sub")=>"String", Symbol("ipmi_mac")=>"String", Symbol("ipmi_ip")=>"String", Symbol("ipmi_admin_username")=>"String", Symbol("ipmi_admin_password")=>"String", Symbol("ipmi_client_username")=>"String", Symbol("ipmi_client_password")=>"String", Symbol("ipmi_updated")=>"String", Symbol("ipmi_working")=>"String", Symbol("company")=>"String", Symbol("comments")=>"String", Symbol("make")=>"String", Symbol("model")=>"String", Symbol("description")=>"String", Symbol("customer_id")=>"String", Symbol("external_id")=>"String", Symbol("billing_status")=>"String", Symbol("overdue")=>"String", Symbol("create_timestamp")=>"String", Symbol("update_timestamp")=>"String", Symbol("asset_id")=>"String", Symbol("asset_name")=>"String", Symbol("rack_id")=>"String", Symbol("rack_name")=>"String", Symbol("rack_location")=>"String", Symbol("rack_size")=>"String", Symbol("rack_x")=>"String", Symbol("rack_y")=>"String", Symbol("comment")=>"String", Symbol("switchports")=>"Vector{Int64}", Symbol("vlans")=>"Vector{String}", Symbol("vlans6")=>"Vector{String}", Symbol("lease")=>"ServerLease", )
+const _property_types_ServerAsset = Dict{Symbol,String}(Symbol("id")=>"Int64", Symbol("order_id")=>"String", Symbol("hostname")=>"String", Symbol("status")=>"String", Symbol("primary_ipv4")=>"String", Symbol("primary_ipv6")=>"String", Symbol("datacenter")=>"String", Symbol("type_id")=>"String", Symbol("asset_tag")=>"String", Symbol("rack")=>"String", Symbol("row")=>"String", Symbol("col")=>"String", Symbol("unit_start")=>"String", Symbol("unit_end")=>"String", Symbol("unit_sub")=>"String", Symbol("ipmi_mac")=>"String", Symbol("ipmi_ip")=>"String", Symbol("ipmi_working")=>"String", Symbol("company")=>"String", Symbol("comments")=>"String", Symbol("make")=>"String", Symbol("model")=>"String", Symbol("description")=>"String", Symbol("customer_id")=>"String", Symbol("external_id")=>"String", Symbol("billing_status")=>"String", Symbol("overdue")=>"String", Symbol("asset_id")=>"String", Symbol("asset_name")=>"String", Symbol("rack_id")=>"String", Symbol("rack_name")=>"String", Symbol("rack_location")=>"String", Symbol("rack_size")=>"String", Symbol("rack_x")=>"String", Symbol("rack_y")=>"String", Symbol("switchports")=>"Vector{Int64}", Symbol("vlans")=>"Vector{String}", Symbol("vlans6")=>"Vector{String}", Symbol("lease")=>"ServerLease", Symbol("mac")=>"String", Symbol("ipmi_admin_username")=>"String", Symbol("ipmi_admin_password")=>"String", Symbol("ipmi_client_username")=>"String", Symbol("ipmi_client_password")=>"String", Symbol("ipmi_updated")=>"String", Symbol("create_timestamp")=>"String", Symbol("update_timestamp")=>"String", Symbol("comment")=>"String", )
 OpenAPI.property_type(::Type{ ServerAsset }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServerAsset[name]))}
 
 function OpenAPI.check_required(o::ServerAsset)
@@ -214,7 +214,6 @@ function OpenAPI.validate_properties(o::ServerAsset)
     OpenAPI.validate_property(ServerAsset, Symbol("status"), o.status)
     OpenAPI.validate_property(ServerAsset, Symbol("primary_ipv4"), o.primary_ipv4)
     OpenAPI.validate_property(ServerAsset, Symbol("primary_ipv6"), o.primary_ipv6)
-    OpenAPI.validate_property(ServerAsset, Symbol("mac"), o.mac)
     OpenAPI.validate_property(ServerAsset, Symbol("datacenter"), o.datacenter)
     OpenAPI.validate_property(ServerAsset, Symbol("type_id"), o.type_id)
     OpenAPI.validate_property(ServerAsset, Symbol("asset_tag"), o.asset_tag)
@@ -226,11 +225,6 @@ function OpenAPI.validate_properties(o::ServerAsset)
     OpenAPI.validate_property(ServerAsset, Symbol("unit_sub"), o.unit_sub)
     OpenAPI.validate_property(ServerAsset, Symbol("ipmi_mac"), o.ipmi_mac)
     OpenAPI.validate_property(ServerAsset, Symbol("ipmi_ip"), o.ipmi_ip)
-    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_admin_username"), o.ipmi_admin_username)
-    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_admin_password"), o.ipmi_admin_password)
-    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_client_username"), o.ipmi_client_username)
-    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_client_password"), o.ipmi_client_password)
-    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_updated"), o.ipmi_updated)
     OpenAPI.validate_property(ServerAsset, Symbol("ipmi_working"), o.ipmi_working)
     OpenAPI.validate_property(ServerAsset, Symbol("company"), o.company)
     OpenAPI.validate_property(ServerAsset, Symbol("comments"), o.comments)
@@ -241,8 +235,6 @@ function OpenAPI.validate_properties(o::ServerAsset)
     OpenAPI.validate_property(ServerAsset, Symbol("external_id"), o.external_id)
     OpenAPI.validate_property(ServerAsset, Symbol("billing_status"), o.billing_status)
     OpenAPI.validate_property(ServerAsset, Symbol("overdue"), o.overdue)
-    OpenAPI.validate_property(ServerAsset, Symbol("create_timestamp"), o.create_timestamp)
-    OpenAPI.validate_property(ServerAsset, Symbol("update_timestamp"), o.update_timestamp)
     OpenAPI.validate_property(ServerAsset, Symbol("asset_id"), o.asset_id)
     OpenAPI.validate_property(ServerAsset, Symbol("asset_name"), o.asset_name)
     OpenAPI.validate_property(ServerAsset, Symbol("rack_id"), o.rack_id)
@@ -251,11 +243,19 @@ function OpenAPI.validate_properties(o::ServerAsset)
     OpenAPI.validate_property(ServerAsset, Symbol("rack_size"), o.rack_size)
     OpenAPI.validate_property(ServerAsset, Symbol("rack_x"), o.rack_x)
     OpenAPI.validate_property(ServerAsset, Symbol("rack_y"), o.rack_y)
-    OpenAPI.validate_property(ServerAsset, Symbol("comment"), o.comment)
     OpenAPI.validate_property(ServerAsset, Symbol("switchports"), o.switchports)
     OpenAPI.validate_property(ServerAsset, Symbol("vlans"), o.vlans)
     OpenAPI.validate_property(ServerAsset, Symbol("vlans6"), o.vlans6)
     OpenAPI.validate_property(ServerAsset, Symbol("lease"), o.lease)
+    OpenAPI.validate_property(ServerAsset, Symbol("mac"), o.mac)
+    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_admin_username"), o.ipmi_admin_username)
+    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_admin_password"), o.ipmi_admin_password)
+    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_client_username"), o.ipmi_client_username)
+    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_client_password"), o.ipmi_client_password)
+    OpenAPI.validate_property(ServerAsset, Symbol("ipmi_updated"), o.ipmi_updated)
+    OpenAPI.validate_property(ServerAsset, Symbol("create_timestamp"), o.create_timestamp)
+    OpenAPI.validate_property(ServerAsset, Symbol("update_timestamp"), o.update_timestamp)
+    OpenAPI.validate_property(ServerAsset, Symbol("comment"), o.comment)
 end
 
 function OpenAPI.validate_property(::Type{ ServerAsset }, name::Symbol, val)

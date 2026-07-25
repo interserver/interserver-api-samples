@@ -15,14 +15,14 @@ No summary available.
 
 Basic information useful for rendering a login page.
 
-.PARAMETER Logo
-A logo image url.
 .PARAMETER Captcha
 A base64 encoded image to use for rendering the alternateive captcha.
-.PARAMETER Language
-The desired langauge to render the site with.
 .PARAMETER Counts
 No description available.
+.PARAMETER Logo
+A logo image url.
+.PARAMETER Language
+The desired langauge to render the site with.
 .OUTPUTS
 
 LoginInfo<PSCustomObject>
@@ -33,16 +33,16 @@ function Initialize-LoginInfo {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Logo},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
         ${Captcha},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Counts},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Language},
+        ${Logo},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${Counts}
+        [String]
+        ${Language}
     )
 
     Process {
@@ -59,10 +59,10 @@ function Initialize-LoginInfo {
 
 
         $PSO = [PSCustomObject]@{
-            'logo' = ${Logo}
             'captcha' = ${Captcha}
-            'language' = ${Language}
             'counts' = ${Counts}
+            'logo' = ${Logo}
+            'language' = ${Language}
         }
 
 
@@ -100,7 +100,7 @@ function ConvertFrom-JsonToLoginInfo {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in LoginInfo
-        $AllProperties = ('logo', 'captcha', 'language', 'counts')
+        $AllProperties = ('captcha', 'counts', 'logo', 'language')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -136,10 +136,10 @@ function ConvertFrom-JsonToLoginInfo {
         }
 
         $PSO = [PSCustomObject]@{
-            'logo' = ${Logo}
             'captcha' = ${Captcha}
-            'language' = ${Language}
             'counts' = ${Counts}
+            'logo' = ${Logo}
+            'language' = ${Language}
         }
 
         return $PSO

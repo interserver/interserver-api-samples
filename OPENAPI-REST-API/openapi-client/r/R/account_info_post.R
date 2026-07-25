@@ -8,14 +8,14 @@
 #' @description AccountInfoPost Class
 #' @format An \code{R6Class} generator object
 #' @field name Your name. character
-#' @field company Your company name. character [optional]
 #' @field address Your address. character
-#' @field address2 Additional address information. character [optional]
 #' @field city Your city. character
 #' @field state Your state. character
 #' @field zip Your ZIP code. character
 #' @field country Your country. character
 #' @field phone Your phone number. character
+#' @field company Your company name. character [optional]
+#' @field address2 Additional address information. character [optional]
 #' @field locale Your preferred locale. character [optional]
 #' @field email_invoices Your email for invoice notifications. character [optional]
 #' @field email_abuse Your email for abuse notifications. character [optional]
@@ -31,14 +31,14 @@ AccountInfoPost <- R6::R6Class(
   "AccountInfoPost",
   public = list(
     `name` = NULL,
-    `company` = NULL,
     `address` = NULL,
-    `address2` = NULL,
     `city` = NULL,
     `state` = NULL,
     `zip` = NULL,
     `country` = NULL,
     `phone` = NULL,
+    `company` = NULL,
+    `address2` = NULL,
     `locale` = NULL,
     `email_invoices` = NULL,
     `email_abuse` = NULL,
@@ -209,17 +209,9 @@ AccountInfoPost <- R6::R6Class(
         AccountInfoPostObject[["name"]] <-
           self$`name`
       }
-      if (!is.null(self$`company`)) {
-        AccountInfoPostObject[["company"]] <-
-          self$`company`
-      }
       if (!is.null(self$`address`)) {
         AccountInfoPostObject[["address"]] <-
           self$`address`
-      }
-      if (!is.null(self$`address2`)) {
-        AccountInfoPostObject[["address2"]] <-
-          self$`address2`
       }
       if (!is.null(self$`city`)) {
         AccountInfoPostObject[["city"]] <-
@@ -240,6 +232,14 @@ AccountInfoPost <- R6::R6Class(
       if (!is.null(self$`phone`)) {
         AccountInfoPostObject[["phone"]] <-
           self$`phone`
+      }
+      if (!is.null(self$`company`)) {
+        AccountInfoPostObject[["company"]] <-
+          self$`company`
+      }
+      if (!is.null(self$`address2`)) {
+        AccountInfoPostObject[["address2"]] <-
+          self$`address2`
       }
       if (!is.null(self$`locale`)) {
         AccountInfoPostObject[["locale"]] <-
@@ -286,14 +286,8 @@ AccountInfoPost <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
-      if (!is.null(this_object$`company`)) {
-        self$`company` <- this_object$`company`
-      }
       if (!is.null(this_object$`address`)) {
         self$`address` <- this_object$`address`
-      }
-      if (!is.null(this_object$`address2`)) {
-        self$`address2` <- this_object$`address2`
       }
       if (!is.null(this_object$`city`)) {
         self$`city` <- this_object$`city`
@@ -309,6 +303,12 @@ AccountInfoPost <- R6::R6Class(
       }
       if (!is.null(this_object$`phone`)) {
         self$`phone` <- this_object$`phone`
+      }
+      if (!is.null(this_object$`company`)) {
+        self$`company` <- this_object$`company`
+      }
+      if (!is.null(this_object$`address2`)) {
+        self$`address2` <- this_object$`address2`
       }
       if (!is.null(this_object$`locale`)) {
         self$`locale` <- this_object$`locale`
@@ -356,14 +356,14 @@ AccountInfoPost <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
-      self$`company` <- this_object$`company`
       self$`address` <- this_object$`address`
-      self$`address2` <- this_object$`address2`
       self$`city` <- this_object$`city`
       self$`state` <- this_object$`state`
       self$`zip` <- this_object$`zip`
       self$`country` <- this_object$`country`
       self$`phone` <- this_object$`phone`
+      self$`company` <- this_object$`company`
+      self$`address2` <- this_object$`address2`
       self$`locale` <- this_object$`locale`
       self$`email_invoices` <- this_object$`email_invoices`
       self$`email_abuse` <- this_object$`email_abuse`

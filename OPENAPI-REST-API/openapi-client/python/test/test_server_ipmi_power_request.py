@@ -36,8 +36,8 @@ class TestServerIpmiPowerRequest(unittest.TestCase):
         model = ServerIpmiPowerRequest()
         if include_optional:
             return ServerIpmiPowerRequest(
-                asset = 5432,
-                action = 'on'
+                action = 'on',
+                asset = 5432
             )
         else:
             return ServerIpmiPowerRequest(

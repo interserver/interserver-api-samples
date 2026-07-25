@@ -13,14 +13,14 @@
   | {'id', binary() }
   | {'from', binary() }
   | {'to', binary() }
-  | {'subject', binary() }
-  | {'messageId', binary() }
   | {'created', binary() }
   | {'time', integer() }
   | {'user', binary() }
   | {'transtype', binary() }
   | {'origin', binary() }
   | {'interface', binary() }
+  | {'subject', binary() }
+  | {'messageId', binary() }
   | {'sendingZone', binary() }
   | {'bodySize', integer() }
   | {'seq', integer() }
@@ -45,14 +45,14 @@ openapi_mail_log_entry(Fields) ->
             , {'id', binary() }
             , {'from', binary() }
             , {'to', binary() }
-            , {'subject', binary() }
-            , {'messageId', binary() }
             , {'created', binary() }
             , {'time', integer() }
             , {'user', binary() }
             , {'transtype', binary() }
             , {'origin', binary() }
             , {'interface', binary() }
+            , {'subject', binary() }
+            , {'messageId', binary() }
             , {'sendingZone', binary() }
             , {'bodySize', integer() }
             , {'seq', integer() }

@@ -13,7 +13,6 @@
 #' @field status Status of the asset. character
 #' @field primary_ipv4 Primary IPv4 address of the asset. character
 #' @field primary_ipv6 Primary IPv6 address of the asset. character
-#' @field mac MAC address associated with the asset. character [optional]
 #' @field datacenter Datacenter identifier for the asset. character
 #' @field type_id Type identifier for the asset. character
 #' @field asset_tag Asset tag associated with the asset. character
@@ -25,11 +24,6 @@
 #' @field unit_sub Subunit identifier for the asset. character
 #' @field ipmi_mac IPMI MAC address associated with the asset. character
 #' @field ipmi_ip IPMI IP address associated with the asset. character
-#' @field ipmi_admin_username IPMI admin username associated with the asset. character [optional]
-#' @field ipmi_admin_password IPMI admin password associated with the asset. character [optional]
-#' @field ipmi_client_username IPMI client username associated with the asset. character [optional]
-#' @field ipmi_client_password IPMI client password associated with the asset. character [optional]
-#' @field ipmi_updated IPMI update status associated with the asset. character [optional]
 #' @field ipmi_working IPMI working status associated with the asset. character
 #' @field company Company associated with the asset. character
 #' @field comments Comments associated with the asset. character
@@ -40,8 +34,6 @@
 #' @field external_id External identifier for the asset. character
 #' @field billing_status Billing status of the asset. character
 #' @field overdue Overdue status of the asset. character
-#' @field create_timestamp Timestamp of asset creation. character [optional]
-#' @field update_timestamp Timestamp of asset update. character [optional]
 #' @field asset_id Asset identifier for the asset. character
 #' @field asset_name Name of the asset. character
 #' @field rack_id Rack identifier for the asset. character
@@ -50,11 +42,19 @@
 #' @field rack_size Size of the rack associated with the asset. character
 #' @field rack_x X-coordinate of the asset within the rack. character
 #' @field rack_y Y-coordinate of the asset within the rack. character
-#' @field comment Comment associated with the asset. character [optional]
 #' @field switchports List of switchports associated with the asset. list(integer)
 #' @field vlans List of VLANs associated with the asset. list(character)
 #' @field vlans6 List of IPv6 VLANs associated with the asset. list(character)
 #' @field lease  \link{ServerLease}
+#' @field mac MAC address associated with the asset. character [optional]
+#' @field ipmi_admin_username IPMI admin username associated with the asset. character [optional]
+#' @field ipmi_admin_password IPMI admin password associated with the asset. character [optional]
+#' @field ipmi_client_username IPMI client username associated with the asset. character [optional]
+#' @field ipmi_client_password IPMI client password associated with the asset. character [optional]
+#' @field ipmi_updated IPMI update status associated with the asset. character [optional]
+#' @field create_timestamp Timestamp of asset creation. character [optional]
+#' @field update_timestamp Timestamp of asset update. character [optional]
+#' @field comment Comment associated with the asset. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -67,7 +67,6 @@ ServerAsset <- R6::R6Class(
     `status` = NULL,
     `primary_ipv4` = NULL,
     `primary_ipv6` = NULL,
-    `mac` = NULL,
     `datacenter` = NULL,
     `type_id` = NULL,
     `asset_tag` = NULL,
@@ -79,11 +78,6 @@ ServerAsset <- R6::R6Class(
     `unit_sub` = NULL,
     `ipmi_mac` = NULL,
     `ipmi_ip` = NULL,
-    `ipmi_admin_username` = NULL,
-    `ipmi_admin_password` = NULL,
-    `ipmi_client_username` = NULL,
-    `ipmi_client_password` = NULL,
-    `ipmi_updated` = NULL,
     `ipmi_working` = NULL,
     `company` = NULL,
     `comments` = NULL,
@@ -94,8 +88,6 @@ ServerAsset <- R6::R6Class(
     `external_id` = NULL,
     `billing_status` = NULL,
     `overdue` = NULL,
-    `create_timestamp` = NULL,
-    `update_timestamp` = NULL,
     `asset_id` = NULL,
     `asset_name` = NULL,
     `rack_id` = NULL,
@@ -104,11 +96,19 @@ ServerAsset <- R6::R6Class(
     `rack_size` = NULL,
     `rack_x` = NULL,
     `rack_y` = NULL,
-    `comment` = NULL,
     `switchports` = NULL,
     `vlans` = NULL,
     `vlans6` = NULL,
     `lease` = NULL,
+    `mac` = NULL,
+    `ipmi_admin_username` = NULL,
+    `ipmi_admin_password` = NULL,
+    `ipmi_client_username` = NULL,
+    `ipmi_client_password` = NULL,
+    `ipmi_updated` = NULL,
+    `create_timestamp` = NULL,
+    `update_timestamp` = NULL,
+    `comment` = NULL,
 
     #' @description
     #' Initialize a new ServerAsset class.
@@ -503,10 +503,6 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[["primary_ipv6"]] <-
           self$`primary_ipv6`
       }
-      if (!is.null(self$`mac`)) {
-        ServerAssetObject[["mac"]] <-
-          self$`mac`
-      }
       if (!is.null(self$`datacenter`)) {
         ServerAssetObject[["datacenter"]] <-
           self$`datacenter`
@@ -551,26 +547,6 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[["ipmi_ip"]] <-
           self$`ipmi_ip`
       }
-      if (!is.null(self$`ipmi_admin_username`)) {
-        ServerAssetObject[["ipmi_admin_username"]] <-
-          self$`ipmi_admin_username`
-      }
-      if (!is.null(self$`ipmi_admin_password`)) {
-        ServerAssetObject[["ipmi_admin_password"]] <-
-          self$`ipmi_admin_password`
-      }
-      if (!is.null(self$`ipmi_client_username`)) {
-        ServerAssetObject[["ipmi_client_username"]] <-
-          self$`ipmi_client_username`
-      }
-      if (!is.null(self$`ipmi_client_password`)) {
-        ServerAssetObject[["ipmi_client_password"]] <-
-          self$`ipmi_client_password`
-      }
-      if (!is.null(self$`ipmi_updated`)) {
-        ServerAssetObject[["ipmi_updated"]] <-
-          self$`ipmi_updated`
-      }
       if (!is.null(self$`ipmi_working`)) {
         ServerAssetObject[["ipmi_working"]] <-
           self$`ipmi_working`
@@ -611,14 +587,6 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[["overdue"]] <-
           self$`overdue`
       }
-      if (!is.null(self$`create_timestamp`)) {
-        ServerAssetObject[["create_timestamp"]] <-
-          self$`create_timestamp`
-      }
-      if (!is.null(self$`update_timestamp`)) {
-        ServerAssetObject[["update_timestamp"]] <-
-          self$`update_timestamp`
-      }
       if (!is.null(self$`asset_id`)) {
         ServerAssetObject[["asset_id"]] <-
           self$`asset_id`
@@ -651,10 +619,6 @@ ServerAsset <- R6::R6Class(
         ServerAssetObject[["rack_y"]] <-
           self$`rack_y`
       }
-      if (!is.null(self$`comment`)) {
-        ServerAssetObject[["comment"]] <-
-          self$`comment`
-      }
       if (!is.null(self$`switchports`)) {
         ServerAssetObject[["switchports"]] <-
           self$`switchports`
@@ -670,6 +634,42 @@ ServerAsset <- R6::R6Class(
       if (!is.null(self$`lease`)) {
         ServerAssetObject[["lease"]] <-
           self$extractSimpleType(self$`lease`)
+      }
+      if (!is.null(self$`mac`)) {
+        ServerAssetObject[["mac"]] <-
+          self$`mac`
+      }
+      if (!is.null(self$`ipmi_admin_username`)) {
+        ServerAssetObject[["ipmi_admin_username"]] <-
+          self$`ipmi_admin_username`
+      }
+      if (!is.null(self$`ipmi_admin_password`)) {
+        ServerAssetObject[["ipmi_admin_password"]] <-
+          self$`ipmi_admin_password`
+      }
+      if (!is.null(self$`ipmi_client_username`)) {
+        ServerAssetObject[["ipmi_client_username"]] <-
+          self$`ipmi_client_username`
+      }
+      if (!is.null(self$`ipmi_client_password`)) {
+        ServerAssetObject[["ipmi_client_password"]] <-
+          self$`ipmi_client_password`
+      }
+      if (!is.null(self$`ipmi_updated`)) {
+        ServerAssetObject[["ipmi_updated"]] <-
+          self$`ipmi_updated`
+      }
+      if (!is.null(self$`create_timestamp`)) {
+        ServerAssetObject[["create_timestamp"]] <-
+          self$`create_timestamp`
+      }
+      if (!is.null(self$`update_timestamp`)) {
+        ServerAssetObject[["update_timestamp"]] <-
+          self$`update_timestamp`
+      }
+      if (!is.null(self$`comment`)) {
+        ServerAssetObject[["comment"]] <-
+          self$`comment`
       }
       return(ServerAssetObject)
     },
@@ -722,9 +722,6 @@ ServerAsset <- R6::R6Class(
       if (!is.null(this_object$`primary_ipv6`)) {
         self$`primary_ipv6` <- this_object$`primary_ipv6`
       }
-      if (!is.null(this_object$`mac`)) {
-        self$`mac` <- this_object$`mac`
-      }
       if (!is.null(this_object$`datacenter`)) {
         self$`datacenter` <- this_object$`datacenter`
       }
@@ -758,21 +755,6 @@ ServerAsset <- R6::R6Class(
       if (!is.null(this_object$`ipmi_ip`)) {
         self$`ipmi_ip` <- this_object$`ipmi_ip`
       }
-      if (!is.null(this_object$`ipmi_admin_username`)) {
-        self$`ipmi_admin_username` <- this_object$`ipmi_admin_username`
-      }
-      if (!is.null(this_object$`ipmi_admin_password`)) {
-        self$`ipmi_admin_password` <- this_object$`ipmi_admin_password`
-      }
-      if (!is.null(this_object$`ipmi_client_username`)) {
-        self$`ipmi_client_username` <- this_object$`ipmi_client_username`
-      }
-      if (!is.null(this_object$`ipmi_client_password`)) {
-        self$`ipmi_client_password` <- this_object$`ipmi_client_password`
-      }
-      if (!is.null(this_object$`ipmi_updated`)) {
-        self$`ipmi_updated` <- this_object$`ipmi_updated`
-      }
       if (!is.null(this_object$`ipmi_working`)) {
         self$`ipmi_working` <- this_object$`ipmi_working`
       }
@@ -803,12 +785,6 @@ ServerAsset <- R6::R6Class(
       if (!is.null(this_object$`overdue`)) {
         self$`overdue` <- this_object$`overdue`
       }
-      if (!is.null(this_object$`create_timestamp`)) {
-        self$`create_timestamp` <- this_object$`create_timestamp`
-      }
-      if (!is.null(this_object$`update_timestamp`)) {
-        self$`update_timestamp` <- this_object$`update_timestamp`
-      }
       if (!is.null(this_object$`asset_id`)) {
         self$`asset_id` <- this_object$`asset_id`
       }
@@ -833,9 +809,6 @@ ServerAsset <- R6::R6Class(
       if (!is.null(this_object$`rack_y`)) {
         self$`rack_y` <- this_object$`rack_y`
       }
-      if (!is.null(this_object$`comment`)) {
-        self$`comment` <- this_object$`comment`
-      }
       if (!is.null(this_object$`switchports`)) {
         self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("interserverapi"))
       }
@@ -849,6 +822,33 @@ ServerAsset <- R6::R6Class(
         `lease_object` <- ServerLease$new()
         `lease_object`$fromJSON(jsonlite::toJSON(this_object$`lease`, auto_unbox = TRUE, digits = NA))
         self$`lease` <- `lease_object`
+      }
+      if (!is.null(this_object$`mac`)) {
+        self$`mac` <- this_object$`mac`
+      }
+      if (!is.null(this_object$`ipmi_admin_username`)) {
+        self$`ipmi_admin_username` <- this_object$`ipmi_admin_username`
+      }
+      if (!is.null(this_object$`ipmi_admin_password`)) {
+        self$`ipmi_admin_password` <- this_object$`ipmi_admin_password`
+      }
+      if (!is.null(this_object$`ipmi_client_username`)) {
+        self$`ipmi_client_username` <- this_object$`ipmi_client_username`
+      }
+      if (!is.null(this_object$`ipmi_client_password`)) {
+        self$`ipmi_client_password` <- this_object$`ipmi_client_password`
+      }
+      if (!is.null(this_object$`ipmi_updated`)) {
+        self$`ipmi_updated` <- this_object$`ipmi_updated`
+      }
+      if (!is.null(this_object$`create_timestamp`)) {
+        self$`create_timestamp` <- this_object$`create_timestamp`
+      }
+      if (!is.null(this_object$`update_timestamp`)) {
+        self$`update_timestamp` <- this_object$`update_timestamp`
+      }
+      if (!is.null(this_object$`comment`)) {
+        self$`comment` <- this_object$`comment`
       }
       self
     },
@@ -877,7 +877,6 @@ ServerAsset <- R6::R6Class(
       self$`status` <- this_object$`status`
       self$`primary_ipv4` <- this_object$`primary_ipv4`
       self$`primary_ipv6` <- this_object$`primary_ipv6`
-      self$`mac` <- this_object$`mac`
       self$`datacenter` <- this_object$`datacenter`
       self$`type_id` <- this_object$`type_id`
       self$`asset_tag` <- this_object$`asset_tag`
@@ -889,11 +888,6 @@ ServerAsset <- R6::R6Class(
       self$`unit_sub` <- this_object$`unit_sub`
       self$`ipmi_mac` <- this_object$`ipmi_mac`
       self$`ipmi_ip` <- this_object$`ipmi_ip`
-      self$`ipmi_admin_username` <- this_object$`ipmi_admin_username`
-      self$`ipmi_admin_password` <- this_object$`ipmi_admin_password`
-      self$`ipmi_client_username` <- this_object$`ipmi_client_username`
-      self$`ipmi_client_password` <- this_object$`ipmi_client_password`
-      self$`ipmi_updated` <- this_object$`ipmi_updated`
       self$`ipmi_working` <- this_object$`ipmi_working`
       self$`company` <- this_object$`company`
       self$`comments` <- this_object$`comments`
@@ -904,8 +898,6 @@ ServerAsset <- R6::R6Class(
       self$`external_id` <- this_object$`external_id`
       self$`billing_status` <- this_object$`billing_status`
       self$`overdue` <- this_object$`overdue`
-      self$`create_timestamp` <- this_object$`create_timestamp`
-      self$`update_timestamp` <- this_object$`update_timestamp`
       self$`asset_id` <- this_object$`asset_id`
       self$`asset_name` <- this_object$`asset_name`
       self$`rack_id` <- this_object$`rack_id`
@@ -914,11 +906,19 @@ ServerAsset <- R6::R6Class(
       self$`rack_size` <- this_object$`rack_size`
       self$`rack_x` <- this_object$`rack_x`
       self$`rack_y` <- this_object$`rack_y`
-      self$`comment` <- this_object$`comment`
       self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("interserverapi"))
       self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       self$`lease` <- ServerLease$new()$fromJSON(jsonlite::toJSON(this_object$`lease`, auto_unbox = TRUE, digits = NA))
+      self$`mac` <- this_object$`mac`
+      self$`ipmi_admin_username` <- this_object$`ipmi_admin_username`
+      self$`ipmi_admin_password` <- this_object$`ipmi_admin_password`
+      self$`ipmi_client_username` <- this_object$`ipmi_client_username`
+      self$`ipmi_client_password` <- this_object$`ipmi_client_password`
+      self$`ipmi_updated` <- this_object$`ipmi_updated`
+      self$`create_timestamp` <- this_object$`create_timestamp`
+      self$`update_timestamp` <- this_object$`update_timestamp`
+      self$`comment` <- this_object$`comment`
       self
     },
 

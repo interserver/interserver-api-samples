@@ -79,6 +79,7 @@ public:
 	{
 		_0,
 		_1,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const AllEnum& EnumValue);
@@ -315,6 +316,7 @@ public:
 	{
 		_0,
 		_1,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const AllEnum& EnumValue);
@@ -398,6 +400,7 @@ public:
 	{
 		_0,
 		_1,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const AllEnum& EnumValue);

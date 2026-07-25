@@ -181,7 +181,7 @@ const { status, data } = await apiInstance.getCountries(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **fetchBy** | [**&#39;iso2&#39; | &#39;iso3&#39; | &#39;numcode&#39;**]**Array<&#39;iso2&#39; &#124; &#39;iso3&#39; &#124; &#39;numcode&#39;>** | Get countries by iso2 or iso3 or numcode | (optional) defaults to undefined|
+| **fetchBy** | [**&#39;iso2&#39; | &#39;iso3&#39; | &#39;numcode&#39;**]**Array<&#39;iso2&#39; &#124; &#39;iso3&#39; &#124; &#39;numcode&#39; &#124; &#39;11184809&#39;>** | Get countries by iso2 or iso3 or numcode | (optional) defaults to undefined|
 
 
 ### Return type

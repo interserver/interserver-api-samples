@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   GetScrubIpDetails200ResponseFilterFirewallRulesInner.JSON_PROPERTY_GLOBAL_DROP
 })
 @JsonTypeName("getScrubIpDetails_200_response_filter_firewall_rules_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class GetScrubIpDetails200ResponseFilterFirewallRulesInner {
     public static final String JSON_PROPERTY_ID = "id";

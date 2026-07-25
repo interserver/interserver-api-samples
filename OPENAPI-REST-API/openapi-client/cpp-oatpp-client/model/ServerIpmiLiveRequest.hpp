@@ -35,10 +35,10 @@ class ServerIpmiLiveRequest : public oatpp::DTO {
 
   DTO_INIT(ServerIpmiLiveRequest, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::Int32, asset);
-  DTO_FIELD(oatpp::Boolean, assetIsSet);
   DTO_FIELD(oatpp::String, ip);
 
+  DTO_FIELD(oatpp::Int32, asset);
+  DTO_FIELD(oatpp::Boolean, assetIsSet);
 
 };
 

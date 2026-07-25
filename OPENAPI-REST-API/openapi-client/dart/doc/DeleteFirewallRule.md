@@ -1,8 +1,8 @@
-# openapi.model.DeleteFirewallRule
+# interserver_api.model.DeleteFirewallRule
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

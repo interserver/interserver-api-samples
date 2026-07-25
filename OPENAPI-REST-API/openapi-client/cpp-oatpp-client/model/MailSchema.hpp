@@ -52,14 +52,14 @@ class MailSchema : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, package);
 
-  DTO_FIELD(oatpp::Vector<oatpp::String>, serviceExtra);
-  DTO_FIELD(oatpp::Boolean, serviceExtraIsSet);
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::MailSchema_extraInfoTables>, extraInfoTables);
 
   DTO_FIELD(oatpp::Object<org::openapitools::client::model::MailServiceType>, serviceType);
 
   DTO_FIELD(oatpp::String, usage_count);
 
+  DTO_FIELD(oatpp::Vector<oatpp::String>, serviceExtra);
+  DTO_FIELD(oatpp::Boolean, serviceExtraIsSet);
 
 };
 

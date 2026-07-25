@@ -31,10 +31,10 @@ class LicenseClientLink(BaseModel):
     label: StrictStr = Field(description="Link label", json_schema_extra={"examples": ["Invoices"]})
     link: StrictStr = Field(description="Link URL", json_schema_extra={"examples": ["invoices"]})
     icon: StrictStr = Field(description="Link icon", json_schema_extra={"examples": ["fas fa-file-invoice-dollar fa-w-12"]})
-    icon_text: Optional[StrictStr] = Field(default=None, description="Icon text", json_schema_extra={"examples": [""]})
     help_text: StrictStr = Field(description="Help text", json_schema_extra={"examples": ["Invoice History"]})
+    icon_text: Optional[StrictStr] = Field(default=None, description="Icon text", json_schema_extra={"examples": [""]})
     other_attr: Optional[StrictStr] = Field(default=None, description="Other attributes", json_schema_extra={"examples": [""]})
-    __properties: ClassVar[List[str]] = ["label", "link", "icon", "icon_text", "help_text", "other_attr"]
+    __properties: ClassVar[List[str]] = ["label", "link", "icon", "help_text", "icon_text", "other_attr"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,8 +90,8 @@ class LicenseClientLink(BaseModel):
             "label": obj.get("label"),
             "link": obj.get("link"),
             "icon": obj.get("icon"),
-            "icon_text": obj.get("icon_text"),
             "help_text": obj.get("help_text"),
+            "icon_text": obj.get("icon_text"),
             "other_attr": obj.get("other_attr")
         })
         return _obj

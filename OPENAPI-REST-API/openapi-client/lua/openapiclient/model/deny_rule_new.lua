@@ -19,11 +19,11 @@ local function cast_deny_rule_new(t)
 	return setmetatable(t, deny_rule_new_mt)
 end
 
-local function new_deny_rule_new(user, type, data)
+local function new_deny_rule_new(type, data, user)
 	return cast_deny_rule_new({
-		["user"] = user;
 		["type"] = type;
 		["data"] = data;
+		["user"] = user;
 	})
 end
 

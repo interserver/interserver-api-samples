@@ -19,11 +19,11 @@ No description available.
 No description available.
 .PARAMETER LocationName
 No description available.
-.PARAMETER LocationDescription
-No description available.
 .PARAMETER LocationLat
 No description available.
 .PARAMETER LocationLong
+No description available.
+.PARAMETER LocationDescription
 No description available.
 .PARAMETER LocationIpmiGroup
 No description available.
@@ -43,13 +43,13 @@ function Initialize-ServerLocation1 {
         ${LocationName},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LocationDescription},
+        ${LocationLat},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LocationLat},
+        ${LocationLong},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LocationLong},
+        ${LocationDescription},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Int32]]
         ${LocationIpmiGroup}
@@ -79,9 +79,9 @@ function Initialize-ServerLocation1 {
         $PSO = [PSCustomObject]@{
             'location_id' = ${LocationId}
             'location_name' = ${LocationName}
-            'location_description' = ${LocationDescription}
             'location_lat' = ${LocationLat}
             'location_long' = ${LocationLong}
+            'location_description' = ${LocationDescription}
             'location_ipmi_group' = ${LocationIpmiGroup}
         }
 
@@ -120,7 +120,7 @@ function ConvertFrom-JsonToServerLocation1 {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServerLocation1
-        $AllProperties = ('location_id', 'location_name', 'location_description', 'location_lat', 'location_long', 'location_ipmi_group')
+        $AllProperties = ('location_id', 'location_name', 'location_lat', 'location_long', 'location_description', 'location_ipmi_group')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -170,9 +170,9 @@ function ConvertFrom-JsonToServerLocation1 {
         $PSO = [PSCustomObject]@{
             'location_id' = ${LocationId}
             'location_name' = ${LocationName}
-            'location_description' = ${LocationDescription}
             'location_lat' = ${LocationLat}
             'location_long' = ${LocationLong}
+            'location_description' = ${LocationDescription}
             'location_ipmi_group' = ${LocationIpmiGroup}
         }
 

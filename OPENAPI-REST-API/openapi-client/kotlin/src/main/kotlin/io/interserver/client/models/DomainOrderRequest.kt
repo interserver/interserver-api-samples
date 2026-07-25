@@ -60,22 +60,24 @@ data class DomainOrderRequest (
     /**
      * Order type.
      *
-     * Values: register,transfer
+     * Values: register,transfer,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Type(val value: kotlin.String) {
         @Json(name = "register") register("register"),
-        @Json(name = "transfer") transfer("transfer");
+        @Json(name = "transfer") transfer("transfer"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
     /**
      * Set to \"enable\" to add Whois privacy (addDomain only).
      *
-     * Values: enable,disable
+     * Values: enable,disable,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class WhoisPrivacy(val value: kotlin.String) {
         @Json(name = "enable") enable("enable"),
-        @Json(name = "disable") disable("disable");
+        @Json(name = "disable") disable("disable"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

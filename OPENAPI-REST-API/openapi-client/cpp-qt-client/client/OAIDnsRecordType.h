@@ -88,7 +88,8 @@ public:
         TSIG, 
         TXT, 
         WKS, 
-        URI_
+        URI_, 
+        UNKNOWN_DEFAULT_OPEN_API
     };
     OAIDnsRecordType::eOAIDnsRecordType getValue() const;
     void setValue(const OAIDnsRecordType::eOAIDnsRecordType& value);

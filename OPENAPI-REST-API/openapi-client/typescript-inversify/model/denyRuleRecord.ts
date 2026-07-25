@@ -37,11 +37,12 @@ export interface DenyRuleRecord {
     user?: string;
 }
 export namespace DenyRuleRecord {
-    export type TypeEnum = 'domain' | 'email' | 'startswith' | 'destination';
+    export type TypeEnum = 'domain' | 'email' | 'startswith' | 'destination' | '11184809';
     export const TypeEnum = {
         Domain: 'domain' as TypeEnum,
         Email: 'email' as TypeEnum,
         Startswith: 'startswith' as TypeEnum,
-        Destination: 'destination' as TypeEnum
+        Destination: 'destination' as TypeEnum,
+        UnknownDefaultOpenApi: '11184809' as TypeEnum
     }
 }

@@ -22,11 +22,11 @@
 
 @interface ISAServerIpmiLiveRequest : ISAObject
 
-/* Asset ID [optional]
- */
-@property(nonatomic) NSNumber* asset;
 /* Your IP Address you wish to connect to the IPMI system from. 
  */
 @property(nonatomic) NSString* ip;
+/* Asset ID [optional]
+ */
+@property(nonatomic) NSNumber* asset;
 
 @end

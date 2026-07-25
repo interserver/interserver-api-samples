@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **LicenseCustid** | **String** | Customer ID | 
 **LicenseIp** | **String** | License IP | 
 **LicenseStatus** | **String** | License status | 
-**LicenseHostname** | **String** | License hostname | [optional] 
-**LicenseKey** | **String** | License key | [optional] 
 **LicenseInvoice** | **String** | License invoice | 
 **LicenseCoupon** | **String** | License coupon | 
+**LicenseHostname** | **String** | License hostname | [optional] 
+**LicenseKey** | **String** | License key | [optional] 
 **LicenseExtra** | **String** | Additional license information | [optional] 
 
 ## Examples
@@ -27,10 +27,10 @@ $LicenseServiceInfo = Initialize-InterserverApiLicenseServiceInfo  -LicenseId 38
  -LicenseCustid 771282 `
  -LicenseIp 1.2.3.4 `
  -LicenseStatus active `
- -LicenseHostname  `
- -LicenseKey  `
  -LicenseInvoice 18704419 `
  -LicenseCoupon 1836 `
+ -LicenseHostname  `
+ -LicenseKey  `
  -LicenseExtra 
 ```
 

@@ -35,7 +35,8 @@ Protected Class TicketCustomFieldDetails
         
         Y
         N
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -47,7 +48,10 @@ Protected Class TicketCustomFieldDetails
 		      Return "y"
 		    Case Customer_Server_AccessEnum.N
 		      Return "n"
-		    
+		    Case Customer_Server_AccessEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

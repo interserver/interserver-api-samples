@@ -142,6 +142,12 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    std::string getPREFIX() const;
+    void setPREFIX(std::string value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     std::string getTITLEFIELD2() const;
     void setTITLEFIELD2(std::string value);
 
@@ -150,12 +156,6 @@ public:
     /// </summary>
     std::string getTITLEFIELD3() const;
     void setTITLEFIELD3(std::string value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::string getPREFIX() const;
-    void setPREFIX(std::string value);
 
 protected:
     //////////////////////////////////////
@@ -182,11 +182,11 @@ protected:
     std::string m_TBLNAME = "";
     std::string m_TABLE = "";
     std::string m_TITLE_FIELD = "";
+    std::string m_PREFIX = "";
     std::string m_TITLE_FIELD2 = "";
     bool m_TITLE_FIELD2IsSet = false;
     std::string m_TITLE_FIELD3 = "";
     bool m_TITLE_FIELD3IsSet = false;
-    std::string m_PREFIX = "";
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ModuleSettings>>& data);

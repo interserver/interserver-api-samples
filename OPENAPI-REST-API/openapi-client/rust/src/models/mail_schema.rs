@@ -29,9 +29,6 @@ pub struct MailSchema {
     /// The package of the mail service.
     #[serde(rename = "package")]
     pub package: String,
-    /// Extra information for the mail service.
-    #[serde(rename = "serviceExtra", skip_serializing_if = "Option::is_none")]
-    pub service_extra: Option<Vec<String>>,
     #[serde(rename = "extraInfoTables")]
     pub extra_info_tables: Box<models::MailSchemaExtraInfoTables>,
     #[serde(rename = "serviceType")]
@@ -39,6 +36,9 @@ pub struct MailSchema {
     /// The usage count of the mail service.
     #[serde(rename = "usage_count")]
     pub usage_count: String,
+    /// Extra information for the mail service.
+    #[serde(rename = "serviceExtra", skip_serializing_if = "Option::is_none")]
+    pub service_extra: Option<Vec<String>>,
 }
 
 impl MailSchema {
@@ -50,10 +50,10 @@ impl MailSchema {
             cust_currency,
             cust_currency_symbol,
             package,
-            service_extra: None,
             extra_info_tables: Box::new(extra_info_tables),
             service_type: Box::new(service_type),
             usage_count,
+            service_extra: None,
         }
     }
 }

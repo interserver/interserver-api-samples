@@ -42,7 +42,6 @@ class TestServerAsset(unittest.TestCase):
                 status = 'active',
                 primary_ipv4 = '1.2.3.250',
                 primary_ipv6 = '',
-                mac = '',
                 datacenter = '2',
                 type_id = '1',
                 asset_tag = '',
@@ -54,11 +53,6 @@ class TestServerAsset(unittest.TestCase):
                 unit_sub = '0',
                 ipmi_mac = '0c:c4:7a:af:35:00',
                 ipmi_ip = '10.8.69.7',
-                ipmi_admin_username = '',
-                ipmi_admin_password = '',
-                ipmi_client_username = '',
-                ipmi_client_password = '',
-                ipmi_updated = '',
                 ipmi_working = '0',
                 company = 'int',
                 comments = '',
@@ -69,8 +63,6 @@ class TestServerAsset(unittest.TestCase):
                 external_id = '',
                 billing_status = 'active',
                 overdue = '0',
-                create_timestamp = '',
-                update_timestamp = '',
                 asset_id = '1',
                 asset_name = 'server',
                 rack_id = '68',
@@ -79,14 +71,22 @@ class TestServerAsset(unittest.TestCase):
                 rack_size = '44',
                 rack_x = '25',
                 rack_y = '5',
-                comment = '',
                 switchports = [10414],
                 vlans = [],
                 vlans6 = [],
                 lease = interserver_api_client.models.server_lease.ServerLease(
                     mac = '0c:c4:7a:af:35:00', 
                     authenticated = False, 
-                    group = '1', )
+                    group = '1', ),
+                mac = '',
+                ipmi_admin_username = '',
+                ipmi_admin_password = '',
+                ipmi_client_username = '',
+                ipmi_client_password = '',
+                ipmi_updated = '',
+                create_timestamp = '',
+                update_timestamp = '',
+                comment = ''
             )
         else:
             return ServerAsset(

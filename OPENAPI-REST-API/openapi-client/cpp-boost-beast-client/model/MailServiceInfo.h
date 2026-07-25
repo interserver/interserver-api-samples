@@ -56,12 +56,6 @@ public:
     void setMailId(std::string value);
 
     /// <summary>
-    /// The username associated with the mail service.
-    /// </summary>
-    std::string getMailUsername() const;
-    void setMailUsername(std::string value);
-
-    /// <summary>
     /// The type of mail service.
     /// </summary>
     std::string getMailType() const;
@@ -92,12 +86,6 @@ public:
     void setMailQuota(std::string value);
 
     /// <summary>
-    /// The IP address associated with the mail service.
-    /// </summary>
-    std::string getMailIp() const;
-    void setMailIp(std::string value);
-
-    /// <summary>
     /// The status of the mail service.
     /// </summary>
     std::string getMailStatus() const;
@@ -108,6 +96,18 @@ public:
     /// </summary>
     std::string getMailInvoice() const;
     void setMailInvoice(std::string value);
+
+    /// <summary>
+    /// The username associated with the mail service.
+    /// </summary>
+    std::string getMailUsername() const;
+    void setMailUsername(std::string value);
+
+    /// <summary>
+    /// The IP address associated with the mail service.
+    /// </summary>
+    std::string getMailIp() const;
+    void setMailIp(std::string value);
 
     /// <summary>
     /// The coupon associated with the mail service.
@@ -144,17 +144,17 @@ protected:
 
 protected:
     std::string m_Mail_id = "";
-    std::string m_Mail_username = "";
-    bool m_Mail_usernameIsSet = false;
     std::string m_Mail_type = "";
     std::string m_Mail_currency = "";
     std::string m_Mail_order_date = "";
     std::string m_Mail_custid = "";
     std::string m_Mail_quota = "";
-    std::string m_Mail_ip = "";
-    bool m_Mail_ipIsSet = false;
     std::string m_Mail_status = "";
     std::string m_Mail_invoice = "";
+    std::string m_Mail_username = "";
+    bool m_Mail_usernameIsSet = false;
+    std::string m_Mail_ip = "";
+    bool m_Mail_ipIsSet = false;
     std::string m_Mail_coupon = "";
     bool m_Mail_couponIsSet = false;
     std::string m_Mail_extra = "";

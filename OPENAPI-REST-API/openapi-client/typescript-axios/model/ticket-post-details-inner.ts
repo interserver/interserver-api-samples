@@ -28,6 +28,7 @@ export interface TicketPostDetailsInner {
 export const TicketPostDetailsInnerCreatorEnum = {
     User: 'User',
     Staff: 'Staff',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type TicketPostDetailsInnerCreatorEnum = typeof TicketPostDetailsInnerCreatorEnum[keyof typeof TicketPostDetailsInnerCreatorEnum];

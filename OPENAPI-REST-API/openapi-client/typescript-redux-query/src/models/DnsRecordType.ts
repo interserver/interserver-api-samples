@@ -65,7 +65,8 @@ export enum DnsRecordType {
     Tsig = 'TSIG',
     Txt = 'TXT',
     Wks = 'WKS',
-    Uri = 'URI⏎'
+    Uri = 'URI⏎',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 export function DnsRecordTypeFromJSON(json: any): DnsRecordType {

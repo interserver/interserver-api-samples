@@ -5,14 +5,6 @@ context("Test DenyRuleNew")
 
 model_instance <- DenyRuleNew$new()
 
-test_that("user", {
-  # tests for the property `user` (character)
-  # Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
-})
-
 test_that("type", {
   # tests for the property `type` (character)
   # The type of deny rule.
@@ -27,4 +19,12 @@ test_that("data", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+})
+
+test_that("user", {
+  # tests for the property `user` (character)
+  # Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
 })

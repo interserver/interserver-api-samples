@@ -161,7 +161,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      time_validator = EnumAttributeValidator.new('String', ["all", "billing", "month", "7d", "24h", "today", "1h"])
+      time_validator = EnumAttributeValidator.new('String', ["all", "billing", "month", "7d", "24h", "today", "1h", "unknown_default_open_api"])
       return false unless time_validator.valid?(@time)
       true
     end
@@ -169,7 +169,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] time Object to be assigned
     def time=(time)
-      validator = EnumAttributeValidator.new('String', ["all", "billing", "month", "7d", "24h", "today", "1h"])
+      validator = EnumAttributeValidator.new('String', ["all", "billing", "month", "7d", "24h", "today", "1h", "unknown_default_open_api"])
       unless validator.valid?(time)
         fail ArgumentError, "invalid value for \"time\", must be one of #{validator.allowable_values}."
       end

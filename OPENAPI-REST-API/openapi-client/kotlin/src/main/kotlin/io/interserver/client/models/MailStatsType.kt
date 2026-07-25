@@ -73,7 +73,7 @@ data class MailStatsType (
     /**
      * 
      *
-     * Values: all,billing,month,_7d,_24h,today,_1h
+     * Values: all,billing,month,_7d,_24h,today,_1h,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Time(val value: kotlin.String) {
@@ -83,7 +83,8 @@ data class MailStatsType (
         @Json(name = "7d") _7d("7d"),
         @Json(name = "24h") _24h("24h"),
         @Json(name = "today") today("today"),
-        @Json(name = "1h") _1h("1h");
+        @Json(name = "1h") _1h("1h"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

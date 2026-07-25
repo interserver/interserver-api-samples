@@ -26,7 +26,6 @@ VpsOrderPutRequest::VpsOrderPutRequest()
     m_Slices = 0;
     m_SlicesIsSet = false;
     m_VpsPlatformIsSet = false;
-    m_ControlpanelIsSet = false;
     m_Period = 0;
     m_PeriodIsSet = false;
     m_Location = 0;
@@ -35,10 +34,11 @@ VpsOrderPutRequest::VpsOrderPutRequest()
     m_OsVersionIsSet = false;
     m_Hostname = utility::conversions::to_string_t("");
     m_HostnameIsSet = false;
-    m_Coupon = utility::conversions::to_string_t("");
-    m_CouponIsSet = false;
     m_Rootpass = utility::conversions::to_string_t("");
     m_RootpassIsSet = false;
+    m_ControlpanelIsSet = false;
+    m_Coupon = utility::conversions::to_string_t("");
+    m_CouponIsSet = false;
     m_Comment = utility::conversions::to_string_t("");
     m_CommentIsSet = false;
 }
@@ -72,13 +72,6 @@ web::json::value VpsOrderPutRequest::toJson() const
         val[utility::conversions::to_string_t(_XPLATSTR("vpsPlatform"))] = ModelBase::toJson(refVal);
         
     }
-    if(m_ControlpanelIsSet)
-    {
-        
-        utility::string_t refVal = fromControlpanelEnum(m_Controlpanel);
-        val[utility::conversions::to_string_t(_XPLATSTR("controlpanel"))] = ModelBase::toJson(refVal);
-        
-    }
     if(m_PeriodIsSet)
     {
         
@@ -99,15 +92,22 @@ web::json::value VpsOrderPutRequest::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("hostname"))] = ModelBase::toJson(m_Hostname);
     }
-    if(m_CouponIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("coupon"))] = ModelBase::toJson(m_Coupon);
-    }
     if(m_RootpassIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("rootpass"))] = ModelBase::toJson(m_Rootpass);
+    }
+    if(m_ControlpanelIsSet)
+    {
+        
+        utility::string_t refVal = fromControlpanelEnum(m_Controlpanel);
+        val[utility::conversions::to_string_t(_XPLATSTR("controlpanel"))] = ModelBase::toJson(refVal);
+        
+    }
+    if(m_CouponIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("coupon"))] = ModelBase::toJson(m_Coupon);
     }
     if(m_CommentIsSet)
     {
@@ -155,18 +155,6 @@ bool VpsOrderPutRequest::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("controlpanel")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setControlpanel;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setControlpanel);
-            
-            setControlpanel(toControlpanelEnum(refVal_setControlpanel));
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("period"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("period")));
@@ -211,17 +199,6 @@ bool VpsOrderPutRequest::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("coupon"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("coupon")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setCoupon;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setCoupon);
-            setCoupon(refVal_setCoupon);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("rootpass"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("rootpass")));
@@ -230,6 +207,29 @@ bool VpsOrderPutRequest::fromJson(const web::json::value& val)
             utility::string_t refVal_setRootpass;
             ok &= ModelBase::fromJson(fieldValue, refVal_setRootpass);
             setRootpass(refVal_setRootpass);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("controlpanel")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setControlpanel;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setControlpanel);
+            
+            setControlpanel(toControlpanelEnum(refVal_setControlpanel));
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("coupon"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("coupon")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCoupon;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCoupon);
+            setCoupon(refVal_setCoupon);
             
         }
     }
@@ -266,10 +266,6 @@ void VpsOrderPutRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("vpsPlatform")), fromVpsPlatformEnum(m_VpsPlatform)));
     }
-    if(m_ControlpanelIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("controlpanel")), fromControlpanelEnum(m_Controlpanel)));
-    }
     if(m_PeriodIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("period")), m_Period));
@@ -286,13 +282,17 @@ void VpsOrderPutRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("hostname")), m_Hostname));
     }
-    if(m_CouponIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("coupon")), m_Coupon));
-    }
     if(m_RootpassIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("rootpass")), m_Rootpass));
+    }
+    if(m_ControlpanelIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("controlpanel")), fromControlpanelEnum(m_Controlpanel)));
+    }
+    if(m_CouponIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("coupon")), m_Coupon));
     }
     if(m_CommentIsSet)
     {
@@ -327,12 +327,6 @@ bool VpsOrderPutRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("vpsPlatform"))), refVal_setVpsPlatform );
         setVpsPlatform(toVpsPlatformEnum(refVal_setVpsPlatform));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))))
-    {
-        utility::string_t refVal_setControlpanel;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))), refVal_setControlpanel );
-        setControlpanel(toControlpanelEnum(refVal_setControlpanel));
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("period"))))
     {
         int32_t refVal_setPeriod;
@@ -357,17 +351,23 @@ bool VpsOrderPutRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("hostname"))), refVal_setHostname );
         setHostname(refVal_setHostname);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("coupon"))))
-    {
-        utility::string_t refVal_setCoupon;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("coupon"))), refVal_setCoupon );
-        setCoupon(refVal_setCoupon);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("rootpass"))))
     {
         utility::string_t refVal_setRootpass;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("rootpass"))), refVal_setRootpass );
         setRootpass(refVal_setRootpass);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))))
+    {
+        utility::string_t refVal_setControlpanel;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("controlpanel"))), refVal_setControlpanel );
+        setControlpanel(toControlpanelEnum(refVal_setControlpanel));
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("coupon"))))
+    {
+        utility::string_t refVal_setCoupon;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("coupon"))), refVal_setCoupon );
+        setCoupon(refVal_setCoupon);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("comment"))))
     {
@@ -393,6 +393,10 @@ VpsOrderPutRequest::VpsPlatformEnum VpsOrderPutRequest::toVpsPlatformEnum(const 
         return VpsPlatformEnum::KVMSTORAGE;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return VpsPlatformEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to VpsPlatformEnum");
 }
 
@@ -407,6 +411,8 @@ const utility::string_t VpsOrderPutRequest::fromVpsPlatformEnum(const VpsPlatfor
         case VpsPlatformEnum::HYPERV: return utility::conversions::to_string_t("hyperv");
         
         case VpsPlatformEnum::KVMSTORAGE: return utility::conversions::to_string_t("kvmstorage");
+        
+        case VpsPlatformEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }
@@ -426,6 +432,10 @@ VpsOrderPutRequest::ControlpanelEnum VpsOrderPutRequest::toControlpanelEnum(cons
         return ControlpanelEnum::DA;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return ControlpanelEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to ControlpanelEnum");
 }
 
@@ -440,6 +450,8 @@ const utility::string_t VpsOrderPutRequest::fromControlpanelEnum(const Controlpa
         case ControlpanelEnum::CPANEL: return utility::conversions::to_string_t("cpanel");
         
         case ControlpanelEnum::DA: return utility::conversions::to_string_t("da");
+        
+        case ControlpanelEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }
@@ -506,27 +518,6 @@ bool VpsOrderPutRequest::vpsPlatformIsSet() const
 void VpsOrderPutRequest::unsetVpsPlatform()
 {
     m_VpsPlatformIsSet = false;
-}
-VpsOrderPutRequest::ControlpanelEnum VpsOrderPutRequest::getControlpanel() const
-{
-    return m_Controlpanel;
-}
-
-
-void VpsOrderPutRequest::setControlpanel(const ControlpanelEnum value)
-{
-    m_Controlpanel = value;
-    m_ControlpanelIsSet = true;
-}
-
-bool VpsOrderPutRequest::controlpanelIsSet() const
-{
-    return m_ControlpanelIsSet;
-}
-
-void VpsOrderPutRequest::unsetControlpanel()
-{
-    m_ControlpanelIsSet = false;
 }
 int32_t VpsOrderPutRequest::getPeriod() const
 {
@@ -610,27 +601,6 @@ void VpsOrderPutRequest::unsetHostname()
 {
     m_HostnameIsSet = false;
 }
-utility::string_t VpsOrderPutRequest::getCoupon() const
-{
-    return m_Coupon;
-}
-
-
-void VpsOrderPutRequest::setCoupon(const utility::string_t& value)
-{
-    m_Coupon = value;
-    m_CouponIsSet = true;
-}
-
-bool VpsOrderPutRequest::couponIsSet() const
-{
-    return m_CouponIsSet;
-}
-
-void VpsOrderPutRequest::unsetCoupon()
-{
-    m_CouponIsSet = false;
-}
 utility::string_t VpsOrderPutRequest::getRootpass() const
 {
     return m_Rootpass;
@@ -651,6 +621,48 @@ bool VpsOrderPutRequest::rootpassIsSet() const
 void VpsOrderPutRequest::unsetRootpass()
 {
     m_RootpassIsSet = false;
+}
+VpsOrderPutRequest::ControlpanelEnum VpsOrderPutRequest::getControlpanel() const
+{
+    return m_Controlpanel;
+}
+
+
+void VpsOrderPutRequest::setControlpanel(const ControlpanelEnum value)
+{
+    m_Controlpanel = value;
+    m_ControlpanelIsSet = true;
+}
+
+bool VpsOrderPutRequest::controlpanelIsSet() const
+{
+    return m_ControlpanelIsSet;
+}
+
+void VpsOrderPutRequest::unsetControlpanel()
+{
+    m_ControlpanelIsSet = false;
+}
+utility::string_t VpsOrderPutRequest::getCoupon() const
+{
+    return m_Coupon;
+}
+
+
+void VpsOrderPutRequest::setCoupon(const utility::string_t& value)
+{
+    m_Coupon = value;
+    m_CouponIsSet = true;
+}
+
+bool VpsOrderPutRequest::couponIsSet() const
+{
+    return m_CouponIsSet;
+}
+
+void VpsOrderPutRequest::unsetCoupon()
+{
+    m_CouponIsSet = false;
 }
 utility::string_t VpsOrderPutRequest::getComment() const
 {

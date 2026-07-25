@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPIDomainNameserverGetResponseInner::CanDelete
 		return TEXT("0");
 	case OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::_1:
 		return TEXT("1");
+	case OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIDomainNameserverGetRe
 {
 	static TMap<FString, OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::_0 },
-		{ TEXT("1"), OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::_1 }, };
+		{ TEXT("1"), OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::_1 },
+		{ TEXT("11184809"), OpenAPIDomainNameserverGetResponseInner::CanDeleteEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

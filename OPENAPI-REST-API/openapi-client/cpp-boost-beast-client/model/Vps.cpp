@@ -223,14 +223,8 @@ boost::json::object Vps::toJsonObject_internal() const
         object["custCurrencySymbol"] = JsonValueConverter<std::string>::toJsonValue(getCustCurrencySymbol());
         object["serviceMaster"] = JsonValueConverter<std::shared_ptr<VpsServiceMaster>>::toJsonValue(getServiceMaster());
         object["package"] = JsonValueConverter<std::string>::toJsonValue(getPackage());
-        if (m_Os_templateIsSet) {
-            object["os_template"] = JsonValueConverter<std::string>::toJsonValue(getOsTemplate());
-        }
         object["serviceExtra"] = JsonValueConverter<std::shared_ptr<VpsServiceExtra>>::toJsonValue(getServiceExtra());
         object["extraInfoTables"] = JsonValueConverter<std::shared_ptr<VpsExtraInfoTables>>::toJsonValue(getExtraInfoTables());
-        if (m_Cpu_graph_dataIsSet) {
-            object["cpu_graph_data"] = JsonValueConverter<boost::json::value>::toJsonValue(getCpuGraphData());
-        }
         object["module"] = JsonValueConverter<std::string>::toJsonValue(getModule());
         object["token"] = JsonValueConverter<std::string>::toJsonValue(getToken());
         object["da_link"] = JsonValueConverter<int32_t>::toJsonValue(getDaLink());
@@ -239,6 +233,12 @@ boost::json::object Vps::toJsonObject_internal() const
         object["da_data"] = JsonValueConverter<std::shared_ptr<VpsDAData>>::toJsonValue(getDaData());
         object["plesk12_data"] = JsonValueConverter<std::shared_ptr<VpsPlesk12Data>>::toJsonValue(getPlesk12Data());
         object["serviceAddons"] = JsonValueConverter<std::shared_ptr<VpsServiceAddons>>::toJsonValue(getServiceAddons());
+        if (m_Os_templateIsSet) {
+            object["os_template"] = JsonValueConverter<std::string>::toJsonValue(getOsTemplate());
+        }
+        if (m_Cpu_graph_dataIsSet) {
+            object["cpu_graph_data"] = JsonValueConverter<boost::json::value>::toJsonValue(getCpuGraphData());
+        }
     return object;
 }
 
@@ -289,12 +289,6 @@ void Vps::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto Os_templateIt = object.find("os_template");
-        if (Os_templateIt != object.end()) {
-            setOsTemplate(JsonValueConverter<std::string>::fromJsonValue(Os_templateIt->value()));
-        }
-    }
-    {
         const auto ServiceExtraIt = object.find("serviceExtra");
         if (ServiceExtraIt != object.end()) {
             setServiceExtra(JsonValueConverter<std::shared_ptr<VpsServiceExtra>>::fromJsonValue(ServiceExtraIt->value()));
@@ -304,12 +298,6 @@ void Vps::fromJsonObject_internal(boost::json::object const& object)
         const auto ExtraInfoTablesIt = object.find("extraInfoTables");
         if (ExtraInfoTablesIt != object.end()) {
             setExtraInfoTables(JsonValueConverter<std::shared_ptr<VpsExtraInfoTables>>::fromJsonValue(ExtraInfoTablesIt->value()));
-        }
-    }
-    {
-        const auto Cpu_graph_dataIt = object.find("cpu_graph_data");
-        if (Cpu_graph_dataIt != object.end()) {
-            setCpuGraphData(JsonValueConverter<boost::json::value>::fromJsonValue(Cpu_graph_dataIt->value()));
         }
     }
     {
@@ -358,6 +346,18 @@ void Vps::fromJsonObject_internal(boost::json::object const& object)
         const auto ServiceAddonsIt = object.find("serviceAddons");
         if (ServiceAddonsIt != object.end()) {
             setServiceAddons(JsonValueConverter<std::shared_ptr<VpsServiceAddons>>::fromJsonValue(ServiceAddonsIt->value()));
+        }
+    }
+    {
+        const auto Os_templateIt = object.find("os_template");
+        if (Os_templateIt != object.end()) {
+            setOsTemplate(JsonValueConverter<std::string>::fromJsonValue(Os_templateIt->value()));
+        }
+    }
+    {
+        const auto Cpu_graph_dataIt = object.find("cpu_graph_data");
+        if (Cpu_graph_dataIt != object.end()) {
+            setCpuGraphData(JsonValueConverter<boost::json::value>::fromJsonValue(Cpu_graph_dataIt->value()));
         }
     }
 }
@@ -432,17 +432,6 @@ void Vps::setPackage(std::string value)
     
     m_Package = std::move(value);
 }
-std::string Vps::getOsTemplate() const
-{
-    return m_Os_template;
-}
-
-void Vps::setOsTemplate(std::string value)
-{
-    
-    m_Os_template = std::move(value);
-    m_Os_templateIsSet = true;
-}
 std::shared_ptr<VpsServiceExtra> Vps::getServiceExtra() const
 {
     return m_ServiceExtra;
@@ -462,17 +451,6 @@ void Vps::setExtraInfoTables(std::shared_ptr<VpsExtraInfoTables> value)
 {
     
     m_ExtraInfoTables = std::move(value);
-}
-boost::json::value Vps::getCpuGraphData() const
-{
-    return m_Cpu_graph_data;
-}
-
-void Vps::setCpuGraphData(boost::json::value value)
-{
-    
-    m_Cpu_graph_data = std::move(value);
-    m_Cpu_graph_dataIsSet = true;
 }
 std::string Vps::getModule() const
 {
@@ -553,6 +531,28 @@ void Vps::setServiceAddons(std::shared_ptr<VpsServiceAddons> value)
 {
     
     m_ServiceAddons = std::move(value);
+}
+std::string Vps::getOsTemplate() const
+{
+    return m_Os_template;
+}
+
+void Vps::setOsTemplate(std::string value)
+{
+    
+    m_Os_template = std::move(value);
+    m_Os_templateIsSet = true;
+}
+boost::json::value Vps::getCpuGraphData() const
+{
+    return m_Cpu_graph_data;
+}
+
+void Vps::setCpuGraphData(boost::json::value value)
+{
+    
+    m_Cpu_graph_data = std::move(value);
+    m_Cpu_graph_dataIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<Vps>>& data)

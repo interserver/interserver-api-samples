@@ -34,6 +34,7 @@ export const ServerIpmiPowerRequestActionEnum = {
     On: 'on',
     Off: 'off',
     Soft: 'soft',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type ServerIpmiPowerRequestActionEnum = typeof ServerIpmiPowerRequestActionEnum[keyof typeof ServerIpmiPowerRequestActionEnum];

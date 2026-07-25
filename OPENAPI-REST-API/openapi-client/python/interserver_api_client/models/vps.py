@@ -45,10 +45,8 @@ class Vps(BaseModel):
     cust_currency_symbol: StrictStr = Field(alias="custCurrencySymbol")
     service_master: VpsServiceMaster = Field(alias="serviceMaster")
     package: StrictStr
-    os_template: Optional[StrictStr] = None
     service_extra: VpsServiceExtra = Field(alias="serviceExtra")
     extra_info_tables: VpsExtraInfoTables = Field(alias="extraInfoTables")
-    cpu_graph_data: Optional[Any] = None
     module: StrictStr
     token: StrictStr
     da_link: StrictInt
@@ -57,7 +55,9 @@ class Vps(BaseModel):
     da_data: VpsDAData
     plesk12_data: VpsPlesk12Data
     service_addons: VpsServiceAddons = Field(alias="serviceAddons")
-    __properties: ClassVar[List[str]] = ["serviceInfo", "client_links", "billingDetails", "custCurrency", "custCurrencySymbol", "serviceMaster", "package", "os_template", "serviceExtra", "extraInfoTables", "cpu_graph_data", "module", "token", "da_link", "sr_link", "cp_data", "da_data", "plesk12_data", "serviceAddons"]
+    os_template: Optional[StrictStr] = None
+    cpu_graph_data: Optional[Any] = None
+    __properties: ClassVar[List[str]] = ["serviceInfo", "client_links", "billingDetails", "custCurrency", "custCurrencySymbol", "serviceMaster", "package", "serviceExtra", "extraInfoTables", "module", "token", "da_link", "sr_link", "cp_data", "da_data", "plesk12_data", "serviceAddons", "os_template", "cpu_graph_data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -156,10 +156,8 @@ class Vps(BaseModel):
             "custCurrencySymbol": obj.get("custCurrencySymbol"),
             "serviceMaster": VpsServiceMaster.from_dict(obj["serviceMaster"]) if obj.get("serviceMaster") is not None else None,
             "package": obj.get("package"),
-            "os_template": obj.get("os_template"),
             "serviceExtra": VpsServiceExtra.from_dict(obj["serviceExtra"]) if obj.get("serviceExtra") is not None else None,
             "extraInfoTables": VpsExtraInfoTables.from_dict(obj["extraInfoTables"]) if obj.get("extraInfoTables") is not None else None,
-            "cpu_graph_data": obj.get("cpu_graph_data"),
             "module": obj.get("module"),
             "token": obj.get("token"),
             "da_link": obj.get("da_link"),
@@ -167,7 +165,9 @@ class Vps(BaseModel):
             "cp_data": VpsCPData.from_dict(obj["cp_data"]) if obj.get("cp_data") is not None else None,
             "da_data": VpsDAData.from_dict(obj["da_data"]) if obj.get("da_data") is not None else None,
             "plesk12_data": VpsPlesk12Data.from_dict(obj["plesk12_data"]) if obj.get("plesk12_data") is not None else None,
-            "serviceAddons": VpsServiceAddons.from_dict(obj["serviceAddons"]) if obj.get("serviceAddons") is not None else None
+            "serviceAddons": VpsServiceAddons.from_dict(obj["serviceAddons"]) if obj.get("serviceAddons") is not None else None,
+            "os_template": obj.get("os_template"),
+            "cpu_graph_data": obj.get("cpu_graph_data")
         })
         return _obj
 

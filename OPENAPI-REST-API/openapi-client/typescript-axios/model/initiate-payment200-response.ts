@@ -45,6 +45,7 @@ export const InitiatePayment200ResponseTypeEnum = {
     Redirect: 'redirect',
     Submit: 'submit',
     Single: 'single',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type InitiatePayment200ResponseTypeEnum = typeof InitiatePayment200ResponseTypeEnum[keyof typeof InitiatePayment200ResponseTypeEnum];

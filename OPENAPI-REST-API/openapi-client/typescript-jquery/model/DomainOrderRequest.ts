@@ -42,10 +42,12 @@ export interface DomainOrderRequest {
 export namespace DomainOrderRequest {
     export enum TypeEnum {
         Register = <any> 'register',
-        Transfer = <any> 'transfer'
+        Transfer = <any> 'transfer',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
     export enum WhoisPrivacyEnum {
         Enable = <any> 'enable',
-        Disable = <any> 'disable'
+        Disable = <any> 'disable',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

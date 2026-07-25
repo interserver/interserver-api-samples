@@ -16,15 +16,15 @@ Please update as you see appropriate
 describe("server_ipmi_live_request", function()
   local openapiclient_server_ipmi_live_request = require "openapiclient.model.server_ipmi_live_request"
 
-  -- unit tests for the property 'asset'
-  describe("property asset test", function()
+  -- unit tests for the property 'ip'
+  describe("property ip test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
   end)
 
-  -- unit tests for the property 'ip'
-  describe("property ip test", function()
+  -- unit tests for the property 'asset'
+  describe("property asset test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

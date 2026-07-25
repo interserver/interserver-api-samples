@@ -36,8 +36,8 @@ class DomainNameserverGetResponseInner(BaseModel):
     @field_validator('can_delete')
     def can_delete_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['0', '1']):
-            raise ValueError("must be one of enum values ('0', '1')")
+        if value not in set(['0', '1', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('0', '1', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

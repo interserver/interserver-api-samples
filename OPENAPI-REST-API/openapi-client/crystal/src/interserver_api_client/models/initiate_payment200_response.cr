@@ -38,7 +38,7 @@ module InterserverApiClient
     @[JSON::Field(key: "text", emit_null: false)]
     property text : String?
 
-    validates(_type, String, true, enum: ["redirect", "submit", "single"])
+    validates(_type, String, true, enum: ["redirect", "submit", "single", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

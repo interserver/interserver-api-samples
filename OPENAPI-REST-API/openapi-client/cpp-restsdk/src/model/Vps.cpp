@@ -31,8 +31,6 @@ Vps::Vps()
     m_ServiceMasterIsSet = false;
     m_Package = utility::conversions::to_string_t("");
     m_PackageIsSet = false;
-    m_Os_template = utility::conversions::to_string_t("");
-    m_Os_templateIsSet = false;
     m_ServiceExtraIsSet = false;
     m_ExtraInfoTablesIsSet = false;
     m_Module = utility::conversions::to_string_t("");
@@ -47,6 +45,8 @@ Vps::Vps()
     m_Da_dataIsSet = false;
     m_Plesk12_dataIsSet = false;
     m_ServiceAddonsIsSet = false;
+    m_Os_template = utility::conversions::to_string_t("");
+    m_Os_templateIsSet = false;
 }
 
 Vps::~Vps()
@@ -96,11 +96,6 @@ web::json::value Vps::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("package"))] = ModelBase::toJson(m_Package);
     }
-    if(m_Os_templateIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("os_template"))] = ModelBase::toJson(m_Os_template);
-    }
     if(m_ServiceExtraIsSet)
     {
         
@@ -110,11 +105,6 @@ web::json::value Vps::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("extraInfoTables"))] = ModelBase::toJson(m_ExtraInfoTables);
-    }
-    if(m_Cpu_graph_data.has_value())
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))] = ModelBase::toJson(m_Cpu_graph_data.get());
     }
     if(m_ModuleIsSet)
     {
@@ -155,6 +145,16 @@ web::json::value Vps::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("serviceAddons"))] = ModelBase::toJson(m_ServiceAddons);
+    }
+    if(m_Os_templateIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("os_template"))] = ModelBase::toJson(m_Os_template);
+    }
+    if(m_Cpu_graph_data.has_value())
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))] = ModelBase::toJson(m_Cpu_graph_data.get());
     }
 
     return val;
@@ -240,17 +240,6 @@ bool Vps::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("os_template"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("os_template")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setOsTemplate;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setOsTemplate);
-            setOsTemplate(refVal_setOsTemplate);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("serviceExtra")));
@@ -270,17 +259,6 @@ bool Vps::fromJson(const web::json::value& val)
             std::shared_ptr<VpsExtraInfoTables> refVal_setExtraInfoTables;
             ok &= ModelBase::fromJson(fieldValue, refVal_setExtraInfoTables);
             setExtraInfoTables(refVal_setExtraInfoTables);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<AnyType> refVal_setCpuGraphData;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setCpuGraphData);
-            setCpuGraphData(refVal_setCpuGraphData);
             
         }
     }
@@ -372,6 +350,28 @@ bool Vps::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("os_template"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("os_template")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setOsTemplate;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setOsTemplate);
+            setOsTemplate(refVal_setOsTemplate);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<AnyType> refVal_setCpuGraphData;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCpuGraphData);
+            setCpuGraphData(refVal_setCpuGraphData);
+            
+        }
+    }
     return ok;
 }
 
@@ -410,10 +410,6 @@ void Vps::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utilit
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("package")), m_Package));
     }
-    if(m_Os_templateIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("os_template")), m_Os_template));
-    }
     if(m_ServiceExtraIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("serviceExtra")), m_ServiceExtra));
@@ -421,10 +417,6 @@ void Vps::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utilit
     if(m_ExtraInfoTablesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("extraInfoTables")), m_ExtraInfoTables));
-    }
-    if(m_Cpu_graph_data.has_value())
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data")), m_Cpu_graph_data.get()));
     }
     if(m_ModuleIsSet)
     {
@@ -457,6 +449,14 @@ void Vps::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utilit
     if(m_ServiceAddonsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("serviceAddons")), m_ServiceAddons));
+    }
+    if(m_Os_templateIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("os_template")), m_Os_template));
+    }
+    if(m_Cpu_graph_data.has_value())
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data")), m_Cpu_graph_data.get()));
     }
 }
 
@@ -511,12 +511,6 @@ bool Vps::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const util
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("package"))), refVal_setPackage );
         setPackage(refVal_setPackage);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("os_template"))))
-    {
-        utility::string_t refVal_setOsTemplate;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("os_template"))), refVal_setOsTemplate );
-        setOsTemplate(refVal_setOsTemplate);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("serviceExtra"))))
     {
         std::shared_ptr<VpsServiceExtra> refVal_setServiceExtra;
@@ -528,12 +522,6 @@ bool Vps::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const util
         std::shared_ptr<VpsExtraInfoTables> refVal_setExtraInfoTables;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("extraInfoTables"))), refVal_setExtraInfoTables );
         setExtraInfoTables(refVal_setExtraInfoTables);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))))
-    {
-        std::shared_ptr<AnyType> refVal_setCpuGraphData;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))), refVal_setCpuGraphData );
-        setCpuGraphData(refVal_setCpuGraphData);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("module"))))
     {
@@ -582,6 +570,18 @@ bool Vps::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const util
         std::shared_ptr<VpsServiceAddons> refVal_setServiceAddons;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("serviceAddons"))), refVal_setServiceAddons );
         setServiceAddons(refVal_setServiceAddons);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("os_template"))))
+    {
+        utility::string_t refVal_setOsTemplate;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("os_template"))), refVal_setOsTemplate );
+        setOsTemplate(refVal_setOsTemplate);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))))
+    {
+        std::shared_ptr<AnyType> refVal_setCpuGraphData;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("cpu_graph_data"))), refVal_setCpuGraphData );
+        setCpuGraphData(refVal_setCpuGraphData);
     }
     return ok;
 }
@@ -734,27 +734,6 @@ void Vps::unsetPackage()
 {
     m_PackageIsSet = false;
 }
-utility::string_t Vps::getOsTemplate() const
-{
-    return m_Os_template;
-}
-
-
-void Vps::setOsTemplate(const utility::string_t& value)
-{
-    m_Os_template = value;
-    m_Os_templateIsSet = true;
-}
-
-bool Vps::osTemplateIsSet() const
-{
-    return m_Os_templateIsSet;
-}
-
-void Vps::unsetOs_template()
-{
-    m_Os_templateIsSet = false;
-}
 std::shared_ptr<VpsServiceExtra> Vps::getServiceExtra() const
 {
     return m_ServiceExtra;
@@ -796,26 +775,6 @@ bool Vps::extraInfoTablesIsSet() const
 void Vps::unsetExtraInfoTables()
 {
     m_ExtraInfoTablesIsSet = false;
-}
-std::shared_ptr<AnyType> Vps::getCpuGraphData() const
-{
-    return m_Cpu_graph_data.get();
-}
-
-
-void Vps::setCpuGraphData(const std::shared_ptr<AnyType>& value)
-{
-    m_Cpu_graph_data = value;
-}
-
-bool Vps::cpuGraphDataIsSet() const
-{
-    return m_Cpu_graph_data.has_value();
-}
-
-void Vps::unsetCpu_graph_data()
-{
-    m_Cpu_graph_data.reset();
 }
 utility::string_t Vps::getModule() const
 {
@@ -982,6 +941,47 @@ bool Vps::serviceAddonsIsSet() const
 void Vps::unsetServiceAddons()
 {
     m_ServiceAddonsIsSet = false;
+}
+utility::string_t Vps::getOsTemplate() const
+{
+    return m_Os_template;
+}
+
+
+void Vps::setOsTemplate(const utility::string_t& value)
+{
+    m_Os_template = value;
+    m_Os_templateIsSet = true;
+}
+
+bool Vps::osTemplateIsSet() const
+{
+    return m_Os_templateIsSet;
+}
+
+void Vps::unsetOs_template()
+{
+    m_Os_templateIsSet = false;
+}
+std::shared_ptr<AnyType> Vps::getCpuGraphData() const
+{
+    return m_Cpu_graph_data.get();
+}
+
+
+void Vps::setCpuGraphData(const std::shared_ptr<AnyType>& value)
+{
+    m_Cpu_graph_data = value;
+}
+
+bool Vps::cpuGraphDataIsSet() const
+{
+    return m_Cpu_graph_data.has_value();
+}
+
+void Vps::unsetCpu_graph_data()
+{
+    m_Cpu_graph_data.reset();
 }
 
 }

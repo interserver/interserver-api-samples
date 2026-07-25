@@ -35,10 +35,10 @@ ServerSwitchport::ServerSwitchport()
     m_JustportIsSet = false;
     m_Graph_id = utility::conversions::to_string_t("");
     m_Graph_idIsSet = false;
-    m_VlansIsSet = false;
-    m_Vlans6IsSet = false;
     m_Asset_id = 0;
     m_Asset_idIsSet = false;
+    m_VlansIsSet = false;
+    m_Vlans6IsSet = false;
 }
 
 ServerSwitchport::~ServerSwitchport()
@@ -88,6 +88,11 @@ web::json::value ServerSwitchport::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("graph_id"))] = ModelBase::toJson(m_Graph_id);
     }
+    if(m_Asset_idIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("asset_id"))] = ModelBase::toJson(m_Asset_id);
+    }
     if(m_VlansIsSet)
     {
         
@@ -97,11 +102,6 @@ web::json::value ServerSwitchport::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("vlans6"))] = ModelBase::toJson(m_Vlans6);
-    }
-    if(m_Asset_idIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("asset_id"))] = ModelBase::toJson(m_Asset_id);
     }
 
     return val;
@@ -187,6 +187,17 @@ bool ServerSwitchport::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset_id")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setAssetId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setAssetId);
+            setAssetId(refVal_setAssetId);
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("vlans"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("vlans")));
@@ -206,17 +217,6 @@ bool ServerSwitchport::fromJson(const web::json::value& val)
             std::vector<utility::string_t> refVal_setVlans6;
             ok &= ModelBase::fromJson(fieldValue, refVal_setVlans6);
             setVlans6(refVal_setVlans6);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset_id")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setAssetId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setAssetId);
-            setAssetId(refVal_setAssetId);
             
         }
     }
@@ -258,6 +258,10 @@ void ServerSwitchport::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("graph_id")), m_Graph_id));
     }
+    if(m_Asset_idIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset_id")), m_Asset_id));
+    }
     if(m_VlansIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("vlans")), m_Vlans));
@@ -265,10 +269,6 @@ void ServerSwitchport::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     if(m_Vlans6IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("vlans6")), m_Vlans6));
-    }
-    if(m_Asset_idIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset_id")), m_Asset_id));
     }
 }
 
@@ -323,6 +323,12 @@ bool ServerSwitchport::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("graph_id"))), refVal_setGraphId );
         setGraphId(refVal_setGraphId);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
+    {
+        int32_t refVal_setAssetId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset_id"))), refVal_setAssetId );
+        setAssetId(refVal_setAssetId);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("vlans"))))
     {
         std::vector<utility::string_t> refVal_setVlans;
@@ -334,12 +340,6 @@ bool ServerSwitchport::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
         std::vector<utility::string_t> refVal_setVlans6;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("vlans6"))), refVal_setVlans6 );
         setVlans6(refVal_setVlans6);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
-    {
-        int32_t refVal_setAssetId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset_id"))), refVal_setAssetId );
-        setAssetId(refVal_setAssetId);
     }
     return ok;
 }
@@ -491,6 +491,26 @@ void ServerSwitchport::unsetGraph_id()
 {
     m_Graph_idIsSet = false;
 }
+int32_t ServerSwitchport::getAssetId() const
+{
+    return m_Asset_id;
+}
+
+void ServerSwitchport::setAssetId(int32_t value)
+{
+    m_Asset_id = value;
+    m_Asset_idIsSet = true;
+}
+
+bool ServerSwitchport::assetIdIsSet() const
+{
+    return m_Asset_idIsSet;
+}
+
+void ServerSwitchport::unsetAsset_id()
+{
+    m_Asset_idIsSet = false;
+}
 std::vector<utility::string_t> ServerSwitchport::getVlans() const
 {
     return m_Vlans;
@@ -532,26 +552,6 @@ bool ServerSwitchport::vlans6IsSet() const
 void ServerSwitchport::unsetVlans6()
 {
     m_Vlans6IsSet = false;
-}
-int32_t ServerSwitchport::getAssetId() const
-{
-    return m_Asset_id;
-}
-
-void ServerSwitchport::setAssetId(int32_t value)
-{
-    m_Asset_id = value;
-    m_Asset_idIsSet = true;
-}
-
-bool ServerSwitchport::assetIdIsSet() const
-{
-    return m_Asset_idIsSet;
-}
-
-void ServerSwitchport::unsetAsset_id()
-{
-    m_Asset_idIsSet = false;
 }
 
 }

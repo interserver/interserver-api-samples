@@ -26,6 +26,7 @@
 |---- | -----|
 | NUMBER_0 | new BigDecimal(&quot;0&quot;) |
 | NUMBER_1 | new BigDecimal(&quot;1&quot;) |
+| NUMBER_unknown_default_open_api | new BigDecimal(&quot;11184809&quot;) |
 
 
 ## Implemented Interfaces

@@ -19,7 +19,7 @@ local function cast_vps(t)
 	return setmetatable(t, vps_mt)
 end
 
-local function new_vps(service_info, client_links, billing_details, cust_currency, cust_currency_symbol, service_master, package, os_template, service_extra, extra_info_tables, cpu_graph_data, module, token, da_link, sr_link, cp_data, da_data, plesk12_data, service_addons)
+local function new_vps(service_info, client_links, billing_details, cust_currency, cust_currency_symbol, service_master, package, service_extra, extra_info_tables, module, token, da_link, sr_link, cp_data, da_data, plesk12_data, service_addons, os_template, cpu_graph_data)
 	return cast_vps({
 		["serviceInfo"] = service_info;
 		["client_links"] = client_links;
@@ -28,10 +28,8 @@ local function new_vps(service_info, client_links, billing_details, cust_currenc
 		["custCurrencySymbol"] = cust_currency_symbol;
 		["serviceMaster"] = service_master;
 		["package"] = package;
-		["os_template"] = os_template;
 		["serviceExtra"] = service_extra;
 		["extraInfoTables"] = extra_info_tables;
-		["cpu_graph_data"] = cpu_graph_data;
 		["module"] = module;
 		["token"] = token;
 		["da_link"] = da_link;
@@ -40,6 +38,8 @@ local function new_vps(service_info, client_links, billing_details, cust_currenc
 		["da_data"] = da_data;
 		["plesk12_data"] = plesk12_data;
 		["serviceAddons"] = service_addons;
+		["os_template"] = os_template;
+		["cpu_graph_data"] = cpu_graph_data;
 	})
 end
 

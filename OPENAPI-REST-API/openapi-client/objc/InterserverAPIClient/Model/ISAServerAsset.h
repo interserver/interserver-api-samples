@@ -43,9 +43,6 @@
 /* Primary IPv6 address of the asset. 
  */
 @property(nonatomic) NSString* primaryIpv6;
-/* MAC address associated with the asset. [optional]
- */
-@property(nonatomic) NSString* mac;
 /* Datacenter identifier for the asset. 
  */
 @property(nonatomic) NSString* datacenter;
@@ -79,21 +76,6 @@
 /* IPMI IP address associated with the asset. 
  */
 @property(nonatomic) NSString* ipmiIp;
-/* IPMI admin username associated with the asset. [optional]
- */
-@property(nonatomic) NSString* ipmiAdminUsername;
-/* IPMI admin password associated with the asset. [optional]
- */
-@property(nonatomic) NSString* ipmiAdminPassword;
-/* IPMI client username associated with the asset. [optional]
- */
-@property(nonatomic) NSString* ipmiClientUsername;
-/* IPMI client password associated with the asset. [optional]
- */
-@property(nonatomic) NSString* ipmiClientPassword;
-/* IPMI update status associated with the asset. [optional]
- */
-@property(nonatomic) NSString* ipmiUpdated;
 /* IPMI working status associated with the asset. 
  */
 @property(nonatomic) NSString* ipmiWorking;
@@ -124,12 +106,6 @@
 /* Overdue status of the asset. 
  */
 @property(nonatomic) NSString* overdue;
-/* Timestamp of asset creation. [optional]
- */
-@property(nonatomic) NSString* createTimestamp;
-/* Timestamp of asset update. [optional]
- */
-@property(nonatomic) NSString* updateTimestamp;
 /* Asset identifier for the asset. 
  */
 @property(nonatomic) NSString* assetId;
@@ -154,9 +130,6 @@
 /* Y-coordinate of the asset within the rack. 
  */
 @property(nonatomic) NSString* rackY;
-/* Comment associated with the asset. [optional]
- */
-@property(nonatomic) NSString* comment;
 /* List of switchports associated with the asset. 
  */
 @property(nonatomic) NSArray<NSNumber*>* switchports;
@@ -168,5 +141,32 @@
 @property(nonatomic) NSArray<NSString*>* vlans6;
 
 @property(nonatomic) ISAServerLease* lease;
+/* MAC address associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* mac;
+/* IPMI admin username associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* ipmiAdminUsername;
+/* IPMI admin password associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* ipmiAdminPassword;
+/* IPMI client username associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* ipmiClientUsername;
+/* IPMI client password associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* ipmiClientPassword;
+/* IPMI update status associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* ipmiUpdated;
+/* Timestamp of asset creation. [optional]
+ */
+@property(nonatomic) NSString* createTimestamp;
+/* Timestamp of asset update. [optional]
+ */
+@property(nonatomic) NSString* updateTimestamp;
+/* Comment associated with the asset. [optional]
+ */
+@property(nonatomic) NSString* comment;
 
 @end

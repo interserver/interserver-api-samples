@@ -8,14 +8,14 @@ type MailLogEntry struct {
 	Id string `json:"id"`
 	From string `json:"from"`
 	To string `json:"to"`
-	Subject string `json:"subject,omitempty"`
-	MessageId string `json:"messageId,omitempty"`
 	Created string `json:"created"`
 	Time int32 `json:"time"`
 	User string `json:"user"`
 	Transtype string `json:"transtype"`
 	Origin string `json:"origin"`
 	Interface string `json:"interface"`
+	Subject string `json:"subject,omitempty"`
+	MessageId string `json:"messageId,omitempty"`
 	SendingZone string `json:"sendingZone,omitempty"`
 	BodySize int32 `json:"bodySize,omitempty"`
 	Seq int32 `json:"seq,omitempty"`

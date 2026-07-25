@@ -60,6 +60,7 @@ export interface UpdateTicket {
  */
 export enum UpdateTicketCustomerServerAccessEnum {
     Y = 'y',
-    N = 'n'
+    N = 'n',
+    UnknownDefaultOpenApi = '11184809'
 }
 

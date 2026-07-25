@@ -5,16 +5,16 @@
 -export_type([interserver_api_ticket_new_response/0]).
 
 -type interserver_api_ticket_new_response() ::
-    #{ 'ticket_id' => integer(),
-       'text' := binary(),
-       'success' := boolean()
+    #{ 'text' := binary(),
+       'success' := boolean(),
+       'ticket_id' => integer()
      }.
 
-encode(#{ 'ticket_id' := TicketId,
-          'text' := Text,
-          'success' := Success
+encode(#{ 'text' := Text,
+          'success' := Success,
+          'ticket_id' := TicketId
         }) ->
-    #{ 'ticket_id' => TicketId,
-       'text' => Text,
-       'success' => Success
+    #{ 'text' => Text,
+       'success' => Success,
+       'ticket_id' => TicketId
      }.

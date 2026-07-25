@@ -61,6 +61,7 @@ public:
         PENDING,
         CANCELED,
         EXPIRED,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     Scrub_ip_statusEnum toScrub_ip_statusEnum(const utility::string_t& value) const;

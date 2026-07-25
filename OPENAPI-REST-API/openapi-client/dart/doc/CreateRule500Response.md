@@ -1,8 +1,8 @@
-# openapi.model.CreateRule500Response
+# interserver_api.model.CreateRule500Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

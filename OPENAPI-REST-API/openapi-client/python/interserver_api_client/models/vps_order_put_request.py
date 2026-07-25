@@ -32,21 +32,21 @@ class VpsOrderPutRequest(BaseModel):
     os_distro: StrictStr = Field(description="OS Distribution", alias="osDistro")
     slices: Annotated[int, Field(le=32, strict=True, ge=1)] = Field(description="Number of slices")
     vps_platform: StrictStr = Field(description="VPS Platform", alias="vpsPlatform")
-    controlpanel: Optional[StrictStr] = Field(default=None, description="Control Panel")
     period: Annotated[int, Field(le=12, strict=True, ge=1)] = Field(description="Billing Period or Frequency")
     location: Annotated[int, Field(le=3, strict=True, ge=1)] = Field(description="Location")
     os_version: StrictStr = Field(description="OS Version", alias="osVersion")
     hostname: StrictStr = Field(description="The hostname to assign to the VPS")
-    coupon: Optional[StrictStr] = Field(default='', description="Coupon")
     rootpass: StrictStr = Field(description="Root password to assign to the VVPS")
+    controlpanel: Optional[StrictStr] = Field(default=None, description="Control Panel")
+    coupon: Optional[StrictStr] = Field(default='', description="Coupon")
     comment: Optional[StrictStr] = Field(default='', description="Order comments or notes")
-    __properties: ClassVar[List[str]] = ["osDistro", "slices", "vpsPlatform", "controlpanel", "period", "location", "osVersion", "hostname", "coupon", "rootpass", "comment"]
+    __properties: ClassVar[List[str]] = ["osDistro", "slices", "vpsPlatform", "period", "location", "osVersion", "hostname", "rootpass", "controlpanel", "coupon", "comment"]
 
     @field_validator('vps_platform')
     def vps_platform_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['kvm', 'hyperv', 'kvmstorage']):
-            raise ValueError("must be one of enum values ('kvm', 'hyperv', 'kvmstorage')")
+        if value not in set(['kvm', 'hyperv', 'kvmstorage', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('kvm', 'hyperv', 'kvmstorage', 'unknown_default_open_api')")
         return value
 
     @field_validator('controlpanel')
@@ -55,8 +55,8 @@ class VpsOrderPutRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['none', 'cpanel', 'da']):
-            raise ValueError("must be one of enum values ('none', 'cpanel', 'da')")
+        if value not in set(['none', 'cpanel', 'da', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('none', 'cpanel', 'da', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -113,13 +113,13 @@ class VpsOrderPutRequest(BaseModel):
             "osDistro": obj.get("osDistro"),
             "slices": obj.get("slices") if obj.get("slices") is not None else 1,
             "vpsPlatform": obj.get("vpsPlatform"),
-            "controlpanel": obj.get("controlpanel"),
             "period": obj.get("period") if obj.get("period") is not None else 1,
             "location": obj.get("location") if obj.get("location") is not None else 1,
             "osVersion": obj.get("osVersion"),
             "hostname": obj.get("hostname") if obj.get("hostname") is not None else '',
-            "coupon": obj.get("coupon") if obj.get("coupon") is not None else '',
             "rootpass": obj.get("rootpass"),
+            "controlpanel": obj.get("controlpanel"),
+            "coupon": obj.get("coupon") if obj.get("coupon") is not None else '',
             "comment": obj.get("comment") if obj.get("comment") is not None else ''
         })
         return _obj

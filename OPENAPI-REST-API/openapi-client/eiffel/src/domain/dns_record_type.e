@@ -319,6 +319,12 @@ feature -- Enum
       Result.set_value ("URI⏎")
     end
 
+ val_unknown_default_open_api: DNS_RECORD_TYPE
+    once
+      create Result
+      Result.set_value ("11184809")
+    end
+
 
 feature -- Element Change
 

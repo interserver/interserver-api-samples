@@ -119,7 +119,6 @@ class TestVps(unittest.TestCase):
                     vps_drive_type = 'SSD', 
                     vps_order = '36978', ),
                 package = '',
-                os_template = '',
                 service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                     spice = 5903, 
                     snapshots = [
@@ -136,7 +135,6 @@ class TestVps(unittest.TestCase):
                                 desc = '', 
                                 value = '', )
                             ], ), ),
-                cpu_graph_data = None,
                 module = '',
                 token = '',
                 da_link = 56,
@@ -192,7 +190,9 @@ class TestVps(unittest.TestCase):
                         ], 
                     rdata = [
                         ''
-                        ], )
+                        ], ),
+                os_template = '',
+                cpu_graph_data = None
             )
         else:
             return Vps(

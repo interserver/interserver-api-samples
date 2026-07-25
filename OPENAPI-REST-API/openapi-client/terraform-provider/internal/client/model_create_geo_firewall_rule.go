@@ -4,8 +4,8 @@ package client
 
 // CreateGeoFirewallRule - Create firewall rule for your ip
 type CreateGeoFirewallRule struct {
+	XdpAction int32 `json:"xdp_action"`
 	DestinationPort int32 `json:"destination_port,omitempty"`
 	CountryCode int32 `json:"country_code,omitempty"`
 	Asn int32 `json:"asn,omitempty"`
-	XdpAction int32 `json:"xdp_action"`
 }

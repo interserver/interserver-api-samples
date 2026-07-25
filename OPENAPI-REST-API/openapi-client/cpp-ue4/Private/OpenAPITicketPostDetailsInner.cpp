@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPITicketPostDetailsInner::CreatorEnum& Value)
 		return TEXT("User");
 	case OpenAPITicketPostDetailsInner::CreatorEnum::Staff:
 		return TEXT("Staff");
+	case OpenAPITicketPostDetailsInner::CreatorEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPITicketPostDetailsInner::CreatorEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPITicketPostDetailsInne
 {
 	static TMap<FString, OpenAPITicketPostDetailsInner::CreatorEnum> StringToEnum = { 
 		{ TEXT("User"), OpenAPITicketPostDetailsInner::CreatorEnum::User },
-		{ TEXT("Staff"), OpenAPITicketPostDetailsInner::CreatorEnum::Staff }, };
+		{ TEXT("Staff"), OpenAPITicketPostDetailsInner::CreatorEnum::Staff },
+		{ TEXT("11184809"), OpenAPITicketPostDetailsInner::CreatorEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

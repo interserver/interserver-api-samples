@@ -16,13 +16,13 @@ module OpenapiClient
         type: 'Integer',
         json_key: 'protocol_id',
         required: true,
-        enum: [1, 2]
+        enum: [1, 2, 11184809]
 
       attribute :xdp_action,
         type: 'Integer',
         json_key: 'xdp_action',
         required: true,
-        enum: [0, 1]
+        enum: [0, 1, 11184809]
 
       attribute :destination_port,
         type: 'Integer',

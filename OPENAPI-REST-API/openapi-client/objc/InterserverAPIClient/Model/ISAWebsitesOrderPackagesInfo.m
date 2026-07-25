@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"servicesId": @"services_id", @"servicesName": @"services_name", @"servicesCost": @"services_cost", @"servicesCategory": @"services_category", @"servicesBuyable": @"services_buyable", @"servicesType": @"services_type", @"servicesField1": @"services_field1", @"servicesField2": @"services_field2", @"servicesModule": @"services_module", @"servicesHtml": @"services_html", @"servicesDescription": @"services_description", @"servicesMoreinfoUrl": @"services_moreinfo_url", @"servicesHidden": @"services_hidden" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"servicesId": @"services_id", @"servicesName": @"services_name", @"servicesCost": @"services_cost", @"servicesCategory": @"services_category", @"servicesBuyable": @"services_buyable", @"servicesType": @"services_type", @"servicesModule": @"services_module", @"servicesDescription": @"services_description", @"servicesField1": @"services_field1", @"servicesField2": @"services_field2", @"servicesHtml": @"services_html", @"servicesMoreinfoUrl": @"services_moreinfo_url", @"servicesHidden": @"services_hidden" }];
 }
 
 /**

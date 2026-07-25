@@ -23,10 +23,10 @@ feature --Access
       -- QuickServer plan/server id from getNewQs.
     password: detachable STRING_32
       -- Root password for the QuickServer.
-    os: detachable STRING_32
-      -- OS template file name from getNewQs (falls back to a default if unrecognized).
     tos: BOOLEAN
       -- Terms-of-service acceptance. Must be true to place the order.
+    os: detachable STRING_32
+      -- OS template file name from getNewQs (falls back to a default if unrecognized).
     comment: detachable STRING_32
       -- Free-form note saved on the service row.
 
@@ -48,20 +48,20 @@ feature -- Change Element
         password_set: password = a_name
       end
 
-    set_os (a_name: like os)
-        -- Set 'os' with 'a_name'.
-      do
-        os := a_name
-      ensure
-        os_set: os = a_name
-      end
-
     set_tos (a_name: like tos)
         -- Set 'tos' with 'a_name'.
       do
         tos := a_name
       ensure
         tos_set: tos = a_name
+      end
+
+    set_os (a_name: like os)
+        -- Set 'os' with 'a_name'.
+      do
+        os := a_name
+      ensure
+        os_set: os = a_name
       end
 
     set_comment (a_name: like comment)
@@ -90,14 +90,14 @@ feature -- Change Element
           Result.append (l_password.out)
           Result.append ("%N")
         end
-        if attached os as l_os then
-          Result.append ("%Nos:")
-          Result.append (l_os.out)
-          Result.append ("%N")
-        end
         if attached tos as l_tos then
           Result.append ("%Ntos:")
           Result.append (l_tos.out)
+          Result.append ("%N")
+        end
+        if attached os as l_os then
+          Result.append ("%Nos:")
+          Result.append (l_os.out)
           Result.append ("%N")
         end
         if attached comment as l_comment then

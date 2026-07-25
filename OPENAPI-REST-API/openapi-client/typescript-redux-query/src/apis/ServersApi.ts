@@ -1065,5 +1065,6 @@ export enum ServerIpmiPowerPostActionEnum {
     Reset = 'reset',
     On = 'on',
     Off = 'off',
-    Soft = 'soft'
+    Soft = 'soft',
+    UnknownDefaultOpenApi = '11184809'
 }

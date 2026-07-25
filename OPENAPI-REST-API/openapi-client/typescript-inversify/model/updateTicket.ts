@@ -24,9 +24,10 @@ export interface UpdateTicket {
     port?: number;
 }
 export namespace UpdateTicket {
-    export type CustomerServerAccessEnum = 'y' | 'n';
+    export type CustomerServerAccessEnum = 'y' | 'n' | '11184809';
     export const CustomerServerAccessEnum = {
         Y: 'y' as CustomerServerAccessEnum,
-        N: 'n' as CustomerServerAccessEnum
+        N: 'n' as CustomerServerAccessEnum,
+        UnknownDefaultOpenApi: '11184809' as CustomerServerAccessEnum
     }
 }

@@ -1,8 +1,8 @@
-# openapi.model.MailServiceType
+# interserver_api.model.MailServiceType
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

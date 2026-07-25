@@ -15,10 +15,10 @@ No summary available.
 
 IPMI Power command for servers
 
-.PARAMETER Asset
-The Asset ID
 .PARAMETER Action
 The power action to send to the ipmi controller.
+.PARAMETER Asset
+The Asset ID
 .OUTPUTS
 
 ServerIpmiPowerRequest<PSCustomObject>
@@ -28,12 +28,12 @@ function Initialize-ServerIpmiPowerRequest {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${Asset},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("cycle", "reset", "on", "off", "soft")]
         [String]
-        ${Action}
+        ${Action},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${Asset}
     )
 
     Process {
@@ -46,8 +46,8 @@ function Initialize-ServerIpmiPowerRequest {
 
 
         $PSO = [PSCustomObject]@{
-            'asset' = ${Asset}
             'action' = ${Action}
+            'asset' = ${Asset}
         }
 
 
@@ -85,7 +85,7 @@ function ConvertFrom-JsonToServerIpmiPowerRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServerIpmiPowerRequest
-        $AllProperties = ('asset', 'action')
+        $AllProperties = ('action', 'asset')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -109,8 +109,8 @@ function ConvertFrom-JsonToServerIpmiPowerRequest {
         }
 
         $PSO = [PSCustomObject]@{
-            'asset' = ${Asset}
             'action' = ${Action}
+            'asset' = ${Asset}
         }
 
         return $PSO

@@ -64,6 +64,8 @@ pub enum Time {
     Today,
     #[serde(rename = "1h")]
     Variant1h,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Time {

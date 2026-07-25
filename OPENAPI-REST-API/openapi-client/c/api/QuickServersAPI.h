@@ -24,13 +24,13 @@
 #include "../model/vps_templates_list.h"
 
 // Enum ALL for QuickServersAPI_deleteQsBackup
-typedef enum  { interserver_management_api_deleteQsBackup_ALL_NULL = 0, interserver_management_api_deleteQsBackup_ALL__0, interserver_management_api_deleteQsBackup_ALL__1 } interserver_management_api_deleteQsBackup_all_e;
+typedef enum  { interserver_management_api_deleteQsBackup_ALL_NULL = 0, interserver_management_api_deleteQsBackup_ALL__0, interserver_management_api_deleteQsBackup_ALL__1, interserver_management_api_deleteQsBackup_ALL__11184809 } interserver_management_api_deleteQsBackup_all_e;
 
 // Enum ALL for QuickServersAPI_downloadQsBackup
-typedef enum  { interserver_management_api_downloadQsBackup_ALL_NULL = 0, interserver_management_api_downloadQsBackup_ALL__0, interserver_management_api_downloadQsBackup_ALL__1 } interserver_management_api_downloadQsBackup_all_e;
+typedef enum  { interserver_management_api_downloadQsBackup_ALL_NULL = 0, interserver_management_api_downloadQsBackup_ALL__0, interserver_management_api_downloadQsBackup_ALL__1, interserver_management_api_downloadQsBackup_ALL__11184809 } interserver_management_api_downloadQsBackup_all_e;
 
 // Enum ALL for QuickServersAPI_getQsBackups
-typedef enum  { interserver_management_api_getQsBackups_ALL_NULL = 0, interserver_management_api_getQsBackups_ALL__0, interserver_management_api_getQsBackups_ALL__1 } interserver_management_api_getQsBackups_all_e;
+typedef enum  { interserver_management_api_getQsBackups_ALL_NULL = 0, interserver_management_api_getQsBackups_ALL__0, interserver_management_api_getQsBackups_ALL__1, interserver_management_api_getQsBackups_ALL__11184809 } interserver_management_api_getQsBackups_all_e;
 
 
 // Place a QuickServer order, generating a real invoice and queuing provisioning

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class DenyRuleNew {
   /// Returns a new [DenyRuleNew] instance.
@@ -141,6 +141,7 @@ enum DenyRuleNewTypeEnum {
   email._(r'email'),
   startswith._(r'startswith'),
   destination._(r'destination'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -203,6 +204,7 @@ class DenyRuleNewTypeEnumTypeTransformer {
         case r'email': return DenyRuleNewTypeEnum.email;
         case r'startswith': return DenyRuleNewTypeEnum.startswith;
         case r'destination': return DenyRuleNewTypeEnum.destination;
+        case r'unknown_default_open_api': return DenyRuleNewTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

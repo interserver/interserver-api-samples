@@ -25,12 +25,12 @@ ServerLocation1::ServerLocation1()
     m_Location_idIsSet = false;
     m_Location_name = utility::conversions::to_string_t("");
     m_Location_nameIsSet = false;
-    m_Location_description = utility::conversions::to_string_t("");
-    m_Location_descriptionIsSet = false;
     m_Location_lat = utility::conversions::to_string_t("");
     m_Location_latIsSet = false;
     m_Location_long = utility::conversions::to_string_t("");
     m_Location_longIsSet = false;
+    m_Location_description = utility::conversions::to_string_t("");
+    m_Location_descriptionIsSet = false;
     m_Location_ipmi_group = 0;
     m_Location_ipmi_groupIsSet = false;
 }
@@ -57,11 +57,6 @@ web::json::value ServerLocation1::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("location_name"))] = ModelBase::toJson(m_Location_name);
     }
-    if(m_Location_descriptionIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("location_description"))] = ModelBase::toJson(m_Location_description);
-    }
     if(m_Location_latIsSet)
     {
         
@@ -71,6 +66,11 @@ web::json::value ServerLocation1::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("location_long"))] = ModelBase::toJson(m_Location_long);
+    }
+    if(m_Location_descriptionIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("location_description"))] = ModelBase::toJson(m_Location_description);
     }
     if(m_Location_ipmi_groupIsSet)
     {
@@ -106,17 +106,6 @@ bool ServerLocation1::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("location_description"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("location_description")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setLocationDescription;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setLocationDescription);
-            setLocationDescription(refVal_setLocationDescription);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("location_lat"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("location_lat")));
@@ -136,6 +125,17 @@ bool ServerLocation1::fromJson(const web::json::value& val)
             utility::string_t refVal_setLocationLong;
             ok &= ModelBase::fromJson(fieldValue, refVal_setLocationLong);
             setLocationLong(refVal_setLocationLong);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("location_description"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("location_description")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setLocationDescription;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setLocationDescription);
+            setLocationDescription(refVal_setLocationDescription);
             
         }
     }
@@ -168,10 +168,6 @@ void ServerLocation1::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("location_name")), m_Location_name));
     }
-    if(m_Location_descriptionIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("location_description")), m_Location_description));
-    }
     if(m_Location_latIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("location_lat")), m_Location_lat));
@@ -179,6 +175,10 @@ void ServerLocation1::toMultipart(std::shared_ptr<MultipartFormData> multipart, 
     if(m_Location_longIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("location_long")), m_Location_long));
+    }
+    if(m_Location_descriptionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("location_description")), m_Location_description));
     }
     if(m_Location_ipmi_groupIsSet)
     {
@@ -207,12 +207,6 @@ bool ServerLocation1::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("location_name"))), refVal_setLocationName );
         setLocationName(refVal_setLocationName);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("location_description"))))
-    {
-        utility::string_t refVal_setLocationDescription;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("location_description"))), refVal_setLocationDescription );
-        setLocationDescription(refVal_setLocationDescription);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("location_lat"))))
     {
         utility::string_t refVal_setLocationLat;
@@ -224,6 +218,12 @@ bool ServerLocation1::fromMultiPart(std::shared_ptr<MultipartFormData> multipart
         utility::string_t refVal_setLocationLong;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("location_long"))), refVal_setLocationLong );
         setLocationLong(refVal_setLocationLong);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("location_description"))))
+    {
+        utility::string_t refVal_setLocationDescription;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("location_description"))), refVal_setLocationDescription );
+        setLocationDescription(refVal_setLocationDescription);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("location_ipmi_group"))))
     {
@@ -276,27 +276,6 @@ void ServerLocation1::unsetLocation_name()
 {
     m_Location_nameIsSet = false;
 }
-utility::string_t ServerLocation1::getLocationDescription() const
-{
-    return m_Location_description;
-}
-
-
-void ServerLocation1::setLocationDescription(const utility::string_t& value)
-{
-    m_Location_description = value;
-    m_Location_descriptionIsSet = true;
-}
-
-bool ServerLocation1::locationDescriptionIsSet() const
-{
-    return m_Location_descriptionIsSet;
-}
-
-void ServerLocation1::unsetLocation_description()
-{
-    m_Location_descriptionIsSet = false;
-}
 utility::string_t ServerLocation1::getLocationLat() const
 {
     return m_Location_lat;
@@ -338,6 +317,27 @@ bool ServerLocation1::locationLongIsSet() const
 void ServerLocation1::unsetLocation_long()
 {
     m_Location_longIsSet = false;
+}
+utility::string_t ServerLocation1::getLocationDescription() const
+{
+    return m_Location_description;
+}
+
+
+void ServerLocation1::setLocationDescription(const utility::string_t& value)
+{
+    m_Location_description = value;
+    m_Location_descriptionIsSet = true;
+}
+
+bool ServerLocation1::locationDescriptionIsSet() const
+{
+    return m_Location_descriptionIsSet;
+}
+
+void ServerLocation1::unsetLocation_description()
+{
+    m_Location_descriptionIsSet = false;
 }
 int32_t ServerLocation1::getLocationIpmiGroup() const
 {

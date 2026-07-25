@@ -1,8 +1,8 @@
-# openapi.model.LicensesOrderServiceTypes11482
+# interserver_api.model.LicensesOrderServiceTypes11482
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -21,13 +21,13 @@ namespace model {
 
 LoginInfo::LoginInfo()
 {
-    m_Logo = utility::conversions::to_string_t("");
-    m_LogoIsSet = false;
     m_Captcha = utility::conversions::to_string_t("");
     m_CaptchaIsSet = false;
+    m_CountsIsSet = false;
+    m_Logo = utility::conversions::to_string_t("");
+    m_LogoIsSet = false;
     m_Language = utility::conversions::to_string_t("");
     m_LanguageIsSet = false;
-    m_CountsIsSet = false;
 }
 
 LoginInfo::~LoginInfo()
@@ -42,25 +42,25 @@ void LoginInfo::validate()
 web::json::value LoginInfo::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_LogoIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("logo"))] = ModelBase::toJson(m_Logo);
-    }
     if(m_CaptchaIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("captcha"))] = ModelBase::toJson(m_Captcha);
     }
-    if(m_LanguageIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("language"))] = ModelBase::toJson(m_Language);
-    }
     if(m_CountsIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("counts"))] = ModelBase::toJson(m_Counts);
+    }
+    if(m_LogoIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("logo"))] = ModelBase::toJson(m_Logo);
+    }
+    if(m_LanguageIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("language"))] = ModelBase::toJson(m_Language);
     }
 
     return val;
@@ -69,17 +69,6 @@ web::json::value LoginInfo::toJson() const
 bool LoginInfo::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("logo"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("logo")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setLogo;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setLogo);
-            setLogo(refVal_setLogo);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("captcha"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("captcha")));
@@ -88,17 +77,6 @@ bool LoginInfo::fromJson(const web::json::value& val)
             utility::string_t refVal_setCaptcha;
             ok &= ModelBase::fromJson(fieldValue, refVal_setCaptcha);
             setCaptcha(refVal_setCaptcha);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("language"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("language")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setLanguage;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setLanguage);
-            setLanguage(refVal_setLanguage);
             
         }
     }
@@ -113,6 +91,28 @@ bool LoginInfo::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("logo"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("logo")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setLogo;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setLogo);
+            setLogo(refVal_setLogo);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("language"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("language")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setLanguage;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setLanguage);
+            setLanguage(refVal_setLanguage);
+            
+        }
+    }
     return ok;
 }
 
@@ -123,21 +123,21 @@ void LoginInfo::toMultipart(std::shared_ptr<MultipartFormData> multipart, const 
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
-    if(m_LogoIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("logo")), m_Logo));
-    }
     if(m_CaptchaIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("captcha")), m_Captcha));
     }
-    if(m_LanguageIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("language")), m_Language));
-    }
     if(m_CountsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("counts")), m_Counts));
+    }
+    if(m_LogoIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("logo")), m_Logo));
+    }
+    if(m_LanguageIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("language")), m_Language));
     }
 }
 
@@ -150,23 +150,11 @@ bool LoginInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("logo"))))
-    {
-        utility::string_t refVal_setLogo;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("logo"))), refVal_setLogo );
-        setLogo(refVal_setLogo);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("captcha"))))
     {
         utility::string_t refVal_setCaptcha;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("captcha"))), refVal_setCaptcha );
         setCaptcha(refVal_setCaptcha);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("language"))))
-    {
-        utility::string_t refVal_setLanguage;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("language"))), refVal_setLanguage );
-        setLanguage(refVal_setLanguage);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("counts"))))
     {
@@ -174,31 +162,22 @@ bool LoginInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("counts"))), refVal_setCounts );
         setCounts(refVal_setCounts);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("logo"))))
+    {
+        utility::string_t refVal_setLogo;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("logo"))), refVal_setLogo );
+        setLogo(refVal_setLogo);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("language"))))
+    {
+        utility::string_t refVal_setLanguage;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("language"))), refVal_setLanguage );
+        setLanguage(refVal_setLanguage);
+    }
     return ok;
 }
 
 
-utility::string_t LoginInfo::getLogo() const
-{
-    return m_Logo;
-}
-
-
-void LoginInfo::setLogo(const utility::string_t& value)
-{
-    m_Logo = value;
-    m_LogoIsSet = true;
-}
-
-bool LoginInfo::logoIsSet() const
-{
-    return m_LogoIsSet;
-}
-
-void LoginInfo::unsetLogo()
-{
-    m_LogoIsSet = false;
-}
 utility::string_t LoginInfo::getCaptcha() const
 {
     return m_Captcha;
@@ -220,27 +199,6 @@ void LoginInfo::unsetCaptcha()
 {
     m_CaptchaIsSet = false;
 }
-utility::string_t LoginInfo::getLanguage() const
-{
-    return m_Language;
-}
-
-
-void LoginInfo::setLanguage(const utility::string_t& value)
-{
-    m_Language = value;
-    m_LanguageIsSet = true;
-}
-
-bool LoginInfo::languageIsSet() const
-{
-    return m_LanguageIsSet;
-}
-
-void LoginInfo::unsetLanguage()
-{
-    m_LanguageIsSet = false;
-}
 std::shared_ptr<LoginServiceCounts> LoginInfo::getCounts() const
 {
     return m_Counts;
@@ -261,6 +219,48 @@ bool LoginInfo::countsIsSet() const
 void LoginInfo::unsetCounts()
 {
     m_CountsIsSet = false;
+}
+utility::string_t LoginInfo::getLogo() const
+{
+    return m_Logo;
+}
+
+
+void LoginInfo::setLogo(const utility::string_t& value)
+{
+    m_Logo = value;
+    m_LogoIsSet = true;
+}
+
+bool LoginInfo::logoIsSet() const
+{
+    return m_LogoIsSet;
+}
+
+void LoginInfo::unsetLogo()
+{
+    m_LogoIsSet = false;
+}
+utility::string_t LoginInfo::getLanguage() const
+{
+    return m_Language;
+}
+
+
+void LoginInfo::setLanguage(const utility::string_t& value)
+{
+    m_Language = value;
+    m_LanguageIsSet = true;
+}
+
+bool LoginInfo::languageIsSet() const
+{
+    return m_LanguageIsSet;
+}
+
+void LoginInfo::unsetLanguage()
+{
+    m_LanguageIsSet = false;
 }
 
 }

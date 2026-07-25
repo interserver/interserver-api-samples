@@ -92,18 +92,6 @@ public:
     void setLicenseStatus(std::string value);
 
     /// <summary>
-    /// License hostname
-    /// </summary>
-    std::string getLicenseHostname() const;
-    void setLicenseHostname(std::string value);
-
-    /// <summary>
-    /// License key
-    /// </summary>
-    std::string getLicenseKey() const;
-    void setLicenseKey(std::string value);
-
-    /// <summary>
     /// License invoice
     /// </summary>
     std::string getLicenseInvoice() const;
@@ -114,6 +102,18 @@ public:
     /// </summary>
     std::string getLicenseCoupon() const;
     void setLicenseCoupon(std::string value);
+
+    /// <summary>
+    /// License hostname
+    /// </summary>
+    std::string getLicenseHostname() const;
+    void setLicenseHostname(std::string value);
+
+    /// <summary>
+    /// License key
+    /// </summary>
+    std::string getLicenseKey() const;
+    void setLicenseKey(std::string value);
 
     /// <summary>
     /// Additional license information
@@ -138,12 +138,12 @@ protected:
     std::string m_License_custid = "";
     std::string m_License_ip = "";
     std::string m_License_status = "";
+    std::string m_License_invoice = "";
+    std::string m_License_coupon = "";
     std::string m_License_hostname = "";
     bool m_License_hostnameIsSet = false;
     std::string m_License_key = "";
     bool m_License_keyIsSet = false;
-    std::string m_License_invoice = "";
-    std::string m_License_coupon = "";
     std::string m_License_extra = "";
     bool m_License_extraIsSet = false;
 };

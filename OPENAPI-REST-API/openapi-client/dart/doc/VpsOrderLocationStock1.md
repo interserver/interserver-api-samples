@@ -1,8 +1,8 @@
-# openapi.model.VpsOrderLocationStock1
+# interserver_api.model.VpsOrderLocationStock1
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

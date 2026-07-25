@@ -6,7 +6,7 @@ package client
 type QsOrderRequest struct {
 	Server int32 `json:"server"`
 	Password string `json:"password"`
-	Os string `json:"os,omitempty"`
 	Tos bool `json:"tos"`
+	Os string `json:"os,omitempty"`
 	Comment string `json:"comment,omitempty"`
 }

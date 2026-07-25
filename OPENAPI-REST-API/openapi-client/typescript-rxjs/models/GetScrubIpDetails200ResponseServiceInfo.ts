@@ -86,6 +86,7 @@ export enum GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum {
     Active = 'active',
     Pending = 'pending',
     Canceled = 'canceled',
-    Expired = 'expired'
+    Expired = 'expired',
+    UnknownDefaultOpenApi = '11184809'
 }
 

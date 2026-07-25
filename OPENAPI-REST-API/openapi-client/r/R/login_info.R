@@ -7,20 +7,20 @@
 #' @title LoginInfo
 #' @description LoginInfo Class
 #' @format An \code{R6Class} generator object
-#' @field logo A logo image url. character [optional]
 #' @field captcha A base64 encoded image to use for rendering the alternateive captcha. character
-#' @field language The desired langauge to render the site with. character [optional]
 #' @field counts  \link{LoginServiceCounts}
+#' @field logo A logo image url. character [optional]
+#' @field language The desired langauge to render the site with. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 LoginInfo <- R6::R6Class(
   "LoginInfo",
   public = list(
-    `logo` = NULL,
     `captcha` = NULL,
-    `language` = NULL,
     `counts` = NULL,
+    `logo` = NULL,
+    `language` = NULL,
 
     #' @description
     #' Initialize a new LoginInfo class.
@@ -86,21 +86,21 @@ LoginInfo <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LoginInfoObject <- list()
-      if (!is.null(self$`logo`)) {
-        LoginInfoObject[["logo"]] <-
-          self$`logo`
-      }
       if (!is.null(self$`captcha`)) {
         LoginInfoObject[["captcha"]] <-
           self$`captcha`
       }
-      if (!is.null(self$`language`)) {
-        LoginInfoObject[["language"]] <-
-          self$`language`
-      }
       if (!is.null(self$`counts`)) {
         LoginInfoObject[["counts"]] <-
           self$extractSimpleType(self$`counts`)
+      }
+      if (!is.null(self$`logo`)) {
+        LoginInfoObject[["logo"]] <-
+          self$`logo`
+      }
+      if (!is.null(self$`language`)) {
+        LoginInfoObject[["language"]] <-
+          self$`language`
       }
       return(LoginInfoObject)
     },
@@ -135,19 +135,19 @@ LoginInfo <- R6::R6Class(
     #' @return the instance of LoginInfo
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`logo`)) {
-        self$`logo` <- this_object$`logo`
-      }
       if (!is.null(this_object$`captcha`)) {
         self$`captcha` <- this_object$`captcha`
-      }
-      if (!is.null(this_object$`language`)) {
-        self$`language` <- this_object$`language`
       }
       if (!is.null(this_object$`counts`)) {
         `counts_object` <- LoginServiceCounts$new()
         `counts_object`$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
         self$`counts` <- `counts_object`
+      }
+      if (!is.null(this_object$`logo`)) {
+        self$`logo` <- this_object$`logo`
+      }
+      if (!is.null(this_object$`language`)) {
+        self$`language` <- this_object$`language`
       }
       self
     },
@@ -170,10 +170,10 @@ LoginInfo <- R6::R6Class(
     #' @return the instance of LoginInfo
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`logo` <- this_object$`logo`
       self$`captcha` <- this_object$`captcha`
-      self$`language` <- this_object$`language`
       self$`counts` <- LoginServiceCounts$new()$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
+      self$`logo` <- this_object$`logo`
+      self$`language` <- this_object$`language`
       self
     },
 

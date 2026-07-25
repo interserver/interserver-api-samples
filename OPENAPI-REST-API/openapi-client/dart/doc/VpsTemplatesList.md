@@ -1,8 +1,8 @@
-# openapi.model.VpsTemplatesList
+# interserver_api.model.VpsTemplatesList
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

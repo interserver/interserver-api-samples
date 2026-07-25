@@ -19,12 +19,12 @@ local function cast_login_info(t)
 	return setmetatable(t, login_info_mt)
 end
 
-local function new_login_info(logo, captcha, language, counts)
+local function new_login_info(captcha, counts, logo, language)
 	return cast_login_info({
-		["logo"] = logo;
 		["captcha"] = captcha;
-		["language"] = language;
 		["counts"] = counts;
+		["logo"] = logo;
+		["language"] = language;
 	})
 end
 

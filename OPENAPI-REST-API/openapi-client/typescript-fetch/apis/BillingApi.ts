@@ -1521,7 +1521,8 @@ export const GetAffiliateDownloadExEnum = {
     Csv: 'csv',
     Xls: 'xls',
     Xlsx: 'xlsx',
-    Pdf: 'pdf'
+    Pdf: 'pdf',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type GetAffiliateDownloadExEnum = typeof GetAffiliateDownloadExEnum[keyof typeof GetAffiliateDownloadExEnum];
 /**
@@ -1536,6 +1537,7 @@ export const InitiatePaymentMethodEnum = {
     Ccavenue: 'ccavenue',
     Cashfree: 'cashfree',
     Coinbase: 'coinbase',
-    Btcpay: 'btcpay'
+    Btcpay: 'btcpay',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type InitiatePaymentMethodEnum = typeof InitiatePaymentMethodEnum[keyof typeof InitiatePaymentMethodEnum];

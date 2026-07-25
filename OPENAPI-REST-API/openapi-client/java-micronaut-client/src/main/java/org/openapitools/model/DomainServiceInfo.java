@@ -39,7 +39,7 @@ import javax.annotation.Generated;
   DomainServiceInfo.JSON_PROPERTY_DOMAIN_COUPON
 })
 @JsonTypeName("DomainServiceInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class DomainServiceInfo {
     public static final String JSON_PROPERTY_DOMAIN_ID = "domain_id";

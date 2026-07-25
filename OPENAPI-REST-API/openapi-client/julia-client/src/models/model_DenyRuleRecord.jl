@@ -6,34 +6,34 @@
 The data for a email deny rule record.
 
     DenyRuleRecord(;
-        user=nothing,
         type=nothing,
         data=nothing,
         id=nothing,
         created=nothing,
+        user=nothing,
     )
 
-    - user::String : Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
     - type::String : The type of deny rule.
     - data::String : The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.
     - id::Int64 : The deny rule Id number.
     - created::String : the date the rule was created.
+    - user::String : Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 """
 Base.@kwdef mutable struct DenyRuleRecord <: OpenAPI.APIModel
-    user::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     data::Union{Nothing, String} = nothing
     id::Union{Nothing, Int64} = nothing
     created::Union{Nothing, String} = nothing
+    user::Union{Nothing, String} = nothing
 
-    function DenyRuleRecord(user, type, data, id, created, )
-        o = new(user, type, data, id, created, )
+    function DenyRuleRecord(type, data, id, created, user, )
+        o = new(type, data, id, created, user, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type DenyRuleRecord
 
-const _property_types_DenyRuleRecord = Dict{Symbol,String}(Symbol("user")=>"String", Symbol("type")=>"String", Symbol("data")=>"String", Symbol("id")=>"Int64", Symbol("created")=>"String", )
+const _property_types_DenyRuleRecord = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("data")=>"String", Symbol("id")=>"Int64", Symbol("created")=>"String", Symbol("user")=>"String", )
 OpenAPI.property_type(::Type{ DenyRuleRecord }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DenyRuleRecord[name]))}
 
 function OpenAPI.check_required(o::DenyRuleRecord)
@@ -45,19 +45,19 @@ function OpenAPI.check_required(o::DenyRuleRecord)
 end
 
 function OpenAPI.validate_properties(o::DenyRuleRecord)
-    OpenAPI.validate_property(DenyRuleRecord, Symbol("user"), o.user)
     OpenAPI.validate_property(DenyRuleRecord, Symbol("type"), o.type)
     OpenAPI.validate_property(DenyRuleRecord, Symbol("data"), o.data)
     OpenAPI.validate_property(DenyRuleRecord, Symbol("id"), o.id)
     OpenAPI.validate_property(DenyRuleRecord, Symbol("created"), o.created)
+    OpenAPI.validate_property(DenyRuleRecord, Symbol("user"), o.user)
 end
 
 function OpenAPI.validate_property(::Type{ DenyRuleRecord }, name::Symbol, val)
 
-
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "DenyRuleRecord", :enum, val, ["domain", "email", "startswith", "destination"])
+        OpenAPI.validate_param(name, "DenyRuleRecord", :enum, val, ["domain", "email", "startswith", "destination", "unknown_default_open_api"])
     end
+
 
 
 

@@ -34,18 +34,18 @@ pub struct LicenseServiceInfo {
     /// License status
     #[serde(rename = "license_status")]
     pub license_status: String,
-    /// License hostname
-    #[serde(rename = "license_hostname", skip_serializing_if = "Option::is_none")]
-    pub license_hostname: Option<String>,
-    /// License key
-    #[serde(rename = "license_key", skip_serializing_if = "Option::is_none")]
-    pub license_key: Option<String>,
     /// License invoice
     #[serde(rename = "license_invoice")]
     pub license_invoice: String,
     /// License coupon
     #[serde(rename = "license_coupon")]
     pub license_coupon: String,
+    /// License hostname
+    #[serde(rename = "license_hostname", skip_serializing_if = "Option::is_none")]
+    pub license_hostname: Option<String>,
+    /// License key
+    #[serde(rename = "license_key", skip_serializing_if = "Option::is_none")]
+    pub license_key: Option<String>,
     /// Additional license information
     #[serde(rename = "license_extra", skip_serializing_if = "Option::is_none")]
     pub license_extra: Option<String>,
@@ -61,10 +61,10 @@ impl LicenseServiceInfo {
             license_custid,
             license_ip,
             license_status,
-            license_hostname: None,
-            license_key: None,
             license_invoice,
             license_coupon,
+            license_hostname: None,
+            license_key: None,
             license_extra: None,
         }
     }

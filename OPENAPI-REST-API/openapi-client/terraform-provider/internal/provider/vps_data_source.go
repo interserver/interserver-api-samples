@@ -59,20 +59,12 @@ func (d *VpsDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, re
 				Required:    true,
 				Description: "",
 			},
-			"os_template": schema.StringAttribute{
-				Computed:    true,
-				Description: "",
-			},
 			"service_extra": schema.StringAttribute{
 				Required:    true,
 				Description: "",
 			},
 			"extra_info_tables": schema.StringAttribute{
 				Required:    true,
-				Description: "",
-			},
-			"cpu_graph_data": schema.StringAttribute{
-				Computed:    true,
 				Description: "",
 			},
 			"module": schema.StringAttribute{
@@ -105,6 +97,14 @@ func (d *VpsDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, re
 			},
 			"service_addons": schema.StringAttribute{
 				Required:    true,
+				Description: "",
+			},
+			"os_template": schema.StringAttribute{
+				Computed:    true,
+				Description: "",
+			},
+			"cpu_graph_data": schema.StringAttribute{
+				Computed:    true,
 				Description: "",
 			},
 		},

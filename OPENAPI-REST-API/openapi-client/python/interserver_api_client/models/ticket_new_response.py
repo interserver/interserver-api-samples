@@ -28,10 +28,10 @@ class TicketNewResponse(BaseModel):
     """
     Response returned after creating a new support ticket.
     """ # noqa: E501
-    ticket_id: Optional[StrictInt] = None
     text: StrictStr
     success: StrictBool
-    __properties: ClassVar[List[str]] = ["ticket_id", "text", "success"]
+    ticket_id: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["text", "success", "ticket_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,9 +84,9 @@ class TicketNewResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ticket_id": obj.get("ticket_id"),
             "text": obj.get("text"),
-            "success": obj.get("success")
+            "success": obj.get("success"),
+            "ticket_id": obj.get("ticket_id")
         })
         return _obj
 

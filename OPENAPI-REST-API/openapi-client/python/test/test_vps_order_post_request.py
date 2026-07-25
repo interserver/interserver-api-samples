@@ -39,13 +39,13 @@ class TestVpsOrderPostRequest(unittest.TestCase):
                 os_distro = '',
                 slices = 1,
                 vps_platform = 'kvm',
-                controlpanel = 'none',
                 period = 1,
                 location = 1,
                 os_version = '',
                 hostname = '',
-                coupon = '',
                 rootpass = '',
+                controlpanel = 'none',
+                coupon = '',
                 comment = ''
             )
         else:

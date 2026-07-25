@@ -29,13 +29,9 @@ No description available.
 No description available.
 .PARAMETER Package
 No description available.
-.PARAMETER OsTemplate
-No description available.
 .PARAMETER ServiceExtra
 No description available.
 .PARAMETER ExtraInfoTables
-No description available.
-.PARAMETER CpuGraphData
 No description available.
 .PARAMETER Module
 No description available.
@@ -52,6 +48,10 @@ No description available.
 .PARAMETER Plesk12Data
 No description available.
 .PARAMETER ServiceAddons
+No description available.
+.PARAMETER OsTemplate
+No description available.
+.PARAMETER CpuGraphData
 No description available.
 .OUTPUTS
 
@@ -83,41 +83,41 @@ function Initialize-Vps {
         [String]
         ${Package},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${OsTemplate},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${ServiceExtra},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${ExtraInfoTables},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CpuGraphData},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Module},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Token},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [Int32]
         ${DaLink},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [Int32]
         ${SrLink},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${CpData},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${DaData},
-        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Plesk12Data},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${ServiceAddons},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${OsTemplate},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${ServiceAddons}
+        ${CpuGraphData}
     )
 
     Process {
@@ -201,10 +201,8 @@ function Initialize-Vps {
             'custCurrencySymbol' = ${CustCurrencySymbol}
             'serviceMaster' = ${ServiceMaster}
             'package' = ${Package}
-            'os_template' = ${OsTemplate}
             'serviceExtra' = ${ServiceExtra}
             'extraInfoTables' = ${ExtraInfoTables}
-            'cpu_graph_data' = ${CpuGraphData}
             'module' = ${Module}
             'token' = ${Token}
             'da_link' = ${DaLink}
@@ -213,6 +211,8 @@ function Initialize-Vps {
             'da_data' = ${DaData}
             'plesk12_data' = ${Plesk12Data}
             'serviceAddons' = ${ServiceAddons}
+            'os_template' = ${OsTemplate}
+            'cpu_graph_data' = ${CpuGraphData}
         }
 
 
@@ -250,7 +250,7 @@ function ConvertFrom-JsonToVps {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in Vps
-        $AllProperties = ('serviceInfo', 'client_links', 'billingDetails', 'custCurrency', 'custCurrencySymbol', 'serviceMaster', 'package', 'os_template', 'serviceExtra', 'extraInfoTables', 'cpu_graph_data', 'module', 'token', 'da_link', 'sr_link', 'cp_data', 'da_data', 'plesk12_data', 'serviceAddons')
+        $AllProperties = ('serviceInfo', 'client_links', 'billingDetails', 'custCurrency', 'custCurrencySymbol', 'serviceMaster', 'package', 'serviceExtra', 'extraInfoTables', 'module', 'token', 'da_link', 'sr_link', 'cp_data', 'da_data', 'plesk12_data', 'serviceAddons', 'os_template', 'cpu_graph_data')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -383,10 +383,8 @@ function ConvertFrom-JsonToVps {
             'custCurrencySymbol' = ${CustCurrencySymbol}
             'serviceMaster' = ${ServiceMaster}
             'package' = ${Package}
-            'os_template' = ${OsTemplate}
             'serviceExtra' = ${ServiceExtra}
             'extraInfoTables' = ${ExtraInfoTables}
-            'cpu_graph_data' = ${CpuGraphData}
             'module' = ${Module}
             'token' = ${Token}
             'da_link' = ${DaLink}
@@ -395,6 +393,8 @@ function ConvertFrom-JsonToVps {
             'da_data' = ${DaData}
             'plesk12_data' = ${Plesk12Data}
             'serviceAddons' = ${ServiceAddons}
+            'os_template' = ${OsTemplate}
+            'cpu_graph_data' = ${CpuGraphData}
         }
 
         return $PSO

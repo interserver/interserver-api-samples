@@ -14,7 +14,7 @@
 /**
  * Type of DNS Record
  */
-export type DnsRecordType = 'A' | 'A6' | 'AAAA' | 'AFSDB' | 'ALIAS' | 'CAA' | 'CDNSKEY' | 'CDS' | 'CERT' | 'CNAME' | 'DHCID' | 'DLV' | 'DNSKEY' | 'DNAME' | 'DS' | 'EUI48' | 'EUI64' | 'HINFO' | 'IPSECKEY' | 'KEY' | 'KX' | 'LOC' | 'MAILA' | 'MAILB' | 'MINFO' | 'MR' | 'MX' | 'NAPTR' | 'NS' | 'NSEC' | 'NSEC3' | 'NSEC3PARAM' | 'OPENPGPKEY' | 'OPT' | 'PTR' | 'RKEY' | 'RP' | 'RRSIG' | 'SIG' | 'SOA' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TKEY' | 'TSIG' | 'TXT' | 'WKS' | 'URI⏎';
+export type DnsRecordType = 'A' | 'A6' | 'AAAA' | 'AFSDB' | 'ALIAS' | 'CAA' | 'CDNSKEY' | 'CDS' | 'CERT' | 'CNAME' | 'DHCID' | 'DLV' | 'DNSKEY' | 'DNAME' | 'DS' | 'EUI48' | 'EUI64' | 'HINFO' | 'IPSECKEY' | 'KEY' | 'KX' | 'LOC' | 'MAILA' | 'MAILB' | 'MINFO' | 'MR' | 'MX' | 'NAPTR' | 'NS' | 'NSEC' | 'NSEC3' | 'NSEC3PARAM' | 'OPENPGPKEY' | 'OPT' | 'PTR' | 'RKEY' | 'RP' | 'RRSIG' | 'SIG' | 'SOA' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TKEY' | 'TSIG' | 'TXT' | 'WKS' | 'URI⏎' | '11184809';
 
 export const DnsRecordType = {
     A: 'A' as DnsRecordType,
@@ -65,5 +65,6 @@ export const DnsRecordType = {
     Tsig: 'TSIG' as DnsRecordType,
     Txt: 'TXT' as DnsRecordType,
     Wks: 'WKS' as DnsRecordType,
-    Uri: 'URI⏎' as DnsRecordType
+    Uri: 'URI⏎' as DnsRecordType,
+    UnknownDefaultOpenApi: '11184809' as DnsRecordType
 }

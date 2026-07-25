@@ -31,12 +31,14 @@ export interface CreateFirewallRule {
 export namespace CreateFirewallRule {
     export const ProtocolIdEnum = {
         NUMBER_1: 1,
-        NUMBER_2: 2
+        NUMBER_2: 2,
+        NUMBER_unknown_default_open_api: 11184809
     } as const;
     export type ProtocolIdEnum = typeof ProtocolIdEnum[keyof typeof ProtocolIdEnum];
     export const XdpActionEnum = {
         NUMBER_0: 0,
-        NUMBER_1: 1
+        NUMBER_1: 1,
+        NUMBER_unknown_default_open_api: 11184809
     } as const;
     export type XdpActionEnum = typeof XdpActionEnum[keyof typeof XdpActionEnum];
 }

@@ -10,14 +10,14 @@ A single email record in the mail log.  Combines data from the message store (en
         id=nothing,
         from=nothing,
         to=nothing,
-        subject=nothing,
-        messageId=nothing,
         created=nothing,
         time=nothing,
         user=nothing,
         transtype=nothing,
         origin=nothing,
         interface=nothing,
+        subject=nothing,
+        messageId=nothing,
         sendingZone=nothing,
         bodySize=nothing,
         seq=nothing,
@@ -37,14 +37,14 @@ A single email record in the mail log.  Combines data from the message store (en
     - id::String : The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints.
     - from::String : SMTP envelope &#x60;MAIL FROM&#x60; address.
     - to::String : SMTP envelope &#x60;RCPT TO&#x60; address.
-    - subject::String : The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    - messageId::String : The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
     - created::String : Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
     - time::Int64 : Unix timestamp of message acceptance.  Corresponds to the &#x60;startDate&#x60; and &#x60;endDate&#x60; filter parameters.
     - user::String : The SMTP AUTH username used to submit the message (e.g. &#x60;mb5658&#x60;).
     - transtype::String : SMTP transaction type negotiated with the relay.
     - origin::String : IP address of the client that submitted the message to the relay.
     - interface::String : Relay interface name that accepted the message.
+    - subject::String : The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    - messageId::String : The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
     - sendingZone::String : The sending zone assigned by the relay for outbound delivery.
     - bodySize::Int64 : Size of the message body in bytes.
     - seq::Int64 : Sequence index of this recipient in a multi-recipient message. Starts at 1.
@@ -64,14 +64,14 @@ Base.@kwdef mutable struct MailLogEntry <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
     from::Union{Nothing, String} = nothing
     to::Union{Nothing, String} = nothing
-    subject::Union{Nothing, String} = nothing
-    messageId::Union{Nothing, String} = nothing
     created::Union{Nothing, String} = nothing
     time::Union{Nothing, Int64} = nothing
     user::Union{Nothing, String} = nothing
     transtype::Union{Nothing, String} = nothing
     origin::Union{Nothing, String} = nothing
     interface::Union{Nothing, String} = nothing
+    subject::Union{Nothing, String} = nothing
+    messageId::Union{Nothing, String} = nothing
     sendingZone::Union{Nothing, String} = nothing
     bodySize::Union{Nothing, Int64} = nothing
     seq::Union{Nothing, Int64} = nothing
@@ -86,14 +86,14 @@ Base.@kwdef mutable struct MailLogEntry <: OpenAPI.APIModel
     queued::Union{Nothing, String} = nothing
     mxHostname::Union{Nothing, String} = nothing
 
-    function MailLogEntry(_id, id, from, to, subject, messageId, created, time, user, transtype, origin, interface, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname, )
-        o = new(_id, id, from, to, subject, messageId, created, time, user, transtype, origin, interface, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname, )
+    function MailLogEntry(_id, id, from, to, created, time, user, transtype, origin, interface, subject, messageId, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname, )
+        o = new(_id, id, from, to, created, time, user, transtype, origin, interface, subject, messageId, sendingZone, bodySize, seq, delivered, code, recipient, response, domain, locked, lockTime, assigned, queued, mxHostname, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type MailLogEntry
 
-const _property_types_MailLogEntry = Dict{Symbol,String}(Symbol("_id")=>"Int64", Symbol("id")=>"String", Symbol("from")=>"String", Symbol("to")=>"String", Symbol("subject")=>"String", Symbol("messageId")=>"String", Symbol("created")=>"String", Symbol("time")=>"Int64", Symbol("user")=>"String", Symbol("transtype")=>"String", Symbol("origin")=>"String", Symbol("interface")=>"String", Symbol("sendingZone")=>"String", Symbol("bodySize")=>"Int64", Symbol("seq")=>"Int64", Symbol("delivered")=>"Int64", Symbol("code")=>"Int64", Symbol("recipient")=>"String", Symbol("response")=>"String", Symbol("domain")=>"String", Symbol("locked")=>"Int64", Symbol("lockTime")=>"String", Symbol("assigned")=>"String", Symbol("queued")=>"String", Symbol("mxHostname")=>"String", )
+const _property_types_MailLogEntry = Dict{Symbol,String}(Symbol("_id")=>"Int64", Symbol("id")=>"String", Symbol("from")=>"String", Symbol("to")=>"String", Symbol("created")=>"String", Symbol("time")=>"Int64", Symbol("user")=>"String", Symbol("transtype")=>"String", Symbol("origin")=>"String", Symbol("interface")=>"String", Symbol("subject")=>"String", Symbol("messageId")=>"String", Symbol("sendingZone")=>"String", Symbol("bodySize")=>"Int64", Symbol("seq")=>"Int64", Symbol("delivered")=>"Int64", Symbol("code")=>"Int64", Symbol("recipient")=>"String", Symbol("response")=>"String", Symbol("domain")=>"String", Symbol("locked")=>"Int64", Symbol("lockTime")=>"String", Symbol("assigned")=>"String", Symbol("queued")=>"String", Symbol("mxHostname")=>"String", )
 OpenAPI.property_type(::Type{ MailLogEntry }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MailLogEntry[name]))}
 
 function OpenAPI.check_required(o::MailLogEntry)
@@ -115,14 +115,14 @@ function OpenAPI.validate_properties(o::MailLogEntry)
     OpenAPI.validate_property(MailLogEntry, Symbol("id"), o.id)
     OpenAPI.validate_property(MailLogEntry, Symbol("from"), o.from)
     OpenAPI.validate_property(MailLogEntry, Symbol("to"), o.to)
-    OpenAPI.validate_property(MailLogEntry, Symbol("subject"), o.subject)
-    OpenAPI.validate_property(MailLogEntry, Symbol("messageId"), o.messageId)
     OpenAPI.validate_property(MailLogEntry, Symbol("created"), o.created)
     OpenAPI.validate_property(MailLogEntry, Symbol("time"), o.time)
     OpenAPI.validate_property(MailLogEntry, Symbol("user"), o.user)
     OpenAPI.validate_property(MailLogEntry, Symbol("transtype"), o.transtype)
     OpenAPI.validate_property(MailLogEntry, Symbol("origin"), o.origin)
     OpenAPI.validate_property(MailLogEntry, Symbol("interface"), o.interface)
+    OpenAPI.validate_property(MailLogEntry, Symbol("subject"), o.subject)
+    OpenAPI.validate_property(MailLogEntry, Symbol("messageId"), o.messageId)
     OpenAPI.validate_property(MailLogEntry, Symbol("sendingZone"), o.sendingZone)
     OpenAPI.validate_property(MailLogEntry, Symbol("bodySize"), o.bodySize)
     OpenAPI.validate_property(MailLogEntry, Symbol("seq"), o.seq)

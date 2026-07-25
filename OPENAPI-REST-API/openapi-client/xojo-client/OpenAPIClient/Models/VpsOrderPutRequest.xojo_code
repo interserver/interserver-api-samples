@@ -94,7 +94,8 @@ Protected Class VpsOrderPutRequest
         Kvm
         Hyperv
         Kvmstorage
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
     #tag Enum, Name = ControlpanelEnum, Type = Integer, Flags = &h0
@@ -102,7 +103,8 @@ Protected Class VpsOrderPutRequest
         None
         Cpanel
         Da
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -116,7 +118,10 @@ Protected Class VpsOrderPutRequest
 		      Return "hyperv"
 		    Case VpsPlatformEnum.Kvmstorage
 		      Return "kvmstorage"
-		    
+		    Case VpsPlatformEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -131,7 +136,10 @@ Protected Class VpsOrderPutRequest
 		      Return "cpanel"
 		    Case ControlpanelEnum.Da
 		      Return "da"
-		    
+		    Case ControlpanelEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

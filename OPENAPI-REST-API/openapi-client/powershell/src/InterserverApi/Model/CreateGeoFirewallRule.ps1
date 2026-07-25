@@ -15,14 +15,14 @@ No summary available.
 
 Create firewall rule for your ip
 
+.PARAMETER XdpAction
+1 = Block,  0 = Whitelist
 .PARAMETER DestinationPort
 No description available.
 .PARAMETER CountryCode
 To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode
 .PARAMETER Asn
 ASN number
-.PARAMETER XdpAction
-1 = Block,  0 = Whitelist
 .OUTPUTS
 
 CreateGeoFirewallRule<PSCustomObject>
@@ -32,18 +32,18 @@ function Initialize-CreateGeoFirewallRule {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${DestinationPort} = 80,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${CountryCode},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${Asn},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("0", "1")]
         [Int32]
-        ${XdpAction}
+        ${XdpAction},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${DestinationPort} = 80,
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${CountryCode},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${Asn}
     )
 
     Process {
@@ -56,10 +56,10 @@ function Initialize-CreateGeoFirewallRule {
 
 
         $PSO = [PSCustomObject]@{
+            'xdp_action' = ${XdpAction}
             'destination_port' = ${DestinationPort}
             'country_code' = ${CountryCode}
             'asn' = ${Asn}
-            'xdp_action' = ${XdpAction}
         }
 
 
@@ -97,7 +97,7 @@ function ConvertFrom-JsonToCreateGeoFirewallRule {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in CreateGeoFirewallRule
-        $AllProperties = ('destination_port', 'country_code', 'asn', 'xdp_action')
+        $AllProperties = ('xdp_action', 'destination_port', 'country_code', 'asn')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -133,10 +133,10 @@ function ConvertFrom-JsonToCreateGeoFirewallRule {
         }
 
         $PSO = [PSCustomObject]@{
+            'xdp_action' = ${XdpAction}
             'destination_port' = ${DestinationPort}
             'country_code' = ${CountryCode}
             'asn' = ${Asn}
-            'xdp_action' = ${XdpAction}
         }
 
         return $PSO

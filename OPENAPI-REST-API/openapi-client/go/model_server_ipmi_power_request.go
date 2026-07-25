@@ -21,10 +21,10 @@ var _ MappedNullable = &ServerIpmiPowerRequest{}
 
 // ServerIpmiPowerRequest IPMI Power command for servers
 type ServerIpmiPowerRequest struct {
-	// The Asset ID
-	Asset *int32 `json:"asset,omitempty"`
 	// The power action to send to the ipmi controller.
 	Action string `json:"action"`
+	// The Asset ID
+	Asset *int32 `json:"asset,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,6 +46,30 @@ func NewServerIpmiPowerRequest(action string) *ServerIpmiPowerRequest {
 func NewServerIpmiPowerRequestWithDefaults() *ServerIpmiPowerRequest {
 	this := ServerIpmiPowerRequest{}
 	return &this
+}
+
+// GetAction returns the Action field value
+func (o *ServerIpmiPowerRequest) GetAction() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value
+// and a boolean to check if the value has been set.
+func (o *ServerIpmiPowerRequest) GetActionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Action, true
+}
+
+// SetAction sets field value
+func (o *ServerIpmiPowerRequest) SetAction(v string) {
+	o.Action = v
 }
 
 // GetAsset returns the Asset field value if set, zero value otherwise.
@@ -80,30 +104,6 @@ func (o *ServerIpmiPowerRequest) SetAsset(v int32) {
 	o.Asset = &v
 }
 
-// GetAction returns the Action field value
-func (o *ServerIpmiPowerRequest) GetAction() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value
-// and a boolean to check if the value has been set.
-func (o *ServerIpmiPowerRequest) GetActionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Action, true
-}
-
-// SetAction sets field value
-func (o *ServerIpmiPowerRequest) SetAction(v string) {
-	o.Action = v
-}
-
 func (o ServerIpmiPowerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,10 +114,10 @@ func (o ServerIpmiPowerRequest) MarshalJSON() ([]byte, error) {
 
 func (o ServerIpmiPowerRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["action"] = o.Action
 	if !IsNil(o.Asset) {
 		toSerialize["asset"] = o.Asset
 	}
-	toSerialize["action"] = o.Action
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -161,8 +161,8 @@ func (o *ServerIpmiPowerRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "asset")
 		delete(additionalProperties, "action")
+		delete(additionalProperties, "asset")
 		o.AdditionalProperties = additionalProperties
 	}
 

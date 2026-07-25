@@ -25,10 +25,10 @@ feature --Access
       -- Link URL
     icon: detachable STRING_32
       -- Link icon
-    icon_text: detachable STRING_32
-      -- Icon text
     help_text: detachable STRING_32
       -- Help text
+    icon_text: detachable STRING_32
+      -- Icon text
     other_attr: detachable STRING_32
       -- Other attributes
 
@@ -58,20 +58,20 @@ feature -- Change Element
         icon_set: icon = a_name
       end
 
-    set_icon_text (a_name: like icon_text)
-        -- Set 'icon_text' with 'a_name'.
-      do
-        icon_text := a_name
-      ensure
-        icon_text_set: icon_text = a_name
-      end
-
     set_help_text (a_name: like help_text)
         -- Set 'help_text' with 'a_name'.
       do
         help_text := a_name
       ensure
         help_text_set: help_text = a_name
+      end
+
+    set_icon_text (a_name: like icon_text)
+        -- Set 'icon_text' with 'a_name'.
+      do
+        icon_text := a_name
+      ensure
+        icon_text_set: icon_text = a_name
       end
 
     set_other_attr (a_name: like other_attr)
@@ -105,14 +105,14 @@ feature -- Change Element
           Result.append (l_icon.out)
           Result.append ("%N")
         end
-        if attached icon_text as l_icon_text then
-          Result.append ("%Nicon_text:")
-          Result.append (l_icon_text.out)
-          Result.append ("%N")
-        end
         if attached help_text as l_help_text then
           Result.append ("%Nhelp_text:")
           Result.append (l_help_text.out)
+          Result.append ("%N")
+        end
+        if attached icon_text as l_icon_text then
+          Result.append ("%Nicon_text:")
+          Result.append (l_icon_text.out)
           Result.append ("%N")
         end
         if attached other_attr as l_other_attr then

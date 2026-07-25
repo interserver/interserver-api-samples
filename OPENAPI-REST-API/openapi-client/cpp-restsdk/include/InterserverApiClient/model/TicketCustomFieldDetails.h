@@ -62,6 +62,7 @@ public:
     {
         Y,
         N,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     Customer_Server_AccessEnum toCustomer_Server_AccessEnum(const utility::string_t& value) const;

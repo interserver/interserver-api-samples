@@ -36,12 +36,12 @@ class LicenseServiceInfo(BaseModel):
     license_custid: StrictStr = Field(description="Customer ID", json_schema_extra={"examples": ["771282"]})
     license_ip: StrictStr = Field(description="License IP", json_schema_extra={"examples": ["1.2.3.4"]})
     license_status: StrictStr = Field(description="License status", json_schema_extra={"examples": ["active"]})
-    license_hostname: Optional[StrictStr] = Field(default=None, description="License hostname", json_schema_extra={"examples": [""]})
-    license_key: Optional[StrictStr] = Field(default=None, description="License key", json_schema_extra={"examples": [""]})
     license_invoice: StrictStr = Field(description="License invoice", json_schema_extra={"examples": ["18704419"]})
     license_coupon: StrictStr = Field(description="License coupon", json_schema_extra={"examples": ["1836"]})
+    license_hostname: Optional[StrictStr] = Field(default=None, description="License hostname", json_schema_extra={"examples": [""]})
+    license_key: Optional[StrictStr] = Field(default=None, description="License key", json_schema_extra={"examples": [""]})
     license_extra: Optional[StrictStr] = Field(default=None, description="Additional license information", json_schema_extra={"examples": [""]})
-    __properties: ClassVar[List[str]] = ["license_id", "license_type", "license_currency", "license_order_date", "license_custid", "license_ip", "license_status", "license_hostname", "license_key", "license_invoice", "license_coupon", "license_extra"]
+    __properties: ClassVar[List[str]] = ["license_id", "license_type", "license_currency", "license_order_date", "license_custid", "license_ip", "license_status", "license_invoice", "license_coupon", "license_hostname", "license_key", "license_extra"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -101,10 +101,10 @@ class LicenseServiceInfo(BaseModel):
             "license_custid": obj.get("license_custid"),
             "license_ip": obj.get("license_ip"),
             "license_status": obj.get("license_status"),
-            "license_hostname": obj.get("license_hostname"),
-            "license_key": obj.get("license_key"),
             "license_invoice": obj.get("license_invoice"),
             "license_coupon": obj.get("license_coupon"),
+            "license_hostname": obj.get("license_hostname"),
+            "license_key": obj.get("license_key"),
             "license_extra": obj.get("license_extra")
         })
         return _obj

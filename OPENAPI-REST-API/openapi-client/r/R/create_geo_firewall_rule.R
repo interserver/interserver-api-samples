@@ -7,20 +7,20 @@
 #' @title CreateGeoFirewallRule
 #' @description CreateGeoFirewallRule Class
 #' @format An \code{R6Class} generator object
+#' @field xdp_action 1 = Block,  0 = Whitelist integer
 #' @field destination_port  integer [optional]
 #' @field country_code To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode integer [optional]
 #' @field asn ASN number integer [optional]
-#' @field xdp_action 1 = Block,  0 = Whitelist integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CreateGeoFirewallRule <- R6::R6Class(
   "CreateGeoFirewallRule",
   public = list(
+    `xdp_action` = NULL,
     `destination_port` = NULL,
     `country_code` = NULL,
     `asn` = NULL,
-    `xdp_action` = NULL,
 
     #' @description
     #' Initialize a new CreateGeoFirewallRule class.
@@ -91,6 +91,10 @@ CreateGeoFirewallRule <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateGeoFirewallRuleObject <- list()
+      if (!is.null(self$`xdp_action`)) {
+        CreateGeoFirewallRuleObject[["xdp_action"]] <-
+          self$`xdp_action`
+      }
       if (!is.null(self$`destination_port`)) {
         CreateGeoFirewallRuleObject[["destination_port"]] <-
           self$`destination_port`
@@ -103,10 +107,6 @@ CreateGeoFirewallRule <- R6::R6Class(
         CreateGeoFirewallRuleObject[["asn"]] <-
           self$`asn`
       }
-      if (!is.null(self$`xdp_action`)) {
-        CreateGeoFirewallRuleObject[["xdp_action"]] <-
-          self$`xdp_action`
-      }
       return(CreateGeoFirewallRuleObject)
     },
 
@@ -117,6 +117,12 @@ CreateGeoFirewallRule <- R6::R6Class(
     #' @return the instance of CreateGeoFirewallRule
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`xdp_action`)) {
+        if (!is.null(this_object$`xdp_action`) && !(this_object$`xdp_action` %in% c("0", "1"))) {
+          stop(paste("Error! \"", this_object$`xdp_action`, "\" cannot be assigned to `xdp_action`. Must be \"0\", \"1\".", sep = ""))
+        }
+        self$`xdp_action` <- this_object$`xdp_action`
+      }
       if (!is.null(this_object$`destination_port`)) {
         self$`destination_port` <- this_object$`destination_port`
       }
@@ -125,12 +131,6 @@ CreateGeoFirewallRule <- R6::R6Class(
       }
       if (!is.null(this_object$`asn`)) {
         self$`asn` <- this_object$`asn`
-      }
-      if (!is.null(this_object$`xdp_action`)) {
-        if (!is.null(this_object$`xdp_action`) && !(this_object$`xdp_action` %in% c("0", "1"))) {
-          stop(paste("Error! \"", this_object$`xdp_action`, "\" cannot be assigned to `xdp_action`. Must be \"0\", \"1\".", sep = ""))
-        }
-        self$`xdp_action` <- this_object$`xdp_action`
       }
       self
     },
@@ -153,13 +153,13 @@ CreateGeoFirewallRule <- R6::R6Class(
     #' @return the instance of CreateGeoFirewallRule
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`destination_port` <- this_object$`destination_port`
-      self$`country_code` <- this_object$`country_code`
-      self$`asn` <- this_object$`asn`
       if (!is.null(this_object$`xdp_action`) && !(this_object$`xdp_action` %in% c("0", "1"))) {
         stop(paste("Error! \"", this_object$`xdp_action`, "\" cannot be assigned to `xdp_action`. Must be \"0\", \"1\".", sep = ""))
       }
       self$`xdp_action` <- this_object$`xdp_action`
+      self$`destination_port` <- this_object$`destination_port`
+      self$`country_code` <- this_object$`country_code`
+      self$`asn` <- this_object$`asn`
       self
     },
 

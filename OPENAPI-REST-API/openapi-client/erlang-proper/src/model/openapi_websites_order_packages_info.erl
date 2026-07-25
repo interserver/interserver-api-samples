@@ -15,11 +15,11 @@
   | {'services_category', binary() }
   | {'services_buyable', binary() }
   | {'services_type', binary() }
+  | {'services_module', binary() }
+  | {'services_description', binary() }
   | {'services_field1', binary() }
   | {'services_field2', binary() }
-  | {'services_module', binary() }
   | {'services_html', binary() }
-  | {'services_description', binary() }
   | {'services_moreinfo_url', binary() }
   | {'services_hidden', binary() }
   ].
@@ -35,11 +35,11 @@ openapi_websites_order_packages_info(Fields) ->
             , {'services_category', binary() }
             , {'services_buyable', binary() }
             , {'services_type', binary() }
+            , {'services_module', binary() }
+            , {'services_description', binary() }
             , {'services_field1', binary() }
             , {'services_field2', binary() }
-            , {'services_module', binary() }
             , {'services_html', binary() }
-            , {'services_description', binary() }
             , {'services_moreinfo_url', binary() }
             , {'services_hidden', binary() }
             ],

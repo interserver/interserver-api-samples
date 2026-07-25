@@ -95,24 +95,26 @@ data class VpsOrderPostRequest (
     /**
      * VPS Platform
      *
-     * Values: kvm,hyperv,kvmstorage
+     * Values: kvm,hyperv,kvmstorage,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class VpsPlatform(val value: kotlin.String) {
         @Json(name = "kvm") kvm("kvm"),
         @Json(name = "hyperv") hyperv("hyperv"),
-        @Json(name = "kvmstorage") kvmstorage("kvmstorage");
+        @Json(name = "kvmstorage") kvmstorage("kvmstorage"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
     /**
      * Control Panel
      *
-     * Values: none,cpanel,da
+     * Values: none,cpanel,da,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Controlpanel(val value: kotlin.String) {
         @Json(name = "none") none("none"),
         @Json(name = "cpanel") cpanel("cpanel"),
-        @Json(name = "da") da("da");
+        @Json(name = "da") da("da"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

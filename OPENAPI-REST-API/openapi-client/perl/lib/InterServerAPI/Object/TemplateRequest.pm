@@ -226,13 +226,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'password' => {
-        datatype => 'string',
-        base_name => 'password',
-        description => 'Password for Root / Administrator Account.',
-        format => '',
-        read_only => '',
-            },
     'local_password' => {
         datatype => 'string',
         base_name => 'localPassword',
@@ -240,18 +233,25 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'password' => {
+        datatype => 'string',
+        base_name => 'password',
+        description => 'Password for Root / Administrator Account.',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'template' => 'string',
-    'password' => 'string',
-    'local_password' => 'string'
+    'local_password' => 'string',
+    'password' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'template' => 'template',
-    'password' => 'password',
-    'local_password' => 'localPassword'
+    'local_password' => 'localPassword',
+    'password' => 'password'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

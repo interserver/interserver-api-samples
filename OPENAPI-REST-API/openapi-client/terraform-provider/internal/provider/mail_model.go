@@ -15,10 +15,10 @@ type MailModel struct {
 	CustCurrency types.String `tfsdk:"cust_currency"`
 	CustCurrencySymbol types.String `tfsdk:"cust_currency_symbol"`
 	Package types.String `tfsdk:"package"`
-	ServiceExtra types.List `tfsdk:"service_extra"`
 	ExtraInfoTables types.String `tfsdk:"extra_info_tables"`
 	ServiceType types.String `tfsdk:"service_type"`
 	UsageCount types.String `tfsdk:"usage_count"`
+	ServiceExtra types.List `tfsdk:"service_extra"`
 }
 
 // ToClientModel converts a Terraform model to a client model.

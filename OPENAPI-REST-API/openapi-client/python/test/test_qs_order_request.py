@@ -38,8 +38,8 @@ class TestQsOrderRequest(unittest.TestCase):
             return QsOrderRequest(
                 server = 56,
                 password = '',
-                os = '',
                 tos = True,
+                os = '',
                 comment = ''
             )
         else:

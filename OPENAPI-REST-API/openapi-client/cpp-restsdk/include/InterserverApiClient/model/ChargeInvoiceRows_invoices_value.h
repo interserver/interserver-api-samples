@@ -62,6 +62,7 @@ public:
     {
         _0,
         _1,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     Invoices_paidEnum toInvoices_paidEnum(const utility::string_t& value) const;

@@ -44,20 +44,6 @@ describe("mail_log_entry", function()
     end)
   end)
 
-  -- unit tests for the property 'subject'
-  describe("property subject test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'message_id'
-  describe("property message_id test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'created'
   describe("property created test", function()
     it("should work", function()
@@ -95,6 +81,20 @@ describe("mail_log_entry", function()
 
   -- unit tests for the property 'interface'
   describe("property interface test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'subject'
+  describe("property subject test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'message_id'
+  describe("property message_id test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

@@ -35,16 +35,16 @@ class CreateFirewallRule : public oatpp::DTO {
 
   DTO_INIT(CreateFirewallRule, DTO /* Extends */)
 
+  DTO_FIELD(oatpp::Int32, protocol_id);
+
+  DTO_FIELD(oatpp::Int32, xdp_action);
+
   DTO_FIELD(oatpp::Int32, destination_port);
   DTO_FIELD(oatpp::Boolean, destination_portIsSet);
   DTO_FIELD(oatpp::String, source_ip);
   DTO_FIELD(oatpp::Boolean, source_ipIsSet);
   DTO_FIELD(oatpp::Int32, source_port);
   DTO_FIELD(oatpp::Boolean, source_portIsSet);
-  DTO_FIELD(oatpp::Int32, protocol_id);
-
-  DTO_FIELD(oatpp::Int32, xdp_action);
-
 
 };
 

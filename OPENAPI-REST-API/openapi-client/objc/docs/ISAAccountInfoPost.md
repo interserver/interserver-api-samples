@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **NSString*** | Your name. | 
-**company** | **NSString*** | Your company name. | [optional] 
 **address** | **NSString*** | Your address. | 
-**address2** | **NSString*** | Additional address information. | [optional] 
 **city** | **NSString*** | Your city. | 
 **state** | **NSString*** | Your state. | 
 **zip** | **NSString*** | Your ZIP code. | 
 **country** | **NSString*** | Your country. | 
 **phone** | **NSString*** | Your phone number. | 
+**company** | **NSString*** | Your company name. | [optional] 
+**address2** | **NSString*** | Additional address information. | [optional] 
 **locale** | **NSString*** | Your preferred locale. | [optional] 
 **emailInvoices** | **NSString*** | Your email for invoice notifications. | [optional] 
 **emailAbuse** | **NSString*** | Your email for abuse notifications. | [optional] 

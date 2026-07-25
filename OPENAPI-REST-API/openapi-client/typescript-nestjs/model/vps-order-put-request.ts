@@ -63,12 +63,14 @@ export interface VpsOrderPutRequest {
 export enum VpsOrderPutRequestVpsPlatform {
     Kvm = 'kvm',
     Hyperv = 'hyperv',
-    Kvmstorage = 'kvmstorage'
+    Kvmstorage = 'kvmstorage',
+    UnknownDefaultOpenApi = '11184809'
 };
 export enum VpsOrderPutRequestControlpanel {
     None = 'none',
     Cpanel = 'cpanel',
-    Da = 'da'
+    Da = 'da',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

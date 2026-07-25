@@ -26,7 +26,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'customer_server_access',
         required: false,
-        enum: ['y', 'n']
+        enum: ['y', 'n', 'unknown_default_open_api']
 
       attribute :root_password,
         type: 'String',

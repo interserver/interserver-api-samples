@@ -28,7 +28,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'vpsPlatform',
         required: true,
-        enum: ['kvm', 'hyperv', 'kvmstorage']
+        enum: ['kvm', 'hyperv', 'kvmstorage', 'unknown_default_open_api']
 
       attribute :period,
         type: 'Integer',
@@ -63,7 +63,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'controlpanel',
         required: false,
-        enum: ['none', 'cpanel', 'da']
+        enum: ['none', 'cpanel', 'da', 'unknown_default_open_api']
 
       attribute :coupon,
         type: 'String',

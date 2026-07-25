@@ -14,7 +14,9 @@ class DomainOrderRequest {
     
         REGISTER("register"),
         
-        TRANSFER("transfer")
+        TRANSFER("transfer"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     
@@ -41,7 +43,9 @@ class DomainOrderRequest {
     
         ENABLE("enable"),
         
-        DISABLE("disable")
+        DISABLE("disable"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

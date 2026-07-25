@@ -499,6 +499,7 @@ src/main/kotlin/io/interserver/client/infrastructure/RequestConfig.kt
 src/main/kotlin/io/interserver/client/infrastructure/RequestMethod.kt
 src/main/kotlin/io/interserver/client/infrastructure/ResponseExtensions.kt
 src/main/kotlin/io/interserver/client/infrastructure/Serializer.kt
+src/main/kotlin/io/interserver/client/infrastructure/SerializerHelper.kt
 src/main/kotlin/io/interserver/client/infrastructure/URIAdapter.kt
 src/main/kotlin/io/interserver/client/infrastructure/UUIDAdapter.kt
 src/main/kotlin/io/interserver/client/models/AccountFeatures.kt

@@ -7,18 +7,18 @@
 #' @title DenyRuleNew
 #' @description DenyRuleNew Class
 #' @format An \code{R6Class} generator object
-#' @field user Mail account username that will be tied to this rule.  If not specified the first active mail order will be used. character [optional]
 #' @field type The type of deny rule. character
 #' @field data The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com. character
+#' @field user Mail account username that will be tied to this rule.  If not specified the first active mail order will be used. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 DenyRuleNew <- R6::R6Class(
   "DenyRuleNew",
   public = list(
-    `user` = NULL,
     `type` = NULL,
     `data` = NULL,
+    `user` = NULL,
 
     #' @description
     #' Initialize a new DenyRuleNew class.
@@ -82,10 +82,6 @@ DenyRuleNew <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       DenyRuleNewObject <- list()
-      if (!is.null(self$`user`)) {
-        DenyRuleNewObject[["user"]] <-
-          self$`user`
-      }
       if (!is.null(self$`type`)) {
         DenyRuleNewObject[["type"]] <-
           self$`type`
@@ -93,6 +89,10 @@ DenyRuleNew <- R6::R6Class(
       if (!is.null(self$`data`)) {
         DenyRuleNewObject[["data"]] <-
           self$`data`
+      }
+      if (!is.null(self$`user`)) {
+        DenyRuleNewObject[["user"]] <-
+          self$`user`
       }
       return(DenyRuleNewObject)
     },
@@ -104,9 +104,6 @@ DenyRuleNew <- R6::R6Class(
     #' @return the instance of DenyRuleNew
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`user`)) {
-        self$`user` <- this_object$`user`
-      }
       if (!is.null(this_object$`type`)) {
         if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("domain", "email", "startswith", "destination"))) {
           stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"domain\", \"email\", \"startswith\", \"destination\".", sep = ""))
@@ -115,6 +112,9 @@ DenyRuleNew <- R6::R6Class(
       }
       if (!is.null(this_object$`data`)) {
         self$`data` <- this_object$`data`
+      }
+      if (!is.null(this_object$`user`)) {
+        self$`user` <- this_object$`user`
       }
       self
     },
@@ -137,12 +137,12 @@ DenyRuleNew <- R6::R6Class(
     #' @return the instance of DenyRuleNew
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`user` <- this_object$`user`
       if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("domain", "email", "startswith", "destination"))) {
         stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"domain\", \"email\", \"startswith\", \"destination\".", sep = ""))
       }
       self$`type` <- this_object$`type`
       self$`data` <- this_object$`data`
+      self$`user` <- this_object$`user`
       self
     },
 

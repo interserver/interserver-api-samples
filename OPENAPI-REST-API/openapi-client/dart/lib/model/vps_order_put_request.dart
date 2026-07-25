@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class VpsOrderPutRequest {
   /// Returns a new [VpsOrderPutRequest] instance.
@@ -225,6 +225,7 @@ enum VpsOrderPutRequestVpsPlatformEnum {
   kvm._(r'kvm'),
   hyperv._(r'hyperv'),
   kvmstorage._(r'kvmstorage'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -286,6 +287,7 @@ class VpsOrderPutRequestVpsPlatformEnumTypeTransformer {
         case r'kvm': return VpsOrderPutRequestVpsPlatformEnum.kvm;
         case r'hyperv': return VpsOrderPutRequestVpsPlatformEnum.hyperv;
         case r'kvmstorage': return VpsOrderPutRequestVpsPlatformEnum.kvmstorage;
+        case r'unknown_default_open_api': return VpsOrderPutRequestVpsPlatformEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -305,6 +307,7 @@ enum VpsOrderPutRequestControlpanelEnum {
   none._(r'none'),
   cpanel._(r'cpanel'),
   da._(r'da'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -366,6 +369,7 @@ class VpsOrderPutRequestControlpanelEnumTypeTransformer {
         case r'none': return VpsOrderPutRequestControlpanelEnum.none;
         case r'cpanel': return VpsOrderPutRequestControlpanelEnum.cpanel;
         case r'da': return VpsOrderPutRequestControlpanelEnum.da;
+        case r'unknown_default_open_api': return VpsOrderPutRequestControlpanelEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

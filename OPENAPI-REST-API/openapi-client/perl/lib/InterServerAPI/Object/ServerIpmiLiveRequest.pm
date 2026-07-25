@@ -219,13 +219,6 @@ __PACKAGE__->class_documentation({description => 'Request body to setup an IPMI 
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'asset' => {
-        datatype => 'int',
-        base_name => 'asset',
-        description => 'Asset ID',
-        format => '',
-        read_only => '',
-            },
     'ip' => {
         datatype => 'string',
         base_name => 'ip',
@@ -233,16 +226,23 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'asset' => {
+        datatype => 'int',
+        base_name => 'asset',
+        description => 'Asset ID',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'asset' => 'int',
-    'ip' => 'string'
+    'ip' => 'string',
+    'asset' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'asset' => 'asset',
-    'ip' => 'ip'
+    'ip' => 'ip',
+    'asset' => 'asset'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -1,8 +1,8 @@
-# openapi.model.AffiliatePaymentSetup
+# interserver_api.model.AffiliatePaymentSetup
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

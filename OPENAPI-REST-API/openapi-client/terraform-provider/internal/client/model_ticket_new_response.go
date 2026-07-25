@@ -4,7 +4,7 @@ package client
 
 // TicketNewResponse - Response returned after creating a new support ticket.
 type TicketNewResponse struct {
-	TicketId int32 `json:"ticket_id,omitempty"`
 	Text string `json:"text"`
 	Success bool `json:"success"`
+	TicketId int32 `json:"ticket_id,omitempty"`
 }

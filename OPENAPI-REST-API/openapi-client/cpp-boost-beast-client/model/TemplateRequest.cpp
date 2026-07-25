@@ -217,10 +217,10 @@ boost::json::object TemplateRequest::toJsonObject_internal() const
 {
     boost::json::object object;
         object["template"] = JsonValueConverter<std::string>::toJsonValue(getRTemplate());
+        object["localPassword"] = JsonValueConverter<std::string>::toJsonValue(getLocalPassword());
         if (m_PasswordIsSet) {
             object["password"] = JsonValueConverter<std::string>::toJsonValue(getPassword());
         }
-        object["localPassword"] = JsonValueConverter<std::string>::toJsonValue(getLocalPassword());
     return object;
 }
 
@@ -234,15 +234,15 @@ void TemplateRequest::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto PasswordIt = object.find("password");
-        if (PasswordIt != object.end()) {
-            setPassword(JsonValueConverter<std::string>::fromJsonValue(PasswordIt->value()));
-        }
-    }
-    {
         const auto LocalPasswordIt = object.find("localPassword");
         if (LocalPasswordIt != object.end()) {
             setLocalPassword(JsonValueConverter<std::string>::fromJsonValue(LocalPasswordIt->value()));
+        }
+    }
+    {
+        const auto PasswordIt = object.find("password");
+        if (PasswordIt != object.end()) {
+            setPassword(JsonValueConverter<std::string>::fromJsonValue(PasswordIt->value()));
         }
     }
 }
@@ -257,6 +257,16 @@ void TemplateRequest::setRTemplate(std::string value)
     
     m_r_template = std::move(value);
 }
+std::string TemplateRequest::getLocalPassword() const
+{
+    return m_LocalPassword;
+}
+
+void TemplateRequest::setLocalPassword(std::string value)
+{
+    
+    m_LocalPassword = std::move(value);
+}
 std::string TemplateRequest::getPassword() const
 {
     return m_Password;
@@ -267,16 +277,6 @@ void TemplateRequest::setPassword(std::string value)
     
     m_Password = std::move(value);
     m_PasswordIsSet = true;
-}
-std::string TemplateRequest::getLocalPassword() const
-{
-    return m_LocalPassword;
-}
-
-void TemplateRequest::setLocalPassword(std::string value)
-{
-    
-    m_LocalPassword = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<TemplateRequest>>& data)

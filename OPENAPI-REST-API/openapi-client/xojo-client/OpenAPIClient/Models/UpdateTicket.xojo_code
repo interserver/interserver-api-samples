@@ -40,7 +40,8 @@ Protected Class UpdateTicket
         
         Y
         N
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -52,7 +53,10 @@ Protected Class UpdateTicket
 		      Return "y"
 		    Case Customer_server_accessEnum.N
 		      Return "n"
-		    
+		    Case Customer_server_accessEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

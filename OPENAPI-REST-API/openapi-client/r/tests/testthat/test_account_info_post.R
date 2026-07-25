@@ -13,28 +13,12 @@ test_that("name", {
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("company", {
-  # tests for the property `company` (character)
-  # Your company name.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`company`, "EXPECTED_RESULT")
-})
-
 test_that("address", {
   # tests for the property `address` (character)
   # Your address.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`address`, "EXPECTED_RESULT")
-})
-
-test_that("address2", {
-  # tests for the property `address2` (character)
-  # Additional address information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`address2`, "EXPECTED_RESULT")
 })
 
 test_that("city", {
@@ -75,6 +59,22 @@ test_that("phone", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`phone`, "EXPECTED_RESULT")
+})
+
+test_that("company", {
+  # tests for the property `company` (character)
+  # Your company name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`company`, "EXPECTED_RESULT")
+})
+
+test_that("address2", {
+  # tests for the property `address2` (character)
+  # Additional address information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`address2`, "EXPECTED_RESULT")
 })
 
 test_that("locale", {

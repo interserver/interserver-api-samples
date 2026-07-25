@@ -23,13 +23,6 @@ describe("mail_service_info", function()
     end)
   end)
 
-  -- unit tests for the property 'mail_username'
-  describe("property mail_username test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'mail_type'
   describe("property mail_type test", function()
     it("should work", function()
@@ -65,13 +58,6 @@ describe("mail_service_info", function()
     end)
   end)
 
-  -- unit tests for the property 'mail_ip'
-  describe("property mail_ip test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'mail_status'
   describe("property mail_status test", function()
     it("should work", function()
@@ -81,6 +67,20 @@ describe("mail_service_info", function()
 
   -- unit tests for the property 'mail_invoice'
   describe("property mail_invoice test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'mail_username'
+  describe("property mail_username test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'mail_ip'
+  describe("property mail_ip test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 **tblname** | **String** |  | 
 **table** | **String** |  | 
 **title_field** | **String** |  | 
+**prefix** | **String** |  | 
 **title_field2** | Option<**String**> |  | [optional]
 **title_field3** | Option<**String**> |  | [optional]
-**prefix** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

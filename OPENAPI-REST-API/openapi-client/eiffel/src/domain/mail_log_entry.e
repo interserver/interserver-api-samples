@@ -27,10 +27,6 @@ feature --Access
       -- SMTP envelope `MAIL FROM` address.
     to: detachable STRING_32
       -- SMTP envelope `RCPT TO` address.
-    subject: detachable STRING_32
-      -- The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    message_id: detachable STRING_32
-      -- The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
     created: detachable STRING_32
       -- Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
     time: INTEGER_32
@@ -43,6 +39,10 @@ feature --Access
       -- IP address of the client that submitted the message to the relay.
     interface: detachable STRING_32
       -- Relay interface name that accepted the message.
+    subject: detachable STRING_32
+      -- The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    message_id: detachable STRING_32
+      -- The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
     sending_zone: detachable STRING_32
       -- The sending zone assigned by the relay for outbound delivery.
     body_size: INTEGER_32
@@ -104,22 +104,6 @@ feature -- Change Element
         to_set: to = a_name
       end
 
-    set_subject (a_name: like subject)
-        -- Set 'subject' with 'a_name'.
-      do
-        subject := a_name
-      ensure
-        subject_set: subject = a_name
-      end
-
-    set_message_id (a_name: like message_id)
-        -- Set 'message_id' with 'a_name'.
-      do
-        message_id := a_name
-      ensure
-        message_id_set: message_id = a_name
-      end
-
     set_created (a_name: like created)
         -- Set 'created' with 'a_name'.
       do
@@ -166,6 +150,22 @@ feature -- Change Element
         interface := a_name
       ensure
         interface_set: interface = a_name
+      end
+
+    set_subject (a_name: like subject)
+        -- Set 'subject' with 'a_name'.
+      do
+        subject := a_name
+      ensure
+        subject_set: subject = a_name
+      end
+
+    set_message_id (a_name: like message_id)
+        -- Set 'message_id' with 'a_name'.
+      do
+        message_id := a_name
+      ensure
+        message_id_set: message_id = a_name
       end
 
     set_sending_zone (a_name: like sending_zone)
@@ -300,16 +300,6 @@ feature -- Change Element
           Result.append (l_to.out)
           Result.append ("%N")
         end
-        if attached subject as l_subject then
-          Result.append ("%Nsubject:")
-          Result.append (l_subject.out)
-          Result.append ("%N")
-        end
-        if attached message_id as l_message_id then
-          Result.append ("%Nmessage_id:")
-          Result.append (l_message_id.out)
-          Result.append ("%N")
-        end
         if attached created as l_created then
           Result.append ("%Ncreated:")
           Result.append (l_created.out)
@@ -338,6 +328,16 @@ feature -- Change Element
         if attached interface as l_interface then
           Result.append ("%Ninterface:")
           Result.append (l_interface.out)
+          Result.append ("%N")
+        end
+        if attached subject as l_subject then
+          Result.append ("%Nsubject:")
+          Result.append (l_subject.out)
+          Result.append ("%N")
+        end
+        if attached message_id as l_message_id then
+          Result.append ("%Nmessage_id:")
+          Result.append (l_message_id.out)
           Result.append ("%N")
         end
         if attached sending_zone as l_sending_zone then

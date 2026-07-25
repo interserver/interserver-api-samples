@@ -61,6 +61,7 @@ public:
         REDIRECT,
         SUBMIT,
         SINGLE,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).

@@ -12,10 +12,10 @@
        'license_custid' := binary(),
        'license_ip' := binary(),
        'license_status' := binary(),
-       'license_hostname' => binary(),
-       'license_key' => binary(),
        'license_invoice' := binary(),
        'license_coupon' := binary(),
+       'license_hostname' => binary(),
+       'license_key' => binary(),
        'license_extra' => binary()
      }.
 
@@ -26,10 +26,10 @@ encode(#{ 'license_id' := LicenseId,
           'license_custid' := LicenseCustid,
           'license_ip' := LicenseIp,
           'license_status' := LicenseStatus,
-          'license_hostname' := LicenseHostname,
-          'license_key' := LicenseKey,
           'license_invoice' := LicenseInvoice,
           'license_coupon' := LicenseCoupon,
+          'license_hostname' := LicenseHostname,
+          'license_key' := LicenseKey,
           'license_extra' := LicenseExtra
         }) ->
     #{ 'license_id' => LicenseId,
@@ -39,9 +39,9 @@ encode(#{ 'license_id' := LicenseId,
        'license_custid' => LicenseCustid,
        'license_ip' => LicenseIp,
        'license_status' => LicenseStatus,
-       'license_hostname' => LicenseHostname,
-       'license_key' => LicenseKey,
        'license_invoice' => LicenseInvoice,
        'license_coupon' => LicenseCoupon,
+       'license_hostname' => LicenseHostname,
+       'license_key' => LicenseKey,
        'license_extra' => LicenseExtra
      }.

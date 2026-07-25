@@ -43,14 +43,14 @@
 /* Identifier for the graph associated with the switchport. 
  */
 @property(nonatomic) NSString* graphId;
+/* Unique identifier of the asset associated with the switchport. 
+ */
+@property(nonatomic) NSNumber* assetId;
 /* List of VLANs associated with the switchport. [optional]
  */
 @property(nonatomic) NSArray<NSString*>* vlans;
 /* List of IPv6 VLANs associated with the switchport. [optional]
  */
 @property(nonatomic) NSArray<NSString*>* vlans6;
-/* Unique identifier of the asset associated with the switchport. 
- */
-@property(nonatomic) NSNumber* assetId;
 
 @end

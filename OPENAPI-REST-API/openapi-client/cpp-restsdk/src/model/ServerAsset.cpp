@@ -33,8 +33,6 @@ ServerAsset::ServerAsset()
     m_Primary_ipv4IsSet = false;
     m_Primary_ipv6 = utility::conversions::to_string_t("");
     m_Primary_ipv6IsSet = false;
-    m_Mac = utility::conversions::to_string_t("");
-    m_MacIsSet = false;
     m_Datacenter = utility::conversions::to_string_t("");
     m_DatacenterIsSet = false;
     m_Type_id = utility::conversions::to_string_t("");
@@ -57,16 +55,6 @@ ServerAsset::ServerAsset()
     m_Ipmi_macIsSet = false;
     m_Ipmi_ip = utility::conversions::to_string_t("");
     m_Ipmi_ipIsSet = false;
-    m_Ipmi_admin_username = utility::conversions::to_string_t("");
-    m_Ipmi_admin_usernameIsSet = false;
-    m_Ipmi_admin_password = utility::conversions::to_string_t("");
-    m_Ipmi_admin_passwordIsSet = false;
-    m_Ipmi_client_username = utility::conversions::to_string_t("");
-    m_Ipmi_client_usernameIsSet = false;
-    m_Ipmi_client_password = utility::conversions::to_string_t("");
-    m_Ipmi_client_passwordIsSet = false;
-    m_Ipmi_updated = utility::conversions::to_string_t("");
-    m_Ipmi_updatedIsSet = false;
     m_Ipmi_working = utility::conversions::to_string_t("");
     m_Ipmi_workingIsSet = false;
     m_Company = utility::conversions::to_string_t("");
@@ -87,10 +75,6 @@ ServerAsset::ServerAsset()
     m_Billing_statusIsSet = false;
     m_Overdue = utility::conversions::to_string_t("");
     m_OverdueIsSet = false;
-    m_Create_timestamp = utility::conversions::to_string_t("");
-    m_Create_timestampIsSet = false;
-    m_Update_timestamp = utility::conversions::to_string_t("");
-    m_Update_timestampIsSet = false;
     m_Asset_id = utility::conversions::to_string_t("");
     m_Asset_idIsSet = false;
     m_Asset_name = utility::conversions::to_string_t("");
@@ -107,12 +91,28 @@ ServerAsset::ServerAsset()
     m_Rack_xIsSet = false;
     m_Rack_y = utility::conversions::to_string_t("");
     m_Rack_yIsSet = false;
-    m_Comment = utility::conversions::to_string_t("");
-    m_CommentIsSet = false;
     m_SwitchportsIsSet = false;
     m_VlansIsSet = false;
     m_Vlans6IsSet = false;
     m_LeaseIsSet = false;
+    m_Mac = utility::conversions::to_string_t("");
+    m_MacIsSet = false;
+    m_Ipmi_admin_username = utility::conversions::to_string_t("");
+    m_Ipmi_admin_usernameIsSet = false;
+    m_Ipmi_admin_password = utility::conversions::to_string_t("");
+    m_Ipmi_admin_passwordIsSet = false;
+    m_Ipmi_client_username = utility::conversions::to_string_t("");
+    m_Ipmi_client_usernameIsSet = false;
+    m_Ipmi_client_password = utility::conversions::to_string_t("");
+    m_Ipmi_client_passwordIsSet = false;
+    m_Ipmi_updated = utility::conversions::to_string_t("");
+    m_Ipmi_updatedIsSet = false;
+    m_Create_timestamp = utility::conversions::to_string_t("");
+    m_Create_timestampIsSet = false;
+    m_Update_timestamp = utility::conversions::to_string_t("");
+    m_Update_timestampIsSet = false;
+    m_Comment = utility::conversions::to_string_t("");
+    m_CommentIsSet = false;
 }
 
 ServerAsset::~ServerAsset()
@@ -156,11 +156,6 @@ web::json::value ServerAsset::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("primary_ipv6"))] = ModelBase::toJson(m_Primary_ipv6);
-    }
-    if(m_MacIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("mac"))] = ModelBase::toJson(m_Mac);
     }
     if(m_DatacenterIsSet)
     {
@@ -217,31 +212,6 @@ web::json::value ServerAsset::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("ipmi_ip"))] = ModelBase::toJson(m_Ipmi_ip);
     }
-    if(m_Ipmi_admin_usernameIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))] = ModelBase::toJson(m_Ipmi_admin_username);
-    }
-    if(m_Ipmi_admin_passwordIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))] = ModelBase::toJson(m_Ipmi_admin_password);
-    }
-    if(m_Ipmi_client_usernameIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))] = ModelBase::toJson(m_Ipmi_client_username);
-    }
-    if(m_Ipmi_client_passwordIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))] = ModelBase::toJson(m_Ipmi_client_password);
-    }
-    if(m_Ipmi_updatedIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))] = ModelBase::toJson(m_Ipmi_updated);
-    }
     if(m_Ipmi_workingIsSet)
     {
         
@@ -292,16 +262,6 @@ web::json::value ServerAsset::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("overdue"))] = ModelBase::toJson(m_Overdue);
     }
-    if(m_Create_timestampIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))] = ModelBase::toJson(m_Create_timestamp);
-    }
-    if(m_Update_timestampIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))] = ModelBase::toJson(m_Update_timestamp);
-    }
     if(m_Asset_idIsSet)
     {
         
@@ -342,11 +302,6 @@ web::json::value ServerAsset::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("rack_y"))] = ModelBase::toJson(m_Rack_y);
     }
-    if(m_CommentIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("comment"))] = ModelBase::toJson(m_Comment);
-    }
     if(m_SwitchportsIsSet)
     {
         
@@ -366,6 +321,51 @@ web::json::value ServerAsset::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("lease"))] = ModelBase::toJson(m_Lease);
+    }
+    if(m_MacIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("mac"))] = ModelBase::toJson(m_Mac);
+    }
+    if(m_Ipmi_admin_usernameIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))] = ModelBase::toJson(m_Ipmi_admin_username);
+    }
+    if(m_Ipmi_admin_passwordIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))] = ModelBase::toJson(m_Ipmi_admin_password);
+    }
+    if(m_Ipmi_client_usernameIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))] = ModelBase::toJson(m_Ipmi_client_username);
+    }
+    if(m_Ipmi_client_passwordIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))] = ModelBase::toJson(m_Ipmi_client_password);
+    }
+    if(m_Ipmi_updatedIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))] = ModelBase::toJson(m_Ipmi_updated);
+    }
+    if(m_Create_timestampIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))] = ModelBase::toJson(m_Create_timestamp);
+    }
+    if(m_Update_timestampIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))] = ModelBase::toJson(m_Update_timestamp);
+    }
+    if(m_CommentIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("comment"))] = ModelBase::toJson(m_Comment);
     }
 
     return val;
@@ -437,17 +437,6 @@ bool ServerAsset::fromJson(const web::json::value& val)
             utility::string_t refVal_setPrimaryIpv6;
             ok &= ModelBase::fromJson(fieldValue, refVal_setPrimaryIpv6);
             setPrimaryIpv6(refVal_setPrimaryIpv6);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mac"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mac")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setMac;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setMac);
-            setMac(refVal_setMac);
             
         }
     }
@@ -572,61 +561,6 @@ bool ServerAsset::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIpmiAdminUsername;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiAdminUsername);
-            setIpmiAdminUsername(refVal_setIpmiAdminUsername);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIpmiAdminPassword;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiAdminPassword);
-            setIpmiAdminPassword(refVal_setIpmiAdminPassword);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIpmiClientUsername;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiClientUsername);
-            setIpmiClientUsername(refVal_setIpmiClientUsername);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIpmiClientPassword;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiClientPassword);
-            setIpmiClientPassword(refVal_setIpmiClientPassword);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setIpmiUpdated;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiUpdated);
-            setIpmiUpdated(refVal_setIpmiUpdated);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_working"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_working")));
@@ -737,28 +671,6 @@ bool ServerAsset::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("create_timestamp")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setCreateTimestamp;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setCreateTimestamp);
-            setCreateTimestamp(refVal_setCreateTimestamp);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("update_timestamp")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setUpdateTimestamp;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setUpdateTimestamp);
-            setUpdateTimestamp(refVal_setUpdateTimestamp);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset_id")));
@@ -847,17 +759,6 @@ bool ServerAsset::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("comment"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("comment")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setComment;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setComment);
-            setComment(refVal_setComment);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("switchports"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("switchports")));
@@ -902,6 +803,105 @@ bool ServerAsset::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("mac"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("mac")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setMac;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setMac);
+            setMac(refVal_setMac);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIpmiAdminUsername;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiAdminUsername);
+            setIpmiAdminUsername(refVal_setIpmiAdminUsername);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIpmiAdminPassword;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiAdminPassword);
+            setIpmiAdminPassword(refVal_setIpmiAdminPassword);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIpmiClientUsername;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiClientUsername);
+            setIpmiClientUsername(refVal_setIpmiClientUsername);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIpmiClientPassword;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiClientPassword);
+            setIpmiClientPassword(refVal_setIpmiClientPassword);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setIpmiUpdated;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setIpmiUpdated);
+            setIpmiUpdated(refVal_setIpmiUpdated);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("create_timestamp")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setCreateTimestamp;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setCreateTimestamp);
+            setCreateTimestamp(refVal_setCreateTimestamp);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("update_timestamp")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setUpdateTimestamp;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setUpdateTimestamp);
+            setUpdateTimestamp(refVal_setUpdateTimestamp);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("comment"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("comment")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setComment;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setComment);
+            setComment(refVal_setComment);
+            
+        }
+    }
     return ok;
 }
 
@@ -935,10 +935,6 @@ void ServerAsset::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     if(m_Primary_ipv6IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("primary_ipv6")), m_Primary_ipv6));
-    }
-    if(m_MacIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mac")), m_Mac));
     }
     if(m_DatacenterIsSet)
     {
@@ -984,26 +980,6 @@ void ServerAsset::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_ip")), m_Ipmi_ip));
     }
-    if(m_Ipmi_admin_usernameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username")), m_Ipmi_admin_username));
-    }
-    if(m_Ipmi_admin_passwordIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password")), m_Ipmi_admin_password));
-    }
-    if(m_Ipmi_client_usernameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username")), m_Ipmi_client_username));
-    }
-    if(m_Ipmi_client_passwordIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password")), m_Ipmi_client_password));
-    }
-    if(m_Ipmi_updatedIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_updated")), m_Ipmi_updated));
-    }
     if(m_Ipmi_workingIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_working")), m_Ipmi_working));
@@ -1044,14 +1020,6 @@ void ServerAsset::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("overdue")), m_Overdue));
     }
-    if(m_Create_timestampIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("create_timestamp")), m_Create_timestamp));
-    }
-    if(m_Update_timestampIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("update_timestamp")), m_Update_timestamp));
-    }
     if(m_Asset_idIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset_id")), m_Asset_id));
@@ -1084,10 +1052,6 @@ void ServerAsset::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("rack_y")), m_Rack_y));
     }
-    if(m_CommentIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("comment")), m_Comment));
-    }
     if(m_SwitchportsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("switchports")), m_Switchports));
@@ -1103,6 +1067,42 @@ void ServerAsset::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     if(m_LeaseIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("lease")), m_Lease));
+    }
+    if(m_MacIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("mac")), m_Mac));
+    }
+    if(m_Ipmi_admin_usernameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username")), m_Ipmi_admin_username));
+    }
+    if(m_Ipmi_admin_passwordIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password")), m_Ipmi_admin_password));
+    }
+    if(m_Ipmi_client_usernameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username")), m_Ipmi_client_username));
+    }
+    if(m_Ipmi_client_passwordIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password")), m_Ipmi_client_password));
+    }
+    if(m_Ipmi_updatedIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("ipmi_updated")), m_Ipmi_updated));
+    }
+    if(m_Create_timestampIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("create_timestamp")), m_Create_timestamp));
+    }
+    if(m_Update_timestampIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("update_timestamp")), m_Update_timestamp));
+    }
+    if(m_CommentIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("comment")), m_Comment));
     }
 }
 
@@ -1150,12 +1150,6 @@ bool ServerAsset::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         utility::string_t refVal_setPrimaryIpv6;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("primary_ipv6"))), refVal_setPrimaryIpv6 );
         setPrimaryIpv6(refVal_setPrimaryIpv6);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mac"))))
-    {
-        utility::string_t refVal_setMac;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mac"))), refVal_setMac );
-        setMac(refVal_setMac);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("datacenter"))))
     {
@@ -1223,36 +1217,6 @@ bool ServerAsset::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_ip"))), refVal_setIpmiIp );
         setIpmiIp(refVal_setIpmiIp);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))))
-    {
-        utility::string_t refVal_setIpmiAdminUsername;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))), refVal_setIpmiAdminUsername );
-        setIpmiAdminUsername(refVal_setIpmiAdminUsername);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))))
-    {
-        utility::string_t refVal_setIpmiAdminPassword;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))), refVal_setIpmiAdminPassword );
-        setIpmiAdminPassword(refVal_setIpmiAdminPassword);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))))
-    {
-        utility::string_t refVal_setIpmiClientUsername;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))), refVal_setIpmiClientUsername );
-        setIpmiClientUsername(refVal_setIpmiClientUsername);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))))
-    {
-        utility::string_t refVal_setIpmiClientPassword;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))), refVal_setIpmiClientPassword );
-        setIpmiClientPassword(refVal_setIpmiClientPassword);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))))
-    {
-        utility::string_t refVal_setIpmiUpdated;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))), refVal_setIpmiUpdated );
-        setIpmiUpdated(refVal_setIpmiUpdated);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_working"))))
     {
         utility::string_t refVal_setIpmiWorking;
@@ -1313,18 +1277,6 @@ bool ServerAsset::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("overdue"))), refVal_setOverdue );
         setOverdue(refVal_setOverdue);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))))
-    {
-        utility::string_t refVal_setCreateTimestamp;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))), refVal_setCreateTimestamp );
-        setCreateTimestamp(refVal_setCreateTimestamp);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))))
-    {
-        utility::string_t refVal_setUpdateTimestamp;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))), refVal_setUpdateTimestamp );
-        setUpdateTimestamp(refVal_setUpdateTimestamp);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset_id"))))
     {
         utility::string_t refVal_setAssetId;
@@ -1373,12 +1325,6 @@ bool ServerAsset::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("rack_y"))), refVal_setRackY );
         setRackY(refVal_setRackY);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("comment"))))
-    {
-        utility::string_t refVal_setComment;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("comment"))), refVal_setComment );
-        setComment(refVal_setComment);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("switchports"))))
     {
         std::vector<int32_t> refVal_setSwitchports;
@@ -1402,6 +1348,60 @@ bool ServerAsset::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         std::shared_ptr<ServerLease> refVal_setLease;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("lease"))), refVal_setLease );
         setLease(refVal_setLease);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("mac"))))
+    {
+        utility::string_t refVal_setMac;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("mac"))), refVal_setMac );
+        setMac(refVal_setMac);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))))
+    {
+        utility::string_t refVal_setIpmiAdminUsername;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_username"))), refVal_setIpmiAdminUsername );
+        setIpmiAdminUsername(refVal_setIpmiAdminUsername);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))))
+    {
+        utility::string_t refVal_setIpmiAdminPassword;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_admin_password"))), refVal_setIpmiAdminPassword );
+        setIpmiAdminPassword(refVal_setIpmiAdminPassword);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))))
+    {
+        utility::string_t refVal_setIpmiClientUsername;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_username"))), refVal_setIpmiClientUsername );
+        setIpmiClientUsername(refVal_setIpmiClientUsername);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))))
+    {
+        utility::string_t refVal_setIpmiClientPassword;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_client_password"))), refVal_setIpmiClientPassword );
+        setIpmiClientPassword(refVal_setIpmiClientPassword);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))))
+    {
+        utility::string_t refVal_setIpmiUpdated;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("ipmi_updated"))), refVal_setIpmiUpdated );
+        setIpmiUpdated(refVal_setIpmiUpdated);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))))
+    {
+        utility::string_t refVal_setCreateTimestamp;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("create_timestamp"))), refVal_setCreateTimestamp );
+        setCreateTimestamp(refVal_setCreateTimestamp);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))))
+    {
+        utility::string_t refVal_setUpdateTimestamp;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("update_timestamp"))), refVal_setUpdateTimestamp );
+        setUpdateTimestamp(refVal_setUpdateTimestamp);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("comment"))))
+    {
+        utility::string_t refVal_setComment;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("comment"))), refVal_setComment );
+        setComment(refVal_setComment);
     }
     return ok;
 }
@@ -1531,27 +1531,6 @@ bool ServerAsset::primaryIpv6IsSet() const
 void ServerAsset::unsetPrimary_ipv6()
 {
     m_Primary_ipv6IsSet = false;
-}
-utility::string_t ServerAsset::getMac() const
-{
-    return m_Mac;
-}
-
-
-void ServerAsset::setMac(const utility::string_t& value)
-{
-    m_Mac = value;
-    m_MacIsSet = true;
-}
-
-bool ServerAsset::macIsSet() const
-{
-    return m_MacIsSet;
-}
-
-void ServerAsset::unsetMac()
-{
-    m_MacIsSet = false;
 }
 utility::string_t ServerAsset::getDatacenter() const
 {
@@ -1784,111 +1763,6 @@ void ServerAsset::unsetIpmi_ip()
 {
     m_Ipmi_ipIsSet = false;
 }
-utility::string_t ServerAsset::getIpmiAdminUsername() const
-{
-    return m_Ipmi_admin_username;
-}
-
-
-void ServerAsset::setIpmiAdminUsername(const utility::string_t& value)
-{
-    m_Ipmi_admin_username = value;
-    m_Ipmi_admin_usernameIsSet = true;
-}
-
-bool ServerAsset::ipmiAdminUsernameIsSet() const
-{
-    return m_Ipmi_admin_usernameIsSet;
-}
-
-void ServerAsset::unsetIpmi_admin_username()
-{
-    m_Ipmi_admin_usernameIsSet = false;
-}
-utility::string_t ServerAsset::getIpmiAdminPassword() const
-{
-    return m_Ipmi_admin_password;
-}
-
-
-void ServerAsset::setIpmiAdminPassword(const utility::string_t& value)
-{
-    m_Ipmi_admin_password = value;
-    m_Ipmi_admin_passwordIsSet = true;
-}
-
-bool ServerAsset::ipmiAdminPasswordIsSet() const
-{
-    return m_Ipmi_admin_passwordIsSet;
-}
-
-void ServerAsset::unsetIpmi_admin_password()
-{
-    m_Ipmi_admin_passwordIsSet = false;
-}
-utility::string_t ServerAsset::getIpmiClientUsername() const
-{
-    return m_Ipmi_client_username;
-}
-
-
-void ServerAsset::setIpmiClientUsername(const utility::string_t& value)
-{
-    m_Ipmi_client_username = value;
-    m_Ipmi_client_usernameIsSet = true;
-}
-
-bool ServerAsset::ipmiClientUsernameIsSet() const
-{
-    return m_Ipmi_client_usernameIsSet;
-}
-
-void ServerAsset::unsetIpmi_client_username()
-{
-    m_Ipmi_client_usernameIsSet = false;
-}
-utility::string_t ServerAsset::getIpmiClientPassword() const
-{
-    return m_Ipmi_client_password;
-}
-
-
-void ServerAsset::setIpmiClientPassword(const utility::string_t& value)
-{
-    m_Ipmi_client_password = value;
-    m_Ipmi_client_passwordIsSet = true;
-}
-
-bool ServerAsset::ipmiClientPasswordIsSet() const
-{
-    return m_Ipmi_client_passwordIsSet;
-}
-
-void ServerAsset::unsetIpmi_client_password()
-{
-    m_Ipmi_client_passwordIsSet = false;
-}
-utility::string_t ServerAsset::getIpmiUpdated() const
-{
-    return m_Ipmi_updated;
-}
-
-
-void ServerAsset::setIpmiUpdated(const utility::string_t& value)
-{
-    m_Ipmi_updated = value;
-    m_Ipmi_updatedIsSet = true;
-}
-
-bool ServerAsset::ipmiUpdatedIsSet() const
-{
-    return m_Ipmi_updatedIsSet;
-}
-
-void ServerAsset::unsetIpmi_updated()
-{
-    m_Ipmi_updatedIsSet = false;
-}
 utility::string_t ServerAsset::getIpmiWorking() const
 {
     return m_Ipmi_working;
@@ -2099,48 +1973,6 @@ void ServerAsset::unsetOverdue()
 {
     m_OverdueIsSet = false;
 }
-utility::string_t ServerAsset::getCreateTimestamp() const
-{
-    return m_Create_timestamp;
-}
-
-
-void ServerAsset::setCreateTimestamp(const utility::string_t& value)
-{
-    m_Create_timestamp = value;
-    m_Create_timestampIsSet = true;
-}
-
-bool ServerAsset::createTimestampIsSet() const
-{
-    return m_Create_timestampIsSet;
-}
-
-void ServerAsset::unsetCreate_timestamp()
-{
-    m_Create_timestampIsSet = false;
-}
-utility::string_t ServerAsset::getUpdateTimestamp() const
-{
-    return m_Update_timestamp;
-}
-
-
-void ServerAsset::setUpdateTimestamp(const utility::string_t& value)
-{
-    m_Update_timestamp = value;
-    m_Update_timestampIsSet = true;
-}
-
-bool ServerAsset::updateTimestampIsSet() const
-{
-    return m_Update_timestampIsSet;
-}
-
-void ServerAsset::unsetUpdate_timestamp()
-{
-    m_Update_timestampIsSet = false;
-}
 utility::string_t ServerAsset::getAssetId() const
 {
     return m_Asset_id;
@@ -2309,27 +2141,6 @@ void ServerAsset::unsetRack_y()
 {
     m_Rack_yIsSet = false;
 }
-utility::string_t ServerAsset::getComment() const
-{
-    return m_Comment;
-}
-
-
-void ServerAsset::setComment(const utility::string_t& value)
-{
-    m_Comment = value;
-    m_CommentIsSet = true;
-}
-
-bool ServerAsset::commentIsSet() const
-{
-    return m_CommentIsSet;
-}
-
-void ServerAsset::unsetComment()
-{
-    m_CommentIsSet = false;
-}
 std::vector<int32_t> ServerAsset::getSwitchports() const
 {
     return m_Switchports;
@@ -2412,6 +2223,195 @@ bool ServerAsset::leaseIsSet() const
 void ServerAsset::unsetLease()
 {
     m_LeaseIsSet = false;
+}
+utility::string_t ServerAsset::getMac() const
+{
+    return m_Mac;
+}
+
+
+void ServerAsset::setMac(const utility::string_t& value)
+{
+    m_Mac = value;
+    m_MacIsSet = true;
+}
+
+bool ServerAsset::macIsSet() const
+{
+    return m_MacIsSet;
+}
+
+void ServerAsset::unsetMac()
+{
+    m_MacIsSet = false;
+}
+utility::string_t ServerAsset::getIpmiAdminUsername() const
+{
+    return m_Ipmi_admin_username;
+}
+
+
+void ServerAsset::setIpmiAdminUsername(const utility::string_t& value)
+{
+    m_Ipmi_admin_username = value;
+    m_Ipmi_admin_usernameIsSet = true;
+}
+
+bool ServerAsset::ipmiAdminUsernameIsSet() const
+{
+    return m_Ipmi_admin_usernameIsSet;
+}
+
+void ServerAsset::unsetIpmi_admin_username()
+{
+    m_Ipmi_admin_usernameIsSet = false;
+}
+utility::string_t ServerAsset::getIpmiAdminPassword() const
+{
+    return m_Ipmi_admin_password;
+}
+
+
+void ServerAsset::setIpmiAdminPassword(const utility::string_t& value)
+{
+    m_Ipmi_admin_password = value;
+    m_Ipmi_admin_passwordIsSet = true;
+}
+
+bool ServerAsset::ipmiAdminPasswordIsSet() const
+{
+    return m_Ipmi_admin_passwordIsSet;
+}
+
+void ServerAsset::unsetIpmi_admin_password()
+{
+    m_Ipmi_admin_passwordIsSet = false;
+}
+utility::string_t ServerAsset::getIpmiClientUsername() const
+{
+    return m_Ipmi_client_username;
+}
+
+
+void ServerAsset::setIpmiClientUsername(const utility::string_t& value)
+{
+    m_Ipmi_client_username = value;
+    m_Ipmi_client_usernameIsSet = true;
+}
+
+bool ServerAsset::ipmiClientUsernameIsSet() const
+{
+    return m_Ipmi_client_usernameIsSet;
+}
+
+void ServerAsset::unsetIpmi_client_username()
+{
+    m_Ipmi_client_usernameIsSet = false;
+}
+utility::string_t ServerAsset::getIpmiClientPassword() const
+{
+    return m_Ipmi_client_password;
+}
+
+
+void ServerAsset::setIpmiClientPassword(const utility::string_t& value)
+{
+    m_Ipmi_client_password = value;
+    m_Ipmi_client_passwordIsSet = true;
+}
+
+bool ServerAsset::ipmiClientPasswordIsSet() const
+{
+    return m_Ipmi_client_passwordIsSet;
+}
+
+void ServerAsset::unsetIpmi_client_password()
+{
+    m_Ipmi_client_passwordIsSet = false;
+}
+utility::string_t ServerAsset::getIpmiUpdated() const
+{
+    return m_Ipmi_updated;
+}
+
+
+void ServerAsset::setIpmiUpdated(const utility::string_t& value)
+{
+    m_Ipmi_updated = value;
+    m_Ipmi_updatedIsSet = true;
+}
+
+bool ServerAsset::ipmiUpdatedIsSet() const
+{
+    return m_Ipmi_updatedIsSet;
+}
+
+void ServerAsset::unsetIpmi_updated()
+{
+    m_Ipmi_updatedIsSet = false;
+}
+utility::string_t ServerAsset::getCreateTimestamp() const
+{
+    return m_Create_timestamp;
+}
+
+
+void ServerAsset::setCreateTimestamp(const utility::string_t& value)
+{
+    m_Create_timestamp = value;
+    m_Create_timestampIsSet = true;
+}
+
+bool ServerAsset::createTimestampIsSet() const
+{
+    return m_Create_timestampIsSet;
+}
+
+void ServerAsset::unsetCreate_timestamp()
+{
+    m_Create_timestampIsSet = false;
+}
+utility::string_t ServerAsset::getUpdateTimestamp() const
+{
+    return m_Update_timestamp;
+}
+
+
+void ServerAsset::setUpdateTimestamp(const utility::string_t& value)
+{
+    m_Update_timestamp = value;
+    m_Update_timestampIsSet = true;
+}
+
+bool ServerAsset::updateTimestampIsSet() const
+{
+    return m_Update_timestampIsSet;
+}
+
+void ServerAsset::unsetUpdate_timestamp()
+{
+    m_Update_timestampIsSet = false;
+}
+utility::string_t ServerAsset::getComment() const
+{
+    return m_Comment;
+}
+
+
+void ServerAsset::setComment(const utility::string_t& value)
+{
+    m_Comment = value;
+    m_CommentIsSet = true;
+}
+
+bool ServerAsset::commentIsSet() const
+{
+    return m_CommentIsSet;
+}
+
+void ServerAsset::unsetComment()
+{
+    m_CommentIsSet = false;
 }
 
 }

@@ -31,14 +31,16 @@ export interface CreateFirewallRule {
     source_port?: number;
 }
 export namespace CreateFirewallRule {
-    export type ProtocolIdEnum = 1 | 2;
+    export type ProtocolIdEnum = 1 | 2 | 11184809;
     export const ProtocolIdEnum = {
         NUMBER_1: 1 as ProtocolIdEnum,
-        NUMBER_2: 2 as ProtocolIdEnum
+        NUMBER_2: 2 as ProtocolIdEnum,
+        NUMBER_unknown_default_open_api: 11184809 as ProtocolIdEnum
     }
-    export type XdpActionEnum = 0 | 1;
+    export type XdpActionEnum = 0 | 1 | 11184809;
     export const XdpActionEnum = {
         NUMBER_0: 0 as XdpActionEnum,
-        NUMBER_1: 1 as XdpActionEnum
+        NUMBER_1: 1 as XdpActionEnum,
+        NUMBER_unknown_default_open_api: 11184809 as XdpActionEnum
     }
 }

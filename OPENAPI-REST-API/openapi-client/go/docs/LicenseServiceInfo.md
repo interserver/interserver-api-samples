@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **LicenseCustid** | **string** | Customer ID | 
 **LicenseIp** | **string** | License IP | 
 **LicenseStatus** | **string** | License status | 
-**LicenseHostname** | Pointer to **string** | License hostname | [optional] 
-**LicenseKey** | Pointer to **string** | License key | [optional] 
 **LicenseInvoice** | **string** | License invoice | 
 **LicenseCoupon** | **string** | License coupon | 
+**LicenseHostname** | Pointer to **string** | License hostname | [optional] 
+**LicenseKey** | Pointer to **string** | License key | [optional] 
 **LicenseExtra** | Pointer to **string** | Additional license information | [optional] 
 
 ## Methods
@@ -176,6 +176,46 @@ and a boolean to check if the value has been set.
 SetLicenseStatus sets LicenseStatus field to given value.
 
 
+### GetLicenseInvoice
+
+`func (o *LicenseServiceInfo) GetLicenseInvoice() string`
+
+GetLicenseInvoice returns the LicenseInvoice field if non-nil, zero value otherwise.
+
+### GetLicenseInvoiceOk
+
+`func (o *LicenseServiceInfo) GetLicenseInvoiceOk() (*string, bool)`
+
+GetLicenseInvoiceOk returns a tuple with the LicenseInvoice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseInvoice
+
+`func (o *LicenseServiceInfo) SetLicenseInvoice(v string)`
+
+SetLicenseInvoice sets LicenseInvoice field to given value.
+
+
+### GetLicenseCoupon
+
+`func (o *LicenseServiceInfo) GetLicenseCoupon() string`
+
+GetLicenseCoupon returns the LicenseCoupon field if non-nil, zero value otherwise.
+
+### GetLicenseCouponOk
+
+`func (o *LicenseServiceInfo) GetLicenseCouponOk() (*string, bool)`
+
+GetLicenseCouponOk returns a tuple with the LicenseCoupon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseCoupon
+
+`func (o *LicenseServiceInfo) SetLicenseCoupon(v string)`
+
+SetLicenseCoupon sets LicenseCoupon field to given value.
+
+
 ### GetLicenseHostname
 
 `func (o *LicenseServiceInfo) GetLicenseHostname() string`
@@ -225,46 +265,6 @@ SetLicenseKey sets LicenseKey field to given value.
 `func (o *LicenseServiceInfo) HasLicenseKey() bool`
 
 HasLicenseKey returns a boolean if a field has been set.
-
-### GetLicenseInvoice
-
-`func (o *LicenseServiceInfo) GetLicenseInvoice() string`
-
-GetLicenseInvoice returns the LicenseInvoice field if non-nil, zero value otherwise.
-
-### GetLicenseInvoiceOk
-
-`func (o *LicenseServiceInfo) GetLicenseInvoiceOk() (*string, bool)`
-
-GetLicenseInvoiceOk returns a tuple with the LicenseInvoice field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLicenseInvoice
-
-`func (o *LicenseServiceInfo) SetLicenseInvoice(v string)`
-
-SetLicenseInvoice sets LicenseInvoice field to given value.
-
-
-### GetLicenseCoupon
-
-`func (o *LicenseServiceInfo) GetLicenseCoupon() string`
-
-GetLicenseCoupon returns the LicenseCoupon field if non-nil, zero value otherwise.
-
-### GetLicenseCouponOk
-
-`func (o *LicenseServiceInfo) GetLicenseCouponOk() (*string, bool)`
-
-GetLicenseCouponOk returns a tuple with the LicenseCoupon field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLicenseCoupon
-
-`func (o *LicenseServiceInfo) SetLicenseCoupon(v string)`
-
-SetLicenseCoupon sets LicenseCoupon field to given value.
-
 
 ### GetLicenseExtra
 

@@ -28,17 +28,17 @@ class CreateGeoFirewallRule(BaseModel):
     """
     Create firewall rule for your ip
     """ # noqa: E501
+    xdp_action: StrictInt = Field(description="1 = Block,  0 = Whitelist", json_schema_extra={"examples": [1]})
     destination_port: Optional[StrictInt] = Field(default=80, json_schema_extra={"examples": [22]})
     country_code: Optional[StrictInt] = Field(default=None, description="To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode", json_schema_extra={"examples": [10]})
     asn: Optional[StrictInt] = Field(default=None, description="ASN number", json_schema_extra={"examples": [1331]})
-    xdp_action: StrictInt = Field(description="1 = Block,  0 = Whitelist", json_schema_extra={"examples": [1]})
-    __properties: ClassVar[List[str]] = ["destination_port", "country_code", "asn", "xdp_action"]
+    __properties: ClassVar[List[str]] = ["xdp_action", "destination_port", "country_code", "asn"]
 
     @field_validator('xdp_action')
     def xdp_action_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set([0, 1]):
-            raise ValueError("must be one of enum values (0, 1)")
+        if value not in set([0, 1, 11184809]):
+            raise ValueError("must be one of enum values (0, 1, 11184809)")
         return value
 
     model_config = ConfigDict(
@@ -92,10 +92,10 @@ class CreateGeoFirewallRule(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "xdp_action": obj.get("xdp_action"),
             "destination_port": obj.get("destination_port") if obj.get("destination_port") is not None else 80,
             "country_code": obj.get("country_code"),
-            "asn": obj.get("asn"),
-            "xdp_action": obj.get("xdp_action")
+            "asn": obj.get("asn")
         })
         return _obj
 

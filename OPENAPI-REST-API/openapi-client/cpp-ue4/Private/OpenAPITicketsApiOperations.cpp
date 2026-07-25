@@ -255,6 +255,8 @@ inline FString ToString(const OpenAPITicketsApi::GetTicketsListRequest::PeriodEn
 		return TEXT("1825");
 	case OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::All:
 		return TEXT("all");
+	case OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum Value (%d)"), (int)Value);
@@ -273,7 +275,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPITicketsApi::GetTicket
 		{ TEXT("90"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::_90 },
 		{ TEXT("365"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::_365 },
 		{ TEXT("1825"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::_1825 },
-		{ TEXT("all"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::All }, };
+		{ TEXT("all"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::All },
+		{ TEXT("11184809"), OpenAPITicketsApi::GetTicketsListRequest::PeriodEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -315,6 +318,8 @@ inline FString ToString(const OpenAPITicketsApi::GetTicketsListRequest::ViewEnum
 		return TEXT("On Hold");
 	case OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::InProgress:
 		return TEXT("In Progress");
+	case OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPITicketsApi::GetTicketsListRequest::ViewEnum Value (%d)"), (int)Value);
@@ -332,7 +337,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPITicketsApi::GetTicket
 		{ TEXT("Open"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::Open },
 		{ TEXT("Closed"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::Closed },
 		{ TEXT("On Hold"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::OnHold },
-		{ TEXT("In Progress"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::InProgress }, };
+		{ TEXT("In Progress"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::InProgress },
+		{ TEXT("11184809"), OpenAPITicketsApi::GetTicketsListRequest::ViewEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

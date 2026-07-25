@@ -356,11 +356,11 @@ module InterServerClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TicketsApi.get_tickets_list ...'
       end
-      allowable_values = ["30", "90", "365", "1825", "all"]
+      allowable_values = ["30", "90", "365", "1825", "all", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'period'] && !allowable_values.include?(opts[:'period'])
         fail ArgumentError, "invalid value for \"period\", must be one of #{allowable_values}"
       end
-      allowable_values = ["Open", "Closed", "On Hold", "In Progress"]
+      allowable_values = ["Open", "Closed", "On Hold", "In Progress", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'view'] && !allowable_values.include?(opts[:'view'])
         fail ArgumentError, "invalid value for \"view\", must be one of #{allowable_values}"
       end

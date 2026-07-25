@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class DomainOrderRequest {
   /// Returns a new [DomainOrderRequest] instance.
@@ -138,6 +138,7 @@ class DomainOrderRequest {
 enum DomainOrderRequestTypeEnum {
   register._(r'register'),
   transfer._(r'transfer'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -198,6 +199,7 @@ class DomainOrderRequestTypeEnumTypeTransformer {
       switch (data) {
         case r'register': return DomainOrderRequestTypeEnum.register;
         case r'transfer': return DomainOrderRequestTypeEnum.transfer;
+        case r'unknown_default_open_api': return DomainOrderRequestTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -216,6 +218,7 @@ class DomainOrderRequestTypeEnumTypeTransformer {
 enum DomainOrderRequestWhoisPrivacyEnum {
   enable._(r'enable'),
   disable._(r'disable'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -276,6 +279,7 @@ class DomainOrderRequestWhoisPrivacyEnumTypeTransformer {
       switch (data) {
         case r'enable': return DomainOrderRequestWhoisPrivacyEnum.enable;
         case r'disable': return DomainOrderRequestWhoisPrivacyEnum.disable;
+        case r'unknown_default_open_api': return DomainOrderRequestWhoisPrivacyEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

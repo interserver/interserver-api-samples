@@ -1,8 +1,8 @@
-# openapi.model.ServerOrderMemoryLi254
+# interserver_api.model.ServerOrderMemoryLi254
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

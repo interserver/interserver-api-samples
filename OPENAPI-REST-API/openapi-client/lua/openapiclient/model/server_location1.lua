@@ -19,13 +19,13 @@ local function cast_server_location1(t)
 	return setmetatable(t, server_location1_mt)
 end
 
-local function new_server_location1(location_id, location_name, location_description, location_lat, location_long, location_ipmi_group)
+local function new_server_location1(location_id, location_name, location_lat, location_long, location_description, location_ipmi_group)
 	return cast_server_location1({
 		["location_id"] = location_id;
 		["location_name"] = location_name;
-		["location_description"] = location_description;
 		["location_lat"] = location_lat;
 		["location_long"] = location_long;
+		["location_description"] = location_description;
 		["location_ipmi_group"] = location_ipmi_group;
 	})
 end

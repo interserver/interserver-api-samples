@@ -305,8 +305,8 @@ const { status, data } = await apiInstance.getTicketsList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **page** | [**number**] | Page number for paginated results. | (optional) defaults to 1|
-| **period** | [**&#39;30&#39; | &#39;90&#39; | &#39;365&#39; | &#39;1825&#39; | &#39;all&#39;**]**Array<&#39;30&#39; &#124; &#39;90&#39; &#124; &#39;365&#39; &#124; &#39;1825&#39; &#124; &#39;all&#39;>** | How far back to show tickets from. Value is in days. | (optional) defaults to '30'|
-| **view** | [**&#39;Open&#39; | &#39;Closed&#39; | &#39;On Hold&#39; | &#39;In Progress&#39;**]**Array<&#39;Open&#39; &#124; &#39;Closed&#39; &#124; &#39;On Hold&#39; &#124; &#39;In Progress&#39;>** | The status of tickets to view. Possible values are Open, Closed, On Hold, and In Progress.  If not specified it will show all types. | (optional) defaults to undefined|
+| **period** | [**&#39;30&#39; | &#39;90&#39; | &#39;365&#39; | &#39;1825&#39; | &#39;all&#39;**]**Array<&#39;30&#39; &#124; &#39;90&#39; &#124; &#39;365&#39; &#124; &#39;1825&#39; &#124; &#39;all&#39; &#124; &#39;11184809&#39;>** | How far back to show tickets from. Value is in days. | (optional) defaults to '30'|
+| **view** | [**&#39;Open&#39; | &#39;Closed&#39; | &#39;On Hold&#39; | &#39;In Progress&#39;**]**Array<&#39;Open&#39; &#124; &#39;Closed&#39; &#124; &#39;On Hold&#39; &#124; &#39;In Progress&#39; &#124; &#39;11184809&#39;>** | The status of tickets to view. Possible values are Open, Closed, On Hold, and In Progress.  If not specified it will show all types. | (optional) defaults to undefined|
 
 
 ### Return type

@@ -21,9 +21,9 @@ var _ MappedNullable = &TicketNewResponse{}
 
 // TicketNewResponse Response returned after creating a new support ticket.
 type TicketNewResponse struct {
-	TicketId *int32 `json:"ticket_id,omitempty"`
 	Text string `json:"text"`
 	Success bool `json:"success"`
+	TicketId *int32 `json:"ticket_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,38 +46,6 @@ func NewTicketNewResponse(text string, success bool) *TicketNewResponse {
 func NewTicketNewResponseWithDefaults() *TicketNewResponse {
 	this := TicketNewResponse{}
 	return &this
-}
-
-// GetTicketId returns the TicketId field value if set, zero value otherwise.
-func (o *TicketNewResponse) GetTicketId() int32 {
-	if o == nil || IsNil(o.TicketId) {
-		var ret int32
-		return ret
-	}
-	return *o.TicketId
-}
-
-// GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TicketNewResponse) GetTicketIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.TicketId) {
-		return nil, false
-	}
-	return o.TicketId, true
-}
-
-// HasTicketId returns a boolean if a field has been set.
-func (o *TicketNewResponse) HasTicketId() bool {
-	if o != nil && !IsNil(o.TicketId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTicketId gets a reference to the given int32 and assigns it to the TicketId field.
-func (o *TicketNewResponse) SetTicketId(v int32) {
-	o.TicketId = &v
 }
 
 // GetText returns the Text field value
@@ -128,6 +96,38 @@ func (o *TicketNewResponse) SetSuccess(v bool) {
 	o.Success = v
 }
 
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
+func (o *TicketNewResponse) GetTicketId() int32 {
+	if o == nil || IsNil(o.TicketId) {
+		var ret int32
+		return ret
+	}
+	return *o.TicketId
+}
+
+// GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TicketNewResponse) GetTicketIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.TicketId) {
+		return nil, false
+	}
+	return o.TicketId, true
+}
+
+// HasTicketId returns a boolean if a field has been set.
+func (o *TicketNewResponse) HasTicketId() bool {
+	if o != nil && !IsNil(o.TicketId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketId gets a reference to the given int32 and assigns it to the TicketId field.
+func (o *TicketNewResponse) SetTicketId(v int32) {
+	o.TicketId = &v
+}
+
 func (o TicketNewResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -138,11 +138,11 @@ func (o TicketNewResponse) MarshalJSON() ([]byte, error) {
 
 func (o TicketNewResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["text"] = o.Text
+	toSerialize["success"] = o.Success
 	if !IsNil(o.TicketId) {
 		toSerialize["ticket_id"] = o.TicketId
 	}
-	toSerialize["text"] = o.Text
-	toSerialize["success"] = o.Success
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -187,9 +187,9 @@ func (o *TicketNewResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ticket_id")
 		delete(additionalProperties, "text")
 		delete(additionalProperties, "success")
+		delete(additionalProperties, "ticket_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

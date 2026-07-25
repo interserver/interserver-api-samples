@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   CreateGeoFirewallRule.JSON_PROPERTY_ASN
 })
 @JsonTypeName("CreateGeoFirewallRule")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class CreateGeoFirewallRule {
     /**
@@ -39,7 +39,8 @@ public class CreateGeoFirewallRule {
      */
     public enum XdpActionEnum {
         NUMBER_0(0),
-        NUMBER_1(1);
+        NUMBER_1(1),
+        NUMBER_unknown_default_open_api(11184809);
 
         private Integer value;
 

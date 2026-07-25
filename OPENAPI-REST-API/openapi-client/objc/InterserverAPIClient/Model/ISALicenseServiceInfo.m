@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"licenseId": @"license_id", @"licenseType": @"license_type", @"licenseCurrency": @"license_currency", @"licenseOrderDate": @"license_order_date", @"licenseCustid": @"license_custid", @"licenseIp": @"license_ip", @"licenseStatus": @"license_status", @"licenseHostname": @"license_hostname", @"licenseKey": @"license_key", @"licenseInvoice": @"license_invoice", @"licenseCoupon": @"license_coupon", @"licenseExtra": @"license_extra" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"licenseId": @"license_id", @"licenseType": @"license_type", @"licenseCurrency": @"license_currency", @"licenseOrderDate": @"license_order_date", @"licenseCustid": @"license_custid", @"licenseIp": @"license_ip", @"licenseStatus": @"license_status", @"licenseInvoice": @"license_invoice", @"licenseCoupon": @"license_coupon", @"licenseHostname": @"license_hostname", @"licenseKey": @"license_key", @"licenseExtra": @"license_extra" }];
 }
 
 /**

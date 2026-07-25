@@ -35,6 +35,7 @@ public:
 	{
 		_0,
 		_1,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const CanDeleteEnum& EnumValue);

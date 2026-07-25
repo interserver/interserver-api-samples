@@ -34,7 +34,8 @@ public class IntServerVpsOrderPostRequest {
     public enum VpsPlatformEnum {
         KVM,
         HYPERV,
-        KVMSTORAGE
+        KVMSTORAGE,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**
@@ -83,7 +84,8 @@ public class IntServerVpsOrderPostRequest {
     public enum ControlpanelEnum {
         NONE,
         CPANEL,
-        DA
+        DA,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

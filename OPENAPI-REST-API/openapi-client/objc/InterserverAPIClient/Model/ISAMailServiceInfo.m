@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"mailId": @"mail_id", @"mailUsername": @"mail_username", @"mailType": @"mail_type", @"mailCurrency": @"mail_currency", @"mailOrderDate": @"mail_order_date", @"mailCustid": @"mail_custid", @"mailQuota": @"mail_quota", @"mailIp": @"mail_ip", @"mailStatus": @"mail_status", @"mailInvoice": @"mail_invoice", @"mailCoupon": @"mail_coupon", @"mailExtra": @"mail_extra", @"mailServerStatus": @"mail_server_status", @"mailComment": @"mail_comment" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"mailId": @"mail_id", @"mailType": @"mail_type", @"mailCurrency": @"mail_currency", @"mailOrderDate": @"mail_order_date", @"mailCustid": @"mail_custid", @"mailQuota": @"mail_quota", @"mailStatus": @"mail_status", @"mailInvoice": @"mail_invoice", @"mailUsername": @"mail_username", @"mailIp": @"mail_ip", @"mailCoupon": @"mail_coupon", @"mailExtra": @"mail_extra", @"mailServerStatus": @"mail_server_status", @"mailComment": @"mail_comment" }];
 }
 
 /**

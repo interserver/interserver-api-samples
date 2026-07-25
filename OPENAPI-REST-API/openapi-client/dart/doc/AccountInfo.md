@@ -1,8 +1,8 @@
-# openapi.model.AccountInfo
+# interserver_api.model.AccountInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

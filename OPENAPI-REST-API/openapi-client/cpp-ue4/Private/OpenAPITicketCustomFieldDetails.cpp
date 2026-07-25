@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPITicketCustomFieldDetails::CustomerServerAcc
 		return TEXT("y");
 	case OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::N:
 		return TEXT("n");
+	case OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPITicketCustomFieldDeta
 {
 	static TMap<FString, OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum> StringToEnum = { 
 		{ TEXT("y"), OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::Y },
-		{ TEXT("n"), OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::N }, };
+		{ TEXT("n"), OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::N },
+		{ TEXT("11184809"), OpenAPITicketCustomFieldDetails::CustomerServerAccessEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

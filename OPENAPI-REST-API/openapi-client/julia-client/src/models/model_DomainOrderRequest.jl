@@ -49,13 +49,13 @@ function OpenAPI.validate_property(::Type{ DomainOrderRequest }, name::Symbol, v
 
 
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "DomainOrderRequest", :enum, val, ["register", "transfer"])
+        OpenAPI.validate_param(name, "DomainOrderRequest", :enum, val, ["register", "transfer", "unknown_default_open_api"])
     end
 
 
 
     if name === Symbol("whois_privacy")
-        OpenAPI.validate_param(name, "DomainOrderRequest", :enum, val, ["enable", "disable"])
+        OpenAPI.validate_param(name, "DomainOrderRequest", :enum, val, ["enable", "disable", "unknown_default_open_api"])
     end
 
 end

@@ -54,7 +54,8 @@ Protected Class InitiatePayment200Response
         Redirect
         Submit
         Single
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -68,7 +69,10 @@ Protected Class InitiatePayment200Response
 		      Return "submit"
 		    Case TypeEnum.Single
 		      Return "single"
-		    
+		    Case TypeEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

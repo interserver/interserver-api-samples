@@ -268,20 +268,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'license_hostname' => {
-        datatype => 'string',
-        base_name => 'license_hostname',
-        description => 'License hostname',
-        format => '',
-        read_only => '',
-            },
-    'license_key' => {
-        datatype => 'string',
-        base_name => 'license_key',
-        description => 'License key',
-        format => '',
-        read_only => '',
-            },
     'license_invoice' => {
         datatype => 'string',
         base_name => 'license_invoice',
@@ -293,6 +279,20 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'license_coupon',
         description => 'License coupon',
+        format => '',
+        read_only => '',
+            },
+    'license_hostname' => {
+        datatype => 'string',
+        base_name => 'license_hostname',
+        description => 'License hostname',
+        format => '',
+        read_only => '',
+            },
+    'license_key' => {
+        datatype => 'string',
+        base_name => 'license_key',
+        description => 'License key',
         format => '',
         read_only => '',
             },
@@ -313,10 +313,10 @@ __PACKAGE__->openapi_types( {
     'license_custid' => 'string',
     'license_ip' => 'string',
     'license_status' => 'string',
-    'license_hostname' => 'string',
-    'license_key' => 'string',
     'license_invoice' => 'string',
     'license_coupon' => 'string',
+    'license_hostname' => 'string',
+    'license_key' => 'string',
     'license_extra' => 'string'
 } );
 
@@ -328,10 +328,10 @@ __PACKAGE__->attribute_map( {
     'license_custid' => 'license_custid',
     'license_ip' => 'license_ip',
     'license_status' => 'license_status',
-    'license_hostname' => 'license_hostname',
-    'license_key' => 'license_key',
     'license_invoice' => 'license_invoice',
     'license_coupon' => 'license_coupon',
+    'license_hostname' => 'license_hostname',
+    'license_key' => 'license_key',
     'license_extra' => 'license_extra'
 } );
 

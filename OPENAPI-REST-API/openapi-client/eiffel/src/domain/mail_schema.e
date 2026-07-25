@@ -31,14 +31,14 @@ feature --Access
       -- The currency symbol for the customer.
     package: detachable STRING_32
       -- The package of the mail service.
-    service_extra: detachable LIST [STRING_32]
-      -- Extra information for the mail service.
     extra_info_tables: detachable MAIL_SCHEMA_EXTRA_INFO_TABLES
       
     service_type: detachable MAIL_SERVICE_TYPE
       
     usage_count: detachable STRING_32
       -- The usage count of the mail service.
+    service_extra: detachable LIST [STRING_32]
+      -- Extra information for the mail service.
 
 feature -- Change Element
 
@@ -90,14 +90,6 @@ feature -- Change Element
         package_set: package = a_name
       end
 
-    set_service_extra (a_name: like service_extra)
-        -- Set 'service_extra' with 'a_name'.
-      do
-        service_extra := a_name
-      ensure
-        service_extra_set: service_extra = a_name
-      end
-
     set_extra_info_tables (a_name: like extra_info_tables)
         -- Set 'extra_info_tables' with 'a_name'.
       do
@@ -120,6 +112,14 @@ feature -- Change Element
         usage_count := a_name
       ensure
         usage_count_set: usage_count = a_name
+      end
+
+    set_service_extra (a_name: like service_extra)
+        -- Set 'service_extra' with 'a_name'.
+      do
+        service_extra := a_name
+      ensure
+        service_extra_set: service_extra = a_name
       end
 
 
@@ -162,13 +162,6 @@ feature -- Change Element
           Result.append (l_package.out)
           Result.append ("%N")
         end
-        if attached service_extra as l_service_extra then
-          across l_service_extra as ic loop
-            Result.append ("%N service_extra:")
-            Result.append (ic.item.out)
-            Result.append ("%N")
-          end
-        end
         if attached extra_info_tables as l_extra_info_tables then
           Result.append ("%Nextra_info_tables:")
           Result.append (l_extra_info_tables.out)
@@ -183,6 +176,13 @@ feature -- Change Element
           Result.append ("%Nusage_count:")
           Result.append (l_usage_count.out)
           Result.append ("%N")
+        end
+        if attached service_extra as l_service_extra then
+          across l_service_extra as ic loop
+            Result.append ("%N service_extra:")
+            Result.append (ic.item.out)
+            Result.append ("%N")
+          end
         end
       end
 end

@@ -219,6 +219,20 @@ __PACKAGE__->class_documentation({description => 'Create firewall rule for your 
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'protocol_id' => {
+        datatype => 'int',
+        base_name => 'protocol_id',
+        description => '1 &#x3D; TCP, 2 &#x3D; UDP',
+        format => '',
+        read_only => '',
+            },
+    'xdp_action' => {
+        datatype => 'int',
+        base_name => 'xdp_action',
+        description => '1 &#x3D; Block,  0 &#x3D; Whitelist',
+        format => '',
+        read_only => '',
+            },
     'destination_port' => {
         datatype => 'int',
         base_name => 'destination_port',
@@ -240,36 +254,22 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'protocol_id' => {
-        datatype => 'int',
-        base_name => 'protocol_id',
-        description => '1 &#x3D; TCP, 2 &#x3D; UDP',
-        format => '',
-        read_only => '',
-            },
-    'xdp_action' => {
-        datatype => 'int',
-        base_name => 'xdp_action',
-        description => '1 &#x3D; Block,  0 &#x3D; Whitelist',
-        format => '',
-        read_only => '',
-            },
 });
 
 __PACKAGE__->openapi_types( {
+    'protocol_id' => 'int',
+    'xdp_action' => 'int',
     'destination_port' => 'int',
     'source_ip' => 'string',
-    'source_port' => 'int',
-    'protocol_id' => 'int',
-    'xdp_action' => 'int'
+    'source_port' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
+    'protocol_id' => 'protocol_id',
+    'xdp_action' => 'xdp_action',
     'destination_port' => 'destination_port',
     'source_ip' => 'source_ip',
-    'source_port' => 'source_port',
-    'protocol_id' => 'protocol_id',
-    'xdp_action' => 'xdp_action'
+    'source_port' => 'source_port'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

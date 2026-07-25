@@ -55,7 +55,7 @@ end
 function OpenAPI.validate_property(::Type{ TicketCustomFieldDetails }, name::Symbol, val)
 
     if name === Symbol("Customer Server Access")
-        OpenAPI.validate_param(name, "TicketCustomFieldDetails", :enum, val, ["y", "n"])
+        OpenAPI.validate_param(name, "TicketCustomFieldDetails", :enum, val, ["y", "n", "unknown_default_open_api"])
     end
 
 

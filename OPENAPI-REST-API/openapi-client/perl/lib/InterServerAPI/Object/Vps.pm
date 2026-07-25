@@ -278,13 +278,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'os_template' => {
-        datatype => 'string',
-        base_name => 'os_template',
-        description => '',
-        format => '',
-        read_only => '',
-            },
     'service_extra' => {
         datatype => 'VpsServiceExtra',
         base_name => 'serviceExtra',
@@ -295,13 +288,6 @@ __PACKAGE__->method_documentation({
     'extra_info_tables' => {
         datatype => 'VpsExtraInfoTables',
         base_name => 'extraInfoTables',
-        description => '',
-        format => '',
-        read_only => '',
-            },
-    'cpu_graph_data' => {
-        datatype => 'object',
-        base_name => 'cpu_graph_data',
         description => '',
         format => '',
         read_only => '',
@@ -362,6 +348,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'os_template' => {
+        datatype => 'string',
+        base_name => 'os_template',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'cpu_graph_data' => {
+        datatype => 'object',
+        base_name => 'cpu_graph_data',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -372,10 +372,8 @@ __PACKAGE__->openapi_types( {
     'cust_currency_symbol' => 'string',
     'service_master' => 'VpsServiceMaster',
     'package' => 'string',
-    'os_template' => 'string',
     'service_extra' => 'VpsServiceExtra',
     'extra_info_tables' => 'VpsExtraInfoTables',
-    'cpu_graph_data' => 'object',
     'module' => 'string',
     'token' => 'string',
     'da_link' => 'int',
@@ -383,7 +381,9 @@ __PACKAGE__->openapi_types( {
     'cp_data' => 'VpsCPData',
     'da_data' => 'VpsDAData',
     'plesk12_data' => 'VpsPlesk12Data',
-    'service_addons' => 'VpsServiceAddons'
+    'service_addons' => 'VpsServiceAddons',
+    'os_template' => 'string',
+    'cpu_graph_data' => 'object'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -394,10 +394,8 @@ __PACKAGE__->attribute_map( {
     'cust_currency_symbol' => 'custCurrencySymbol',
     'service_master' => 'serviceMaster',
     'package' => 'package',
-    'os_template' => 'os_template',
     'service_extra' => 'serviceExtra',
     'extra_info_tables' => 'extraInfoTables',
-    'cpu_graph_data' => 'cpu_graph_data',
     'module' => 'module',
     'token' => 'token',
     'da_link' => 'da_link',
@@ -405,7 +403,9 @@ __PACKAGE__->attribute_map( {
     'cp_data' => 'cp_data',
     'da_data' => 'da_data',
     'plesk12_data' => 'plesk12_data',
-    'service_addons' => 'serviceAddons'
+    'service_addons' => 'serviceAddons',
+    'os_template' => 'os_template',
+    'cpu_graph_data' => 'cpu_graph_data'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

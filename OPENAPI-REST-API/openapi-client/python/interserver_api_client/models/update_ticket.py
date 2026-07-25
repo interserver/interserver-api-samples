@@ -43,8 +43,8 @@ class UpdateTicket(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['y', 'n']):
-            raise ValueError("must be one of enum values ('y', 'n')")
+        if value not in set(['y', 'n', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('y', 'n', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

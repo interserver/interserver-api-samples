@@ -1,8 +1,8 @@
-# openapi.model.DomainClientLink
+# interserver_api.model.DomainClientLink
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

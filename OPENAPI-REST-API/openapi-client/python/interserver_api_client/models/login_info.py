@@ -29,11 +29,11 @@ class LoginInfo(BaseModel):
     """
     Basic information useful for rendering a login page.
     """ # noqa: E501
-    logo: Optional[StrictStr] = Field(default=None, description="A logo image url.", json_schema_extra={"examples": ["//my.interserver.net/images/logos/mystaging.png"]})
     captcha: StrictStr = Field(description="A base64 encoded image to use for rendering the alternateive captcha.", json_schema_extra={"examples": ["data:image/jpeg;base64,/9j/"]})
-    language: Optional[StrictStr] = Field(default=None, description="The desired langauge to render the site with.", json_schema_extra={"examples": ["en-US"]})
     counts: LoginServiceCounts
-    __properties: ClassVar[List[str]] = ["logo", "captcha", "language", "counts"]
+    logo: Optional[StrictStr] = Field(default=None, description="A logo image url.", json_schema_extra={"examples": ["//my.interserver.net/images/logos/mystaging.png"]})
+    language: Optional[StrictStr] = Field(default=None, description="The desired langauge to render the site with.", json_schema_extra={"examples": ["en-US"]})
+    __properties: ClassVar[List[str]] = ["captcha", "counts", "logo", "language"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,10 +89,10 @@ class LoginInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "logo": obj.get("logo"),
             "captcha": obj.get("captcha"),
-            "language": obj.get("language"),
-            "counts": LoginServiceCounts.from_dict(obj["counts"]) if obj.get("counts") is not None else None
+            "counts": LoginServiceCounts.from_dict(obj["counts"]) if obj.get("counts") is not None else None,
+            "logo": obj.get("logo"),
+            "language": obj.get("language")
         })
         return _obj
 

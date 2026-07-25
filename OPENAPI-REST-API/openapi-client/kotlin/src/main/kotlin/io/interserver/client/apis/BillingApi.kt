@@ -514,7 +514,8 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
          @Json(name = "csv") csv("csv"),
          @Json(name = "xls") xls("xls"),
          @Json(name = "xlsx") xlsx("xlsx"),
-         @Json(name = "pdf") pdf("pdf");
+         @Json(name = "pdf") pdf("pdf"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -1356,7 +1357,8 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
          @Json(name = "ccavenue") ccavenue("ccavenue"),
          @Json(name = "cashfree") cashfree("cashfree"),
          @Json(name = "coinbase") coinbase("coinbase"),
-         @Json(name = "btcpay") btcpay("btcpay");
+         @Json(name = "btcpay") btcpay("btcpay"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use

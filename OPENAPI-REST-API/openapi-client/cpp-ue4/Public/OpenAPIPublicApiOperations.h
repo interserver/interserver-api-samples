@@ -119,6 +119,7 @@ public:
 		Iso2,
 		Iso3,
 		Numcode,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const FetchByEnum& EnumValue);

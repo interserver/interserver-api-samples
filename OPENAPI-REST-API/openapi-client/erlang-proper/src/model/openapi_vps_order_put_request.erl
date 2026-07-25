@@ -12,13 +12,13 @@
   [ {'osDistro', binary() }
   | {'slices', integer() }
   | {'vpsPlatform', binary() }
-  | {'controlpanel', binary() }
   | {'period', integer() }
   | {'location', integer() }
   | {'osVersion', binary() }
   | {'hostname', binary() }
-  | {'coupon', binary() }
   | {'rootpass', binary() }
+  | {'controlpanel', binary() }
+  | {'coupon', binary() }
   | {'comment', binary() }
   ].
 
@@ -30,13 +30,13 @@ openapi_vps_order_put_request(Fields) ->
   Default = [ {'osDistro', binary() }
             , {'slices', integer(1, 32) }
             , {'vpsPlatform', elements([<<"kvm">>, <<"hyperv">>, <<"kvmstorage">>]) }
-            , {'controlpanel', elements([<<"none">>, <<"cpanel">>, <<"da">>]) }
             , {'period', integer(1, 12) }
             , {'location', integer(1, 3) }
             , {'osVersion', binary() }
             , {'hostname', binary() }
-            , {'coupon', binary() }
             , {'rootpass', binary() }
+            , {'controlpanel', elements([<<"none">>, <<"cpanel">>, <<"da">>]) }
+            , {'coupon', binary() }
             , {'comment', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -19,7 +19,8 @@ public class IntServerCreateFirewallRule implements OAS.MappedProperties {
      */
     public enum ProtocolIdEnum {
         NUMBER_1,
-        NUMBER_2
+        NUMBER_2,
+        NUMBER_unknown_default_open_api
     }
 
     /**
@@ -33,7 +34,8 @@ public class IntServerCreateFirewallRule implements OAS.MappedProperties {
      */
     public enum XdpActionEnum {
         NUMBER_0,
-        NUMBER_1
+        NUMBER_1,
+        NUMBER_unknown_default_open_api
     }
 
     /**

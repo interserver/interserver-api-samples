@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asset** | **Int32** | Asset ID | [optional] 
 **Ip** | **String** | Your IP Address you wish to connect to the IPMI system from. | 
+**Asset** | **Int32** | Asset ID | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ServerIpmiLiveRequest = Initialize-InterserverApiServerIpmiLiveRequest  -Asset 5431 `
- -Ip 1.2.3.4
+$ServerIpmiLiveRequest = Initialize-InterserverApiServerIpmiLiveRequest  -Ip 1.2.3.4 `
+ -Asset 5431
 ```
 
 - Convert the resource to JSON

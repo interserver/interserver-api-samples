@@ -4,7 +4,7 @@ package client
 
 // DenyRuleNew - The data for a email deny rule record.
 type DenyRuleNew struct {
-	User string `json:"user,omitempty"`
 	Type string `json:"type"`
 	Data string `json:"data"`
+	User string `json:"user,omitempty"`
 }

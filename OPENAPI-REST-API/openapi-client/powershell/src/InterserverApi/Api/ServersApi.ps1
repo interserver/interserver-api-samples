@@ -1590,7 +1590,7 @@ function Invoke-ServerIpmiPowerPost {
         [Int32]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("cycle", "reset", "on", "off", "soft")]
+        [ValidateSet("cycle", "reset", "on", "off", "soft", "unknown_default_open_api")]
         [String]
         ${Action},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]

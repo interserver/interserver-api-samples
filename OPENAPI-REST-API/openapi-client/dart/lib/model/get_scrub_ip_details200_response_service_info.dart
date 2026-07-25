@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class GetScrubIpDetails200ResponseServiceInfo {
   /// Returns a new [GetScrubIpDetails200ResponseServiceInfo] instance.
@@ -299,6 +299,7 @@ enum GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum {
   pending._(r'pending'),
   canceled._(r'canceled'),
   expired._(r'expired'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -361,6 +362,7 @@ class GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer {
         case r'pending': return GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.pending;
         case r'canceled': return GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.canceled;
         case r'expired': return GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.expired;
+        case r'unknown_default_open_api': return GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

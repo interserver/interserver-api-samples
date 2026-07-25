@@ -85,7 +85,7 @@ function OpenAPI.validate_property(::Type{ GetScrubIpDetails200ResponseServiceIn
 
 
     if name === Symbol("scrub_ip_status")
-        OpenAPI.validate_param(name, "GetScrubIpDetails200ResponseServiceInfo", :enum, val, ["active", "pending", "canceled", "expired"])
+        OpenAPI.validate_param(name, "GetScrubIpDetails200ResponseServiceInfo", :enum, val, ["active", "pending", "canceled", "expired", "unknown_default_open_api"])
     end
 
 

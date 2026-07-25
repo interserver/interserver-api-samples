@@ -92,7 +92,8 @@ export interface VpsOrderPostRequest {
 export enum VpsOrderPostRequestVpsPlatformEnum {
     Kvm = 'kvm',
     Hyperv = 'hyperv',
-    Kvmstorage = 'kvmstorage'
+    Kvmstorage = 'kvmstorage',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -101,6 +102,7 @@ export enum VpsOrderPostRequestVpsPlatformEnum {
 export enum VpsOrderPostRequestControlpanelEnum {
     None = 'none',
     Cpanel = 'cpanel',
-    Da = 'da'
+    Da = 'da',
+    UnknownDefaultOpenApi = '11184809'
 }
 

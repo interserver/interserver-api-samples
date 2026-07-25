@@ -325,8 +325,8 @@ std::string DomainOrderRequest::getType() const
 
 void DomainOrderRequest::setType(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "register","transfer"
+    static const std::array<std::string, 3> allowedValues = {
+        "register","transfer","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;
@@ -355,8 +355,8 @@ std::string DomainOrderRequest::getWhoisPrivacy() const
 
 void DomainOrderRequest::setWhoisPrivacy(std::string value)
 {
-    static const std::array<std::string, 2> allowedValues = {
-        "enable","disable"
+    static const std::array<std::string, 3> allowedValues = {
+        "enable","disable","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

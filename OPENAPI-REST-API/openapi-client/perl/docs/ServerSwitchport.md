@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **blade** | **string** | Blade name associated with the port. | 
 **justport** | **string** | Port identifier. | 
 **graph_id** | **string** | Identifier for the graph associated with the switchport. | 
+**asset_id** | **int** | Unique identifier of the asset associated with the switchport. | 
 **vlans** | **ARRAY[string]** | List of VLANs associated with the switchport. | [optional] 
 **vlans6** | **ARRAY[string]** | List of IPv6 VLANs associated with the switchport. | [optional] 
-**asset_id** | **int** | Unique identifier of the asset associated with the switchport. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

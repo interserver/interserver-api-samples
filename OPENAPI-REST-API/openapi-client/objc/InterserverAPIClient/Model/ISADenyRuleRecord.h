@@ -22,9 +22,6 @@
 
 @interface ISADenyRuleRecord : ISAObject
 
-/* Mail account username that will be tied to this rule.  If not specified the first active mail order will be used. [optional]
- */
-@property(nonatomic) NSString* user;
 /* The type of deny rule. 
  */
 @property(nonatomic) NSString* type;
@@ -37,5 +34,8 @@
 /* the date the rule was created. 
  */
 @property(nonatomic) NSString* created;
+/* Mail account username that will be tied to this rule.  If not specified the first active mail order will be used. [optional]
+ */
+@property(nonatomic) NSString* user;
 
 @end

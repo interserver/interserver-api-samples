@@ -1,8 +1,8 @@
-# openapi.model.ServerBulkIpmiPowerResponse
+# interserver_api.model.ServerBulkIpmiPowerResponse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

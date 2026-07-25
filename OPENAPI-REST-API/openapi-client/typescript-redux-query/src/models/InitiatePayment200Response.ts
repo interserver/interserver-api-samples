@@ -88,7 +88,8 @@ export function InitiatePayment200ResponseToJSON(value?: InitiatePayment200Respo
 export enum InitiatePayment200ResponseTypeEnum {
     Redirect = 'redirect',
     Submit = 'submit',
-    Single = 'single'
+    Single = 'single',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 

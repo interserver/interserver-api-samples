@@ -14,20 +14,20 @@ use serde::{Deserialize, Serialize};
 /// ServerIpmiPowerRequest : IPMI Power command for servers
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ServerIpmiPowerRequest {
-    /// The Asset ID
-    #[serde(rename = "asset", skip_serializing_if = "Option::is_none")]
-    pub asset: Option<i32>,
     /// The power action to send to the ipmi controller.
     #[serde(rename = "action")]
     pub action: Action,
+    /// The Asset ID
+    #[serde(rename = "asset", skip_serializing_if = "Option::is_none")]
+    pub asset: Option<i32>,
 }
 
 impl ServerIpmiPowerRequest {
     /// IPMI Power command for servers
     pub fn new(action: Action) -> ServerIpmiPowerRequest {
         ServerIpmiPowerRequest {
-            asset: None,
             action,
+            asset: None,
         }
     }
 }
@@ -44,6 +44,8 @@ pub enum Action {
     Off,
     #[serde(rename = "soft")]
     Soft,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Action {

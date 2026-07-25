@@ -661,7 +661,8 @@ export enum GetAffiliateDownloadExEnum {
     Csv = 'csv',
     Xls = 'xls',
     Xlsx = 'xlsx',
-    Pdf = 'pdf'
+    Pdf = 'pdf',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -676,5 +677,6 @@ export enum InitiatePaymentMethodEnum {
     Ccavenue = 'ccavenue',
     Cashfree = 'cashfree',
     Coinbase = 'coinbase',
-    Btcpay = 'btcpay'
+    Btcpay = 'btcpay',
+    UnknownDefaultOpenApi = '11184809'
 }

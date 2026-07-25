@@ -97,7 +97,8 @@ export interface SslOrderRequest {
 export namespace SslOrderRequest {
     export const CsrTypeEnum = {
         Generated: 'generated',
-        Provided: 'provided'
+        Provided: 'provided',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type CsrTypeEnum = typeof CsrTypeEnum[keyof typeof CsrTypeEnum];
 }

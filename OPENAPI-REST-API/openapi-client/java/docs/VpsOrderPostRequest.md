@@ -29,6 +29,7 @@ request to validate a vps order
 | kvm | &quot;kvm&quot; |
 | hyperv | &quot;hyperv&quot; |
 | kvmstorage | &quot;kvmstorage&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 
@@ -39,6 +40,7 @@ request to validate a vps order
 | none | &quot;none&quot; |
 | cpanel | &quot;cpanel&quot; |
 | da | &quot;da&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

@@ -220,24 +220,10 @@ __PACKAGE__->class_documentation({description => 'Basic information useful for r
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'logo' => {
-        datatype => 'string',
-        base_name => 'logo',
-        description => 'A logo image url.',
-        format => '',
-        read_only => '',
-            },
     'captcha' => {
         datatype => 'string',
         base_name => 'captcha',
         description => 'A base64 encoded image to use for rendering the alternateive captcha.',
-        format => '',
-        read_only => '',
-            },
-    'language' => {
-        datatype => 'string',
-        base_name => 'language',
-        description => 'The desired langauge to render the site with.',
         format => '',
         read_only => '',
             },
@@ -248,20 +234,34 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'logo' => {
+        datatype => 'string',
+        base_name => 'logo',
+        description => 'A logo image url.',
+        format => '',
+        read_only => '',
+            },
+    'language' => {
+        datatype => 'string',
+        base_name => 'language',
+        description => 'The desired langauge to render the site with.',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'logo' => 'string',
     'captcha' => 'string',
-    'language' => 'string',
-    'counts' => 'LoginServiceCounts'
+    'counts' => 'LoginServiceCounts',
+    'logo' => 'string',
+    'language' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'logo' => 'logo',
     'captcha' => 'captcha',
-    'language' => 'language',
-    'counts' => 'counts'
+    'counts' => 'counts',
+    'logo' => 'logo',
+    'language' => 'language'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

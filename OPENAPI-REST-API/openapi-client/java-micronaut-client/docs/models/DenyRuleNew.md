@@ -22,6 +22,7 @@ DOMAIN | `"domain"`
 EMAIL | `"email"`
 STARTSWITH | `"startswith"`
 DESTINATION | `"destination"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

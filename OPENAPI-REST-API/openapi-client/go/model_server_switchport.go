@@ -35,12 +35,12 @@ type ServerSwitchport struct {
 	Justport string `json:"justport"`
 	// Identifier for the graph associated with the switchport.
 	GraphId string `json:"graph_id"`
+	// Unique identifier of the asset associated with the switchport.
+	AssetId int32 `json:"asset_id"`
 	// List of VLANs associated with the switchport.
 	Vlans []string `json:"vlans,omitempty"`
 	// List of IPv6 VLANs associated with the switchport.
 	Vlans6 []string `json:"vlans6,omitempty"`
-	// Unique identifier of the asset associated with the switchport.
-	AssetId int32 `json:"asset_id"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -239,6 +239,30 @@ func (o *ServerSwitchport) SetGraphId(v string) {
 	o.GraphId = v
 }
 
+// GetAssetId returns the AssetId field value
+func (o *ServerSwitchport) GetAssetId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AssetId
+}
+
+// GetAssetIdOk returns a tuple with the AssetId field value
+// and a boolean to check if the value has been set.
+func (o *ServerSwitchport) GetAssetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssetId, true
+}
+
+// SetAssetId sets field value
+func (o *ServerSwitchport) SetAssetId(v int32) {
+	o.AssetId = v
+}
+
 // GetVlans returns the Vlans field value if set, zero value otherwise.
 func (o *ServerSwitchport) GetVlans() []string {
 	if o == nil || IsNil(o.Vlans) {
@@ -303,30 +327,6 @@ func (o *ServerSwitchport) SetVlans6(v []string) {
 	o.Vlans6 = v
 }
 
-// GetAssetId returns the AssetId field value
-func (o *ServerSwitchport) GetAssetId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.AssetId
-}
-
-// GetAssetIdOk returns a tuple with the AssetId field value
-// and a boolean to check if the value has been set.
-func (o *ServerSwitchport) GetAssetIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AssetId, true
-}
-
-// SetAssetId sets field value
-func (o *ServerSwitchport) SetAssetId(v int32) {
-	o.AssetId = v
-}
-
 func (o ServerSwitchport) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -344,13 +344,13 @@ func (o ServerSwitchport) ToMap() (map[string]interface{}, error) {
 	toSerialize["blade"] = o.Blade
 	toSerialize["justport"] = o.Justport
 	toSerialize["graph_id"] = o.GraphId
+	toSerialize["asset_id"] = o.AssetId
 	if !IsNil(o.Vlans) {
 		toSerialize["vlans"] = o.Vlans
 	}
 	if !IsNil(o.Vlans6) {
 		toSerialize["vlans6"] = o.Vlans6
 	}
-	toSerialize["asset_id"] = o.AssetId
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -408,9 +408,9 @@ func (o *ServerSwitchport) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "blade")
 		delete(additionalProperties, "justport")
 		delete(additionalProperties, "graph_id")
+		delete(additionalProperties, "asset_id")
 		delete(additionalProperties, "vlans")
 		delete(additionalProperties, "vlans6")
-		delete(additionalProperties, "asset_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

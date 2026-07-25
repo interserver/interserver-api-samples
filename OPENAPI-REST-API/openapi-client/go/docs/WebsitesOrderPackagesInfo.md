@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **ServicesCategory** | **string** | The category of the package. | 
 **ServicesBuyable** | **string** | Indicates if the package is buyable (1 for yes, 0 for no). | 
 **ServicesType** | **string** | The type of the package. | 
+**ServicesModule** | **string** | The module of the package. | 
+**ServicesDescription** | **string** | Description of the package. | 
 **ServicesField1** | Pointer to **string** | Additional field 1 for the package. | [optional] 
 **ServicesField2** | Pointer to **string** | Additional field 2 for the package. | [optional] 
-**ServicesModule** | **string** | The module of the package. | 
 **ServicesHtml** | Pointer to **string** | HTML content for the package. | [optional] 
-**ServicesDescription** | **string** | Description of the package. | 
 **ServicesMoreinfoUrl** | Pointer to **string** | URL for more information about the package. | [optional] 
 **ServicesHidden** | Pointer to **string** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
 
@@ -157,6 +157,46 @@ and a boolean to check if the value has been set.
 SetServicesType sets ServicesType field to given value.
 
 
+### GetServicesModule
+
+`func (o *WebsitesOrderPackagesInfo) GetServicesModule() string`
+
+GetServicesModule returns the ServicesModule field if non-nil, zero value otherwise.
+
+### GetServicesModuleOk
+
+`func (o *WebsitesOrderPackagesInfo) GetServicesModuleOk() (*string, bool)`
+
+GetServicesModuleOk returns a tuple with the ServicesModule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServicesModule
+
+`func (o *WebsitesOrderPackagesInfo) SetServicesModule(v string)`
+
+SetServicesModule sets ServicesModule field to given value.
+
+
+### GetServicesDescription
+
+`func (o *WebsitesOrderPackagesInfo) GetServicesDescription() string`
+
+GetServicesDescription returns the ServicesDescription field if non-nil, zero value otherwise.
+
+### GetServicesDescriptionOk
+
+`func (o *WebsitesOrderPackagesInfo) GetServicesDescriptionOk() (*string, bool)`
+
+GetServicesDescriptionOk returns a tuple with the ServicesDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServicesDescription
+
+`func (o *WebsitesOrderPackagesInfo) SetServicesDescription(v string)`
+
+SetServicesDescription sets ServicesDescription field to given value.
+
+
 ### GetServicesField1
 
 `func (o *WebsitesOrderPackagesInfo) GetServicesField1() string`
@@ -207,26 +247,6 @@ SetServicesField2 sets ServicesField2 field to given value.
 
 HasServicesField2 returns a boolean if a field has been set.
 
-### GetServicesModule
-
-`func (o *WebsitesOrderPackagesInfo) GetServicesModule() string`
-
-GetServicesModule returns the ServicesModule field if non-nil, zero value otherwise.
-
-### GetServicesModuleOk
-
-`func (o *WebsitesOrderPackagesInfo) GetServicesModuleOk() (*string, bool)`
-
-GetServicesModuleOk returns a tuple with the ServicesModule field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServicesModule
-
-`func (o *WebsitesOrderPackagesInfo) SetServicesModule(v string)`
-
-SetServicesModule sets ServicesModule field to given value.
-
-
 ### GetServicesHtml
 
 `func (o *WebsitesOrderPackagesInfo) GetServicesHtml() string`
@@ -251,26 +271,6 @@ SetServicesHtml sets ServicesHtml field to given value.
 `func (o *WebsitesOrderPackagesInfo) HasServicesHtml() bool`
 
 HasServicesHtml returns a boolean if a field has been set.
-
-### GetServicesDescription
-
-`func (o *WebsitesOrderPackagesInfo) GetServicesDescription() string`
-
-GetServicesDescription returns the ServicesDescription field if non-nil, zero value otherwise.
-
-### GetServicesDescriptionOk
-
-`func (o *WebsitesOrderPackagesInfo) GetServicesDescriptionOk() (*string, bool)`
-
-GetServicesDescriptionOk returns a tuple with the ServicesDescription field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServicesDescription
-
-`func (o *WebsitesOrderPackagesInfo) SetServicesDescription(v string)`
-
-SetServicesDescription sets ServicesDescription field to given value.
-
 
 ### GetServicesMoreinfoUrl
 

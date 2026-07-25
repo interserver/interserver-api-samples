@@ -21,8 +21,6 @@ var _ MappedNullable = &DenyRuleRecord{}
 
 // DenyRuleRecord The data for a email deny rule record.
 type DenyRuleRecord struct {
-	// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-	User *string `json:"user,omitempty"`
 	// The type of deny rule.
 	Type string `json:"type"`
 	// The content of the rule.  If a domain type rule then an example would be google.com. For a begins with type an example would be msgid-.  For the email typer an example would be user@server.com.
@@ -31,6 +29,8 @@ type DenyRuleRecord struct {
 	Id int32 `json:"id"`
 	// the date the rule was created.
 	Created string `json:"created"`
+	// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+	User *string `json:"user,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -55,38 +55,6 @@ func NewDenyRuleRecord(type_ string, data string, id int32, created string) *Den
 func NewDenyRuleRecordWithDefaults() *DenyRuleRecord {
 	this := DenyRuleRecord{}
 	return &this
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *DenyRuleRecord) GetUser() string {
-	if o == nil || IsNil(o.User) {
-		var ret string
-		return ret
-	}
-	return *o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DenyRuleRecord) GetUserOk() (*string, bool) {
-	if o == nil || IsNil(o.User) {
-		return nil, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *DenyRuleRecord) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given string and assigns it to the User field.
-func (o *DenyRuleRecord) SetUser(v string) {
-	o.User = &v
 }
 
 // GetType returns the Type field value
@@ -185,6 +153,38 @@ func (o *DenyRuleRecord) SetCreated(v string) {
 	o.Created = v
 }
 
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *DenyRuleRecord) GetUser() string {
+	if o == nil || IsNil(o.User) {
+		var ret string
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DenyRuleRecord) GetUserOk() (*string, bool) {
+	if o == nil || IsNil(o.User) {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *DenyRuleRecord) HasUser() bool {
+	if o != nil && !IsNil(o.User) {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given string and assigns it to the User field.
+func (o *DenyRuleRecord) SetUser(v string) {
+	o.User = &v
+}
+
 func (o DenyRuleRecord) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -195,13 +195,13 @@ func (o DenyRuleRecord) MarshalJSON() ([]byte, error) {
 
 func (o DenyRuleRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
-		toSerialize["user"] = o.User
-	}
 	toSerialize["type"] = o.Type
 	toSerialize["data"] = o.Data
 	toSerialize["id"] = o.Id
 	toSerialize["created"] = o.Created
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -248,11 +248,11 @@ func (o *DenyRuleRecord) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "user")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "data")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "user")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -36,6 +36,7 @@ ACTIVE | `"active"`
 PENDING | `"pending"`
 CANCELED | `"canceled"`
 EXPIRED | `"expired"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

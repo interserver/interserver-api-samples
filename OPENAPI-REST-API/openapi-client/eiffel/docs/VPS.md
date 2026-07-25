@@ -10,10 +10,8 @@ Name | Type | Description | Notes
 **cust_currency_symbol** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **service_master** | [**VPS_SERVICE_MASTER**](VpsServiceMaster.md) |  | [default to null]
 **package** | [**STRING_32**](STRING_32.md) |  | [default to null]
-**os_template** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **service_extra** | [**VPS_SERVICE_EXTRA**](VpsServiceExtra.md) |  | [default to null]
 **extra_info_tables** | [**VPS_EXTRA_INFO_TABLES**](VpsExtraInfoTables.md) |  | [default to null]
-**cpu_graph_data** | [**ANY**](.md) |  | [optional] [default to null]
 **module** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **token** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **da_link** | **INTEGER_32** |  | [default to null]
@@ -22,6 +20,8 @@ Name | Type | Description | Notes
 **da_data** | [**VPS_DA_DATA**](VpsDAData.md) |  | [default to null]
 **plesk12_data** | [**VPS_PLESK12_DATA**](VpsPlesk12Data.md) |  | [default to null]
 **service_addons** | [**VPS_SERVICE_ADDONS**](VpsServiceAddons.md) |  | [default to null]
+**os_template** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**cpu_graph_data** | [**ANY**](.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

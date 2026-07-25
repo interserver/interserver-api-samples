@@ -28,25 +28,25 @@ class CreateFirewallRule(BaseModel):
     """
     Create firewall rule for your ip
     """ # noqa: E501
+    protocol_id: StrictInt = Field(description="1 = TCP, 2 = UDP", json_schema_extra={"examples": [1]})
+    xdp_action: StrictInt = Field(description="1 = Block,  0 = Whitelist", json_schema_extra={"examples": [1]})
     destination_port: Optional[StrictInt] = Field(default=80, json_schema_extra={"examples": [22]})
     source_ip: Optional[StrictStr] = Field(default='0.0.0.0', description="Source IP address to match. Use '0.0.0.0' to match any source.", json_schema_extra={"examples": ["1.2.4.5"]})
     source_port: Optional[StrictInt] = Field(default=0, json_schema_extra={"examples": [1302]})
-    protocol_id: StrictInt = Field(description="1 = TCP, 2 = UDP", json_schema_extra={"examples": [1]})
-    xdp_action: StrictInt = Field(description="1 = Block,  0 = Whitelist", json_schema_extra={"examples": [1]})
-    __properties: ClassVar[List[str]] = ["destination_port", "source_ip", "source_port", "protocol_id", "xdp_action"]
+    __properties: ClassVar[List[str]] = ["protocol_id", "xdp_action", "destination_port", "source_ip", "source_port"]
 
     @field_validator('protocol_id')
     def protocol_id_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set([1, 2]):
-            raise ValueError("must be one of enum values (1, 2)")
+        if value not in set([1, 2, 11184809]):
+            raise ValueError("must be one of enum values (1, 2, 11184809)")
         return value
 
     @field_validator('xdp_action')
     def xdp_action_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set([0, 1]):
-            raise ValueError("must be one of enum values (0, 1)")
+        if value not in set([0, 1, 11184809]):
+            raise ValueError("must be one of enum values (0, 1, 11184809)")
         return value
 
     model_config = ConfigDict(
@@ -100,11 +100,11 @@ class CreateFirewallRule(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "protocol_id": obj.get("protocol_id"),
+            "xdp_action": obj.get("xdp_action"),
             "destination_port": obj.get("destination_port") if obj.get("destination_port") is not None else 80,
             "source_ip": obj.get("source_ip") if obj.get("source_ip") is not None else '0.0.0.0',
-            "source_port": obj.get("source_port") if obj.get("source_port") is not None else 0,
-            "protocol_id": obj.get("protocol_id"),
-            "xdp_action": obj.get("xdp_action")
+            "source_port": obj.get("source_port") if obj.get("source_port") is not None else 0
         })
         return _obj
 

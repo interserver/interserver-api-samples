@@ -34,14 +34,14 @@ class WebsitesOrderPackagesInfo(BaseModel):
     services_category: StrictStr = Field(description="The category of the package.", json_schema_extra={"examples": ["204"]})
     services_buyable: StrictStr = Field(description="Indicates if the package is buyable (1 for yes, 0 for no).", json_schema_extra={"examples": ["1"]})
     services_type: StrictStr = Field(description="The type of the package.", json_schema_extra={"examples": ["206"]})
+    services_module: StrictStr = Field(description="The module of the package.", json_schema_extra={"examples": ["webhosting"]})
+    services_description: StrictStr = Field(description="Description of the package.", json_schema_extra={"examples": ["Direct Admin Web hosting package with 10x more resources over our standard web hosting package."]})
     services_field1: Optional[StrictStr] = Field(default=None, description="Additional field 1 for the package.", json_schema_extra={"examples": [""]})
     services_field2: Optional[StrictStr] = Field(default=None, description="Additional field 2 for the package.", json_schema_extra={"examples": ["BoostX"]})
-    services_module: StrictStr = Field(description="The module of the package.", json_schema_extra={"examples": ["webhosting"]})
     services_html: Optional[StrictStr] = Field(default=None, description="HTML content for the package.", json_schema_extra={"examples": [""]})
-    services_description: StrictStr = Field(description="Description of the package.", json_schema_extra={"examples": ["Direct Admin Web hosting package with 10x more resources over our standard web hosting package."]})
     services_moreinfo_url: Optional[StrictStr] = Field(default=None, description="URL for more information about the package.", json_schema_extra={"examples": [""]})
     services_hidden: Optional[StrictStr] = Field(default=None, description="Indicates if the package is hidden (1 for yes, 0 for no).", json_schema_extra={"examples": ["0"]})
-    __properties: ClassVar[List[str]] = ["services_id", "services_name", "services_cost", "services_category", "services_buyable", "services_type", "services_field1", "services_field2", "services_module", "services_html", "services_description", "services_moreinfo_url", "services_hidden"]
+    __properties: ClassVar[List[str]] = ["services_id", "services_name", "services_cost", "services_category", "services_buyable", "services_type", "services_module", "services_description", "services_field1", "services_field2", "services_html", "services_moreinfo_url", "services_hidden"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -100,11 +100,11 @@ class WebsitesOrderPackagesInfo(BaseModel):
             "services_category": obj.get("services_category"),
             "services_buyable": obj.get("services_buyable"),
             "services_type": obj.get("services_type"),
+            "services_module": obj.get("services_module"),
+            "services_description": obj.get("services_description"),
             "services_field1": obj.get("services_field1"),
             "services_field2": obj.get("services_field2"),
-            "services_module": obj.get("services_module"),
             "services_html": obj.get("services_html"),
-            "services_description": obj.get("services_description"),
             "services_moreinfo_url": obj.get("services_moreinfo_url"),
             "services_hidden": obj.get("services_hidden")
         })

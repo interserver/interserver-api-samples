@@ -8,34 +8,34 @@
         label=nothing,
         link=nothing,
         icon=nothing,
-        icon_text=nothing,
         help_text=nothing,
+        icon_text=nothing,
         other_attr=nothing,
     )
 
     - label::String : Link label
     - link::String : Link URL
     - icon::String : Link icon
-    - icon_text::String : Icon text
     - help_text::String : Help text
+    - icon_text::String : Icon text
     - other_attr::String : Other attributes
 """
 Base.@kwdef mutable struct LicenseClientLink <: OpenAPI.APIModel
     label::Union{Nothing, String} = nothing
     link::Union{Nothing, String} = nothing
     icon::Union{Nothing, String} = nothing
-    icon_text::Union{Nothing, String} = nothing
     help_text::Union{Nothing, String} = nothing
+    icon_text::Union{Nothing, String} = nothing
     other_attr::Union{Nothing, String} = nothing
 
-    function LicenseClientLink(label, link, icon, icon_text, help_text, other_attr, )
-        o = new(label, link, icon, icon_text, help_text, other_attr, )
+    function LicenseClientLink(label, link, icon, help_text, icon_text, other_attr, )
+        o = new(label, link, icon, help_text, icon_text, other_attr, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type LicenseClientLink
 
-const _property_types_LicenseClientLink = Dict{Symbol,String}(Symbol("label")=>"String", Symbol("link")=>"String", Symbol("icon")=>"String", Symbol("icon_text")=>"String", Symbol("help_text")=>"String", Symbol("other_attr")=>"String", )
+const _property_types_LicenseClientLink = Dict{Symbol,String}(Symbol("label")=>"String", Symbol("link")=>"String", Symbol("icon")=>"String", Symbol("help_text")=>"String", Symbol("icon_text")=>"String", Symbol("other_attr")=>"String", )
 OpenAPI.property_type(::Type{ LicenseClientLink }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LicenseClientLink[name]))}
 
 function OpenAPI.check_required(o::LicenseClientLink)
@@ -50,8 +50,8 @@ function OpenAPI.validate_properties(o::LicenseClientLink)
     OpenAPI.validate_property(LicenseClientLink, Symbol("label"), o.label)
     OpenAPI.validate_property(LicenseClientLink, Symbol("link"), o.link)
     OpenAPI.validate_property(LicenseClientLink, Symbol("icon"), o.icon)
-    OpenAPI.validate_property(LicenseClientLink, Symbol("icon_text"), o.icon_text)
     OpenAPI.validate_property(LicenseClientLink, Symbol("help_text"), o.help_text)
+    OpenAPI.validate_property(LicenseClientLink, Symbol("icon_text"), o.icon_text)
     OpenAPI.validate_property(LicenseClientLink, Symbol("other_attr"), o.other_attr)
 end
 

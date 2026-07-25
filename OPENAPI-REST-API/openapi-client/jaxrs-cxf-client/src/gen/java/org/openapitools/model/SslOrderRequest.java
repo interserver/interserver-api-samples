@@ -50,7 +50,7 @@ public class SslOrderRequest  {
 
 public enum CsrTypeEnum {
 
-GENERATED(String.valueOf("generated")), PROVIDED(String.valueOf("provided"));
+GENERATED(String.valueOf("generated")), PROVIDED(String.valueOf("provided")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

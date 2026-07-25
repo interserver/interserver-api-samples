@@ -140,7 +140,7 @@ module InterServerClient
       return false if @name.nil?
       return false if @ipaddress.nil?
       return false if @can_delete.nil?
-      can_delete_validator = EnumAttributeValidator.new('String', ["0", "1"])
+      can_delete_validator = EnumAttributeValidator.new('String', ["0", "1", "unknown_default_open_api"])
       return false unless can_delete_validator.valid?(@can_delete)
       true
     end
@@ -168,7 +168,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] can_delete Object to be assigned
     def can_delete=(can_delete)
-      validator = EnumAttributeValidator.new('String', ["0", "1"])
+      validator = EnumAttributeValidator.new('String', ["0", "1", "unknown_default_open_api"])
       unless validator.valid?(can_delete)
         fail ArgumentError, "invalid value for \"can_delete\", must be one of #{validator.allowable_values}."
       end

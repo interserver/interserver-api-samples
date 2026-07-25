@@ -1,8 +1,8 @@
-# openapi.model.ModuleSettings
+# interserver_api.model.ModuleSettings
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

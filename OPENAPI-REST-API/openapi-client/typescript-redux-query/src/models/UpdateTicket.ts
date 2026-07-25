@@ -95,7 +95,8 @@ export function UpdateTicketToJSON(value?: UpdateTicket): any {
 */
 export enum UpdateTicketCustomerServerAccessEnum {
     Y = 'y',
-    N = 'n'
+    N = 'n',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 

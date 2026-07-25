@@ -47,6 +47,7 @@ export class DomainNameserverGetResponseInner {
 export namespace DomainNameserverGetResponseInner {
     export enum CanDeleteEnum {
         _0 = <any> '0',
-        _1 = <any> '1'
+        _1 = <any> '1',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

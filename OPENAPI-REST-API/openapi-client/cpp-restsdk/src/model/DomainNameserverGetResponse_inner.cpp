@@ -163,6 +163,10 @@ DomainNameserverGetResponse_inner::Can_deleteEnum DomainNameserverGetResponse_in
         return Can_deleteEnum::_1;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Can_deleteEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Can_deleteEnum");
 }
 
@@ -175,6 +179,8 @@ const utility::string_t DomainNameserverGetResponse_inner::fromCan_deleteEnum(co
         case Can_deleteEnum::_0: return utility::conversions::to_string_t("0");
         
         case Can_deleteEnum::_1: return utility::conversions::to_string_t("1");
+        
+        case Can_deleteEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

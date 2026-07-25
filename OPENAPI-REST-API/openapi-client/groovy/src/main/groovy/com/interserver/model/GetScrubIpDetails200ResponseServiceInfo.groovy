@@ -29,7 +29,9 @@ class GetScrubIpDetails200ResponseServiceInfo {
         
         CANCELED("canceled"),
         
-        EXPIRED("expired")
+        EXPIRED("expired"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

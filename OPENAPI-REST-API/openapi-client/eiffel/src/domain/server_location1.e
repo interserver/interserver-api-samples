@@ -23,11 +23,11 @@ feature --Access
       
     location_name: detachable STRING_32
       
-    location_description: detachable STRING_32
-      
     location_lat: detachable STRING_32
       
     location_long: detachable STRING_32
+      
+    location_description: detachable STRING_32
       
     location_ipmi_group: INTEGER_32
       
@@ -50,14 +50,6 @@ feature -- Change Element
         location_name_set: location_name = a_name
       end
 
-    set_location_description (a_name: like location_description)
-        -- Set 'location_description' with 'a_name'.
-      do
-        location_description := a_name
-      ensure
-        location_description_set: location_description = a_name
-      end
-
     set_location_lat (a_name: like location_lat)
         -- Set 'location_lat' with 'a_name'.
       do
@@ -72,6 +64,14 @@ feature -- Change Element
         location_long := a_name
       ensure
         location_long_set: location_long = a_name
+      end
+
+    set_location_description (a_name: like location_description)
+        -- Set 'location_description' with 'a_name'.
+      do
+        location_description := a_name
+      ensure
+        location_description_set: location_description = a_name
       end
 
     set_location_ipmi_group (a_name: like location_ipmi_group)
@@ -100,11 +100,6 @@ feature -- Change Element
           Result.append (l_location_name.out)
           Result.append ("%N")
         end
-        if attached location_description as l_location_description then
-          Result.append ("%Nlocation_description:")
-          Result.append (l_location_description.out)
-          Result.append ("%N")
-        end
         if attached location_lat as l_location_lat then
           Result.append ("%Nlocation_lat:")
           Result.append (l_location_lat.out)
@@ -113,6 +108,11 @@ feature -- Change Element
         if attached location_long as l_location_long then
           Result.append ("%Nlocation_long:")
           Result.append (l_location_long.out)
+          Result.append ("%N")
+        end
+        if attached location_description as l_location_description then
+          Result.append ("%Nlocation_description:")
+          Result.append (l_location_description.out)
           Result.append ("%N")
         end
         if attached location_ipmi_group as l_location_ipmi_group then

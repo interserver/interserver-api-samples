@@ -28,15 +28,15 @@ class ServerIpmiPowerRequest(BaseModel):
     """
     IPMI Power command for servers
     """ # noqa: E501
-    asset: Optional[StrictInt] = Field(default=None, description="The Asset ID", json_schema_extra={"examples": [5432]})
     action: StrictStr = Field(description="The power action to send to the ipmi controller.", json_schema_extra={"examples": ["on"]})
-    __properties: ClassVar[List[str]] = ["asset", "action"]
+    asset: Optional[StrictInt] = Field(default=None, description="The Asset ID", json_schema_extra={"examples": [5432]})
+    __properties: ClassVar[List[str]] = ["action", "asset"]
 
     @field_validator('action')
     def action_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['cycle', 'reset', 'on', 'off', 'soft']):
-            raise ValueError("must be one of enum values ('cycle', 'reset', 'on', 'off', 'soft')")
+        if value not in set(['cycle', 'reset', 'on', 'off', 'soft', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('cycle', 'reset', 'on', 'off', 'soft', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -90,8 +90,8 @@ class ServerIpmiPowerRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "asset": obj.get("asset"),
-            "action": obj.get("action")
+            "action": obj.get("action"),
+            "asset": obj.get("asset")
         })
         return _obj
 

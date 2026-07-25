@@ -7,27 +7,27 @@ VPS OS Template Request
 
     TemplateRequest(;
         template=nothing,
-        password=nothing,
         localPassword=nothing,
+        password=nothing,
     )
 
     - template::String : OS Template Filename
-    - password::String : Password for Root / Administrator Account.
     - localPassword::String : Password for this account.
+    - password::String : Password for Root / Administrator Account.
 """
 Base.@kwdef mutable struct TemplateRequest <: OpenAPI.APIModel
     template::Union{Nothing, String} = nothing
-    password::Union{Nothing, String} = nothing
     localPassword::Union{Nothing, String} = nothing
+    password::Union{Nothing, String} = nothing
 
-    function TemplateRequest(template, password, localPassword, )
-        o = new(template, password, localPassword, )
+    function TemplateRequest(template, localPassword, password, )
+        o = new(template, localPassword, password, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type TemplateRequest
 
-const _property_types_TemplateRequest = Dict{Symbol,String}(Symbol("template")=>"String", Symbol("password")=>"String", Symbol("localPassword")=>"String", )
+const _property_types_TemplateRequest = Dict{Symbol,String}(Symbol("template")=>"String", Symbol("localPassword")=>"String", Symbol("password")=>"String", )
 OpenAPI.property_type(::Type{ TemplateRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TemplateRequest[name]))}
 
 function OpenAPI.check_required(o::TemplateRequest)
@@ -38,21 +38,21 @@ end
 
 function OpenAPI.validate_properties(o::TemplateRequest)
     OpenAPI.validate_property(TemplateRequest, Symbol("template"), o.template)
-    OpenAPI.validate_property(TemplateRequest, Symbol("password"), o.password)
     OpenAPI.validate_property(TemplateRequest, Symbol("localPassword"), o.localPassword)
+    OpenAPI.validate_property(TemplateRequest, Symbol("password"), o.password)
 end
 
 function OpenAPI.validate_property(::Type{ TemplateRequest }, name::Symbol, val)
 
+
+    if name === Symbol("localPassword")
+        OpenAPI.validate_param(name, "TemplateRequest", :format, val, "password")
+    end
 
     if name === Symbol("password")
         OpenAPI.validate_param(name, "TemplateRequest", :format, val, "password")
     end
     if name === Symbol("password")
         OpenAPI.validate_param(name, "TemplateRequest", :minLength, val, 6)
-    end
-
-    if name === Symbol("localPassword")
-        OpenAPI.validate_param(name, "TemplateRequest", :format, val, "password")
     end
 end

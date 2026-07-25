@@ -30,10 +30,10 @@ class QsOrderRequest(BaseModel):
     """ # noqa: E501
     server: StrictInt = Field(description="QuickServer plan/server id from getNewQs.")
     password: StrictStr = Field(description="Root password for the QuickServer.")
-    os: Optional[StrictStr] = Field(default='', description="OS template file name from getNewQs (falls back to a default if unrecognized).")
     tos: StrictBool = Field(description="Terms-of-service acceptance. Must be true to place the order.")
+    os: Optional[StrictStr] = Field(default='', description="OS template file name from getNewQs (falls back to a default if unrecognized).")
     comment: Optional[StrictStr] = Field(default='', description="Free-form note saved on the service row.")
-    __properties: ClassVar[List[str]] = ["server", "password", "os", "tos", "comment"]
+    __properties: ClassVar[List[str]] = ["server", "password", "tos", "os", "comment"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,8 +88,8 @@ class QsOrderRequest(BaseModel):
         _obj = cls.model_validate({
             "server": obj.get("server"),
             "password": obj.get("password"),
-            "os": obj.get("os") if obj.get("os") is not None else '',
             "tos": obj.get("tos"),
+            "os": obj.get("os") if obj.get("os") is not None else '',
             "comment": obj.get("comment") if obj.get("comment") is not None else ''
         })
         return _obj

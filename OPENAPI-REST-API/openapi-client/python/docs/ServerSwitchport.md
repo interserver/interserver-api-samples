@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **blade** | **str** | Blade name associated with the port. | 
 **justport** | **str** | Port identifier. | 
 **graph_id** | **str** | Identifier for the graph associated with the switchport. | 
+**asset_id** | **int** | Unique identifier of the asset associated with the switchport. | 
 **vlans** | **List[str]** | List of VLANs associated with the switchport. | [optional] 
 **vlans6** | **List[str]** | List of IPv6 VLANs associated with the switchport. | [optional] 
-**asset_id** | **int** | Unique identifier of the asset associated with the switchport. | 
 
 ## Example
 

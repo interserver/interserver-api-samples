@@ -45,8 +45,8 @@ class MailStatsType(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['all', 'billing', 'month', '7d', '24h', 'today', '1h']):
-            raise ValueError("must be one of enum values ('all', 'billing', 'month', '7d', '24h', 'today', '1h')")
+        if value not in set(['all', 'billing', 'month', '7d', '24h', 'today', '1h', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('all', 'billing', 'month', '7d', '24h', 'today', '1h', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

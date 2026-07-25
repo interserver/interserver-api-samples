@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myadmin-client-aspnetcore", "src\myadmin-client-aspnetcore\myadmin-client-aspnetcore.csproj", "{70D02D4B-7D88-4BBB-B8DA-8721B4074FE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myadmin-client-aspnetcore", "src\myadmin-client-aspnetcore\myadmin-client-aspnetcore.csproj", "{E94F9940-2767-464B-9C52-0A899B782157}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
         Release|Any CPU = Release|Any CPU
     EndGlobalSection
     GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {70D02D4B-7D88-4BBB-B8DA-8721B4074FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {70D02D4B-7D88-4BBB-B8DA-8721B4074FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {70D02D4B-7D88-4BBB-B8DA-8721B4074FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {70D02D4B-7D88-4BBB-B8DA-8721B4074FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+        {E94F9940-2767-464B-9C52-0A899B782157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {E94F9940-2767-464B-9C52-0A899B782157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {E94F9940-2767-464B-9C52-0A899B782157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {E94F9940-2767-464B-9C52-0A899B782157}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

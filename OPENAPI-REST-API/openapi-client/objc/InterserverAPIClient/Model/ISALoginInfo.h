@@ -25,16 +25,16 @@
 
 @interface ISALoginInfo : ISAObject
 
-/* A logo image url. [optional]
- */
-@property(nonatomic) NSString* logo;
 /* A base64 encoded image to use for rendering the alternateive captcha. 
  */
 @property(nonatomic) NSString* captcha;
+
+@property(nonatomic) ISALoginServiceCounts* counts;
+/* A logo image url. [optional]
+ */
+@property(nonatomic) NSString* logo;
 /* The desired langauge to render the site with. [optional]
  */
 @property(nonatomic) NSString* language;
-
-@property(nonatomic) ISALoginServiceCounts* counts;
 
 @end

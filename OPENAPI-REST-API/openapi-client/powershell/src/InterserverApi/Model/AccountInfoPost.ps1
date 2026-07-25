@@ -17,12 +17,8 @@ Request to update account information.
 
 .PARAMETER Name
 Your name.
-.PARAMETER Company
-Your company name.
 .PARAMETER Address
 Your address.
-.PARAMETER Address2
-Additional address information.
 .PARAMETER City
 Your city.
 .PARAMETER State
@@ -33,6 +29,10 @@ Your ZIP code.
 Your country.
 .PARAMETER Phone
 Your phone number.
+.PARAMETER Company
+Your company name.
+.PARAMETER Address2
+Additional address information.
 .PARAMETER Locale
 Your preferred locale.
 .PARAMETER EmailInvoices
@@ -62,28 +62,28 @@ function Initialize-AccountInfoPost {
         ${Name},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Company},
+        ${Address},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Address},
+        ${City},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Address2},
+        ${State},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${City},
+        ${Zip},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${State},
+        ${Country},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Zip},
+        ${Phone},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Country},
+        ${Company},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Phone},
+        ${Address2},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Locale},
@@ -145,14 +145,14 @@ function Initialize-AccountInfoPost {
 
         $PSO = [PSCustomObject]@{
             'name' = ${Name}
-            'company' = ${Company}
             'address' = ${Address}
-            'address2' = ${Address2}
             'city' = ${City}
             'state' = ${State}
             'zip' = ${Zip}
             'country' = ${Country}
             'phone' = ${Phone}
+            'company' = ${Company}
+            'address2' = ${Address2}
             'locale' = ${Locale}
             'email_invoices' = ${EmailInvoices}
             'email_abuse' = ${EmailAbuse}
@@ -198,7 +198,7 @@ function ConvertFrom-JsonToAccountInfoPost {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in AccountInfoPost
-        $AllProperties = ('name', 'company', 'address', 'address2', 'city', 'state', 'zip', 'country', 'phone', 'locale', 'email_invoices', 'email_abuse', 'disable_reset', 'disable_reinstall', 'disable_server_notifications', 'disable_email_notifications', 'gstin')
+        $AllProperties = ('name', 'address', 'city', 'state', 'zip', 'country', 'phone', 'company', 'address2', 'locale', 'email_invoices', 'email_abuse', 'disable_reset', 'disable_reinstall', 'disable_server_notifications', 'disable_email_notifications', 'gstin')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -313,14 +313,14 @@ function ConvertFrom-JsonToAccountInfoPost {
 
         $PSO = [PSCustomObject]@{
             'name' = ${Name}
-            'company' = ${Company}
             'address' = ${Address}
-            'address2' = ${Address2}
             'city' = ${City}
             'state' = ${State}
             'zip' = ${Zip}
             'country' = ${Country}
             'phone' = ${Phone}
+            'company' = ${Company}
+            'address2' = ${Address2}
             'locale' = ${Locale}
             'email_invoices' = ${EmailInvoices}
             'email_abuse' = ${EmailAbuse}

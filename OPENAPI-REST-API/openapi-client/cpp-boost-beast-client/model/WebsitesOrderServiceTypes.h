@@ -86,6 +86,18 @@ public:
     void setServicesType(std::string value);
 
     /// <summary>
+    /// The module of the service.
+    /// </summary>
+    std::string getServicesModule() const;
+    void setServicesModule(std::string value);
+
+    /// <summary>
+    /// Indicates if the service is hidden (1 for yes, 0 for no).
+    /// </summary>
+    std::string getServicesHidden() const;
+    void setServicesHidden(std::string value);
+
+    /// <summary>
     /// Additional field 1 for the service.
     /// </summary>
     std::string getServicesField1() const;
@@ -96,12 +108,6 @@ public:
     /// </summary>
     std::string getServicesField2() const;
     void setServicesField2(std::string value);
-
-    /// <summary>
-    /// The module of the service.
-    /// </summary>
-    std::string getServicesModule() const;
-    void setServicesModule(std::string value);
 
     /// <summary>
     /// HTML content for the service.
@@ -121,12 +127,6 @@ public:
     std::string getServicesMoreinfoUrl() const;
     void setServicesMoreinfoUrl(std::string value);
 
-    /// <summary>
-    /// Indicates if the service is hidden (1 for yes, 0 for no).
-    /// </summary>
-    std::string getServicesHidden() const;
-    void setServicesHidden(std::string value);
-
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -143,18 +143,18 @@ protected:
     std::string m_Services_category = "";
     std::string m_Services_buyable = "";
     std::string m_Services_type = "";
+    std::string m_Services_module = "";
+    std::string m_Services_hidden = "";
     std::string m_Services_field1 = "";
     bool m_Services_field1IsSet = false;
     std::string m_Services_field2 = "";
     bool m_Services_field2IsSet = false;
-    std::string m_Services_module = "";
     std::string m_Services_html = "";
     bool m_Services_htmlIsSet = false;
     std::string m_Services_description = "";
     bool m_Services_descriptionIsSet = false;
     std::string m_Services_moreinfo_url = "";
     bool m_Services_moreinfo_urlIsSet = false;
-    std::string m_Services_hidden = "";
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<WebsitesOrderServiceTypes>>& data);

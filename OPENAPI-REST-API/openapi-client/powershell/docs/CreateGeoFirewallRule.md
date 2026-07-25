@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**XdpAction** | **Int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 **DestinationPort** | **Int32** |  | [optional] [default to 80]
 **CountryCode** | **Int32** | To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by&#x3D;numcode | [optional] 
 **Asn** | **Int32** | ASN number | [optional] 
-**XdpAction** | **Int32** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CreateGeoFirewallRule = Initialize-InterserverApiCreateGeoFirewallRule  -DestinationPort 22 `
+$CreateGeoFirewallRule = Initialize-InterserverApiCreateGeoFirewallRule  -XdpAction 1 `
+ -DestinationPort 22 `
  -CountryCode 10 `
- -Asn 1331 `
- -XdpAction 1
+ -Asn 1331
 ```
 
 - Convert the resource to JSON

@@ -62,7 +62,7 @@ $Manifest = @{
     ModuleVersion = '1.0.0'
 
     RootModule = 'InterserverApi.psm1'
-    Guid = '{45F37848-A79D-4A99-88EF-0EF3B162CFEA}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{AEA3DFB2-BDF0-4F84-A23B-AA1CB90B5390}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 

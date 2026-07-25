@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPICreateFirewallRule::ProtocolIdEnum& Value)
 		return TEXT("1");
 	case OpenAPICreateFirewallRule::ProtocolIdEnum::_2:
 		return TEXT("2");
+	case OpenAPICreateFirewallRule::ProtocolIdEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPICreateFirewallRule::ProtocolIdEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPICreateFirewallRule::P
 {
 	static TMap<FString, OpenAPICreateFirewallRule::ProtocolIdEnum> StringToEnum = { 
 		{ TEXT("1"), OpenAPICreateFirewallRule::ProtocolIdEnum::_1 },
-		{ TEXT("2"), OpenAPICreateFirewallRule::ProtocolIdEnum::_2 }, };
+		{ TEXT("2"), OpenAPICreateFirewallRule::ProtocolIdEnum::_2 },
+		{ TEXT("11184809"), OpenAPICreateFirewallRule::ProtocolIdEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -81,6 +84,8 @@ inline FString ToString(const OpenAPICreateFirewallRule::XdpActionEnum& Value)
 		return TEXT("0");
 	case OpenAPICreateFirewallRule::XdpActionEnum::_1:
 		return TEXT("1");
+	case OpenAPICreateFirewallRule::XdpActionEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPICreateFirewallRule::XdpActionEnum Value (%d)"), (int)Value);
@@ -96,7 +101,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPICreateFirewallRule::X
 {
 	static TMap<FString, OpenAPICreateFirewallRule::XdpActionEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPICreateFirewallRule::XdpActionEnum::_0 },
-		{ TEXT("1"), OpenAPICreateFirewallRule::XdpActionEnum::_1 }, };
+		{ TEXT("1"), OpenAPICreateFirewallRule::XdpActionEnum::_1 },
+		{ TEXT("11184809"), OpenAPICreateFirewallRule::XdpActionEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

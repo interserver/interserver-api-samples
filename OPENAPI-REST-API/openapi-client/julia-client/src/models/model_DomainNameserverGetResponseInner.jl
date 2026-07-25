@@ -53,7 +53,7 @@ function OpenAPI.validate_property(::Type{ DomainNameserverGetResponseInner }, n
     end
 
     if name === Symbol("can_delete")
-        OpenAPI.validate_param(name, "DomainNameserverGetResponseInner", :enum, val, ["0", "1"])
+        OpenAPI.validate_param(name, "DomainNameserverGetResponseInner", :enum, val, ["0", "1", "unknown_default_open_api"])
     end
 
 end

@@ -217,6 +217,10 @@ DomainOrderRequest::TypeEnum DomainOrderRequest::toTypeEnum(const utility::strin
         return TypeEnum::TRANSFER;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return TypeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to TypeEnum");
 }
 
@@ -229,6 +233,8 @@ const utility::string_t DomainOrderRequest::fromTypeEnum(const TypeEnum value) c
         case TypeEnum::REGISTER: return utility::conversions::to_string_t("register");
         
         case TypeEnum::TRANSFER: return utility::conversions::to_string_t("transfer");
+        
+        case TypeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }
@@ -244,6 +250,10 @@ DomainOrderRequest::Whois_privacyEnum DomainOrderRequest::toWhois_privacyEnum(co
         return Whois_privacyEnum::DISABLE;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Whois_privacyEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Whois_privacyEnum");
 }
 
@@ -256,6 +266,8 @@ const utility::string_t DomainOrderRequest::fromWhois_privacyEnum(const Whois_pr
         case Whois_privacyEnum::ENABLE: return utility::conversions::to_string_t("enable");
         
         case Whois_privacyEnum::DISABLE: return utility::conversions::to_string_t("disable");
+        
+        case Whois_privacyEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

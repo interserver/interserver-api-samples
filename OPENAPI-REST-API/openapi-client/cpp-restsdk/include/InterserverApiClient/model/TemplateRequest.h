@@ -67,14 +67,6 @@ public:
     void setRTemplate(const utility::string_t& value);
 
     /// <summary>
-    /// Password for Root / Administrator Account.
-    /// </summary>
-    utility::string_t getPassword() const;
-    bool passwordIsSet() const;
-    void unsetPassword();
-    void setPassword(const utility::string_t& value);
-
-    /// <summary>
     /// Password for this account.
     /// </summary>
     utility::string_t getLocalPassword() const;
@@ -82,16 +74,24 @@ public:
     void unsetLocalPassword();
     void setLocalPassword(const utility::string_t& value);
 
+    /// <summary>
+    /// Password for Root / Administrator Account.
+    /// </summary>
+    utility::string_t getPassword() const;
+    bool passwordIsSet() const;
+    void unsetPassword();
+    void setPassword(const utility::string_t& value);
+
 
 protected:
     utility::string_t m_r_template;
     bool m_r_templateIsSet;
 
-    utility::string_t m_Password;
-    bool m_PasswordIsSet;
-
     utility::string_t m_LocalPassword;
     bool m_LocalPasswordIsSet;
+
+    utility::string_t m_Password;
+    bool m_PasswordIsSet;
 
 };
 

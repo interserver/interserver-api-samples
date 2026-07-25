@@ -9,49 +9,49 @@ request to validate a vps order
         osDistro=nothing,
         slices=1,
         vpsPlatform=nothing,
-        controlpanel=nothing,
         period=1,
         location=1,
         osVersion=nothing,
         hostname="",
-        coupon="",
         rootpass=nothing,
+        controlpanel=nothing,
+        coupon="",
         comment="",
     )
 
     - osDistro::String : OS Distribution
     - slices::Int64 : Number of slices
     - vpsPlatform::String : VPS Platform
-    - controlpanel::String : Control Panel
     - period::Int64 : Billing Period or Frequency
     - location::Int64 : Location
     - osVersion::String : OS Version
     - hostname::String : The hostname to assign to the VPS
-    - coupon::String : Coupon
     - rootpass::String : Root password to assign to the VVPS
+    - controlpanel::String : Control Panel
+    - coupon::String : Coupon
     - comment::String : Order comments or notes
 """
 Base.@kwdef mutable struct VpsOrderPutRequest <: OpenAPI.APIModel
     osDistro::Union{Nothing, String} = nothing
     slices::Union{Nothing, Int64} = 1
     vpsPlatform::Union{Nothing, String} = nothing
-    controlpanel::Union{Nothing, String} = nothing
     period::Union{Nothing, Int64} = 1
     location::Union{Nothing, Int64} = 1
     osVersion::Union{Nothing, String} = nothing
     hostname::Union{Nothing, String} = ""
-    coupon::Union{Nothing, String} = ""
     rootpass::Union{Nothing, String} = nothing
+    controlpanel::Union{Nothing, String} = nothing
+    coupon::Union{Nothing, String} = ""
     comment::Union{Nothing, String} = ""
 
-    function VpsOrderPutRequest(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment, )
-        o = new(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment, )
+    function VpsOrderPutRequest(osDistro, slices, vpsPlatform, period, location, osVersion, hostname, rootpass, controlpanel, coupon, comment, )
+        o = new(osDistro, slices, vpsPlatform, period, location, osVersion, hostname, rootpass, controlpanel, coupon, comment, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type VpsOrderPutRequest
 
-const _property_types_VpsOrderPutRequest = Dict{Symbol,String}(Symbol("osDistro")=>"String", Symbol("slices")=>"Int64", Symbol("vpsPlatform")=>"String", Symbol("controlpanel")=>"String", Symbol("period")=>"Int64", Symbol("location")=>"Int64", Symbol("osVersion")=>"String", Symbol("hostname")=>"String", Symbol("coupon")=>"String", Symbol("rootpass")=>"String", Symbol("comment")=>"String", )
+const _property_types_VpsOrderPutRequest = Dict{Symbol,String}(Symbol("osDistro")=>"String", Symbol("slices")=>"Int64", Symbol("vpsPlatform")=>"String", Symbol("period")=>"Int64", Symbol("location")=>"Int64", Symbol("osVersion")=>"String", Symbol("hostname")=>"String", Symbol("rootpass")=>"String", Symbol("controlpanel")=>"String", Symbol("coupon")=>"String", Symbol("comment")=>"String", )
 OpenAPI.property_type(::Type{ VpsOrderPutRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpsOrderPutRequest[name]))}
 
 function OpenAPI.check_required(o::VpsOrderPutRequest)
@@ -70,13 +70,13 @@ function OpenAPI.validate_properties(o::VpsOrderPutRequest)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("osDistro"), o.osDistro)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("slices"), o.slices)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("vpsPlatform"), o.vpsPlatform)
-    OpenAPI.validate_property(VpsOrderPutRequest, Symbol("controlpanel"), o.controlpanel)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("period"), o.period)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("location"), o.location)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("osVersion"), o.osVersion)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("hostname"), o.hostname)
-    OpenAPI.validate_property(VpsOrderPutRequest, Symbol("coupon"), o.coupon)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("rootpass"), o.rootpass)
+    OpenAPI.validate_property(VpsOrderPutRequest, Symbol("controlpanel"), o.controlpanel)
+    OpenAPI.validate_property(VpsOrderPutRequest, Symbol("coupon"), o.coupon)
     OpenAPI.validate_property(VpsOrderPutRequest, Symbol("comment"), o.comment)
 end
 
@@ -92,12 +92,7 @@ function OpenAPI.validate_property(::Type{ VpsOrderPutRequest }, name::Symbol, v
     end
 
     if name === Symbol("vpsPlatform")
-        OpenAPI.validate_param(name, "VpsOrderPutRequest", :enum, val, ["kvm", "hyperv", "kvmstorage"])
-    end
-
-
-    if name === Symbol("controlpanel")
-        OpenAPI.validate_param(name, "VpsOrderPutRequest", :enum, val, ["none", "cpanel", "da"])
+        OpenAPI.validate_param(name, "VpsOrderPutRequest", :enum, val, ["kvm", "hyperv", "kvmstorage", "unknown_default_open_api"])
     end
 
 
@@ -118,6 +113,11 @@ function OpenAPI.validate_property(::Type{ VpsOrderPutRequest }, name::Symbol, v
     end
 
 
+
+
+    if name === Symbol("controlpanel")
+        OpenAPI.validate_param(name, "VpsOrderPutRequest", :enum, val, ["none", "cpanel", "da", "unknown_default_open_api"])
+    end
 
 
 

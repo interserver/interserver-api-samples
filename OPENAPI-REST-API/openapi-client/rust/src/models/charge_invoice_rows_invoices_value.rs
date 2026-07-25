@@ -63,6 +63,8 @@ pub enum InvoicesPaid {
     Variant0,
     #[serde(rename = "1")]
     Variant1,
+    #[serde(rename = "11184809")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for InvoicesPaid {

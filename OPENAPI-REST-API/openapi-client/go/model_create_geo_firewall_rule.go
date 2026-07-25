@@ -21,13 +21,13 @@ var _ MappedNullable = &CreateGeoFirewallRule{}
 
 // CreateGeoFirewallRule Create firewall rule for your ip
 type CreateGeoFirewallRule struct {
+	// 1 = Block,  0 = Whitelist
+	XdpAction int32 `json:"xdp_action"`
 	DestinationPort *int32 `json:"destination_port,omitempty"`
 	// To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode
 	CountryCode *int32 `json:"country_code,omitempty"`
 	// ASN number
 	Asn *int32 `json:"asn,omitempty"`
-	// 1 = Block,  0 = Whitelist
-	XdpAction int32 `json:"xdp_action"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,9 +39,9 @@ type _CreateGeoFirewallRule CreateGeoFirewallRule
 // will change when the set of required properties is changed
 func NewCreateGeoFirewallRule(xdpAction int32) *CreateGeoFirewallRule {
 	this := CreateGeoFirewallRule{}
+	this.XdpAction = xdpAction
 	var destinationPort int32 = 80
 	this.DestinationPort = &destinationPort
-	this.XdpAction = xdpAction
 	return &this
 }
 
@@ -53,6 +53,30 @@ func NewCreateGeoFirewallRuleWithDefaults() *CreateGeoFirewallRule {
 	var destinationPort int32 = 80
 	this.DestinationPort = &destinationPort
 	return &this
+}
+
+// GetXdpAction returns the XdpAction field value
+func (o *CreateGeoFirewallRule) GetXdpAction() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.XdpAction
+}
+
+// GetXdpActionOk returns a tuple with the XdpAction field value
+// and a boolean to check if the value has been set.
+func (o *CreateGeoFirewallRule) GetXdpActionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.XdpAction, true
+}
+
+// SetXdpAction sets field value
+func (o *CreateGeoFirewallRule) SetXdpAction(v int32) {
+	o.XdpAction = v
 }
 
 // GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
@@ -151,30 +175,6 @@ func (o *CreateGeoFirewallRule) SetAsn(v int32) {
 	o.Asn = &v
 }
 
-// GetXdpAction returns the XdpAction field value
-func (o *CreateGeoFirewallRule) GetXdpAction() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.XdpAction
-}
-
-// GetXdpActionOk returns a tuple with the XdpAction field value
-// and a boolean to check if the value has been set.
-func (o *CreateGeoFirewallRule) GetXdpActionOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.XdpAction, true
-}
-
-// SetXdpAction sets field value
-func (o *CreateGeoFirewallRule) SetXdpAction(v int32) {
-	o.XdpAction = v
-}
-
 func (o CreateGeoFirewallRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -185,6 +185,7 @@ func (o CreateGeoFirewallRule) MarshalJSON() ([]byte, error) {
 
 func (o CreateGeoFirewallRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["xdp_action"] = o.XdpAction
 	if !IsNil(o.DestinationPort) {
 		toSerialize["destination_port"] = o.DestinationPort
 	}
@@ -194,7 +195,6 @@ func (o CreateGeoFirewallRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Asn) {
 		toSerialize["asn"] = o.Asn
 	}
-	toSerialize["xdp_action"] = o.XdpAction
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -238,10 +238,10 @@ func (o *CreateGeoFirewallRule) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "xdp_action")
 		delete(additionalProperties, "destination_port")
 		delete(additionalProperties, "country_code")
 		delete(additionalProperties, "asn")
-		delete(additionalProperties, "xdp_action")
 		o.AdditionalProperties = additionalProperties
 	}
 

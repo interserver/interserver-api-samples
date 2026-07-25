@@ -1325,5 +1325,6 @@ export const GetCountriesFetchByEnum = {
     Iso2: 'iso2',
     Iso3: 'iso3',
     Numcode: 'numcode',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type GetCountriesFetchByEnum = typeof GetCountriesFetchByEnum[keyof typeof GetCountriesFetchByEnum];

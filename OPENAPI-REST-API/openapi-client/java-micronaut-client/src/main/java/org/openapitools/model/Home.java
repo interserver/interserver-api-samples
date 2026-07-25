@@ -48,7 +48,7 @@ import javax.annotation.Generated;
   Home.JSON_PROPERTY_A_F_F_I_L_I_A_T_E_A_M_O_U_N_T
 })
 @JsonTypeName("Home")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class Home {
     public static final String JSON_PROPERTY_LAST_LOGIN_IP = "last_login_ip";

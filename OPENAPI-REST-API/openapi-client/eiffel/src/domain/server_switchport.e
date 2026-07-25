@@ -33,12 +33,12 @@ feature --Access
       -- Port identifier.
     graph_id: detachable STRING_32
       -- Identifier for the graph associated with the switchport.
+    asset_id: INTEGER_32
+      -- Unique identifier of the asset associated with the switchport.
     vlans: detachable LIST [STRING_32]
       -- List of VLANs associated with the switchport.
     vlans6: detachable LIST [STRING_32]
       -- List of IPv6 VLANs associated with the switchport.
-    asset_id: INTEGER_32
-      -- Unique identifier of the asset associated with the switchport.
 
 feature -- Change Element
 
@@ -98,6 +98,14 @@ feature -- Change Element
         graph_id_set: graph_id = a_name
       end
 
+    set_asset_id (a_name: like asset_id)
+        -- Set 'asset_id' with 'a_name'.
+      do
+        asset_id := a_name
+      ensure
+        asset_id_set: asset_id = a_name
+      end
+
     set_vlans (a_name: like vlans)
         -- Set 'vlans' with 'a_name'.
       do
@@ -112,14 +120,6 @@ feature -- Change Element
         vlans6 := a_name
       ensure
         vlans6_set: vlans6 = a_name
-      end
-
-    set_asset_id (a_name: like asset_id)
-        -- Set 'asset_id' with 'a_name'.
-      do
-        asset_id := a_name
-      ensure
-        asset_id_set: asset_id = a_name
       end
 
 
@@ -165,6 +165,11 @@ feature -- Change Element
           Result.append (l_graph_id.out)
           Result.append ("%N")
         end
+        if attached asset_id as l_asset_id then
+          Result.append ("%Nasset_id:")
+          Result.append (l_asset_id.out)
+          Result.append ("%N")
+        end
         if attached vlans as l_vlans then
           across l_vlans as ic loop
             Result.append ("%N vlans:")
@@ -178,11 +183,6 @@ feature -- Change Element
             Result.append (ic.item.out)
             Result.append ("%N")
           end
-        end
-        if attached asset_id as l_asset_id then
-          Result.append ("%Nasset_id:")
-          Result.append (l_asset_id.out)
-          Result.append ("%N")
         end
       end
 end

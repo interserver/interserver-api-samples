@@ -18,7 +18,7 @@ public class DomainNameserverGetResponseInner  {
 
 public enum CanDeleteEnum {
 
-_0(String.valueOf("0")), _1(String.valueOf("1"));
+_0(String.valueOf("0")), _1(String.valueOf("1")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

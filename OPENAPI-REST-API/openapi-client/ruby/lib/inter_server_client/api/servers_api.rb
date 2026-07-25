@@ -1005,7 +1005,7 @@ module InterServerClient
         fail ArgumentError, "Missing the required parameter 'action' when calling ServersApi.server_ipmi_power_post"
       end
       # verify enum value
-      allowable_values = ["cycle", "reset", "on", "off", "soft"]
+      allowable_values = ["cycle", "reset", "on", "off", "soft", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && !allowable_values.include?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{allowable_values}"
       end

@@ -20,9 +20,10 @@ export interface DomainNameserverGetResponseInner {
     can_delete: DomainNameserverGetResponseInner.CanDeleteEnum;
 }
 export namespace DomainNameserverGetResponseInner {
-    export type CanDeleteEnum = '0' | '1';
+    export type CanDeleteEnum = '0' | '1' | '11184809';
     export const CanDeleteEnum = {
         _0: '0' as CanDeleteEnum,
-        _1: '1' as CanDeleteEnum
+        _1: '1' as CanDeleteEnum,
+        UnknownDefaultOpenApi: '11184809' as CanDeleteEnum
     }
 }

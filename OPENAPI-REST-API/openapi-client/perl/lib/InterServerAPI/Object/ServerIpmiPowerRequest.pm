@@ -219,13 +219,6 @@ __PACKAGE__->class_documentation({description => 'IPMI Power command for servers
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'asset' => {
-        datatype => 'int',
-        base_name => 'asset',
-        description => 'The Asset ID',
-        format => '',
-        read_only => '',
-            },
     'action' => {
         datatype => 'string',
         base_name => 'action',
@@ -233,16 +226,23 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'asset' => {
+        datatype => 'int',
+        base_name => 'asset',
+        description => 'The Asset ID',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'asset' => 'int',
-    'action' => 'string'
+    'action' => 'string',
+    'asset' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'asset' => 'asset',
-    'action' => 'action'
+    'action' => 'action',
+    'asset' => 'asset'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

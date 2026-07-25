@@ -216,23 +216,17 @@ void TicketNewResponse::fromJsonValue(boost::json::value const& value)
 boost::json::object TicketNewResponse::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["text"] = JsonValueConverter<std::string>::toJsonValue(getText());
+        object["success"] = JsonValueConverter<bool>::toJsonValue(isSuccess());
         if (m_Ticket_idIsSet) {
             object["ticket_id"] = JsonValueConverter<int32_t>::toJsonValue(getTicketId());
         }
-        object["text"] = JsonValueConverter<std::string>::toJsonValue(getText());
-        object["success"] = JsonValueConverter<bool>::toJsonValue(isSuccess());
     return object;
 }
 
 void TicketNewResponse::fromJsonObject_internal(boost::json::object const& object)
 {
     m_Ticket_idIsSet = false;
-    {
-        const auto Ticket_idIt = object.find("ticket_id");
-        if (Ticket_idIt != object.end()) {
-            setTicketId(JsonValueConverter<int32_t>::fromJsonValue(Ticket_idIt->value()));
-        }
-    }
     {
         const auto TextIt = object.find("text");
         if (TextIt != object.end()) {
@@ -245,19 +239,14 @@ void TicketNewResponse::fromJsonObject_internal(boost::json::object const& objec
             setSuccess(JsonValueConverter<bool>::fromJsonValue(SuccessIt->value()));
         }
     }
+    {
+        const auto Ticket_idIt = object.find("ticket_id");
+        if (Ticket_idIt != object.end()) {
+            setTicketId(JsonValueConverter<int32_t>::fromJsonValue(Ticket_idIt->value()));
+        }
+    }
 }
 
-int32_t TicketNewResponse::getTicketId() const
-{
-    return m_Ticket_id;
-}
-
-void TicketNewResponse::setTicketId(int32_t value)
-{
-    
-    m_Ticket_id = std::move(value);
-    m_Ticket_idIsSet = true;
-}
 std::string TicketNewResponse::getText() const
 {
     return m_Text;
@@ -277,6 +266,17 @@ void TicketNewResponse::setSuccess(bool value)
 {
     
     m_Success = std::move(value);
+}
+int32_t TicketNewResponse::getTicketId() const
+{
+    return m_Ticket_id;
+}
+
+void TicketNewResponse::setTicketId(int32_t value)
+{
+    
+    m_Ticket_id = std::move(value);
+    m_Ticket_idIsSet = true;
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<TicketNewResponse>>& data)

@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   DomainNameserverPutRequest.JSON_PROPERTY_NAMESERVER
 })
 @JsonTypeName("DomainNameserverPutRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class DomainNameserverPutRequest {
     public static final String JSON_PROPERTY_NAMESERVER = "nameserver";

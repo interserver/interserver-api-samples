@@ -31,7 +31,8 @@ public class IntServerDomainNameserverGetResponse implements OAS.MappedPropertie
      */
     public enum CanDeleteEnum {
         _0,
-        _1
+        _1,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

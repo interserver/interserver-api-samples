@@ -19,10 +19,10 @@ Request body to validate (putQs) or place (addQs) a QuickServer order. Server an
 QuickServer plan/server id from getNewQs.
 .PARAMETER Password
 Root password for the QuickServer.
-.PARAMETER Os
-OS template file name from getNewQs (falls back to a default if unrecognized).
 .PARAMETER Tos
 Terms-of-service acceptance. Must be true to place the order.
+.PARAMETER Os
+OS template file name from getNewQs (falls back to a default if unrecognized).
 .PARAMETER Comment
 Free-form note saved on the service row.
 .OUTPUTS
@@ -40,11 +40,11 @@ function Initialize-QsOrderRequest {
         [String]
         ${Password},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Os} = "",
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${Tos},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Os} = "",
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Comment} = ""
@@ -70,8 +70,8 @@ function Initialize-QsOrderRequest {
         $PSO = [PSCustomObject]@{
             'server' = ${Server}
             'password' = ${Password}
-            'os' = ${Os}
             'tos' = ${Tos}
+            'os' = ${Os}
             'comment' = ${Comment}
         }
 
@@ -110,7 +110,7 @@ function ConvertFrom-JsonToQsOrderRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in QsOrderRequest
-        $AllProperties = ('server', 'password', 'os', 'tos', 'comment')
+        $AllProperties = ('server', 'password', 'tos', 'os', 'comment')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -154,8 +154,8 @@ function ConvertFrom-JsonToQsOrderRequest {
         $PSO = [PSCustomObject]@{
             'server' = ${Server}
             'password' = ${Password}
-            'os' = ${Os}
             'tos' = ${Tos}
+            'os' = ${Os}
             'comment' = ${Comment}
         }
 

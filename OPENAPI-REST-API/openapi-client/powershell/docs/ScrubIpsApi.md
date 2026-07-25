@@ -176,7 +176,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 $Id = 56 # Int32 | ScrubIp ID number
-$CreateGeoFirewallRule = Initialize-CreateGeoFirewallRule -DestinationPort 22 -CountryCode 10 -Asn 1331 -XdpAction "0" # CreateGeoFirewallRule | 
+$CreateGeoFirewallRule = Initialize-CreateGeoFirewallRule -XdpAction "0" -DestinationPort 22 -CountryCode 10 -Asn 1331 # CreateGeoFirewallRule | 
 
 # Add a geographic firewall rule (block/allow by country code or ASN)
 try {
@@ -239,7 +239,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 $Id = 56 # Int32 | ScrubIp ID number
-$CreateFirewallRule = Initialize-CreateFirewallRule -DestinationPort 22 -SourceIp "1.2.4.5" -SourcePort 1302 -ProtocolId "1" -XdpAction "0" # CreateFirewallRule | 
+$CreateFirewallRule = Initialize-CreateFirewallRule -ProtocolId "1" -XdpAction "0" -DestinationPort 22 -SourceIp "1.2.4.5" -SourcePort 1302 # CreateFirewallRule | 
 
 # Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 try {

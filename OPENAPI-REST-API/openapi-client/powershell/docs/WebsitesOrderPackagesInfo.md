@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **ServicesCategory** | **String** | The category of the package. | 
 **ServicesBuyable** | **String** | Indicates if the package is buyable (1 for yes, 0 for no). | 
 **ServicesType** | **String** | The type of the package. | 
+**ServicesModule** | **String** | The module of the package. | 
+**ServicesDescription** | **String** | Description of the package. | 
 **ServicesField1** | **String** | Additional field 1 for the package. | [optional] 
 **ServicesField2** | **String** | Additional field 2 for the package. | [optional] 
-**ServicesModule** | **String** | The module of the package. | 
 **ServicesHtml** | **String** | HTML content for the package. | [optional] 
-**ServicesDescription** | **String** | Description of the package. | 
 **ServicesMoreinfoUrl** | **String** | URL for more information about the package. | [optional] 
 **ServicesHidden** | **String** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
 
@@ -27,11 +27,11 @@ $WebsitesOrderPackagesInfo = Initialize-InterserverApiWebsitesOrderPackagesInfo 
  -ServicesCategory 204 `
  -ServicesBuyable 1 `
  -ServicesType 206 `
+ -ServicesModule webhosting `
+ -ServicesDescription Direct Admin Web hosting package with 10x more resources over our standard web hosting package. `
  -ServicesField1  `
  -ServicesField2 BoostX `
- -ServicesModule webhosting `
  -ServicesHtml  `
- -ServicesDescription Direct Admin Web hosting package with 10x more resources over our standard web hosting package. `
  -ServicesMoreinfoUrl  `
  -ServicesHidden 0
 ```

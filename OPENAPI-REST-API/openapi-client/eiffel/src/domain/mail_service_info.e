@@ -21,8 +21,6 @@ feature --Access
 
     mail_id: detachable STRING_32
       -- The ID of the mail service.
-    mail_username: detachable STRING_32
-      -- The username associated with the mail service.
     mail_type: detachable STRING_32
       -- The type of mail service.
     mail_currency: detachable STRING_32
@@ -33,12 +31,14 @@ feature --Access
       -- The customer ID associated with the mail service.
     mail_quota: detachable STRING_32
       -- The mail quota for the service.
-    mail_ip: detachable STRING_32
-      -- The IP address associated with the mail service.
     mail_status: detachable STRING_32
       -- The status of the mail service.
     mail_invoice: detachable STRING_32
       -- The invoice ID of the mail service.
+    mail_username: detachable STRING_32
+      -- The username associated with the mail service.
+    mail_ip: detachable STRING_32
+      -- The IP address associated with the mail service.
     mail_coupon: detachable STRING_32
       -- The coupon associated with the mail service.
     mail_extra: detachable STRING_32
@@ -56,14 +56,6 @@ feature -- Change Element
         mail_id := a_name
       ensure
         mail_id_set: mail_id = a_name
-      end
-
-    set_mail_username (a_name: like mail_username)
-        -- Set 'mail_username' with 'a_name'.
-      do
-        mail_username := a_name
-      ensure
-        mail_username_set: mail_username = a_name
       end
 
     set_mail_type (a_name: like mail_type)
@@ -106,14 +98,6 @@ feature -- Change Element
         mail_quota_set: mail_quota = a_name
       end
 
-    set_mail_ip (a_name: like mail_ip)
-        -- Set 'mail_ip' with 'a_name'.
-      do
-        mail_ip := a_name
-      ensure
-        mail_ip_set: mail_ip = a_name
-      end
-
     set_mail_status (a_name: like mail_status)
         -- Set 'mail_status' with 'a_name'.
       do
@@ -128,6 +112,22 @@ feature -- Change Element
         mail_invoice := a_name
       ensure
         mail_invoice_set: mail_invoice = a_name
+      end
+
+    set_mail_username (a_name: like mail_username)
+        -- Set 'mail_username' with 'a_name'.
+      do
+        mail_username := a_name
+      ensure
+        mail_username_set: mail_username = a_name
+      end
+
+    set_mail_ip (a_name: like mail_ip)
+        -- Set 'mail_ip' with 'a_name'.
+      do
+        mail_ip := a_name
+      ensure
+        mail_ip_set: mail_ip = a_name
       end
 
     set_mail_coupon (a_name: like mail_coupon)
@@ -175,11 +175,6 @@ feature -- Change Element
           Result.append (l_mail_id.out)
           Result.append ("%N")
         end
-        if attached mail_username as l_mail_username then
-          Result.append ("%Nmail_username:")
-          Result.append (l_mail_username.out)
-          Result.append ("%N")
-        end
         if attached mail_type as l_mail_type then
           Result.append ("%Nmail_type:")
           Result.append (l_mail_type.out)
@@ -205,11 +200,6 @@ feature -- Change Element
           Result.append (l_mail_quota.out)
           Result.append ("%N")
         end
-        if attached mail_ip as l_mail_ip then
-          Result.append ("%Nmail_ip:")
-          Result.append (l_mail_ip.out)
-          Result.append ("%N")
-        end
         if attached mail_status as l_mail_status then
           Result.append ("%Nmail_status:")
           Result.append (l_mail_status.out)
@@ -218,6 +208,16 @@ feature -- Change Element
         if attached mail_invoice as l_mail_invoice then
           Result.append ("%Nmail_invoice:")
           Result.append (l_mail_invoice.out)
+          Result.append ("%N")
+        end
+        if attached mail_username as l_mail_username then
+          Result.append ("%Nmail_username:")
+          Result.append (l_mail_username.out)
+          Result.append ("%N")
+        end
+        if attached mail_ip as l_mail_ip then
+          Result.append ("%Nmail_ip:")
+          Result.append (l_mail_ip.out)
           Result.append ("%N")
         end
         if attached mail_coupon as l_mail_coupon then

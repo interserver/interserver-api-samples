@@ -19,8 +19,6 @@ class DENY_RULE_RECORD
 
 feature --Access
 
-    user: detachable STRING_32
-      -- Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
     type: detachable STRING_32
       -- The type of deny rule.
     data: detachable STRING_32
@@ -29,16 +27,10 @@ feature --Access
       -- The deny rule Id number.
     created: detachable STRING_32
       -- the date the rule was created.
+    user: detachable STRING_32
+      -- Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 
 feature -- Change Element
-
-    set_user (a_name: like user)
-        -- Set 'user' with 'a_name'.
-      do
-        user := a_name
-      ensure
-        user_set: user = a_name
-      end
 
     set_type (a_name: like type)
         -- Set 'type' with 'a_name'.
@@ -72,6 +64,14 @@ feature -- Change Element
         created_set: created = a_name
       end
 
+    set_user (a_name: like user)
+        -- Set 'user' with 'a_name'.
+      do
+        user := a_name
+      ensure
+        user_set: user = a_name
+      end
+
 
  feature -- Status Report
 
@@ -80,11 +80,6 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass DENY_RULE_RECORD%N")
-        if attached user as l_user then
-          Result.append ("%Nuser:")
-          Result.append (l_user.out)
-          Result.append ("%N")
-        end
         if attached type as l_type then
           Result.append ("%Ntype:")
           Result.append (l_type.out)
@@ -103,6 +98,11 @@ feature -- Change Element
         if attached created as l_created then
           Result.append ("%Ncreated:")
           Result.append (l_created.out)
+          Result.append ("%N")
+        end
+        if attached user as l_user then
+          Result.append ("%Nuser:")
+          Result.append (l_user.out)
           Result.append ("%N")
         end
       end

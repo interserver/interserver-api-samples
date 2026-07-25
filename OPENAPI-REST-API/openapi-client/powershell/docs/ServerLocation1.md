@@ -5,9 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LocationId** | **Int32** |  | 
 **LocationName** | **String** |  | 
-**LocationDescription** | **String** |  | [optional] 
 **LocationLat** | **String** |  | 
 **LocationLong** | **String** |  | 
+**LocationDescription** | **String** |  | [optional] 
 **LocationIpmiGroup** | **Int32** |  | [optional] 
 
 ## Examples
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 ```powershell
 $ServerLocation1 = Initialize-InterserverApiServerLocation1  -LocationId null `
  -LocationName null `
- -LocationDescription null `
  -LocationLat null `
  -LocationLong null `
+ -LocationDescription null `
  -LocationIpmiGroup null
 ```
 

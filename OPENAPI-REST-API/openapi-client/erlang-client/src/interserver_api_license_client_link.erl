@@ -8,22 +8,22 @@
     #{ 'label' := binary(),
        'link' := binary(),
        'icon' := binary(),
-       'icon_text' => binary(),
        'help_text' := binary(),
+       'icon_text' => binary(),
        'other_attr' => binary()
      }.
 
 encode(#{ 'label' := Label,
           'link' := Link,
           'icon' := Icon,
-          'icon_text' := IconText,
           'help_text' := HelpText,
+          'icon_text' := IconText,
           'other_attr' := OtherAttr
         }) ->
     #{ 'label' => Label,
        'link' => Link,
        'icon' => Icon,
-       'icon_text' => IconText,
        'help_text' => HelpText,
+       'icon_text' => IconText,
        'other_attr' => OtherAttr
      }.

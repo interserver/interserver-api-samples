@@ -1,8 +1,8 @@
-# openapi.model.ServerOrderCPU
+# interserver_api.model.ServerOrderCPU
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -22,6 +22,7 @@ Name | Value
 REDIRECT | `"redirect"`
 SUBMIT | `"submit"`
 SINGLE | `"single"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

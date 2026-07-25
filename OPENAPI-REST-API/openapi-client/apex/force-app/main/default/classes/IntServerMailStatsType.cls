@@ -24,7 +24,8 @@ public class IntServerMailStatsType implements OAS.MappedProperties {
         _7D,
         _24H,
         TODAY,
-        _1H
+        _1H,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

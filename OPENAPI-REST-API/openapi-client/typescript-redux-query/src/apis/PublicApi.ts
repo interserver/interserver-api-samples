@@ -805,5 +805,6 @@ export function submitSignup<T>(requestParameters: SubmitSignupRequest, requestC
 export enum GetCountriesFetchByEnum {
     Iso2 = 'iso2',
     Iso3 = 'iso3',
-    Numcode = 'numcode'
+    Numcode = 'numcode',
+    UnknownDefaultOpenApi = '11184809'
 }

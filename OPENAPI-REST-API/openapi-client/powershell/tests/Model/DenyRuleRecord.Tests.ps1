@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'DenyRuleRecord' {
     Context 'DenyRuleRecord' {
         It 'Initialize-DenyRuleRecord' {
             # a simple test to create an object
-            #$NewObject = Initialize-DenyRuleRecord -User "TEST_VALUE" -Type "TEST_VALUE" -VarData "TEST_VALUE" -Id "TEST_VALUE" -Created "TEST_VALUE"
+            #$NewObject = Initialize-DenyRuleRecord -Type "TEST_VALUE" -VarData "TEST_VALUE" -Id "TEST_VALUE" -Created "TEST_VALUE" -User "TEST_VALUE"
             #$NewObject | Should -BeOfType DenyRuleRecord
             #$NewObject.property | Should -Be 0
         }

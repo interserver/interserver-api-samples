@@ -15,10 +15,10 @@
   | {'custCurrency', binary() }
   | {'custCurrencySymbol', binary() }
   | {'package', binary() }
-  | {'serviceExtra', list(binary()) }
   | {'extraInfoTables', openapi_mail_schema_extra_info_tables:openapi_mail_schema_extra_info_tables() }
   | {'serviceType', openapi_mail_service_type:openapi_mail_service_type() }
   | {'usage_count', binary() }
+  | {'serviceExtra', list(binary()) }
   ].
 
 
@@ -32,10 +32,10 @@ openapi_mail_schema(Fields) ->
             , {'custCurrency', binary() }
             , {'custCurrencySymbol', binary() }
             , {'package', binary() }
-            , {'serviceExtra', list(binary()) }
             , {'extraInfoTables', openapi_mail_schema_extra_info_tables:openapi_mail_schema_extra_info_tables() }
             , {'serviceType', openapi_mail_service_type:openapi_mail_service_type() }
             , {'usage_count', binary() }
+            , {'serviceExtra', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

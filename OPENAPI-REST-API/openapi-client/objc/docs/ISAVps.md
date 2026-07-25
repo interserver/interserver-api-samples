@@ -10,10 +10,8 @@ Name | Type | Description | Notes
 **custCurrencySymbol** | **NSString*** |  | 
 **serviceMaster** | [**ISAVpsServiceMaster***](ISAVpsServiceMaster.md) |  | 
 **package** | **NSString*** |  | 
-**osTemplate** | **NSString*** |  | [optional] 
 **serviceExtra** | [**ISAVpsServiceExtra***](ISAVpsServiceExtra.md) |  | 
 **extraInfoTables** | [**ISAVpsExtraInfoTables***](ISAVpsExtraInfoTables.md) |  | 
-**cpuGraphData** | [**ISAAnyType***](.md) |  | [optional] 
 **module** | **NSString*** |  | 
 **token** | **NSString*** |  | 
 **daLink** | **NSNumber*** |  | 
@@ -22,6 +20,8 @@ Name | Type | Description | Notes
 **daData** | [**ISAVpsDAData***](ISAVpsDAData.md) |  | 
 **plesk12Data** | [**ISAVpsPlesk12Data***](ISAVpsPlesk12Data.md) |  | 
 **serviceAddons** | [**ISAVpsServiceAddons***](ISAVpsServiceAddons.md) |  | 
+**osTemplate** | **NSString*** |  | [optional] 
+**cpuGraphData** | [**ISAAnyType***](.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

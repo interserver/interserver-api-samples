@@ -50,6 +50,18 @@ public:
     /// CreateFirewallRule members
 
     /// <summary>
+    /// 1 &#x3D; TCP, 2 &#x3D; UDP
+    /// </summary>
+    int32_t getProtocolId() const;
+    void setProtocolId(int32_t value);
+
+    /// <summary>
+    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
+    /// </summary>
+    int32_t getXdpAction() const;
+    void setXdpAction(int32_t value);
+
+    /// <summary>
     /// 
     /// </summary>
     int32_t getDestinationPort() const;
@@ -67,18 +79,6 @@ public:
     int32_t getSourcePort() const;
     void setSourcePort(int32_t value);
 
-    /// <summary>
-    /// 1 &#x3D; TCP, 2 &#x3D; UDP
-    /// </summary>
-    int32_t getProtocolId() const;
-    void setProtocolId(int32_t value);
-
-    /// <summary>
-    /// 1 &#x3D; Block,  0 &#x3D; Whitelist
-    /// </summary>
-    int32_t getXdpAction() const;
-    void setXdpAction(int32_t value);
-
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -89,14 +89,14 @@ protected:
 
 
 protected:
+    int32_t m_Protocol_id = 0;
+    int32_t m_Xdp_action = 0;
     int32_t m_Destination_port = 80;
     bool m_Destination_portIsSet = false;
     std::string m_Source_ip = "0.0.0.0";
     bool m_Source_ipIsSet = false;
     int32_t m_Source_port = 0;
     bool m_Source_portIsSet = false;
-    int32_t m_Protocol_id = 0;
-    int32_t m_Xdp_action = 0;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<CreateFirewallRule>>& data);

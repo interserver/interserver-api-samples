@@ -22,7 +22,7 @@ public class TicketPostDetailsInner  {
 
 public enum CreatorEnum {
 
-USER(String.valueOf("User")), STAFF(String.valueOf("Staff"));
+USER(String.valueOf("User")), STAFF(String.valueOf("Staff")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

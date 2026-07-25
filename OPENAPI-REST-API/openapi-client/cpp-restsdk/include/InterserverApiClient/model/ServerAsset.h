@@ -107,14 +107,6 @@ public:
     void setPrimaryIpv6(const utility::string_t& value);
 
     /// <summary>
-    /// MAC address associated with the asset.
-    /// </summary>
-    utility::string_t getMac() const;
-    bool macIsSet() const;
-    void unsetMac();
-    void setMac(const utility::string_t& value);
-
-    /// <summary>
     /// Datacenter identifier for the asset.
     /// </summary>
     utility::string_t getDatacenter() const;
@@ -203,46 +195,6 @@ public:
     void setIpmiIp(const utility::string_t& value);
 
     /// <summary>
-    /// IPMI admin username associated with the asset.
-    /// </summary>
-    utility::string_t getIpmiAdminUsername() const;
-    bool ipmiAdminUsernameIsSet() const;
-    void unsetIpmi_admin_username();
-    void setIpmiAdminUsername(const utility::string_t& value);
-
-    /// <summary>
-    /// IPMI admin password associated with the asset.
-    /// </summary>
-    utility::string_t getIpmiAdminPassword() const;
-    bool ipmiAdminPasswordIsSet() const;
-    void unsetIpmi_admin_password();
-    void setIpmiAdminPassword(const utility::string_t& value);
-
-    /// <summary>
-    /// IPMI client username associated with the asset.
-    /// </summary>
-    utility::string_t getIpmiClientUsername() const;
-    bool ipmiClientUsernameIsSet() const;
-    void unsetIpmi_client_username();
-    void setIpmiClientUsername(const utility::string_t& value);
-
-    /// <summary>
-    /// IPMI client password associated with the asset.
-    /// </summary>
-    utility::string_t getIpmiClientPassword() const;
-    bool ipmiClientPasswordIsSet() const;
-    void unsetIpmi_client_password();
-    void setIpmiClientPassword(const utility::string_t& value);
-
-    /// <summary>
-    /// IPMI update status associated with the asset.
-    /// </summary>
-    utility::string_t getIpmiUpdated() const;
-    bool ipmiUpdatedIsSet() const;
-    void unsetIpmi_updated();
-    void setIpmiUpdated(const utility::string_t& value);
-
-    /// <summary>
     /// IPMI working status associated with the asset.
     /// </summary>
     utility::string_t getIpmiWorking() const;
@@ -323,22 +275,6 @@ public:
     void setOverdue(const utility::string_t& value);
 
     /// <summary>
-    /// Timestamp of asset creation.
-    /// </summary>
-    utility::string_t getCreateTimestamp() const;
-    bool createTimestampIsSet() const;
-    void unsetCreate_timestamp();
-    void setCreateTimestamp(const utility::string_t& value);
-
-    /// <summary>
-    /// Timestamp of asset update.
-    /// </summary>
-    utility::string_t getUpdateTimestamp() const;
-    bool updateTimestampIsSet() const;
-    void unsetUpdate_timestamp();
-    void setUpdateTimestamp(const utility::string_t& value);
-
-    /// <summary>
     /// Asset identifier for the asset.
     /// </summary>
     utility::string_t getAssetId() const;
@@ -403,14 +339,6 @@ public:
     void setRackY(const utility::string_t& value);
 
     /// <summary>
-    /// Comment associated with the asset.
-    /// </summary>
-    utility::string_t getComment() const;
-    bool commentIsSet() const;
-    void unsetComment();
-    void setComment(const utility::string_t& value);
-
-    /// <summary>
     /// List of switchports associated with the asset.
     /// </summary>
     std::vector<int32_t> getSwitchports() const;
@@ -439,6 +367,78 @@ public:
     void unsetLease();
     void setLease(const std::shared_ptr<ServerLease>& value);
 
+    /// <summary>
+    /// MAC address associated with the asset.
+    /// </summary>
+    utility::string_t getMac() const;
+    bool macIsSet() const;
+    void unsetMac();
+    void setMac(const utility::string_t& value);
+
+    /// <summary>
+    /// IPMI admin username associated with the asset.
+    /// </summary>
+    utility::string_t getIpmiAdminUsername() const;
+    bool ipmiAdminUsernameIsSet() const;
+    void unsetIpmi_admin_username();
+    void setIpmiAdminUsername(const utility::string_t& value);
+
+    /// <summary>
+    /// IPMI admin password associated with the asset.
+    /// </summary>
+    utility::string_t getIpmiAdminPassword() const;
+    bool ipmiAdminPasswordIsSet() const;
+    void unsetIpmi_admin_password();
+    void setIpmiAdminPassword(const utility::string_t& value);
+
+    /// <summary>
+    /// IPMI client username associated with the asset.
+    /// </summary>
+    utility::string_t getIpmiClientUsername() const;
+    bool ipmiClientUsernameIsSet() const;
+    void unsetIpmi_client_username();
+    void setIpmiClientUsername(const utility::string_t& value);
+
+    /// <summary>
+    /// IPMI client password associated with the asset.
+    /// </summary>
+    utility::string_t getIpmiClientPassword() const;
+    bool ipmiClientPasswordIsSet() const;
+    void unsetIpmi_client_password();
+    void setIpmiClientPassword(const utility::string_t& value);
+
+    /// <summary>
+    /// IPMI update status associated with the asset.
+    /// </summary>
+    utility::string_t getIpmiUpdated() const;
+    bool ipmiUpdatedIsSet() const;
+    void unsetIpmi_updated();
+    void setIpmiUpdated(const utility::string_t& value);
+
+    /// <summary>
+    /// Timestamp of asset creation.
+    /// </summary>
+    utility::string_t getCreateTimestamp() const;
+    bool createTimestampIsSet() const;
+    void unsetCreate_timestamp();
+    void setCreateTimestamp(const utility::string_t& value);
+
+    /// <summary>
+    /// Timestamp of asset update.
+    /// </summary>
+    utility::string_t getUpdateTimestamp() const;
+    bool updateTimestampIsSet() const;
+    void unsetUpdate_timestamp();
+    void setUpdateTimestamp(const utility::string_t& value);
+
+    /// <summary>
+    /// Comment associated with the asset.
+    /// </summary>
+    utility::string_t getComment() const;
+    bool commentIsSet() const;
+    void unsetComment();
+    void setComment(const utility::string_t& value);
+
 
 protected:
     int32_t m_Id;
@@ -458,9 +458,6 @@ protected:
 
     utility::string_t m_Primary_ipv6;
     bool m_Primary_ipv6IsSet;
-
-    utility::string_t m_Mac;
-    bool m_MacIsSet;
 
     utility::string_t m_Datacenter;
     bool m_DatacenterIsSet;
@@ -495,21 +492,6 @@ protected:
     utility::string_t m_Ipmi_ip;
     bool m_Ipmi_ipIsSet;
 
-    utility::string_t m_Ipmi_admin_username;
-    bool m_Ipmi_admin_usernameIsSet;
-
-    utility::string_t m_Ipmi_admin_password;
-    bool m_Ipmi_admin_passwordIsSet;
-
-    utility::string_t m_Ipmi_client_username;
-    bool m_Ipmi_client_usernameIsSet;
-
-    utility::string_t m_Ipmi_client_password;
-    bool m_Ipmi_client_passwordIsSet;
-
-    utility::string_t m_Ipmi_updated;
-    bool m_Ipmi_updatedIsSet;
-
     utility::string_t m_Ipmi_working;
     bool m_Ipmi_workingIsSet;
 
@@ -540,12 +522,6 @@ protected:
     utility::string_t m_Overdue;
     bool m_OverdueIsSet;
 
-    utility::string_t m_Create_timestamp;
-    bool m_Create_timestampIsSet;
-
-    utility::string_t m_Update_timestamp;
-    bool m_Update_timestampIsSet;
-
     utility::string_t m_Asset_id;
     bool m_Asset_idIsSet;
 
@@ -570,9 +546,6 @@ protected:
     utility::string_t m_Rack_y;
     bool m_Rack_yIsSet;
 
-    utility::string_t m_Comment;
-    bool m_CommentIsSet;
-
     std::vector<int32_t> m_Switchports;
     bool m_SwitchportsIsSet;
 
@@ -584,6 +557,33 @@ protected:
 
     std::shared_ptr<ServerLease> m_Lease;
     bool m_LeaseIsSet;
+
+    utility::string_t m_Mac;
+    bool m_MacIsSet;
+
+    utility::string_t m_Ipmi_admin_username;
+    bool m_Ipmi_admin_usernameIsSet;
+
+    utility::string_t m_Ipmi_admin_password;
+    bool m_Ipmi_admin_passwordIsSet;
+
+    utility::string_t m_Ipmi_client_username;
+    bool m_Ipmi_client_usernameIsSet;
+
+    utility::string_t m_Ipmi_client_password;
+    bool m_Ipmi_client_passwordIsSet;
+
+    utility::string_t m_Ipmi_updated;
+    bool m_Ipmi_updatedIsSet;
+
+    utility::string_t m_Create_timestamp;
+    bool m_Create_timestampIsSet;
+
+    utility::string_t m_Update_timestamp;
+    bool m_Update_timestampIsSet;
+
+    utility::string_t m_Comment;
+    bool m_CommentIsSet;
 
 };
 

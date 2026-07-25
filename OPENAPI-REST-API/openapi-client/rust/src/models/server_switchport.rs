@@ -34,15 +34,15 @@ pub struct ServerSwitchport {
     /// Identifier for the graph associated with the switchport.
     #[serde(rename = "graph_id")]
     pub graph_id: String,
+    /// Unique identifier of the asset associated with the switchport.
+    #[serde(rename = "asset_id")]
+    pub asset_id: i32,
     /// List of VLANs associated with the switchport.
     #[serde(rename = "vlans", skip_serializing_if = "Option::is_none")]
     pub vlans: Option<Vec<String>>,
     /// List of IPv6 VLANs associated with the switchport.
     #[serde(rename = "vlans6", skip_serializing_if = "Option::is_none")]
     pub vlans6: Option<Vec<String>>,
-    /// Unique identifier of the asset associated with the switchport.
-    #[serde(rename = "asset_id")]
-    pub asset_id: i32,
 }
 
 impl ServerSwitchport {
@@ -55,9 +55,9 @@ impl ServerSwitchport {
             blade,
             justport,
             graph_id,
+            asset_id,
             vlans: None,
             vlans6: None,
-            asset_id,
         }
     }
 }

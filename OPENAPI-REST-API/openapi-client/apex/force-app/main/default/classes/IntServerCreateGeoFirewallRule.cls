@@ -19,7 +19,8 @@ public class IntServerCreateGeoFirewallRule implements OAS.MappedProperties {
      */
     public enum XdpActionEnum {
         NUMBER_0,
-        NUMBER_1
+        NUMBER_1,
+        NUMBER_unknown_default_open_api
     }
 
     /**

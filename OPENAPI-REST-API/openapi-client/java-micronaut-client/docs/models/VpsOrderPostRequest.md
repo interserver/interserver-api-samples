@@ -31,6 +31,7 @@ Name | Value
 KVM | `"kvm"`
 HYPERV | `"hyperv"`
 KVMSTORAGE | `"kvmstorage"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 
@@ -44,6 +45,7 @@ Name | Value
 NONE | `"none"`
 CPANEL | `"cpanel"`
 DA | `"da"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

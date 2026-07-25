@@ -68,16 +68,16 @@ public:
     void setIcon(std::string value);
 
     /// <summary>
-    /// Icon text
-    /// </summary>
-    std::string getIconText() const;
-    void setIconText(std::string value);
-
-    /// <summary>
     /// Help text
     /// </summary>
     std::string getHelpText() const;
     void setHelpText(std::string value);
+
+    /// <summary>
+    /// Icon text
+    /// </summary>
+    std::string getIconText() const;
+    void setIconText(std::string value);
 
     /// <summary>
     /// Other attributes
@@ -98,9 +98,9 @@ protected:
     std::string m_Label = "";
     std::string m_Link = "";
     std::string m_Icon = "";
+    std::string m_Help_text = "";
     std::string m_Icon_text = "";
     bool m_Icon_textIsSet = false;
-    std::string m_Help_text = "";
     std::string m_Other_attr = "";
     bool m_Other_attrIsSet = false;
 };

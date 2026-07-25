@@ -217,18 +217,18 @@ boost::json::object AccountInfoPost::toJsonObject_internal() const
 {
     boost::json::object object;
         object["name"] = JsonValueConverter<std::string>::toJsonValue(getName());
-        if (m_CompanyIsSet) {
-            object["company"] = JsonValueConverter<std::string>::toJsonValue(getCompany());
-        }
         object["address"] = JsonValueConverter<std::string>::toJsonValue(getAddress());
-        if (m_Address2IsSet) {
-            object["address2"] = JsonValueConverter<std::string>::toJsonValue(getAddress2());
-        }
         object["city"] = JsonValueConverter<std::string>::toJsonValue(getCity());
         object["state"] = JsonValueConverter<std::string>::toJsonValue(getState());
         object["zip"] = JsonValueConverter<std::string>::toJsonValue(getZip());
         object["country"] = JsonValueConverter<std::string>::toJsonValue(getCountry());
         object["phone"] = JsonValueConverter<std::string>::toJsonValue(getPhone());
+        if (m_CompanyIsSet) {
+            object["company"] = JsonValueConverter<std::string>::toJsonValue(getCompany());
+        }
+        if (m_Address2IsSet) {
+            object["address2"] = JsonValueConverter<std::string>::toJsonValue(getAddress2());
+        }
         if (m_LocaleIsSet) {
             object["locale"] = JsonValueConverter<std::string>::toJsonValue(getLocale());
         }
@@ -275,21 +275,9 @@ void AccountInfoPost::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto CompanyIt = object.find("company");
-        if (CompanyIt != object.end()) {
-            setCompany(JsonValueConverter<std::string>::fromJsonValue(CompanyIt->value()));
-        }
-    }
-    {
         const auto AddressIt = object.find("address");
         if (AddressIt != object.end()) {
             setAddress(JsonValueConverter<std::string>::fromJsonValue(AddressIt->value()));
-        }
-    }
-    {
-        const auto Address2It = object.find("address2");
-        if (Address2It != object.end()) {
-            setAddress2(JsonValueConverter<std::string>::fromJsonValue(Address2It->value()));
         }
     }
     {
@@ -320,6 +308,18 @@ void AccountInfoPost::fromJsonObject_internal(boost::json::object const& object)
         const auto PhoneIt = object.find("phone");
         if (PhoneIt != object.end()) {
             setPhone(JsonValueConverter<std::string>::fromJsonValue(PhoneIt->value()));
+        }
+    }
+    {
+        const auto CompanyIt = object.find("company");
+        if (CompanyIt != object.end()) {
+            setCompany(JsonValueConverter<std::string>::fromJsonValue(CompanyIt->value()));
+        }
+    }
+    {
+        const auto Address2It = object.find("address2");
+        if (Address2It != object.end()) {
+            setAddress2(JsonValueConverter<std::string>::fromJsonValue(Address2It->value()));
         }
     }
     {
@@ -382,17 +382,6 @@ void AccountInfoPost::setName(std::string value)
     
     m_Name = std::move(value);
 }
-std::string AccountInfoPost::getCompany() const
-{
-    return m_Company;
-}
-
-void AccountInfoPost::setCompany(std::string value)
-{
-    
-    m_Company = std::move(value);
-    m_CompanyIsSet = true;
-}
 std::string AccountInfoPost::getAddress() const
 {
     return m_Address;
@@ -402,17 +391,6 @@ void AccountInfoPost::setAddress(std::string value)
 {
     
     m_Address = std::move(value);
-}
-std::string AccountInfoPost::getAddress2() const
-{
-    return m_Address2;
-}
-
-void AccountInfoPost::setAddress2(std::string value)
-{
-    
-    m_Address2 = std::move(value);
-    m_Address2IsSet = true;
 }
 std::string AccountInfoPost::getCity() const
 {
@@ -463,6 +441,28 @@ void AccountInfoPost::setPhone(std::string value)
 {
     
     m_Phone = std::move(value);
+}
+std::string AccountInfoPost::getCompany() const
+{
+    return m_Company;
+}
+
+void AccountInfoPost::setCompany(std::string value)
+{
+    
+    m_Company = std::move(value);
+    m_CompanyIsSet = true;
+}
+std::string AccountInfoPost::getAddress2() const
+{
+    return m_Address2;
+}
+
+void AccountInfoPost::setAddress2(std::string value)
+{
+    
+    m_Address2 = std::move(value);
+    m_Address2IsSet = true;
 }
 std::string AccountInfoPost::getLocale() const
 {

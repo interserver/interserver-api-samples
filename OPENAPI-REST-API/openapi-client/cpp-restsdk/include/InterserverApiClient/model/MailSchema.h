@@ -108,14 +108,6 @@ public:
     void unsetPackage();
     void setPackage(const utility::string_t& value);
 
-    /// <summary>
-    /// Extra information for the mail service.
-    /// </summary>
-    std::vector<utility::string_t> getServiceExtra() const;
-    bool serviceExtraIsSet() const;
-    void unsetServiceExtra();
-    void setServiceExtra(const std::vector<utility::string_t>& value);
-
     std::shared_ptr<MailSchema_extraInfoTables> getExtraInfoTables() const;
     bool extraInfoTablesIsSet() const;
     void unsetExtraInfoTables();
@@ -133,6 +125,14 @@ public:
     bool usageCountIsSet() const;
     void unsetUsage_count();
     void setUsageCount(const utility::string_t& value);
+
+    /// <summary>
+    /// Extra information for the mail service.
+    /// </summary>
+    std::vector<utility::string_t> getServiceExtra() const;
+    bool serviceExtraIsSet() const;
+    void unsetServiceExtra();
+    void setServiceExtra(const std::vector<utility::string_t>& value);
 
 
 protected:
@@ -154,9 +154,6 @@ protected:
     utility::string_t m_Package;
     bool m_PackageIsSet;
 
-    std::vector<utility::string_t> m_ServiceExtra;
-    bool m_ServiceExtraIsSet;
-
     std::shared_ptr<MailSchema_extraInfoTables> m_ExtraInfoTables;
     bool m_ExtraInfoTablesIsSet;
 
@@ -165,6 +162,9 @@ protected:
 
     utility::string_t m_Usage_count;
     bool m_Usage_countIsSet;
+
+    std::vector<utility::string_t> m_ServiceExtra;
+    bool m_ServiceExtraIsSet;
 
 };
 

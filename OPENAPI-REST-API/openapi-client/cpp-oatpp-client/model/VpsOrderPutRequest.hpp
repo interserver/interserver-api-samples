@@ -41,8 +41,6 @@ class VpsOrderPutRequest : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, vpsPlatform);
 
-  DTO_FIELD(oatpp::String, controlpanel);
-  DTO_FIELD(oatpp::Boolean, controlpanelIsSet);
   DTO_FIELD(oatpp::Int32, period);
 
   DTO_FIELD(oatpp::Int32, location);
@@ -51,10 +49,12 @@ class VpsOrderPutRequest : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, hostname);
 
-  DTO_FIELD(oatpp::String, coupon);
-  DTO_FIELD(oatpp::Boolean, couponIsSet);
   DTO_FIELD(oatpp::String, rootpass);
 
+  DTO_FIELD(oatpp::String, controlpanel);
+  DTO_FIELD(oatpp::Boolean, controlpanelIsSet);
+  DTO_FIELD(oatpp::String, coupon);
+  DTO_FIELD(oatpp::Boolean, couponIsSet);
   DTO_FIELD(oatpp::String, comment);
   DTO_FIELD(oatpp::Boolean, commentIsSet);
 

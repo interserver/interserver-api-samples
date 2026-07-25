@@ -21,7 +21,8 @@ public class IntServerDenyRuleRecord implements IntServerDenyRuleNew {
         DOMAIN,
         EMAIL,
         STARTSWITH,
-        DESTINATION
+        DESTINATION,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

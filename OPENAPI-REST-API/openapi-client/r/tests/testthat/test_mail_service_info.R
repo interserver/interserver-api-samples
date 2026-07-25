@@ -13,14 +13,6 @@ test_that("mail_id", {
   #expect_equal(model.instance$`mail_id`, "EXPECTED_RESULT")
 })
 
-test_that("mail_username", {
-  # tests for the property `mail_username` (character)
-  # The username associated with the mail service.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`mail_username`, "EXPECTED_RESULT")
-})
-
 test_that("mail_type", {
   # tests for the property `mail_type` (character)
   # The type of mail service.
@@ -61,14 +53,6 @@ test_that("mail_quota", {
   #expect_equal(model.instance$`mail_quota`, "EXPECTED_RESULT")
 })
 
-test_that("mail_ip", {
-  # tests for the property `mail_ip` (character)
-  # The IP address associated with the mail service.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`mail_ip`, "EXPECTED_RESULT")
-})
-
 test_that("mail_status", {
   # tests for the property `mail_status` (character)
   # The status of the mail service.
@@ -83,6 +67,22 @@ test_that("mail_invoice", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`mail_invoice`, "EXPECTED_RESULT")
+})
+
+test_that("mail_username", {
+  # tests for the property `mail_username` (character)
+  # The username associated with the mail service.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`mail_username`, "EXPECTED_RESULT")
+})
+
+test_that("mail_ip", {
+  # tests for the property `mail_ip` (character)
+  # The IP address associated with the mail service.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`mail_ip`, "EXPECTED_RESULT")
 })
 
 test_that("mail_coupon", {

@@ -1,4 +1,4 @@
-# openapi
+# interserver_api
 # Overview
 
 The InterServer Management API provides programmatic access to manage your InterServer services. Use this REST API to automate provisioning, configuration, and billing operations across your account.
@@ -60,7 +60,7 @@ Dart 2.17 or later
 If this Dart package is published to Github, add the following dependency to your pubspec.yaml
 ```
 dependencies:
-  openapi:
+  interserver_api:
     git: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
 
@@ -68,8 +68,8 @@ dependencies:
 To use the package in your local drive, add the following dependency to your pubspec.yaml
 ```
 dependencies:
-  openapi:
-    path: /path/to/openapi
+  interserver_api:
+    path: /path/to/interserver_api
 ```
 
 ## Tests
@@ -81,7 +81,7 @@ TODO
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 
 // TODO Configure API key authorization: sessionIdCookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('sessionIdCookieAuth').apiKey = 'YOUR_API_KEY';

@@ -36,11 +36,11 @@ class TestCreateFirewallRule(unittest.TestCase):
         model = CreateFirewallRule()
         if include_optional:
             return CreateFirewallRule(
+                protocol_id = 1,
+                xdp_action = 1,
                 destination_port = 22,
                 source_ip = '0.0.0.0',
-                source_port = 1302,
-                protocol_id = 1,
-                xdp_action = 1
+                source_port = 1302
             )
         else:
             return CreateFirewallRule(

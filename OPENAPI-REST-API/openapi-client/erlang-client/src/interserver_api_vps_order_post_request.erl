@@ -8,37 +8,37 @@
     #{ 'osDistro' := binary(),
        'slices' := integer(),
        'vpsPlatform' := binary(),
-       'controlpanel' => binary(),
        'period' := integer(),
        'location' := integer(),
        'osVersion' := binary(),
        'hostname' := binary(),
-       'coupon' => binary(),
        'rootpass' := binary(),
+       'controlpanel' => binary(),
+       'coupon' => binary(),
        'comment' => binary()
      }.
 
 encode(#{ 'osDistro' := OsDistro,
           'slices' := Slices,
           'vpsPlatform' := VpsPlatform,
-          'controlpanel' := Controlpanel,
           'period' := Period,
           'location' := Location,
           'osVersion' := OsVersion,
           'hostname' := Hostname,
-          'coupon' := Coupon,
           'rootpass' := Rootpass,
+          'controlpanel' := Controlpanel,
+          'coupon' := Coupon,
           'comment' := Comment
         }) ->
     #{ 'osDistro' => OsDistro,
        'slices' => Slices,
        'vpsPlatform' => VpsPlatform,
-       'controlpanel' => Controlpanel,
        'period' => Period,
        'location' => Location,
        'osVersion' => OsVersion,
        'hostname' => Hostname,
-       'coupon' => Coupon,
        'rootpass' => Rootpass,
+       'controlpanel' => Controlpanel,
+       'coupon' => Coupon,
        'comment' => Comment
      }.

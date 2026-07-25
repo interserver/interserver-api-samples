@@ -218,11 +218,11 @@ boost::json::object ServerLocation1::toJsonObject_internal() const
     boost::json::object object;
         object["location_id"] = JsonValueConverter<int32_t>::toJsonValue(getLocationId());
         object["location_name"] = JsonValueConverter<std::string>::toJsonValue(getLocationName());
+        object["location_lat"] = JsonValueConverter<std::string>::toJsonValue(getLocationLat());
+        object["location_long"] = JsonValueConverter<std::string>::toJsonValue(getLocationLong());
         if (m_Location_descriptionIsSet) {
             object["location_description"] = JsonValueConverter<std::string>::toJsonValue(getLocationDescription());
         }
-        object["location_lat"] = JsonValueConverter<std::string>::toJsonValue(getLocationLat());
-        object["location_long"] = JsonValueConverter<std::string>::toJsonValue(getLocationLong());
         if (m_Location_ipmi_groupIsSet) {
             object["location_ipmi_group"] = JsonValueConverter<int32_t>::toJsonValue(getLocationIpmiGroup());
         }
@@ -246,12 +246,6 @@ void ServerLocation1::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto Location_descriptionIt = object.find("location_description");
-        if (Location_descriptionIt != object.end()) {
-            setLocationDescription(JsonValueConverter<std::string>::fromJsonValue(Location_descriptionIt->value()));
-        }
-    }
-    {
         const auto Location_latIt = object.find("location_lat");
         if (Location_latIt != object.end()) {
             setLocationLat(JsonValueConverter<std::string>::fromJsonValue(Location_latIt->value()));
@@ -261,6 +255,12 @@ void ServerLocation1::fromJsonObject_internal(boost::json::object const& object)
         const auto Location_longIt = object.find("location_long");
         if (Location_longIt != object.end()) {
             setLocationLong(JsonValueConverter<std::string>::fromJsonValue(Location_longIt->value()));
+        }
+    }
+    {
+        const auto Location_descriptionIt = object.find("location_description");
+        if (Location_descriptionIt != object.end()) {
+            setLocationDescription(JsonValueConverter<std::string>::fromJsonValue(Location_descriptionIt->value()));
         }
     }
     {
@@ -291,17 +291,6 @@ void ServerLocation1::setLocationName(std::string value)
     
     m_Location_name = std::move(value);
 }
-std::string ServerLocation1::getLocationDescription() const
-{
-    return m_Location_description;
-}
-
-void ServerLocation1::setLocationDescription(std::string value)
-{
-    
-    m_Location_description = std::move(value);
-    m_Location_descriptionIsSet = true;
-}
 std::string ServerLocation1::getLocationLat() const
 {
     return m_Location_lat;
@@ -321,6 +310,17 @@ void ServerLocation1::setLocationLong(std::string value)
 {
     
     m_Location_long = std::move(value);
+}
+std::string ServerLocation1::getLocationDescription() const
+{
+    return m_Location_description;
+}
+
+void ServerLocation1::setLocationDescription(std::string value)
+{
+    
+    m_Location_description = std::move(value);
+    m_Location_descriptionIsSet = true;
 }
 int32_t ServerLocation1::getLocationIpmiGroup() const
 {

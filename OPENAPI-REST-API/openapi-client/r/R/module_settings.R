@@ -22,9 +22,9 @@
 #' @field TBLNAME  character
 #' @field TABLE  character
 #' @field TITLE_FIELD  character
+#' @field PREFIX  character
 #' @field TITLE_FIELD2  character [optional]
 #' @field TITLE_FIELD3  character [optional]
-#' @field PREFIX  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -46,9 +46,9 @@ ModuleSettings <- R6::R6Class(
     `TBLNAME` = NULL,
     `TABLE` = NULL,
     `TITLE_FIELD` = NULL,
+    `PREFIX` = NULL,
     `TITLE_FIELD2` = NULL,
     `TITLE_FIELD3` = NULL,
-    `PREFIX` = NULL,
 
     #' @description
     #' Initialize a new ModuleSettings class.
@@ -274,6 +274,10 @@ ModuleSettings <- R6::R6Class(
         ModuleSettingsObject[["TITLE_FIELD"]] <-
           self$`TITLE_FIELD`
       }
+      if (!is.null(self$`PREFIX`)) {
+        ModuleSettingsObject[["PREFIX"]] <-
+          self$`PREFIX`
+      }
       if (!is.null(self$`TITLE_FIELD2`)) {
         ModuleSettingsObject[["TITLE_FIELD2"]] <-
           self$`TITLE_FIELD2`
@@ -281,10 +285,6 @@ ModuleSettings <- R6::R6Class(
       if (!is.null(self$`TITLE_FIELD3`)) {
         ModuleSettingsObject[["TITLE_FIELD3"]] <-
           self$`TITLE_FIELD3`
-      }
-      if (!is.null(self$`PREFIX`)) {
-        ModuleSettingsObject[["PREFIX"]] <-
-          self$`PREFIX`
       }
       return(ModuleSettingsObject)
     },
@@ -341,14 +341,14 @@ ModuleSettings <- R6::R6Class(
       if (!is.null(this_object$`TITLE_FIELD`)) {
         self$`TITLE_FIELD` <- this_object$`TITLE_FIELD`
       }
+      if (!is.null(this_object$`PREFIX`)) {
+        self$`PREFIX` <- this_object$`PREFIX`
+      }
       if (!is.null(this_object$`TITLE_FIELD2`)) {
         self$`TITLE_FIELD2` <- this_object$`TITLE_FIELD2`
       }
       if (!is.null(this_object$`TITLE_FIELD3`)) {
         self$`TITLE_FIELD3` <- this_object$`TITLE_FIELD3`
-      }
-      if (!is.null(this_object$`PREFIX`)) {
-        self$`PREFIX` <- this_object$`PREFIX`
       }
       self
     },
@@ -386,9 +386,9 @@ ModuleSettings <- R6::R6Class(
       self$`TBLNAME` <- this_object$`TBLNAME`
       self$`TABLE` <- this_object$`TABLE`
       self$`TITLE_FIELD` <- this_object$`TITLE_FIELD`
+      self$`PREFIX` <- this_object$`PREFIX`
       self$`TITLE_FIELD2` <- this_object$`TITLE_FIELD2`
       self$`TITLE_FIELD3` <- this_object$`TITLE_FIELD3`
-      self$`PREFIX` <- this_object$`PREFIX`
       self
     },
 

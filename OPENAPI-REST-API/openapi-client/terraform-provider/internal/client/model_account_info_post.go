@@ -5,14 +5,14 @@ package client
 // AccountInfoPost - Request to update account information.
 type AccountInfoPost struct {
 	Name string `json:"name"`
-	Company string `json:"company,omitempty"`
 	Address string `json:"address"`
-	Address2 string `json:"address2,omitempty"`
 	City string `json:"city"`
 	State string `json:"state"`
 	Zip string `json:"zip"`
 	Country string `json:"country"`
 	Phone string `json:"phone"`
+	Company string `json:"company,omitempty"`
+	Address2 string `json:"address2,omitempty"`
 	Locale string `json:"locale,omitempty"`
 	EmailInvoices string `json:"email_invoices,omitempty"`
 	EmailAbuse string `json:"email_abuse,omitempty"`

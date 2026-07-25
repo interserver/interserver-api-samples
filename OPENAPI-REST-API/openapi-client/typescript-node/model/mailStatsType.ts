@@ -83,6 +83,7 @@ export namespace MailStatsType {
         _7d = <any> '7d',
         _24h = <any> '24h',
         Today = <any> 'today',
-        _1h = <any> '1h'
+        _1h = <any> '1h',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

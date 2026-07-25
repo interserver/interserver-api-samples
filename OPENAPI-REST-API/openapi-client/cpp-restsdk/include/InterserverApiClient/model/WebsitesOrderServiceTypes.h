@@ -104,6 +104,22 @@ public:
     void setServicesType(const utility::string_t& value);
 
     /// <summary>
+    /// The module of the service.
+    /// </summary>
+    utility::string_t getServicesModule() const;
+    bool servicesModuleIsSet() const;
+    void unsetServices_module();
+    void setServicesModule(const utility::string_t& value);
+
+    /// <summary>
+    /// Indicates if the service is hidden (1 for yes, 0 for no).
+    /// </summary>
+    utility::string_t getServicesHidden() const;
+    bool servicesHiddenIsSet() const;
+    void unsetServices_hidden();
+    void setServicesHidden(const utility::string_t& value);
+
+    /// <summary>
     /// Additional field 1 for the service.
     /// </summary>
     utility::string_t getServicesField1() const;
@@ -118,14 +134,6 @@ public:
     bool servicesField2IsSet() const;
     void unsetServices_field2();
     void setServicesField2(const utility::string_t& value);
-
-    /// <summary>
-    /// The module of the service.
-    /// </summary>
-    utility::string_t getServicesModule() const;
-    bool servicesModuleIsSet() const;
-    void unsetServices_module();
-    void setServicesModule(const utility::string_t& value);
 
     /// <summary>
     /// HTML content for the service.
@@ -151,14 +159,6 @@ public:
     void unsetServices_moreinfo_url();
     void setServicesMoreinfoUrl(const utility::string_t& value);
 
-    /// <summary>
-    /// Indicates if the service is hidden (1 for yes, 0 for no).
-    /// </summary>
-    utility::string_t getServicesHidden() const;
-    bool servicesHiddenIsSet() const;
-    void unsetServices_hidden();
-    void setServicesHidden(const utility::string_t& value);
-
 
 protected:
     utility::string_t m_Services_id;
@@ -179,14 +179,17 @@ protected:
     utility::string_t m_Services_type;
     bool m_Services_typeIsSet;
 
+    utility::string_t m_Services_module;
+    bool m_Services_moduleIsSet;
+
+    utility::string_t m_Services_hidden;
+    bool m_Services_hiddenIsSet;
+
     utility::string_t m_Services_field1;
     bool m_Services_field1IsSet;
 
     utility::string_t m_Services_field2;
     bool m_Services_field2IsSet;
-
-    utility::string_t m_Services_module;
-    bool m_Services_moduleIsSet;
 
     utility::string_t m_Services_html;
     bool m_Services_htmlIsSet;
@@ -196,9 +199,6 @@ protected:
 
     utility::string_t m_Services_moreinfo_url;
     bool m_Services_moreinfo_urlIsSet;
-
-    utility::string_t m_Services_hidden;
-    bool m_Services_hiddenIsSet;
 
 };
 

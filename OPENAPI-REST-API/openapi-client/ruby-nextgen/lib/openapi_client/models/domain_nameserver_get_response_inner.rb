@@ -26,7 +26,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'can_delete',
         required: true,
-        enum: ['0', '1']
+        enum: ['0', '1', 'unknown_default_open_api']
 
       def initialize(**attrs)
         attrs.each do |k, v|

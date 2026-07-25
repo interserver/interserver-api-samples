@@ -19,17 +19,17 @@ local function cast_account_info_post(t)
 	return setmetatable(t, account_info_post_mt)
 end
 
-local function new_account_info_post(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+local function new_account_info_post(name, address, city, state, zip, country, phone, company, address2, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
 	return cast_account_info_post({
 		["name"] = name;
-		["company"] = company;
 		["address"] = address;
-		["address2"] = address2;
 		["city"] = city;
 		["state"] = state;
 		["zip"] = zip;
 		["country"] = country;
 		["phone"] = phone;
+		["company"] = company;
+		["address2"] = address2;
 		["locale"] = locale;
 		["email_invoices"] = email_invoices;
 		["email_abuse"] = email_abuse;

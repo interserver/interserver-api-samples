@@ -62,6 +62,7 @@ public:
     {
         GENERATED,
         PROVIDED,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// Whether the CSR is server-generated or customer-provided.

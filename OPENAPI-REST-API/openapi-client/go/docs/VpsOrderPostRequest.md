@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **OsDistro** | **string** | OS Distribution | 
 **Slices** | **int32** | Number of slices | [default to 1]
 **VpsPlatform** | **string** | VPS Platform | 
-**Controlpanel** | Pointer to **string** | Control Panel | [optional] 
 **Period** | **int32** | Billing Period or Frequency | [default to 1]
 **Location** | **int32** | Location | [default to 1]
 **OsVersion** | **string** | OS Version | 
 **Hostname** | **string** | The hostname to assign to the VPS | [default to ""]
-**Coupon** | Pointer to **string** | Coupon | [optional] [default to ""]
 **Rootpass** | **string** | Root password to assign to the VVPS | 
+**Controlpanel** | Pointer to **string** | Control Panel | [optional] 
+**Coupon** | Pointer to **string** | Coupon | [optional] [default to ""]
 **Comment** | Pointer to **string** | Order comments or notes | [optional] [default to ""]
 
 ## Methods
@@ -95,31 +95,6 @@ and a boolean to check if the value has been set.
 SetVpsPlatform sets VpsPlatform field to given value.
 
 
-### GetControlpanel
-
-`func (o *VpsOrderPostRequest) GetControlpanel() string`
-
-GetControlpanel returns the Controlpanel field if non-nil, zero value otherwise.
-
-### GetControlpanelOk
-
-`func (o *VpsOrderPostRequest) GetControlpanelOk() (*string, bool)`
-
-GetControlpanelOk returns a tuple with the Controlpanel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetControlpanel
-
-`func (o *VpsOrderPostRequest) SetControlpanel(v string)`
-
-SetControlpanel sets Controlpanel field to given value.
-
-### HasControlpanel
-
-`func (o *VpsOrderPostRequest) HasControlpanel() bool`
-
-HasControlpanel returns a boolean if a field has been set.
-
 ### GetPeriod
 
 `func (o *VpsOrderPostRequest) GetPeriod() int32`
@@ -200,6 +175,51 @@ and a boolean to check if the value has been set.
 SetHostname sets Hostname field to given value.
 
 
+### GetRootpass
+
+`func (o *VpsOrderPostRequest) GetRootpass() string`
+
+GetRootpass returns the Rootpass field if non-nil, zero value otherwise.
+
+### GetRootpassOk
+
+`func (o *VpsOrderPostRequest) GetRootpassOk() (*string, bool)`
+
+GetRootpassOk returns a tuple with the Rootpass field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRootpass
+
+`func (o *VpsOrderPostRequest) SetRootpass(v string)`
+
+SetRootpass sets Rootpass field to given value.
+
+
+### GetControlpanel
+
+`func (o *VpsOrderPostRequest) GetControlpanel() string`
+
+GetControlpanel returns the Controlpanel field if non-nil, zero value otherwise.
+
+### GetControlpanelOk
+
+`func (o *VpsOrderPostRequest) GetControlpanelOk() (*string, bool)`
+
+GetControlpanelOk returns a tuple with the Controlpanel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetControlpanel
+
+`func (o *VpsOrderPostRequest) SetControlpanel(v string)`
+
+SetControlpanel sets Controlpanel field to given value.
+
+### HasControlpanel
+
+`func (o *VpsOrderPostRequest) HasControlpanel() bool`
+
+HasControlpanel returns a boolean if a field has been set.
+
 ### GetCoupon
 
 `func (o *VpsOrderPostRequest) GetCoupon() string`
@@ -224,26 +244,6 @@ SetCoupon sets Coupon field to given value.
 `func (o *VpsOrderPostRequest) HasCoupon() bool`
 
 HasCoupon returns a boolean if a field has been set.
-
-### GetRootpass
-
-`func (o *VpsOrderPostRequest) GetRootpass() string`
-
-GetRootpass returns the Rootpass field if non-nil, zero value otherwise.
-
-### GetRootpassOk
-
-`func (o *VpsOrderPostRequest) GetRootpassOk() (*string, bool)`
-
-GetRootpassOk returns a tuple with the Rootpass field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRootpass
-
-`func (o *VpsOrderPostRequest) SetRootpass(v string)`
-
-SetRootpass sets Rootpass field to given value.
-
 
 ### GetComment
 

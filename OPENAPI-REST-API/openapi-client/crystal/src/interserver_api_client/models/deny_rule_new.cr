@@ -28,7 +28,7 @@ module InterserverApiClient
     @[JSON::Field(key: "user", emit_null: false)]
     property user : String?
 
-    validates(_type, String, false, enum: ["domain", "email", "startswith", "destination"])
+    validates(_type, String, false, enum: ["domain", "email", "startswith", "destination", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

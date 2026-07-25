@@ -1,8 +1,8 @@
-# openapi.model.VpsSnapshot
+# interserver_api.model.VpsSnapshot
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

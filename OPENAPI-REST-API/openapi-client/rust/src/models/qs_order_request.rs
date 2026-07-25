@@ -20,12 +20,12 @@ pub struct QsOrderRequest {
     /// Root password for the QuickServer.
     #[serde(rename = "password")]
     pub password: String,
-    /// OS template file name from getNewQs (falls back to a default if unrecognized).
-    #[serde(rename = "os", skip_serializing_if = "Option::is_none")]
-    pub os: Option<String>,
     /// Terms-of-service acceptance. Must be true to place the order.
     #[serde(rename = "tos")]
     pub tos: bool,
+    /// OS template file name from getNewQs (falls back to a default if unrecognized).
+    #[serde(rename = "os", skip_serializing_if = "Option::is_none")]
+    pub os: Option<String>,
     /// Free-form note saved on the service row.
     #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
@@ -37,8 +37,8 @@ impl QsOrderRequest {
         QsOrderRequest {
             server,
             password,
-            os: None,
             tos,
+            os: None,
             comment: None,
         }
     }

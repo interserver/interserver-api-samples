@@ -19,7 +19,7 @@ local function cast_websites_order_packages_info(t)
 	return setmetatable(t, websites_order_packages_info_mt)
 end
 
-local function new_websites_order_packages_info(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_field1, services_field2, services_module, services_html, services_description, services_moreinfo_url, services_hidden)
+local function new_websites_order_packages_info(services_id, services_name, services_cost, services_category, services_buyable, services_type, services_module, services_description, services_field1, services_field2, services_html, services_moreinfo_url, services_hidden)
 	return cast_websites_order_packages_info({
 		["services_id"] = services_id;
 		["services_name"] = services_name;
@@ -27,11 +27,11 @@ local function new_websites_order_packages_info(services_id, services_name, serv
 		["services_category"] = services_category;
 		["services_buyable"] = services_buyable;
 		["services_type"] = services_type;
+		["services_module"] = services_module;
+		["services_description"] = services_description;
 		["services_field1"] = services_field1;
 		["services_field2"] = services_field2;
-		["services_module"] = services_module;
 		["services_html"] = services_html;
-		["services_description"] = services_description;
 		["services_moreinfo_url"] = services_moreinfo_url;
 		["services_hidden"] = services_hidden;
 	})

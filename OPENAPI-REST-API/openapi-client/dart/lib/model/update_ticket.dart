@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class UpdateTicket {
   /// Returns a new [UpdateTicket] instance.
@@ -212,6 +212,7 @@ class UpdateTicket {
 enum UpdateTicketCustomerServerAccessEnum {
   y._(r'y'),
   n._(r'n'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -272,6 +273,7 @@ class UpdateTicketCustomerServerAccessEnumTypeTransformer {
       switch (data) {
         case r'y': return UpdateTicketCustomerServerAccessEnum.y;
         case r'n': return UpdateTicketCustomerServerAccessEnum.n;
+        case r'unknown_default_open_api': return UpdateTicketCustomerServerAccessEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -1,8 +1,8 @@
-# openapi.model.VpsIPInfoRow
+# interserver_api.model.VpsIPInfoRow
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

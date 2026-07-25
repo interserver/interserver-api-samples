@@ -38,6 +38,7 @@ public:
 		Kvm,
 		Hyperv,
 		Kvmstorage,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const VpsPlatformEnum& EnumValue);
@@ -59,6 +60,7 @@ public:
 		None,
 		Cpanel,
 		Da,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ControlpanelEnum& EnumValue);

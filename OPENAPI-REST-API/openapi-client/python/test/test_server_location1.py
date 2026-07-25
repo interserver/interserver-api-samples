@@ -38,9 +38,9 @@ class TestServerLocation1(unittest.TestCase):
             return ServerLocation1(
                 location_id = 56,
                 location_name = '',
-                location_description = '',
                 location_lat = '',
                 location_long = '',
+                location_description = '',
                 location_ipmi_group = 56
             )
         else:

@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'ServerSwitchport' {
     Context 'ServerSwitchport' {
         It 'Initialize-ServerSwitchport' {
             # a simple test to create an object
-            #$NewObject = Initialize-ServerSwitchport -SwitchportId "TEST_VALUE" -SwitchId "TEST_VALUE" -VarSwitch "TEST_VALUE" -Port "TEST_VALUE" -Blade "TEST_VALUE" -Justport "TEST_VALUE" -GraphId "TEST_VALUE" -Vlans "TEST_VALUE" -Vlans6 "TEST_VALUE" -AssetId "TEST_VALUE"
+            #$NewObject = Initialize-ServerSwitchport -SwitchportId "TEST_VALUE" -SwitchId "TEST_VALUE" -VarSwitch "TEST_VALUE" -Port "TEST_VALUE" -Blade "TEST_VALUE" -Justport "TEST_VALUE" -GraphId "TEST_VALUE" -AssetId "TEST_VALUE" -Vlans "TEST_VALUE" -Vlans6 "TEST_VALUE"
             #$NewObject | Should -BeOfType ServerSwitchport
             #$NewObject.property | Should -Be 0
         }

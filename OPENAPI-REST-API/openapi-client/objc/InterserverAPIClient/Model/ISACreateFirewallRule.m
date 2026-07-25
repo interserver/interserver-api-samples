@@ -20,7 +20,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"destinationPort": @"destination_port", @"sourceIp": @"source_ip", @"sourcePort": @"source_port", @"protocolId": @"protocol_id", @"xdpAction": @"xdp_action" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"protocolId": @"protocol_id", @"xdpAction": @"xdp_action", @"destinationPort": @"destination_port", @"sourceIp": @"source_ip", @"sourcePort": @"source_port" }];
 }
 
 /**
@@ -30,7 +30,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"destinationPort", @"sourceIp", @"sourcePort", ];
+  NSArray *optionalProperties = @[@"destinationPort", @"sourceIp", @"sourcePort"];
   return [optionalProperties containsObject:propertyName];
 }
 

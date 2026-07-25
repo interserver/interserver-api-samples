@@ -7,35 +7,35 @@
     ServerLocation1(;
         location_id=nothing,
         location_name=nothing,
-        location_description=nothing,
         location_lat=nothing,
         location_long=nothing,
+        location_description=nothing,
         location_ipmi_group=nothing,
     )
 
     - location_id::Int64
     - location_name::String
-    - location_description::String
     - location_lat::String
     - location_long::String
+    - location_description::String
     - location_ipmi_group::Int64
 """
 Base.@kwdef mutable struct ServerLocation1 <: OpenAPI.APIModel
     location_id::Union{Nothing, Int64} = nothing
     location_name::Union{Nothing, String} = nothing
-    location_description::Union{Nothing, String} = nothing
     location_lat::Union{Nothing, String} = nothing
     location_long::Union{Nothing, String} = nothing
+    location_description::Union{Nothing, String} = nothing
     location_ipmi_group::Union{Nothing, Int64} = nothing
 
-    function ServerLocation1(location_id, location_name, location_description, location_lat, location_long, location_ipmi_group, )
-        o = new(location_id, location_name, location_description, location_lat, location_long, location_ipmi_group, )
+    function ServerLocation1(location_id, location_name, location_lat, location_long, location_description, location_ipmi_group, )
+        o = new(location_id, location_name, location_lat, location_long, location_description, location_ipmi_group, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ServerLocation1
 
-const _property_types_ServerLocation1 = Dict{Symbol,String}(Symbol("location_id")=>"Int64", Symbol("location_name")=>"String", Symbol("location_description")=>"String", Symbol("location_lat")=>"String", Symbol("location_long")=>"String", Symbol("location_ipmi_group")=>"Int64", )
+const _property_types_ServerLocation1 = Dict{Symbol,String}(Symbol("location_id")=>"Int64", Symbol("location_name")=>"String", Symbol("location_lat")=>"String", Symbol("location_long")=>"String", Symbol("location_description")=>"String", Symbol("location_ipmi_group")=>"Int64", )
 OpenAPI.property_type(::Type{ ServerLocation1 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServerLocation1[name]))}
 
 function OpenAPI.check_required(o::ServerLocation1)
@@ -49,9 +49,9 @@ end
 function OpenAPI.validate_properties(o::ServerLocation1)
     OpenAPI.validate_property(ServerLocation1, Symbol("location_id"), o.location_id)
     OpenAPI.validate_property(ServerLocation1, Symbol("location_name"), o.location_name)
-    OpenAPI.validate_property(ServerLocation1, Symbol("location_description"), o.location_description)
     OpenAPI.validate_property(ServerLocation1, Symbol("location_lat"), o.location_lat)
     OpenAPI.validate_property(ServerLocation1, Symbol("location_long"), o.location_long)
+    OpenAPI.validate_property(ServerLocation1, Symbol("location_description"), o.location_description)
     OpenAPI.validate_property(ServerLocation1, Symbol("location_ipmi_group"), o.location_ipmi_group)
 end
 

@@ -19,7 +19,7 @@ local function cast_mail_schema(t)
 	return setmetatable(t, mail_schema_mt)
 end
 
-local function new_mail_schema(service_info, client_links, billing_details, cust_currency, cust_currency_symbol, package, service_extra, extra_info_tables, service_type, usage_count)
+local function new_mail_schema(service_info, client_links, billing_details, cust_currency, cust_currency_symbol, package, extra_info_tables, service_type, usage_count, service_extra)
 	return cast_mail_schema({
 		["serviceInfo"] = service_info;
 		["client_links"] = client_links;
@@ -27,10 +27,10 @@ local function new_mail_schema(service_info, client_links, billing_details, cust
 		["custCurrency"] = cust_currency;
 		["custCurrencySymbol"] = cust_currency_symbol;
 		["package"] = package;
-		["serviceExtra"] = service_extra;
 		["extraInfoTables"] = extra_info_tables;
 		["serviceType"] = service_type;
 		["usage_count"] = usage_count;
+		["serviceExtra"] = service_extra;
 	})
 end
 

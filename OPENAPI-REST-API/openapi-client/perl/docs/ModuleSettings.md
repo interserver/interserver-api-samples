@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **tblname** | **string** |  | 
 **table** | **string** |  | 
 **title_field** | **string** |  | 
+**prefix** | **string** |  | 
 **title_field2** | **string** |  | [optional] 
 **title_field3** | **string** |  | [optional] 
-**prefix** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

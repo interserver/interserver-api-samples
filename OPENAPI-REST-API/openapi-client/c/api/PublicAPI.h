@@ -23,7 +23,7 @@
 #include "../model/services_info.h"
 
 // Enum FETCHBY for PublicAPI_getCountries
-typedef enum  { interserver_management_api_getCountries_FETCHBY_NULL = 0, interserver_management_api_getCountries_FETCHBY_iso2, interserver_management_api_getCountries_FETCHBY_iso3, interserver_management_api_getCountries_FETCHBY_numcode } interserver_management_api_getCountries_fetch_by_e;
+typedef enum  { interserver_management_api_getCountries_FETCHBY_NULL = 0, interserver_management_api_getCountries_FETCHBY_iso2, interserver_management_api_getCountries_FETCHBY_iso3, interserver_management_api_getCountries_FETCHBY_numcode, interserver_management_api_getCountries_FETCHBY__11184809 } interserver_management_api_getCountries_fetch_by_e;
 
 
 // List enabled currency codes accepted for billing and preferences

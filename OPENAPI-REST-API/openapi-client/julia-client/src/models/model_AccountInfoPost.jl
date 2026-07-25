@@ -7,14 +7,14 @@ Request to update account information.
 
     AccountInfoPost(;
         name=nothing,
-        company=nothing,
         address=nothing,
-        address2=nothing,
         city=nothing,
         state=nothing,
         zip=nothing,
         country=nothing,
         phone=nothing,
+        company=nothing,
+        address2=nothing,
         locale=nothing,
         email_invoices=nothing,
         email_abuse=nothing,
@@ -26,14 +26,14 @@ Request to update account information.
     )
 
     - name::String : Your name.
-    - company::String : Your company name.
     - address::String : Your address.
-    - address2::String : Additional address information.
     - city::String : Your city.
     - state::String : Your state.
     - zip::String : Your ZIP code.
     - country::String : Your country.
     - phone::String : Your phone number.
+    - company::String : Your company name.
+    - address2::String : Additional address information.
     - locale::String : Your preferred locale.
     - email_invoices::String : Your email for invoice notifications.
     - email_abuse::String : Your email for abuse notifications.
@@ -45,14 +45,14 @@ Request to update account information.
 """
 Base.@kwdef mutable struct AccountInfoPost <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
-    company::Union{Nothing, String} = nothing
     address::Union{Nothing, String} = nothing
-    address2::Union{Nothing, String} = nothing
     city::Union{Nothing, String} = nothing
     state::Union{Nothing, String} = nothing
     zip::Union{Nothing, String} = nothing
     country::Union{Nothing, String} = nothing
     phone::Union{Nothing, String} = nothing
+    company::Union{Nothing, String} = nothing
+    address2::Union{Nothing, String} = nothing
     locale::Union{Nothing, String} = nothing
     email_invoices::Union{Nothing, String} = nothing
     email_abuse::Union{Nothing, String} = nothing
@@ -62,14 +62,14 @@ Base.@kwdef mutable struct AccountInfoPost <: OpenAPI.APIModel
     disable_email_notifications::Union{Nothing, Bool} = nothing
     gstin::Union{Nothing, String} = nothing
 
-    function AccountInfoPost(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, )
-        o = new(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, )
+    function AccountInfoPost(name, address, city, state, zip, country, phone, company, address2, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, )
+        o = new(name, address, city, state, zip, country, phone, company, address2, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type AccountInfoPost
 
-const _property_types_AccountInfoPost = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("company")=>"String", Symbol("address")=>"String", Symbol("address2")=>"String", Symbol("city")=>"String", Symbol("state")=>"String", Symbol("zip")=>"String", Symbol("country")=>"String", Symbol("phone")=>"String", Symbol("locale")=>"String", Symbol("email_invoices")=>"String", Symbol("email_abuse")=>"String", Symbol("disable_reset")=>"Bool", Symbol("disable_reinstall")=>"Bool", Symbol("disable_server_notifications")=>"Bool", Symbol("disable_email_notifications")=>"Bool", Symbol("gstin")=>"String", )
+const _property_types_AccountInfoPost = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("address")=>"String", Symbol("city")=>"String", Symbol("state")=>"String", Symbol("zip")=>"String", Symbol("country")=>"String", Symbol("phone")=>"String", Symbol("company")=>"String", Symbol("address2")=>"String", Symbol("locale")=>"String", Symbol("email_invoices")=>"String", Symbol("email_abuse")=>"String", Symbol("disable_reset")=>"Bool", Symbol("disable_reinstall")=>"Bool", Symbol("disable_server_notifications")=>"Bool", Symbol("disable_email_notifications")=>"Bool", Symbol("gstin")=>"String", )
 OpenAPI.property_type(::Type{ AccountInfoPost }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AccountInfoPost[name]))}
 
 function OpenAPI.check_required(o::AccountInfoPost)
@@ -85,14 +85,14 @@ end
 
 function OpenAPI.validate_properties(o::AccountInfoPost)
     OpenAPI.validate_property(AccountInfoPost, Symbol("name"), o.name)
-    OpenAPI.validate_property(AccountInfoPost, Symbol("company"), o.company)
     OpenAPI.validate_property(AccountInfoPost, Symbol("address"), o.address)
-    OpenAPI.validate_property(AccountInfoPost, Symbol("address2"), o.address2)
     OpenAPI.validate_property(AccountInfoPost, Symbol("city"), o.city)
     OpenAPI.validate_property(AccountInfoPost, Symbol("state"), o.state)
     OpenAPI.validate_property(AccountInfoPost, Symbol("zip"), o.zip)
     OpenAPI.validate_property(AccountInfoPost, Symbol("country"), o.country)
     OpenAPI.validate_property(AccountInfoPost, Symbol("phone"), o.phone)
+    OpenAPI.validate_property(AccountInfoPost, Symbol("company"), o.company)
+    OpenAPI.validate_property(AccountInfoPost, Symbol("address2"), o.address2)
     OpenAPI.validate_property(AccountInfoPost, Symbol("locale"), o.locale)
     OpenAPI.validate_property(AccountInfoPost, Symbol("email_invoices"), o.email_invoices)
     OpenAPI.validate_property(AccountInfoPost, Symbol("email_abuse"), o.email_abuse)

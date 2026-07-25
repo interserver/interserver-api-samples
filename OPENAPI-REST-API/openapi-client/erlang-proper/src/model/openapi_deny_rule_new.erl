@@ -9,9 +9,9 @@
 -export_type([openapi_deny_rule_new/0]).
 
 -type openapi_deny_rule_new() ::
-  [ {'user', binary() }
-  | {'type', binary() }
+  [ {'type', binary() }
   | {'data', binary() }
+  | {'user', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_deny_rule_new() ->
     openapi_deny_rule_new([]).
 
 openapi_deny_rule_new(Fields) ->
-  Default = [ {'user', binary() }
-            , {'type', elements([<<"domain">>, <<"email">>, <<"startswith">>, <<"destination">>]) }
+  Default = [ {'type', elements([<<"domain">>, <<"email">>, <<"startswith">>, <<"destination">>]) }
             , {'data', binary() }
+            , {'user', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

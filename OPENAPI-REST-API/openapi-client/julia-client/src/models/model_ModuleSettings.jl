@@ -21,9 +21,9 @@ The settings for a module.
         TBLNAME=nothing,
         TABLE=nothing,
         TITLE_FIELD=nothing,
+        PREFIX=nothing,
         TITLE_FIELD2=nothing,
         TITLE_FIELD3=nothing,
-        PREFIX=nothing,
     )
 
     - SERVICE_ID_OFFSET::Int64
@@ -41,9 +41,9 @@ The settings for a module.
     - TBLNAME::String
     - TABLE::String
     - TITLE_FIELD::String
+    - PREFIX::String
     - TITLE_FIELD2::String
     - TITLE_FIELD3::String
-    - PREFIX::String
 """
 Base.@kwdef mutable struct ModuleSettings <: OpenAPI.APIModel
     SERVICE_ID_OFFSET::Union{Nothing, Int64} = nothing
@@ -61,18 +61,18 @@ Base.@kwdef mutable struct ModuleSettings <: OpenAPI.APIModel
     TBLNAME::Union{Nothing, String} = nothing
     TABLE::Union{Nothing, String} = nothing
     TITLE_FIELD::Union{Nothing, String} = nothing
+    PREFIX::Union{Nothing, String} = nothing
     TITLE_FIELD2::Union{Nothing, String} = nothing
     TITLE_FIELD3::Union{Nothing, String} = nothing
-    PREFIX::Union{Nothing, String} = nothing
 
-    function ModuleSettings(SERVICE_ID_OFFSET, USE_REPEAT_INVOICE, USE_PACKAGES, BILLING_DAYS_OFFSET, IMGNAME, REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS, SUSPEND_DAYS, SUSPEND_WARNING_DAYS, TITLE, MENUNAME, EMAIL_FROM, TBLNAME, TABLE, TITLE_FIELD, TITLE_FIELD2, TITLE_FIELD3, PREFIX, )
-        o = new(SERVICE_ID_OFFSET, USE_REPEAT_INVOICE, USE_PACKAGES, BILLING_DAYS_OFFSET, IMGNAME, REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS, SUSPEND_DAYS, SUSPEND_WARNING_DAYS, TITLE, MENUNAME, EMAIL_FROM, TBLNAME, TABLE, TITLE_FIELD, TITLE_FIELD2, TITLE_FIELD3, PREFIX, )
+    function ModuleSettings(SERVICE_ID_OFFSET, USE_REPEAT_INVOICE, USE_PACKAGES, BILLING_DAYS_OFFSET, IMGNAME, REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS, SUSPEND_DAYS, SUSPEND_WARNING_DAYS, TITLE, MENUNAME, EMAIL_FROM, TBLNAME, TABLE, TITLE_FIELD, PREFIX, TITLE_FIELD2, TITLE_FIELD3, )
+        o = new(SERVICE_ID_OFFSET, USE_REPEAT_INVOICE, USE_PACKAGES, BILLING_DAYS_OFFSET, IMGNAME, REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS, SUSPEND_DAYS, SUSPEND_WARNING_DAYS, TITLE, MENUNAME, EMAIL_FROM, TBLNAME, TABLE, TITLE_FIELD, PREFIX, TITLE_FIELD2, TITLE_FIELD3, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type ModuleSettings
 
-const _property_types_ModuleSettings = Dict{Symbol,String}(Symbol("SERVICE_ID_OFFSET")=>"Int64", Symbol("USE_REPEAT_INVOICE")=>"Bool", Symbol("USE_PACKAGES")=>"Bool", Symbol("BILLING_DAYS_OFFSET")=>"Int64", Symbol("IMGNAME")=>"String", Symbol("REPEAT_BILLING_METHOD")=>"Int64", Symbol("DELETE_PENDING_DAYS")=>"Int64", Symbol("SUSPEND_DAYS")=>"Int64", Symbol("SUSPEND_WARNING_DAYS")=>"Int64", Symbol("TITLE")=>"String", Symbol("MENUNAME")=>"String", Symbol("EMAIL_FROM")=>"String", Symbol("TBLNAME")=>"String", Symbol("TABLE")=>"String", Symbol("TITLE_FIELD")=>"String", Symbol("TITLE_FIELD2")=>"String", Symbol("TITLE_FIELD3")=>"String", Symbol("PREFIX")=>"String", )
+const _property_types_ModuleSettings = Dict{Symbol,String}(Symbol("SERVICE_ID_OFFSET")=>"Int64", Symbol("USE_REPEAT_INVOICE")=>"Bool", Symbol("USE_PACKAGES")=>"Bool", Symbol("BILLING_DAYS_OFFSET")=>"Int64", Symbol("IMGNAME")=>"String", Symbol("REPEAT_BILLING_METHOD")=>"Int64", Symbol("DELETE_PENDING_DAYS")=>"Int64", Symbol("SUSPEND_DAYS")=>"Int64", Symbol("SUSPEND_WARNING_DAYS")=>"Int64", Symbol("TITLE")=>"String", Symbol("MENUNAME")=>"String", Symbol("EMAIL_FROM")=>"String", Symbol("TBLNAME")=>"String", Symbol("TABLE")=>"String", Symbol("TITLE_FIELD")=>"String", Symbol("PREFIX")=>"String", Symbol("TITLE_FIELD2")=>"String", Symbol("TITLE_FIELD3")=>"String", )
 OpenAPI.property_type(::Type{ ModuleSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ModuleSettings[name]))}
 
 function OpenAPI.check_required(o::ModuleSettings)
@@ -111,9 +111,9 @@ function OpenAPI.validate_properties(o::ModuleSettings)
     OpenAPI.validate_property(ModuleSettings, Symbol("TBLNAME"), o.TBLNAME)
     OpenAPI.validate_property(ModuleSettings, Symbol("TABLE"), o.TABLE)
     OpenAPI.validate_property(ModuleSettings, Symbol("TITLE_FIELD"), o.TITLE_FIELD)
+    OpenAPI.validate_property(ModuleSettings, Symbol("PREFIX"), o.PREFIX)
     OpenAPI.validate_property(ModuleSettings, Symbol("TITLE_FIELD2"), o.TITLE_FIELD2)
     OpenAPI.validate_property(ModuleSettings, Symbol("TITLE_FIELD3"), o.TITLE_FIELD3)
-    OpenAPI.validate_property(ModuleSettings, Symbol("PREFIX"), o.PREFIX)
 end
 
 function OpenAPI.validate_property(::Type{ ModuleSettings }, name::Symbol, val)

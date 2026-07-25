@@ -4,15 +4,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MailId** | **String** | The ID of the mail service. | 
-**MailUsername** | **String** | The username associated with the mail service. | [optional] 
 **MailType** | **String** | The type of mail service. | 
 **MailCurrency** | **String** | The currency of the mail service. | 
 **MailOrderDate** | **String** | The order date of the mail service. | 
 **MailCustid** | **String** | The customer ID associated with the mail service. | 
 **MailQuota** | **String** | The mail quota for the service. | 
-**MailIp** | **String** | The IP address associated with the mail service. | [optional] 
 **MailStatus** | **String** | The status of the mail service. | 
 **MailInvoice** | **String** | The invoice ID of the mail service. | 
+**MailUsername** | **String** | The username associated with the mail service. | [optional] 
+**MailIp** | **String** | The IP address associated with the mail service. | [optional] 
 **MailCoupon** | **String** | The coupon associated with the mail service. | [optional] 
 **MailExtra** | **String** | Additional information for the mail service. | [optional] 
 **MailServerStatus** | **String** | The server status of the mail service. | [optional] 
@@ -23,15 +23,15 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $MailServiceInfo = Initialize-InterserverApiMailServiceInfo  -MailId 43171 `
- -MailUsername  `
  -MailType 10880 `
  -MailCurrency USD `
  -MailOrderDate 2023-07-16T00:55:05.000Z `
  -MailCustid 771282 `
  -MailQuota 0 `
- -MailIp  `
  -MailStatus expired `
  -MailInvoice 20410322 `
+ -MailUsername  `
+ -MailIp  `
  -MailCoupon 0 `
  -MailExtra [] `
  -MailServerStatus  `

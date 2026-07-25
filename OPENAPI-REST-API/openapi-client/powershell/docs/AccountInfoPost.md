@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **String** | Your name. | 
-**Company** | **String** | Your company name. | [optional] 
 **Address** | **String** | Your address. | 
-**Address2** | **String** | Additional address information. | [optional] 
 **City** | **String** | Your city. | 
 **State** | **String** | Your state. | 
 **Zip** | **String** | Your ZIP code. | 
 **Country** | **String** | Your country. | 
 **Phone** | **String** | Your phone number. | 
+**Company** | **String** | Your company name. | [optional] 
+**Address2** | **String** | Additional address information. | [optional] 
 **Locale** | **String** | Your preferred locale. | [optional] 
 **EmailInvoices** | **String** | Your email for invoice notifications. | [optional] 
 **EmailAbuse** | **String** | Your email for abuse notifications. | [optional] 
@@ -26,14 +26,14 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $AccountInfoPost = Initialize-InterserverApiAccountInfoPost  -Name John Doe `
- -Company My Company `
  -Address 124 My St `
- -Address2 null `
  -City My Town `
  -State PA `
  -Zip 17522 `
  -Country US `
  -Phone 8675309 `
+ -Company My Company `
+ -Address2 null `
  -Locale null `
  -EmailInvoices null `
  -EmailAbuse null `

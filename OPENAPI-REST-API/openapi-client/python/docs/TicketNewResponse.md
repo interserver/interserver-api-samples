@@ -6,9 +6,9 @@ Response returned after creating a new support ticket.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ticket_id** | **int** |  | [optional] 
 **text** | **str** |  | 
 **success** | **bool** |  | 
+**ticket_id** | **int** |  | [optional] 
 
 ## Example
 

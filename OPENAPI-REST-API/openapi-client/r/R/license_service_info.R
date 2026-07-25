@@ -14,10 +14,10 @@
 #' @field license_custid Customer ID character
 #' @field license_ip License IP character
 #' @field license_status License status character
-#' @field license_hostname License hostname character [optional]
-#' @field license_key License key character [optional]
 #' @field license_invoice License invoice character
 #' @field license_coupon License coupon character
+#' @field license_hostname License hostname character [optional]
+#' @field license_key License key character [optional]
 #' @field license_extra Additional license information character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,10 +32,10 @@ LicenseServiceInfo <- R6::R6Class(
     `license_custid` = NULL,
     `license_ip` = NULL,
     `license_status` = NULL,
-    `license_hostname` = NULL,
-    `license_key` = NULL,
     `license_invoice` = NULL,
     `license_coupon` = NULL,
+    `license_hostname` = NULL,
+    `license_key` = NULL,
     `license_extra` = NULL,
 
     #' @description
@@ -188,14 +188,6 @@ LicenseServiceInfo <- R6::R6Class(
         LicenseServiceInfoObject[["license_status"]] <-
           self$`license_status`
       }
-      if (!is.null(self$`license_hostname`)) {
-        LicenseServiceInfoObject[["license_hostname"]] <-
-          self$`license_hostname`
-      }
-      if (!is.null(self$`license_key`)) {
-        LicenseServiceInfoObject[["license_key"]] <-
-          self$`license_key`
-      }
       if (!is.null(self$`license_invoice`)) {
         LicenseServiceInfoObject[["license_invoice"]] <-
           self$`license_invoice`
@@ -203,6 +195,14 @@ LicenseServiceInfo <- R6::R6Class(
       if (!is.null(self$`license_coupon`)) {
         LicenseServiceInfoObject[["license_coupon"]] <-
           self$`license_coupon`
+      }
+      if (!is.null(self$`license_hostname`)) {
+        LicenseServiceInfoObject[["license_hostname"]] <-
+          self$`license_hostname`
+      }
+      if (!is.null(self$`license_key`)) {
+        LicenseServiceInfoObject[["license_key"]] <-
+          self$`license_key`
       }
       if (!is.null(self$`license_extra`)) {
         LicenseServiceInfoObject[["license_extra"]] <-
@@ -239,17 +239,17 @@ LicenseServiceInfo <- R6::R6Class(
       if (!is.null(this_object$`license_status`)) {
         self$`license_status` <- this_object$`license_status`
       }
-      if (!is.null(this_object$`license_hostname`)) {
-        self$`license_hostname` <- this_object$`license_hostname`
-      }
-      if (!is.null(this_object$`license_key`)) {
-        self$`license_key` <- this_object$`license_key`
-      }
       if (!is.null(this_object$`license_invoice`)) {
         self$`license_invoice` <- this_object$`license_invoice`
       }
       if (!is.null(this_object$`license_coupon`)) {
         self$`license_coupon` <- this_object$`license_coupon`
+      }
+      if (!is.null(this_object$`license_hostname`)) {
+        self$`license_hostname` <- this_object$`license_hostname`
+      }
+      if (!is.null(this_object$`license_key`)) {
+        self$`license_key` <- this_object$`license_key`
       }
       if (!is.null(this_object$`license_extra`)) {
         self$`license_extra` <- this_object$`license_extra`
@@ -282,10 +282,10 @@ LicenseServiceInfo <- R6::R6Class(
       self$`license_custid` <- this_object$`license_custid`
       self$`license_ip` <- this_object$`license_ip`
       self$`license_status` <- this_object$`license_status`
-      self$`license_hostname` <- this_object$`license_hostname`
-      self$`license_key` <- this_object$`license_key`
       self$`license_invoice` <- this_object$`license_invoice`
       self$`license_coupon` <- this_object$`license_coupon`
+      self$`license_hostname` <- this_object$`license_hostname`
+      self$`license_key` <- this_object$`license_key`
       self$`license_extra` <- this_object$`license_extra`
       self
     },

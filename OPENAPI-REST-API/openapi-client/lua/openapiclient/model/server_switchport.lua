@@ -19,7 +19,7 @@ local function cast_server_switchport(t)
 	return setmetatable(t, server_switchport_mt)
 end
 
-local function new_server_switchport(switchport_id, switch_id, switch, port, blade, justport, graph_id, vlans, vlans6, asset_id)
+local function new_server_switchport(switchport_id, switch_id, switch, port, blade, justport, graph_id, asset_id, vlans, vlans6)
 	return cast_server_switchport({
 		["switchport_id"] = switchport_id;
 		["switch_id"] = switch_id;
@@ -28,9 +28,9 @@ local function new_server_switchport(switchport_id, switch_id, switch, port, bla
 		["blade"] = blade;
 		["justport"] = justport;
 		["graph_id"] = graph_id;
+		["asset_id"] = asset_id;
 		["vlans"] = vlans;
 		["vlans6"] = vlans6;
-		["asset_id"] = asset_id;
 	})
 end
 

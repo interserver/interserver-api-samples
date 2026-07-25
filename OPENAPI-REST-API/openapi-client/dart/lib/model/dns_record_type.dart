@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 /// Type of DNS Record
 enum DnsRecordType {
@@ -61,6 +61,7 @@ enum DnsRecordType {
   TXT._(r'TXT'),
   WKS._(r'WKS'),
   uRI._(r'URI⏎'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -169,6 +170,7 @@ class DnsRecordTypeTypeTransformer {
         case r'TXT': return DnsRecordType.TXT;
         case r'WKS': return DnsRecordType.WKS;
         case r'URI⏎': return DnsRecordType.uRI;
+        case r'unknown_default_open_api': return DnsRecordType.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

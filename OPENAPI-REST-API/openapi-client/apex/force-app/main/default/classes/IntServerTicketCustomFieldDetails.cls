@@ -19,7 +19,8 @@ public class IntServerTicketCustomFieldDetails implements OAS.MappedProperties {
      */
     public enum CustomerServerAccessEnum {
         Y,
-        N
+        N,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

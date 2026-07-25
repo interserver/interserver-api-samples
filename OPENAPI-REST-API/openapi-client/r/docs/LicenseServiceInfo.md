@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **license_custid** | **character** | Customer ID | 
 **license_ip** | **character** | License IP | 
 **license_status** | **character** | License status | 
-**license_hostname** | **character** | License hostname | [optional] 
-**license_key** | **character** | License key | [optional] 
 **license_invoice** | **character** | License invoice | 
 **license_coupon** | **character** | License coupon | 
+**license_hostname** | **character** | License hostname | [optional] 
+**license_key** | **character** | License key | [optional] 
 **license_extra** | **character** | Additional license information | [optional] 
 
 

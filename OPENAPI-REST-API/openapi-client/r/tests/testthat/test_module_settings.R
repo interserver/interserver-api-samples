@@ -110,6 +110,13 @@ test_that("TITLE_FIELD", {
   #expect_equal(model.instance$`TITLE_FIELD`, "EXPECTED_RESULT")
 })
 
+test_that("PREFIX", {
+  # tests for the property `PREFIX` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`PREFIX`, "EXPECTED_RESULT")
+})
+
 test_that("TITLE_FIELD2", {
   # tests for the property `TITLE_FIELD2` (character)
 
@@ -122,11 +129,4 @@ test_that("TITLE_FIELD3", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`TITLE_FIELD3`, "EXPECTED_RESULT")
-})
-
-test_that("PREFIX", {
-  # tests for the property `PREFIX` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`PREFIX`, "EXPECTED_RESULT")
 })

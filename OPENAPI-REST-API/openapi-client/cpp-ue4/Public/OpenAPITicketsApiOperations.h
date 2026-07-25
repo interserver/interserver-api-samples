@@ -171,6 +171,7 @@ public:
 		_365,
 		_1825,
 		All,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const PeriodEnum& EnumValue);
@@ -183,6 +184,7 @@ public:
 		Closed,
 		OnHold,
 		InProgress,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ViewEnum& EnumValue);

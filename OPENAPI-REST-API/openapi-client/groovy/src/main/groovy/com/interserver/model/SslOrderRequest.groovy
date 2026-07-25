@@ -21,7 +21,9 @@ class SslOrderRequest {
     
         GENERATED("generated"),
         
-        PROVIDED("provided")
+        PROVIDED("provided"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

@@ -44,8 +44,8 @@ class TicketPostDetailsInner(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['User', 'Staff']):
-            raise ValueError("must be one of enum values ('User', 'Staff')")
+        if value not in set(['User', 'Staff', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('User', 'Staff', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

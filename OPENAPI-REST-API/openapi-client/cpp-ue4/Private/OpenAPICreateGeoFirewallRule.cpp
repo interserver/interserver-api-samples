@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPICreateGeoFirewallRule::XdpActionEnum& Value
 		return TEXT("0");
 	case OpenAPICreateGeoFirewallRule::XdpActionEnum::_1:
 		return TEXT("1");
+	case OpenAPICreateGeoFirewallRule::XdpActionEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPICreateGeoFirewallRule::XdpActionEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPICreateGeoFirewallRule
 {
 	static TMap<FString, OpenAPICreateGeoFirewallRule::XdpActionEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPICreateGeoFirewallRule::XdpActionEnum::_0 },
-		{ TEXT("1"), OpenAPICreateGeoFirewallRule::XdpActionEnum::_1 }, };
+		{ TEXT("1"), OpenAPICreateGeoFirewallRule::XdpActionEnum::_1 },
+		{ TEXT("11184809"), OpenAPICreateGeoFirewallRule::XdpActionEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

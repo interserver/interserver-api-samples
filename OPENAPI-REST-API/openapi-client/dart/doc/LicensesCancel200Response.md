@@ -1,8 +1,8 @@
-# openapi.model.LicensesCancel200Response
+# interserver_api.model.LicensesCancel200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -36,6 +36,7 @@ public:
 	{
 		User,
 		Staff,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const CreatorEnum& EnumValue);

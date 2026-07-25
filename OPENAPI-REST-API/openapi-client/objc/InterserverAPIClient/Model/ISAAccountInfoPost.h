@@ -25,15 +25,9 @@
 /* Your name. 
  */
 @property(nonatomic) NSString* name;
-/* Your company name. [optional]
- */
-@property(nonatomic) NSString* company;
 /* Your address. 
  */
 @property(nonatomic) NSString* address;
-/* Additional address information. [optional]
- */
-@property(nonatomic) NSString* address2;
 /* Your city. 
  */
 @property(nonatomic) NSString* city;
@@ -49,6 +43,12 @@
 /* Your phone number. 
  */
 @property(nonatomic) NSString* phone;
+/* Your company name. [optional]
+ */
+@property(nonatomic) NSString* company;
+/* Additional address information. [optional]
+ */
+@property(nonatomic) NSString* address2;
 /* Your preferred locale. [optional]
  */
 @property(nonatomic) NSString* locale;

@@ -1,8 +1,8 @@
-# openapi.model.AffiliateBannerRow
+# interserver_api.model.AffiliateBannerRow
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

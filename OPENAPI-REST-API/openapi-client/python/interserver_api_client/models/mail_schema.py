@@ -39,11 +39,11 @@ class MailSchema(BaseModel):
     cust_currency: StrictStr = Field(description="The customer's currency.", alias="custCurrency", json_schema_extra={"examples": ["USD"]})
     cust_currency_symbol: StrictStr = Field(description="The currency symbol for the customer.", alias="custCurrencySymbol", json_schema_extra={"examples": ["$"]})
     package: StrictStr = Field(description="The package of the mail service.", json_schema_extra={"examples": ["MailBaby Mail"]})
-    service_extra: Optional[List[StrictStr]] = Field(default=None, description="Extra information for the mail service.", alias="serviceExtra", json_schema_extra={"examples": [[]]})
     extra_info_tables: MailSchemaExtraInfoTables = Field(alias="extraInfoTables")
     service_type: MailServiceType = Field(alias="serviceType")
     usage_count: StrictStr = Field(description="The usage count of the mail service.", json_schema_extra={"examples": ["0"]})
-    __properties: ClassVar[List[str]] = ["serviceInfo", "client_links", "billingDetails", "custCurrency", "custCurrencySymbol", "package", "serviceExtra", "extraInfoTables", "serviceType", "usage_count"]
+    service_extra: Optional[List[StrictStr]] = Field(default=None, description="Extra information for the mail service.", alias="serviceExtra", json_schema_extra={"examples": [[]]})
+    __properties: ClassVar[List[str]] = ["serviceInfo", "client_links", "billingDetails", "custCurrency", "custCurrencySymbol", "package", "extraInfoTables", "serviceType", "usage_count", "serviceExtra"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -121,10 +121,10 @@ class MailSchema(BaseModel):
             "custCurrency": obj.get("custCurrency"),
             "custCurrencySymbol": obj.get("custCurrencySymbol"),
             "package": obj.get("package"),
-            "serviceExtra": obj.get("serviceExtra"),
             "extraInfoTables": MailSchemaExtraInfoTables.from_dict(obj["extraInfoTables"]) if obj.get("extraInfoTables") is not None else None,
             "serviceType": MailServiceType.from_dict(obj["serviceType"]) if obj.get("serviceType") is not None else None,
-            "usage_count": obj.get("usage_count")
+            "usage_count": obj.get("usage_count"),
+            "serviceExtra": obj.get("serviceExtra")
         })
         return _obj
 

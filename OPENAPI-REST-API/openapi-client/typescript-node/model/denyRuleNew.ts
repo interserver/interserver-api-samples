@@ -58,6 +58,7 @@ export namespace DenyRuleNew {
         Domain = <any> 'domain',
         Email = <any> 'email',
         Startswith = <any> 'startswith',
-        Destination = <any> 'destination'
+        Destination = <any> 'destination',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

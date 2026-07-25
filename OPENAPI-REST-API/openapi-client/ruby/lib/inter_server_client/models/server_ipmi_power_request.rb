@@ -120,7 +120,7 @@ module InterServerClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @action.nil?
-      action_validator = EnumAttributeValidator.new('String', ["cycle", "reset", "on", "off", "soft"])
+      action_validator = EnumAttributeValidator.new('String', ["cycle", "reset", "on", "off", "soft", "unknown_default_open_api"])
       return false unless action_validator.valid?(@action)
       true
     end
@@ -128,7 +128,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["cycle", "reset", "on", "off", "soft"])
+      validator = EnumAttributeValidator.new('String', ["cycle", "reset", "on", "off", "soft", "unknown_default_open_api"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end

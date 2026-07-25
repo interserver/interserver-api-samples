@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **cust_currency** | **str** | The customer&#39;s currency. | 
 **cust_currency_symbol** | **str** | The currency symbol for the customer. | 
 **package** | **str** | The package of the mail service. | 
-**service_extra** | **List[str]** | Extra information for the mail service. | [optional] 
 **extra_info_tables** | [**MailSchemaExtraInfoTables**](MailSchemaExtraInfoTables.md) |  | 
 **service_type** | [**MailServiceType**](MailServiceType.md) |  | 
 **usage_count** | **str** | The usage count of the mail service. | 
+**service_extra** | **List[str]** | Extra information for the mail service. | [optional] 
 
 ## Example
 

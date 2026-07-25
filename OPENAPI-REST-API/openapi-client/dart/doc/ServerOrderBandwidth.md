@@ -1,8 +1,8 @@
-# openapi.model.ServerOrderBandwidth
+# interserver_api.model.ServerOrderBandwidth
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

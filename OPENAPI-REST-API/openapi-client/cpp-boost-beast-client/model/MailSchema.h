@@ -91,12 +91,6 @@ public:
     void setPackage(std::string value);
 
     /// <summary>
-    /// Extra information for the mail service.
-    /// </summary>
-    std::vector<std::string> getServiceExtra() const;
-    void setServiceExtra(std::vector<std::string> value);
-
-    /// <summary>
     /// 
     /// </summary>
     std::shared_ptr<MailSchema_extraInfoTables> getExtraInfoTables() const;
@@ -114,6 +108,12 @@ public:
     std::string getUsageCount() const;
     void setUsageCount(std::string value);
 
+    /// <summary>
+    /// Extra information for the mail service.
+    /// </summary>
+    std::vector<std::string> getServiceExtra() const;
+    void setServiceExtra(std::vector<std::string> value);
+
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -130,11 +130,11 @@ protected:
     std::string m_CustCurrency = "";
     std::string m_CustCurrencySymbol = "";
     std::string m_Package = "";
-    std::vector<std::string> m_ServiceExtra;
-    bool m_ServiceExtraIsSet = false;
     std::shared_ptr<MailSchema_extraInfoTables> m_ExtraInfoTables;
     std::shared_ptr<MailServiceType> m_ServiceType;
     std::string m_Usage_count = "";
+    std::vector<std::string> m_ServiceExtra;
+    bool m_ServiceExtraIsSet = false;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<MailSchema>>& data);

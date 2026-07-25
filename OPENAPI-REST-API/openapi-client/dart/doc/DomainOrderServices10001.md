@@ -1,8 +1,8 @@
-# openapi.model.DomainOrderServices10001
+# interserver_api.model.DomainOrderServices10001
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

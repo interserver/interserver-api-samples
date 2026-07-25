@@ -96,7 +96,7 @@ module InterserverApiClient
     @[JSON::Field(key: "business_category", emit_null: false)]
     property business_category : String?
 
-    validates(csr_type, String, true, enum: ["generated", "provided"])
+    validates(csr_type, String, true, enum: ["generated", "provided", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

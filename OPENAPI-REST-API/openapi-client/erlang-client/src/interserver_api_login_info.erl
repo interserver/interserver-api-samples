@@ -5,19 +5,19 @@
 -export_type([interserver_api_login_info/0]).
 
 -type interserver_api_login_info() ::
-    #{ 'logo' => binary(),
-       'captcha' := binary(),
-       'language' => binary(),
-       'counts' := interserver_api_login_service_counts:interserver_api_login_service_counts()
+    #{ 'captcha' := binary(),
+       'counts' := interserver_api_login_service_counts:interserver_api_login_service_counts(),
+       'logo' => binary(),
+       'language' => binary()
      }.
 
-encode(#{ 'logo' := Logo,
-          'captcha' := Captcha,
-          'language' := Language,
-          'counts' := Counts
+encode(#{ 'captcha' := Captcha,
+          'counts' := Counts,
+          'logo' := Logo,
+          'language' := Language
         }) ->
-    #{ 'logo' => Logo,
-       'captcha' => Captcha,
-       'language' => Language,
-       'counts' => Counts
+    #{ 'captcha' => Captcha,
+       'counts' => Counts,
+       'logo' => Logo,
+       'language' => Language
      }.

@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **TBLNAME** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **TABLE** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **TITLE_FIELD** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**PREFIX** | [**STRING_32**](STRING_32.md) |  | [default to null]
 **t_it_le__fi_el_d2** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **t_it_le__fi_el_d3** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**PREFIX** | [**STRING_32**](STRING_32.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

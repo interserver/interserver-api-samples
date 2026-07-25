@@ -8,15 +8,15 @@
 #' @description MailServiceInfo Class
 #' @format An \code{R6Class} generator object
 #' @field mail_id The ID of the mail service. character
-#' @field mail_username The username associated with the mail service. character [optional]
 #' @field mail_type The type of mail service. character
 #' @field mail_currency The currency of the mail service. character
 #' @field mail_order_date The order date of the mail service. character
 #' @field mail_custid The customer ID associated with the mail service. character
 #' @field mail_quota The mail quota for the service. character
-#' @field mail_ip The IP address associated with the mail service. character [optional]
 #' @field mail_status The status of the mail service. character
 #' @field mail_invoice The invoice ID of the mail service. character
+#' @field mail_username The username associated with the mail service. character [optional]
+#' @field mail_ip The IP address associated with the mail service. character [optional]
 #' @field mail_coupon The coupon associated with the mail service. character [optional]
 #' @field mail_extra Additional information for the mail service. character [optional]
 #' @field mail_server_status The server status of the mail service. character [optional]
@@ -28,15 +28,15 @@ MailServiceInfo <- R6::R6Class(
   "MailServiceInfo",
   public = list(
     `mail_id` = NULL,
-    `mail_username` = NULL,
     `mail_type` = NULL,
     `mail_currency` = NULL,
     `mail_order_date` = NULL,
     `mail_custid` = NULL,
     `mail_quota` = NULL,
-    `mail_ip` = NULL,
     `mail_status` = NULL,
     `mail_invoice` = NULL,
+    `mail_username` = NULL,
+    `mail_ip` = NULL,
     `mail_coupon` = NULL,
     `mail_extra` = NULL,
     `mail_server_status` = NULL,
@@ -182,10 +182,6 @@ MailServiceInfo <- R6::R6Class(
         MailServiceInfoObject[["mail_id"]] <-
           self$`mail_id`
       }
-      if (!is.null(self$`mail_username`)) {
-        MailServiceInfoObject[["mail_username"]] <-
-          self$`mail_username`
-      }
       if (!is.null(self$`mail_type`)) {
         MailServiceInfoObject[["mail_type"]] <-
           self$`mail_type`
@@ -206,10 +202,6 @@ MailServiceInfo <- R6::R6Class(
         MailServiceInfoObject[["mail_quota"]] <-
           self$`mail_quota`
       }
-      if (!is.null(self$`mail_ip`)) {
-        MailServiceInfoObject[["mail_ip"]] <-
-          self$`mail_ip`
-      }
       if (!is.null(self$`mail_status`)) {
         MailServiceInfoObject[["mail_status"]] <-
           self$`mail_status`
@@ -217,6 +209,14 @@ MailServiceInfo <- R6::R6Class(
       if (!is.null(self$`mail_invoice`)) {
         MailServiceInfoObject[["mail_invoice"]] <-
           self$`mail_invoice`
+      }
+      if (!is.null(self$`mail_username`)) {
+        MailServiceInfoObject[["mail_username"]] <-
+          self$`mail_username`
+      }
+      if (!is.null(self$`mail_ip`)) {
+        MailServiceInfoObject[["mail_ip"]] <-
+          self$`mail_ip`
       }
       if (!is.null(self$`mail_coupon`)) {
         MailServiceInfoObject[["mail_coupon"]] <-
@@ -247,9 +247,6 @@ MailServiceInfo <- R6::R6Class(
       if (!is.null(this_object$`mail_id`)) {
         self$`mail_id` <- this_object$`mail_id`
       }
-      if (!is.null(this_object$`mail_username`)) {
-        self$`mail_username` <- this_object$`mail_username`
-      }
       if (!is.null(this_object$`mail_type`)) {
         self$`mail_type` <- this_object$`mail_type`
       }
@@ -265,14 +262,17 @@ MailServiceInfo <- R6::R6Class(
       if (!is.null(this_object$`mail_quota`)) {
         self$`mail_quota` <- this_object$`mail_quota`
       }
-      if (!is.null(this_object$`mail_ip`)) {
-        self$`mail_ip` <- this_object$`mail_ip`
-      }
       if (!is.null(this_object$`mail_status`)) {
         self$`mail_status` <- this_object$`mail_status`
       }
       if (!is.null(this_object$`mail_invoice`)) {
         self$`mail_invoice` <- this_object$`mail_invoice`
+      }
+      if (!is.null(this_object$`mail_username`)) {
+        self$`mail_username` <- this_object$`mail_username`
+      }
+      if (!is.null(this_object$`mail_ip`)) {
+        self$`mail_ip` <- this_object$`mail_ip`
       }
       if (!is.null(this_object$`mail_coupon`)) {
         self$`mail_coupon` <- this_object$`mail_coupon`
@@ -308,15 +308,15 @@ MailServiceInfo <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`mail_id` <- this_object$`mail_id`
-      self$`mail_username` <- this_object$`mail_username`
       self$`mail_type` <- this_object$`mail_type`
       self$`mail_currency` <- this_object$`mail_currency`
       self$`mail_order_date` <- this_object$`mail_order_date`
       self$`mail_custid` <- this_object$`mail_custid`
       self$`mail_quota` <- this_object$`mail_quota`
-      self$`mail_ip` <- this_object$`mail_ip`
       self$`mail_status` <- this_object$`mail_status`
       self$`mail_invoice` <- this_object$`mail_invoice`
+      self$`mail_username` <- this_object$`mail_username`
+      self$`mail_ip` <- this_object$`mail_ip`
       self$`mail_coupon` <- this_object$`mail_coupon`
       self$`mail_extra` <- this_object$`mail_extra`
       self$`mail_server_status` <- this_object$`mail_server_status`

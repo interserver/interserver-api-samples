@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'MailServiceInfo' {
     Context 'MailServiceInfo' {
         It 'Initialize-MailServiceInfo' {
             # a simple test to create an object
-            #$NewObject = Initialize-MailServiceInfo -MailId "TEST_VALUE" -MailUsername "TEST_VALUE" -MailType "TEST_VALUE" -MailCurrency "TEST_VALUE" -MailOrderDate "TEST_VALUE" -MailCustid "TEST_VALUE" -MailQuota "TEST_VALUE" -MailIp "TEST_VALUE" -MailStatus "TEST_VALUE" -MailInvoice "TEST_VALUE" -MailCoupon "TEST_VALUE" -MailExtra "TEST_VALUE" -MailServerStatus "TEST_VALUE" -MailComment "TEST_VALUE"
+            #$NewObject = Initialize-MailServiceInfo -MailId "TEST_VALUE" -MailType "TEST_VALUE" -MailCurrency "TEST_VALUE" -MailOrderDate "TEST_VALUE" -MailCustid "TEST_VALUE" -MailQuota "TEST_VALUE" -MailStatus "TEST_VALUE" -MailInvoice "TEST_VALUE" -MailUsername "TEST_VALUE" -MailIp "TEST_VALUE" -MailCoupon "TEST_VALUE" -MailExtra "TEST_VALUE" -MailServerStatus "TEST_VALUE" -MailComment "TEST_VALUE"
             #$NewObject | Should -BeOfType MailServiceInfo
             #$NewObject.property | Should -Be 0
         }

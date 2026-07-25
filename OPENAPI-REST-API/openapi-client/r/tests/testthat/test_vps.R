@@ -54,13 +54,6 @@ test_that("package", {
   #expect_equal(model.instance$`package`, "EXPECTED_RESULT")
 })
 
-test_that("os_template", {
-  # tests for the property `os_template` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`os_template`, "EXPECTED_RESULT")
-})
-
 test_that("serviceExtra", {
   # tests for the property `serviceExtra` (VpsServiceExtra)
 
@@ -73,13 +66,6 @@ test_that("extraInfoTables", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`extraInfoTables`, "EXPECTED_RESULT")
-})
-
-test_that("cpu_graph_data", {
-  # tests for the property `cpu_graph_data` (AnyType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`cpu_graph_data`, "EXPECTED_RESULT")
 })
 
 test_that("module", {
@@ -136,4 +122,18 @@ test_that("serviceAddons", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`serviceAddons`, "EXPECTED_RESULT")
+})
+
+test_that("os_template", {
+  # tests for the property `os_template` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`os_template`, "EXPECTED_RESULT")
+})
+
+test_that("cpu_graph_data", {
+  # tests for the property `cpu_graph_data` (AnyType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`cpu_graph_data`, "EXPECTED_RESULT")
 })

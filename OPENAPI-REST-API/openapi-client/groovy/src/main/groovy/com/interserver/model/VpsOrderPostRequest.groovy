@@ -17,7 +17,9 @@ class VpsOrderPostRequest {
         
         HYPERV("hyperv"),
         
-        KVMSTORAGE("kvmstorage")
+        KVMSTORAGE("kvmstorage"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     
@@ -54,7 +56,9 @@ class VpsOrderPostRequest {
         
         CPANEL("cpanel"),
         
-        DA("da")
+        DA("da"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

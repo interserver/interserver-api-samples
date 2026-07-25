@@ -19,7 +19,7 @@ type ModuleSettings struct {
 	TBLNAME string `json:"TBLNAME"`
 	TABLE string `json:"TABLE"`
 	TITLE_FIELD string `json:"TITLE_FIELD"`
+	PREFIX string `json:"PREFIX"`
 	TITLEFIELD2 string `json:"TITLE_FIELD2,omitempty"`
 	TITLEFIELD3 string `json:"TITLE_FIELD3,omitempty"`
-	PREFIX string `json:"PREFIX"`
 }

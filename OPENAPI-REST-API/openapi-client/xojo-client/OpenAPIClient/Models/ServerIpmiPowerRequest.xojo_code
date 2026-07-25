@@ -24,7 +24,8 @@ Protected Class ServerIpmiPowerRequest
         On
         Off
         Escapedsoft
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -42,7 +43,10 @@ Protected Class ServerIpmiPowerRequest
 		      Return "off"
 		    Case ActionEnum.Escapedsoft
 		      Return "soft"
-		    
+		    Case ActionEnum.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

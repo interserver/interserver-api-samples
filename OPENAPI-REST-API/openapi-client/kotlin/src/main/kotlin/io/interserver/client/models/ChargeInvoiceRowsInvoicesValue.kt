@@ -86,12 +86,13 @@ data class ChargeInvoiceRowsInvoicesValue (
     /**
      * 
      *
-     * Values: _0,_1
+     * Values: _0,_1,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class InvoicesPaid(val value: java.math.BigDecimal) {
         @Json(name = "0") _0("0"),
-        @Json(name = "1") _1("1");
+        @Json(name = "1") _1("1"),
+        @Json(name = "11184809") unknownDefaultOpenApi("11184809");
     }
 
 }

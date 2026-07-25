@@ -61,10 +61,10 @@ module InterserverApiClient
     property comment : String? = ""
 
     validates(slices, Int32, false, maximum: 32, minimum: 1)
-    validates(vps_platform, String, false, enum: ["kvm", "hyperv", "kvmstorage"])
+    validates(vps_platform, String, false, enum: ["kvm", "hyperv", "kvmstorage", "unknown_default_open_api"])
     validates(period, Int32, false, maximum: 12, minimum: 1)
     validates(location, Int32, false, maximum: 3, minimum: 1)
-    validates(controlpanel, String, true, enum: ["none", "cpanel", "da"])
+    validates(controlpanel, String, true, enum: ["none", "cpanel", "da", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

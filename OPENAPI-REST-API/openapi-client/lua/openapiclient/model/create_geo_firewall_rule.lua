@@ -19,12 +19,12 @@ local function cast_create_geo_firewall_rule(t)
 	return setmetatable(t, create_geo_firewall_rule_mt)
 end
 
-local function new_create_geo_firewall_rule(destination_port, country_code, asn, xdp_action)
+local function new_create_geo_firewall_rule(xdp_action, destination_port, country_code, asn)
 	return cast_create_geo_firewall_rule({
+		["xdp_action"] = xdp_action;
 		["destination_port"] = destination_port;
 		["country_code"] = country_code;
 		["asn"] = asn;
-		["xdp_action"] = xdp_action;
 	})
 end
 

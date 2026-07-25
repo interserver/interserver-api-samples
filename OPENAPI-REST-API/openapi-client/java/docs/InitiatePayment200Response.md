@@ -23,6 +23,7 @@
 | redirect | &quot;redirect&quot; |
 | submit | &quot;submit&quot; |
 | single | &quot;single&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

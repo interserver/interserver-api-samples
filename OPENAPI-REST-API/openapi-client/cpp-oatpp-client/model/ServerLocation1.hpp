@@ -39,12 +39,12 @@ class ServerLocation1 : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, location_name);
 
-  DTO_FIELD(oatpp::String, location_description);
-  DTO_FIELD(oatpp::Boolean, location_descriptionIsSet);
   DTO_FIELD(oatpp::String, location_lat);
 
   DTO_FIELD(oatpp::String, location_long);
 
+  DTO_FIELD(oatpp::String, location_description);
+  DTO_FIELD(oatpp::Boolean, location_descriptionIsSet);
   DTO_FIELD(oatpp::Int32, location_ipmi_group);
   DTO_FIELD(oatpp::Boolean, location_ipmi_groupIsSet);
 

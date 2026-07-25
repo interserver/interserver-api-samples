@@ -1,8 +1,8 @@
-# openapi.model.WebsitesOrderPackages
+# interserver_api.model.WebsitesOrderPackages
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

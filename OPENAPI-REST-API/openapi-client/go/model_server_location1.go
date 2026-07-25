@@ -23,9 +23,9 @@ var _ MappedNullable = &ServerLocation1{}
 type ServerLocation1 struct {
 	LocationId int32 `json:"location_id"`
 	LocationName string `json:"location_name"`
-	LocationDescription *string `json:"location_description,omitempty"`
 	LocationLat string `json:"location_lat"`
 	LocationLong string `json:"location_long"`
+	LocationDescription *string `json:"location_description,omitempty"`
 	LocationIpmiGroup *int32 `json:"location_ipmi_group,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -101,38 +101,6 @@ func (o *ServerLocation1) SetLocationName(v string) {
 	o.LocationName = v
 }
 
-// GetLocationDescription returns the LocationDescription field value if set, zero value otherwise.
-func (o *ServerLocation1) GetLocationDescription() string {
-	if o == nil || IsNil(o.LocationDescription) {
-		var ret string
-		return ret
-	}
-	return *o.LocationDescription
-}
-
-// GetLocationDescriptionOk returns a tuple with the LocationDescription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerLocation1) GetLocationDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.LocationDescription) {
-		return nil, false
-	}
-	return o.LocationDescription, true
-}
-
-// HasLocationDescription returns a boolean if a field has been set.
-func (o *ServerLocation1) HasLocationDescription() bool {
-	if o != nil && !IsNil(o.LocationDescription) {
-		return true
-	}
-
-	return false
-}
-
-// SetLocationDescription gets a reference to the given string and assigns it to the LocationDescription field.
-func (o *ServerLocation1) SetLocationDescription(v string) {
-	o.LocationDescription = &v
-}
-
 // GetLocationLat returns the LocationLat field value
 func (o *ServerLocation1) GetLocationLat() string {
 	if o == nil {
@@ -181,6 +149,38 @@ func (o *ServerLocation1) SetLocationLong(v string) {
 	o.LocationLong = v
 }
 
+// GetLocationDescription returns the LocationDescription field value if set, zero value otherwise.
+func (o *ServerLocation1) GetLocationDescription() string {
+	if o == nil || IsNil(o.LocationDescription) {
+		var ret string
+		return ret
+	}
+	return *o.LocationDescription
+}
+
+// GetLocationDescriptionOk returns a tuple with the LocationDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerLocation1) GetLocationDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.LocationDescription) {
+		return nil, false
+	}
+	return o.LocationDescription, true
+}
+
+// HasLocationDescription returns a boolean if a field has been set.
+func (o *ServerLocation1) HasLocationDescription() bool {
+	if o != nil && !IsNil(o.LocationDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocationDescription gets a reference to the given string and assigns it to the LocationDescription field.
+func (o *ServerLocation1) SetLocationDescription(v string) {
+	o.LocationDescription = &v
+}
+
 // GetLocationIpmiGroup returns the LocationIpmiGroup field value if set, zero value otherwise.
 func (o *ServerLocation1) GetLocationIpmiGroup() int32 {
 	if o == nil || IsNil(o.LocationIpmiGroup) {
@@ -225,11 +225,11 @@ func (o ServerLocation1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["location_id"] = o.LocationId
 	toSerialize["location_name"] = o.LocationName
+	toSerialize["location_lat"] = o.LocationLat
+	toSerialize["location_long"] = o.LocationLong
 	if !IsNil(o.LocationDescription) {
 		toSerialize["location_description"] = o.LocationDescription
 	}
-	toSerialize["location_lat"] = o.LocationLat
-	toSerialize["location_long"] = o.LocationLong
 	if !IsNil(o.LocationIpmiGroup) {
 		toSerialize["location_ipmi_group"] = o.LocationIpmiGroup
 	}
@@ -281,9 +281,9 @@ func (o *ServerLocation1) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "location_id")
 		delete(additionalProperties, "location_name")
-		delete(additionalProperties, "location_description")
 		delete(additionalProperties, "location_lat")
 		delete(additionalProperties, "location_long")
+		delete(additionalProperties, "location_description")
 		delete(additionalProperties, "location_ipmi_group")
 		o.AdditionalProperties = additionalProperties
 	}

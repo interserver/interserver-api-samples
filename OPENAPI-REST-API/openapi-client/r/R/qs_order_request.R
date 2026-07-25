@@ -9,8 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field server QuickServer plan/server id from getNewQs. integer
 #' @field password Root password for the QuickServer. character
-#' @field os OS template file name from getNewQs (falls back to a default if unrecognized). character [optional]
 #' @field tos Terms-of-service acceptance. Must be true to place the order. character
+#' @field os OS template file name from getNewQs (falls back to a default if unrecognized). character [optional]
 #' @field comment Free-form note saved on the service row. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,8 +20,8 @@ QsOrderRequest <- R6::R6Class(
   public = list(
     `server` = NULL,
     `password` = NULL,
-    `os` = NULL,
     `tos` = NULL,
+    `os` = NULL,
     `comment` = NULL,
 
     #' @description
@@ -105,13 +105,13 @@ QsOrderRequest <- R6::R6Class(
         QsOrderRequestObject[["password"]] <-
           self$`password`
       }
-      if (!is.null(self$`os`)) {
-        QsOrderRequestObject[["os"]] <-
-          self$`os`
-      }
       if (!is.null(self$`tos`)) {
         QsOrderRequestObject[["tos"]] <-
           self$`tos`
+      }
+      if (!is.null(self$`os`)) {
+        QsOrderRequestObject[["os"]] <-
+          self$`os`
       }
       if (!is.null(self$`comment`)) {
         QsOrderRequestObject[["comment"]] <-
@@ -133,11 +133,11 @@ QsOrderRequest <- R6::R6Class(
       if (!is.null(this_object$`password`)) {
         self$`password` <- this_object$`password`
       }
-      if (!is.null(this_object$`os`)) {
-        self$`os` <- this_object$`os`
-      }
       if (!is.null(this_object$`tos`)) {
         self$`tos` <- this_object$`tos`
+      }
+      if (!is.null(this_object$`os`)) {
+        self$`os` <- this_object$`os`
       }
       if (!is.null(this_object$`comment`)) {
         self$`comment` <- this_object$`comment`
@@ -165,8 +165,8 @@ QsOrderRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`server` <- this_object$`server`
       self$`password` <- this_object$`password`
-      self$`os` <- this_object$`os`
       self$`tos` <- this_object$`tos`
+      self$`os` <- this_object$`os`
       self$`comment` <- this_object$`comment`
       self
     },

@@ -424,7 +424,7 @@ module InterServerClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingApi.get_affiliate_download ...'
       end
-      allowable_values = ["csv", "xls", "xlsx", "pdf"]
+      allowable_values = ["csv", "xls", "xlsx", "pdf", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && opts[:'ex'] && !allowable_values.include?(opts[:'ex'])
         fail ArgumentError, "invalid value for \"ex\", must be one of #{allowable_values}"
       end
@@ -1088,7 +1088,7 @@ module InterServerClient
         fail ArgumentError, "Missing the required parameter 'method' when calling BillingApi.initiate_payment"
       end
       # verify enum value
-      allowable_values = ["cc", "paypal", "prepay", "payssion", "payu", "ccavenue", "cashfree", "coinbase", "btcpay"]
+      allowable_values = ["cc", "paypal", "prepay", "payssion", "payu", "ccavenue", "cashfree", "coinbase", "btcpay", "unknown_default_open_api"]
       if @api_client.config.client_side_validation && !allowable_values.include?(method)
         fail ArgumentError, "invalid value for \"method\", must be one of #{allowable_values}"
       end

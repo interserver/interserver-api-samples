@@ -9,9 +9,9 @@
 #' @format An \code{R6Class} generator object
 #' @field location_id  integer
 #' @field location_name  character
-#' @field location_description  character [optional]
 #' @field location_lat  character
 #' @field location_long  character
+#' @field location_description  character [optional]
 #' @field location_ipmi_group  integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,9 +21,9 @@ ServerLocation1 <- R6::R6Class(
   public = list(
     `location_id` = NULL,
     `location_name` = NULL,
-    `location_description` = NULL,
     `location_lat` = NULL,
     `location_long` = NULL,
+    `location_description` = NULL,
     `location_ipmi_group` = NULL,
 
     #' @description
@@ -114,10 +114,6 @@ ServerLocation1 <- R6::R6Class(
         ServerLocation1Object[["location_name"]] <-
           self$`location_name`
       }
-      if (!is.null(self$`location_description`)) {
-        ServerLocation1Object[["location_description"]] <-
-          self$`location_description`
-      }
       if (!is.null(self$`location_lat`)) {
         ServerLocation1Object[["location_lat"]] <-
           self$`location_lat`
@@ -125,6 +121,10 @@ ServerLocation1 <- R6::R6Class(
       if (!is.null(self$`location_long`)) {
         ServerLocation1Object[["location_long"]] <-
           self$`location_long`
+      }
+      if (!is.null(self$`location_description`)) {
+        ServerLocation1Object[["location_description"]] <-
+          self$`location_description`
       }
       if (!is.null(self$`location_ipmi_group`)) {
         ServerLocation1Object[["location_ipmi_group"]] <-
@@ -146,14 +146,14 @@ ServerLocation1 <- R6::R6Class(
       if (!is.null(this_object$`location_name`)) {
         self$`location_name` <- this_object$`location_name`
       }
-      if (!is.null(this_object$`location_description`)) {
-        self$`location_description` <- this_object$`location_description`
-      }
       if (!is.null(this_object$`location_lat`)) {
         self$`location_lat` <- this_object$`location_lat`
       }
       if (!is.null(this_object$`location_long`)) {
         self$`location_long` <- this_object$`location_long`
+      }
+      if (!is.null(this_object$`location_description`)) {
+        self$`location_description` <- this_object$`location_description`
       }
       if (!is.null(this_object$`location_ipmi_group`)) {
         self$`location_ipmi_group` <- this_object$`location_ipmi_group`
@@ -181,9 +181,9 @@ ServerLocation1 <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`location_id` <- this_object$`location_id`
       self$`location_name` <- this_object$`location_name`
-      self$`location_description` <- this_object$`location_description`
       self$`location_lat` <- this_object$`location_lat`
       self$`location_long` <- this_object$`location_long`
+      self$`location_description` <- this_object$`location_description`
       self$`location_ipmi_group` <- this_object$`location_ipmi_group`
       self
     },

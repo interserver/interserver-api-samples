@@ -16,13 +16,6 @@ Please update as you see appropriate
 describe("deny_rule_record", function()
   local openapiclient_deny_rule_record = require "openapiclient.model.deny_rule_record"
 
-  -- unit tests for the property 'user'
-  describe("property user test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'type'
   describe("property type test", function()
     it("should work", function()
@@ -46,6 +39,13 @@ describe("deny_rule_record", function()
 
   -- unit tests for the property 'created'
   describe("property created test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'user'
+  describe("property user test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

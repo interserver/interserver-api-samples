@@ -4,9 +4,9 @@ package client
 
 // CreateFirewallRule - Create firewall rule for your ip
 type CreateFirewallRule struct {
+	ProtocolId int32 `json:"protocol_id"`
+	XdpAction int32 `json:"xdp_action"`
 	DestinationPort int32 `json:"destination_port,omitempty"`
 	SourceIp string `json:"source_ip,omitempty"`
 	SourcePort int32 `json:"source_port,omitempty"`
-	ProtocolId int32 `json:"protocol_id"`
-	XdpAction int32 `json:"xdp_action"`
 }

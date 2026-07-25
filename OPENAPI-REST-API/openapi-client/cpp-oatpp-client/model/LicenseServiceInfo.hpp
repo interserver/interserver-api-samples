@@ -49,14 +49,14 @@ class LicenseServiceInfo : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, license_status);
 
-  DTO_FIELD(oatpp::String, license_hostname);
-  DTO_FIELD(oatpp::Boolean, license_hostnameIsSet);
-  DTO_FIELD(oatpp::String, license_key);
-  DTO_FIELD(oatpp::Boolean, license_keyIsSet);
   DTO_FIELD(oatpp::String, license_invoice);
 
   DTO_FIELD(oatpp::String, license_coupon);
 
+  DTO_FIELD(oatpp::String, license_hostname);
+  DTO_FIELD(oatpp::Boolean, license_hostnameIsSet);
+  DTO_FIELD(oatpp::String, license_key);
+  DTO_FIELD(oatpp::Boolean, license_keyIsSet);
   DTO_FIELD(oatpp::String, license_extra);
   DTO_FIELD(oatpp::Boolean, license_extraIsSet);
 

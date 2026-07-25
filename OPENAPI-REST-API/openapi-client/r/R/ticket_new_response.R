@@ -7,18 +7,18 @@
 #' @title TicketNewResponse
 #' @description TicketNewResponse Class
 #' @format An \code{R6Class} generator object
-#' @field ticket_id  integer [optional]
 #' @field text  character
 #' @field success  character
+#' @field ticket_id  integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TicketNewResponse <- R6::R6Class(
   "TicketNewResponse",
   public = list(
-    `ticket_id` = NULL,
     `text` = NULL,
     `success` = NULL,
+    `ticket_id` = NULL,
 
     #' @description
     #' Initialize a new TicketNewResponse class.
@@ -79,10 +79,6 @@ TicketNewResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TicketNewResponseObject <- list()
-      if (!is.null(self$`ticket_id`)) {
-        TicketNewResponseObject[["ticket_id"]] <-
-          self$`ticket_id`
-      }
       if (!is.null(self$`text`)) {
         TicketNewResponseObject[["text"]] <-
           self$`text`
@@ -90,6 +86,10 @@ TicketNewResponse <- R6::R6Class(
       if (!is.null(self$`success`)) {
         TicketNewResponseObject[["success"]] <-
           self$`success`
+      }
+      if (!is.null(self$`ticket_id`)) {
+        TicketNewResponseObject[["ticket_id"]] <-
+          self$`ticket_id`
       }
       return(TicketNewResponseObject)
     },
@@ -101,14 +101,14 @@ TicketNewResponse <- R6::R6Class(
     #' @return the instance of TicketNewResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`ticket_id`)) {
-        self$`ticket_id` <- this_object$`ticket_id`
-      }
       if (!is.null(this_object$`text`)) {
         self$`text` <- this_object$`text`
       }
       if (!is.null(this_object$`success`)) {
         self$`success` <- this_object$`success`
+      }
+      if (!is.null(this_object$`ticket_id`)) {
+        self$`ticket_id` <- this_object$`ticket_id`
       }
       self
     },
@@ -131,9 +131,9 @@ TicketNewResponse <- R6::R6Class(
     #' @return the instance of TicketNewResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`ticket_id` <- this_object$`ticket_id`
       self$`text` <- this_object$`text`
       self$`success` <- this_object$`success`
+      self$`ticket_id` <- this_object$`ticket_id`
       self
     },
 

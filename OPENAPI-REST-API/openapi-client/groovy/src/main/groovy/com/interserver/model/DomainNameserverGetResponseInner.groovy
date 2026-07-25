@@ -15,7 +15,9 @@ class DomainNameserverGetResponseInner {
     
         _0("0"),
         
-        _1("1")
+        _1("1"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

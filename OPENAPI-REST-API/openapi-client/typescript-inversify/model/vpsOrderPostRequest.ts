@@ -61,16 +61,18 @@ export interface VpsOrderPostRequest {
     comment?: string;
 }
 export namespace VpsOrderPostRequest {
-    export type VpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage';
+    export type VpsPlatformEnum = 'kvm' | 'hyperv' | 'kvmstorage' | '11184809';
     export const VpsPlatformEnum = {
         Kvm: 'kvm' as VpsPlatformEnum,
         Hyperv: 'hyperv' as VpsPlatformEnum,
-        Kvmstorage: 'kvmstorage' as VpsPlatformEnum
+        Kvmstorage: 'kvmstorage' as VpsPlatformEnum,
+        UnknownDefaultOpenApi: '11184809' as VpsPlatformEnum
     }
-    export type ControlpanelEnum = 'none' | 'cpanel' | 'da';
+    export type ControlpanelEnum = 'none' | 'cpanel' | 'da' | '11184809';
     export const ControlpanelEnum = {
         None: 'none' as ControlpanelEnum,
         Cpanel: 'cpanel' as ControlpanelEnum,
-        Da: 'da' as ControlpanelEnum
+        Da: 'da' as ControlpanelEnum,
+        UnknownDefaultOpenApi: '11184809' as ControlpanelEnum
     }
 }

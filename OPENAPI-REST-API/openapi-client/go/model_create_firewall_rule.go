@@ -21,14 +21,14 @@ var _ MappedNullable = &CreateFirewallRule{}
 
 // CreateFirewallRule Create firewall rule for your ip
 type CreateFirewallRule struct {
-	DestinationPort *int32 `json:"destination_port,omitempty"`
-	// Source IP address to match. Use '0.0.0.0' to match any source.
-	SourceIp *string `json:"source_ip,omitempty"`
-	SourcePort *int32 `json:"source_port,omitempty"`
 	// 1 = TCP, 2 = UDP
 	ProtocolId int32 `json:"protocol_id"`
 	// 1 = Block,  0 = Whitelist
 	XdpAction int32 `json:"xdp_action"`
+	DestinationPort *int32 `json:"destination_port,omitempty"`
+	// Source IP address to match. Use '0.0.0.0' to match any source.
+	SourceIp *string `json:"source_ip,omitempty"`
+	SourcePort *int32 `json:"source_port,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,14 +40,14 @@ type _CreateFirewallRule CreateFirewallRule
 // will change when the set of required properties is changed
 func NewCreateFirewallRule(protocolId int32, xdpAction int32) *CreateFirewallRule {
 	this := CreateFirewallRule{}
+	this.ProtocolId = protocolId
+	this.XdpAction = xdpAction
 	var destinationPort int32 = 80
 	this.DestinationPort = &destinationPort
 	var sourceIp string = "0.0.0.0"
 	this.SourceIp = &sourceIp
 	var sourcePort int32 = 0
 	this.SourcePort = &sourcePort
-	this.ProtocolId = protocolId
-	this.XdpAction = xdpAction
 	return &this
 }
 
@@ -63,6 +63,54 @@ func NewCreateFirewallRuleWithDefaults() *CreateFirewallRule {
 	var sourcePort int32 = 0
 	this.SourcePort = &sourcePort
 	return &this
+}
+
+// GetProtocolId returns the ProtocolId field value
+func (o *CreateFirewallRule) GetProtocolId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ProtocolId
+}
+
+// GetProtocolIdOk returns a tuple with the ProtocolId field value
+// and a boolean to check if the value has been set.
+func (o *CreateFirewallRule) GetProtocolIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProtocolId, true
+}
+
+// SetProtocolId sets field value
+func (o *CreateFirewallRule) SetProtocolId(v int32) {
+	o.ProtocolId = v
+}
+
+// GetXdpAction returns the XdpAction field value
+func (o *CreateFirewallRule) GetXdpAction() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.XdpAction
+}
+
+// GetXdpActionOk returns a tuple with the XdpAction field value
+// and a boolean to check if the value has been set.
+func (o *CreateFirewallRule) GetXdpActionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.XdpAction, true
+}
+
+// SetXdpAction sets field value
+func (o *CreateFirewallRule) SetXdpAction(v int32) {
+	o.XdpAction = v
 }
 
 // GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
@@ -161,54 +209,6 @@ func (o *CreateFirewallRule) SetSourcePort(v int32) {
 	o.SourcePort = &v
 }
 
-// GetProtocolId returns the ProtocolId field value
-func (o *CreateFirewallRule) GetProtocolId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ProtocolId
-}
-
-// GetProtocolIdOk returns a tuple with the ProtocolId field value
-// and a boolean to check if the value has been set.
-func (o *CreateFirewallRule) GetProtocolIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ProtocolId, true
-}
-
-// SetProtocolId sets field value
-func (o *CreateFirewallRule) SetProtocolId(v int32) {
-	o.ProtocolId = v
-}
-
-// GetXdpAction returns the XdpAction field value
-func (o *CreateFirewallRule) GetXdpAction() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.XdpAction
-}
-
-// GetXdpActionOk returns a tuple with the XdpAction field value
-// and a boolean to check if the value has been set.
-func (o *CreateFirewallRule) GetXdpActionOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.XdpAction, true
-}
-
-// SetXdpAction sets field value
-func (o *CreateFirewallRule) SetXdpAction(v int32) {
-	o.XdpAction = v
-}
-
 func (o CreateFirewallRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -219,6 +219,8 @@ func (o CreateFirewallRule) MarshalJSON() ([]byte, error) {
 
 func (o CreateFirewallRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["protocol_id"] = o.ProtocolId
+	toSerialize["xdp_action"] = o.XdpAction
 	if !IsNil(o.DestinationPort) {
 		toSerialize["destination_port"] = o.DestinationPort
 	}
@@ -228,8 +230,6 @@ func (o CreateFirewallRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourcePort) {
 		toSerialize["source_port"] = o.SourcePort
 	}
-	toSerialize["protocol_id"] = o.ProtocolId
-	toSerialize["xdp_action"] = o.XdpAction
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -274,11 +274,11 @@ func (o *CreateFirewallRule) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "protocol_id")
+		delete(additionalProperties, "xdp_action")
 		delete(additionalProperties, "destination_port")
 		delete(additionalProperties, "source_ip")
 		delete(additionalProperties, "source_port")
-		delete(additionalProperties, "protocol_id")
-		delete(additionalProperties, "xdp_action")
 		o.AdditionalProperties = additionalProperties
 	}
 

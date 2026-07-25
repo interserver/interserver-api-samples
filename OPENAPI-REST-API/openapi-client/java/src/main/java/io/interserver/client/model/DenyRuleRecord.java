@@ -64,7 +64,9 @@ public class DenyRuleRecord implements Serializable {
     
     startswith("startswith"),
     
-    destination("destination");
+    destination("destination"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -87,7 +89,7 @@ public class DenyRuleRecord implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {

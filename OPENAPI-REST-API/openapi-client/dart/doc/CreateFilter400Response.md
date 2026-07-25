@@ -1,8 +1,8 @@
-# openapi.model.CreateFilter400Response
+# interserver_api.model.CreateFilter400Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

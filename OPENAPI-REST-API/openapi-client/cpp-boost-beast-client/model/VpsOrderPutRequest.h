@@ -68,12 +68,6 @@ public:
     void setVpsPlatform(std::string value);
 
     /// <summary>
-    /// Control Panel
-    /// </summary>
-    std::string getControlpanel() const;
-    void setControlpanel(std::string value);
-
-    /// <summary>
     /// Billing Period or Frequency
     /// </summary>
     int32_t getPeriod() const;
@@ -98,16 +92,22 @@ public:
     void setHostname(std::string value);
 
     /// <summary>
-    /// Coupon
-    /// </summary>
-    std::string getCoupon() const;
-    void setCoupon(std::string value);
-
-    /// <summary>
     /// Root password to assign to the VVPS
     /// </summary>
     std::string getRootpass() const;
     void setRootpass(std::string value);
+
+    /// <summary>
+    /// Control Panel
+    /// </summary>
+    std::string getControlpanel() const;
+    void setControlpanel(std::string value);
+
+    /// <summary>
+    /// Coupon
+    /// </summary>
+    std::string getCoupon() const;
+    void setCoupon(std::string value);
 
     /// <summary>
     /// Order comments or notes
@@ -128,15 +128,15 @@ protected:
     std::string m_OsDistro = "";
     int32_t m_Slices = 1;
     std::string m_VpsPlatform = "";
-    std::string m_Controlpanel = "";
-    bool m_ControlpanelIsSet = false;
     int32_t m_Period = 1;
     int32_t m_Location = 1;
     std::string m_OsVersion = "";
     std::string m_Hostname = "";
+    std::string m_Rootpass = "";
+    std::string m_Controlpanel = "";
+    bool m_ControlpanelIsSet = false;
     std::string m_Coupon = "";
     bool m_CouponIsSet = false;
-    std::string m_Rootpass = "";
     std::string m_Comment = "";
     bool m_CommentIsSet = false;
 };

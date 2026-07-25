@@ -112,11 +112,6 @@ public:
     void unsetPackage();
     void setPackage(const utility::string_t& value);
 
-    utility::string_t getOsTemplate() const;
-    bool osTemplateIsSet() const;
-    void unsetOs_template();
-    void setOsTemplate(const utility::string_t& value);
-
     std::shared_ptr<VpsServiceExtra> getServiceExtra() const;
     bool serviceExtraIsSet() const;
     void unsetServiceExtra();
@@ -126,11 +121,6 @@ public:
     bool extraInfoTablesIsSet() const;
     void unsetExtraInfoTables();
     void setExtraInfoTables(const std::shared_ptr<VpsExtraInfoTables>& value);
-
-    std::shared_ptr<AnyType> getCpuGraphData() const;
-    bool cpuGraphDataIsSet() const;
-    void unsetCpu_graph_data();
-    void setCpuGraphData(const std::shared_ptr<AnyType>& value);
 
     utility::string_t getModule() const;
     bool moduleIsSet() const;
@@ -172,6 +162,16 @@ public:
     void unsetServiceAddons();
     void setServiceAddons(const std::shared_ptr<VpsServiceAddons>& value);
 
+    utility::string_t getOsTemplate() const;
+    bool osTemplateIsSet() const;
+    void unsetOs_template();
+    void setOsTemplate(const utility::string_t& value);
+
+    std::shared_ptr<AnyType> getCpuGraphData() const;
+    bool cpuGraphDataIsSet() const;
+    void unsetCpu_graph_data();
+    void setCpuGraphData(const std::shared_ptr<AnyType>& value);
+
 
 protected:
     std::shared_ptr<VpsServiceInfo> m_ServiceInfo;
@@ -195,16 +195,11 @@ protected:
     utility::string_t m_Package;
     bool m_PackageIsSet;
 
-    utility::string_t m_Os_template;
-    bool m_Os_templateIsSet;
-
     std::shared_ptr<VpsServiceExtra> m_ServiceExtra;
     bool m_ServiceExtraIsSet;
 
     std::shared_ptr<VpsExtraInfoTables> m_ExtraInfoTables;
     bool m_ExtraInfoTablesIsSet;
-
-    boost::optional<std::shared_ptr<AnyType>> m_Cpu_graph_data;
 
     utility::string_t m_Module;
     bool m_ModuleIsSet;
@@ -229,6 +224,11 @@ protected:
 
     std::shared_ptr<VpsServiceAddons> m_ServiceAddons;
     bool m_ServiceAddonsIsSet;
+
+    utility::string_t m_Os_template;
+    bool m_Os_templateIsSet;
+
+    boost::optional<std::shared_ptr<AnyType>> m_Cpu_graph_data;
 
 };
 

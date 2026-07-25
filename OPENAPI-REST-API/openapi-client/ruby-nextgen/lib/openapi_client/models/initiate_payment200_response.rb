@@ -16,7 +16,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'type',
         required: false,
-        enum: ['redirect', 'submit', 'single']
+        enum: ['redirect', 'submit', 'single', 'unknown_default_open_api']
 
       attribute :redirect,
         type: 'String',

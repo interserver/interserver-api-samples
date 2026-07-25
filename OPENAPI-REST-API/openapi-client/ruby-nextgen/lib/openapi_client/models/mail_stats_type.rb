@@ -16,7 +16,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'time',
         required: false,
-        enum: ['all', 'billing', 'month', '7d', '24h', 'today', '1h']
+        enum: ['all', 'billing', 'month', '7d', '24h', 'today', '1h', 'unknown_default_open_api']
 
       attribute :usage,
         type: 'Integer',

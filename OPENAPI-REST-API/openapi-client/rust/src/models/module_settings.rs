@@ -44,12 +44,12 @@ pub struct ModuleSettings {
     pub table: String,
     #[serde(rename = "TITLE_FIELD")]
     pub title_field: String,
+    #[serde(rename = "PREFIX")]
+    pub prefix: String,
     #[serde(rename = "TITLE_FIELD2", skip_serializing_if = "Option::is_none")]
     pub title_field2: Option<String>,
     #[serde(rename = "TITLE_FIELD3", skip_serializing_if = "Option::is_none")]
     pub title_field3: Option<String>,
-    #[serde(rename = "PREFIX")]
-    pub prefix: String,
 }
 
 impl ModuleSettings {
@@ -71,9 +71,9 @@ impl ModuleSettings {
             tblname,
             table,
             title_field,
+            prefix,
             title_field2: None,
             title_field3: None,
-            prefix,
         }
     }
 }

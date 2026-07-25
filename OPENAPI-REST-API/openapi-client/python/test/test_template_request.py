@@ -37,8 +37,8 @@ class TestTemplateRequest(unittest.TestCase):
         if include_optional:
             return TemplateRequest(
                 template = 'ubuntu24',
-                password = 'myUserPassword',
-                local_password = ''
+                local_password = '',
+                password = 'myUserPassword'
             )
         else:
             return TemplateRequest(

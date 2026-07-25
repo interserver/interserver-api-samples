@@ -16,13 +16,6 @@ Please update as you see appropriate
 describe("login_info", function()
   local openapiclient_login_info = require "openapiclient.model.login_info"
 
-  -- unit tests for the property 'logo'
-  describe("property logo test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'captcha'
   describe("property captcha test", function()
     it("should work", function()
@@ -30,15 +23,22 @@ describe("login_info", function()
     end)
   end)
 
-  -- unit tests for the property 'language'
-  describe("property language test", function()
+  -- unit tests for the property 'counts'
+  describe("property counts test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
   end)
 
-  -- unit tests for the property 'counts'
-  describe("property counts test", function()
+  -- unit tests for the property 'logo'
+  describe("property logo test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'language'
+  describe("property language test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

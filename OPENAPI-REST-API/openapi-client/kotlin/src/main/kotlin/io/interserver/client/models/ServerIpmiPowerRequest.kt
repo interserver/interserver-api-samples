@@ -50,7 +50,7 @@ data class ServerIpmiPowerRequest (
     /**
      * The power action to send to the ipmi controller.
      *
-     * Values: cycle,reset,on,off,soft
+     * Values: cycle,reset,on,off,soft,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class Action(val value: kotlin.String) {
@@ -58,7 +58,8 @@ data class ServerIpmiPowerRequest (
         @Json(name = "reset") reset("reset"),
         @Json(name = "on") on("on"),
         @Json(name = "off") off("off"),
-        @Json(name = "soft") soft("soft");
+        @Json(name = "soft") soft("soft"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

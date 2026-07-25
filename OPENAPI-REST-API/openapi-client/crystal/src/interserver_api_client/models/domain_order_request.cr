@@ -34,8 +34,8 @@ module InterserverApiClient
     @[JSON::Field(key: "whois_privacy", emit_null: false)]
     property whois_privacy : String?
 
-    validates(_type, String, true, enum: ["register", "transfer"])
-    validates(whois_privacy, String, true, enum: ["enable", "disable"])
+    validates(_type, String, true, enum: ["register", "transfer", "unknown_default_open_api"])
+    validates(whois_privacy, String, true, enum: ["enable", "disable", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

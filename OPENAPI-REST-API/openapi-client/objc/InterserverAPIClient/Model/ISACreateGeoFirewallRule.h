@@ -22,6 +22,9 @@
 
 @interface ISACreateGeoFirewallRule : ISAObject
 
+/* 1 = Block,  0 = Whitelist 
+ */
+@property(nonatomic) NSNumber* xdpAction;
 
 @property(nonatomic) NSNumber* destinationPort;
 /* To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode [optional]
@@ -30,8 +33,5 @@
 /* ASN number [optional]
  */
 @property(nonatomic) NSNumber* asn;
-/* 1 = Block,  0 = Whitelist 
- */
-@property(nonatomic) NSNumber* xdpAction;
 
 @end

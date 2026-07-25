@@ -358,6 +358,10 @@ ChargeInvoiceRows_invoices_value::Invoices_paidEnum ChargeInvoiceRows_invoices_v
         return Invoices_paidEnum::_1;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Invoices_paidEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Invoices_paidEnum");
 }
 
@@ -370,6 +374,8 @@ const double ChargeInvoiceRows_invoices_value::fromInvoices_paidEnum(const Invoi
         case Invoices_paidEnum::_0: return utility::conversions::to_string_t("0");
         
         case Invoices_paidEnum::_1: return utility::conversions::to_string_t("1");
+        
+        case Invoices_paidEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

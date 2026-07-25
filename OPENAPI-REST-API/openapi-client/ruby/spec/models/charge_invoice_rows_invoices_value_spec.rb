@@ -54,7 +54,7 @@ describe InterServerClient::ChargeInvoiceRowsInvoicesValue do
   describe 'test attribute "invoices_paid"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Float', [0, 1])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Float', [0, 1, 11184809])
       # validator.allowable_values.each do |value|
       #   expect { instance.invoices_paid = value }.not_to raise_error
       # end

@@ -70,7 +70,9 @@ public class DomainNameserverGetResponseInner implements Serializable {
   public enum CanDeleteEnum {
     _0("0"),
     
-    _1("1");
+    _1("1"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -93,7 +95,7 @@ public class DomainNameserverGetResponseInner implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<CanDeleteEnum> {

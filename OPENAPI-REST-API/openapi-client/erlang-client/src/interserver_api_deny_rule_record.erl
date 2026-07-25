@@ -5,22 +5,22 @@
 -export_type([interserver_api_deny_rule_record/0]).
 
 -type interserver_api_deny_rule_record() ::
-    #{ 'user' => binary(),
-       'type' := binary(),
+    #{ 'type' := binary(),
        'data' := binary(),
        'id' := integer(),
-       'created' := binary()
+       'created' := binary(),
+       'user' => binary()
      }.
 
-encode(#{ 'user' := User,
-          'type' := Type,
+encode(#{ 'type' := Type,
           'data' := Data,
           'id' := Id,
-          'created' := Created
+          'created' := Created,
+          'user' := User
         }) ->
-    #{ 'user' => User,
-       'type' => Type,
+    #{ 'type' => Type,
        'data' => Data,
        'id' => Id,
-       'created' => Created
+       'created' => Created,
+       'user' => User
      }.

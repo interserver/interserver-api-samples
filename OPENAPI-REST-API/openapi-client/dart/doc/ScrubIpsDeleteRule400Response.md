@@ -1,8 +1,8 @@
-# openapi.model.ScrubIpsDeleteRule400Response
+# interserver_api.model.ScrubIpsDeleteRule400Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

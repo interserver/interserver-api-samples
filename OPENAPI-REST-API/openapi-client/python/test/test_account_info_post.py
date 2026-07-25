@@ -37,14 +37,14 @@ class TestAccountInfoPost(unittest.TestCase):
         if include_optional:
             return AccountInfoPost(
                 name = 'John Doe',
-                company = 'My Company',
                 address = '124 My St',
-                address2 = '',
                 city = 'My Town',
                 state = 'PA',
                 zip = '17522',
                 country = 'US',
                 phone = '8675309',
+                company = 'My Company',
+                address2 = '',
                 locale = '',
                 email_invoices = '',
                 email_abuse = '',

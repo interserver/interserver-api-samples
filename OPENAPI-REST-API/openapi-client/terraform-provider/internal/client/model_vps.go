@@ -11,10 +11,8 @@ type Vps struct {
 	CustCurrencySymbol string `json:"custCurrencySymbol"`
 	ServiceMaster VpsServiceMaster `json:"serviceMaster"`
 	Package string `json:"package"`
-	OsTemplate string `json:"os_template,omitempty"`
 	ServiceExtra VpsServiceExtra `json:"serviceExtra"`
 	ExtraInfoTables VpsExtraInfoTables `json:"extraInfoTables"`
-	CpuGraphData interface{} `json:"cpu_graph_data,omitempty"`
 	Module string `json:"module"`
 	Token string `json:"token"`
 	DaLink int32 `json:"da_link"`
@@ -23,4 +21,6 @@ type Vps struct {
 	DaData VpsDaData `json:"da_data"`
 	Plesk12Data VpsPlesk12Data `json:"plesk12_data"`
 	ServiceAddons VpsServiceAddons `json:"serviceAddons"`
+	OsTemplate string `json:"os_template,omitempty"`
+	CpuGraphData interface{} `json:"cpu_graph_data,omitempty"`
 }

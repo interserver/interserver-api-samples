@@ -216,14 +216,14 @@ void LoginInfo::fromJsonValue(boost::json::value const& value)
 boost::json::object LoginInfo::toJsonObject_internal() const
 {
     boost::json::object object;
+        object["captcha"] = JsonValueConverter<std::string>::toJsonValue(getCaptcha());
+        object["counts"] = JsonValueConverter<std::shared_ptr<LoginServiceCounts>>::toJsonValue(getCounts());
         if (m_LogoIsSet) {
             object["logo"] = JsonValueConverter<std::string>::toJsonValue(getLogo());
         }
-        object["captcha"] = JsonValueConverter<std::string>::toJsonValue(getCaptcha());
         if (m_LanguageIsSet) {
             object["language"] = JsonValueConverter<std::string>::toJsonValue(getLanguage());
         }
-        object["counts"] = JsonValueConverter<std::shared_ptr<LoginServiceCounts>>::toJsonValue(getCounts());
     return object;
 }
 
@@ -232,21 +232,9 @@ void LoginInfo::fromJsonObject_internal(boost::json::object const& object)
     m_LogoIsSet = false;
     m_LanguageIsSet = false;
     {
-        const auto LogoIt = object.find("logo");
-        if (LogoIt != object.end()) {
-            setLogo(JsonValueConverter<std::string>::fromJsonValue(LogoIt->value()));
-        }
-    }
-    {
         const auto CaptchaIt = object.find("captcha");
         if (CaptchaIt != object.end()) {
             setCaptcha(JsonValueConverter<std::string>::fromJsonValue(CaptchaIt->value()));
-        }
-    }
-    {
-        const auto LanguageIt = object.find("language");
-        if (LanguageIt != object.end()) {
-            setLanguage(JsonValueConverter<std::string>::fromJsonValue(LanguageIt->value()));
         }
     }
     {
@@ -255,8 +243,40 @@ void LoginInfo::fromJsonObject_internal(boost::json::object const& object)
             setCounts(JsonValueConverter<std::shared_ptr<LoginServiceCounts>>::fromJsonValue(CountsIt->value()));
         }
     }
+    {
+        const auto LogoIt = object.find("logo");
+        if (LogoIt != object.end()) {
+            setLogo(JsonValueConverter<std::string>::fromJsonValue(LogoIt->value()));
+        }
+    }
+    {
+        const auto LanguageIt = object.find("language");
+        if (LanguageIt != object.end()) {
+            setLanguage(JsonValueConverter<std::string>::fromJsonValue(LanguageIt->value()));
+        }
+    }
 }
 
+std::string LoginInfo::getCaptcha() const
+{
+    return m_Captcha;
+}
+
+void LoginInfo::setCaptcha(std::string value)
+{
+    
+    m_Captcha = std::move(value);
+}
+std::shared_ptr<LoginServiceCounts> LoginInfo::getCounts() const
+{
+    return m_Counts;
+}
+
+void LoginInfo::setCounts(std::shared_ptr<LoginServiceCounts> value)
+{
+    
+    m_Counts = std::move(value);
+}
 std::string LoginInfo::getLogo() const
 {
     return m_Logo;
@@ -268,16 +288,6 @@ void LoginInfo::setLogo(std::string value)
     m_Logo = std::move(value);
     m_LogoIsSet = true;
 }
-std::string LoginInfo::getCaptcha() const
-{
-    return m_Captcha;
-}
-
-void LoginInfo::setCaptcha(std::string value)
-{
-    
-    m_Captcha = std::move(value);
-}
 std::string LoginInfo::getLanguage() const
 {
     return m_Language;
@@ -288,16 +298,6 @@ void LoginInfo::setLanguage(std::string value)
     
     m_Language = std::move(value);
     m_LanguageIsSet = true;
-}
-std::shared_ptr<LoginServiceCounts> LoginInfo::getCounts() const
-{
-    return m_Counts;
-}
-
-void LoginInfo::setCounts(std::shared_ptr<LoginServiceCounts> value)
-{
-    
-    m_Counts = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<LoginInfo>>& data)

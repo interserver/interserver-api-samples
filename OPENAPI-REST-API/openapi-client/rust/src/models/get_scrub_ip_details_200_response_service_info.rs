@@ -68,6 +68,8 @@ pub enum ScrubIpStatus {
     Canceled,
     #[serde(rename = "expired")]
     Expired,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for ScrubIpStatus {

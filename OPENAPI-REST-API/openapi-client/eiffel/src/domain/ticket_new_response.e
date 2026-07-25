@@ -19,22 +19,14 @@ class TICKET_NEW_RESPONSE
 
 feature --Access
 
-    ticket_id: INTEGER_32
-      
     text: detachable STRING_32
       
     success: BOOLEAN
       
+    ticket_id: INTEGER_32
+      
 
 feature -- Change Element
-
-    set_ticket_id (a_name: like ticket_id)
-        -- Set 'ticket_id' with 'a_name'.
-      do
-        ticket_id := a_name
-      ensure
-        ticket_id_set: ticket_id = a_name
-      end
 
     set_text (a_name: like text)
         -- Set 'text' with 'a_name'.
@@ -52,6 +44,14 @@ feature -- Change Element
         success_set: success = a_name
       end
 
+    set_ticket_id (a_name: like ticket_id)
+        -- Set 'ticket_id' with 'a_name'.
+      do
+        ticket_id := a_name
+      ensure
+        ticket_id_set: ticket_id = a_name
+      end
+
 
  feature -- Status Report
 
@@ -60,11 +60,6 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass TICKET_NEW_RESPONSE%N")
-        if attached ticket_id as l_ticket_id then
-          Result.append ("%Nticket_id:")
-          Result.append (l_ticket_id.out)
-          Result.append ("%N")
-        end
         if attached text as l_text then
           Result.append ("%Ntext:")
           Result.append (l_text.out)
@@ -73,6 +68,11 @@ feature -- Change Element
         if attached success as l_success then
           Result.append ("%Nsuccess:")
           Result.append (l_success.out)
+          Result.append ("%N")
+        end
+        if attached ticket_id as l_ticket_id then
+          Result.append ("%Nticket_id:")
+          Result.append (l_ticket_id.out)
           Result.append ("%N")
         end
       end

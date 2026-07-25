@@ -64,6 +64,7 @@ public:
         EMAIL,
         STARTSWITH,
         DESTINATION,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// The type of deny rule.
@@ -72,14 +73,6 @@ public:
     TypeEnum toTypeEnum(const utility::string_t& value) const;
     const utility::string_t fromTypeEnum(const TypeEnum value) const;
 
-
-    /// <summary>
-    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-    /// </summary>
-    utility::string_t getUser() const;
-    bool userIsSet() const;
-    void unsetUser();
-    void setUser(const utility::string_t& value);
 
     /// <summary>
     /// The type of deny rule.
@@ -113,11 +106,16 @@ public:
     void unsetCreated();
     void setCreated(const utility::string_t& value);
 
+    /// <summary>
+    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+    /// </summary>
+    utility::string_t getUser() const;
+    bool userIsSet() const;
+    void unsetUser();
+    void setUser(const utility::string_t& value);
+
 
 protected:
-    utility::string_t m_User;
-    bool m_UserIsSet;
-
     TypeEnum m_Type;
     bool m_TypeIsSet;
 
@@ -129,6 +127,9 @@ protected:
 
     utility::string_t m_Created;
     bool m_CreatedIsSet;
+
+    utility::string_t m_User;
+    bool m_UserIsSet;
 
 };
 

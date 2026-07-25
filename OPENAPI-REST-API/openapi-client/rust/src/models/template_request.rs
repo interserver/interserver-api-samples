@@ -17,12 +17,12 @@ pub struct TemplateRequest {
     /// OS Template Filename
     #[serde(rename = "template")]
     pub template: String,
-    /// Password for Root / Administrator Account.
-    #[serde(rename = "password", skip_serializing_if = "Option::is_none")]
-    pub password: Option<String>,
     /// Password for this account.
     #[serde(rename = "localPassword")]
     pub local_password: String,
+    /// Password for Root / Administrator Account.
+    #[serde(rename = "password", skip_serializing_if = "Option::is_none")]
+    pub password: Option<String>,
 }
 
 impl TemplateRequest {
@@ -30,8 +30,8 @@ impl TemplateRequest {
     pub fn new(template: String, local_password: String) -> TemplateRequest {
         TemplateRequest {
             template,
-            password: None,
             local_password,
+            password: None,
         }
     }
 }

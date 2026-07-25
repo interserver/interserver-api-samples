@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Template** | **String** | OS Template Filename | 
-**Password** | **String** | Password for Root / Administrator Account. | [optional] 
 **LocalPassword** | **String** | Password for this account. | 
+**Password** | **String** | Password for Root / Administrator Account. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $TemplateRequest = Initialize-InterserverApiTemplateRequest  -Template ubuntu24 `
- -Password myUserPassword `
- -LocalPassword null
+ -LocalPassword null `
+ -Password myUserPassword
 ```
 
 - Convert the resource to JSON

@@ -10,8 +10,8 @@
 #' @field label Link label character
 #' @field link Link URL character
 #' @field icon Link icon character
-#' @field icon_text Icon text character [optional]
 #' @field help_text Help text character
+#' @field icon_text Icon text character [optional]
 #' @field other_attr Other attributes character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -22,8 +22,8 @@ LicenseClientLink <- R6::R6Class(
     `label` = NULL,
     `link` = NULL,
     `icon` = NULL,
-    `icon_text` = NULL,
     `help_text` = NULL,
+    `icon_text` = NULL,
     `other_attr` = NULL,
 
     #' @description
@@ -118,13 +118,13 @@ LicenseClientLink <- R6::R6Class(
         LicenseClientLinkObject[["icon"]] <-
           self$`icon`
       }
-      if (!is.null(self$`icon_text`)) {
-        LicenseClientLinkObject[["icon_text"]] <-
-          self$`icon_text`
-      }
       if (!is.null(self$`help_text`)) {
         LicenseClientLinkObject[["help_text"]] <-
           self$`help_text`
+      }
+      if (!is.null(self$`icon_text`)) {
+        LicenseClientLinkObject[["icon_text"]] <-
+          self$`icon_text`
       }
       if (!is.null(self$`other_attr`)) {
         LicenseClientLinkObject[["other_attr"]] <-
@@ -149,11 +149,11 @@ LicenseClientLink <- R6::R6Class(
       if (!is.null(this_object$`icon`)) {
         self$`icon` <- this_object$`icon`
       }
-      if (!is.null(this_object$`icon_text`)) {
-        self$`icon_text` <- this_object$`icon_text`
-      }
       if (!is.null(this_object$`help_text`)) {
         self$`help_text` <- this_object$`help_text`
+      }
+      if (!is.null(this_object$`icon_text`)) {
+        self$`icon_text` <- this_object$`icon_text`
       }
       if (!is.null(this_object$`other_attr`)) {
         self$`other_attr` <- this_object$`other_attr`
@@ -182,8 +182,8 @@ LicenseClientLink <- R6::R6Class(
       self$`label` <- this_object$`label`
       self$`link` <- this_object$`link`
       self$`icon` <- this_object$`icon`
-      self$`icon_text` <- this_object$`icon_text`
       self$`help_text` <- this_object$`help_text`
+      self$`icon_text` <- this_object$`icon_text`
       self$`other_attr` <- this_object$`other_attr`
       self
     },

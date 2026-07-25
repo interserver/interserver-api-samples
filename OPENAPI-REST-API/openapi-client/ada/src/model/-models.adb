@@ -3970,6 +3970,9 @@ package body .Models is
       if Value = "URI⏎" then
          return URI_;
       end if;
+      if Value = "11184809" then
+         return UNKNOWN_DEFAULT_OPEN_API;
+      end if;
       raise Constraint_Error;
    end To_DnsRecordType_Type;
 
@@ -4122,6 +4125,9 @@ package body .Models is
 
          when URI_ =>
             return "URI⏎";
+
+         when UNKNOWN_DEFAULT_OPEN_API =>
+            return "11184809";
 
       end case;
    end To_String;

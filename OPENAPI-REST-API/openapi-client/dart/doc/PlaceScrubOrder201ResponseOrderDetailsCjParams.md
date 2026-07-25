@@ -1,8 +1,8 @@
-# openapi.model.PlaceScrubOrder201ResponseOrderDetailsCjParams
+# interserver_api.model.PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class SslOrderRequest {
   /// Returns a new [SslOrderRequest] instance.
@@ -388,6 +388,7 @@ class SslOrderRequest {
 enum SslOrderRequestCsrTypeEnum {
   generated._(r'generated'),
   provided._(r'provided'),
+  unknownDefaultOpenApi._(r'unknown_default_open_api'),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -448,6 +449,7 @@ class SslOrderRequestCsrTypeEnumTypeTransformer {
       switch (data) {
         case r'generated': return SslOrderRequestCsrTypeEnum.generated;
         case r'provided': return SslOrderRequestCsrTypeEnum.provided;
+        case r'unknown_default_open_api': return SslOrderRequestCsrTypeEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -21,8 +21,6 @@ OS Distribution
 Number of slices
 .PARAMETER VpsPlatform
 VPS Platform
-.PARAMETER Controlpanel
-Control Panel
 .PARAMETER Period
 Billing Period or Frequency
 .PARAMETER Location
@@ -31,10 +29,12 @@ Location
 OS Version
 .PARAMETER Hostname
 The hostname to assign to the VPS
-.PARAMETER Coupon
-Coupon
 .PARAMETER Rootpass
 Root password to assign to the VVPS
+.PARAMETER Controlpanel
+Control Panel
+.PARAMETER Coupon
+Coupon
 .PARAMETER Comment
 Order comments or notes
 .OUTPUTS
@@ -56,27 +56,27 @@ function Initialize-VpsOrderPutRequest {
         [String]
         ${VpsPlatform},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Int32]
+        ${Period} = 1,
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Int32]
+        ${Location} = 1,
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${OsVersion},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Hostname} = "",
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Rootpass},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("none", "cpanel", "da")]
         [String]
         ${Controlpanel},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${Period} = 1,
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${Location} = 1,
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${OsVersion},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Hostname} = "",
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Coupon} = "",
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Rootpass},
+        ${Coupon} = "",
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Comment} = ""
@@ -147,13 +147,13 @@ function Initialize-VpsOrderPutRequest {
             'osDistro' = ${OsDistro}
             'slices' = ${Slices}
             'vpsPlatform' = ${VpsPlatform}
-            'controlpanel' = ${Controlpanel}
             'period' = ${Period}
             'location' = ${Location}
             'osVersion' = ${OsVersion}
             'hostname' = ${Hostname}
-            'coupon' = ${Coupon}
             'rootpass' = ${Rootpass}
+            'controlpanel' = ${Controlpanel}
+            'coupon' = ${Coupon}
             'comment' = ${Comment}
         }
 
@@ -192,7 +192,7 @@ function ConvertFrom-JsonToVpsOrderPutRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in VpsOrderPutRequest
-        $AllProperties = ('osDistro', 'slices', 'vpsPlatform', 'controlpanel', 'period', 'location', 'osVersion', 'hostname', 'coupon', 'rootpass', 'comment')
+        $AllProperties = ('osDistro', 'slices', 'vpsPlatform', 'period', 'location', 'osVersion', 'hostname', 'rootpass', 'controlpanel', 'coupon', 'comment')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -273,13 +273,13 @@ function ConvertFrom-JsonToVpsOrderPutRequest {
             'osDistro' = ${OsDistro}
             'slices' = ${Slices}
             'vpsPlatform' = ${VpsPlatform}
-            'controlpanel' = ${Controlpanel}
             'period' = ${Period}
             'location' = ${Location}
             'osVersion' = ${OsVersion}
             'hostname' = ${Hostname}
-            'coupon' = ${Coupon}
             'rootpass' = ${Rootpass}
+            'controlpanel' = ${Controlpanel}
+            'coupon' = ${Coupon}
             'comment' = ${Comment}
         }
 

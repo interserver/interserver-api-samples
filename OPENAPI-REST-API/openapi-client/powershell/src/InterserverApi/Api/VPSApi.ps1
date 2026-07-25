@@ -146,7 +146,7 @@ function Invoke-DeleteVpsBackup {
         [String]
         ${File},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("0", "1")]
+        [ValidateSet("0", "1", "unknown_default_open_api")]
         [String]
         ${All},
         [Switch]
@@ -1095,7 +1095,7 @@ function Invoke-DownloadVpsBackup {
         [PSCustomObject]
         ${DownloadQsBackupRequest},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("0", "1")]
+        [ValidateSet("0", "1", "unknown_default_open_api")]
         [String]
         ${All},
         [Switch]
@@ -1414,7 +1414,7 @@ function Get-VpsBackups {
         [Int32]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("0", "1")]
+        [ValidateSet("0", "1", "unknown_default_open_api")]
         [String]
         ${All},
         [Switch]

@@ -28,12 +28,12 @@
 /* Root password for the QuickServer. 
  */
 @property(nonatomic) NSString* password;
-/* OS template file name from getNewQs (falls back to a default if unrecognized). [optional]
- */
-@property(nonatomic) NSString* os;
 /* Terms-of-service acceptance. Must be true to place the order. 
  */
 @property(nonatomic) NSNumber* tos;
+/* OS template file name from getNewQs (falls back to a default if unrecognized). [optional]
+ */
+@property(nonatomic) NSString* os;
 /* Free-form note saved on the service row. [optional]
  */
 @property(nonatomic) NSString* comment;

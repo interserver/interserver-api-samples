@@ -68,6 +68,7 @@ export const DnsRecordType = {
     Txt: 'TXT',
     Wks: 'WKS',
     Uri: 'URI⏎',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 
 export type DnsRecordType = typeof DnsRecordType[keyof typeof DnsRecordType];

@@ -88,14 +88,15 @@ data class GetScrubIpDetails200ResponseServiceInfo (
     /**
      * 
      *
-     * Values: active,pending,canceled,expired
+     * Values: active,pending,canceled,expired,unknownDefaultOpenApi
      */
     @JsonClass(generateAdapter = false)
     enum class ScrubIpStatus(val value: kotlin.String) {
         @Json(name = "active") active("active"),
         @Json(name = "pending") pending("pending"),
         @Json(name = "canceled") canceled("canceled"),
-        @Json(name = "expired") expired("expired");
+        @Json(name = "expired") expired("expired"),
+        @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
     }
 
 }

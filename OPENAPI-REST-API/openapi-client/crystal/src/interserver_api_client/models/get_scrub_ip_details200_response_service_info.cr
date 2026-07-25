@@ -50,7 +50,7 @@ module InterserverApiClient
     @[JSON::Field(key: "scrub_ip_comment", emit_null: false)]
     property scrub_ip_comment : String?
 
-    validates(scrub_ip_status, String, true, enum: ["active", "pending", "canceled", "expired"])
+    validates(scrub_ip_status, String, true, enum: ["active", "pending", "canceled", "expired", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

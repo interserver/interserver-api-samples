@@ -2955,24 +2955,29 @@ export const GetStatsTimeEnum = {
     _24h: '24h',
     _1d: '1d',
     _1h: '1h',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type GetStatsTimeEnum = typeof GetStatsTimeEnum[keyof typeof GetStatsTimeEnum];
 export const ViewMailLogDeliveredEnum = {
     NUMBER_0: 0,
     NUMBER_1: 1,
+    NUMBER_unknown_default_open_api: 11184809,
 } as const;
 export type ViewMailLogDeliveredEnum = typeof ViewMailLogDeliveredEnum[keyof typeof ViewMailLogDeliveredEnum];
 export const ViewMailLogSortEnum = {
     Time: 'time',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type ViewMailLogSortEnum = typeof ViewMailLogSortEnum[keyof typeof ViewMailLogSortEnum];
 export const ViewMailLogDirEnum = {
     Asc: 'asc',
     Desc: 'desc',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type ViewMailLogDirEnum = typeof ViewMailLogDirEnum[keyof typeof ViewMailLogDirEnum];
 export const ViewMailLogGroupbyEnum = {
     Message: 'message',
     Recipient: 'recipient',
+    UnknownDefaultOpenApi: '11184809',
 } as const;
 export type ViewMailLogGroupbyEnum = typeof ViewMailLogGroupbyEnum[keyof typeof ViewMailLogGroupbyEnum];

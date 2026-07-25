@@ -23,6 +23,7 @@ Name | Value
 ---- | -----
 Y | `"y"`
 N | `"n"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

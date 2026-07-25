@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'LicenseServiceInfo' {
     Context 'LicenseServiceInfo' {
         It 'Initialize-LicenseServiceInfo' {
             # a simple test to create an object
-            #$NewObject = Initialize-LicenseServiceInfo -LicenseId "TEST_VALUE" -LicenseType "TEST_VALUE" -LicenseCurrency "TEST_VALUE" -LicenseOrderDate "TEST_VALUE" -LicenseCustid "TEST_VALUE" -LicenseIp "TEST_VALUE" -LicenseStatus "TEST_VALUE" -LicenseHostname "TEST_VALUE" -LicenseKey "TEST_VALUE" -LicenseInvoice "TEST_VALUE" -LicenseCoupon "TEST_VALUE" -LicenseExtra "TEST_VALUE"
+            #$NewObject = Initialize-LicenseServiceInfo -LicenseId "TEST_VALUE" -LicenseType "TEST_VALUE" -LicenseCurrency "TEST_VALUE" -LicenseOrderDate "TEST_VALUE" -LicenseCustid "TEST_VALUE" -LicenseIp "TEST_VALUE" -LicenseStatus "TEST_VALUE" -LicenseInvoice "TEST_VALUE" -LicenseCoupon "TEST_VALUE" -LicenseHostname "TEST_VALUE" -LicenseKey "TEST_VALUE" -LicenseExtra "TEST_VALUE"
             #$NewObject | Should -BeOfType LicenseServiceInfo
             #$NewObject.property | Should -Be 0
         }

@@ -19,20 +19,12 @@ class SERVER_IPMI_POWER_REQUEST
 
 feature --Access
 
-    asset: INTEGER_32
-      -- The Asset ID
     action: detachable STRING_32
       -- The power action to send to the ipmi controller.
+    asset: INTEGER_32
+      -- The Asset ID
 
 feature -- Change Element
-
-    set_asset (a_name: like asset)
-        -- Set 'asset' with 'a_name'.
-      do
-        asset := a_name
-      ensure
-        asset_set: asset = a_name
-      end
 
     set_action (a_name: like action)
         -- Set 'action' with 'a_name'.
@@ -40,6 +32,14 @@ feature -- Change Element
         action := a_name
       ensure
         action_set: action = a_name
+      end
+
+    set_asset (a_name: like asset)
+        -- Set 'asset' with 'a_name'.
+      do
+        asset := a_name
+      ensure
+        asset_set: asset = a_name
       end
 
 
@@ -50,14 +50,14 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass SERVER_IPMI_POWER_REQUEST%N")
-        if attached asset as l_asset then
-          Result.append ("%Nasset:")
-          Result.append (l_asset.out)
-          Result.append ("%N")
-        end
         if attached action as l_action then
           Result.append ("%Naction:")
           Result.append (l_action.out)
+          Result.append ("%N")
+        end
+        if attached asset as l_asset then
+          Result.append ("%Nasset:")
+          Result.append (l_asset.out)
           Result.append ("%N")
         end
       end

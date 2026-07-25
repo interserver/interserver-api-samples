@@ -1271,7 +1271,8 @@ open class MailApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
          @Json(name = "7d") _7d("7d"),
          @Json(name = "24h") _24h("24h"),
          @Json(name = "1d") _1d("1d"),
-         @Json(name = "1h") _1h("1h");
+         @Json(name = "1h") _1h("1h"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -2048,7 +2049,8 @@ open class MailApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
      enum class DeliveredViewMailLog(val value: kotlin.Int) {
          @Json(name = "0") _0(0),
-         @Json(name = "1") _1(1);
+         @Json(name = "1") _1(1),
+         @Json(name = "11184809") unknownDefaultOpenApi(11184809);
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -2064,7 +2066,8 @@ open class MailApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * enum for parameter sort
      */
      enum class SortViewMailLog(val value: kotlin.String) {
-         @Json(name = "time") time("time");
+         @Json(name = "time") time("time"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -2081,7 +2084,8 @@ open class MailApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
      enum class DirViewMailLog(val value: kotlin.String) {
          @Json(name = "asc") asc("asc"),
-         @Json(name = "desc") desc("desc");
+         @Json(name = "desc") desc("desc"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -2098,7 +2102,8 @@ open class MailApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
      enum class GroupbyViewMailLog(val value: kotlin.String) {
          @Json(name = "message") message("message"),
-         @Json(name = "recipient") recipient("recipient");
+         @Json(name = "recipient") recipient("recipient"),
+         @Json(name = "unknown_default_open_api") unknownDefaultOpenApi("unknown_default_open_api");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use

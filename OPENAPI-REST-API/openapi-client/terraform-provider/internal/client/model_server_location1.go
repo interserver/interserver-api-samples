@@ -6,8 +6,8 @@ package client
 type ServerLocation1 struct {
 	LocationId int32 `json:"location_id"`
 	LocationName string `json:"location_name"`
-	LocationDescription string `json:"location_description,omitempty"`
 	LocationLat string `json:"location_lat"`
 	LocationLong string `json:"location_long"`
+	LocationDescription string `json:"location_description,omitempty"`
 	LocationIpmiGroup int32 `json:"location_ipmi_group,omitempty"`
 }

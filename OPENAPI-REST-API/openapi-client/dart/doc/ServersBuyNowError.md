@@ -1,8 +1,8 @@
-# openapi.model.ServersBuyNowError
+# interserver_api.model.ServersBuyNowError
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

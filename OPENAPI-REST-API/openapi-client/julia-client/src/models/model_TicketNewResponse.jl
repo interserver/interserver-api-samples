@@ -6,28 +6,28 @@
 Response returned after creating a new support ticket.
 
     TicketNewResponse(;
-        ticket_id=nothing,
         text=nothing,
         success=nothing,
+        ticket_id=nothing,
     )
 
-    - ticket_id::Int64
     - text::String
     - success::Bool
+    - ticket_id::Int64
 """
 Base.@kwdef mutable struct TicketNewResponse <: OpenAPI.APIModel
-    ticket_id::Union{Nothing, Int64} = nothing
     text::Union{Nothing, String} = nothing
     success::Union{Nothing, Bool} = nothing
+    ticket_id::Union{Nothing, Int64} = nothing
 
-    function TicketNewResponse(ticket_id, text, success, )
-        o = new(ticket_id, text, success, )
+    function TicketNewResponse(text, success, ticket_id, )
+        o = new(text, success, ticket_id, )
         OpenAPI.validate_properties(o)
         return o
     end
 end # type TicketNewResponse
 
-const _property_types_TicketNewResponse = Dict{Symbol,String}(Symbol("ticket_id")=>"Int64", Symbol("text")=>"String", Symbol("success")=>"Bool", )
+const _property_types_TicketNewResponse = Dict{Symbol,String}(Symbol("text")=>"String", Symbol("success")=>"Bool", Symbol("ticket_id")=>"Int64", )
 OpenAPI.property_type(::Type{ TicketNewResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TicketNewResponse[name]))}
 
 function OpenAPI.check_required(o::TicketNewResponse)
@@ -37,9 +37,9 @@ function OpenAPI.check_required(o::TicketNewResponse)
 end
 
 function OpenAPI.validate_properties(o::TicketNewResponse)
-    OpenAPI.validate_property(TicketNewResponse, Symbol("ticket_id"), o.ticket_id)
     OpenAPI.validate_property(TicketNewResponse, Symbol("text"), o.text)
     OpenAPI.validate_property(TicketNewResponse, Symbol("success"), o.success)
+    OpenAPI.validate_property(TicketNewResponse, Symbol("ticket_id"), o.ticket_id)
 end
 
 function OpenAPI.validate_property(::Type{ TicketNewResponse }, name::Symbol, val)

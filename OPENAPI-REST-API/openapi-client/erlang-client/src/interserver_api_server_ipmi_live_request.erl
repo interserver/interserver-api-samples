@@ -5,13 +5,13 @@
 -export_type([interserver_api_server_ipmi_live_request/0]).
 
 -type interserver_api_server_ipmi_live_request() ::
-    #{ 'asset' => integer(),
-       'ip' := binary()
+    #{ 'ip' := binary(),
+       'asset' => integer()
      }.
 
-encode(#{ 'asset' := Asset,
-          'ip' := Ip
+encode(#{ 'ip' := Ip,
+          'asset' := Asset
         }) ->
-    #{ 'asset' => Asset,
-       'ip' => Ip
+    #{ 'ip' => Ip,
+       'asset' => Asset
      }.

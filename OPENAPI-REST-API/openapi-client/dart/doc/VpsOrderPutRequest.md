@@ -1,8 +1,8 @@
-# openapi.model.VpsOrderPutRequest
+# interserver_api.model.VpsOrderPutRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

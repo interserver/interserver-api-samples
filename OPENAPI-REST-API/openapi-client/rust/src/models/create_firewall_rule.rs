@@ -16,6 +16,12 @@ use serde_repr::{Serialize_repr,Deserialize_repr};
 /// CreateFirewallRule : Create firewall rule for your ip
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateFirewallRule {
+    /// 1 = TCP, 2 = UDP
+    #[serde(rename = "protocol_id")]
+    pub protocol_id: ProtocolId,
+    /// 1 = Block,  0 = Whitelist
+    #[serde(rename = "xdp_action")]
+    pub xdp_action: XdpAction,
     #[serde(rename = "destination_port", skip_serializing_if = "Option::is_none")]
     pub destination_port: Option<i32>,
     /// Source IP address to match. Use '0.0.0.0' to match any source.
@@ -23,23 +29,17 @@ pub struct CreateFirewallRule {
     pub source_ip: Option<String>,
     #[serde(rename = "source_port", skip_serializing_if = "Option::is_none")]
     pub source_port: Option<i32>,
-    /// 1 = TCP, 2 = UDP
-    #[serde(rename = "protocol_id")]
-    pub protocol_id: ProtocolId,
-    /// 1 = Block,  0 = Whitelist
-    #[serde(rename = "xdp_action")]
-    pub xdp_action: XdpAction,
 }
 
 impl CreateFirewallRule {
     /// Create firewall rule for your ip
     pub fn new(protocol_id: ProtocolId, xdp_action: XdpAction) -> CreateFirewallRule {
         CreateFirewallRule {
+            protocol_id,
+            xdp_action,
             destination_port: None,
             source_ip: None,
             source_port: None,
-            protocol_id,
-            xdp_action,
         }
     }
 }
@@ -49,6 +49,7 @@ impl CreateFirewallRule {
 pub enum ProtocolId {
     Variant1 = 1,
     Variant2 = 2,
+    UnknownDefaultOpenApi = 11184809,
 }
 
 impl std::fmt::Display for ProtocolId {
@@ -56,6 +57,7 @@ impl std::fmt::Display for ProtocolId {
         write!(f, "{}", match self {
             Self::Variant1 => "1",
             Self::Variant2 => "2",
+            Self::UnknownDefaultOpenApi => "11184809",
         })
     }
 }
@@ -71,6 +73,7 @@ impl Default for ProtocolId {
 pub enum XdpAction {
     Variant0 = 0,
     Variant1 = 1,
+    UnknownDefaultOpenApi = 11184809,
 }
 
 impl std::fmt::Display for XdpAction {
@@ -78,6 +81,7 @@ impl std::fmt::Display for XdpAction {
         write!(f, "{}", match self {
             Self::Variant0 => "0",
             Self::Variant1 => "1",
+            Self::UnknownDefaultOpenApi => "11184809",
         })
     }
 }

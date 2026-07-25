@@ -17,15 +17,9 @@ pub struct AccountInfoPost {
     /// Your name.
     #[serde(rename = "name")]
     pub name: String,
-    /// Your company name.
-    #[serde(rename = "company", skip_serializing_if = "Option::is_none")]
-    pub company: Option<String>,
     /// Your address.
     #[serde(rename = "address")]
     pub address: String,
-    /// Additional address information.
-    #[serde(rename = "address2", skip_serializing_if = "Option::is_none")]
-    pub address2: Option<String>,
     /// Your city.
     #[serde(rename = "city")]
     pub city: String,
@@ -41,6 +35,12 @@ pub struct AccountInfoPost {
     /// Your phone number.
     #[serde(rename = "phone")]
     pub phone: String,
+    /// Your company name.
+    #[serde(rename = "company", skip_serializing_if = "Option::is_none")]
+    pub company: Option<String>,
+    /// Additional address information.
+    #[serde(rename = "address2", skip_serializing_if = "Option::is_none")]
+    pub address2: Option<String>,
     /// Your preferred locale.
     #[serde(rename = "locale", skip_serializing_if = "Option::is_none")]
     pub locale: Option<String>,
@@ -72,14 +72,14 @@ impl AccountInfoPost {
     pub fn new(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String) -> AccountInfoPost {
         AccountInfoPost {
             name,
-            company: None,
             address,
-            address2: None,
             city,
             state,
             zip,
             country,
             phone,
+            company: None,
+            address2: None,
             locale: None,
             email_invoices: None,
             email_abuse: None,

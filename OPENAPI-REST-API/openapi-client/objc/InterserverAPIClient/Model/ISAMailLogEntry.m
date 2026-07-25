@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"_id", @"_id": @"id", @"from": @"from", @"to": @"to", @"subject": @"subject", @"messageId": @"messageId", @"created": @"created", @"time": @"time", @"user": @"user", @"transtype": @"transtype", @"origin": @"origin", @"_interface": @"interface", @"sendingZone": @"sendingZone", @"bodySize": @"bodySize", @"seq": @"seq", @"delivered": @"delivered", @"code": @"code", @"recipient": @"recipient", @"response": @"response", @"domain": @"domain", @"locked": @"locked", @"lockTime": @"lockTime", @"assigned": @"assigned", @"queued": @"queued", @"mxHostname": @"mxHostname" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"_id", @"_id": @"id", @"from": @"from", @"to": @"to", @"created": @"created", @"time": @"time", @"user": @"user", @"transtype": @"transtype", @"origin": @"origin", @"_interface": @"interface", @"subject": @"subject", @"messageId": @"messageId", @"sendingZone": @"sendingZone", @"bodySize": @"bodySize", @"seq": @"seq", @"delivered": @"delivered", @"code": @"code", @"recipient": @"recipient", @"response": @"response", @"domain": @"domain", @"locked": @"locked", @"lockTime": @"lockTime", @"assigned": @"assigned", @"queued": @"queued", @"mxHostname": @"mxHostname" }];
 }
 
 /**

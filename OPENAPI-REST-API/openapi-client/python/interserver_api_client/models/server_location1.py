@@ -30,11 +30,11 @@ class ServerLocation1(BaseModel):
     """ # noqa: E501
     location_id: StrictInt
     location_name: StrictStr
-    location_description: Optional[StrictStr] = None
     location_lat: StrictStr
     location_long: StrictStr
+    location_description: Optional[StrictStr] = None
     location_ipmi_group: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["location_id", "location_name", "location_description", "location_lat", "location_long", "location_ipmi_group"]
+    __properties: ClassVar[List[str]] = ["location_id", "location_name", "location_lat", "location_long", "location_description", "location_ipmi_group"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,9 +89,9 @@ class ServerLocation1(BaseModel):
         _obj = cls.model_validate({
             "location_id": obj.get("location_id"),
             "location_name": obj.get("location_name"),
-            "location_description": obj.get("location_description"),
             "location_lat": obj.get("location_lat"),
             "location_long": obj.get("location_long"),
+            "location_description": obj.get("location_description"),
             "location_ipmi_group": obj.get("location_ipmi_group")
         })
         return _obj

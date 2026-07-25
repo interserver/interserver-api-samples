@@ -7,16 +7,16 @@
 #' @title ServerIpmiPowerRequest
 #' @description ServerIpmiPowerRequest Class
 #' @format An \code{R6Class} generator object
-#' @field asset The Asset ID integer [optional]
 #' @field action The power action to send to the ipmi controller. character
+#' @field asset The Asset ID integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ServerIpmiPowerRequest <- R6::R6Class(
   "ServerIpmiPowerRequest",
   public = list(
-    `asset` = NULL,
     `action` = NULL,
+    `asset` = NULL,
 
     #' @description
     #' Initialize a new ServerIpmiPowerRequest class.
@@ -73,13 +73,13 @@ ServerIpmiPowerRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ServerIpmiPowerRequestObject <- list()
-      if (!is.null(self$`asset`)) {
-        ServerIpmiPowerRequestObject[["asset"]] <-
-          self$`asset`
-      }
       if (!is.null(self$`action`)) {
         ServerIpmiPowerRequestObject[["action"]] <-
           self$`action`
+      }
+      if (!is.null(self$`asset`)) {
+        ServerIpmiPowerRequestObject[["asset"]] <-
+          self$`asset`
       }
       return(ServerIpmiPowerRequestObject)
     },
@@ -91,14 +91,14 @@ ServerIpmiPowerRequest <- R6::R6Class(
     #' @return the instance of ServerIpmiPowerRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`asset`)) {
-        self$`asset` <- this_object$`asset`
-      }
       if (!is.null(this_object$`action`)) {
         if (!is.null(this_object$`action`) && !(this_object$`action` %in% c("cycle", "reset", "on", "off", "soft"))) {
           stop(paste("Error! \"", this_object$`action`, "\" cannot be assigned to `action`. Must be \"cycle\", \"reset\", \"on\", \"off\", \"soft\".", sep = ""))
         }
         self$`action` <- this_object$`action`
+      }
+      if (!is.null(this_object$`asset`)) {
+        self$`asset` <- this_object$`asset`
       }
       self
     },
@@ -121,11 +121,11 @@ ServerIpmiPowerRequest <- R6::R6Class(
     #' @return the instance of ServerIpmiPowerRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`asset` <- this_object$`asset`
       if (!is.null(this_object$`action`) && !(this_object$`action` %in% c("cycle", "reset", "on", "off", "soft"))) {
         stop(paste("Error! \"", this_object$`action`, "\" cannot be assigned to `action`. Must be \"cycle\", \"reset\", \"on\", \"off\", \"soft\".", sep = ""))
       }
       self$`action` <- this_object$`action`
+      self$`asset` <- this_object$`asset`
       self
     },
 

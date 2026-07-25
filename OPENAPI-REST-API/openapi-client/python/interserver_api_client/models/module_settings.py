@@ -43,10 +43,10 @@ class ModuleSettings(BaseModel):
     tblname: StrictStr = Field(alias="TBLNAME", json_schema_extra={"examples": ["VPS"]})
     table: StrictStr = Field(alias="TABLE", json_schema_extra={"examples": ["vps"]})
     title_field: StrictStr = Field(alias="TITLE_FIELD", json_schema_extra={"examples": ["vps_hostname"]})
+    prefix: StrictStr = Field(alias="PREFIX", json_schema_extra={"examples": ["vps"]})
     title_field2: Optional[StrictStr] = Field(default=None, alias="TITLE_FIELD2", json_schema_extra={"examples": ["vps_ip"]})
     title_field3: Optional[StrictStr] = Field(default=None, alias="TITLE_FIELD3", json_schema_extra={"examples": ["vps_vzid"]})
-    prefix: StrictStr = Field(alias="PREFIX", json_schema_extra={"examples": ["vps"]})
-    __properties: ClassVar[List[str]] = ["SERVICE_ID_OFFSET", "USE_REPEAT_INVOICE", "USE_PACKAGES", "BILLING_DAYS_OFFSET", "IMGNAME", "REPEAT_BILLING_METHOD", "DELETE_PENDING_DAYS", "SUSPEND_DAYS", "SUSPEND_WARNING_DAYS", "TITLE", "MENUNAME", "EMAIL_FROM", "TBLNAME", "TABLE", "TITLE_FIELD", "TITLE_FIELD2", "TITLE_FIELD3", "PREFIX"]
+    __properties: ClassVar[List[str]] = ["SERVICE_ID_OFFSET", "USE_REPEAT_INVOICE", "USE_PACKAGES", "BILLING_DAYS_OFFSET", "IMGNAME", "REPEAT_BILLING_METHOD", "DELETE_PENDING_DAYS", "SUSPEND_DAYS", "SUSPEND_WARNING_DAYS", "TITLE", "MENUNAME", "EMAIL_FROM", "TBLNAME", "TABLE", "TITLE_FIELD", "PREFIX", "TITLE_FIELD2", "TITLE_FIELD3"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -114,9 +114,9 @@ class ModuleSettings(BaseModel):
             "TBLNAME": obj.get("TBLNAME"),
             "TABLE": obj.get("TABLE"),
             "TITLE_FIELD": obj.get("TITLE_FIELD"),
+            "PREFIX": obj.get("PREFIX"),
             "TITLE_FIELD2": obj.get("TITLE_FIELD2"),
-            "TITLE_FIELD3": obj.get("TITLE_FIELD3"),
-            "PREFIX": obj.get("PREFIX")
+            "TITLE_FIELD3": obj.get("TITLE_FIELD3")
         })
         return _obj
 

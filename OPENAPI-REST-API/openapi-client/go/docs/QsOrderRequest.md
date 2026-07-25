@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Server** | **int32** | QuickServer plan/server id from getNewQs. | 
 **Password** | **string** | Root password for the QuickServer. | 
-**Os** | Pointer to **string** | OS template file name from getNewQs (falls back to a default if unrecognized). | [optional] [default to ""]
 **Tos** | **bool** | Terms-of-service acceptance. Must be true to place the order. | 
+**Os** | Pointer to **string** | OS template file name from getNewQs (falls back to a default if unrecognized). | [optional] [default to ""]
 **Comment** | Pointer to **string** | Free-form note saved on the service row. | [optional] [default to ""]
 
 ## Methods
@@ -69,6 +69,26 @@ and a boolean to check if the value has been set.
 SetPassword sets Password field to given value.
 
 
+### GetTos
+
+`func (o *QsOrderRequest) GetTos() bool`
+
+GetTos returns the Tos field if non-nil, zero value otherwise.
+
+### GetTosOk
+
+`func (o *QsOrderRequest) GetTosOk() (*bool, bool)`
+
+GetTosOk returns a tuple with the Tos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTos
+
+`func (o *QsOrderRequest) SetTos(v bool)`
+
+SetTos sets Tos field to given value.
+
+
 ### GetOs
 
 `func (o *QsOrderRequest) GetOs() string`
@@ -93,26 +113,6 @@ SetOs sets Os field to given value.
 `func (o *QsOrderRequest) HasOs() bool`
 
 HasOs returns a boolean if a field has been set.
-
-### GetTos
-
-`func (o *QsOrderRequest) GetTos() bool`
-
-GetTos returns the Tos field if non-nil, zero value otherwise.
-
-### GetTosOk
-
-`func (o *QsOrderRequest) GetTosOk() (*bool, bool)`
-
-GetTosOk returns a tuple with the Tos field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTos
-
-`func (o *QsOrderRequest) SetTos(v bool)`
-
-SetTos sets Tos field to given value.
-
 
 ### GetComment
 

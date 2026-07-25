@@ -657,7 +657,7 @@ function Get-AffiliateDownload {
         [String]
         ${St},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("csv", "xls", "xlsx", "pdf")]
+        [ValidateSet("csv", "xls", "xlsx", "pdf", "unknown_default_open_api")]
         [String]
         ${Ex},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
@@ -1755,7 +1755,7 @@ function ConvertTo-itiatePayment {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("cc", "paypal", "prepay", "payssion", "payu", "ccavenue", "cashfree", "coinbase", "btcpay")]
+        [ValidateSet("cc", "paypal", "prepay", "payssion", "payu", "ccavenue", "cashfree", "coinbase", "btcpay", "unknown_default_open_api")]
         [String]
         ${Method},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]

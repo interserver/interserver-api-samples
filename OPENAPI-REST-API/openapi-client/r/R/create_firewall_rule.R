@@ -7,22 +7,22 @@
 #' @title CreateFirewallRule
 #' @description CreateFirewallRule Class
 #' @format An \code{R6Class} generator object
+#' @field protocol_id 1 = TCP, 2 = UDP integer
+#' @field xdp_action 1 = Block,  0 = Whitelist integer
 #' @field destination_port  integer [optional]
 #' @field source_ip Source IP address to match. Use '0.0.0.0' to match any source. character [optional]
 #' @field source_port  integer [optional]
-#' @field protocol_id 1 = TCP, 2 = UDP integer
-#' @field xdp_action 1 = Block,  0 = Whitelist integer
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CreateFirewallRule <- R6::R6Class(
   "CreateFirewallRule",
   public = list(
+    `protocol_id` = NULL,
+    `xdp_action` = NULL,
     `destination_port` = NULL,
     `source_ip` = NULL,
     `source_port` = NULL,
-    `protocol_id` = NULL,
-    `xdp_action` = NULL,
 
     #' @description
     #' Initialize a new CreateFirewallRule class.
@@ -103,6 +103,14 @@ CreateFirewallRule <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateFirewallRuleObject <- list()
+      if (!is.null(self$`protocol_id`)) {
+        CreateFirewallRuleObject[["protocol_id"]] <-
+          self$`protocol_id`
+      }
+      if (!is.null(self$`xdp_action`)) {
+        CreateFirewallRuleObject[["xdp_action"]] <-
+          self$`xdp_action`
+      }
       if (!is.null(self$`destination_port`)) {
         CreateFirewallRuleObject[["destination_port"]] <-
           self$`destination_port`
@@ -115,14 +123,6 @@ CreateFirewallRule <- R6::R6Class(
         CreateFirewallRuleObject[["source_port"]] <-
           self$`source_port`
       }
-      if (!is.null(self$`protocol_id`)) {
-        CreateFirewallRuleObject[["protocol_id"]] <-
-          self$`protocol_id`
-      }
-      if (!is.null(self$`xdp_action`)) {
-        CreateFirewallRuleObject[["xdp_action"]] <-
-          self$`xdp_action`
-      }
       return(CreateFirewallRuleObject)
     },
 
@@ -133,15 +133,6 @@ CreateFirewallRule <- R6::R6Class(
     #' @return the instance of CreateFirewallRule
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`destination_port`)) {
-        self$`destination_port` <- this_object$`destination_port`
-      }
-      if (!is.null(this_object$`source_ip`)) {
-        self$`source_ip` <- this_object$`source_ip`
-      }
-      if (!is.null(this_object$`source_port`)) {
-        self$`source_port` <- this_object$`source_port`
-      }
       if (!is.null(this_object$`protocol_id`)) {
         if (!is.null(this_object$`protocol_id`) && !(this_object$`protocol_id` %in% c("1", "2"))) {
           stop(paste("Error! \"", this_object$`protocol_id`, "\" cannot be assigned to `protocol_id`. Must be \"1\", \"2\".", sep = ""))
@@ -153,6 +144,15 @@ CreateFirewallRule <- R6::R6Class(
           stop(paste("Error! \"", this_object$`xdp_action`, "\" cannot be assigned to `xdp_action`. Must be \"0\", \"1\".", sep = ""))
         }
         self$`xdp_action` <- this_object$`xdp_action`
+      }
+      if (!is.null(this_object$`destination_port`)) {
+        self$`destination_port` <- this_object$`destination_port`
+      }
+      if (!is.null(this_object$`source_ip`)) {
+        self$`source_ip` <- this_object$`source_ip`
+      }
+      if (!is.null(this_object$`source_port`)) {
+        self$`source_port` <- this_object$`source_port`
       }
       self
     },
@@ -175,9 +175,6 @@ CreateFirewallRule <- R6::R6Class(
     #' @return the instance of CreateFirewallRule
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`destination_port` <- this_object$`destination_port`
-      self$`source_ip` <- this_object$`source_ip`
-      self$`source_port` <- this_object$`source_port`
       if (!is.null(this_object$`protocol_id`) && !(this_object$`protocol_id` %in% c("1", "2"))) {
         stop(paste("Error! \"", this_object$`protocol_id`, "\" cannot be assigned to `protocol_id`. Must be \"1\", \"2\".", sep = ""))
       }
@@ -186,6 +183,9 @@ CreateFirewallRule <- R6::R6Class(
         stop(paste("Error! \"", this_object$`xdp_action`, "\" cannot be assigned to `xdp_action`. Must be \"0\", \"1\".", sep = ""))
       }
       self$`xdp_action` <- this_object$`xdp_action`
+      self$`destination_port` <- this_object$`destination_port`
+      self$`source_ip` <- this_object$`source_ip`
+      self$`source_port` <- this_object$`source_port`
       self
     },
 

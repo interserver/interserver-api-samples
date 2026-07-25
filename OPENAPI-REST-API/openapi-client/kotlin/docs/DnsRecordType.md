@@ -102,5 +102,7 @@
 
     * `uRI` (value: `"URI⏎"`)
 
+    * `unknownDefaultOpenApi` (value: `"unknown_default_open_api"`)
+
 
 

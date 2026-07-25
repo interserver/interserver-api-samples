@@ -14,21 +14,21 @@ use serde::{Deserialize, Serialize};
 /// TicketNewResponse : Response returned after creating a new support ticket.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TicketNewResponse {
-    #[serde(rename = "ticket_id", skip_serializing_if = "Option::is_none")]
-    pub ticket_id: Option<i32>,
     #[serde(rename = "text")]
     pub text: String,
     #[serde(rename = "success")]
     pub success: bool,
+    #[serde(rename = "ticket_id", skip_serializing_if = "Option::is_none")]
+    pub ticket_id: Option<i32>,
 }
 
 impl TicketNewResponse {
     /// Response returned after creating a new support ticket.
     pub fn new(text: String, success: bool) -> TicketNewResponse {
         TicketNewResponse {
-            ticket_id: None,
             text,
             success,
+            ticket_id: None,
         }
     }
 }

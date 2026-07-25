@@ -306,7 +306,7 @@ module InterServerClient
       return false if @ssl.nil?
       return false if @hostname.nil?
       return false if @approver_email.nil?
-      csr_type_validator = EnumAttributeValidator.new('String', ["generated", "provided"])
+      csr_type_validator = EnumAttributeValidator.new('String', ["generated", "provided", "unknown_default_open_api"])
       return false unless csr_type_validator.valid?(@csr_type)
       true
     end
@@ -344,7 +344,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] csr_type Object to be assigned
     def csr_type=(csr_type)
-      validator = EnumAttributeValidator.new('String', ["generated", "provided"])
+      validator = EnumAttributeValidator.new('String', ["generated", "provided", "unknown_default_open_api"])
       unless validator.valid?(csr_type)
         fail ArgumentError, "invalid value for \"csr_type\", must be one of #{validator.allowable_values}."
       end

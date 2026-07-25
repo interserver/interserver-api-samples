@@ -6,8 +6,8 @@ Request body to setup an IPMI Live connection.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asset** | **int** | Asset ID | [optional] 
 **ip** | **str** | Your IP Address you wish to connect to the IPMI system from. | 
+**asset** | **int** | Asset ID | [optional] 
 
 ## Example
 

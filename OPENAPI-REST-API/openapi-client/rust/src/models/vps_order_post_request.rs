@@ -23,9 +23,6 @@ pub struct VpsOrderPostRequest {
     /// VPS Platform
     #[serde(rename = "vpsPlatform")]
     pub vps_platform: VpsPlatform,
-    /// Control Panel
-    #[serde(rename = "controlpanel", skip_serializing_if = "Option::is_none")]
-    pub controlpanel: Option<Controlpanel>,
     /// Billing Period or Frequency
     #[serde(rename = "period")]
     pub period: u32,
@@ -38,12 +35,15 @@ pub struct VpsOrderPostRequest {
     /// The hostname to assign to the VPS
     #[serde(rename = "hostname")]
     pub hostname: String,
-    /// Coupon
-    #[serde(rename = "coupon", skip_serializing_if = "Option::is_none")]
-    pub coupon: Option<String>,
     /// Root password to assign to the VVPS
     #[serde(rename = "rootpass")]
     pub rootpass: String,
+    /// Control Panel
+    #[serde(rename = "controlpanel", skip_serializing_if = "Option::is_none")]
+    pub controlpanel: Option<Controlpanel>,
+    /// Coupon
+    #[serde(rename = "coupon", skip_serializing_if = "Option::is_none")]
+    pub coupon: Option<String>,
     /// Order comments or notes
     #[serde(rename = "comment", skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
@@ -56,13 +56,13 @@ impl VpsOrderPostRequest {
             os_distro,
             slices,
             vps_platform,
-            controlpanel: None,
             period,
             location,
             os_version,
             hostname,
-            coupon: None,
             rootpass,
+            controlpanel: None,
+            coupon: None,
             comment: None,
         }
     }
@@ -76,6 +76,8 @@ pub enum VpsPlatform {
     Hyperv,
     #[serde(rename = "kvmstorage")]
     Kvmstorage,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for VpsPlatform {
@@ -92,6 +94,8 @@ pub enum Controlpanel {
     Cpanel,
     #[serde(rename = "da")]
     Da,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Controlpanel {

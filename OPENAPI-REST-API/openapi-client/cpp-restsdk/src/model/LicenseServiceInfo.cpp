@@ -35,14 +35,14 @@ LicenseServiceInfo::LicenseServiceInfo()
     m_License_ipIsSet = false;
     m_License_status = utility::conversions::to_string_t("");
     m_License_statusIsSet = false;
-    m_License_hostname = utility::conversions::to_string_t("");
-    m_License_hostnameIsSet = false;
-    m_License_key = utility::conversions::to_string_t("");
-    m_License_keyIsSet = false;
     m_License_invoice = utility::conversions::to_string_t("");
     m_License_invoiceIsSet = false;
     m_License_coupon = utility::conversions::to_string_t("");
     m_License_couponIsSet = false;
+    m_License_hostname = utility::conversions::to_string_t("");
+    m_License_hostnameIsSet = false;
+    m_License_key = utility::conversions::to_string_t("");
+    m_License_keyIsSet = false;
     m_License_extra = utility::conversions::to_string_t("");
     m_License_extraIsSet = false;
 }
@@ -94,16 +94,6 @@ web::json::value LicenseServiceInfo::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("license_status"))] = ModelBase::toJson(m_License_status);
     }
-    if(m_License_hostnameIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("license_hostname"))] = ModelBase::toJson(m_License_hostname);
-    }
-    if(m_License_keyIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("license_key"))] = ModelBase::toJson(m_License_key);
-    }
     if(m_License_invoiceIsSet)
     {
         
@@ -113,6 +103,16 @@ web::json::value LicenseServiceInfo::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("license_coupon"))] = ModelBase::toJson(m_License_coupon);
+    }
+    if(m_License_hostnameIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("license_hostname"))] = ModelBase::toJson(m_License_hostname);
+    }
+    if(m_License_keyIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("license_key"))] = ModelBase::toJson(m_License_key);
     }
     if(m_License_extraIsSet)
     {
@@ -203,28 +203,6 @@ bool LicenseServiceInfo::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("license_hostname")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setLicenseHostname;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setLicenseHostname);
-            setLicenseHostname(refVal_setLicenseHostname);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("license_key"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("license_key")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setLicenseKey;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setLicenseKey);
-            setLicenseKey(refVal_setLicenseKey);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("license_invoice"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("license_invoice")));
@@ -244,6 +222,28 @@ bool LicenseServiceInfo::fromJson(const web::json::value& val)
             utility::string_t refVal_setLicenseCoupon;
             ok &= ModelBase::fromJson(fieldValue, refVal_setLicenseCoupon);
             setLicenseCoupon(refVal_setLicenseCoupon);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("license_hostname")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setLicenseHostname;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setLicenseHostname);
+            setLicenseHostname(refVal_setLicenseHostname);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("license_key"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("license_key")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setLicenseKey;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setLicenseKey);
+            setLicenseKey(refVal_setLicenseKey);
             
         }
     }
@@ -296,14 +296,6 @@ void LicenseServiceInfo::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_status")), m_License_status));
     }
-    if(m_License_hostnameIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_hostname")), m_License_hostname));
-    }
-    if(m_License_keyIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_key")), m_License_key));
-    }
     if(m_License_invoiceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_invoice")), m_License_invoice));
@@ -311,6 +303,14 @@ void LicenseServiceInfo::toMultipart(std::shared_ptr<MultipartFormData> multipar
     if(m_License_couponIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_coupon")), m_License_coupon));
+    }
+    if(m_License_hostnameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_hostname")), m_License_hostname));
+    }
+    if(m_License_keyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("license_key")), m_License_key));
     }
     if(m_License_extraIsSet)
     {
@@ -369,18 +369,6 @@ bool LicenseServiceInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_status"))), refVal_setLicenseStatus );
         setLicenseStatus(refVal_setLicenseStatus);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))))
-    {
-        utility::string_t refVal_setLicenseHostname;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))), refVal_setLicenseHostname );
-        setLicenseHostname(refVal_setLicenseHostname);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_key"))))
-    {
-        utility::string_t refVal_setLicenseKey;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_key"))), refVal_setLicenseKey );
-        setLicenseKey(refVal_setLicenseKey);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_invoice"))))
     {
         utility::string_t refVal_setLicenseInvoice;
@@ -392,6 +380,18 @@ bool LicenseServiceInfo::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         utility::string_t refVal_setLicenseCoupon;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_coupon"))), refVal_setLicenseCoupon );
         setLicenseCoupon(refVal_setLicenseCoupon);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))))
+    {
+        utility::string_t refVal_setLicenseHostname;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_hostname"))), refVal_setLicenseHostname );
+        setLicenseHostname(refVal_setLicenseHostname);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_key"))))
+    {
+        utility::string_t refVal_setLicenseKey;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("license_key"))), refVal_setLicenseKey );
+        setLicenseKey(refVal_setLicenseKey);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("license_extra"))))
     {
@@ -550,48 +550,6 @@ void LicenseServiceInfo::unsetLicense_status()
 {
     m_License_statusIsSet = false;
 }
-utility::string_t LicenseServiceInfo::getLicenseHostname() const
-{
-    return m_License_hostname;
-}
-
-
-void LicenseServiceInfo::setLicenseHostname(const utility::string_t& value)
-{
-    m_License_hostname = value;
-    m_License_hostnameIsSet = true;
-}
-
-bool LicenseServiceInfo::licenseHostnameIsSet() const
-{
-    return m_License_hostnameIsSet;
-}
-
-void LicenseServiceInfo::unsetLicense_hostname()
-{
-    m_License_hostnameIsSet = false;
-}
-utility::string_t LicenseServiceInfo::getLicenseKey() const
-{
-    return m_License_key;
-}
-
-
-void LicenseServiceInfo::setLicenseKey(const utility::string_t& value)
-{
-    m_License_key = value;
-    m_License_keyIsSet = true;
-}
-
-bool LicenseServiceInfo::licenseKeyIsSet() const
-{
-    return m_License_keyIsSet;
-}
-
-void LicenseServiceInfo::unsetLicense_key()
-{
-    m_License_keyIsSet = false;
-}
 utility::string_t LicenseServiceInfo::getLicenseInvoice() const
 {
     return m_License_invoice;
@@ -633,6 +591,48 @@ bool LicenseServiceInfo::licenseCouponIsSet() const
 void LicenseServiceInfo::unsetLicense_coupon()
 {
     m_License_couponIsSet = false;
+}
+utility::string_t LicenseServiceInfo::getLicenseHostname() const
+{
+    return m_License_hostname;
+}
+
+
+void LicenseServiceInfo::setLicenseHostname(const utility::string_t& value)
+{
+    m_License_hostname = value;
+    m_License_hostnameIsSet = true;
+}
+
+bool LicenseServiceInfo::licenseHostnameIsSet() const
+{
+    return m_License_hostnameIsSet;
+}
+
+void LicenseServiceInfo::unsetLicense_hostname()
+{
+    m_License_hostnameIsSet = false;
+}
+utility::string_t LicenseServiceInfo::getLicenseKey() const
+{
+    return m_License_key;
+}
+
+
+void LicenseServiceInfo::setLicenseKey(const utility::string_t& value)
+{
+    m_License_key = value;
+    m_License_keyIsSet = true;
+}
+
+bool LicenseServiceInfo::licenseKeyIsSet() const
+{
+    return m_License_keyIsSet;
+}
+
+void LicenseServiceInfo::unsetLicense_key()
+{
+    m_License_keyIsSet = false;
 }
 utility::string_t LicenseServiceInfo::getLicenseExtra() const
 {

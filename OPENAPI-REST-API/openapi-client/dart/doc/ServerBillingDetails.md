@@ -1,8 +1,8 @@
-# openapi.model.ServerBillingDetails
+# interserver_api.model.ServerBillingDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

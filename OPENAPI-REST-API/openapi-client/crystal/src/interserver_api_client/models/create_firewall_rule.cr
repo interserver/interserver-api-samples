@@ -34,8 +34,8 @@ module InterserverApiClient
     @[JSON::Field(key: "source_port", emit_null: false)]
     property source_port : Int32? = 0
 
-    validates(protocol_id, Int32, false, enum: [1, 2])
-    validates(xdp_action, Int32, false, enum: [0, 1])
+    validates(protocol_id, Int32, false, enum: [1, 2, 11184809])
+    validates(xdp_action, Int32, false, enum: [0, 1, 11184809])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

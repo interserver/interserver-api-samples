@@ -58,6 +58,7 @@ module OpenapiClient
       TXT = 'TXT'
       WKS = 'WKS'
       URI = 'URI⏎'
+      UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api'
 
       def self.all
         @all ||= [
@@ -110,6 +111,7 @@ module OpenapiClient
           TXT,
           WKS,
           URI,
+          UNKNOWN_DEFAULT_OPEN_API,
         ].freeze
       end
 

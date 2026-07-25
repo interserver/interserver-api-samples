@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'LicenseClientLink' {
     Context 'LicenseClientLink' {
         It 'Initialize-LicenseClientLink' {
             # a simple test to create an object
-            #$NewObject = Initialize-LicenseClientLink -Label "TEST_VALUE" -Link "TEST_VALUE" -Icon "TEST_VALUE" -IconText "TEST_VALUE" -HelpText "TEST_VALUE" -OtherAttr "TEST_VALUE"
+            #$NewObject = Initialize-LicenseClientLink -Label "TEST_VALUE" -Link "TEST_VALUE" -Icon "TEST_VALUE" -HelpText "TEST_VALUE" -IconText "TEST_VALUE" -OtherAttr "TEST_VALUE"
             #$NewObject | Should -BeOfType LicenseClientLink
             #$NewObject.property | Should -Be 0
         }

@@ -1180,7 +1180,8 @@ export class QuickServersApi extends BaseAPI {
  */
 export enum DeleteQsBackupAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -1188,7 +1189,8 @@ export enum DeleteQsBackupAllEnum {
  */
 export enum DownloadQsBackupAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -1196,5 +1198,6 @@ export enum DownloadQsBackupAllEnum {
  */
 export enum GetQsBackupsAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }

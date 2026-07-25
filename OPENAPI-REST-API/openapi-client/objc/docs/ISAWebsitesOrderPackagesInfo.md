@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **servicesCategory** | **NSString*** | The category of the package. | 
 **servicesBuyable** | **NSString*** | Indicates if the package is buyable (1 for yes, 0 for no). | 
 **servicesType** | **NSString*** | The type of the package. | 
+**servicesModule** | **NSString*** | The module of the package. | 
+**servicesDescription** | **NSString*** | Description of the package. | 
 **servicesField1** | **NSString*** | Additional field 1 for the package. | [optional] 
 **servicesField2** | **NSString*** | Additional field 2 for the package. | [optional] 
-**servicesModule** | **NSString*** | The module of the package. | 
 **servicesHtml** | **NSString*** | HTML content for the package. | [optional] 
-**servicesDescription** | **NSString*** | Description of the package. | 
 **servicesMoreinfoUrl** | **NSString*** | URL for more information about the package. | [optional] 
 **servicesHidden** | **NSString*** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
 

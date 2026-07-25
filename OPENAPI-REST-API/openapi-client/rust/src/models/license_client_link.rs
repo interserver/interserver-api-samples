@@ -22,12 +22,12 @@ pub struct LicenseClientLink {
     /// Link icon
     #[serde(rename = "icon")]
     pub icon: String,
-    /// Icon text
-    #[serde(rename = "icon_text", skip_serializing_if = "Option::is_none")]
-    pub icon_text: Option<String>,
     /// Help text
     #[serde(rename = "help_text")]
     pub help_text: String,
+    /// Icon text
+    #[serde(rename = "icon_text", skip_serializing_if = "Option::is_none")]
+    pub icon_text: Option<String>,
     /// Other attributes
     #[serde(rename = "other_attr", skip_serializing_if = "Option::is_none")]
     pub other_attr: Option<String>,
@@ -39,8 +39,8 @@ impl LicenseClientLink {
             label,
             link,
             icon,
-            icon_text: None,
             help_text,
+            icon_text: None,
             other_attr: None,
         }
     }

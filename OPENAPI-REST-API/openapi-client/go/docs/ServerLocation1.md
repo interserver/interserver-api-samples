@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LocationId** | **int32** |  | 
 **LocationName** | **string** |  | 
-**LocationDescription** | Pointer to **string** |  | [optional] 
 **LocationLat** | **string** |  | 
 **LocationLong** | **string** |  | 
+**LocationDescription** | Pointer to **string** |  | [optional] 
 **LocationIpmiGroup** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -70,31 +70,6 @@ and a boolean to check if the value has been set.
 SetLocationName sets LocationName field to given value.
 
 
-### GetLocationDescription
-
-`func (o *ServerLocation1) GetLocationDescription() string`
-
-GetLocationDescription returns the LocationDescription field if non-nil, zero value otherwise.
-
-### GetLocationDescriptionOk
-
-`func (o *ServerLocation1) GetLocationDescriptionOk() (*string, bool)`
-
-GetLocationDescriptionOk returns a tuple with the LocationDescription field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocationDescription
-
-`func (o *ServerLocation1) SetLocationDescription(v string)`
-
-SetLocationDescription sets LocationDescription field to given value.
-
-### HasLocationDescription
-
-`func (o *ServerLocation1) HasLocationDescription() bool`
-
-HasLocationDescription returns a boolean if a field has been set.
-
 ### GetLocationLat
 
 `func (o *ServerLocation1) GetLocationLat() string`
@@ -134,6 +109,31 @@ and a boolean to check if the value has been set.
 
 SetLocationLong sets LocationLong field to given value.
 
+
+### GetLocationDescription
+
+`func (o *ServerLocation1) GetLocationDescription() string`
+
+GetLocationDescription returns the LocationDescription field if non-nil, zero value otherwise.
+
+### GetLocationDescriptionOk
+
+`func (o *ServerLocation1) GetLocationDescriptionOk() (*string, bool)`
+
+GetLocationDescriptionOk returns a tuple with the LocationDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocationDescription
+
+`func (o *ServerLocation1) SetLocationDescription(v string)`
+
+SetLocationDescription sets LocationDescription field to given value.
+
+### HasLocationDescription
+
+`func (o *ServerLocation1) HasLocationDescription() bool`
+
+HasLocationDescription returns a boolean if a field has been set.
 
 ### GetLocationIpmiGroup
 

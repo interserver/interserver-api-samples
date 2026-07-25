@@ -21,9 +21,9 @@ namespace model {
 
 ServerIpmiPowerRequest::ServerIpmiPowerRequest()
 {
+    m_ActionIsSet = false;
     m_Asset = 0;
     m_AssetIsSet = false;
-    m_ActionIsSet = false;
 }
 
 ServerIpmiPowerRequest::~ServerIpmiPowerRequest()
@@ -38,17 +38,17 @@ void ServerIpmiPowerRequest::validate()
 web::json::value ServerIpmiPowerRequest::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_AssetIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("asset"))] = ModelBase::toJson(m_Asset);
-    }
     if(m_ActionIsSet)
     {
         
         utility::string_t refVal = fromActionEnum(m_Action);
         val[utility::conversions::to_string_t(_XPLATSTR("action"))] = ModelBase::toJson(refVal);
         
+    }
+    if(m_AssetIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("asset"))] = ModelBase::toJson(m_Asset);
     }
 
     return val;
@@ -57,17 +57,6 @@ web::json::value ServerIpmiPowerRequest::toJson() const
 bool ServerIpmiPowerRequest::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset")));
-        if(!fieldValue.is_null())
-        {
-            int32_t refVal_setAsset;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setAsset);
-            setAsset(refVal_setAsset);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("action"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("action")));
@@ -77,6 +66,17 @@ bool ServerIpmiPowerRequest::fromJson(const web::json::value& val)
             ok &= ModelBase::fromJson(fieldValue, refVal_setAction);
             
             setAction(toActionEnum(refVal_setAction));
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("asset"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("asset")));
+        if(!fieldValue.is_null())
+        {
+            int32_t refVal_setAsset;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setAsset);
+            setAsset(refVal_setAsset);
             
         }
     }
@@ -90,13 +90,13 @@ void ServerIpmiPowerRequest::toMultipart(std::shared_ptr<MultipartFormData> mult
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
-    if(m_AssetIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset")), m_Asset));
-    }
     if(m_ActionIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("action")), fromActionEnum(m_Action)));
+    }
+    if(m_AssetIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("asset")), m_Asset));
     }
 }
 
@@ -109,17 +109,17 @@ bool ServerIpmiPowerRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset"))))
-    {
-        int32_t refVal_setAsset;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset"))), refVal_setAsset );
-        setAsset(refVal_setAsset);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("action"))))
     {
         utility::string_t refVal_setAction;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("action"))), refVal_setAction );
         setAction(toActionEnum(refVal_setAction));
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("asset"))))
+    {
+        int32_t refVal_setAsset;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("asset"))), refVal_setAsset );
+        setAsset(refVal_setAsset);
     }
     return ok;
 }
@@ -147,6 +147,10 @@ ServerIpmiPowerRequest::ActionEnum ServerIpmiPowerRequest::toActionEnum(const ut
         return ActionEnum::SOFT;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return ActionEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to ActionEnum");
 }
 
@@ -166,30 +170,12 @@ const utility::string_t ServerIpmiPowerRequest::fromActionEnum(const ActionEnum 
         
         case ActionEnum::SOFT: return utility::conversions::to_string_t("soft");
         
+        case ActionEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
 
-int32_t ServerIpmiPowerRequest::getAsset() const
-{
-    return m_Asset;
-}
-
-void ServerIpmiPowerRequest::setAsset(int32_t value)
-{
-    m_Asset = value;
-    m_AssetIsSet = true;
-}
-
-bool ServerIpmiPowerRequest::assetIsSet() const
-{
-    return m_AssetIsSet;
-}
-
-void ServerIpmiPowerRequest::unsetAsset()
-{
-    m_AssetIsSet = false;
-}
 ServerIpmiPowerRequest::ActionEnum ServerIpmiPowerRequest::getAction() const
 {
     return m_Action;
@@ -210,6 +196,26 @@ bool ServerIpmiPowerRequest::actionIsSet() const
 void ServerIpmiPowerRequest::unsetAction()
 {
     m_ActionIsSet = false;
+}
+int32_t ServerIpmiPowerRequest::getAsset() const
+{
+    return m_Asset;
+}
+
+void ServerIpmiPowerRequest::setAsset(int32_t value)
+{
+    m_Asset = value;
+    m_AssetIsSet = true;
+}
+
+bool ServerIpmiPowerRequest::assetIsSet() const
+{
+    return m_AssetIsSet;
+}
+
+void ServerIpmiPowerRequest::unsetAsset()
+{
+    m_AssetIsSet = false;
 }
 
 }

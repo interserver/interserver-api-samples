@@ -231,13 +231,13 @@ boost::json::object ModuleSettings::toJsonObject_internal() const
         object["TBLNAME"] = JsonValueConverter<std::string>::toJsonValue(getTBLNAME());
         object["TABLE"] = JsonValueConverter<std::string>::toJsonValue(getTABLE());
         object["TITLE_FIELD"] = JsonValueConverter<std::string>::toJsonValue(getTITLEFIELD());
+        object["PREFIX"] = JsonValueConverter<std::string>::toJsonValue(getPREFIX());
         if (m_TITLE_FIELD2IsSet) {
             object["TITLE_FIELD2"] = JsonValueConverter<std::string>::toJsonValue(getTITLEFIELD2());
         }
         if (m_TITLE_FIELD3IsSet) {
             object["TITLE_FIELD3"] = JsonValueConverter<std::string>::toJsonValue(getTITLEFIELD3());
         }
-        object["PREFIX"] = JsonValueConverter<std::string>::toJsonValue(getPREFIX());
     return object;
 }
 
@@ -336,6 +336,12 @@ void ModuleSettings::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
+        const auto PREFIXIt = object.find("PREFIX");
+        if (PREFIXIt != object.end()) {
+            setPREFIX(JsonValueConverter<std::string>::fromJsonValue(PREFIXIt->value()));
+        }
+    }
+    {
         const auto TITLE_FIELD2It = object.find("TITLE_FIELD2");
         if (TITLE_FIELD2It != object.end()) {
             setTITLEFIELD2(JsonValueConverter<std::string>::fromJsonValue(TITLE_FIELD2It->value()));
@@ -345,12 +351,6 @@ void ModuleSettings::fromJsonObject_internal(boost::json::object const& object)
         const auto TITLE_FIELD3It = object.find("TITLE_FIELD3");
         if (TITLE_FIELD3It != object.end()) {
             setTITLEFIELD3(JsonValueConverter<std::string>::fromJsonValue(TITLE_FIELD3It->value()));
-        }
-    }
-    {
-        const auto PREFIXIt = object.find("PREFIX");
-        if (PREFIXIt != object.end()) {
-            setPREFIX(JsonValueConverter<std::string>::fromJsonValue(PREFIXIt->value()));
         }
     }
 }
@@ -505,6 +505,16 @@ void ModuleSettings::setTITLEFIELD(std::string value)
     
     m_TITLE_FIELD = std::move(value);
 }
+std::string ModuleSettings::getPREFIX() const
+{
+    return m_PREFIX;
+}
+
+void ModuleSettings::setPREFIX(std::string value)
+{
+    
+    m_PREFIX = std::move(value);
+}
 std::string ModuleSettings::getTITLEFIELD2() const
 {
     return m_TITLE_FIELD2;
@@ -526,16 +536,6 @@ void ModuleSettings::setTITLEFIELD3(std::string value)
     
     m_TITLE_FIELD3 = std::move(value);
     m_TITLE_FIELD3IsSet = true;
-}
-std::string ModuleSettings::getPREFIX() const
-{
-    return m_PREFIX;
-}
-
-void ModuleSettings::setPREFIX(std::string value)
-{
-    
-    m_PREFIX = std::move(value);
 }
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<ModuleSettings>>& data)

@@ -14,9 +14,6 @@ use serde::{Deserialize, Serialize};
 /// DenyRuleRecord : The data for a email deny rule record.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DenyRuleRecord {
-    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-    #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
-    pub user: Option<String>,
     /// The type of deny rule.
     #[serde(rename = "type")]
     pub r#type: Type,
@@ -29,17 +26,20 @@ pub struct DenyRuleRecord {
     /// the date the rule was created.
     #[serde(rename = "created")]
     pub created: String,
+    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+    #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
+    pub user: Option<String>,
 }
 
 impl DenyRuleRecord {
     /// The data for a email deny rule record.
     pub fn new(r#type: Type, data: String, id: i32, created: String) -> DenyRuleRecord {
         DenyRuleRecord {
-            user: None,
             r#type,
             data,
             id,
             created,
+            user: None,
         }
     }
 }
@@ -54,6 +54,8 @@ pub enum Type {
     Startswith,
     #[serde(rename = "destination")]
     Destination,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Type {

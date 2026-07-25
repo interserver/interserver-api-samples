@@ -20,7 +20,8 @@ export interface DomainNameserverGetResponseInner {
 export namespace DomainNameserverGetResponseInner {
     export const CanDeleteEnum = {
         _0: '0',
-        _1: '1'
+        _1: '1',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type CanDeleteEnum = typeof CanDeleteEnum[keyof typeof CanDeleteEnum];
 }

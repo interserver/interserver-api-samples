@@ -190,7 +190,7 @@ module InterServerClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      scrub_ip_status_validator = EnumAttributeValidator.new('String', ["active", "pending", "canceled", "expired"])
+      scrub_ip_status_validator = EnumAttributeValidator.new('String', ["active", "pending", "canceled", "expired", "unknown_default_open_api"])
       return false unless scrub_ip_status_validator.valid?(@scrub_ip_status)
       true
     end
@@ -198,7 +198,7 @@ module InterServerClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] scrub_ip_status Object to be assigned
     def scrub_ip_status=(scrub_ip_status)
-      validator = EnumAttributeValidator.new('String', ["active", "pending", "canceled", "expired"])
+      validator = EnumAttributeValidator.new('String', ["active", "pending", "canceled", "expired", "unknown_default_open_api"])
       unless validator.valid?(scrub_ip_status)
         fail ArgumentError, "invalid value for \"scrub_ip_status\", must be one of #{validator.allowable_values}."
       end

@@ -64,12 +64,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::string getLocationDescription() const;
-    void setLocationDescription(std::string value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     std::string getLocationLat() const;
     void setLocationLat(std::string value);
 
@@ -78,6 +72,12 @@ public:
     /// </summary>
     std::string getLocationLong() const;
     void setLocationLong(std::string value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::string getLocationDescription() const;
+    void setLocationDescription(std::string value);
 
     /// <summary>
     /// 
@@ -97,10 +97,10 @@ protected:
 protected:
     int32_t m_Location_id = 0;
     std::string m_Location_name = "";
-    std::string m_Location_description = "";
-    bool m_Location_descriptionIsSet = false;
     std::string m_Location_lat = "";
     std::string m_Location_long = "";
+    std::string m_Location_description = "";
+    bool m_Location_descriptionIsSet = false;
     int32_t m_Location_ipmi_group = 0;
     bool m_Location_ipmi_groupIsSet = false;
 };

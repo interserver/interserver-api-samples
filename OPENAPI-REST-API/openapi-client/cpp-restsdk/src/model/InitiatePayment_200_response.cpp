@@ -250,6 +250,10 @@ InitiatePayment_200_response::TypeEnum InitiatePayment_200_response::toTypeEnum(
         return TypeEnum::SINGLE;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return TypeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to TypeEnum");
 }
 
@@ -264,6 +268,8 @@ const utility::string_t InitiatePayment_200_response::fromTypeEnum(const TypeEnu
         case TypeEnum::SUBMIT: return utility::conversions::to_string_t("submit");
         
         case TypeEnum::SINGLE: return utility::conversions::to_string_t("single");
+        
+        case TypeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

@@ -22,7 +22,8 @@ export interface TicketPostDetailsInner {
 export namespace TicketPostDetailsInner {
     export const CreatorEnum = {
         User: 'User',
-        Staff: 'Staff'
+        Staff: 'Staff',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type CreatorEnum = typeof CreatorEnum[keyof typeof CreatorEnum];
 }

@@ -22,7 +22,8 @@ public class IntServerServerIpmiPowerRequest {
         RESET,
         ON,
         OFF,
-        SOFT
+        SOFT,
+        UNKNOWN_DEFAULT_OPEN_API
     }
 
     /**

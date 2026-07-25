@@ -37,11 +37,13 @@ export interface DomainOrderRequest {
 }
 export enum DomainOrderRequestType {
     Register = 'register',
-    Transfer = 'transfer'
+    Transfer = 'transfer',
+    UnknownDefaultOpenApi = '11184809'
 };
 export enum DomainOrderRequestWhoisPrivacy {
     Enable = 'enable',
-    Disable = 'disable'
+    Disable = 'disable',
+    UnknownDefaultOpenApi = '11184809'
 };
 
 

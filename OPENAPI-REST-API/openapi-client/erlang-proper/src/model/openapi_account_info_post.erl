@@ -10,14 +10,14 @@
 
 -type openapi_account_info_post() ::
   [ {'name', binary() }
-  | {'company', binary() }
   | {'address', binary() }
-  | {'address2', binary() }
   | {'city', binary() }
   | {'state', binary() }
   | {'zip', binary() }
   | {'country', binary() }
   | {'phone', binary() }
+  | {'company', binary() }
+  | {'address2', binary() }
   | {'locale', binary() }
   | {'email_invoices', binary() }
   | {'email_abuse', binary() }
@@ -34,14 +34,14 @@ openapi_account_info_post() ->
 
 openapi_account_info_post(Fields) ->
   Default = [ {'name', binary() }
-            , {'company', binary() }
             , {'address', binary() }
-            , {'address2', binary() }
             , {'city', binary() }
             , {'state', binary() }
             , {'zip', binary() }
             , {'country', binary() }
             , {'phone', binary() }
+            , {'company', binary() }
+            , {'address2', binary() }
             , {'locale', binary() }
             , {'email_invoices', binary() }
             , {'email_abuse', binary() }

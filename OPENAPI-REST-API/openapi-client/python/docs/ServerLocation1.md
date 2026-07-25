@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **location_id** | **int** |  | 
 **location_name** | **str** |  | 
-**location_description** | **str** |  | [optional] 
 **location_lat** | **str** |  | 
 **location_long** | **str** |  | 
+**location_description** | **str** |  | [optional] 
 **location_ipmi_group** | **int** |  | [optional] 
 
 ## Example

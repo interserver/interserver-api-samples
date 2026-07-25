@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'QsOrderRequest' {
     Context 'QsOrderRequest' {
         It 'Initialize-QsOrderRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-QsOrderRequest -Server "TEST_VALUE" -Password "TEST_VALUE" -Os "TEST_VALUE" -Tos "TEST_VALUE" -Comment "TEST_VALUE"
+            #$NewObject = Initialize-QsOrderRequest -Server "TEST_VALUE" -Password "TEST_VALUE" -Tos "TEST_VALUE" -Os "TEST_VALUE" -Comment "TEST_VALUE"
             #$NewObject | Should -BeOfType QsOrderRequest
             #$NewObject.property | Should -Be 0
         }

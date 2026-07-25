@@ -220,18 +220,18 @@ boost::json::object MailLogEntry::toJsonObject_internal() const
         object["id"] = JsonValueConverter<std::string>::toJsonValue(getId());
         object["from"] = JsonValueConverter<std::string>::toJsonValue(getFrom());
         object["to"] = JsonValueConverter<std::string>::toJsonValue(getTo());
-        if (m_SubjectIsSet) {
-            object["subject"] = JsonValueConverter<std::string>::toJsonValue(getSubject());
-        }
-        if (m_MessageIdIsSet) {
-            object["messageId"] = JsonValueConverter<std::string>::toJsonValue(getMessageId());
-        }
         object["created"] = JsonValueConverter<std::string>::toJsonValue(getCreated());
         object["time"] = JsonValueConverter<int32_t>::toJsonValue(getTime());
         object["user"] = JsonValueConverter<std::string>::toJsonValue(getUser());
         object["transtype"] = JsonValueConverter<std::string>::toJsonValue(getTranstype());
         object["origin"] = JsonValueConverter<std::string>::toJsonValue(getOrigin());
         object["interface"] = JsonValueConverter<std::string>::toJsonValue(getInterface());
+        if (m_SubjectIsSet) {
+            object["subject"] = JsonValueConverter<std::string>::toJsonValue(getSubject());
+        }
+        if (m_MessageIdIsSet) {
+            object["messageId"] = JsonValueConverter<std::string>::toJsonValue(getMessageId());
+        }
         if (m_SendingZoneIsSet) {
             object["sendingZone"] = JsonValueConverter<std::string>::toJsonValue(getSendingZone());
         }
@@ -316,18 +316,6 @@ void MailLogEntry::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto SubjectIt = object.find("subject");
-        if (SubjectIt != object.end()) {
-            setSubject(JsonValueConverter<std::string>::fromJsonValue(SubjectIt->value()));
-        }
-    }
-    {
-        const auto MessageIdIt = object.find("messageId");
-        if (MessageIdIt != object.end()) {
-            setMessageId(JsonValueConverter<std::string>::fromJsonValue(MessageIdIt->value()));
-        }
-    }
-    {
         const auto CreatedIt = object.find("created");
         if (CreatedIt != object.end()) {
             setCreated(JsonValueConverter<std::string>::fromJsonValue(CreatedIt->value()));
@@ -361,6 +349,18 @@ void MailLogEntry::fromJsonObject_internal(boost::json::object const& object)
         const auto InterfaceIt = object.find("interface");
         if (InterfaceIt != object.end()) {
             setInterface(JsonValueConverter<std::string>::fromJsonValue(InterfaceIt->value()));
+        }
+    }
+    {
+        const auto SubjectIt = object.find("subject");
+        if (SubjectIt != object.end()) {
+            setSubject(JsonValueConverter<std::string>::fromJsonValue(SubjectIt->value()));
+        }
+    }
+    {
+        const auto MessageIdIt = object.find("messageId");
+        if (MessageIdIt != object.end()) {
+            setMessageId(JsonValueConverter<std::string>::fromJsonValue(MessageIdIt->value()));
         }
     }
     {
@@ -483,28 +483,6 @@ void MailLogEntry::setTo(std::string value)
     
     m_To = std::move(value);
 }
-std::string MailLogEntry::getSubject() const
-{
-    return m_Subject;
-}
-
-void MailLogEntry::setSubject(std::string value)
-{
-    
-    m_Subject = std::move(value);
-    m_SubjectIsSet = true;
-}
-std::string MailLogEntry::getMessageId() const
-{
-    return m_MessageId;
-}
-
-void MailLogEntry::setMessageId(std::string value)
-{
-    
-    m_MessageId = std::move(value);
-    m_MessageIdIsSet = true;
-}
 std::string MailLogEntry::getCreated() const
 {
     return m_Created;
@@ -564,6 +542,28 @@ void MailLogEntry::setInterface(std::string value)
 {
     
     m_Interface = std::move(value);
+}
+std::string MailLogEntry::getSubject() const
+{
+    return m_Subject;
+}
+
+void MailLogEntry::setSubject(std::string value)
+{
+    
+    m_Subject = std::move(value);
+    m_SubjectIsSet = true;
+}
+std::string MailLogEntry::getMessageId() const
+{
+    return m_MessageId;
+}
+
+void MailLogEntry::setMessageId(std::string value)
+{
+    
+    m_MessageId = std::move(value);
+    m_MessageIdIsSet = true;
 }
 std::string MailLogEntry::getSendingZone() const
 {

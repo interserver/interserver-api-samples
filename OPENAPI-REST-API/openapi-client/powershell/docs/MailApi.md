@@ -123,7 +123,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
-$DenyRuleNew = Initialize-DenyRuleNew -User "mb20682" -Type "domain" -VarData "domeinwo@server.guesshost.net" # DenyRuleNew | These are the fields needed to create a new email deny rule.
+$DenyRuleNew = Initialize-DenyRuleNew -Type "domain" -VarData "domeinwo@server.guesshost.net" -User "mb20682" # DenyRuleNew | These are the fields needed to create a new email deny rule.
 
 # Create a new deny rule to auto-block matching submissions
 try {
@@ -1587,7 +1587,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $Rule = "MyRule" # String | The ID of the deny rule to update.
-$DenyRuleNew = Initialize-DenyRuleNew -User "mb20682" -Type "domain" -VarData "domeinwo@server.guesshost.net" # DenyRuleNew | 
+$DenyRuleNew = Initialize-DenyRuleNew -Type "domain" -VarData "domeinwo@server.guesshost.net" -User "mb20682" # DenyRuleNew | 
 
 # Update an existing Mail Baby deny rule's type and match data
 try {

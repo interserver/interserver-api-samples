@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MailId** | **string** | The ID of the mail service. | 
-**MailUsername** | Pointer to **string** | The username associated with the mail service. | [optional] 
 **MailType** | **string** | The type of mail service. | 
 **MailCurrency** | **string** | The currency of the mail service. | 
 **MailOrderDate** | **string** | The order date of the mail service. | 
 **MailCustid** | **string** | The customer ID associated with the mail service. | 
 **MailQuota** | **string** | The mail quota for the service. | 
-**MailIp** | Pointer to **string** | The IP address associated with the mail service. | [optional] 
 **MailStatus** | **string** | The status of the mail service. | 
 **MailInvoice** | **string** | The invoice ID of the mail service. | 
+**MailUsername** | Pointer to **string** | The username associated with the mail service. | [optional] 
+**MailIp** | Pointer to **string** | The IP address associated with the mail service. | [optional] 
 **MailCoupon** | Pointer to **string** | The coupon associated with the mail service. | [optional] 
 **MailExtra** | Pointer to **string** | Additional information for the mail service. | [optional] 
 **MailServerStatus** | Pointer to **string** | The server status of the mail service. | [optional] 
@@ -57,31 +57,6 @@ and a boolean to check if the value has been set.
 
 SetMailId sets MailId field to given value.
 
-
-### GetMailUsername
-
-`func (o *MailServiceInfo) GetMailUsername() string`
-
-GetMailUsername returns the MailUsername field if non-nil, zero value otherwise.
-
-### GetMailUsernameOk
-
-`func (o *MailServiceInfo) GetMailUsernameOk() (*string, bool)`
-
-GetMailUsernameOk returns a tuple with the MailUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMailUsername
-
-`func (o *MailServiceInfo) SetMailUsername(v string)`
-
-SetMailUsername sets MailUsername field to given value.
-
-### HasMailUsername
-
-`func (o *MailServiceInfo) HasMailUsername() bool`
-
-HasMailUsername returns a boolean if a field has been set.
 
 ### GetMailType
 
@@ -183,31 +158,6 @@ and a boolean to check if the value has been set.
 SetMailQuota sets MailQuota field to given value.
 
 
-### GetMailIp
-
-`func (o *MailServiceInfo) GetMailIp() string`
-
-GetMailIp returns the MailIp field if non-nil, zero value otherwise.
-
-### GetMailIpOk
-
-`func (o *MailServiceInfo) GetMailIpOk() (*string, bool)`
-
-GetMailIpOk returns a tuple with the MailIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMailIp
-
-`func (o *MailServiceInfo) SetMailIp(v string)`
-
-SetMailIp sets MailIp field to given value.
-
-### HasMailIp
-
-`func (o *MailServiceInfo) HasMailIp() bool`
-
-HasMailIp returns a boolean if a field has been set.
-
 ### GetMailStatus
 
 `func (o *MailServiceInfo) GetMailStatus() string`
@@ -247,6 +197,56 @@ and a boolean to check if the value has been set.
 
 SetMailInvoice sets MailInvoice field to given value.
 
+
+### GetMailUsername
+
+`func (o *MailServiceInfo) GetMailUsername() string`
+
+GetMailUsername returns the MailUsername field if non-nil, zero value otherwise.
+
+### GetMailUsernameOk
+
+`func (o *MailServiceInfo) GetMailUsernameOk() (*string, bool)`
+
+GetMailUsernameOk returns a tuple with the MailUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMailUsername
+
+`func (o *MailServiceInfo) SetMailUsername(v string)`
+
+SetMailUsername sets MailUsername field to given value.
+
+### HasMailUsername
+
+`func (o *MailServiceInfo) HasMailUsername() bool`
+
+HasMailUsername returns a boolean if a field has been set.
+
+### GetMailIp
+
+`func (o *MailServiceInfo) GetMailIp() string`
+
+GetMailIp returns the MailIp field if non-nil, zero value otherwise.
+
+### GetMailIpOk
+
+`func (o *MailServiceInfo) GetMailIpOk() (*string, bool)`
+
+GetMailIpOk returns a tuple with the MailIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMailIp
+
+`func (o *MailServiceInfo) SetMailIp(v string)`
+
+SetMailIp sets MailIp field to given value.
+
+### HasMailIp
+
+`func (o *MailServiceInfo) HasMailIp() bool`
+
+HasMailIp returns a boolean if a field has been set.
 
 ### GetMailCoupon
 

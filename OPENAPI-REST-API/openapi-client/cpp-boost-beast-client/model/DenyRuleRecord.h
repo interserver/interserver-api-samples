@@ -50,12 +50,6 @@ public:
     /// DenyRuleRecord members
 
     /// <summary>
-    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-    /// </summary>
-    std::string getUser() const;
-    void setUser(std::string value);
-
-    /// <summary>
     /// The type of deny rule.
     /// </summary>
     std::string getType() const;
@@ -79,6 +73,12 @@ public:
     std::string getCreated() const;
     void setCreated(std::string value);
 
+    /// <summary>
+    /// Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
+    /// </summary>
+    std::string getUser() const;
+    void setUser(std::string value);
+
 protected:
     //////////////////////////////////////
     // Override these for customization //
@@ -89,12 +89,12 @@ protected:
 
 
 protected:
-    std::string m_User = "";
-    bool m_UserIsSet = false;
     std::string m_Type = "";
     std::string m_Data = "";
     int32_t m_Id = 0;
     std::string m_Created = "";
+    std::string m_User = "";
+    bool m_UserIsSet = false;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<DenyRuleRecord>>& data);

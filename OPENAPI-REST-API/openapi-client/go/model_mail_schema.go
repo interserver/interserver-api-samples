@@ -31,12 +31,12 @@ type MailSchema struct {
 	CustCurrencySymbol string `json:"custCurrencySymbol"`
 	// The package of the mail service.
 	Package string `json:"package"`
-	// Extra information for the mail service.
-	ServiceExtra []string `json:"serviceExtra,omitempty"`
 	ExtraInfoTables MailSchemaExtraInfoTables `json:"extraInfoTables"`
 	ServiceType MailServiceType `json:"serviceType"`
 	// The usage count of the mail service.
 	UsageCount string `json:"usage_count"`
+	// Extra information for the mail service.
+	ServiceExtra []string `json:"serviceExtra,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -212,38 +212,6 @@ func (o *MailSchema) SetPackage(v string) {
 	o.Package = v
 }
 
-// GetServiceExtra returns the ServiceExtra field value if set, zero value otherwise.
-func (o *MailSchema) GetServiceExtra() []string {
-	if o == nil || IsNil(o.ServiceExtra) {
-		var ret []string
-		return ret
-	}
-	return o.ServiceExtra
-}
-
-// GetServiceExtraOk returns a tuple with the ServiceExtra field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MailSchema) GetServiceExtraOk() ([]string, bool) {
-	if o == nil || IsNil(o.ServiceExtra) {
-		return nil, false
-	}
-	return o.ServiceExtra, true
-}
-
-// HasServiceExtra returns a boolean if a field has been set.
-func (o *MailSchema) HasServiceExtra() bool {
-	if o != nil && !IsNil(o.ServiceExtra) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceExtra gets a reference to the given []string and assigns it to the ServiceExtra field.
-func (o *MailSchema) SetServiceExtra(v []string) {
-	o.ServiceExtra = v
-}
-
 // GetExtraInfoTables returns the ExtraInfoTables field value
 func (o *MailSchema) GetExtraInfoTables() MailSchemaExtraInfoTables {
 	if o == nil {
@@ -316,6 +284,38 @@ func (o *MailSchema) SetUsageCount(v string) {
 	o.UsageCount = v
 }
 
+// GetServiceExtra returns the ServiceExtra field value if set, zero value otherwise.
+func (o *MailSchema) GetServiceExtra() []string {
+	if o == nil || IsNil(o.ServiceExtra) {
+		var ret []string
+		return ret
+	}
+	return o.ServiceExtra
+}
+
+// GetServiceExtraOk returns a tuple with the ServiceExtra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MailSchema) GetServiceExtraOk() ([]string, bool) {
+	if o == nil || IsNil(o.ServiceExtra) {
+		return nil, false
+	}
+	return o.ServiceExtra, true
+}
+
+// HasServiceExtra returns a boolean if a field has been set.
+func (o *MailSchema) HasServiceExtra() bool {
+	if o != nil && !IsNil(o.ServiceExtra) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceExtra gets a reference to the given []string and assigns it to the ServiceExtra field.
+func (o *MailSchema) SetServiceExtra(v []string) {
+	o.ServiceExtra = v
+}
+
 func (o MailSchema) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -332,12 +332,12 @@ func (o MailSchema) ToMap() (map[string]interface{}, error) {
 	toSerialize["custCurrency"] = o.CustCurrency
 	toSerialize["custCurrencySymbol"] = o.CustCurrencySymbol
 	toSerialize["package"] = o.Package
-	if !IsNil(o.ServiceExtra) {
-		toSerialize["serviceExtra"] = o.ServiceExtra
-	}
 	toSerialize["extraInfoTables"] = o.ExtraInfoTables
 	toSerialize["serviceType"] = o.ServiceType
 	toSerialize["usage_count"] = o.UsageCount
+	if !IsNil(o.ServiceExtra) {
+		toSerialize["serviceExtra"] = o.ServiceExtra
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -395,10 +395,10 @@ func (o *MailSchema) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "custCurrency")
 		delete(additionalProperties, "custCurrencySymbol")
 		delete(additionalProperties, "package")
-		delete(additionalProperties, "serviceExtra")
 		delete(additionalProperties, "extraInfoTables")
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "usage_count")
+		delete(additionalProperties, "serviceExtra")
 		o.AdditionalProperties = additionalProperties
 	}
 

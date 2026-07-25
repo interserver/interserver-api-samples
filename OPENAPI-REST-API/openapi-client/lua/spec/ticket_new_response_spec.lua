@@ -16,13 +16,6 @@ Please update as you see appropriate
 describe("ticket_new_response", function()
   local openapiclient_ticket_new_response = require "openapiclient.model.ticket_new_response"
 
-  -- unit tests for the property 'ticket_id'
-  describe("property ticket_id test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'text'
   describe("property text test", function()
     it("should work", function()
@@ -32,6 +25,13 @@ describe("ticket_new_response", function()
 
   -- unit tests for the property 'success'
   describe("property success test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'ticket_id'
+  describe("property ticket_id test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

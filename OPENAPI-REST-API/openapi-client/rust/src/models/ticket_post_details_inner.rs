@@ -52,6 +52,8 @@ pub enum Creator {
     User,
     #[serde(rename = "Staff")]
     Staff,
+    #[serde(rename = "unknown_default_open_api")]
+    UnknownDefaultOpenApi,
 }
 
 impl Default for Creator {

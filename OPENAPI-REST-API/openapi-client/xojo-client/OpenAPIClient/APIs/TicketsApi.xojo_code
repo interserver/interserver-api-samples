@@ -828,7 +828,10 @@ Protected Class TicketsApi
 		      Return "1825"
 		    Case PeriodEnum_GetTicketsList.All
 		      Return "all"
-		    
+		    Case PeriodEnum_GetTicketsList.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -845,7 +848,10 @@ Protected Class TicketsApi
 		      Return "On Hold"
 		    Case ViewEnum_GetTicketsList.InProgress
 		      Return "In Progress"
-		    
+		    Case ViewEnum_GetTicketsList.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -1674,6 +1680,7 @@ Protected Class TicketsApi
         Escaped365
         Escaped1825
         All
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -1683,6 +1690,7 @@ Protected Class TicketsApi
         Closed
         OnHold
         InProgress
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

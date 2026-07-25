@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner.JSON_PROPERTY_VALUE
 })
 @JsonTypeName("getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner {
     public static final String JSON_PROPERTY_DESC = "desc";

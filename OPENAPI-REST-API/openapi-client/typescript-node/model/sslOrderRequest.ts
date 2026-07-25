@@ -209,6 +209,7 @@ export class SslOrderRequest {
 export namespace SslOrderRequest {
     export enum CsrTypeEnum {
         Generated = <any> 'generated',
-        Provided = <any> 'provided'
+        Provided = <any> 'provided',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

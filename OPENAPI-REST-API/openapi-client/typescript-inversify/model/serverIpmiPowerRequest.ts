@@ -25,12 +25,13 @@ export interface ServerIpmiPowerRequest {
     asset?: number;
 }
 export namespace ServerIpmiPowerRequest {
-    export type ActionEnum = 'cycle' | 'reset' | 'on' | 'off' | 'soft';
+    export type ActionEnum = 'cycle' | 'reset' | 'on' | 'off' | 'soft' | '11184809';
     export const ActionEnum = {
         Cycle: 'cycle' as ActionEnum,
         Reset: 'reset' as ActionEnum,
         On: 'on' as ActionEnum,
         Off: 'off' as ActionEnum,
-        Soft: 'soft' as ActionEnum
+        Soft: 'soft' as ActionEnum,
+        UnknownDefaultOpenApi: '11184809' as ActionEnum
     }
 }

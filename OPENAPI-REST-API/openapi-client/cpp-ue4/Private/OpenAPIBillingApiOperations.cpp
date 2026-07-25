@@ -301,6 +301,8 @@ inline FString ToString(const OpenAPIBillingApi::GetAffiliateDownloadRequest::Ex
 		return TEXT("xlsx");
 	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Pdf:
 		return TEXT("pdf");
+	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum Value (%d)"), (int)Value);
@@ -318,7 +320,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIBillingApi::GetAffili
 		{ TEXT("csv"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Csv },
 		{ TEXT("xls"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xls },
 		{ TEXT("xlsx"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xlsx },
-		{ TEXT("pdf"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Pdf }, };
+		{ TEXT("pdf"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Pdf },
+		{ TEXT("11184809"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -792,6 +795,8 @@ inline FString ToString(const OpenAPIBillingApi::InitiatePaymentRequest::MethodE
 		return TEXT("coinbase");
 	case OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Btcpay:
 		return TEXT("btcpay");
+	case OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum Value (%d)"), (int)Value);
@@ -814,7 +819,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIBillingApi::InitiateP
 		{ TEXT("ccavenue"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Ccavenue },
 		{ TEXT("cashfree"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Cashfree },
 		{ TEXT("coinbase"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Coinbase },
-		{ TEXT("btcpay"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Btcpay }, };
+		{ TEXT("btcpay"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::Btcpay },
+		{ TEXT("11184809"), OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

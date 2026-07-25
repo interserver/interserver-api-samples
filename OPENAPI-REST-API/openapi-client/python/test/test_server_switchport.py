@@ -43,9 +43,9 @@ class TestServerSwitchport(unittest.TestCase):
                 blade = 'Ethernet1',
                 justport = '33',
                 graph_id = '12622',
+                asset_id = 3497,
                 vlans = [],
-                vlans6 = [],
-                asset_id = 3497
+                vlans6 = []
             )
         else:
             return ServerSwitchport(

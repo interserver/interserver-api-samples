@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'CreateFirewallRule' {
     Context 'CreateFirewallRule' {
         It 'Initialize-CreateFirewallRule' {
             # a simple test to create an object
-            #$NewObject = Initialize-CreateFirewallRule -DestinationPort "TEST_VALUE" -SourceIp "TEST_VALUE" -SourcePort "TEST_VALUE" -ProtocolId "TEST_VALUE" -XdpAction "TEST_VALUE"
+            #$NewObject = Initialize-CreateFirewallRule -ProtocolId "TEST_VALUE" -XdpAction "TEST_VALUE" -DestinationPort "TEST_VALUE" -SourceIp "TEST_VALUE" -SourcePort "TEST_VALUE"
             #$NewObject | Should -BeOfType CreateFirewallRule
             #$NewObject.property | Should -Be 0
         }

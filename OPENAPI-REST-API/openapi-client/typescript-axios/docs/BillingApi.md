@@ -368,7 +368,7 @@ const { status, data } = await apiInstance.getAffiliateDownload(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **st** | [**string**] | Filter by status. | (optional) defaults to undefined|
-| **ex** | [**&#39;csv&#39; | &#39;xls&#39; | &#39;xlsx&#39; | &#39;pdf&#39;**]**Array<&#39;csv&#39; &#124; &#39;xls&#39; &#124; &#39;xlsx&#39; &#124; &#39;pdf&#39;>** | Export format: csv, xls, xlsx, or pdf. Defaults to csv. | (optional) defaults to undefined|
+| **ex** | [**&#39;csv&#39; | &#39;xls&#39; | &#39;xlsx&#39; | &#39;pdf&#39;**]**Array<&#39;csv&#39; &#124; &#39;xls&#39; &#124; &#39;xlsx&#39; &#124; &#39;pdf&#39; &#124; &#39;11184809&#39;>** | Export format: csv, xls, xlsx, or pdf. Defaults to csv. | (optional) defaults to undefined|
 | **year** | [**number**] | Year to filter the report. Defaults to the current year. | (optional) defaults to undefined|
 
 
@@ -908,7 +908,7 @@ const { status, data } = await apiInstance.initiatePayment(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **method** | [**&#39;cc&#39; | &#39;paypal&#39; | &#39;prepay&#39; | &#39;payssion&#39; | &#39;payu&#39; | &#39;ccavenue&#39; | &#39;cashfree&#39; | &#39;coinbase&#39; | &#39;btcpay&#39;**]**Array<&#39;cc&#39; &#124; &#39;paypal&#39; &#124; &#39;prepay&#39; &#124; &#39;payssion&#39; &#124; &#39;payu&#39; &#124; &#39;ccavenue&#39; &#124; &#39;cashfree&#39; &#124; &#39;coinbase&#39; &#124; &#39;btcpay&#39;>** | The payment method to use. Valid values: &#x60;cc&#x60; (credit card), &#x60;paypal&#x60;, &#x60;prepay&#x60;, &#x60;payssion&#x60;, &#x60;payu&#x60;, &#x60;ccavenue&#x60;, &#x60;cashfree&#x60;, &#x60;coinbase&#x60;, &#x60;btcpay&#x60;. | defaults to undefined|
+| **method** | [**&#39;cc&#39; | &#39;paypal&#39; | &#39;prepay&#39; | &#39;payssion&#39; | &#39;payu&#39; | &#39;ccavenue&#39; | &#39;cashfree&#39; | &#39;coinbase&#39; | &#39;btcpay&#39;**]**Array<&#39;cc&#39; &#124; &#39;paypal&#39; &#124; &#39;prepay&#39; &#124; &#39;payssion&#39; &#124; &#39;payu&#39; &#124; &#39;ccavenue&#39; &#124; &#39;cashfree&#39; &#124; &#39;coinbase&#39; &#124; &#39;btcpay&#39; &#124; &#39;11184809&#39;>** | The payment method to use. Valid values: &#x60;cc&#x60; (credit card), &#x60;paypal&#x60;, &#x60;prepay&#x60;, &#x60;payssion&#x60;, &#x60;payu&#x60;, &#x60;ccavenue&#x60;, &#x60;cashfree&#x60;, &#x60;coinbase&#x60;, &#x60;btcpay&#x60;. | defaults to undefined|
 | **invoices** | [**string**] | A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. Invoice tags accepted are SERVICE&lt;module&gt;&lt;id&gt;, RINV&lt;module&gt;&lt;repeat invoice id&gt;, INV&lt;module&gt;&lt;invoice id&gt;, PREPAY&lt;prepay id&gt;&lt;invoice id&gt;, and &lt;invoice id&gt;. | defaults to undefined|
 
 

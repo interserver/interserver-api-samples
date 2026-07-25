@@ -29,20 +29,20 @@ test_that("icon", {
   #expect_equal(model.instance$`icon`, "EXPECTED_RESULT")
 })
 
-test_that("icon_text", {
-  # tests for the property `icon_text` (character)
-  # Icon text
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`icon_text`, "EXPECTED_RESULT")
-})
-
 test_that("help_text", {
   # tests for the property `help_text` (character)
   # Help text
 
   # uncomment below to test the property
   #expect_equal(model.instance$`help_text`, "EXPECTED_RESULT")
+})
+
+test_that("icon_text", {
+  # tests for the property `icon_text` (character)
+  # Icon text
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`icon_text`, "EXPECTED_RESULT")
 })
 
 test_that("other_attr", {

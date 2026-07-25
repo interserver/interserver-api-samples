@@ -29,10 +29,6 @@ type MailLogEntry struct {
 	From string `json:"from"`
 	// SMTP envelope `RCPT TO` address.
 	To string `json:"to"`
-	// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-	Subject NullableString `json:"subject,omitempty"`
-	// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
-	MessageId NullableString `json:"messageId,omitempty"`
 	// Human-readable creation timestamp in `YYYY-MM-DD HH:MM:SS` format.
 	Created string `json:"created"`
 	// Unix timestamp of message acceptance.  Corresponds to the `startDate` and `endDate` filter parameters.
@@ -45,6 +41,10 @@ type MailLogEntry struct {
 	Origin string `json:"origin"`
 	// Relay interface name that accepted the message.
 	Interface string `json:"interface"`
+	// The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+	Subject NullableString `json:"subject,omitempty"`
+	// The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
+	MessageId NullableString `json:"messageId,omitempty"`
 	// The sending zone assigned by the relay for outbound delivery.
 	SendingZone NullableString `json:"sendingZone,omitempty"`
 	// Size of the message body in bytes.
@@ -199,90 +199,6 @@ func (o *MailLogEntry) SetTo(v string) {
 	o.To = v
 }
 
-// GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MailLogEntry) GetSubject() string {
-	if o == nil || IsNil(o.Subject.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Subject.Get()
-}
-
-// GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MailLogEntry) GetSubjectOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Subject.Get(), o.Subject.IsSet()
-}
-
-// HasSubject returns a boolean if a field has been set.
-func (o *MailLogEntry) HasSubject() bool {
-	if o != nil && o.Subject.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
-func (o *MailLogEntry) SetSubject(v string) {
-	o.Subject.Set(&v)
-}
-// SetSubjectNil sets the value for Subject to be an explicit nil
-func (o *MailLogEntry) SetSubjectNil() {
-	o.Subject.Set(nil)
-}
-
-// UnsetSubject ensures that no value is present for Subject, not even an explicit nil
-func (o *MailLogEntry) UnsetSubject() {
-	o.Subject.Unset()
-}
-
-// GetMessageId returns the MessageId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MailLogEntry) GetMessageId() string {
-	if o == nil || IsNil(o.MessageId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.MessageId.Get()
-}
-
-// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MailLogEntry) GetMessageIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.MessageId.Get(), o.MessageId.IsSet()
-}
-
-// HasMessageId returns a boolean if a field has been set.
-func (o *MailLogEntry) HasMessageId() bool {
-	if o != nil && o.MessageId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMessageId gets a reference to the given NullableString and assigns it to the MessageId field.
-func (o *MailLogEntry) SetMessageId(v string) {
-	o.MessageId.Set(&v)
-}
-// SetMessageIdNil sets the value for MessageId to be an explicit nil
-func (o *MailLogEntry) SetMessageIdNil() {
-	o.MessageId.Set(nil)
-}
-
-// UnsetMessageId ensures that no value is present for MessageId, not even an explicit nil
-func (o *MailLogEntry) UnsetMessageId() {
-	o.MessageId.Unset()
-}
-
 // GetCreated returns the Created field value
 func (o *MailLogEntry) GetCreated() string {
 	if o == nil {
@@ -425,6 +341,90 @@ func (o *MailLogEntry) GetInterfaceOk() (*string, bool) {
 // SetInterface sets field value
 func (o *MailLogEntry) SetInterface(v string) {
 	o.Interface = v
+}
+
+// GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetSubject() string {
+	if o == nil || IsNil(o.Subject.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Subject.Get()
+}
+
+// GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetSubjectOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Subject.Get(), o.Subject.IsSet()
+}
+
+// HasSubject returns a boolean if a field has been set.
+func (o *MailLogEntry) HasSubject() bool {
+	if o != nil && o.Subject.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
+func (o *MailLogEntry) SetSubject(v string) {
+	o.Subject.Set(&v)
+}
+// SetSubjectNil sets the value for Subject to be an explicit nil
+func (o *MailLogEntry) SetSubjectNil() {
+	o.Subject.Set(nil)
+}
+
+// UnsetSubject ensures that no value is present for Subject, not even an explicit nil
+func (o *MailLogEntry) UnsetSubject() {
+	o.Subject.Unset()
+}
+
+// GetMessageId returns the MessageId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MailLogEntry) GetMessageId() string {
+	if o == nil || IsNil(o.MessageId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MessageId.Get()
+}
+
+// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MailLogEntry) GetMessageIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MessageId.Get(), o.MessageId.IsSet()
+}
+
+// HasMessageId returns a boolean if a field has been set.
+func (o *MailLogEntry) HasMessageId() bool {
+	if o != nil && o.MessageId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageId gets a reference to the given NullableString and assigns it to the MessageId field.
+func (o *MailLogEntry) SetMessageId(v string) {
+	o.MessageId.Set(&v)
+}
+// SetMessageIdNil sets the value for MessageId to be an explicit nil
+func (o *MailLogEntry) SetMessageIdNil() {
+	o.MessageId.Set(nil)
+}
+
+// UnsetMessageId ensures that no value is present for MessageId, not even an explicit nil
+func (o *MailLogEntry) UnsetMessageId() {
+	o.MessageId.Unset()
 }
 
 // GetSendingZone returns the SendingZone field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -987,18 +987,18 @@ func (o MailLogEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["from"] = o.From
 	toSerialize["to"] = o.To
-	if o.Subject.IsSet() {
-		toSerialize["subject"] = o.Subject.Get()
-	}
-	if o.MessageId.IsSet() {
-		toSerialize["messageId"] = o.MessageId.Get()
-	}
 	toSerialize["created"] = o.Created
 	toSerialize["time"] = o.Time
 	toSerialize["user"] = o.User
 	toSerialize["transtype"] = o.Transtype
 	toSerialize["origin"] = o.Origin
 	toSerialize["interface"] = o.Interface
+	if o.Subject.IsSet() {
+		toSerialize["subject"] = o.Subject.Get()
+	}
+	if o.MessageId.IsSet() {
+		toSerialize["messageId"] = o.MessageId.Get()
+	}
 	if o.SendingZone.IsSet() {
 		toSerialize["sendingZone"] = o.SendingZone.Get()
 	}
@@ -1094,14 +1094,14 @@ func (o *MailLogEntry) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "from")
 		delete(additionalProperties, "to")
-		delete(additionalProperties, "subject")
-		delete(additionalProperties, "messageId")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "time")
 		delete(additionalProperties, "user")
 		delete(additionalProperties, "transtype")
 		delete(additionalProperties, "origin")
 		delete(additionalProperties, "interface")
+		delete(additionalProperties, "subject")
+		delete(additionalProperties, "messageId")
 		delete(additionalProperties, "sendingZone")
 		delete(additionalProperties, "bodySize")
 		delete(additionalProperties, "seq")

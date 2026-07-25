@@ -32,6 +32,7 @@ export interface TicketCustomFieldDetails {
 export namespace TicketCustomFieldDetails {
     export enum CustomerServerAccessEnum {
         Y = <any> 'y',
-        N = <any> 'n'
+        N = <any> 'n',
+        UnknownDefaultOpenApi = <any> '11184809'
     }
 }

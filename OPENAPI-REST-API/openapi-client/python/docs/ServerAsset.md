@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **status** | **str** | Status of the asset. | 
 **primary_ipv4** | **str** | Primary IPv4 address of the asset. | 
 **primary_ipv6** | **str** | Primary IPv6 address of the asset. | 
-**mac** | **str** | MAC address associated with the asset. | [optional] 
 **datacenter** | **str** | Datacenter identifier for the asset. | 
 **type_id** | **str** | Type identifier for the asset. | 
 **asset_tag** | **str** | Asset tag associated with the asset. | 
@@ -23,11 +22,6 @@ Name | Type | Description | Notes
 **unit_sub** | **str** | Subunit identifier for the asset. | 
 **ipmi_mac** | **str** | IPMI MAC address associated with the asset. | 
 **ipmi_ip** | **str** | IPMI IP address associated with the asset. | 
-**ipmi_admin_username** | **str** | IPMI admin username associated with the asset. | [optional] 
-**ipmi_admin_password** | **str** | IPMI admin password associated with the asset. | [optional] 
-**ipmi_client_username** | **str** | IPMI client username associated with the asset. | [optional] 
-**ipmi_client_password** | **str** | IPMI client password associated with the asset. | [optional] 
-**ipmi_updated** | **str** | IPMI update status associated with the asset. | [optional] 
 **ipmi_working** | **str** | IPMI working status associated with the asset. | 
 **company** | **str** | Company associated with the asset. | 
 **comments** | **str** | Comments associated with the asset. | 
@@ -38,8 +32,6 @@ Name | Type | Description | Notes
 **external_id** | **str** | External identifier for the asset. | 
 **billing_status** | **str** | Billing status of the asset. | 
 **overdue** | **str** | Overdue status of the asset. | 
-**create_timestamp** | **str** | Timestamp of asset creation. | [optional] 
-**update_timestamp** | **str** | Timestamp of asset update. | [optional] 
 **asset_id** | **str** | Asset identifier for the asset. | 
 **asset_name** | **str** | Name of the asset. | 
 **rack_id** | **str** | Rack identifier for the asset. | 
@@ -48,11 +40,19 @@ Name | Type | Description | Notes
 **rack_size** | **str** | Size of the rack associated with the asset. | 
 **rack_x** | **str** | X-coordinate of the asset within the rack. | 
 **rack_y** | **str** | Y-coordinate of the asset within the rack. | 
-**comment** | **str** | Comment associated with the asset. | [optional] 
 **switchports** | **List[int]** | List of switchports associated with the asset. | 
 **vlans** | **List[str]** | List of VLANs associated with the asset. | 
 **vlans6** | **List[str]** | List of IPv6 VLANs associated with the asset. | 
 **lease** | [**ServerLease**](ServerLease.md) |  | 
+**mac** | **str** | MAC address associated with the asset. | [optional] 
+**ipmi_admin_username** | **str** | IPMI admin username associated with the asset. | [optional] 
+**ipmi_admin_password** | **str** | IPMI admin password associated with the asset. | [optional] 
+**ipmi_client_username** | **str** | IPMI client username associated with the asset. | [optional] 
+**ipmi_client_password** | **str** | IPMI client password associated with the asset. | [optional] 
+**ipmi_updated** | **str** | IPMI update status associated with the asset. | [optional] 
+**create_timestamp** | **str** | Timestamp of asset creation. | [optional] 
+**update_timestamp** | **str** | Timestamp of asset update. | [optional] 
+**comment** | **str** | Comment associated with the asset. | [optional] 
 
 ## Example
 

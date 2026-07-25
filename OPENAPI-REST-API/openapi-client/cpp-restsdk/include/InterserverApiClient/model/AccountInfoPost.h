@@ -67,28 +67,12 @@ public:
     void setName(const utility::string_t& value);
 
     /// <summary>
-    /// Your company name.
-    /// </summary>
-    utility::string_t getCompany() const;
-    bool companyIsSet() const;
-    void unsetCompany();
-    void setCompany(const utility::string_t& value);
-
-    /// <summary>
     /// Your address.
     /// </summary>
     utility::string_t getAddress() const;
     bool addressIsSet() const;
     void unsetAddress();
     void setAddress(const utility::string_t& value);
-
-    /// <summary>
-    /// Additional address information.
-    /// </summary>
-    utility::string_t getAddress2() const;
-    bool address2IsSet() const;
-    void unsetAddress2();
-    void setAddress2(const utility::string_t& value);
 
     /// <summary>
     /// Your city.
@@ -129,6 +113,22 @@ public:
     bool phoneIsSet() const;
     void unsetPhone();
     void setPhone(const utility::string_t& value);
+
+    /// <summary>
+    /// Your company name.
+    /// </summary>
+    utility::string_t getCompany() const;
+    bool companyIsSet() const;
+    void unsetCompany();
+    void setCompany(const utility::string_t& value);
+
+    /// <summary>
+    /// Additional address information.
+    /// </summary>
+    utility::string_t getAddress2() const;
+    bool address2IsSet() const;
+    void unsetAddress2();
+    void setAddress2(const utility::string_t& value);
 
     /// <summary>
     /// Your preferred locale.
@@ -199,14 +199,8 @@ protected:
     utility::string_t m_Name;
     bool m_NameIsSet;
 
-    utility::string_t m_Company;
-    bool m_CompanyIsSet;
-
     utility::string_t m_Address;
     bool m_AddressIsSet;
-
-    utility::string_t m_Address2;
-    bool m_Address2IsSet;
 
     utility::string_t m_City;
     bool m_CityIsSet;
@@ -222,6 +216,12 @@ protected:
 
     utility::string_t m_Phone;
     bool m_PhoneIsSet;
+
+    utility::string_t m_Company;
+    bool m_CompanyIsSet;
+
+    utility::string_t m_Address2;
+    bool m_Address2IsSet;
 
     utility::string_t m_Locale;
     bool m_LocaleIsSet;

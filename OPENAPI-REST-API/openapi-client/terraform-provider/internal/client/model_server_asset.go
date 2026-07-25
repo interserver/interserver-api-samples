@@ -10,7 +10,6 @@ type ServerAsset struct {
 	Status string `json:"status"`
 	PrimaryIpv4 string `json:"primary_ipv4"`
 	PrimaryIpv6 string `json:"primary_ipv6"`
-	Mac string `json:"mac,omitempty"`
 	Datacenter string `json:"datacenter"`
 	TypeId string `json:"type_id"`
 	AssetTag string `json:"asset_tag"`
@@ -22,11 +21,6 @@ type ServerAsset struct {
 	UnitSub string `json:"unit_sub"`
 	IpmiMac string `json:"ipmi_mac"`
 	IpmiIp string `json:"ipmi_ip"`
-	IpmiAdminUsername string `json:"ipmi_admin_username,omitempty"`
-	IpmiAdminPassword string `json:"ipmi_admin_password,omitempty"`
-	IpmiClientUsername string `json:"ipmi_client_username,omitempty"`
-	IpmiClientPassword string `json:"ipmi_client_password,omitempty"`
-	IpmiUpdated string `json:"ipmi_updated,omitempty"`
 	IpmiWorking string `json:"ipmi_working"`
 	Company string `json:"company"`
 	Comments string `json:"comments"`
@@ -37,8 +31,6 @@ type ServerAsset struct {
 	ExternalId string `json:"external_id"`
 	BillingStatus string `json:"billing_status"`
 	Overdue string `json:"overdue"`
-	CreateTimestamp string `json:"create_timestamp,omitempty"`
-	UpdateTimestamp string `json:"update_timestamp,omitempty"`
 	AssetId string `json:"asset_id"`
 	AssetName string `json:"asset_name"`
 	RackId string `json:"rack_id"`
@@ -47,9 +39,17 @@ type ServerAsset struct {
 	RackSize string `json:"rack_size"`
 	RackX string `json:"rack_x"`
 	RackY string `json:"rack_y"`
-	Comment string `json:"comment,omitempty"`
 	Switchports []int32 `json:"switchports"`
 	Vlans []string `json:"vlans"`
 	Vlans6 []string `json:"vlans6"`
 	Lease ServerLease `json:"lease"`
+	Mac string `json:"mac,omitempty"`
+	IpmiAdminUsername string `json:"ipmi_admin_username,omitempty"`
+	IpmiAdminPassword string `json:"ipmi_admin_password,omitempty"`
+	IpmiClientUsername string `json:"ipmi_client_username,omitempty"`
+	IpmiClientPassword string `json:"ipmi_client_password,omitempty"`
+	IpmiUpdated string `json:"ipmi_updated,omitempty"`
+	CreateTimestamp string `json:"create_timestamp,omitempty"`
+	UpdateTimestamp string `json:"update_timestamp,omitempty"`
+	Comment string `json:"comment,omitempty"`
 }

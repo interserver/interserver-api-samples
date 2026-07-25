@@ -427,6 +427,7 @@ public:
 		On,
 		Off,
 		Soft,
+		UnknownDefaultOpenApi,
   	};
 
 	static FString EnumToString(const ActionEnum& EnumValue);

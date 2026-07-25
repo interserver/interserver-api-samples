@@ -63,7 +63,7 @@ end
 function OpenAPI.validate_property(::Type{ MailStatsType }, name::Symbol, val)
 
     if name === Symbol("time")
-        OpenAPI.validate_param(name, "MailStatsType", :enum, val, ["all", "billing", "month", "7d", "24h", "today", "1h"])
+        OpenAPI.validate_param(name, "MailStatsType", :enum, val, ["all", "billing", "month", "7d", "24h", "today", "1h", "unknown_default_open_api"])
     end
 
 

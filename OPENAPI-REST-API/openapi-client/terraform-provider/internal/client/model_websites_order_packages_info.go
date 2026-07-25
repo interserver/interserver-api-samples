@@ -10,11 +10,11 @@ type WebsitesOrderPackagesInfo struct {
 	ServicesCategory string `json:"services_category"`
 	ServicesBuyable string `json:"services_buyable"`
 	ServicesType string `json:"services_type"`
+	ServicesModule string `json:"services_module"`
+	ServicesDescription string `json:"services_description"`
 	ServicesField1 string `json:"services_field1,omitempty"`
 	ServicesField2 string `json:"services_field2,omitempty"`
-	ServicesModule string `json:"services_module"`
 	ServicesHtml string `json:"services_html,omitempty"`
-	ServicesDescription string `json:"services_description"`
 	ServicesMoreinfoUrl string `json:"services_moreinfo_url,omitempty"`
 	ServicesHidden string `json:"services_hidden,omitempty"`
 }

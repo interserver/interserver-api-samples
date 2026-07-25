@@ -66,7 +66,9 @@ public class ServerIpmiPowerRequest implements Serializable {
     
     off("off"),
     
-    soft("soft");
+    soft("soft"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -89,7 +91,7 @@ public class ServerIpmiPowerRequest implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<ActionEnum> {

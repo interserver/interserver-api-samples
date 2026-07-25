@@ -219,10 +219,10 @@ boost::json::object LicenseClientLink::toJsonObject_internal() const
         object["label"] = JsonValueConverter<std::string>::toJsonValue(getLabel());
         object["link"] = JsonValueConverter<std::string>::toJsonValue(getLink());
         object["icon"] = JsonValueConverter<std::string>::toJsonValue(getIcon());
+        object["help_text"] = JsonValueConverter<std::string>::toJsonValue(getHelpText());
         if (m_Icon_textIsSet) {
             object["icon_text"] = JsonValueConverter<std::string>::toJsonValue(getIconText());
         }
-        object["help_text"] = JsonValueConverter<std::string>::toJsonValue(getHelpText());
         if (m_Other_attrIsSet) {
             object["other_attr"] = JsonValueConverter<std::string>::toJsonValue(getOtherAttr());
         }
@@ -252,15 +252,15 @@ void LicenseClientLink::fromJsonObject_internal(boost::json::object const& objec
         }
     }
     {
-        const auto Icon_textIt = object.find("icon_text");
-        if (Icon_textIt != object.end()) {
-            setIconText(JsonValueConverter<std::string>::fromJsonValue(Icon_textIt->value()));
-        }
-    }
-    {
         const auto Help_textIt = object.find("help_text");
         if (Help_textIt != object.end()) {
             setHelpText(JsonValueConverter<std::string>::fromJsonValue(Help_textIt->value()));
+        }
+    }
+    {
+        const auto Icon_textIt = object.find("icon_text");
+        if (Icon_textIt != object.end()) {
+            setIconText(JsonValueConverter<std::string>::fromJsonValue(Icon_textIt->value()));
         }
     }
     {
@@ -301,6 +301,16 @@ void LicenseClientLink::setIcon(std::string value)
     
     m_Icon = std::move(value);
 }
+std::string LicenseClientLink::getHelpText() const
+{
+    return m_Help_text;
+}
+
+void LicenseClientLink::setHelpText(std::string value)
+{
+    
+    m_Help_text = std::move(value);
+}
 std::string LicenseClientLink::getIconText() const
 {
     return m_Icon_text;
@@ -311,16 +321,6 @@ void LicenseClientLink::setIconText(std::string value)
     
     m_Icon_text = std::move(value);
     m_Icon_textIsSet = true;
-}
-std::string LicenseClientLink::getHelpText() const
-{
-    return m_Help_text;
-}
-
-void LicenseClientLink::setHelpText(std::string value)
-{
-    
-    m_Help_text = std::move(value);
 }
 std::string LicenseClientLink::getOtherAttr() const
 {

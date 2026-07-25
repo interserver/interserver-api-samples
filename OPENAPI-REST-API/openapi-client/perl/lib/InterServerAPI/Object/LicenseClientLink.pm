@@ -240,17 +240,17 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'icon_text' => {
-        datatype => 'string',
-        base_name => 'icon_text',
-        description => 'Icon text',
-        format => '',
-        read_only => '',
-            },
     'help_text' => {
         datatype => 'string',
         base_name => 'help_text',
         description => 'Help text',
+        format => '',
+        read_only => '',
+            },
+    'icon_text' => {
+        datatype => 'string',
+        base_name => 'icon_text',
+        description => 'Icon text',
         format => '',
         read_only => '',
             },
@@ -267,8 +267,8 @@ __PACKAGE__->openapi_types( {
     'label' => 'string',
     'link' => 'string',
     'icon' => 'string',
-    'icon_text' => 'string',
     'help_text' => 'string',
+    'icon_text' => 'string',
     'other_attr' => 'string'
 } );
 
@@ -276,8 +276,8 @@ __PACKAGE__->attribute_map( {
     'label' => 'label',
     'link' => 'link',
     'icon' => 'icon',
-    'icon_text' => 'icon_text',
     'help_text' => 'help_text',
+    'icon_text' => 'icon_text',
     'other_attr' => 'other_attr'
 } );
 

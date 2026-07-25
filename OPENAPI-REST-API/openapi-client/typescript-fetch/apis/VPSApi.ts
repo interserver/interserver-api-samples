@@ -3258,7 +3258,8 @@ export class VPSApi extends runtime.BaseAPI {
  */
 export const DeleteVpsBackupAllEnum = {
     _0: '0',
-    _1: '1'
+    _1: '1',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type DeleteVpsBackupAllEnum = typeof DeleteVpsBackupAllEnum[keyof typeof DeleteVpsBackupAllEnum];
 /**
@@ -3266,7 +3267,8 @@ export type DeleteVpsBackupAllEnum = typeof DeleteVpsBackupAllEnum[keyof typeof 
  */
 export const DownloadVpsBackupAllEnum = {
     _0: '0',
-    _1: '1'
+    _1: '1',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type DownloadVpsBackupAllEnum = typeof DownloadVpsBackupAllEnum[keyof typeof DownloadVpsBackupAllEnum];
 /**
@@ -3274,6 +3276,7 @@ export type DownloadVpsBackupAllEnum = typeof DownloadVpsBackupAllEnum[keyof typ
  */
 export const GetVpsBackupsAllEnum = {
     _0: '0',
-    _1: '1'
+    _1: '1',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type GetVpsBackupsAllEnum = typeof GetVpsBackupsAllEnum[keyof typeof GetVpsBackupsAllEnum];

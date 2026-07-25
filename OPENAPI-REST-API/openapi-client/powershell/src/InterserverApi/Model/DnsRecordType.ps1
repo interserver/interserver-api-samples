@@ -115,5 +115,7 @@ enum DnsRecordType {
     WKS
     # enum value: "URI⏎"
     URI
+    # enum value: "unknown_default_open_api"
+    unknown_default_open_api
 }
 

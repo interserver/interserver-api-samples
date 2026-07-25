@@ -19,11 +19,11 @@ local function cast_template_request(t)
 	return setmetatable(t, template_request_mt)
 end
 
-local function new_template_request(template, password, local_password)
+local function new_template_request(template, local_password, password)
 	return cast_template_request({
 		["template"] = template;
-		["password"] = password;
 		["localPassword"] = local_password;
+		["password"] = password;
 	})
 end
 

@@ -25,9 +25,6 @@
 /* The ID of the mail service. 
  */
 @property(nonatomic) NSString* mailId;
-/* The username associated with the mail service. [optional]
- */
-@property(nonatomic) NSString* mailUsername;
 /* The type of mail service. 
  */
 @property(nonatomic) NSString* mailType;
@@ -43,15 +40,18 @@
 /* The mail quota for the service. 
  */
 @property(nonatomic) NSString* mailQuota;
-/* The IP address associated with the mail service. [optional]
- */
-@property(nonatomic) NSString* mailIp;
 /* The status of the mail service. 
  */
 @property(nonatomic) NSString* mailStatus;
 /* The invoice ID of the mail service. 
  */
 @property(nonatomic) NSString* mailInvoice;
+/* The username associated with the mail service. [optional]
+ */
+@property(nonatomic) NSString* mailUsername;
+/* The IP address associated with the mail service. [optional]
+ */
+@property(nonatomic) NSString* mailIp;
 /* The coupon associated with the mail service. [optional]
  */
 @property(nonatomic) NSString* mailCoupon;

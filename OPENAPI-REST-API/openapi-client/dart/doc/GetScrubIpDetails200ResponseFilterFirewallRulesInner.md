@@ -1,8 +1,8 @@
-# openapi.model.GetScrubIpDetails200ResponseFilterFirewallRulesInner
+# interserver_api.model.GetScrubIpDetails200ResponseFilterFirewallRulesInner
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

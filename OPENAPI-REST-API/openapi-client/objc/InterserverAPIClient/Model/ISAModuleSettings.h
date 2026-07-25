@@ -53,10 +53,10 @@
 
 @property(nonatomic) NSString* tITLEFIELD;
 
+@property(nonatomic) NSString* pREFIX;
+
 @property(nonatomic) NSString* tITLEFIELD2;
 
 @property(nonatomic) NSString* tITLEFIELD3;
-
-@property(nonatomic) NSString* pREFIX;
 
 @end

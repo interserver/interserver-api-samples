@@ -27,14 +27,14 @@ The customer's currency.
 The currency symbol for the customer.
 .PARAMETER Package
 The package of the mail service.
-.PARAMETER ServiceExtra
-Extra information for the mail service.
 .PARAMETER ExtraInfoTables
 No description available.
 .PARAMETER ServiceType
 No description available.
 .PARAMETER UsageCount
 The usage count of the mail service.
+.PARAMETER ServiceExtra
+Extra information for the mail service.
 .OUTPUTS
 
 MailSchema<PSCustomObject>
@@ -62,17 +62,17 @@ function Initialize-MailSchema {
         [String]
         ${Package},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        ${ServiceExtra},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${ExtraInfoTables},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${ServiceType},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${UsageCount}
+        ${UsageCount},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        ${ServiceExtra}
     )
 
     Process {
@@ -123,10 +123,10 @@ function Initialize-MailSchema {
             'custCurrency' = ${CustCurrency}
             'custCurrencySymbol' = ${CustCurrencySymbol}
             'package' = ${Package}
-            'serviceExtra' = ${ServiceExtra}
             'extraInfoTables' = ${ExtraInfoTables}
             'serviceType' = ${ServiceType}
             'usage_count' = ${UsageCount}
+            'serviceExtra' = ${ServiceExtra}
         }
 
 
@@ -164,7 +164,7 @@ function ConvertFrom-JsonToMailSchema {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in MailSchema
-        $AllProperties = ('serviceInfo', 'client_links', 'billingDetails', 'custCurrency', 'custCurrencySymbol', 'package', 'serviceExtra', 'extraInfoTables', 'serviceType', 'usage_count')
+        $AllProperties = ('serviceInfo', 'client_links', 'billingDetails', 'custCurrency', 'custCurrencySymbol', 'package', 'extraInfoTables', 'serviceType', 'usage_count', 'serviceExtra')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -242,10 +242,10 @@ function ConvertFrom-JsonToMailSchema {
             'custCurrency' = ${CustCurrency}
             'custCurrencySymbol' = ${CustCurrencySymbol}
             'package' = ${Package}
-            'serviceExtra' = ${ServiceExtra}
             'extraInfoTables' = ${ExtraInfoTables}
             'serviceType' = ${ServiceType}
             'usage_count' = ${UsageCount}
+            'serviceExtra' = ${ServiceExtra}
         }
 
         return $PSO

@@ -30,6 +30,7 @@ _7D | `"7d"`
 _24H | `"24h"`
 TODAY | `"today"`
 _1H | `"1h"`
+UNKNOWN_DEFAULT_OPEN_API | `"unknown_default_open_api"`
 
 
 

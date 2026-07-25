@@ -62,6 +62,7 @@ public enum IntServerDnsRecordType {
     TSIG,
     TXT,
     WKS,
-    URI_
+    URI_,
+    UNKNOWN_DEFAULT_OPEN_API
 }
 

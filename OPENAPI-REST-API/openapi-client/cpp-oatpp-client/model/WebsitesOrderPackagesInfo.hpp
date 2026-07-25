@@ -47,16 +47,16 @@ class WebsitesOrderPackagesInfo : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, services_type);
 
+  DTO_FIELD(oatpp::String, services_module);
+
+  DTO_FIELD(oatpp::String, services_description);
+
   DTO_FIELD(oatpp::String, services_field1);
   DTO_FIELD(oatpp::Boolean, services_field1IsSet);
   DTO_FIELD(oatpp::String, services_field2);
   DTO_FIELD(oatpp::Boolean, services_field2IsSet);
-  DTO_FIELD(oatpp::String, services_module);
-
   DTO_FIELD(oatpp::String, services_html);
   DTO_FIELD(oatpp::Boolean, services_htmlIsSet);
-  DTO_FIELD(oatpp::String, services_description);
-
   DTO_FIELD(oatpp::String, services_moreinfo_url);
   DTO_FIELD(oatpp::Boolean, services_moreinfo_urlIsSet);
   DTO_FIELD(oatpp::String, services_hidden);

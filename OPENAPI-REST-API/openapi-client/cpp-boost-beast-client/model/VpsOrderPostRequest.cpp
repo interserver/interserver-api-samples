@@ -267,17 +267,17 @@ boost::json::object VpsOrderPostRequest::toJsonObject_internal() const
         object["osDistro"] = JsonValueConverter<std::string>::toJsonValue(getOsDistro());
         object["slices"] = JsonValueConverter<int32_t>::toJsonValue(getSlices());
         object["vpsPlatform"] = JsonValueConverter<std::string>::toJsonValue(getVpsPlatform());
-        if (m_ControlpanelIsSet) {
-            object["controlpanel"] = JsonValueConverter<std::string>::toJsonValue(getControlpanel());
-        }
         object["period"] = JsonValueConverter<int32_t>::toJsonValue(getPeriod());
         object["location"] = JsonValueConverter<int32_t>::toJsonValue(getLocation());
         object["osVersion"] = JsonValueConverter<std::string>::toJsonValue(getOsVersion());
         object["hostname"] = JsonValueConverter<std::string>::toJsonValue(getHostname());
+        object["rootpass"] = JsonValueConverter<std::string>::toJsonValue(getRootpass());
+        if (m_ControlpanelIsSet) {
+            object["controlpanel"] = JsonValueConverter<std::string>::toJsonValue(getControlpanel());
+        }
         if (m_CouponIsSet) {
             object["coupon"] = JsonValueConverter<std::string>::toJsonValue(getCoupon());
         }
-        object["rootpass"] = JsonValueConverter<std::string>::toJsonValue(getRootpass());
         if (m_CommentIsSet) {
             object["comment"] = JsonValueConverter<std::string>::toJsonValue(getComment());
         }
@@ -308,12 +308,6 @@ void VpsOrderPostRequest::fromJsonObject_internal(boost::json::object const& obj
         }
     }
     {
-        const auto ControlpanelIt = object.find("controlpanel");
-        if (ControlpanelIt != object.end()) {
-            setControlpanel(JsonValueConverter<std::string>::fromJsonValue(ControlpanelIt->value()));
-        }
-    }
-    {
         const auto PeriodIt = object.find("period");
         if (PeriodIt != object.end()) {
             setPeriod(JsonValueConverter<int32_t>::fromJsonValue(PeriodIt->value()));
@@ -338,15 +332,21 @@ void VpsOrderPostRequest::fromJsonObject_internal(boost::json::object const& obj
         }
     }
     {
-        const auto CouponIt = object.find("coupon");
-        if (CouponIt != object.end()) {
-            setCoupon(JsonValueConverter<std::string>::fromJsonValue(CouponIt->value()));
-        }
-    }
-    {
         const auto RootpassIt = object.find("rootpass");
         if (RootpassIt != object.end()) {
             setRootpass(JsonValueConverter<std::string>::fromJsonValue(RootpassIt->value()));
+        }
+    }
+    {
+        const auto ControlpanelIt = object.find("controlpanel");
+        if (ControlpanelIt != object.end()) {
+            setControlpanel(JsonValueConverter<std::string>::fromJsonValue(ControlpanelIt->value()));
+        }
+    }
+    {
+        const auto CouponIt = object.find("coupon");
+        if (CouponIt != object.end()) {
+            setCoupon(JsonValueConverter<std::string>::fromJsonValue(CouponIt->value()));
         }
     }
     {
@@ -384,8 +384,8 @@ std::string VpsOrderPostRequest::getVpsPlatform() const
 
 void VpsOrderPostRequest::setVpsPlatform(std::string value)
 {
-    static const std::array<std::string, 3> allowedValues = {
-        "kvm","hyperv","kvmstorage"
+    static const std::array<std::string, 4> allowedValues = {
+        "kvm","hyperv","kvmstorage","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;
@@ -394,25 +394,6 @@ void VpsOrderPostRequest::setVpsPlatform(std::string value)
     }
     
     m_VpsPlatform = std::move(value);
-}
-std::string VpsOrderPostRequest::getControlpanel() const
-{
-    return m_Controlpanel;
-}
-
-void VpsOrderPostRequest::setControlpanel(std::string value)
-{
-    static const std::array<std::string, 3> allowedValues = {
-        "none","cpanel","da"
-    };
-    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
-        std::ostringstream errorMessage;
-        errorMessage << "Value " << value << " not allowed";
-        throw std::runtime_error(errorMessage.str());
-    }
-    
-    m_Controlpanel = std::move(value);
-    m_ControlpanelIsSet = true;
 }
 int32_t VpsOrderPostRequest::getPeriod() const
 {
@@ -454,6 +435,35 @@ void VpsOrderPostRequest::setHostname(std::string value)
     
     m_Hostname = std::move(value);
 }
+std::string VpsOrderPostRequest::getRootpass() const
+{
+    return m_Rootpass;
+}
+
+void VpsOrderPostRequest::setRootpass(std::string value)
+{
+    
+    m_Rootpass = std::move(value);
+}
+std::string VpsOrderPostRequest::getControlpanel() const
+{
+    return m_Controlpanel;
+}
+
+void VpsOrderPostRequest::setControlpanel(std::string value)
+{
+    static const std::array<std::string, 4> allowedValues = {
+        "none","cpanel","da","11184809"
+    };
+    if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
+        std::ostringstream errorMessage;
+        errorMessage << "Value " << value << " not allowed";
+        throw std::runtime_error(errorMessage.str());
+    }
+    
+    m_Controlpanel = std::move(value);
+    m_ControlpanelIsSet = true;
+}
 std::string VpsOrderPostRequest::getCoupon() const
 {
     return m_Coupon;
@@ -464,16 +474,6 @@ void VpsOrderPostRequest::setCoupon(std::string value)
     
     m_Coupon = std::move(value);
     m_CouponIsSet = true;
-}
-std::string VpsOrderPostRequest::getRootpass() const
-{
-    return m_Rootpass;
-}
-
-void VpsOrderPostRequest::setRootpass(std::string value)
-{
-    
-    m_Rootpass = std::move(value);
 }
 std::string VpsOrderPostRequest::getComment() const
 {

@@ -16,9 +16,9 @@
   | {'blade', binary() }
   | {'justport', binary() }
   | {'graph_id', binary() }
+  | {'asset_id', integer() }
   | {'vlans', list(binary()) }
   | {'vlans6', list(binary()) }
-  | {'asset_id', integer() }
   ].
 
 
@@ -33,9 +33,9 @@ openapi_server_switchport(Fields) ->
             , {'blade', binary() }
             , {'justport', binary() }
             , {'graph_id', binary() }
+            , {'asset_id', integer() }
             , {'vlans', list(binary()) }
             , {'vlans6', list(binary()) }
-            , {'asset_id', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

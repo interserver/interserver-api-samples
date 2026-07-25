@@ -15,8 +15,6 @@ No summary available.
 
 The data for a email deny rule record.
 
-.PARAMETER User
-Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 .PARAMETER Type
 The type of deny rule.
 .PARAMETER VarData
@@ -25,6 +23,8 @@ The content of the rule.  If a domain type rule then an example would be google.
 The deny rule Id number.
 .PARAMETER Created
 the date the rule was created.
+.PARAMETER User
+Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
 .OUTPUTS
 
 DenyRuleRecord<PSCustomObject>
@@ -34,21 +34,21 @@ function Initialize-DenyRuleRecord {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${User},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("domain", "email", "startswith", "destination")]
         [String]
         ${Type},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${VarData},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [Int32]
         ${Id},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Created},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Created}
+        ${User}
     )
 
     Process {
@@ -73,11 +73,11 @@ function Initialize-DenyRuleRecord {
 
 
         $PSO = [PSCustomObject]@{
-            'user' = ${User}
             'type' = ${Type}
             'data' = ${VarData}
             'id' = ${Id}
             'created' = ${Created}
+            'user' = ${User}
         }
 
 
@@ -115,7 +115,7 @@ function ConvertFrom-JsonToDenyRuleRecord {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in DenyRuleRecord
-        $AllProperties = ('user', 'type', 'data', 'id', 'created')
+        $AllProperties = ('type', 'data', 'id', 'created', 'user')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -157,11 +157,11 @@ function ConvertFrom-JsonToDenyRuleRecord {
         }
 
         $PSO = [PSCustomObject]@{
-            'user' = ${User}
             'type' = ${Type}
             'data' = ${VarData}
             'id' = ${Id}
             'created' = ${Created}
+            'user' = ${User}
         }
 
         return $PSO

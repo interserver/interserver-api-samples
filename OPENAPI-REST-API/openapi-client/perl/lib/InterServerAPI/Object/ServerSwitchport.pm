@@ -268,6 +268,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'asset_id' => {
+        datatype => 'int',
+        base_name => 'asset_id',
+        description => 'Unique identifier of the asset associated with the switchport.',
+        format => '',
+        read_only => '',
+            },
     'vlans' => {
         datatype => 'ARRAY[string]',
         base_name => 'vlans',
@@ -282,13 +289,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'asset_id' => {
-        datatype => 'int',
-        base_name => 'asset_id',
-        description => 'Unique identifier of the asset associated with the switchport.',
-        format => '',
-        read_only => '',
-            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -299,9 +299,9 @@ __PACKAGE__->openapi_types( {
     'blade' => 'string',
     'justport' => 'string',
     'graph_id' => 'string',
+    'asset_id' => 'int',
     'vlans' => 'ARRAY[string]',
-    'vlans6' => 'ARRAY[string]',
-    'asset_id' => 'int'
+    'vlans6' => 'ARRAY[string]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -312,9 +312,9 @@ __PACKAGE__->attribute_map( {
     'blade' => 'blade',
     'justport' => 'justport',
     'graph_id' => 'graph_id',
+    'asset_id' => 'asset_id',
     'vlans' => 'vlans',
-    'vlans6' => 'vlans6',
-    'asset_id' => 'asset_id'
+    'vlans6' => 'vlans6'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

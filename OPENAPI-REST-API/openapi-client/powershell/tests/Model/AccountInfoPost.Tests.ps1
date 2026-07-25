@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'AccountInfoPost' {
     Context 'AccountInfoPost' {
         It 'Initialize-AccountInfoPost' {
             # a simple test to create an object
-            #$NewObject = Initialize-AccountInfoPost -Name "TEST_VALUE" -Company "TEST_VALUE" -Address "TEST_VALUE" -Address2 "TEST_VALUE" -City "TEST_VALUE" -State "TEST_VALUE" -Zip "TEST_VALUE" -Country "TEST_VALUE" -Phone "TEST_VALUE" -Locale "TEST_VALUE" -EmailInvoices "TEST_VALUE" -EmailAbuse "TEST_VALUE" -DisableReset "TEST_VALUE" -DisableReinstall "TEST_VALUE" -DisableServerNotifications "TEST_VALUE" -DisableEmailNotifications "TEST_VALUE" -Gstin "TEST_VALUE"
+            #$NewObject = Initialize-AccountInfoPost -Name "TEST_VALUE" -Address "TEST_VALUE" -City "TEST_VALUE" -State "TEST_VALUE" -Zip "TEST_VALUE" -Country "TEST_VALUE" -Phone "TEST_VALUE" -Company "TEST_VALUE" -Address2 "TEST_VALUE" -Locale "TEST_VALUE" -EmailInvoices "TEST_VALUE" -EmailAbuse "TEST_VALUE" -DisableReset "TEST_VALUE" -DisableReinstall "TEST_VALUE" -DisableServerNotifications "TEST_VALUE" -DisableEmailNotifications "TEST_VALUE" -Gstin "TEST_VALUE"
             #$NewObject | Should -BeOfType AccountInfoPost
             #$NewObject.property | Should -Be 0
         }

@@ -53,6 +53,22 @@ test_that("services_type", {
   #expect_equal(model.instance$`services_type`, "EXPECTED_RESULT")
 })
 
+test_that("services_module", {
+  # tests for the property `services_module` (character)
+  # The module of the package.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`services_module`, "EXPECTED_RESULT")
+})
+
+test_that("services_description", {
+  # tests for the property `services_description` (character)
+  # Description of the package.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`services_description`, "EXPECTED_RESULT")
+})
+
 test_that("services_field1", {
   # tests for the property `services_field1` (character)
   # Additional field 1 for the package.
@@ -69,28 +85,12 @@ test_that("services_field2", {
   #expect_equal(model.instance$`services_field2`, "EXPECTED_RESULT")
 })
 
-test_that("services_module", {
-  # tests for the property `services_module` (character)
-  # The module of the package.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`services_module`, "EXPECTED_RESULT")
-})
-
 test_that("services_html", {
   # tests for the property `services_html` (character)
   # HTML content for the package.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`services_html`, "EXPECTED_RESULT")
-})
-
-test_that("services_description", {
-  # tests for the property `services_description` (character)
-  # Description of the package.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`services_description`, "EXPECTED_RESULT")
 })
 
 test_that("services_moreinfo_url", {

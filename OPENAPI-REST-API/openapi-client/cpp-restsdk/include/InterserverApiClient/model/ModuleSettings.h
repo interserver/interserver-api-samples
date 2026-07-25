@@ -133,6 +133,11 @@ public:
     void unsetTITLE_FIELD();
     void setTITLEFIELD(const utility::string_t& value);
 
+    utility::string_t getPREFIX() const;
+    bool pREFIXIsSet() const;
+    void unsetPREFIX();
+    void setPREFIX(const utility::string_t& value);
+
     utility::string_t getTITLEFIELD2() const;
     bool tITLEFIELD2IsSet() const;
     void unsetTITLE_FIELD2();
@@ -142,11 +147,6 @@ public:
     bool tITLEFIELD3IsSet() const;
     void unsetTITLE_FIELD3();
     void setTITLEFIELD3(const utility::string_t& value);
-
-    utility::string_t getPREFIX() const;
-    bool pREFIXIsSet() const;
-    void unsetPREFIX();
-    void setPREFIX(const utility::string_t& value);
 
 
 protected:
@@ -195,14 +195,14 @@ protected:
     utility::string_t m_TITLE_FIELD;
     bool m_TITLE_FIELDIsSet;
 
+    utility::string_t m_PREFIX;
+    bool m_PREFIXIsSet;
+
     utility::string_t m_TITLE_FIELD2;
     bool m_TITLE_FIELD2IsSet;
 
     utility::string_t m_TITLE_FIELD3;
     bool m_TITLE_FIELD3IsSet;
-
-    utility::string_t m_PREFIX;
-    bool m_PREFIXIsSet;
 
 };
 

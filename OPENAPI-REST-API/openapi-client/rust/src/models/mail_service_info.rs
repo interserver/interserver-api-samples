@@ -16,9 +16,6 @@ pub struct MailServiceInfo {
     /// The ID of the mail service.
     #[serde(rename = "mail_id")]
     pub mail_id: String,
-    /// The username associated with the mail service.
-    #[serde(rename = "mail_username", skip_serializing_if = "Option::is_none")]
-    pub mail_username: Option<String>,
     /// The type of mail service.
     #[serde(rename = "mail_type")]
     pub mail_type: String,
@@ -34,15 +31,18 @@ pub struct MailServiceInfo {
     /// The mail quota for the service.
     #[serde(rename = "mail_quota")]
     pub mail_quota: String,
-    /// The IP address associated with the mail service.
-    #[serde(rename = "mail_ip", skip_serializing_if = "Option::is_none")]
-    pub mail_ip: Option<String>,
     /// The status of the mail service.
     #[serde(rename = "mail_status")]
     pub mail_status: String,
     /// The invoice ID of the mail service.
     #[serde(rename = "mail_invoice")]
     pub mail_invoice: String,
+    /// The username associated with the mail service.
+    #[serde(rename = "mail_username", skip_serializing_if = "Option::is_none")]
+    pub mail_username: Option<String>,
+    /// The IP address associated with the mail service.
+    #[serde(rename = "mail_ip", skip_serializing_if = "Option::is_none")]
+    pub mail_ip: Option<String>,
     /// The coupon associated with the mail service.
     #[serde(rename = "mail_coupon", skip_serializing_if = "Option::is_none")]
     pub mail_coupon: Option<String>,
@@ -61,15 +61,15 @@ impl MailServiceInfo {
     pub fn new(mail_id: String, mail_type: String, mail_currency: String, mail_order_date: String, mail_custid: String, mail_quota: String, mail_status: String, mail_invoice: String) -> MailServiceInfo {
         MailServiceInfo {
             mail_id,
-            mail_username: None,
             mail_type,
             mail_currency,
             mail_order_date,
             mail_custid,
             mail_quota,
-            mail_ip: None,
             mail_status,
             mail_invoice,
+            mail_username: None,
+            mail_ip: None,
             mail_coupon: None,
             mail_extra: None,
             mail_server_status: None,

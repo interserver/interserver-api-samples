@@ -33,16 +33,16 @@ WebsitesOrderPackagesInfo::WebsitesOrderPackagesInfo()
     m_Services_buyableIsSet = false;
     m_Services_type = utility::conversions::to_string_t("");
     m_Services_typeIsSet = false;
+    m_Services_module = utility::conversions::to_string_t("");
+    m_Services_moduleIsSet = false;
+    m_Services_description = utility::conversions::to_string_t("");
+    m_Services_descriptionIsSet = false;
     m_Services_field1 = utility::conversions::to_string_t("");
     m_Services_field1IsSet = false;
     m_Services_field2 = utility::conversions::to_string_t("");
     m_Services_field2IsSet = false;
-    m_Services_module = utility::conversions::to_string_t("");
-    m_Services_moduleIsSet = false;
     m_Services_html = utility::conversions::to_string_t("");
     m_Services_htmlIsSet = false;
-    m_Services_description = utility::conversions::to_string_t("");
-    m_Services_descriptionIsSet = false;
     m_Services_moreinfo_url = utility::conversions::to_string_t("");
     m_Services_moreinfo_urlIsSet = false;
     m_Services_hidden = utility::conversions::to_string_t("");
@@ -91,6 +91,16 @@ web::json::value WebsitesOrderPackagesInfo::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_type"))] = ModelBase::toJson(m_Services_type);
     }
+    if(m_Services_moduleIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("services_module"))] = ModelBase::toJson(m_Services_module);
+    }
+    if(m_Services_descriptionIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("services_description"))] = ModelBase::toJson(m_Services_description);
+    }
     if(m_Services_field1IsSet)
     {
         
@@ -101,20 +111,10 @@ web::json::value WebsitesOrderPackagesInfo::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_field2"))] = ModelBase::toJson(m_Services_field2);
     }
-    if(m_Services_moduleIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("services_module"))] = ModelBase::toJson(m_Services_module);
-    }
     if(m_Services_htmlIsSet)
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("services_html"))] = ModelBase::toJson(m_Services_html);
-    }
-    if(m_Services_descriptionIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("services_description"))] = ModelBase::toJson(m_Services_description);
     }
     if(m_Services_moreinfo_urlIsSet)
     {
@@ -199,6 +199,28 @@ bool WebsitesOrderPackagesInfo::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_module")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setServicesModule;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesModule);
+            setServicesModule(refVal_setServicesModule);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_description"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_description")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setServicesDescription;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesDescription);
+            setServicesDescription(refVal_setServicesDescription);
+            
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_field1"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_field1")));
@@ -221,17 +243,6 @@ bool WebsitesOrderPackagesInfo::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_module")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setServicesModule;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesModule);
-            setServicesModule(refVal_setServicesModule);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_html"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_html")));
@@ -240,17 +251,6 @@ bool WebsitesOrderPackagesInfo::fromJson(const web::json::value& val)
             utility::string_t refVal_setServicesHtml;
             ok &= ModelBase::fromJson(fieldValue, refVal_setServicesHtml);
             setServicesHtml(refVal_setServicesHtml);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("services_description"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("services_description")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setServicesDescription;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setServicesDescription);
-            setServicesDescription(refVal_setServicesDescription);
             
         }
     }
@@ -310,6 +310,14 @@ void WebsitesOrderPackagesInfo::toMultipart(std::shared_ptr<MultipartFormData> m
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_type")), m_Services_type));
     }
+    if(m_Services_moduleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_module")), m_Services_module));
+    }
+    if(m_Services_descriptionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_description")), m_Services_description));
+    }
     if(m_Services_field1IsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_field1")), m_Services_field1));
@@ -318,17 +326,9 @@ void WebsitesOrderPackagesInfo::toMultipart(std::shared_ptr<MultipartFormData> m
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_field2")), m_Services_field2));
     }
-    if(m_Services_moduleIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_module")), m_Services_module));
-    }
     if(m_Services_htmlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_html")), m_Services_html));
-    }
-    if(m_Services_descriptionIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("services_description")), m_Services_description));
     }
     if(m_Services_moreinfo_urlIsSet)
     {
@@ -385,6 +385,18 @@ bool WebsitesOrderPackagesInfo::fromMultiPart(std::shared_ptr<MultipartFormData>
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_type"))), refVal_setServicesType );
         setServicesType(refVal_setServicesType);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
+    {
+        utility::string_t refVal_setServicesModule;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))), refVal_setServicesModule );
+        setServicesModule(refVal_setServicesModule);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_description"))))
+    {
+        utility::string_t refVal_setServicesDescription;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_description"))), refVal_setServicesDescription );
+        setServicesDescription(refVal_setServicesDescription);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_field1"))))
     {
         utility::string_t refVal_setServicesField1;
@@ -397,23 +409,11 @@ bool WebsitesOrderPackagesInfo::fromMultiPart(std::shared_ptr<MultipartFormData>
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_field2"))), refVal_setServicesField2 );
         setServicesField2(refVal_setServicesField2);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))))
-    {
-        utility::string_t refVal_setServicesModule;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_module"))), refVal_setServicesModule );
-        setServicesModule(refVal_setServicesModule);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_html"))))
     {
         utility::string_t refVal_setServicesHtml;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_html"))), refVal_setServicesHtml );
         setServicesHtml(refVal_setServicesHtml);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_description"))))
-    {
-        utility::string_t refVal_setServicesDescription;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("services_description"))), refVal_setServicesDescription );
-        setServicesDescription(refVal_setServicesDescription);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("services_moreinfo_url"))))
     {
@@ -557,6 +557,48 @@ void WebsitesOrderPackagesInfo::unsetServices_type()
 {
     m_Services_typeIsSet = false;
 }
+utility::string_t WebsitesOrderPackagesInfo::getServicesModule() const
+{
+    return m_Services_module;
+}
+
+
+void WebsitesOrderPackagesInfo::setServicesModule(const utility::string_t& value)
+{
+    m_Services_module = value;
+    m_Services_moduleIsSet = true;
+}
+
+bool WebsitesOrderPackagesInfo::servicesModuleIsSet() const
+{
+    return m_Services_moduleIsSet;
+}
+
+void WebsitesOrderPackagesInfo::unsetServices_module()
+{
+    m_Services_moduleIsSet = false;
+}
+utility::string_t WebsitesOrderPackagesInfo::getServicesDescription() const
+{
+    return m_Services_description;
+}
+
+
+void WebsitesOrderPackagesInfo::setServicesDescription(const utility::string_t& value)
+{
+    m_Services_description = value;
+    m_Services_descriptionIsSet = true;
+}
+
+bool WebsitesOrderPackagesInfo::servicesDescriptionIsSet() const
+{
+    return m_Services_descriptionIsSet;
+}
+
+void WebsitesOrderPackagesInfo::unsetServices_description()
+{
+    m_Services_descriptionIsSet = false;
+}
 utility::string_t WebsitesOrderPackagesInfo::getServicesField1() const
 {
     return m_Services_field1;
@@ -599,27 +641,6 @@ void WebsitesOrderPackagesInfo::unsetServices_field2()
 {
     m_Services_field2IsSet = false;
 }
-utility::string_t WebsitesOrderPackagesInfo::getServicesModule() const
-{
-    return m_Services_module;
-}
-
-
-void WebsitesOrderPackagesInfo::setServicesModule(const utility::string_t& value)
-{
-    m_Services_module = value;
-    m_Services_moduleIsSet = true;
-}
-
-bool WebsitesOrderPackagesInfo::servicesModuleIsSet() const
-{
-    return m_Services_moduleIsSet;
-}
-
-void WebsitesOrderPackagesInfo::unsetServices_module()
-{
-    m_Services_moduleIsSet = false;
-}
 utility::string_t WebsitesOrderPackagesInfo::getServicesHtml() const
 {
     return m_Services_html;
@@ -640,27 +661,6 @@ bool WebsitesOrderPackagesInfo::servicesHtmlIsSet() const
 void WebsitesOrderPackagesInfo::unsetServices_html()
 {
     m_Services_htmlIsSet = false;
-}
-utility::string_t WebsitesOrderPackagesInfo::getServicesDescription() const
-{
-    return m_Services_description;
-}
-
-
-void WebsitesOrderPackagesInfo::setServicesDescription(const utility::string_t& value)
-{
-    m_Services_description = value;
-    m_Services_descriptionIsSet = true;
-}
-
-bool WebsitesOrderPackagesInfo::servicesDescriptionIsSet() const
-{
-    return m_Services_descriptionIsSet;
-}
-
-void WebsitesOrderPackagesInfo::unsetServices_description()
-{
-    m_Services_descriptionIsSet = false;
 }
 utility::string_t WebsitesOrderPackagesInfo::getServicesMoreinfoUrl() const
 {

@@ -247,6 +247,10 @@ TicketCustomFieldDetails::Customer_Server_AccessEnum TicketCustomFieldDetails::t
         return Customer_Server_AccessEnum::N;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return Customer_Server_AccessEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to Customer_Server_AccessEnum");
 }
 
@@ -259,6 +263,8 @@ const utility::string_t TicketCustomFieldDetails::fromCustomer_Server_AccessEnum
         case Customer_Server_AccessEnum::Y: return utility::conversions::to_string_t("y");
         
         case Customer_Server_AccessEnum::N: return utility::conversions::to_string_t("n");
+        
+        case Customer_Server_AccessEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
         
     }
 }

@@ -19,10 +19,10 @@ local function cast_server_ipmi_live_request(t)
 	return setmetatable(t, server_ipmi_live_request_mt)
 end
 
-local function new_server_ipmi_live_request(asset, ip)
+local function new_server_ipmi_live_request(ip, asset)
 	return cast_server_ipmi_live_request({
-		["asset"] = asset;
 		["ip"] = ip;
+		["asset"] = asset;
 	})
 end
 

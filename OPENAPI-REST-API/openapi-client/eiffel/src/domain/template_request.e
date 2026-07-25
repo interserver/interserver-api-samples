@@ -21,10 +21,10 @@ feature --Access
 
     template: detachable STRING_32
       -- OS Template Filename
-    password: detachable STRING
-      -- Password for Root / Administrator Account.
     local_password: detachable STRING
       -- Password for this account.
+    password: detachable STRING
+      -- Password for Root / Administrator Account.
 
 feature -- Change Element
 
@@ -36,20 +36,20 @@ feature -- Change Element
         template_set: template = a_name
       end
 
-    set_password (a_name: like password)
-        -- Set 'password' with 'a_name'.
-      do
-        password := a_name
-      ensure
-        password_set: password = a_name
-      end
-
     set_local_password (a_name: like local_password)
         -- Set 'local_password' with 'a_name'.
       do
         local_password := a_name
       ensure
         local_password_set: local_password = a_name
+      end
+
+    set_password (a_name: like password)
+        -- Set 'password' with 'a_name'.
+      do
+        password := a_name
+      ensure
+        password_set: password = a_name
       end
 
 
@@ -65,14 +65,14 @@ feature -- Change Element
           Result.append (l_template.out)
           Result.append ("%N")
         end
-        if attached password as l_password then
-          Result.append ("%Npassword:")
-          Result.append (l_password.out)
-          Result.append ("%N")
-        end
         if attached local_password as l_local_password then
           Result.append ("%Nlocal_password:")
           Result.append (l_local_password.out)
+          Result.append ("%N")
+        end
+        if attached password as l_password then
+          Result.append ("%Npassword:")
+          Result.append (l_password.out)
           Result.append ("%N")
         end
       end

@@ -28,9 +28,9 @@ class ServerIpmiLiveRequest(BaseModel):
     """
     Request body to setup an IPMI Live connection.
     """ # noqa: E501
-    asset: Optional[StrictInt] = Field(default=None, description="Asset ID", json_schema_extra={"examples": [5431]})
     ip: StrictStr = Field(description="Your IP Address you wish to connect to the IPMI system from.", json_schema_extra={"examples": ["1.2.3.4"]})
-    __properties: ClassVar[List[str]] = ["asset", "ip"]
+    asset: Optional[StrictInt] = Field(default=None, description="Asset ID", json_schema_extra={"examples": [5431]})
+    __properties: ClassVar[List[str]] = ["ip", "asset"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,8 +83,8 @@ class ServerIpmiLiveRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "asset": obj.get("asset"),
-            "ip": obj.get("ip")
+            "ip": obj.get("ip"),
+            "asset": obj.get("asset")
         })
         return _obj
 

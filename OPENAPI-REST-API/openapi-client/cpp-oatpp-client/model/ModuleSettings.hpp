@@ -65,12 +65,12 @@ class ModuleSettings : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, TITLE_FIELD);
 
+  DTO_FIELD(oatpp::String, PREFIX);
+
   DTO_FIELD(oatpp::String, TITLE_FIELD2);
   DTO_FIELD(oatpp::Boolean, TITLE_FIELD2IsSet);
   DTO_FIELD(oatpp::String, TITLE_FIELD3);
   DTO_FIELD(oatpp::Boolean, TITLE_FIELD3IsSet);
-  DTO_FIELD(oatpp::String, PREFIX);
-
 
 };
 

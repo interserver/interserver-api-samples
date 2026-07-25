@@ -24,7 +24,7 @@ module InterserverApiClient
     @[JSON::Field(key: "asset", emit_null: false)]
     property asset : Int32?
 
-    validates(action, String, false, enum: ["cycle", "reset", "on", "off", "soft"])
+    validates(action, String, false, enum: ["cycle", "reset", "on", "off", "soft", "unknown_default_open_api"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

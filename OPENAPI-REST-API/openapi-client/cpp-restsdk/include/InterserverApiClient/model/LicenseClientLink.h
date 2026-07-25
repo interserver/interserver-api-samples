@@ -80,20 +80,20 @@ public:
     void setIcon(const utility::string_t& value);
 
     /// <summary>
-    /// Icon text
-    /// </summary>
-    utility::string_t getIconText() const;
-    bool iconTextIsSet() const;
-    void unsetIcon_text();
-    void setIconText(const utility::string_t& value);
-
-    /// <summary>
     /// Help text
     /// </summary>
     utility::string_t getHelpText() const;
     bool helpTextIsSet() const;
     void unsetHelp_text();
     void setHelpText(const utility::string_t& value);
+
+    /// <summary>
+    /// Icon text
+    /// </summary>
+    utility::string_t getIconText() const;
+    bool iconTextIsSet() const;
+    void unsetIcon_text();
+    void setIconText(const utility::string_t& value);
 
     /// <summary>
     /// Other attributes
@@ -114,11 +114,11 @@ protected:
     utility::string_t m_Icon;
     bool m_IconIsSet;
 
-    utility::string_t m_Icon_text;
-    bool m_Icon_textIsSet;
-
     utility::string_t m_Help_text;
     bool m_Help_textIsSet;
+
+    utility::string_t m_Icon_text;
+    bool m_Icon_textIsSet;
 
     utility::string_t m_Other_attr;
     bool m_Other_attrIsSet;

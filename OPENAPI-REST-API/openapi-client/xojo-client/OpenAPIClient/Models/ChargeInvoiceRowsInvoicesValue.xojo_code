@@ -70,7 +70,8 @@ Protected Class ChargeInvoiceRowsInvoicesValue
         
         Escaped0
         Escaped1
-        
+        UnknownDefaultOpenApi
+        Unknown
     #tag EndEnum
 
 
@@ -82,7 +83,10 @@ Protected Class ChargeInvoiceRowsInvoicesValue
 		      Return "0"
 		    Case Invoices_paidEnum.Escaped1
 		      Return "1"
-		    
+		    Case Invoices_paidEnum.UnknownDefaultOpenApi
+		      Return "11184809"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function

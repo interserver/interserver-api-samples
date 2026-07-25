@@ -60,7 +60,9 @@ public class CreateGeoFirewallRule implements Serializable {
   public enum XdpActionEnum {
     NUMBER_0(0),
     
-    NUMBER_1(1);
+    NUMBER_1(1),
+    
+    NUMBER_unknown_default_open_api(11184809);
 
     private Integer value;
 
@@ -83,7 +85,7 @@ public class CreateGeoFirewallRule implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return NUMBER_unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<XdpActionEnum> {

@@ -14,27 +14,27 @@ use serde::{Deserialize, Serialize};
 /// LoginInfo : Basic information useful for rendering a login page.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LoginInfo {
-    /// A logo image url.
-    #[serde(rename = "logo", skip_serializing_if = "Option::is_none")]
-    pub logo: Option<String>,
     /// A base64 encoded image to use for rendering the alternateive captcha.
     #[serde(rename = "captcha")]
     pub captcha: String,
+    #[serde(rename = "counts")]
+    pub counts: Box<models::LoginServiceCounts>,
+    /// A logo image url.
+    #[serde(rename = "logo", skip_serializing_if = "Option::is_none")]
+    pub logo: Option<String>,
     /// The desired langauge to render the site with.
     #[serde(rename = "language", skip_serializing_if = "Option::is_none")]
     pub language: Option<String>,
-    #[serde(rename = "counts")]
-    pub counts: Box<models::LoginServiceCounts>,
 }
 
 impl LoginInfo {
     /// Basic information useful for rendering a login page.
     pub fn new(captcha: String, counts: models::LoginServiceCounts) -> LoginInfo {
         LoginInfo {
-            logo: None,
             captcha,
-            language: None,
             counts: Box::new(counts),
+            logo: None,
+            language: None,
         }
     }
 }

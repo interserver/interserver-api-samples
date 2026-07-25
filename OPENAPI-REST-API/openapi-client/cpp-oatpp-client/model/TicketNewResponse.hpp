@@ -35,12 +35,12 @@ class TicketNewResponse : public oatpp::DTO {
 
   DTO_INIT(TicketNewResponse, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::Int32, ticket_id);
-  DTO_FIELD(oatpp::Boolean, ticket_idIsSet);
   DTO_FIELD(oatpp::String, text);
 
   DTO_FIELD(oatpp::Boolean, success);
 
+  DTO_FIELD(oatpp::Int32, ticket_id);
+  DTO_FIELD(oatpp::Boolean, ticket_idIsSet);
 
 };
 

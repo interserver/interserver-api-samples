@@ -27,13 +27,13 @@
 #include "../model/vps_traffic_response.h"
 
 // Enum ALL for VPSAPI_deleteVpsBackup
-typedef enum  { interserver_management_api_deleteVpsBackup_ALL_NULL = 0, interserver_management_api_deleteVpsBackup_ALL__0, interserver_management_api_deleteVpsBackup_ALL__1 } interserver_management_api_deleteVpsBackup_all_e;
+typedef enum  { interserver_management_api_deleteVpsBackup_ALL_NULL = 0, interserver_management_api_deleteVpsBackup_ALL__0, interserver_management_api_deleteVpsBackup_ALL__1, interserver_management_api_deleteVpsBackup_ALL__11184809 } interserver_management_api_deleteVpsBackup_all_e;
 
 // Enum ALL for VPSAPI_downloadVpsBackup
-typedef enum  { interserver_management_api_downloadVpsBackup_ALL_NULL = 0, interserver_management_api_downloadVpsBackup_ALL__0, interserver_management_api_downloadVpsBackup_ALL__1 } interserver_management_api_downloadVpsBackup_all_e;
+typedef enum  { interserver_management_api_downloadVpsBackup_ALL_NULL = 0, interserver_management_api_downloadVpsBackup_ALL__0, interserver_management_api_downloadVpsBackup_ALL__1, interserver_management_api_downloadVpsBackup_ALL__11184809 } interserver_management_api_downloadVpsBackup_all_e;
 
 // Enum ALL for VPSAPI_getVpsBackups
-typedef enum  { interserver_management_api_getVpsBackups_ALL_NULL = 0, interserver_management_api_getVpsBackups_ALL__0, interserver_management_api_getVpsBackups_ALL__1 } interserver_management_api_getVpsBackups_all_e;
+typedef enum  { interserver_management_api_getVpsBackups_ALL_NULL = 0, interserver_management_api_getVpsBackups_ALL__0, interserver_management_api_getVpsBackups_ALL__1, interserver_management_api_getVpsBackups_ALL__11184809 } interserver_management_api_getVpsBackups_all_e;
 
 
 // Place a new VPS order, create the invoice, and queue provisioning

@@ -27,10 +27,10 @@ type LicenseClientLink struct {
 	Link string `json:"link"`
 	// Link icon
 	Icon string `json:"icon"`
-	// Icon text
-	IconText *string `json:"icon_text,omitempty"`
 	// Help text
 	HelpText string `json:"help_text"`
+	// Icon text
+	IconText *string `json:"icon_text,omitempty"`
 	// Other attributes
 	OtherAttr *string `json:"other_attr,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -131,6 +131,30 @@ func (o *LicenseClientLink) SetIcon(v string) {
 	o.Icon = v
 }
 
+// GetHelpText returns the HelpText field value
+func (o *LicenseClientLink) GetHelpText() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.HelpText
+}
+
+// GetHelpTextOk returns a tuple with the HelpText field value
+// and a boolean to check if the value has been set.
+func (o *LicenseClientLink) GetHelpTextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HelpText, true
+}
+
+// SetHelpText sets field value
+func (o *LicenseClientLink) SetHelpText(v string) {
+	o.HelpText = v
+}
+
 // GetIconText returns the IconText field value if set, zero value otherwise.
 func (o *LicenseClientLink) GetIconText() string {
 	if o == nil || IsNil(o.IconText) {
@@ -161,30 +185,6 @@ func (o *LicenseClientLink) HasIconText() bool {
 // SetIconText gets a reference to the given string and assigns it to the IconText field.
 func (o *LicenseClientLink) SetIconText(v string) {
 	o.IconText = &v
-}
-
-// GetHelpText returns the HelpText field value
-func (o *LicenseClientLink) GetHelpText() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.HelpText
-}
-
-// GetHelpTextOk returns a tuple with the HelpText field value
-// and a boolean to check if the value has been set.
-func (o *LicenseClientLink) GetHelpTextOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HelpText, true
-}
-
-// SetHelpText sets field value
-func (o *LicenseClientLink) SetHelpText(v string) {
-	o.HelpText = v
 }
 
 // GetOtherAttr returns the OtherAttr field value if set, zero value otherwise.
@@ -232,10 +232,10 @@ func (o LicenseClientLink) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	toSerialize["link"] = o.Link
 	toSerialize["icon"] = o.Icon
+	toSerialize["help_text"] = o.HelpText
 	if !IsNil(o.IconText) {
 		toSerialize["icon_text"] = o.IconText
 	}
-	toSerialize["help_text"] = o.HelpText
 	if !IsNil(o.OtherAttr) {
 		toSerialize["other_attr"] = o.OtherAttr
 	}
@@ -288,8 +288,8 @@ func (o *LicenseClientLink) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "link")
 		delete(additionalProperties, "icon")
-		delete(additionalProperties, "icon_text")
 		delete(additionalProperties, "help_text")
+		delete(additionalProperties, "icon_text")
 		delete(additionalProperties, "other_attr")
 		o.AdditionalProperties = additionalProperties
 	}

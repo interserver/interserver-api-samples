@@ -30,6 +30,7 @@ Statistics about the mail usage including volume by IP, To address, and From add
 | _24h | &quot;24h&quot; |
 | today | &quot;today&quot; |
 | _1h | &quot;1h&quot; |
+| unknown_default_open_api | &quot;unknown_default_open_api&quot; |
 
 
 ## Implemented Interfaces

@@ -74,18 +74,6 @@ public:
     void setTo(std::string value);
 
     /// <summary>
-    /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    /// </summary>
-    std::string getSubject() const;
-    void setSubject(std::string value);
-
-    /// <summary>
-    /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
-    /// </summary>
-    std::string getMessageId() const;
-    void setMessageId(std::string value);
-
-    /// <summary>
     /// Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
     /// </summary>
     std::string getCreated() const;
@@ -120,6 +108,18 @@ public:
     /// </summary>
     std::string getInterface() const;
     void setInterface(std::string value);
+
+    /// <summary>
+    /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    /// </summary>
+    std::string getSubject() const;
+    void setSubject(std::string value);
+
+    /// <summary>
+    /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
+    /// </summary>
+    std::string getMessageId() const;
+    void setMessageId(std::string value);
 
     /// <summary>
     /// The sending zone assigned by the relay for outbound delivery.
@@ -213,16 +213,16 @@ protected:
     std::string m_Id = "";
     std::string m_From = "";
     std::string m_To = "";
-    std::string m_Subject = "";
-    bool m_SubjectIsSet = false;
-    std::string m_MessageId = "";
-    bool m_MessageIdIsSet = false;
     std::string m_Created = "";
     int32_t m_Time = 0;
     std::string m_User = "";
     std::string m_Transtype = "";
     std::string m_Origin = "";
     std::string m_Interface = "";
+    std::string m_Subject = "";
+    bool m_SubjectIsSet = false;
+    std::string m_MessageId = "";
+    bool m_MessageIdIsSet = false;
     std::string m_SendingZone = "";
     bool m_SendingZoneIsSet = false;
     int32_t m_BodySize = 0;

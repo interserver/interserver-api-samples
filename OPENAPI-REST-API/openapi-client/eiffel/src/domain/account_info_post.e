@@ -21,12 +21,8 @@ feature --Access
 
     name: detachable STRING_32
       -- Your name.
-    company: detachable STRING_32
-      -- Your company name.
     address: detachable STRING_32
       -- Your address.
-    address2: detachable STRING_32
-      -- Additional address information.
     city: detachable STRING_32
       -- Your city.
     state: detachable STRING_32
@@ -37,6 +33,10 @@ feature --Access
       -- Your country.
     phone: detachable STRING_32
       -- Your phone number.
+    company: detachable STRING_32
+      -- Your company name.
+    address2: detachable STRING_32
+      -- Additional address information.
     locale: detachable STRING_32
       -- Your preferred locale.
     email_invoices: detachable STRING_32
@@ -64,28 +64,12 @@ feature -- Change Element
         name_set: name = a_name
       end
 
-    set_company (a_name: like company)
-        -- Set 'company' with 'a_name'.
-      do
-        company := a_name
-      ensure
-        company_set: company = a_name
-      end
-
     set_address (a_name: like address)
         -- Set 'address' with 'a_name'.
       do
         address := a_name
       ensure
         address_set: address = a_name
-      end
-
-    set_address2 (a_name: like address2)
-        -- Set 'address2' with 'a_name'.
-      do
-        address2 := a_name
-      ensure
-        address2_set: address2 = a_name
       end
 
     set_city (a_name: like city)
@@ -126,6 +110,22 @@ feature -- Change Element
         phone := a_name
       ensure
         phone_set: phone = a_name
+      end
+
+    set_company (a_name: like company)
+        -- Set 'company' with 'a_name'.
+      do
+        company := a_name
+      ensure
+        company_set: company = a_name
+      end
+
+    set_address2 (a_name: like address2)
+        -- Set 'address2' with 'a_name'.
+      do
+        address2 := a_name
+      ensure
+        address2_set: address2 = a_name
       end
 
     set_locale (a_name: like locale)
@@ -205,19 +205,9 @@ feature -- Change Element
           Result.append (l_name.out)
           Result.append ("%N")
         end
-        if attached company as l_company then
-          Result.append ("%Ncompany:")
-          Result.append (l_company.out)
-          Result.append ("%N")
-        end
         if attached address as l_address then
           Result.append ("%Naddress:")
           Result.append (l_address.out)
-          Result.append ("%N")
-        end
-        if attached address2 as l_address2 then
-          Result.append ("%Naddress2:")
-          Result.append (l_address2.out)
           Result.append ("%N")
         end
         if attached city as l_city then
@@ -243,6 +233,16 @@ feature -- Change Element
         if attached phone as l_phone then
           Result.append ("%Nphone:")
           Result.append (l_phone.out)
+          Result.append ("%N")
+        end
+        if attached company as l_company then
+          Result.append ("%Ncompany:")
+          Result.append (l_company.out)
+          Result.append ("%N")
+        end
+        if attached address2 as l_address2 then
+          Result.append ("%Naddress2:")
+          Result.append (l_address2.out)
           Result.append ("%N")
         end
         if attached locale as l_locale then

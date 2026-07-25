@@ -303,7 +303,10 @@ Protected Class VPSApi
 		      Return "0"
 		    Case AllEnum_DeleteVpsBackup.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_DeleteVpsBackup.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -1635,7 +1638,10 @@ Protected Class VPSApi
 		      Return "0"
 		    Case AllEnum_DownloadVpsBackup.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_DownloadVpsBackup.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -2086,7 +2092,10 @@ Protected Class VPSApi
 		      Return "0"
 		    Case AllEnum_GetVpsBackups.Escaped1
 		      Return "1"
-		    
+		    Case AllEnum_GetVpsBackups.UnknownDefaultOpenApi
+		      Return "unknown_default_open_api"
+		    Case 
+		      Return ""
 		  End Select
 		  Return ""
 		End Function
@@ -6559,6 +6568,7 @@ localVarFormParams.Value("localPassword") = localPassword
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -6566,6 +6576,7 @@ localVarFormParams.Value("localPassword") = localPassword
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 
@@ -6573,6 +6584,7 @@ localVarFormParams.Value("localPassword") = localPassword
 		
         Escaped0
         Escaped1
+        UnknownDefaultOpenApi
 		
 	#tag EndEnum
 

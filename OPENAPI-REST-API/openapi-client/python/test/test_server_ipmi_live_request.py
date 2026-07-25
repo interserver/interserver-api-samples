@@ -36,8 +36,8 @@ class TestServerIpmiLiveRequest(unittest.TestCase):
         model = ServerIpmiLiveRequest()
         if include_optional:
             return ServerIpmiLiveRequest(
-                asset = 5431,
-                ip = '1.2.3.4'
+                ip = '1.2.3.4',
+                asset = 5431
             )
         else:
             return ServerIpmiLiveRequest(

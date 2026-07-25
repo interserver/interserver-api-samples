@@ -1,8 +1,8 @@
-# openapi.model.VpsDALicense
+# interserver_api.model.VpsDALicense
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

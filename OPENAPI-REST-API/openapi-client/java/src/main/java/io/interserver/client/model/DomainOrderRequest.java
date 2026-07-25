@@ -65,7 +65,9 @@ public class DomainOrderRequest implements Serializable {
   public enum TypeEnum {
     register("register"),
     
-    transfer("transfer");
+    transfer("transfer"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -88,7 +90,7 @@ public class DomainOrderRequest implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -127,7 +129,9 @@ public class DomainOrderRequest implements Serializable {
   public enum WhoisPrivacyEnum {
     enable("enable"),
     
-    disable("disable");
+    disable("disable"),
+    
+    unknown_default_open_api("unknown_default_open_api");
 
     private String value;
 
@@ -150,7 +154,7 @@ public class DomainOrderRequest implements Serializable {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return unknown_default_open_api;
     }
 
     public static class Adapter extends TypeAdapter<WhoisPrivacyEnum> {

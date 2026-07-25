@@ -25,10 +25,10 @@ type QsOrderRequest struct {
 	Server int32 `json:"server"`
 	// Root password for the QuickServer.
 	Password string `json:"password"`
-	// OS template file name from getNewQs (falls back to a default if unrecognized).
-	Os *string `json:"os,omitempty"`
 	// Terms-of-service acceptance. Must be true to place the order.
 	Tos bool `json:"tos"`
+	// OS template file name from getNewQs (falls back to a default if unrecognized).
+	Os *string `json:"os,omitempty"`
 	// Free-form note saved on the service row.
 	Comment *string `json:"comment,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -44,9 +44,9 @@ func NewQsOrderRequest(server int32, password string, tos bool) *QsOrderRequest 
 	this := QsOrderRequest{}
 	this.Server = server
 	this.Password = password
+	this.Tos = tos
 	var os string = ""
 	this.Os = &os
-	this.Tos = tos
 	var comment string = ""
 	this.Comment = &comment
 	return &this
@@ -112,6 +112,30 @@ func (o *QsOrderRequest) SetPassword(v string) {
 	o.Password = v
 }
 
+// GetTos returns the Tos field value
+func (o *QsOrderRequest) GetTos() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Tos
+}
+
+// GetTosOk returns a tuple with the Tos field value
+// and a boolean to check if the value has been set.
+func (o *QsOrderRequest) GetTosOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Tos, true
+}
+
+// SetTos sets field value
+func (o *QsOrderRequest) SetTos(v bool) {
+	o.Tos = v
+}
+
 // GetOs returns the Os field value if set, zero value otherwise.
 func (o *QsOrderRequest) GetOs() string {
 	if o == nil || IsNil(o.Os) {
@@ -142,30 +166,6 @@ func (o *QsOrderRequest) HasOs() bool {
 // SetOs gets a reference to the given string and assigns it to the Os field.
 func (o *QsOrderRequest) SetOs(v string) {
 	o.Os = &v
-}
-
-// GetTos returns the Tos field value
-func (o *QsOrderRequest) GetTos() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Tos
-}
-
-// GetTosOk returns a tuple with the Tos field value
-// and a boolean to check if the value has been set.
-func (o *QsOrderRequest) GetTosOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Tos, true
-}
-
-// SetTos sets field value
-func (o *QsOrderRequest) SetTos(v bool) {
-	o.Tos = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -212,10 +212,10 @@ func (o QsOrderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["server"] = o.Server
 	toSerialize["password"] = o.Password
+	toSerialize["tos"] = o.Tos
 	if !IsNil(o.Os) {
 		toSerialize["os"] = o.Os
 	}
-	toSerialize["tos"] = o.Tos
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
@@ -266,8 +266,8 @@ func (o *QsOrderRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "server")
 		delete(additionalProperties, "password")
-		delete(additionalProperties, "os")
 		delete(additionalProperties, "tos")
+		delete(additionalProperties, "os")
 		delete(additionalProperties, "comment")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -1,8 +1,8 @@
-# openapi.model.MailAlertUpdateRequest
+# interserver_api.model.MailAlertUpdateRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

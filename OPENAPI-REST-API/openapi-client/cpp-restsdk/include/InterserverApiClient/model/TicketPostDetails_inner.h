@@ -59,6 +59,7 @@ public:
     {
         USER,
         STAFF,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     CreatorEnum toCreatorEnum(const utility::string_t& value) const;

@@ -91,22 +91,6 @@ public:
     void setTo(const utility::string_t& value);
 
     /// <summary>
-    /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    /// </summary>
-    utility::string_t getSubject() const;
-    bool subjectIsSet() const;
-    void unsetSubject();
-    void setSubject(const utility::string_t& value);
-
-    /// <summary>
-    /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
-    /// </summary>
-    utility::string_t getMessageId() const;
-    bool messageIdIsSet() const;
-    void unsetMessageId();
-    void setMessageId(const utility::string_t& value);
-
-    /// <summary>
     /// Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format.
     /// </summary>
     utility::string_t getCreated() const;
@@ -153,6 +137,22 @@ public:
     bool interfaceIsSet() const;
     void unsetInterface();
     void setInterface(const utility::string_t& value);
+
+    /// <summary>
+    /// The &#x60;Subject&#x60; header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
+    /// </summary>
+    utility::string_t getSubject() const;
+    bool subjectIsSet() const;
+    void unsetSubject();
+    void setSubject(const utility::string_t& value);
+
+    /// <summary>
+    /// The &#x60;Message-ID&#x60; header value.  Can be used with the &#x60;messageId&#x60; filter for subsequent lookups.
+    /// </summary>
+    utility::string_t getMessageId() const;
+    bool messageIdIsSet() const;
+    void unsetMessageId();
+    void setMessageId(const utility::string_t& value);
 
     /// <summary>
     /// The sending zone assigned by the relay for outbound delivery.
@@ -272,10 +272,6 @@ protected:
     utility::string_t m_To;
     bool m_ToIsSet;
 
-    boost::optional<utility::string_t> m_Subject;
-
-    boost::optional<utility::string_t> m_MessageId;
-
     utility::string_t m_Created;
     bool m_CreatedIsSet;
 
@@ -293,6 +289,10 @@ protected:
 
     utility::string_t m_Interface;
     bool m_InterfaceIsSet;
+
+    boost::optional<utility::string_t> m_Subject;
+
+    boost::optional<utility::string_t> m_MessageId;
 
     boost::optional<utility::string_t> m_SendingZone;
 

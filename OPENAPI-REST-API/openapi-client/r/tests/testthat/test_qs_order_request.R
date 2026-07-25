@@ -21,20 +21,20 @@ test_that("password", {
   #expect_equal(model.instance$`password`, "EXPECTED_RESULT")
 })
 
-test_that("os", {
-  # tests for the property `os` (character)
-  # OS template file name from getNewQs (falls back to a default if unrecognized).
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`os`, "EXPECTED_RESULT")
-})
-
 test_that("tos", {
   # tests for the property `tos` (character)
   # Terms-of-service acceptance. Must be true to place the order.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`tos`, "EXPECTED_RESULT")
+})
+
+test_that("os", {
+  # tests for the property `os` (character)
+  # OS template file name from getNewQs (falls back to a default if unrecognized).
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`os`, "EXPECTED_RESULT")
 })
 
 test_that("comment", {

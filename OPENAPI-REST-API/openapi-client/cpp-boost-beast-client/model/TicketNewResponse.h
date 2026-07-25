@@ -52,12 +52,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    int32_t getTicketId() const;
-    void setTicketId(int32_t value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     std::string getText() const;
     void setText(std::string value);
 
@@ -66,6 +60,12 @@ public:
     /// </summary>
     bool isSuccess() const;
     void setSuccess(bool value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    int32_t getTicketId() const;
+    void setTicketId(int32_t value);
 
 protected:
     //////////////////////////////////////
@@ -77,10 +77,10 @@ protected:
 
 
 protected:
-    int32_t m_Ticket_id = 0;
-    bool m_Ticket_idIsSet = false;
     std::string m_Text = "";
     bool m_Success = false;
+    int32_t m_Ticket_id = 0;
+    bool m_Ticket_idIsSet = false;
 };
 
 std::string createJsonStringFromModelVector(const std::vector<std::shared_ptr<TicketNewResponse>>& data);

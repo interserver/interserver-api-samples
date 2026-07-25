@@ -30,13 +30,6 @@ describe("server_location1", function()
     end)
   end)
 
-  -- unit tests for the property 'location_description'
-  describe("property location_description test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'location_lat'
   describe("property location_lat test", function()
     it("should work", function()
@@ -46,6 +39,13 @@ describe("server_location1", function()
 
   -- unit tests for the property 'location_long'
   describe("property location_long test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'location_description'
+  describe("property location_description test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

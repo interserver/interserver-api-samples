@@ -49,11 +49,11 @@ feature --Access
       
     TITLE_FIELD: detachable STRING_32
       
+    PREFIX: detachable STRING_32
+      
     t_it_le__fi_el_d2: detachable STRING_32
       
     t_it_le__fi_el_d3: detachable STRING_32
-      
-    PREFIX: detachable STRING_32
       
 
 feature -- Change Element
@@ -178,6 +178,14 @@ feature -- Change Element
         TITLE_FIELD_set: TITLE_FIELD = a_name
       end
 
+    set_PREFIX (a_name: like PREFIX)
+        -- Set 'PREFIX' with 'a_name'.
+      do
+        PREFIX := a_name
+      ensure
+        PREFIX_set: PREFIX = a_name
+      end
+
     set_t_it_le__fi_el_d2 (a_name: like t_it_le__fi_el_d2)
         -- Set 't_it_le__fi_el_d2' with 'a_name'.
       do
@@ -192,14 +200,6 @@ feature -- Change Element
         t_it_le__fi_el_d3 := a_name
       ensure
         t_it_le__fi_el_d3_set: t_it_le__fi_el_d3 = a_name
-      end
-
-    set_PREFIX (a_name: like PREFIX)
-        -- Set 'PREFIX' with 'a_name'.
-      do
-        PREFIX := a_name
-      ensure
-        PREFIX_set: PREFIX = a_name
       end
 
 
@@ -285,6 +285,11 @@ feature -- Change Element
           Result.append (l_TITLE_FIELD.out)
           Result.append ("%N")
         end
+        if attached PREFIX as l_PREFIX then
+          Result.append ("%NPREFIX:")
+          Result.append (l_PREFIX.out)
+          Result.append ("%N")
+        end
         if attached t_it_le__fi_el_d2 as l_t_it_le__fi_el_d2 then
           Result.append ("%Nt_it_le__fi_el_d2:")
           Result.append (l_t_it_le__fi_el_d2.out)
@@ -293,11 +298,6 @@ feature -- Change Element
         if attached t_it_le__fi_el_d3 as l_t_it_le__fi_el_d3 then
           Result.append ("%Nt_it_le__fi_el_d3:")
           Result.append (l_t_it_le__fi_el_d3.out)
-          Result.append ("%N")
-        end
-        if attached PREFIX as l_PREFIX then
-          Result.append ("%NPREFIX:")
-          Result.append (l_PREFIX.out)
           Result.append ("%N")
         end
       end

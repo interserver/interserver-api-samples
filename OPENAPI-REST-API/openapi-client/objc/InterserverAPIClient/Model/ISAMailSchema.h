@@ -53,9 +53,6 @@
 /* The package of the mail service. 
  */
 @property(nonatomic) NSString* package;
-/* Extra information for the mail service. [optional]
- */
-@property(nonatomic) NSArray<NSString*>* serviceExtra;
 
 @property(nonatomic) ISAMailSchemaExtraInfoTables* extraInfoTables;
 
@@ -63,5 +60,8 @@
 /* The usage count of the mail service. 
  */
 @property(nonatomic) NSString* usageCount;
+/* Extra information for the mail service. [optional]
+ */
+@property(nonatomic) NSArray<NSString*>* serviceExtra;
 
 @end

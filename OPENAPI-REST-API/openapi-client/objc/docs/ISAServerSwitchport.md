@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **blade** | **NSString*** | Blade name associated with the port. | 
 **justport** | **NSString*** | Port identifier. | 
 **graphId** | **NSString*** | Identifier for the graph associated with the switchport. | 
+**assetId** | **NSNumber*** | Unique identifier of the asset associated with the switchport. | 
 **vlans** | **NSArray&lt;NSString*&gt;*** | List of VLANs associated with the switchport. | [optional] 
 **vlans6** | **NSArray&lt;NSString*&gt;*** | List of IPv6 VLANs associated with the switchport. | [optional] 
-**assetId** | **NSNumber*** | Unique identifier of the asset associated with the switchport. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

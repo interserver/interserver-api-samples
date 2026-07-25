@@ -7,7 +7,7 @@ type LicenseClientLink struct {
 	Label string `json:"label"`
 	Link string `json:"link"`
 	Icon string `json:"icon"`
-	IconText string `json:"icon_text,omitempty"`
 	HelpText string `json:"help_text"`
+	IconText string `json:"icon_text,omitempty"`
 	OtherAttr string `json:"other_attr,omitempty"`
 }

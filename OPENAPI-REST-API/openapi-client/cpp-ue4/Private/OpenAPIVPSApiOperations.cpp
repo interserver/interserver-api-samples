@@ -93,6 +93,8 @@ inline FString ToString(const OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum& Va
 		return TEXT("0");
 	case OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum Value (%d)"), (int)Value);
@@ -108,7 +110,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIVPSApi::DeleteVpsBack
 {
 	static TMap<FString, OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -497,6 +500,8 @@ inline FString ToString(const OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum& 
 		return TEXT("0");
 	case OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum Value (%d)"), (int)Value);
@@ -512,7 +517,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIVPSApi::DownloadVpsBa
 {
 	static TMap<FString, OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIVPSApi::DownloadVpsBackupRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -693,6 +699,8 @@ inline FString ToString(const OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum& Valu
 		return TEXT("0");
 	case OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::_1:
 		return TEXT("1");
+	case OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum Value (%d)"), (int)Value);
@@ -708,7 +716,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIVPSApi::GetVpsBackups
 {
 	static TMap<FString, OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum> StringToEnum = { 
 		{ TEXT("0"), OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::_0 },
-		{ TEXT("1"), OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::_1 }, };
+		{ TEXT("1"), OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::_1 },
+		{ TEXT("11184809"), OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

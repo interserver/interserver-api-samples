@@ -69,6 +69,7 @@ public:
         _24H,
         TODAY,
         _1H,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
 
     TimeEnum toTimeEnum(const utility::string_t& value) const;

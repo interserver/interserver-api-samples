@@ -78,7 +78,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
-$QsOrderRequest = Initialize-QsOrderRequest -Server 0 -Password "MyPassword" -Os "MyOs" -Tos $false -Comment "MyComment" # QsOrderRequest | 
+$QsOrderRequest = Initialize-QsOrderRequest -Server 0 -Password "MyPassword" -Tos $false -Os "MyOs" -Comment "MyComment" # QsOrderRequest | 
 
 # Place a QuickServer order, generating a real invoice and queuing provisioning
 try {
@@ -2552,7 +2552,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
-$QsOrderRequest = Initialize-QsOrderRequest -Server 0 -Password "MyPassword" -Os "MyOs" -Tos $false -Comment "MyComment" # QsOrderRequest | 
+$QsOrderRequest = Initialize-QsOrderRequest -Server 0 -Password "MyPassword" -Tos $false -Os "MyOs" -Comment "MyComment" # QsOrderRequest | 
 
 # Validate a QuickServer order without charging or provisioning
 try {

@@ -199,7 +199,8 @@ export function SslOrderRequestToJSON(value?: SslOrderRequest): any {
 */
 export enum SslOrderRequestCsrTypeEnum {
     Generated = 'generated',
-    Provided = 'provided'
+    Provided = 'provided',
+    UnknownDefaultOpenApi = '11184809'
 }
 
 

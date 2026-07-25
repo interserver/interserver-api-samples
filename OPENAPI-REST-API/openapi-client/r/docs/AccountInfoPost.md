@@ -6,14 +6,14 @@ Request to update account information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **character** | Your name. | 
-**company** | **character** | Your company name. | [optional] 
 **address** | **character** | Your address. | 
-**address2** | **character** | Additional address information. | [optional] 
 **city** | **character** | Your city. | 
 **state** | **character** | Your state. | 
 **zip** | **character** | Your ZIP code. | 
 **country** | **character** | Your country. | 
 **phone** | **character** | Your phone number. | 
+**company** | **character** | Your company name. | [optional] 
+**address2** | **character** | Additional address information. | [optional] 
 **locale** | **character** | Your preferred locale. | [optional] 
 **email_invoices** | **character** | Your email for invoice notifications. | [optional] 
 **email_abuse** | **character** | Your email for abuse notifications. | [optional] 

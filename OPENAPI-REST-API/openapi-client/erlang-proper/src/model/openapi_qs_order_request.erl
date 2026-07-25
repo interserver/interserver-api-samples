@@ -11,8 +11,8 @@
 -type openapi_qs_order_request() ::
   [ {'server', integer() }
   | {'password', binary() }
-  | {'os', binary() }
   | {'tos', boolean() }
+  | {'os', binary() }
   | {'comment', binary() }
   ].
 
@@ -23,8 +23,8 @@ openapi_qs_order_request() ->
 openapi_qs_order_request(Fields) ->
   Default = [ {'server', integer() }
             , {'password', binary() }
-            , {'os', binary() }
             , {'tos', boolean() }
+            , {'os', binary() }
             , {'comment', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

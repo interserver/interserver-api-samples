@@ -30,6 +30,8 @@ inline FString ToString(const OpenAPIInitiatePayment200Response::TypeEnum& Value
 		return TEXT("submit");
 	case OpenAPIInitiatePayment200Response::TypeEnum::Single:
 		return TEXT("single");
+	case OpenAPIInitiatePayment200Response::TypeEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIInitiatePayment200Response::TypeEnum Value (%d)"), (int)Value);
@@ -46,7 +48,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIInitiatePayment200Res
 	static TMap<FString, OpenAPIInitiatePayment200Response::TypeEnum> StringToEnum = { 
 		{ TEXT("redirect"), OpenAPIInitiatePayment200Response::TypeEnum::Redirect },
 		{ TEXT("submit"), OpenAPIInitiatePayment200Response::TypeEnum::Submit },
-		{ TEXT("single"), OpenAPIInitiatePayment200Response::TypeEnum::Single }, };
+		{ TEXT("single"), OpenAPIInitiatePayment200Response::TypeEnum::Single },
+		{ TEXT("11184809"), OpenAPIInitiatePayment200Response::TypeEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

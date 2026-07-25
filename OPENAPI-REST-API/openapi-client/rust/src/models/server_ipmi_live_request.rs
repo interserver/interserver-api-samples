@@ -14,20 +14,20 @@ use serde::{Deserialize, Serialize};
 /// ServerIpmiLiveRequest : Request body to setup an IPMI Live connection.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ServerIpmiLiveRequest {
-    /// Asset ID
-    #[serde(rename = "asset", skip_serializing_if = "Option::is_none")]
-    pub asset: Option<i32>,
     /// Your IP Address you wish to connect to the IPMI system from.
     #[serde(rename = "ip")]
     pub ip: String,
+    /// Asset ID
+    #[serde(rename = "asset", skip_serializing_if = "Option::is_none")]
+    pub asset: Option<i32>,
 }
 
 impl ServerIpmiLiveRequest {
     /// Request body to setup an IPMI Live connection.
     pub fn new(ip: String) -> ServerIpmiLiveRequest {
         ServerIpmiLiveRequest {
-            asset: None,
             ip,
+            asset: None,
         }
     }
 }

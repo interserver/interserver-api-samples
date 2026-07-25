@@ -31,21 +31,21 @@ pub struct WebsitesOrderPackagesInfo {
     /// The type of the package.
     #[serde(rename = "services_type")]
     pub services_type: String,
+    /// The module of the package.
+    #[serde(rename = "services_module")]
+    pub services_module: String,
+    /// Description of the package.
+    #[serde(rename = "services_description")]
+    pub services_description: String,
     /// Additional field 1 for the package.
     #[serde(rename = "services_field1", skip_serializing_if = "Option::is_none")]
     pub services_field1: Option<String>,
     /// Additional field 2 for the package.
     #[serde(rename = "services_field2", skip_serializing_if = "Option::is_none")]
     pub services_field2: Option<String>,
-    /// The module of the package.
-    #[serde(rename = "services_module")]
-    pub services_module: String,
     /// HTML content for the package.
     #[serde(rename = "services_html", skip_serializing_if = "Option::is_none")]
     pub services_html: Option<String>,
-    /// Description of the package.
-    #[serde(rename = "services_description")]
-    pub services_description: String,
     /// URL for more information about the package.
     #[serde(rename = "services_moreinfo_url", skip_serializing_if = "Option::is_none")]
     pub services_moreinfo_url: Option<String>,
@@ -63,11 +63,11 @@ impl WebsitesOrderPackagesInfo {
             services_category,
             services_buyable,
             services_type,
+            services_module,
+            services_description,
             services_field1: None,
             services_field2: None,
-            services_module,
             services_html: None,
-            services_description,
             services_moreinfo_url: None,
             services_hidden: None,
         }

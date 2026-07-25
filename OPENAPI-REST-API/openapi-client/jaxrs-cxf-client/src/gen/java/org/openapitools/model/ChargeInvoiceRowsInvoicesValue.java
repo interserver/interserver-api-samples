@@ -42,7 +42,7 @@ public class ChargeInvoiceRowsInvoicesValue  {
 
 public enum InvoicesPaidEnum {
 
-NUMBER_0(BigDecimal.valueOf(new BigDecimal("0"))), NUMBER_1(BigDecimal.valueOf(new BigDecimal("1")));
+NUMBER_0(BigDecimal.valueOf(new BigDecimal("0"))), NUMBER_1(BigDecimal.valueOf(new BigDecimal("1"))), NUMBER_unknown_default_open_api(BigDecimal.valueOf(new BigDecimal("11184809")));
 
 
     private BigDecimal value;

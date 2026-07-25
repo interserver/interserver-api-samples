@@ -19,10 +19,10 @@ local function cast_server_ipmi_power_request(t)
 	return setmetatable(t, server_ipmi_power_request_mt)
 end
 
-local function new_server_ipmi_power_request(asset, action)
+local function new_server_ipmi_power_request(action, asset)
 	return cast_server_ipmi_power_request({
-		["asset"] = asset;
 		["action"] = action;
+		["asset"] = asset;
 	})
 end
 

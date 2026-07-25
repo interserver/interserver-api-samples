@@ -37,12 +37,8 @@ class AccountInfoPost : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, name);
 
-  DTO_FIELD(oatpp::String, company);
-  DTO_FIELD(oatpp::Boolean, companyIsSet);
   DTO_FIELD(oatpp::String, address);
 
-  DTO_FIELD(oatpp::String, address2);
-  DTO_FIELD(oatpp::Boolean, address2IsSet);
   DTO_FIELD(oatpp::String, city);
 
   DTO_FIELD(oatpp::String, state);
@@ -53,6 +49,10 @@ class AccountInfoPost : public oatpp::DTO {
 
   DTO_FIELD(oatpp::String, phone);
 
+  DTO_FIELD(oatpp::String, company);
+  DTO_FIELD(oatpp::Boolean, companyIsSet);
+  DTO_FIELD(oatpp::String, address2);
+  DTO_FIELD(oatpp::Boolean, address2IsSet);
   DTO_FIELD(oatpp::String, locale);
   DTO_FIELD(oatpp::Boolean, localeIsSet);
   DTO_FIELD(oatpp::String, email_invoices);

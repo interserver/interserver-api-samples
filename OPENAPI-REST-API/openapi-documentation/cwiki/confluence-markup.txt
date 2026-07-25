@@ -25290,6 +25290,7 @@ h2. Models
  |TXT |"TXT" | |
  |WKS |"WKS" | |
  |URI_ |"URI⏎" | |
+ |UNKNOWN_DEFAULT_OPEN_API |"11184809" | |
          
         
         {anchor:DnsUpdateRecordModelAnchor}

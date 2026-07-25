@@ -821,7 +821,7 @@ const { status, data } = await apiInstance.serverIpmiPowerPost(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **action** | [**string**]**Array<&#39;cycle&#39; &#124; &#39;reset&#39; &#124; &#39;on&#39; &#124; &#39;off&#39; &#124; &#39;soft&#39;>** | The power action to send to the ipmi controller. | defaults to undefined|
+| **action** | [**string**]**Array<&#39;cycle&#39; &#124; &#39;reset&#39; &#124; &#39;on&#39; &#124; &#39;off&#39; &#124; &#39;soft&#39; &#124; &#39;11184809&#39;>** | The power action to send to the ipmi controller. | defaults to undefined|
 | **id** | [**number**] | Server ID number | defaults to undefined|
 | **asset** | [**number**] | The Asset ID | (optional) defaults to undefined|
 

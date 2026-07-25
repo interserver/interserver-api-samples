@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPIUpdateTicket::CustomerServerAccessEnum& Val
 		return TEXT("y");
 	case OpenAPIUpdateTicket::CustomerServerAccessEnum::N:
 		return TEXT("n");
+	case OpenAPIUpdateTicket::CustomerServerAccessEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIUpdateTicket::CustomerServerAccessEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIUpdateTicket::Custome
 {
 	static TMap<FString, OpenAPIUpdateTicket::CustomerServerAccessEnum> StringToEnum = { 
 		{ TEXT("y"), OpenAPIUpdateTicket::CustomerServerAccessEnum::Y },
-		{ TEXT("n"), OpenAPIUpdateTicket::CustomerServerAccessEnum::N }, };
+		{ TEXT("n"), OpenAPIUpdateTicket::CustomerServerAccessEnum::N },
+		{ TEXT("11184809"), OpenAPIUpdateTicket::CustomerServerAccessEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

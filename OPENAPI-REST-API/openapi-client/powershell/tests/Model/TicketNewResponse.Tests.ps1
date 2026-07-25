@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'TicketNewResponse' {
     Context 'TicketNewResponse' {
         It 'Initialize-TicketNewResponse' {
             # a simple test to create an object
-            #$NewObject = Initialize-TicketNewResponse -TicketId "TEST_VALUE" -Text "TEST_VALUE" -Success "TEST_VALUE"
+            #$NewObject = Initialize-TicketNewResponse -Text "TEST_VALUE" -Success "TEST_VALUE" -TicketId "TEST_VALUE"
             #$NewObject | Should -BeOfType TicketNewResponse
             #$NewObject.property | Should -Be 0
         }

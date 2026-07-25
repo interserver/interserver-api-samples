@@ -17,10 +17,10 @@ VPS OS Template Request
 
 .PARAMETER Template
 OS Template Filename
-.PARAMETER Password
-Password for Root / Administrator Account.
 .PARAMETER LocalPassword
 Password for this account.
+.PARAMETER Password
+Password for Root / Administrator Account.
 .OUTPUTS
 
 TemplateRequest<PSCustomObject>
@@ -34,10 +34,10 @@ function Initialize-TemplateRequest {
         ${Template},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Password},
+        ${LocalPassword},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${LocalPassword}
+        ${Password}
     )
 
     Process {
@@ -48,19 +48,19 @@ function Initialize-TemplateRequest {
             throw "invalid value for 'Template', 'Template' cannot be null."
         }
 
-        if (!$Password -and $Password.length -lt 6) {
-            throw "invalid value for 'Password', the character length must be greater than or equal to 6."
-        }
-
         if ($null -eq $LocalPassword) {
             throw "invalid value for 'LocalPassword', 'LocalPassword' cannot be null."
+        }
+
+        if (!$Password -and $Password.length -lt 6) {
+            throw "invalid value for 'Password', the character length must be greater than or equal to 6."
         }
 
 
         $PSO = [PSCustomObject]@{
             'template' = ${Template}
-            'password' = ${Password}
             'localPassword' = ${LocalPassword}
+            'password' = ${Password}
         }
 
 
@@ -98,7 +98,7 @@ function ConvertFrom-JsonToTemplateRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in TemplateRequest
-        $AllProperties = ('template', 'password', 'localPassword')
+        $AllProperties = ('template', 'localPassword', 'password')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -129,8 +129,8 @@ function ConvertFrom-JsonToTemplateRequest {
 
         $PSO = [PSCustomObject]@{
             'template' = ${Template}
-            'password' = ${Password}
             'localPassword' = ${LocalPassword}
+            'password' = ${Password}
         }
 
         return $PSO

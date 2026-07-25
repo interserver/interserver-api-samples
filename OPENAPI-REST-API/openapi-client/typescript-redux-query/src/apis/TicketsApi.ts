@@ -657,7 +657,8 @@ export enum GetTicketsListPeriodEnum {
     _90 = '90',
     _365 = '365',
     _1825 = '1825',
-    All = 'all'
+    All = 'all',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
     * @export
@@ -667,5 +668,6 @@ export enum GetTicketsListViewEnum {
     Open = 'Open',
     Closed = 'Closed',
     OnHold = 'On Hold',
-    InProgress = 'In Progress'
+    InProgress = 'In Progress',
+    UnknownDefaultOpenApi = '11184809'
 }

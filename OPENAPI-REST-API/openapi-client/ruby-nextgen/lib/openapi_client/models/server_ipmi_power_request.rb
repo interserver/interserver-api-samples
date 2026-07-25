@@ -16,7 +16,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'action',
         required: true,
-        enum: ['cycle', 'reset', 'on', 'off', 'soft']
+        enum: ['cycle', 'reset', 'on', 'off', 'soft', 'unknown_default_open_api']
 
       attribute :asset,
         type: 'Integer',

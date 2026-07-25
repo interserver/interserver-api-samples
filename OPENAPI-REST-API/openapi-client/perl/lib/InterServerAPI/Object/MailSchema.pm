@@ -266,13 +266,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'service_extra' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'serviceExtra',
-        description => 'Extra information for the mail service.',
-        format => '',
-        read_only => '',
-            },
     'extra_info_tables' => {
         datatype => 'MailSchemaExtraInfoTables',
         base_name => 'extraInfoTables',
@@ -294,6 +287,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'service_extra' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'serviceExtra',
+        description => 'Extra information for the mail service.',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -303,10 +303,10 @@ __PACKAGE__->openapi_types( {
     'cust_currency' => 'string',
     'cust_currency_symbol' => 'string',
     'package' => 'string',
-    'service_extra' => 'ARRAY[string]',
     'extra_info_tables' => 'MailSchemaExtraInfoTables',
     'service_type' => 'MailServiceType',
-    'usage_count' => 'string'
+    'usage_count' => 'string',
+    'service_extra' => 'ARRAY[string]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -316,10 +316,10 @@ __PACKAGE__->attribute_map( {
     'cust_currency' => 'custCurrency',
     'cust_currency_symbol' => 'custCurrencySymbol',
     'package' => 'package',
-    'service_extra' => 'serviceExtra',
     'extra_info_tables' => 'extraInfoTables',
     'service_type' => 'serviceType',
-    'usage_count' => 'usage_count'
+    'usage_count' => 'usage_count',
+    'service_extra' => 'serviceExtra'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

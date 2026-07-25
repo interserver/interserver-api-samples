@@ -35,10 +35,10 @@ class ServerIpmiPowerRequest : public oatpp::DTO {
 
   DTO_INIT(ServerIpmiPowerRequest, DTO /* Extends */)
 
-  DTO_FIELD(oatpp::Int32, asset);
-  DTO_FIELD(oatpp::Boolean, assetIsSet);
   DTO_FIELD(oatpp::String, action);
 
+  DTO_FIELD(oatpp::Int32, asset);
+  DTO_FIELD(oatpp::Boolean, assetIsSet);
 
 };
 

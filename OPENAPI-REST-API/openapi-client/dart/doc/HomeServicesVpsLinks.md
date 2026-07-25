@@ -1,8 +1,8 @@
-# openapi.model.HomeServicesVpsLinks
+# interserver_api.model.HomeServicesVpsLinks
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

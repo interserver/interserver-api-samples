@@ -25,8 +25,6 @@ feature --Access
       -- Number of slices
     vps_platform: detachable STRING_32
       -- VPS Platform
-    controlpanel: detachable STRING_32
-      -- Control Panel
     period: INTEGER_32
       -- Billing Period or Frequency
     location: INTEGER_32
@@ -35,10 +33,12 @@ feature --Access
       -- OS Version
     hostname: detachable STRING_32
       -- The hostname to assign to the VPS
-    coupon: detachable STRING_32
-      -- Coupon
     rootpass: detachable STRING_32
       -- Root password to assign to the VVPS
+    controlpanel: detachable STRING_32
+      -- Control Panel
+    coupon: detachable STRING_32
+      -- Coupon
     comment: detachable STRING_32
       -- Order comments or notes
 
@@ -66,14 +66,6 @@ feature -- Change Element
         vps_platform := a_name
       ensure
         vps_platform_set: vps_platform = a_name
-      end
-
-    set_controlpanel (a_name: like controlpanel)
-        -- Set 'controlpanel' with 'a_name'.
-      do
-        controlpanel := a_name
-      ensure
-        controlpanel_set: controlpanel = a_name
       end
 
     set_period (a_name: like period)
@@ -108,20 +100,28 @@ feature -- Change Element
         hostname_set: hostname = a_name
       end
 
-    set_coupon (a_name: like coupon)
-        -- Set 'coupon' with 'a_name'.
-      do
-        coupon := a_name
-      ensure
-        coupon_set: coupon = a_name
-      end
-
     set_rootpass (a_name: like rootpass)
         -- Set 'rootpass' with 'a_name'.
       do
         rootpass := a_name
       ensure
         rootpass_set: rootpass = a_name
+      end
+
+    set_controlpanel (a_name: like controlpanel)
+        -- Set 'controlpanel' with 'a_name'.
+      do
+        controlpanel := a_name
+      ensure
+        controlpanel_set: controlpanel = a_name
+      end
+
+    set_coupon (a_name: like coupon)
+        -- Set 'coupon' with 'a_name'.
+      do
+        coupon := a_name
+      ensure
+        coupon_set: coupon = a_name
       end
 
     set_comment (a_name: like comment)
@@ -155,11 +155,6 @@ feature -- Change Element
           Result.append (l_vps_platform.out)
           Result.append ("%N")
         end
-        if attached controlpanel as l_controlpanel then
-          Result.append ("%Ncontrolpanel:")
-          Result.append (l_controlpanel.out)
-          Result.append ("%N")
-        end
         if attached period as l_period then
           Result.append ("%Nperiod:")
           Result.append (l_period.out)
@@ -180,14 +175,19 @@ feature -- Change Element
           Result.append (l_hostname.out)
           Result.append ("%N")
         end
-        if attached coupon as l_coupon then
-          Result.append ("%Ncoupon:")
-          Result.append (l_coupon.out)
-          Result.append ("%N")
-        end
         if attached rootpass as l_rootpass then
           Result.append ("%Nrootpass:")
           Result.append (l_rootpass.out)
+          Result.append ("%N")
+        end
+        if attached controlpanel as l_controlpanel then
+          Result.append ("%Ncontrolpanel:")
+          Result.append (l_controlpanel.out)
+          Result.append ("%N")
+        end
+        if attached coupon as l_coupon then
+          Result.append ("%Ncoupon:")
+          Result.append (l_coupon.out)
           Result.append ("%N")
         end
         if attached comment as l_comment then

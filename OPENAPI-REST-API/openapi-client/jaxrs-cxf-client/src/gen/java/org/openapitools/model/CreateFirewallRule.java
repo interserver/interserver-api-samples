@@ -15,7 +15,7 @@ public class CreateFirewallRule  {
   
 public enum ProtocolIdEnum {
 
-NUMBER_1(Integer.valueOf(1)), NUMBER_2(Integer.valueOf(2));
+NUMBER_1(Integer.valueOf(1)), NUMBER_2(Integer.valueOf(2)), NUMBER_unknown_default_open_api(Integer.valueOf(11184809));
 
 
     private Integer value;
@@ -52,7 +52,7 @@ NUMBER_1(Integer.valueOf(1)), NUMBER_2(Integer.valueOf(2));
 
 public enum XdpActionEnum {
 
-NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1));
+NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1)), NUMBER_unknown_default_open_api(Integer.valueOf(11184809));
 
 
     private Integer value;

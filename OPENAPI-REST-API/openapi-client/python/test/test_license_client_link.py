@@ -39,8 +39,8 @@ class TestLicenseClientLink(unittest.TestCase):
                 label = 'Invoices',
                 link = 'invoices',
                 icon = 'fas fa-file-invoice-dollar fa-w-12',
-                icon_text = '',
                 help_text = 'Invoice History',
+                icon_text = '',
                 other_attr = ''
             )
         else:

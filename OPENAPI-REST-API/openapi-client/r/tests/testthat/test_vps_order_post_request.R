@@ -29,14 +29,6 @@ test_that("vpsPlatform", {
   #expect_equal(model.instance$`vpsPlatform`, "EXPECTED_RESULT")
 })
 
-test_that("controlpanel", {
-  # tests for the property `controlpanel` (character)
-  # Control Panel
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`controlpanel`, "EXPECTED_RESULT")
-})
-
 test_that("period", {
   # tests for the property `period` (integer)
   # Billing Period or Frequency
@@ -69,20 +61,28 @@ test_that("hostname", {
   #expect_equal(model.instance$`hostname`, "EXPECTED_RESULT")
 })
 
-test_that("coupon", {
-  # tests for the property `coupon` (character)
-  # Coupon
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`coupon`, "EXPECTED_RESULT")
-})
-
 test_that("rootpass", {
   # tests for the property `rootpass` (character)
   # Root password to assign to the VVPS
 
   # uncomment below to test the property
   #expect_equal(model.instance$`rootpass`, "EXPECTED_RESULT")
+})
+
+test_that("controlpanel", {
+  # tests for the property `controlpanel` (character)
+  # Control Panel
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`controlpanel`, "EXPECTED_RESULT")
+})
+
+test_that("coupon", {
+  # tests for the property `coupon` (character)
+  # Coupon
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`coupon`, "EXPECTED_RESULT")
 })
 
 test_that("comment", {

@@ -45,11 +45,11 @@ No description available.
 No description available.
 .PARAMETER TITLEFIELD
 No description available.
+.PARAMETER PREFIX
+No description available.
 .PARAMETER TITLEFIELD2
 No description available.
 .PARAMETER TITLEFIELD3
-No description available.
-.PARAMETER PREFIX
 No description available.
 .OUTPUTS
 
@@ -106,13 +106,13 @@ function Initialize-ModuleSettings {
         ${TITLEFIELD},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${TITLEFIELD2},
+        ${PREFIX},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${TITLEFIELD3},
+        ${TITLEFIELD2},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${PREFIX}
+        ${TITLEFIELD3}
     )
 
     Process {
@@ -200,9 +200,9 @@ function Initialize-ModuleSettings {
             'TBLNAME' = ${TBLNAME}
             'TABLE' = ${TABLE}
             'TITLE_FIELD' = ${TITLEFIELD}
+            'PREFIX' = ${PREFIX}
             'TITLE_FIELD2' = ${TITLEFIELD2}
             'TITLE_FIELD3' = ${TITLEFIELD3}
-            'PREFIX' = ${PREFIX}
         }
 
 
@@ -240,7 +240,7 @@ function ConvertFrom-JsonToModuleSettings {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ModuleSettings
-        $AllProperties = ('SERVICE_ID_OFFSET', 'USE_REPEAT_INVOICE', 'USE_PACKAGES', 'BILLING_DAYS_OFFSET', 'IMGNAME', 'REPEAT_BILLING_METHOD', 'DELETE_PENDING_DAYS', 'SUSPEND_DAYS', 'SUSPEND_WARNING_DAYS', 'TITLE', 'MENUNAME', 'EMAIL_FROM', 'TBLNAME', 'TABLE', 'TITLE_FIELD', 'TITLE_FIELD2', 'TITLE_FIELD3', 'PREFIX')
+        $AllProperties = ('SERVICE_ID_OFFSET', 'USE_REPEAT_INVOICE', 'USE_PACKAGES', 'BILLING_DAYS_OFFSET', 'IMGNAME', 'REPEAT_BILLING_METHOD', 'DELETE_PENDING_DAYS', 'SUSPEND_DAYS', 'SUSPEND_WARNING_DAYS', 'TITLE', 'MENUNAME', 'EMAIL_FROM', 'TBLNAME', 'TABLE', 'TITLE_FIELD', 'PREFIX', 'TITLE_FIELD2', 'TITLE_FIELD3')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -375,9 +375,9 @@ function ConvertFrom-JsonToModuleSettings {
             'TBLNAME' = ${TBLNAME}
             'TABLE' = ${TABLE}
             'TITLE_FIELD' = ${TITLEFIELD}
+            'PREFIX' = ${PREFIX}
             'TITLE_FIELD2' = ${TITLEFIELD2}
             'TITLE_FIELD3' = ${TITLEFIELD3}
-            'PREFIX' = ${PREFIX}
         }
 
         return $PSO

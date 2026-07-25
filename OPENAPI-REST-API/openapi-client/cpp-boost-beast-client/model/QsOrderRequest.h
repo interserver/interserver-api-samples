@@ -62,16 +62,16 @@ public:
     void setPassword(std::string value);
 
     /// <summary>
-    /// OS template file name from getNewQs (falls back to a default if unrecognized).
-    /// </summary>
-    std::string getOs() const;
-    void setOs(std::string value);
-
-    /// <summary>
     /// Terms-of-service acceptance. Must be true to place the order.
     /// </summary>
     bool isTos() const;
     void setTos(bool value);
+
+    /// <summary>
+    /// OS template file name from getNewQs (falls back to a default if unrecognized).
+    /// </summary>
+    std::string getOs() const;
+    void setOs(std::string value);
 
     /// <summary>
     /// Free-form note saved on the service row.
@@ -91,9 +91,9 @@ protected:
 protected:
     int32_t m_Server = 0;
     std::string m_Password = "";
+    bool m_Tos = false;
     std::string m_Os = "";
     bool m_OsIsSet = false;
-    bool m_Tos = false;
     std::string m_Comment = "";
     bool m_CommentIsSet = false;
 };

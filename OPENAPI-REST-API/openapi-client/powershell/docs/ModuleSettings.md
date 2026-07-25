@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **TBLNAME** | **String** |  | 
 **TABLE** | **String** |  | 
 **TITLEFIELD** | **String** |  | 
+**PREFIX** | **String** |  | 
 **TITLEFIELD2** | **String** |  | [optional] 
 **TITLEFIELD3** | **String** |  | [optional] 
-**PREFIX** | **String** |  | 
 
 ## Examples
 
@@ -41,9 +41,9 @@ $ModuleSettings = Initialize-InterserverApiModuleSettings  -SERVICEIDOFFSET 0 `
  -TBLNAME VPS `
  -TABLE vps `
  -TITLEFIELD vps_hostname `
+ -PREFIX vps `
  -TITLEFIELD2 vps_ip `
- -TITLEFIELD3 vps_vzid `
- -PREFIX vps
+ -TITLEFIELD3 vps_vzid
 ```
 
 - Convert the resource to JSON

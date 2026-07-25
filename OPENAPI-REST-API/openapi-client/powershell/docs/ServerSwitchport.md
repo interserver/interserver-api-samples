@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Blade** | **String** | Blade name associated with the port. | 
 **Justport** | **String** | Port identifier. | 
 **GraphId** | **String** | Identifier for the graph associated with the switchport. | 
+**AssetId** | **Int32** | Unique identifier of the asset associated with the switchport. | 
 **Vlans** | **String[]** | List of VLANs associated with the switchport. | [optional] 
 **Vlans6** | **String[]** | List of IPv6 VLANs associated with the switchport. | [optional] 
-**AssetId** | **Int32** | Unique identifier of the asset associated with the switchport. | 
 
 ## Examples
 
@@ -25,9 +25,9 @@ $ServerSwitchport = Initialize-InterserverApiServerSwitchport  -SwitchportId 104
  -Blade Ethernet1 `
  -Justport 33 `
  -GraphId 12622 `
+ -AssetId 3497 `
  -Vlans [] `
- -Vlans6 [] `
- -AssetId 3497
+ -Vlans6 []
 ```
 
 - Convert the resource to JSON

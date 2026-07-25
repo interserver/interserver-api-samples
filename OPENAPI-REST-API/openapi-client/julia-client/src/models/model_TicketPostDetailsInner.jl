@@ -65,7 +65,7 @@ function OpenAPI.validate_property(::Type{ TicketPostDetailsInner }, name::Symbo
 
 
     if name === Symbol("creator")
-        OpenAPI.validate_param(name, "TicketPostDetailsInner", :enum, val, ["User", "Staff"])
+        OpenAPI.validate_param(name, "TicketPostDetailsInner", :enum, val, ["User", "Staff", "unknown_default_open_api"])
     end
 
 

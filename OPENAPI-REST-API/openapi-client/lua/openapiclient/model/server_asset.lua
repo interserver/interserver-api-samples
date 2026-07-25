@@ -19,7 +19,7 @@ local function cast_server_asset(t)
 	return setmetatable(t, server_asset_mt)
 end
 
-local function new_server_asset(id, order_id, hostname, status, primary_ipv4, primary_ipv6, mac, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, create_timestamp, update_timestamp, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, comment, switchports, vlans, vlans6, lease)
+local function new_server_asset(id, order_id, hostname, status, primary_ipv4, primary_ipv6, datacenter, type_id, asset_tag, rack, row, col, unit_start, unit_end, unit_sub, ipmi_mac, ipmi_ip, ipmi_working, company, comments, make, model, description, customer_id, external_id, billing_status, overdue, asset_id, asset_name, rack_id, rack_name, rack_location, rack_size, rack_x, rack_y, switchports, vlans, vlans6, lease, mac, ipmi_admin_username, ipmi_admin_password, ipmi_client_username, ipmi_client_password, ipmi_updated, create_timestamp, update_timestamp, comment)
 	return cast_server_asset({
 		["id"] = id;
 		["order_id"] = order_id;
@@ -27,7 +27,6 @@ local function new_server_asset(id, order_id, hostname, status, primary_ipv4, pr
 		["status"] = status;
 		["primary_ipv4"] = primary_ipv4;
 		["primary_ipv6"] = primary_ipv6;
-		["mac"] = mac;
 		["datacenter"] = datacenter;
 		["type_id"] = type_id;
 		["asset_tag"] = asset_tag;
@@ -39,11 +38,6 @@ local function new_server_asset(id, order_id, hostname, status, primary_ipv4, pr
 		["unit_sub"] = unit_sub;
 		["ipmi_mac"] = ipmi_mac;
 		["ipmi_ip"] = ipmi_ip;
-		["ipmi_admin_username"] = ipmi_admin_username;
-		["ipmi_admin_password"] = ipmi_admin_password;
-		["ipmi_client_username"] = ipmi_client_username;
-		["ipmi_client_password"] = ipmi_client_password;
-		["ipmi_updated"] = ipmi_updated;
 		["ipmi_working"] = ipmi_working;
 		["company"] = company;
 		["comments"] = comments;
@@ -54,8 +48,6 @@ local function new_server_asset(id, order_id, hostname, status, primary_ipv4, pr
 		["external_id"] = external_id;
 		["billing_status"] = billing_status;
 		["overdue"] = overdue;
-		["create_timestamp"] = create_timestamp;
-		["update_timestamp"] = update_timestamp;
 		["asset_id"] = asset_id;
 		["asset_name"] = asset_name;
 		["rack_id"] = rack_id;
@@ -64,11 +56,19 @@ local function new_server_asset(id, order_id, hostname, status, primary_ipv4, pr
 		["rack_size"] = rack_size;
 		["rack_x"] = rack_x;
 		["rack_y"] = rack_y;
-		["comment"] = comment;
 		["switchports"] = switchports;
 		["vlans"] = vlans;
 		["vlans6"] = vlans6;
 		["lease"] = lease;
+		["mac"] = mac;
+		["ipmi_admin_username"] = ipmi_admin_username;
+		["ipmi_admin_password"] = ipmi_admin_password;
+		["ipmi_client_username"] = ipmi_client_username;
+		["ipmi_client_password"] = ipmi_client_password;
+		["ipmi_updated"] = ipmi_updated;
+		["create_timestamp"] = create_timestamp;
+		["update_timestamp"] = update_timestamp;
+		["comment"] = comment;
 	})
 end
 

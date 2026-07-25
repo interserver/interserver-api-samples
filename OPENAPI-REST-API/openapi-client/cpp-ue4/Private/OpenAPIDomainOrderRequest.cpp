@@ -28,6 +28,8 @@ inline FString ToString(const OpenAPIDomainOrderRequest::TypeEnum& Value)
 		return TEXT("register");
 	case OpenAPIDomainOrderRequest::TypeEnum::Transfer:
 		return TEXT("transfer");
+	case OpenAPIDomainOrderRequest::TypeEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIDomainOrderRequest::TypeEnum Value (%d)"), (int)Value);
@@ -43,7 +45,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIDomainOrderRequest::T
 {
 	static TMap<FString, OpenAPIDomainOrderRequest::TypeEnum> StringToEnum = { 
 		{ TEXT("register"), OpenAPIDomainOrderRequest::TypeEnum::_Register },
-		{ TEXT("transfer"), OpenAPIDomainOrderRequest::TypeEnum::Transfer }, };
+		{ TEXT("transfer"), OpenAPIDomainOrderRequest::TypeEnum::Transfer },
+		{ TEXT("11184809"), OpenAPIDomainOrderRequest::TypeEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)
@@ -81,6 +84,8 @@ inline FString ToString(const OpenAPIDomainOrderRequest::WhoisPrivacyEnum& Value
 		return TEXT("enable");
 	case OpenAPIDomainOrderRequest::WhoisPrivacyEnum::Disable:
 		return TEXT("disable");
+	case OpenAPIDomainOrderRequest::WhoisPrivacyEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIDomainOrderRequest::WhoisPrivacyEnum Value (%d)"), (int)Value);
@@ -96,7 +101,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIDomainOrderRequest::W
 {
 	static TMap<FString, OpenAPIDomainOrderRequest::WhoisPrivacyEnum> StringToEnum = { 
 		{ TEXT("enable"), OpenAPIDomainOrderRequest::WhoisPrivacyEnum::Enable },
-		{ TEXT("disable"), OpenAPIDomainOrderRequest::WhoisPrivacyEnum::Disable }, };
+		{ TEXT("disable"), OpenAPIDomainOrderRequest::WhoisPrivacyEnum::Disable },
+		{ TEXT("11184809"), OpenAPIDomainOrderRequest::WhoisPrivacyEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

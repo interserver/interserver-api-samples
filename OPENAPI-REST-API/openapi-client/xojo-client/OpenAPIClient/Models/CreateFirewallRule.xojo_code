@@ -39,14 +39,16 @@ Protected Class CreateFirewallRule
         
         Escaped1 = "1"
         Escaped2 = "2"
-        
+        UnknownDefaultOpenApi = "11184809"
+        Unknown = 
     #tag EndEnum
 
     #tag Enum, Name = Xdp_actionEnum, Type = Integer, Flags = &h0
         
         Escaped0 = "0"
         Escaped1 = "1"
-        
+        UnknownDefaultOpenApi = "11184809"
+        Unknown = 
     #tag EndEnum
 
 

@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TicketId** | **Int32** |  | [optional] 
 **Text** | **String** |  | 
 **Success** | **Boolean** |  | 
+**TicketId** | **Int32** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TicketNewResponse = Initialize-InterserverApiTicketNewResponse  -TicketId null `
- -Text null `
- -Success null
+$TicketNewResponse = Initialize-InterserverApiTicketNewResponse  -Text null `
+ -Success null `
+ -TicketId null
 ```
 
 - Convert the resource to JSON

@@ -94,7 +94,8 @@ export interface VpsOrderPutRequest {
 export const VpsOrderPutRequestVpsPlatformEnum = {
     Kvm: 'kvm',
     Hyperv: 'hyperv',
-    Kvmstorage: 'kvmstorage'
+    Kvmstorage: 'kvmstorage',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type VpsOrderPutRequestVpsPlatformEnum = typeof VpsOrderPutRequestVpsPlatformEnum[keyof typeof VpsOrderPutRequestVpsPlatformEnum];
 
@@ -104,7 +105,8 @@ export type VpsOrderPutRequestVpsPlatformEnum = typeof VpsOrderPutRequestVpsPlat
 export const VpsOrderPutRequestControlpanelEnum = {
     None: 'none',
     Cpanel: 'cpanel',
-    Da: 'da'
+    Da: 'da',
+    UnknownDefaultOpenApi: '11184809'
 } as const;
 export type VpsOrderPutRequestControlpanelEnum = typeof VpsOrderPutRequestControlpanelEnum[keyof typeof VpsOrderPutRequestControlpanelEnum];
 

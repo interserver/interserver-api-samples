@@ -37,13 +37,6 @@ describe("vps_order_put_request", function()
     end)
   end)
 
-  -- unit tests for the property 'controlpanel'
-  describe("property controlpanel test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'period'
   describe("property period test", function()
     it("should work", function()
@@ -72,15 +65,22 @@ describe("vps_order_put_request", function()
     end)
   end)
 
-  -- unit tests for the property 'coupon'
-  describe("property coupon test", function()
+  -- unit tests for the property 'rootpass'
+  describe("property rootpass test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
   end)
 
-  -- unit tests for the property 'rootpass'
-  describe("property rootpass test", function()
+  -- unit tests for the property 'controlpanel'
+  describe("property controlpanel test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'coupon'
+  describe("property coupon test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

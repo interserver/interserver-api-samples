@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'ServerLocation1' {
     Context 'ServerLocation1' {
         It 'Initialize-ServerLocation1' {
             # a simple test to create an object
-            #$NewObject = Initialize-ServerLocation1 -LocationId "TEST_VALUE" -LocationName "TEST_VALUE" -LocationDescription "TEST_VALUE" -LocationLat "TEST_VALUE" -LocationLong "TEST_VALUE" -LocationIpmiGroup "TEST_VALUE"
+            #$NewObject = Initialize-ServerLocation1 -LocationId "TEST_VALUE" -LocationName "TEST_VALUE" -LocationLat "TEST_VALUE" -LocationLong "TEST_VALUE" -LocationDescription "TEST_VALUE" -LocationIpmiGroup "TEST_VALUE"
             #$NewObject | Should -BeOfType ServerLocation1
             #$NewObject.property | Should -Be 0
         }

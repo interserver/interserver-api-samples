@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   WebsiteBillingDetails.JSON_PROPERTY_SERVICE_EXTRA_JSON
 })
 @JsonTypeName("WebsiteBillingDetails")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class WebsiteBillingDetails {
     public static final String JSON_PROPERTY_SERVICE_LAST_INVOICE_DATE = "service_last_invoice_date";

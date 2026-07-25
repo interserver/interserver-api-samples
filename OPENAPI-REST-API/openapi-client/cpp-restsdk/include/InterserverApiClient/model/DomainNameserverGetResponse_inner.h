@@ -59,6 +59,7 @@ public:
     {
         _0,
         _1,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// Whether the registrar allows deletion of this nameserver entry.

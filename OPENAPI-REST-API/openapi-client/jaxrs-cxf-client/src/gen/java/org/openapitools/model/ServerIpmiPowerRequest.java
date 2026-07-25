@@ -15,7 +15,7 @@ public class ServerIpmiPowerRequest  {
   
 public enum ActionEnum {
 
-CYCLE(String.valueOf("cycle")), RESET(String.valueOf("reset")), ON(String.valueOf("on")), OFF(String.valueOf("off")), SOFT(String.valueOf("soft"));
+CYCLE(String.valueOf("cycle")), RESET(String.valueOf("reset")), ON(String.valueOf("on")), OFF(String.valueOf("off")), SOFT(String.valueOf("soft")), UNKNOWN_DEFAULT_OPEN_API(String.valueOf("unknown_default_open_api"));
 
 
     private String value;

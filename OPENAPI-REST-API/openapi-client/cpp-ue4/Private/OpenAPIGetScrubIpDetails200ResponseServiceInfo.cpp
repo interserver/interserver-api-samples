@@ -32,6 +32,8 @@ inline FString ToString(const OpenAPIGetScrubIpDetails200ResponseServiceInfo::Sc
 		return TEXT("canceled");
 	case OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Expired:
 		return TEXT("expired");
+	case OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::UnknownDefaultOpenApi:
+		return TEXT("11184809");
 	}
 
 	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum Value (%d)"), (int)Value);
@@ -49,7 +51,8 @@ inline bool FromString(const FString& EnumAsString, OpenAPIGetScrubIpDetails200R
 		{ TEXT("active"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Active },
 		{ TEXT("pending"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Pending },
 		{ TEXT("canceled"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Canceled },
-		{ TEXT("expired"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Expired }, };
+		{ TEXT("expired"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::Expired },
+		{ TEXT("11184809"), OpenAPIGetScrubIpDetails200ResponseServiceInfo::ScrubIpStatusEnum::UnknownDefaultOpenApi }, };
 
 	const auto Found = StringToEnum.Find(EnumAsString);
 	if(Found)

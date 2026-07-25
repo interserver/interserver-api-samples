@@ -12,10 +12,8 @@
        'custCurrencySymbol' := binary(),
        'serviceMaster' := interserver_api_vps_service_master:interserver_api_vps_service_master(),
        'package' := binary(),
-       'os_template' => binary(),
        'serviceExtra' := interserver_api_vps_service_extra:interserver_api_vps_service_extra(),
        'extraInfoTables' := interserver_api_vps_extra_info_tables:interserver_api_vps_extra_info_tables(),
-       'cpu_graph_data' => interserver_api_any_type:interserver_api_any_type(),
        'module' := binary(),
        'token' := binary(),
        'da_link' := integer(),
@@ -23,7 +21,9 @@
        'cp_data' := interserver_api_vps_cp_data:interserver_api_vps_cp_data(),
        'da_data' := interserver_api_vps_da_data:interserver_api_vps_da_data(),
        'plesk12_data' := interserver_api_vps_plesk12_data:interserver_api_vps_plesk12_data(),
-       'serviceAddons' := interserver_api_vps_service_addons:interserver_api_vps_service_addons()
+       'serviceAddons' := interserver_api_vps_service_addons:interserver_api_vps_service_addons(),
+       'os_template' => binary(),
+       'cpu_graph_data' => interserver_api_any_type:interserver_api_any_type()
      }.
 
 encode(#{ 'serviceInfo' := ServiceInfo,
@@ -33,10 +33,8 @@ encode(#{ 'serviceInfo' := ServiceInfo,
           'custCurrencySymbol' := CustCurrencySymbol,
           'serviceMaster' := ServiceMaster,
           'package' := Package,
-          'os_template' := OsTemplate,
           'serviceExtra' := ServiceExtra,
           'extraInfoTables' := ExtraInfoTables,
-          'cpu_graph_data' := CpuGraphData,
           'module' := Module,
           'token' := Token,
           'da_link' := DaLink,
@@ -44,7 +42,9 @@ encode(#{ 'serviceInfo' := ServiceInfo,
           'cp_data' := CpData,
           'da_data' := DaData,
           'plesk12_data' := Plesk12Data,
-          'serviceAddons' := ServiceAddons
+          'serviceAddons' := ServiceAddons,
+          'os_template' := OsTemplate,
+          'cpu_graph_data' := CpuGraphData
         }) ->
     #{ 'serviceInfo' => ServiceInfo,
        'client_links' => ClientLinks,
@@ -53,10 +53,8 @@ encode(#{ 'serviceInfo' := ServiceInfo,
        'custCurrencySymbol' => CustCurrencySymbol,
        'serviceMaster' => ServiceMaster,
        'package' => Package,
-       'os_template' => OsTemplate,
        'serviceExtra' => ServiceExtra,
        'extraInfoTables' => ExtraInfoTables,
-       'cpu_graph_data' => CpuGraphData,
        'module' => Module,
        'token' => Token,
        'da_link' => DaLink,
@@ -64,5 +62,7 @@ encode(#{ 'serviceInfo' := ServiceInfo,
        'cp_data' => CpData,
        'da_data' => DaData,
        'plesk12_data' => Plesk12Data,
-       'serviceAddons' => ServiceAddons
+       'serviceAddons' => ServiceAddons,
+       'os_template' => OsTemplate,
+       'cpu_graph_data' => CpuGraphData
      }.

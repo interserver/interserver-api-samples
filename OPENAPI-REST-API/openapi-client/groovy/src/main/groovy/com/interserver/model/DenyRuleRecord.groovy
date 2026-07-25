@@ -15,7 +15,9 @@ class DenyRuleRecord {
         
         STARTSWITH("startswith"),
         
-        DESTINATION("destination")
+        DESTINATION("destination"),
+        
+        UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api")
     
         private final String value
     

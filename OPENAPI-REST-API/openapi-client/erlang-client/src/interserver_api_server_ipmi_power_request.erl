@@ -5,13 +5,13 @@
 -export_type([interserver_api_server_ipmi_power_request/0]).
 
 -type interserver_api_server_ipmi_power_request() ::
-    #{ 'asset' => integer(),
-       'action' := binary()
+    #{ 'action' := binary(),
+       'asset' => integer()
      }.
 
-encode(#{ 'asset' := Asset,
-          'action' := Action
+encode(#{ 'action' := Action,
+          'asset' := Asset
         }) ->
-    #{ 'asset' => Asset,
-       'action' => Action
+    #{ 'action' => Action,
+       'asset' => Asset
      }.

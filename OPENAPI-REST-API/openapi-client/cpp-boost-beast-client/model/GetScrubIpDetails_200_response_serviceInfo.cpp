@@ -475,8 +475,8 @@ std::string GetScrubIpDetails_200_response_serviceInfo::getScrubIpStatus() const
 
 void GetScrubIpDetails_200_response_serviceInfo::setScrubIpStatus(std::string value)
 {
-    static const std::array<std::string, 4> allowedValues = {
-        "active","pending","canceled","expired"
+    static const std::array<std::string, 5> allowedValues = {
+        "active","pending","canceled","expired","11184809"
     };
     if (std::find(allowedValues.begin(), allowedValues.end(), value) == allowedValues.end()) {
         std::ostringstream errorMessage;

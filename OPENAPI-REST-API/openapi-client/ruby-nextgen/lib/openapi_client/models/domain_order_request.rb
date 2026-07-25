@@ -25,7 +25,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'type',
         required: false,
-        enum: ['register', 'transfer']
+        enum: ['register', 'transfer', 'unknown_default_open_api']
 
       attribute :coupon,
         type: 'String',
@@ -36,7 +36,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'whois_privacy',
         required: false,
-        enum: ['enable', 'disable']
+        enum: ['enable', 'disable', 'unknown_default_open_api']
 
       def initialize(**attrs)
         attrs.each do |k, v|

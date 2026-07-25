@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **TBLNAME** | **character** |  | 
 **TABLE** | **character** |  | 
 **TITLE_FIELD** | **character** |  | 
+**PREFIX** | **character** |  | 
 **TITLE_FIELD2** | **character** |  | [optional] 
 **TITLE_FIELD3** | **character** |  | [optional] 
-**PREFIX** | **character** |  | 
 
 

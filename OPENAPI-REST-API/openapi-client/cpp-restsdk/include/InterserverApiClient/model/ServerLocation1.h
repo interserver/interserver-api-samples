@@ -65,11 +65,6 @@ public:
     void unsetLocation_name();
     void setLocationName(const utility::string_t& value);
 
-    utility::string_t getLocationDescription() const;
-    bool locationDescriptionIsSet() const;
-    void unsetLocation_description();
-    void setLocationDescription(const utility::string_t& value);
-
     utility::string_t getLocationLat() const;
     bool locationLatIsSet() const;
     void unsetLocation_lat();
@@ -79,6 +74,11 @@ public:
     bool locationLongIsSet() const;
     void unsetLocation_long();
     void setLocationLong(const utility::string_t& value);
+
+    utility::string_t getLocationDescription() const;
+    bool locationDescriptionIsSet() const;
+    void unsetLocation_description();
+    void setLocationDescription(const utility::string_t& value);
 
     int32_t getLocationIpmiGroup() const;
     bool locationIpmiGroupIsSet() const;
@@ -93,14 +93,14 @@ protected:
     utility::string_t m_Location_name;
     bool m_Location_nameIsSet;
 
-    utility::string_t m_Location_description;
-    bool m_Location_descriptionIsSet;
-
     utility::string_t m_Location_lat;
     bool m_Location_latIsSet;
 
     utility::string_t m_Location_long;
     bool m_Location_longIsSet;
+
+    utility::string_t m_Location_description;
+    bool m_Location_descriptionIsSet;
 
     int32_t m_Location_ipmi_group;
     bool m_Location_ipmi_groupIsSet;

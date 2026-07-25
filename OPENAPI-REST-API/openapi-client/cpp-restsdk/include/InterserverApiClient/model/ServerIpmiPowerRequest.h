@@ -65,6 +65,7 @@ public:
         ON,
         OFF,
         SOFT,
+        UNKNOWN_DEFAULT_OPEN_API,
     };
     /// <summary>
     /// The power action to send to the ipmi controller.
@@ -75,14 +76,6 @@ public:
 
 
     /// <summary>
-    /// The Asset ID
-    /// </summary>
-    int32_t getAsset() const;
-    bool assetIsSet() const;
-    void unsetAsset();
-    void setAsset(int32_t value);
-
-    /// <summary>
     /// The power action to send to the ipmi controller.
     /// </summary>
     ActionEnum getAction() const;
@@ -90,13 +83,21 @@ public:
     void unsetAction();
     void setAction(const ActionEnum value);
 
+    /// <summary>
+    /// The Asset ID
+    /// </summary>
+    int32_t getAsset() const;
+    bool assetIsSet() const;
+    void unsetAsset();
+    void setAsset(int32_t value);
+
 
 protected:
-    int32_t m_Asset;
-    bool m_AssetIsSet;
-
     ActionEnum m_Action;
     bool m_ActionIsSet;
+
+    int32_t m_Asset;
+    bool m_AssetIsSet;
 
 };
 

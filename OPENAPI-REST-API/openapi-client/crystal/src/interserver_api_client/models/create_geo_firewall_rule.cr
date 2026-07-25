@@ -31,7 +31,7 @@ module InterserverApiClient
     @[JSON::Field(key: "asn", emit_null: false)]
     property asn : Int32?
 
-    validates(xdp_action, Int32, false, enum: [0, 1])
+    validates(xdp_action, Int32, false, enum: [0, 1, 11184809])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash

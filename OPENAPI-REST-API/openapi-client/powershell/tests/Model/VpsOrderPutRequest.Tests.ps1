@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'VpsOrderPutRequest' {
     Context 'VpsOrderPutRequest' {
         It 'Initialize-VpsOrderPutRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-VpsOrderPutRequest -OsDistro "TEST_VALUE" -Slices "TEST_VALUE" -VpsPlatform "TEST_VALUE" -Controlpanel "TEST_VALUE" -Period "TEST_VALUE" -Location "TEST_VALUE" -OsVersion "TEST_VALUE" -Hostname "TEST_VALUE" -Coupon "TEST_VALUE" -Rootpass "TEST_VALUE" -Comment "TEST_VALUE"
+            #$NewObject = Initialize-VpsOrderPutRequest -OsDistro "TEST_VALUE" -Slices "TEST_VALUE" -VpsPlatform "TEST_VALUE" -Period "TEST_VALUE" -Location "TEST_VALUE" -OsVersion "TEST_VALUE" -Hostname "TEST_VALUE" -Rootpass "TEST_VALUE" -Controlpanel "TEST_VALUE" -Coupon "TEST_VALUE" -Comment "TEST_VALUE"
             #$NewObject | Should -BeOfType VpsOrderPutRequest
             #$NewObject.property | Should -Be 0
         }

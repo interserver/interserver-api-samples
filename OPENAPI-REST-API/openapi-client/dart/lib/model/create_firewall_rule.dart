@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of interserver_api;
 
 class CreateFirewallRule {
   /// Returns a new [CreateFirewallRule] instance.
@@ -143,6 +143,7 @@ class CreateFirewallRule {
 enum CreateFirewallRuleProtocolIdEnum {
   number1._(1),
   number2._(2),
+  unknownDefaultOpenApi._(11184809),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -203,6 +204,7 @@ class CreateFirewallRuleProtocolIdEnumTypeTransformer {
       switch (data) {
         case 1: return CreateFirewallRuleProtocolIdEnum.number1;
         case 2: return CreateFirewallRuleProtocolIdEnum.number2;
+        case 11184809: return CreateFirewallRuleProtocolIdEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -221,6 +223,7 @@ class CreateFirewallRuleProtocolIdEnumTypeTransformer {
 enum CreateFirewallRuleXdpActionEnum {
   number0._(0),
   number1._(1),
+  unknownDefaultOpenApi._(11184809),
   ;
 
   /// Instantiate a new enum with the provided value.
@@ -281,6 +284,7 @@ class CreateFirewallRuleXdpActionEnumTypeTransformer {
       switch (data) {
         case 0: return CreateFirewallRuleXdpActionEnum.number0;
         case 1: return CreateFirewallRuleXdpActionEnum.number1;
+        case 11184809: return CreateFirewallRuleXdpActionEnum.unknownDefaultOpenApi;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

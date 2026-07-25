@@ -23,7 +23,8 @@ export interface TicketCustomFieldDetails {
 export namespace TicketCustomFieldDetails {
     export const CustomerServerAccessEnum = {
         Y: 'y',
-        N: 'n'
+        N: 'n',
+        UnknownDefaultOpenApi: '11184809'
     } as const;
     export type CustomerServerAccessEnum = typeof CustomerServerAccessEnum[keyof typeof CustomerServerAccessEnum];
 }

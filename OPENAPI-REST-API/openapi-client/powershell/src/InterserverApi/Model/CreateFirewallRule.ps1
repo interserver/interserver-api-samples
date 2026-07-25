@@ -15,16 +15,16 @@ No summary available.
 
 Create firewall rule for your ip
 
+.PARAMETER ProtocolId
+1 = TCP, 2 = UDP
+.PARAMETER XdpAction
+1 = Block,  0 = Whitelist
 .PARAMETER DestinationPort
 No description available.
 .PARAMETER SourceIp
 Source IP address to match. Use '0.0.0.0' to match any source.
 .PARAMETER SourcePort
 No description available.
-.PARAMETER ProtocolId
-1 = TCP, 2 = UDP
-.PARAMETER XdpAction
-1 = Block,  0 = Whitelist
 .OUTPUTS
 
 CreateFirewallRule<PSCustomObject>
@@ -34,22 +34,22 @@ function Initialize-CreateFirewallRule {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${DestinationPort} = 80,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${SourceIp} = "0.0.0.0",
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${SourcePort} = 0,
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("1", "2")]
         [Int32]
         ${ProtocolId},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("0", "1")]
         [Int32]
-        ${XdpAction}
+        ${XdpAction},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${DestinationPort} = 80,
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${SourceIp} = "0.0.0.0",
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${SourcePort} = 0
     )
 
     Process {
@@ -66,11 +66,11 @@ function Initialize-CreateFirewallRule {
 
 
         $PSO = [PSCustomObject]@{
+            'protocol_id' = ${ProtocolId}
+            'xdp_action' = ${XdpAction}
             'destination_port' = ${DestinationPort}
             'source_ip' = ${SourceIp}
             'source_port' = ${SourcePort}
-            'protocol_id' = ${ProtocolId}
-            'xdp_action' = ${XdpAction}
         }
 
 
@@ -108,7 +108,7 @@ function ConvertFrom-JsonToCreateFirewallRule {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in CreateFirewallRule
-        $AllProperties = ('destination_port', 'source_ip', 'source_port', 'protocol_id', 'xdp_action')
+        $AllProperties = ('protocol_id', 'xdp_action', 'destination_port', 'source_ip', 'source_port')
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -150,11 +150,11 @@ function ConvertFrom-JsonToCreateFirewallRule {
         }
 
         $PSO = [PSCustomObject]@{
+            'protocol_id' = ${ProtocolId}
+            'xdp_action' = ${XdpAction}
             'destination_port' = ${DestinationPort}
             'source_ip' = ${SourceIp}
             'source_port' = ${SourcePort}
-            'protocol_id' = ${ProtocolId}
-            'xdp_action' = ${XdpAction}
         }
 
         return $PSO

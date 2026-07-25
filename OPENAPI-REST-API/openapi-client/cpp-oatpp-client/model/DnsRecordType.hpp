@@ -77,6 +77,7 @@ public:
   static DnsRecordType TXT(void) { return "TXT"; }
   static DnsRecordType WKS(void) { return "WKS"; }
   static DnsRecordType URI⏎(void) { return "URI⏎"; }
+  static DnsRecordType 11184809(void) { return "11184809"; }
 };
 
 } // namespace org::openapitools::client::model

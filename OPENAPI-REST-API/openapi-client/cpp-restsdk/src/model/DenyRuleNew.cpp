@@ -21,11 +21,11 @@ namespace model {
 
 DenyRuleNew::DenyRuleNew()
 {
-    m_User = utility::conversions::to_string_t("");
-    m_UserIsSet = false;
     m_TypeIsSet = false;
     m_Data = utility::conversions::to_string_t("");
     m_DataIsSet = false;
+    m_User = utility::conversions::to_string_t("");
+    m_UserIsSet = false;
 }
 
 DenyRuleNew::~DenyRuleNew()
@@ -40,11 +40,6 @@ void DenyRuleNew::validate()
 web::json::value DenyRuleNew::toJson() const
 {
     web::json::value val = web::json::value::object();
-    if(m_UserIsSet)
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("user"))] = ModelBase::toJson(m_User);
-    }
     if(m_TypeIsSet)
     {
         
@@ -57,6 +52,11 @@ web::json::value DenyRuleNew::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("data"))] = ModelBase::toJson(m_Data);
     }
+    if(m_UserIsSet)
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("user"))] = ModelBase::toJson(m_User);
+    }
 
     return val;
 }
@@ -64,17 +64,6 @@ web::json::value DenyRuleNew::toJson() const
 bool DenyRuleNew::fromJson(const web::json::value& val)
 {
     bool ok = true;
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("user"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("user")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setUser;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setUser);
-            setUser(refVal_setUser);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("type"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("type")));
@@ -98,6 +87,17 @@ bool DenyRuleNew::fromJson(const web::json::value& val)
             
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("user"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("user")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setUser;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setUser);
+            setUser(refVal_setUser);
+            
+        }
+    }
     return ok;
 }
 
@@ -108,10 +108,6 @@ void DenyRuleNew::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     {
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
-    if(m_UserIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("user")), m_User));
-    }
     if(m_TypeIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("type")), fromTypeEnum(m_Type)));
@@ -119,6 +115,10 @@ void DenyRuleNew::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
     if(m_DataIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("data")), m_Data));
+    }
+    if(m_UserIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("user")), m_User));
     }
 }
 
@@ -131,12 +131,6 @@ bool DenyRuleNew::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         namePrefix += utility::conversions::to_string_t(_XPLATSTR("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("user"))))
-    {
-        utility::string_t refVal_setUser;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("user"))), refVal_setUser );
-        setUser(refVal_setUser);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("type"))))
     {
         utility::string_t refVal_setType;
@@ -148,6 +142,12 @@ bool DenyRuleNew::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         utility::string_t refVal_setData;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("data"))), refVal_setData );
         setData(refVal_setData);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("user"))))
+    {
+        utility::string_t refVal_setUser;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("user"))), refVal_setUser );
+        setUser(refVal_setUser);
     }
     return ok;
 }
@@ -171,6 +171,10 @@ DenyRuleNew::TypeEnum DenyRuleNew::toTypeEnum(const utility::string_t& value) co
         return TypeEnum::DESTINATION;
     }
     
+    if (value == utility::conversions::to_string_t("11184809")) {
+        return TypeEnum::UNKNOWN_DEFAULT_OPEN_API;
+    }
+    
     throw std::invalid_argument("Invalid value for conversion to TypeEnum");
 }
 
@@ -188,31 +192,12 @@ const utility::string_t DenyRuleNew::fromTypeEnum(const TypeEnum value) const
         
         case TypeEnum::DESTINATION: return utility::conversions::to_string_t("destination");
         
+        case TypeEnum::UNKNOWN_DEFAULT_OPEN_API: return utility::conversions::to_string_t("11184809");
+        
     }
 }
 
 
-utility::string_t DenyRuleNew::getUser() const
-{
-    return m_User;
-}
-
-
-void DenyRuleNew::setUser(const utility::string_t& value)
-{
-    m_User = value;
-    m_UserIsSet = true;
-}
-
-bool DenyRuleNew::userIsSet() const
-{
-    return m_UserIsSet;
-}
-
-void DenyRuleNew::unsetUser()
-{
-    m_UserIsSet = false;
-}
 DenyRuleNew::TypeEnum DenyRuleNew::getType() const
 {
     return m_Type;
@@ -254,6 +239,27 @@ bool DenyRuleNew::dataIsSet() const
 void DenyRuleNew::unsetData()
 {
     m_DataIsSet = false;
+}
+utility::string_t DenyRuleNew::getUser() const
+{
+    return m_User;
+}
+
+
+void DenyRuleNew::setUser(const utility::string_t& value)
+{
+    m_User = value;
+    m_UserIsSet = true;
+}
+
+bool DenyRuleNew::userIsSet() const
+{
+    return m_UserIsSet;
+}
+
+void DenyRuleNew::unsetUser()
+{
+    m_UserIsSet = false;
 }
 
 }

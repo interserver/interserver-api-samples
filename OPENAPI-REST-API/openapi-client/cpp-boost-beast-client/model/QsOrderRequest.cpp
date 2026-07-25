@@ -218,10 +218,10 @@ boost::json::object QsOrderRequest::toJsonObject_internal() const
     boost::json::object object;
         object["server"] = JsonValueConverter<int32_t>::toJsonValue(getServer());
         object["password"] = JsonValueConverter<std::string>::toJsonValue(getPassword());
+        object["tos"] = JsonValueConverter<bool>::toJsonValue(isTos());
         if (m_OsIsSet) {
             object["os"] = JsonValueConverter<std::string>::toJsonValue(getOs());
         }
-        object["tos"] = JsonValueConverter<bool>::toJsonValue(isTos());
         if (m_CommentIsSet) {
             object["comment"] = JsonValueConverter<std::string>::toJsonValue(getComment());
         }
@@ -245,15 +245,15 @@ void QsOrderRequest::fromJsonObject_internal(boost::json::object const& object)
         }
     }
     {
-        const auto OsIt = object.find("os");
-        if (OsIt != object.end()) {
-            setOs(JsonValueConverter<std::string>::fromJsonValue(OsIt->value()));
-        }
-    }
-    {
         const auto TosIt = object.find("tos");
         if (TosIt != object.end()) {
             setTos(JsonValueConverter<bool>::fromJsonValue(TosIt->value()));
+        }
+    }
+    {
+        const auto OsIt = object.find("os");
+        if (OsIt != object.end()) {
+            setOs(JsonValueConverter<std::string>::fromJsonValue(OsIt->value()));
         }
     }
     {
@@ -284,6 +284,16 @@ void QsOrderRequest::setPassword(std::string value)
     
     m_Password = std::move(value);
 }
+bool QsOrderRequest::isTos() const
+{
+    return m_Tos;
+}
+
+void QsOrderRequest::setTos(bool value)
+{
+    
+    m_Tos = std::move(value);
+}
 std::string QsOrderRequest::getOs() const
 {
     return m_Os;
@@ -294,16 +304,6 @@ void QsOrderRequest::setOs(std::string value)
     
     m_Os = std::move(value);
     m_OsIsSet = true;
-}
-bool QsOrderRequest::isTos() const
-{
-    return m_Tos;
-}
-
-void QsOrderRequest::setTos(bool value)
-{
-    
-    m_Tos = std::move(value);
 }
 std::string QsOrderRequest::getComment() const
 {

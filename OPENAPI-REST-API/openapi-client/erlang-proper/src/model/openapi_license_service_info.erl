@@ -16,10 +16,10 @@
   | {'license_custid', binary() }
   | {'license_ip', binary() }
   | {'license_status', binary() }
-  | {'license_hostname', binary() }
-  | {'license_key', binary() }
   | {'license_invoice', binary() }
   | {'license_coupon', binary() }
+  | {'license_hostname', binary() }
+  | {'license_key', binary() }
   | {'license_extra', binary() }
   ].
 
@@ -35,10 +35,10 @@ openapi_license_service_info(Fields) ->
             , {'license_custid', binary() }
             , {'license_ip', binary() }
             , {'license_status', binary() }
-            , {'license_hostname', binary() }
-            , {'license_key', binary() }
             , {'license_invoice', binary() }
             , {'license_coupon', binary() }
+            , {'license_hostname', binary() }
+            , {'license_key', binary() }
             , {'license_extra', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

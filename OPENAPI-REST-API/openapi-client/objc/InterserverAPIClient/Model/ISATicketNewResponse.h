@@ -23,10 +23,10 @@
 @interface ISATicketNewResponse : ISAObject
 
 
-@property(nonatomic) NSNumber* ticketId;
-
 @property(nonatomic) NSString* text;
 
 @property(nonatomic) NSNumber* success;
+
+@property(nonatomic) NSNumber* ticketId;
 
 @end

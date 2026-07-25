@@ -10,7 +10,7 @@ Describe -tag 'InterserverApi' -name 'Vps' {
     Context 'Vps' {
         It 'Initialize-Vps' {
             # a simple test to create an object
-            #$NewObject = Initialize-Vps -ServiceInfo "TEST_VALUE" -ClientLinks "TEST_VALUE" -BillingDetails "TEST_VALUE" -CustCurrency "TEST_VALUE" -CustCurrencySymbol "TEST_VALUE" -ServiceMaster "TEST_VALUE" -Package "TEST_VALUE" -OsTemplate "TEST_VALUE" -ServiceExtra "TEST_VALUE" -ExtraInfoTables "TEST_VALUE" -CpuGraphData "TEST_VALUE" -Module "TEST_VALUE" -Token "TEST_VALUE" -DaLink "TEST_VALUE" -SrLink "TEST_VALUE" -CpData "TEST_VALUE" -DaData "TEST_VALUE" -Plesk12Data "TEST_VALUE" -ServiceAddons "TEST_VALUE"
+            #$NewObject = Initialize-Vps -ServiceInfo "TEST_VALUE" -ClientLinks "TEST_VALUE" -BillingDetails "TEST_VALUE" -CustCurrency "TEST_VALUE" -CustCurrencySymbol "TEST_VALUE" -ServiceMaster "TEST_VALUE" -Package "TEST_VALUE" -ServiceExtra "TEST_VALUE" -ExtraInfoTables "TEST_VALUE" -Module "TEST_VALUE" -Token "TEST_VALUE" -DaLink "TEST_VALUE" -SrLink "TEST_VALUE" -CpData "TEST_VALUE" -DaData "TEST_VALUE" -Plesk12Data "TEST_VALUE" -ServiceAddons "TEST_VALUE" -OsTemplate "TEST_VALUE" -CpuGraphData "TEST_VALUE"
             #$NewObject | Should -BeOfType Vps
             #$NewObject.property | Should -Be 0
         }

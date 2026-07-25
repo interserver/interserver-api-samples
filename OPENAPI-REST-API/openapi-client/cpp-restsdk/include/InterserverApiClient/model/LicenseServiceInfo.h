@@ -112,22 +112,6 @@ public:
     void setLicenseStatus(const utility::string_t& value);
 
     /// <summary>
-    /// License hostname
-    /// </summary>
-    utility::string_t getLicenseHostname() const;
-    bool licenseHostnameIsSet() const;
-    void unsetLicense_hostname();
-    void setLicenseHostname(const utility::string_t& value);
-
-    /// <summary>
-    /// License key
-    /// </summary>
-    utility::string_t getLicenseKey() const;
-    bool licenseKeyIsSet() const;
-    void unsetLicense_key();
-    void setLicenseKey(const utility::string_t& value);
-
-    /// <summary>
     /// License invoice
     /// </summary>
     utility::string_t getLicenseInvoice() const;
@@ -142,6 +126,22 @@ public:
     bool licenseCouponIsSet() const;
     void unsetLicense_coupon();
     void setLicenseCoupon(const utility::string_t& value);
+
+    /// <summary>
+    /// License hostname
+    /// </summary>
+    utility::string_t getLicenseHostname() const;
+    bool licenseHostnameIsSet() const;
+    void unsetLicense_hostname();
+    void setLicenseHostname(const utility::string_t& value);
+
+    /// <summary>
+    /// License key
+    /// </summary>
+    utility::string_t getLicenseKey() const;
+    bool licenseKeyIsSet() const;
+    void unsetLicense_key();
+    void setLicenseKey(const utility::string_t& value);
 
     /// <summary>
     /// Additional license information
@@ -174,17 +174,17 @@ protected:
     utility::string_t m_License_status;
     bool m_License_statusIsSet;
 
-    utility::string_t m_License_hostname;
-    bool m_License_hostnameIsSet;
-
-    utility::string_t m_License_key;
-    bool m_License_keyIsSet;
-
     utility::string_t m_License_invoice;
     bool m_License_invoiceIsSet;
 
     utility::string_t m_License_coupon;
     bool m_License_couponIsSet;
+
+    utility::string_t m_License_hostname;
+    bool m_License_hostnameIsSet;
+
+    utility::string_t m_License_key;
+    bool m_License_keyIsSet;
 
     utility::string_t m_License_extra;
     bool m_License_extraIsSet;

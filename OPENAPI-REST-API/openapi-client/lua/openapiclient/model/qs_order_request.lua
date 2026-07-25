@@ -19,12 +19,12 @@ local function cast_qs_order_request(t)
 	return setmetatable(t, qs_order_request_mt)
 end
 
-local function new_qs_order_request(server, password, os, tos, comment)
+local function new_qs_order_request(server, password, tos, os, comment)
 	return cast_qs_order_request({
 		["server"] = server;
 		["password"] = password;
-		["os"] = os;
 		["tos"] = tos;
+		["os"] = os;
 		["comment"] = comment;
 	})
 end

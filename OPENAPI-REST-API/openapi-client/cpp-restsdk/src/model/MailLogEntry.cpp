@@ -75,16 +75,6 @@ web::json::value MailLogEntry::toJson() const
         
         val[utility::conversions::to_string_t(_XPLATSTR("to"))] = ModelBase::toJson(m_To);
     }
-    if(m_Subject.has_value())
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("subject"))] = ModelBase::toJson(m_Subject.get());
-    }
-    if(m_MessageId.has_value())
-    {
-        
-        val[utility::conversions::to_string_t(_XPLATSTR("messageId"))] = ModelBase::toJson(m_MessageId.get());
-    }
     if(m_CreatedIsSet)
     {
         
@@ -114,6 +104,16 @@ web::json::value MailLogEntry::toJson() const
     {
         
         val[utility::conversions::to_string_t(_XPLATSTR("interface"))] = ModelBase::toJson(m_Interface);
+    }
+    if(m_Subject.has_value())
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("subject"))] = ModelBase::toJson(m_Subject.get());
+    }
+    if(m_MessageId.has_value())
+    {
+        
+        val[utility::conversions::to_string_t(_XPLATSTR("messageId"))] = ModelBase::toJson(m_MessageId.get());
     }
     if(m_SendingZone.has_value())
     {
@@ -231,28 +231,6 @@ bool MailLogEntry::fromJson(const web::json::value& val)
             
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("subject"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("subject")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setSubject;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setSubject);
-            setSubject(refVal_setSubject);
-            
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("messageId"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("messageId")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_setMessageId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setMessageId);
-            setMessageId(refVal_setMessageId);
-            
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("created"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("created")));
@@ -316,6 +294,28 @@ bool MailLogEntry::fromJson(const web::json::value& val)
             utility::string_t refVal_setInterface;
             ok &= ModelBase::fromJson(fieldValue, refVal_setInterface);
             setInterface(refVal_setInterface);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("subject"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("subject")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setSubject;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setSubject);
+            setSubject(refVal_setSubject);
+            
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(_XPLATSTR("messageId"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(_XPLATSTR("messageId")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_setMessageId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_setMessageId);
+            setMessageId(refVal_setMessageId);
             
         }
     }
@@ -488,14 +488,6 @@ void MailLogEntry::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("to")), m_To));
     }
-    if(m_Subject.has_value())
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("subject")), m_Subject.get()));
-    }
-    if(m_MessageId.has_value())
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("messageId")), m_MessageId.get()));
-    }
     if(m_CreatedIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("created")), m_Created));
@@ -519,6 +511,14 @@ void MailLogEntry::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     if(m_InterfaceIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("interface")), m_Interface));
+    }
+    if(m_Subject.has_value())
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("subject")), m_Subject.get()));
+    }
+    if(m_MessageId.has_value())
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(_XPLATSTR("messageId")), m_MessageId.get()));
     }
     if(m_SendingZone.has_value())
     {
@@ -607,18 +607,6 @@ bool MailLogEntry::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("to"))), refVal_setTo );
         setTo(refVal_setTo);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("subject"))))
-    {
-        utility::string_t refVal_setSubject;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("subject"))), refVal_setSubject );
-        setSubject(refVal_setSubject);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("messageId"))))
-    {
-        utility::string_t refVal_setMessageId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("messageId"))), refVal_setMessageId );
-        setMessageId(refVal_setMessageId);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("created"))))
     {
         utility::string_t refVal_setCreated;
@@ -654,6 +642,18 @@ bool MailLogEntry::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         utility::string_t refVal_setInterface;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("interface"))), refVal_setInterface );
         setInterface(refVal_setInterface);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("subject"))))
+    {
+        utility::string_t refVal_setSubject;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("subject"))), refVal_setSubject );
+        setSubject(refVal_setSubject);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("messageId"))))
+    {
+        utility::string_t refVal_setMessageId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(_XPLATSTR("messageId"))), refVal_setMessageId );
+        setMessageId(refVal_setMessageId);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(_XPLATSTR("sendingZone"))))
     {
@@ -820,46 +820,6 @@ void MailLogEntry::unsetTo()
 {
     m_ToIsSet = false;
 }
-utility::string_t MailLogEntry::getSubject() const
-{
-    return m_Subject.get();
-}
-
-
-void MailLogEntry::setSubject(const utility::string_t& value)
-{
-    m_Subject = value;
-}
-
-bool MailLogEntry::subjectIsSet() const
-{
-    return m_Subject.has_value();
-}
-
-void MailLogEntry::unsetSubject()
-{
-    m_Subject.reset();
-}
-utility::string_t MailLogEntry::getMessageId() const
-{
-    return m_MessageId.get();
-}
-
-
-void MailLogEntry::setMessageId(const utility::string_t& value)
-{
-    m_MessageId = value;
-}
-
-bool MailLogEntry::messageIdIsSet() const
-{
-    return m_MessageId.has_value();
-}
-
-void MailLogEntry::unsetMessageId()
-{
-    m_MessageId.reset();
-}
 utility::string_t MailLogEntry::getCreated() const
 {
     return m_Created;
@@ -984,6 +944,46 @@ bool MailLogEntry::interfaceIsSet() const
 void MailLogEntry::unsetInterface()
 {
     m_InterfaceIsSet = false;
+}
+utility::string_t MailLogEntry::getSubject() const
+{
+    return m_Subject.get();
+}
+
+
+void MailLogEntry::setSubject(const utility::string_t& value)
+{
+    m_Subject = value;
+}
+
+bool MailLogEntry::subjectIsSet() const
+{
+    return m_Subject.has_value();
+}
+
+void MailLogEntry::unsetSubject()
+{
+    m_Subject.reset();
+}
+utility::string_t MailLogEntry::getMessageId() const
+{
+    return m_MessageId.get();
+}
+
+
+void MailLogEntry::setMessageId(const utility::string_t& value)
+{
+    m_MessageId = value;
+}
+
+bool MailLogEntry::messageIdIsSet() const
+{
+    return m_MessageId.has_value();
+}
+
+void MailLogEntry::unsetMessageId()
+{
+    m_MessageId.reset();
 }
 utility::string_t MailLogEntry::getSendingZone() const
 {

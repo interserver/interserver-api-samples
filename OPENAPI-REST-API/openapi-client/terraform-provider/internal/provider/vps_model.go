@@ -16,10 +16,8 @@ type VpsModel struct {
 	CustCurrencySymbol types.String `tfsdk:"cust_currency_symbol"`
 	ServiceMaster types.String `tfsdk:"service_master"`
 	Package types.String `tfsdk:"package"`
-	OsTemplate types.String `tfsdk:"os_template"`
 	ServiceExtra types.String `tfsdk:"service_extra"`
 	ExtraInfoTables types.String `tfsdk:"extra_info_tables"`
-	CpuGraphData types.String `tfsdk:"cpu_graph_data"`
 	Module types.String `tfsdk:"module"`
 	Token types.String `tfsdk:"token"`
 	DaLink types.Int64 `tfsdk:"da_link"`
@@ -28,6 +26,8 @@ type VpsModel struct {
 	DaData types.String `tfsdk:"da_data"`
 	Plesk12Data types.String `tfsdk:"plesk12_data"`
 	ServiceAddons types.String `tfsdk:"service_addons"`
+	OsTemplate types.String `tfsdk:"os_template"`
+	CpuGraphData types.String `tfsdk:"cpu_graph_data"`
 }
 
 // ToClientModel converts a Terraform model to a client model.
@@ -42,9 +42,6 @@ func (m *VpsModel) ToClientModel() *client.Vps {
 	if !m.Package.IsNull() && !m.Package.IsUnknown() {
 		out.Package = m.Package.ValueString()
 	}
-	if !m.OsTemplate.IsNull() && !m.OsTemplate.IsUnknown() {
-		out.OsTemplate = m.OsTemplate.ValueString()
-	}
 	if !m.Module.IsNull() && !m.Module.IsUnknown() {
 		out.Module = m.Module.ValueString()
 	}
@@ -57,6 +54,9 @@ func (m *VpsModel) ToClientModel() *client.Vps {
 	if !m.SrLink.IsNull() && !m.SrLink.IsUnknown() {
 		out.SrLink = int32(m.SrLink.ValueInt64())
 	}
+	if !m.OsTemplate.IsNull() && !m.OsTemplate.IsUnknown() {
+		out.OsTemplate = m.OsTemplate.ValueString()
+	}
 	return out
 }
 
@@ -65,9 +65,9 @@ func (m *VpsModel) FromClientModel(c *client.Vps) {
 	m.CustCurrency = types.StringValue(c.CustCurrency)
 	m.CustCurrencySymbol = types.StringValue(c.CustCurrencySymbol)
 	m.Package = types.StringValue(c.Package)
-	m.OsTemplate = types.StringValue(c.OsTemplate)
 	m.Module = types.StringValue(c.Module)
 	m.Token = types.StringValue(c.Token)
 	m.DaLink = types.Int64Value(int64(c.DaLink))
 	m.SrLink = types.Int64Value(int64(c.SrLink))
+	m.OsTemplate = types.StringValue(c.OsTemplate)
 }

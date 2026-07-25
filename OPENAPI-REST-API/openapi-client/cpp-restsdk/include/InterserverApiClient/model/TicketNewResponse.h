@@ -58,11 +58,6 @@ public:
     /// TicketNewResponse members
 
 
-    int32_t getTicketId() const;
-    bool ticketIdIsSet() const;
-    void unsetTicket_id();
-    void setTicketId(int32_t value);
-
     utility::string_t getText() const;
     bool textIsSet() const;
     void unsetText();
@@ -73,16 +68,21 @@ public:
     void unsetSuccess();
     void setSuccess(bool value);
 
+    int32_t getTicketId() const;
+    bool ticketIdIsSet() const;
+    void unsetTicket_id();
+    void setTicketId(int32_t value);
+
 
 protected:
-    int32_t m_Ticket_id;
-    bool m_Ticket_idIsSet;
-
     utility::string_t m_Text;
     bool m_TextIsSet;
 
     bool m_Success;
     bool m_SuccessIsSet;
+
+    int32_t m_Ticket_id;
+    bool m_Ticket_idIsSet;
 
 };
 

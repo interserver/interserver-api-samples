@@ -41,7 +41,7 @@ module OpenapiClient
         type: 'String',
         json_key: 'csr_type',
         required: false,
-        enum: ['generated', 'provided']
+        enum: ['generated', 'provided', 'unknown_default_open_api']
 
       attribute :csr,
         type: 'String',

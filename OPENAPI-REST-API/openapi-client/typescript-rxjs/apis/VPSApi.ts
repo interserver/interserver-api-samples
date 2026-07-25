@@ -1364,7 +1364,8 @@ export class VPSApi extends BaseAPI {
  */
 export enum DeleteVpsBackupAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -1372,7 +1373,8 @@ export enum DeleteVpsBackupAllEnum {
  */
 export enum DownloadVpsBackupAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }
 /**
  * @export
@@ -1380,5 +1382,6 @@ export enum DownloadVpsBackupAllEnum {
  */
 export enum GetVpsBackupsAllEnum {
     _0 = '0',
-    _1 = '1'
+    _1 = '1',
+    UnknownDefaultOpenApi = '11184809'
 }

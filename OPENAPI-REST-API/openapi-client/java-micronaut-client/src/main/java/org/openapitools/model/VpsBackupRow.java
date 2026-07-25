@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   VpsBackupRow.JSON_PROPERTY_DATE
 })
 @JsonTypeName("VpsBackupRow")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T07:25:27.004242596-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class VpsBackupRow {
     public static final String JSON_PROPERTY_TYPE = "type";

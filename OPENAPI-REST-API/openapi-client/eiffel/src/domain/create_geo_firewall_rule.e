@@ -19,16 +19,24 @@ class CREATE_GEO_FIREWALL_RULE
 
 feature --Access
 
+    xdp_action: INTEGER_32
+      -- 1 = Block,  0 = Whitelist
     destination_port: INTEGER_32
       
     country_code: INTEGER_32
       -- To get country code refer our countries api - https://my.interserver.net/apiv2/account/countries?fetch_by=numcode
     asn: INTEGER_32
       -- ASN number
-    xdp_action: INTEGER_32
-      -- 1 = Block,  0 = Whitelist
 
 feature -- Change Element
+
+    set_xdp_action (a_name: like xdp_action)
+        -- Set 'xdp_action' with 'a_name'.
+      do
+        xdp_action := a_name
+      ensure
+        xdp_action_set: xdp_action = a_name
+      end
 
     set_destination_port (a_name: like destination_port)
         -- Set 'destination_port' with 'a_name'.
@@ -54,14 +62,6 @@ feature -- Change Element
         asn_set: asn = a_name
       end
 
-    set_xdp_action (a_name: like xdp_action)
-        -- Set 'xdp_action' with 'a_name'.
-      do
-        xdp_action := a_name
-      ensure
-        xdp_action_set: xdp_action = a_name
-      end
-
 
  feature -- Status Report
 
@@ -70,6 +70,11 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass CREATE_GEO_FIREWALL_RULE%N")
+        if attached xdp_action as l_xdp_action then
+          Result.append ("%Nxdp_action:")
+          Result.append (l_xdp_action.out)
+          Result.append ("%N")
+        end
         if attached destination_port as l_destination_port then
           Result.append ("%Ndestination_port:")
           Result.append (l_destination_port.out)
@@ -83,11 +88,6 @@ feature -- Change Element
         if attached asn as l_asn then
           Result.append ("%Nasn:")
           Result.append (l_asn.out)
-          Result.append ("%N")
-        end
-        if attached xdp_action as l_xdp_action then
-          Result.append ("%Nxdp_action:")
-          Result.append (l_xdp_action.out)
           Result.append ("%N")
         end
       end
