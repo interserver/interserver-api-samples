@@ -1,76 +1,69 @@
 {
-  "scan_timestamp": "2026-07-27T06:57:07Z",
-  "root_dir": "/home/my/vendor/detain/interserver-api-samples",
-  "mode": "update",
+  "scan_timestamp": "2026-07-27T07:21:57Z",
+  "root_dir": "/home/sites/mystage/vendor/detain/interserver-api-samples",
+  "mode": "check",
   "cvss_threshold": 7.0,
   "summary": {
-    "pass": 9,
+    "pass": 6,
     "fail": 1,
-    "skip": 2,
-    "info": 16
+    "skip": 3,
+    "info": 2826
   },
   "ecosystems": {
     "trivy": {
       "status": "SKIP",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
-    }
-,
-    "dep-prs": {
-      "status": "FAIL",
-      "vulnerabilities": 1,
-      "outdated_packages": 3,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "advisories": {
       "status": "PASS",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "sec-issues": {
       "status": "FAIL",
-      "vulnerabilities": 300,
+      "vulnerabilities": 1,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "dependabot": {
       "status": "FAIL",
-      "vulnerabilities": 65,
+      "vulnerabilities": 64,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "bandit": {
       "status": "SKIP",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "secret-scanning": {
       "status": "FAIL",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
     "network-security": {
       "status": "PASS",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "last_scan": "2026-07-27T07:21:57Z"
     }
 ,
-    "auto-fix": {
+    "close-fixed": {
       "status": "PASS",
       "vulnerabilities": 0,
-      "outdated_packages": 1,
-      "last_scan": "2026-07-27T06:57:07Z"
+      "outdated_packages": 403,
+      "last_scan": "2026-07-27T07:21:57Z"
     }
   },
   "tools": {
