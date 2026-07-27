@@ -1,37 +1,53 @@
 {
-  "scan_timestamp": "2026-07-26T22:29:35Z",
+  "scan_timestamp": "2026-07-27T06:50:37Z",
   "root_dir": "/home/my/vendor/detain/interserver-api-samples",
   "mode": "update",
   "cvss_threshold": 7.0,
   "summary": {
-    "pass": 38,
-    "fail": 8,
-    "skip": 0,
-    "info": 9
+    "pass": 3,
+    "fail": 0,
+    "skip": 3,
+    "info": 7
   },
   "ecosystems": {
-    "dependabot": {
-      "status": "PASS",
+    "trivy": {
+      "status": "SKIP",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-26T22:29:35Z"
+      "last_scan": "2026-07-27T06:50:37Z"
     }
+,
+    "bandit": {
+      "status": "SKIP",
+      "vulnerabilities": 0,
+      "outdated_packages": 0,
+      "last_scan": "2026-07-27T06:50:37Z"
+    }
+,
     "secret-scanning": {
-      "status": "FAIL",
+      "status": "SKIP",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-26T22:29:35Z"
+      "last_scan": "2026-07-27T06:50:37Z"
     }
+,
     "network-security": {
       "status": "PASS",
       "vulnerabilities": 0,
       "outdated_packages": 0,
-      "last_scan": "2026-07-26T22:29:35Z"
+      "last_scan": "2026-07-27T06:50:37Z"
+    }
+,
+    "auto-fix": {
+      "status": "SKIP",
+      "vulnerabilities": 0,
+      "outdated_packages": 0,
+      "last_scan": "2026-07-27T06:50:37Z"
     }
   },
   "tools": {
-    "trivy": { "enabled": true },
-    "gosec": { "enabled": true },
-    "bandit": { "enabled": true }
+    "trivy": { "enabled": false },
+    "gosec": { "enabled": false },
+    "bandit": { "enabled": false }
   }
 }

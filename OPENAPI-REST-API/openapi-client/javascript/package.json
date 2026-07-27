@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/cli": "^8.0.4",
-    "superagent": "^5.3.0"
+    "superagent": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -42,5 +42,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "overrides": {
+    "form-data": "3.0.5",
+    "qs": "6.15.2",
+    "babel": "8.0.0-rc.6",
+    "brace-expansion": "5.0.8"
+  }
 }

@@ -195,7 +195,7 @@
     <jersey2-version>2.27</jersey2-version>
     <jackson-version>2.9.5</jackson-version>
     <junit-version>4.13.1</junit-version>
-    <logback-version>1.4.14</logback-version>
+    <logback-version>1.5.34</logback-version>
     <servlet-api-version>2.5</servlet-api-version>
     <beanvalidation-version>1.1.0.Final</beanvalidation-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
