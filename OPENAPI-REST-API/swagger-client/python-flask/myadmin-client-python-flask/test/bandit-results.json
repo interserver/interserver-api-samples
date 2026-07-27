@@ -1,0 +1,174 @@
+{
+  "errors": [
+    {
+      "filename": "./__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_account_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_backups_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_billing_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_dns_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_domains_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_floating_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_licenses_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_mail_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_public_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_quick_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_scrub_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_ssl_certificates_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_tickets_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_vps_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./test_webhosting_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2026-07-26T22:30:10Z",
+  "metrics": {
+    "./__init__.py": {
+      "loc": 11,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_account_controller.py": {
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_backups_controller.py": {
+      "loc": 124,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_billing_controller.py": {
+      "loc": 306,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_dns_controller.py": {
+      "loc": 107,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_domains_controller.py": {
+      "loc": 347,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_floating_ips_controller.py": {
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_licenses_controller.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_mail_controller.py": {
+      "loc": 375,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_public_controller.py": {
+      "loc": 179,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_quick_servers_controller.py": {
+      "loc": 457,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_scrub_ips_controller.py": {
+      "loc": 220,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_servers_controller.py": {
+      "loc": 216,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_ssl_certificates_controller.py": {
+      "loc": 102,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_tickets_controller.py": {
+      "loc": 146,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_vps_controller.py": {
+      "loc": 569,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./test_webhosting_controller.py": {
+      "loc": 205,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 3819,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": []
+}

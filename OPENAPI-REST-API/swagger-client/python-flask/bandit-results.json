@@ -1,0 +1,4605 @@
+{
+  "errors": [
+    {
+      "filename": "./myadmin-client-python-flask/__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/__main__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/account_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/backups_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/billing_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/dns_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/domains_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/floating_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/licenses_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/mail_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/public_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/quick_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/scrub_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/ssl_certificates_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/tickets_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/vps_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/controllers/webhosting_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/encoder.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account2fa_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account2fa_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_features.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_country_currencies.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data_cc.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data_ccs.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data_email_settings.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_data_fraudrecord.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_limits.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_limits_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_max_mind_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_oauth_config.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_oauth_config_providers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_info_post.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/account_ssh_key.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/affiliate_banner_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/affiliate_dock_setup.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/affiliate_payment_setup.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/affiliate_traffic_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_bandwidth.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_cp.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_hd.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_ips.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_memory.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_os.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/all_of_server_order_field_labels_raid.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_ip_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_ip_info_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_login_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_order_post_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_order_post_response_cj_params.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_order_put_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_order_put_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_service_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backup_service_master.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backups_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backups_order_package_costs.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/backups_order_service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/base_model_.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_add_cc_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_invoice_detail.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_invoice_list.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_payment_method_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_prepay_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/billing_verify_cc_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/buy_it_now_list.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/buy_it_now_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/captcha_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/charge_invoice_rows.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/charge_invoice_rows_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/charge_invoice_rows_paid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/charge_invoice_rows_refund_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/close_ticket_response_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/create_filter.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/create_firewall_rule.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/create_geo_firewall_rule.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/delete_firewall_rule.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/delete_geo_firewall_rule.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/deny_rule_new.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/deny_rule_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_list_item.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_new_domain.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_new_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_record_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/dns_update_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_admin_contact.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_all_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_all_info_attributes.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_all_info_attributes_contact_set.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_billing_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_contact_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_dnssec_records.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_dnssec_records_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_dnssec_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_lookup_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_name_server.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_nameserver_get_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_nameserver_get_response_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_nameserver_post_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_nameserver_put_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order_response_attributes.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_order_services10001.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_owner_contact.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_prov_process_pending.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_prov_process_pending_attributes.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_search_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_service_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_tech_contact.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/domain_whois_privacy_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/email_address.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/email_address_name.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/end_date.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/floating_ip_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/generic_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_backups.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_domains.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_licenses.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_quickservers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_servers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_vps.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_details_modules_webhosting.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_backups.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_domains.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_domains_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_licenses.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_licenses_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_servers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_servers_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_vps.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_vps_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_webhosting.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_services_webhosting_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_ticket_status.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/home_ticket_status_view.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/hostname_object.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_alerts_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_alerts_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_backups_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_backups_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_backups_body2.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_backups_body3.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_buy_ip_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_buy_ip_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_migration_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_migration_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_verify_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/id_verify_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response200.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2001.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20010.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20011.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20012.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_client_links.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables_scrub_ips.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables_scrub_ips_rows.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_filter_firewall.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_filter_firewall_filters.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_filter_firewall_rules.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20013_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20014.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20015.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20016.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20017.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20018.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20019.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20019_ips.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20019_package_costs.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20019_service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2002.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20020.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20021.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20022.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20023.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20024.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20025.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20026.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20027.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20028.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029_bandwidth.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029_cp.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029_ips.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029_os.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response20029_raid.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2003.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2004.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2005.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2006.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2007.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2008.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2009.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response201.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2011.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2012.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2012_order_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response2012_order_details_cj_params.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response400.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response4001.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response4002.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response4003.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response4004.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response4005.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response401.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response500.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response5001.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response5002.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response5003.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response5004.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response5005.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/inline_response_map200.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ip_limit_range.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ip_object.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_ip_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_ip_info_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/license_service_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order_package_costs.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order_service_categories.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order_service_categories509.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order_service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/licenses_order_service_types11482.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_error_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_service_counts.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_submission_example.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_submission_example_grecaptcharesponse.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_submission_example_grecaptcharesponse_dep.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/login_success_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_alert_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_alert_update_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_alerts_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_alerts_response_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_attachment.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_block_click_house.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_block_rspamd.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_blocks.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_delist_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_delist_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_deliverability_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_extra_info_table.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_extra_info_table_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_log.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_log_entry.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_schema_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_service_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_stats_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_stats_type_volume.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_stats_type_volume_from.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_stats_type_volume_ip.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_stats_type_volume_to.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_tutorials_table.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/mail_tutorials_table_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/module_settings.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/modules.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/monthly_counts.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/oauth_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/oauth_body1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/oauth_body2.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/oauth_body3.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_account_info_max_mind_response_risk_score.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_account_info_oauthproviders.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_buy_it_now_row_cpu_items.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_server_order_post_request_hd.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_vps_traffic_data_data_section_response_items.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/one_of_vps_traffic_history_section_data_response_items.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/order_buy_now_server_body.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/password_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/qs_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/queue_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_addons.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_addons_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_ip_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_ip_table_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_distro_sel.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_distro_sel_ubuntu.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_server_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_server_details381.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_templates.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_templates_ubuntu64.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_version.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_order_version_centosstream8.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_service_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/quickserver_service_master.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/reply_ticket_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/reply_ticket_response_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/restore_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/reverse_dns_entries.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/scrub_ip_filter_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/scrub_ip_filter_types_filters.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/scrub_ip_place_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/scrub_ips_log_row_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/scrub_ips_row_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/search_autocomplete_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/send_mail.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/send_mail_adv.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_asset.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_assets.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_bulk_ipmi_power_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_bulk_ipmi_power_response_results.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_ipmi_live_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_ipmi_live_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_ipmi_power_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_lease.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_location1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_locations.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_network_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_network_info_assets.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_network_info_switchports.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_bandwidth.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_bandwidth_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_config_ids.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_control_panel.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_cp_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_cpu.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_cpu_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_field_label.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_field_labels.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_form_values.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_ip.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_ips_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_memory.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_memory_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_memory_li254.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_os.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_os_li.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_post_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_order_raid.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/server_switchport.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/servers_buy_now_error.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/servers_buy_now_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/servers_buy_now_response_order_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service_categories.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service_category.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service_order_post_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service_type.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/services_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ssl_order_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/start_date.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/status_monthly_breakdown.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/success_text_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/template_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/text_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_custom_field_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_new.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_new_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_post_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/ticket_post_details_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/tickets.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/tickets_count_array.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/tickets_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/timezone_update.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/update_ticket.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/update_ticket_response_schema.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/url_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/view_ticket_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_backup_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_backup_rows.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_cp_data.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_da_data.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_da_license.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_ip_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_ip_info_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_location_names.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_location_stock.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_location_stock1.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_os_names.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_package_costs.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_platform_names.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_platform_packages.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_post_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_put_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_put_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_service_types32.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_templates.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_templates_hyperv.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_order_templates_hyperv_windows.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_plesk12_data.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_plesk_license.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_service_addons.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_service_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_service_master.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_snapshot.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_template_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_templates_list.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_data_data_section_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_data_section_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_history_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_history_section_data_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_history_section_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_totals_resposne.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_totals_section_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_usage_average_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_usage_average_section_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/vps_traffic_usage_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_backups.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_backups_inner.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_billing_details.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_client_link.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_extra_info_tables.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_login_response.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_order_post_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_order_put_request.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_service_extra.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_service_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_service_master.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_table.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/website_table_row.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_json_service_offers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_json_service_offers_item.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_json_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_packages.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_packages_info.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_packges.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_service_offer.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_service_offers.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/models/websites_order_service_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_account_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_backups_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_billing_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_dns_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_domains_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_floating_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_licenses_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_mail_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_public_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_quick_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_scrub_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_ssl_certificates_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_tickets_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_vps_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/test/test_webhosting_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./myadmin-client-python-flask/util.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2026-07-26T22:30:08Z",
+  "metrics": {
+    "./myadmin-client-python-flask/__init__.py": {
+      "loc": 1,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/__main__.py": {
+      "loc": 9,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/__init__.py": {
+      "loc": 1,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/account_controller.py": {
+      "loc": 229,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/authorization_controller.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 11,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/backups_controller.py": {
+      "loc": 118,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/billing_controller.py": {
+      "loc": 321,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/dns_controller.py": {
+      "loc": 137,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/domains_controller.py": {
+      "loc": 383,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/floating_ips_controller.py": {
+      "loc": 104,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/licenses_controller.py": {
+      "loc": 107,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/mail_controller.py": {
+      "loc": 478,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/public_controller.py": {
+      "loc": 162,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/quick_servers_controller.py": {
+      "loc": 441,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/scrub_ips_controller.py": {
+      "loc": 195,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/servers_controller.py": {
+      "loc": 209,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/ssl_certificates_controller.py": {
+      "loc": 81,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/tickets_controller.py": {
+      "loc": 157,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/vps_controller.py": {
+      "loc": 630,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/controllers/webhosting_controller.py": {
+      "loc": 216,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/encoder.py": {
+      "loc": 16,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/__init__.py": {
+      "loc": 466,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account2fa_body.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account2fa_body1.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_features.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info.py": {
+      "loc": 277,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_country_currencies.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data.py": {
+      "loc": 1246,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data_cc.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data_ccs.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data_email_settings.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data_extra.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_data_fraudrecord.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_limits.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_limits_inner.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_max_mind_response.py": {
+      "loc": 1033,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_oauth_config.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_oauth_config_providers.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_info_post.py": {
+      "loc": 396,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/account_ssh_key.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/affiliate_banner_row.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/affiliate_dock_setup.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/affiliate_payment_setup.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/affiliate_traffic_row.py": {
+      "loc": 139,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_bandwidth.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_cp.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_hd.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_ips.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_memory.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_os.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/all_of_server_order_field_labels_raid.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup.py": {
+      "loc": 208,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_billing_details.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_client_link.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_extra_info_tables.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_ip_info.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_ip_info_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_login_response.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_order_post_response.py": {
+      "loc": 197,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_order_post_response_cj_params.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_order_put_request.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_order_put_response.py": {
+      "loc": 215,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_row.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_service_extra.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_service_info.py": {
+      "loc": 340,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backup_service_master.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backups_order.py": {
+      "loc": 69,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backups_order_package_costs.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/backups_order_service_types.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/base_model_.py": {
+      "loc": 49,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_add_cc_request.py": {
+      "loc": 196,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_invoice_detail.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_invoice_list.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_payment_method_request.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_prepay_request.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/billing_verify_cc_request.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/buy_it_now_list.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/buy_it_now_row.py": {
+      "loc": 180,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/captcha_response.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/charge_invoice_rows.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/charge_invoice_rows_invoices.py": {
+      "loc": 232,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/charge_invoice_rows_paid_invoices.py": {
+      "loc": 199,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/charge_invoice_rows_refund_invoices.py": {
+      "loc": 158,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/close_ticket_response_schema.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/create_filter.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/create_firewall_rule.py": {
+      "loc": 138,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/create_geo_firewall_rule.py": {
+      "loc": 113,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/delete_firewall_rule.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/delete_geo_firewall_rule.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/deny_rule_new.py": {
+      "loc": 96,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/deny_rule_record.py": {
+      "loc": 143,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_list_item.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_new_domain.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_new_record.py": {
+      "loc": 135,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_record.py": {
+      "loc": 248,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_record_type.py": {
+      "loc": 77,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/dns_update_record.py": {
+      "loc": 178,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain.py": {
+      "loc": 394,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_admin_contact.py": {
+      "loc": 291,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_all_info.py": {
+      "loc": 178,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_all_info_attributes.py": {
+      "loc": 255,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_all_info_attributes_contact_set.py": {
+      "loc": 85,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_billing_details.py": {
+      "loc": 234,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_billing_extra.py": {
+      "loc": 350,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_client_link.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_contact_details.py": {
+      "loc": 319,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_dnssec_records.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_dnssec_records_inner.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_dnssec_request.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_lookup_response.py": {
+      "loc": 256,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_name_server.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_nameserver_get_response.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_nameserver_get_response_inner.py": {
+      "loc": 94,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_nameserver_post_request.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_nameserver_put_request.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order.py": {
+      "loc": 87,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order_request.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order_response.py": {
+      "loc": 178,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order_response_attributes.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order_services.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_order_services10001.py": {
+      "loc": 256,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_owner_contact.py": {
+      "loc": 291,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_prov_process_pending.py": {
+      "loc": 178,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_prov_process_pending_attributes.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_row.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_search_response.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_service_info.py": {
+      "loc": 253,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_service_type.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_tech_contact.py": {
+      "loc": 291,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/domain_whois_privacy_request.py": {
+      "loc": 333,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/email_address.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/email_address_name.py": {
+      "loc": 69,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/end_date.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/floating_ip_order_request.py": {
+      "loc": 90,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/generic_response.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home.py": {
+      "loc": 343,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules.py": {
+      "loc": 165,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_backups.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_domains.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_licenses.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_quickservers.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_servers.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_vps.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_details_modules_webhosting.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services.py": {
+      "loc": 145,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_backups.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_domains.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_domains_links.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_licenses.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_licenses_links.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_servers.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_servers_links.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_vps.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_vps_links.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_webhosting.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_services_webhosting_links.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_ticket_status.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/home_ticket_status_view.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/hostname_object.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_alerts_body.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_alerts_body1.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_backups_body.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_backups_body1.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_backups_body2.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_backups_body3.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_buy_ip_body.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_buy_ip_body1.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_migration_body.py": {
+      "loc": 298,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_migration_body1.py": {
+      "loc": 272,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_verify_body.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/id_verify_body1.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response200.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2001.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20010.py": {
+      "loc": 157,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20011.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20012.py": {
+      "loc": 65,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013.py": {
+      "loc": 182,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_billing_details.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_client_links.py": {
+      "loc": 139,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables_scrub_ips.py": {
+      "loc": 64,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_extra_info_tables_scrub_ips_rows.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_filter_firewall.py": {
+      "loc": 84,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_filter_firewall_filters.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_filter_firewall_rules.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20013_service_info.py": {
+      "loc": 259,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20014.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20015.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20016.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20017.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20018.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20019.py": {
+      "loc": 85,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20019_ips.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20019_package_costs.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20019_service_types.py": {
+      "loc": 139,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2002.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20020.py": {
+      "loc": 139,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20021.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20022.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20023.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20024.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20025.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20026.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20027.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20028.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029.py": {
+      "loc": 125,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029_bandwidth.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029_cp.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029_ips.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029_os.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response20029_raid.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2003.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2004.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2005.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2006.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2007.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2008.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2009.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response201.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2011.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2012.py": {
+      "loc": 83,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2012_order_details.py": {
+      "loc": 121,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response2012_order_details_cj_params.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response400.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response4001.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response4002.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response4003.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response4004.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response4005.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response401.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response500.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response5001.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response5002.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response5003.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response5004.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response5005.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/inline_response_map200.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ip_limit_range.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ip_object.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license.py": {
+      "loc": 273,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_billing_details.py": {
+      "loc": 256,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_client_link.py": {
+      "loc": 159,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_extra_info_tables.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_ip_info.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_ip_info_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_order_request.py": {
+      "loc": 157,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_row.py": {
+      "loc": 193,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_service_info.py": {
+      "loc": 295,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/license_service_type.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order.py": {
+      "loc": 85,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order_package_costs.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order_service_categories.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order_service_categories509.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order_service_types.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/licenses_order_service_types11482.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_error_response.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_info.py": {
+      "loc": 112,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_service_counts.py": {
+      "loc": 94,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_submission_example.py": {
+      "loc": 127,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_submission_example_grecaptcharesponse.py": {
+      "loc": 121,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_submission_example_grecaptcharesponse_dep.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/login_success_response.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_alert_request.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_alert_update_request.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_alerts_response.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_alerts_response_inner.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_attachment.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_billing_details.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_block_click_house.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_block_rspamd.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_blocks.py": {
+      "loc": 90,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_client_link.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_delist_request.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_delist_response.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_deliverability_response.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_extra_info_table.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_extra_info_table_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_log.py": {
+      "loc": 116,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_log_entry.py": {
+      "loc": 570,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_order.py": {
+      "loc": 115,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_order_request.py": {
+      "loc": 90,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_row.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_schema.py": {
+      "loc": 250,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_schema_extra_info_tables.py": {
+      "loc": 65,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_service_info.py": {
+      "loc": 335,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_service_type.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_stats_type.py": {
+      "loc": 184,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_stats_type_volume.py": {
+      "loc": 85,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_stats_type_volume_from.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_stats_type_volume_ip.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_stats_type_volume_to.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_tutorials_table.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/mail_tutorials_table_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/module_settings.py": {
+      "loc": 399,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/modules.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/monthly_counts.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/oauth_body.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/oauth_body1.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/oauth_body2.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/oauth_body3.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_account_info_max_mind_response_risk_score.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_account_info_oauthproviders.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_buy_it_now_row_cpu_items.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_server_order_post_request_hd.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_vps_traffic_data_data_section_response_items.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/one_of_vps_traffic_history_section_data_response_items.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/order_buy_now_server_body.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/password_request.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/qs_order_request.py": {
+      "loc": 136,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/queue_response.py": {
+      "loc": 71,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver.py": {
+      "loc": 500,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_addons.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_addons_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_billing_details.py": {
+      "loc": 234,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_client_link.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_extra_info_tables.py": {
+      "loc": 65,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_ip_info.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_ip_table_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order.py": {
+      "loc": 126,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_distro_sel.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_distro_sel_ubuntu.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_server_details.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_server_details381.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_templates.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_templates_ubuntu64.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_version.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_order_version_centosstream8.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_row.py": {
+      "loc": 163,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_service_extra.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_service_info.py": {
+      "loc": 550,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/quickserver_service_master.py": {
+      "loc": 718,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/reply_ticket_request.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/reply_ticket_response_schema.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/restore_request.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/reverse_dns_entries.py": {
+      "loc": 46,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/scrub_ip_filter_types.py": {
+      "loc": 64,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/scrub_ip_filter_types_filters.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/scrub_ip_place_order.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/scrub_ips_log_row_schema.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/scrub_ips_row_schema.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/search_autocomplete_response.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/send_mail.py": {
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/send_mail_adv.py": {
+      "loc": 222,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server.py": {
+      "loc": 262,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_asset.py": {
+      "loc": 1110,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_assets.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_billing_details.py": {
+      "loc": 215,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_bulk_ipmi_power_response.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_bulk_ipmi_power_response_results.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_client_link.py": {
+      "loc": 124,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_extra_info_tables.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_ipmi_live_info.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_ipmi_live_request.py": {
+      "loc": 69,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_ipmi_power_request.py": {
+      "loc": 73,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_lease.py": {
+      "loc": 94,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_location1.py": {
+      "loc": 147,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_locations.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_network_info.py": {
+      "loc": 115,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_network_info_assets.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_network_info_switchports.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order.py": {
+      "loc": 248,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_bandwidth.py": {
+      "loc": 256,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_bandwidth_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_config_ids.py": {
+      "loc": 172,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_control_panel.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_cp_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_cpu.py": {
+      "loc": 550,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_cpu_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_field_label.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_field_labels.py": {
+      "loc": 179,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_form_values.py": {
+      "loc": 172,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_ip.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_ips_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_memory.py": {
+      "loc": 277,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_memory_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_memory_li254.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_os.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_os_li.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_post_request.py": {
+      "loc": 323,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_order_raid.py": {
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_row.py": {
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_service_info.py": {
+      "loc": 781,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/server_switchport.py": {
+      "loc": 251,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/servers_buy_now_error.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/servers_buy_now_response.py": {
+      "loc": 87,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/servers_buy_now_response_order_details.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service.py": {
+      "loc": 235,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service_categories.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service_category.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service_order_post_response.py": {
+      "loc": 193,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service_type.py": {
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/service_types.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/services.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/services_info.py": {
+      "loc": 113,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ssl_order_request.py": {
+      "loc": 457,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/start_date.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/status_monthly_breakdown.py": {
+      "loc": 152,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/success_text_response.py": {
+      "loc": 90,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/template_request.py": {
+      "loc": 92,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/text_response.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_custom_field_details.py": {
+      "loc": 145,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_details.py": {
+      "loc": 177,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_new.py": {
+      "loc": 105,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_new_response.py": {
+      "loc": 86,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_post_details.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/ticket_post_details_inner.py": {
+      "loc": 183,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/tickets.py": {
+      "loc": 321,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/tickets_count_array.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/tickets_row.py": {
+      "loc": 298,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/timezone_update.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/update_ticket.py": {
+      "loc": 164,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/update_ticket_response_schema.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/url_request.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/view_ticket_response.py": {
+      "loc": 108,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps.py": {
+      "loc": 430,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_backup_row.py": {
+      "loc": 140,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_backup_rows.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_billing_details.py": {
+      "loc": 255,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_client_link.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_cp_data.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_da_data.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_da_license.py": {
+      "loc": 130,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_extra_info_tables.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_ip_info.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_ip_info_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order.py": {
+      "loc": 730,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_location_names.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_location_stock.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_location_stock1.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_os_names.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_package_costs.py": {
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_platform_names.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_platform_packages.py": {
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_post_request.py": {
+      "loc": 282,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_put_request.py": {
+      "loc": 282,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_put_response.py": {
+      "loc": 443,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_service_types.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_service_types32.py": {
+      "loc": 196,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_templates.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_templates_hyperv.py": {
+      "loc": 45,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_order_templates_hyperv_windows.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_plesk12_data.py": {
+      "loc": 83,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_plesk_license.py": {
+      "loc": 101,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_row.py": {
+      "loc": 209,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_service_addons.py": {
+      "loc": 340,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_service_extra.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_service_info.py": {
+      "loc": 592,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_service_master.py": {
+      "loc": 529,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_snapshot.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_template_row.py": {
+      "loc": 196,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_templates_list.py": {
+      "loc": 49,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_data_data_section_response.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_data_section_response.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_history_response.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_history_section_data_response.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_history_section_response.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_response.py": {
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_totals_resposne.py": {
+      "loc": 110,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_totals_section_response.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_usage_average_response.py": {
+      "loc": 68,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_usage_average_section_response.py": {
+      "loc": 88,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/vps_traffic_usage_response.py": {
+      "loc": 90,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website.py": {
+      "loc": 208,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_backups.py": {
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_backups_inner.py": {
+      "loc": 65,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_billing_details.py": {
+      "loc": 255,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_client_link.py": {
+      "loc": 151,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_extra_info_tables.py": {
+      "loc": 83,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_login_response.py": {
+      "loc": 63,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_order_post_request.py": {
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_order_put_request.py": {
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_row.py": {
+      "loc": 163,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_service_extra.py": {
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_service_info.py": {
+      "loc": 340,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_service_master.py": {
+      "loc": 319,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_table.py": {
+      "loc": 66,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/website_table_row.py": {
+      "loc": 67,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order.py": {
+      "loc": 270,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_json_service_offers.py": {
+      "loc": 49,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_json_service_offers_item.py": {
+      "loc": 277,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_json_services.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_packages.py": {
+      "loc": 48,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_packages_info.py": {
+      "loc": 314,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_packges.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_service_offer.py": {
+      "loc": 274,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_service_offers.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/models/websites_order_service_types.py": {
+      "loc": 47,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/__init__.py": {
+      "loc": 11,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_account_controller.py": {
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_backups_controller.py": {
+      "loc": 124,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_billing_controller.py": {
+      "loc": 306,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_dns_controller.py": {
+      "loc": 107,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_domains_controller.py": {
+      "loc": 347,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_floating_ips_controller.py": {
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_licenses_controller.py": {
+      "loc": 120,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_mail_controller.py": {
+      "loc": 375,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_public_controller.py": {
+      "loc": 179,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_quick_servers_controller.py": {
+      "loc": 457,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_scrub_ips_controller.py": {
+      "loc": 220,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_servers_controller.py": {
+      "loc": 216,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_ssl_certificates_controller.py": {
+      "loc": 102,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_tickets_controller.py": {
+      "loc": 146,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_vps_controller.py": {
+      "loc": 569,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/test/test_webhosting_controller.py": {
+      "loc": 205,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/type_util.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 22,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./myadmin-client-python-flask/util.py": {
+      "loc": 108,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./setup.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 24,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 68572,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": []
+}

@@ -1,0 +1,939 @@
+{
+  "errors": [
+    {
+      "filename": "./api_add_dns_domain.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_add_dns_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_add_prepay.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_auto_cpanel_login.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_auto_directadmin_login.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_auto_directadmin_storage_login.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_auto_zonemta_login.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_buy_mail.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_buy_vps.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_buy_vps_admin.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_api_validate_buy_vps.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_backups_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_backups_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_backups_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_backups_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_backups_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_buy_license.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_buy_license_prepay.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_cancel_license.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_cancel_license_ip.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_change_floating_ips_ip.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_change_license_ip.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_change_license_ip_by_id.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_delete_dns_domain.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_delete_dns_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_domains_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_domains_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_domains_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_domains_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_domains_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_floating_ips_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_floating_ips_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_floating_ips_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_floating_ips_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_floating_ips_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_getTicketList.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_dns_domain.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_dns_records.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_ima.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_license_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_paypal_url.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_prepay_list.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_prepay_paypal_fill_url.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_prepay_remaining.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_get_vps_backups.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_licenses_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_licenses_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_licenses_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_licenses_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_licenses_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_login.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_mail_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_mail_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_mail_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_mail_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_mail_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_make_payment.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_openTicket.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_quickservers_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_quickservers_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_quickservers_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_quickservers_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_quickservers_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_send_mail.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_servers_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_servers_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_servers_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_servers_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_servers_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ssl_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ssl_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ssl_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ssl_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ssl_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_ticketPost.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_update_dns_record.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_viewTicket.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_backup_delete.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_get_server_name.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_queue_backup.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_queue_restart.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_queue_start.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_queue_stop.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_vps_screenshot.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_webhosting_cancel_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_webhosting_get_client_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_webhosting_get_client_unpaid_invoices.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_webhosting_get_service.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./api_webhosting_get_services.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_hostname.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_locked_ips.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_modules.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_vps_locations_array.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_vps_platforms_array.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_vps_slice_types.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./get_vps_templates.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./strPixels.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2026-07-26T22:30:23Z",
+  "metrics": {
+    "./api_add_dns_domain.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_add_dns_record.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_add_prepay.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_auto_cpanel_login.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_auto_directadmin_login.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_auto_directadmin_storage_login.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_auto_zonemta_login.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_buy_mail.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_buy_vps.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_buy_vps_admin.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_api_validate_buy_vps.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_backups_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_backups_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_backups_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_backups_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_backups_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_buy_license.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_buy_license_prepay.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_cancel_license.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_cancel_license_ip.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_change_floating_ips_ip.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_change_license_ip.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_change_license_ip_by_id.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_delete_dns_domain.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_delete_dns_record.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_domains_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_domains_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_domains_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_domains_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_domains_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_floating_ips_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_floating_ips_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_floating_ips_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_floating_ips_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_floating_ips_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_getTicketList.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_dns_domain.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_dns_records.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_ima.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_license_types.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_paypal_url.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_prepay_list.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_prepay_paypal_fill_url.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_prepay_remaining.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_get_vps_backups.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_licenses_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_licenses_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_licenses_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_licenses_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_licenses_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_login.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_mail_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_mail_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_mail_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_mail_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_mail_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_make_payment.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_openTicket.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_quickservers_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_quickservers_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_quickservers_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_quickservers_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_quickservers_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_send_mail.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_servers_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_servers_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_servers_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_servers_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_servers_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ssl_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ssl_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ssl_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ssl_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ssl_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_ticketPost.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_update_dns_record.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_viewTicket.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_backup_delete.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_get_server_name.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_queue_backup.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_queue_restart.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_queue_start.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_queue_stop.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_vps_screenshot.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_webhosting_cancel_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_webhosting_get_client_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_webhosting_get_client_unpaid_invoices.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_webhosting_get_service.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./api_webhosting_get_services.py": {
+      "loc": 8,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_hostname.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_locked_ips.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_modules.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_vps_locations_array.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_vps_platforms_array.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_vps_slice_types.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./get_vps_templates.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./strPixels.py": {
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 772,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": []
+}

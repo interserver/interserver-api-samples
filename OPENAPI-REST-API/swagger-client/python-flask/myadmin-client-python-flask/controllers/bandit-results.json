@@ -1,0 +1,187 @@
+{
+  "errors": [
+    {
+      "filename": "./__init__.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./account_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./backups_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./billing_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./dns_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./domains_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./floating_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./licenses_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./mail_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./public_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./quick_servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./scrub_ips_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./servers_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./ssl_certificates_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./tickets_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./vps_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    },
+    {
+      "filename": "./webhosting_controller.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2026-07-26T22:30:09Z",
+  "metrics": {
+    "./__init__.py": {
+      "loc": 1,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./account_controller.py": {
+      "loc": 229,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./authorization_controller.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 11,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./backups_controller.py": {
+      "loc": 118,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./billing_controller.py": {
+      "loc": 321,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./dns_controller.py": {
+      "loc": 137,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./domains_controller.py": {
+      "loc": 383,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./floating_ips_controller.py": {
+      "loc": 104,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./licenses_controller.py": {
+      "loc": 107,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./mail_controller.py": {
+      "loc": 478,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./public_controller.py": {
+      "loc": 162,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./quick_servers_controller.py": {
+      "loc": 441,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./scrub_ips_controller.py": {
+      "loc": 195,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./servers_controller.py": {
+      "loc": 209,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./ssl_certificates_controller.py": {
+      "loc": 81,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./tickets_controller.py": {
+      "loc": 157,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./vps_controller.py": {
+      "loc": 630,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "./webhosting_controller.py": {
+      "loc": 216,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 3980,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": []
+}
