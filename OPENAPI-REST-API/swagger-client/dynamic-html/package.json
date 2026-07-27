@@ -8,5 +8,8 @@
   "dependencies": {
     "express": "4.x"
   },
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "overrides": {
+    "qs": "6.15.2"
+  }
 }

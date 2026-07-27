@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.29.6",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
     "babel-preset-react-app": "^7.0.0",

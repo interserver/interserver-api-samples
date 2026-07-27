@@ -6,7 +6,23 @@
     "node": ">= 0.8.x"
   },
   "dependencies": {
-    "express": "4.x"
+    "express": "4.22.0"
   },
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "overrides": {
+    "cookie": "0.7.0",
+    "multiparty": "4.3.0",
+    "mime": "2.0.3",
+    "debug": "2.6.9",
+    "qs": "6.15.2",
+    "morgan": "1.11.0",
+    "on-headers": "1.1.0",
+    "serve-static": "1.16.0",
+    "minimist": "0.2.4",
+    "ms": "2.0.0",
+    "fresh": "0.5.2",
+    "basic-auth-connect": "1.1.0",
+    "body-parser": "1.20.6",
+    "send": "0.19.0"
+  }
 }

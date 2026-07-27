@@ -88,6 +88,71 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>io.micronaut</groupId>
+        <artifactId>micronaut-graal</artifactId>
+        <version>4.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger.core.v3</groupId>
+        <artifactId>swagger-jaxrs2</artifactId>
+        <version>2.1.4</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-core</artifactId>
+        <version>1.5.19</version>
+      </dependency>
+      <dependency>
+        <groupId>tools.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>3.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>3.1.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jackson2-provider</artifactId>
+        <version>4.5.7.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.module</groupId>
+        <artifactId>jackson-module-scala_2.11</artifactId>
+        <version>2.11.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>4.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.neethi</groupId>
+        <artifactId>neethi</artifactId>
+        <version>3.2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>32.0.1-android</version>
+      </dependency>
+      <dependency>
+        <groupId>io.micronaut</groupId>
+        <artifactId>micronaut-http-client</artifactId>
+        <version>4.9.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openapitools</groupId>
+        <artifactId>jackson-databind-nullable</artifactId>
+        <version>0.2.10</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.18.6</version>
+      </dependency>
+      <dependency>
         <groupId>com.fasterxml.jackson</groupId>
         <artifactId>jackson-bom</artifactId>
         <version>${jackson-jaxrs-version}</version>
@@ -199,7 +264,7 @@ for this project used jakarta.validation-api -->
     <jetty-version>9.2.9.v20150224</jetty-version>
     <junit-version>5.14.4</junit-version>
     <logback-version>1.5.35</logback-version>
-    <cxf-version>3.5.9</cxf-version>
+    <cxf-version>3.6.11</cxf-version>
     <jackson-jaxrs-version>2.21.4</jackson-jaxrs-version>
     <jakarta-annotation-version>1.3.5</jakarta-annotation-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

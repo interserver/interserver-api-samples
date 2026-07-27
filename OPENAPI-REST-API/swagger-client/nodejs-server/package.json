@@ -22,8 +22,10 @@
     "multer": "2.2.0",
     "@apidevtools/json-schema-ref-parser": "15.3.6",
     "body-parser": "1.20.6",
-    "express": "4.20.0",
+    "express": "4.22.0",
     "morgan": "1.11.0",
-    "json-schema-ref-parser": "15.3.6"
+    "json-schema-ref-parser": "15.3.6",
+    "org.webjars.npm:dicer": "no_fix",
+    "dicer": "no_fix"
   }
 }
