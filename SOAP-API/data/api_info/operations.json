@@ -1351,24 +1351,6 @@
     },
     {
         "attr": {
-            "name": "api_get_paypal_url"
-        },
-        "documentation": {
-            "value": "Get the PayPal payment URL for an invoice on a given module."
-        },
-        "input": {
-            "attr": {
-                "message": "tns:api_get_paypal_urlRequest"
-            }
-        },
-        "output": {
-            "attr": {
-                "message": "tns:api_get_paypal_urlResponse"
-            }
-        }
-    },
-    {
-        "attr": {
             "name": "api_get_prepay_remaining"
         },
         "documentation": {

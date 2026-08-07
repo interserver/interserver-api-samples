@@ -51,42 +51,6 @@
                 "use_sid": true,
                 "hide_comment": true
             },
-            "api_get_paypal_url": {
-                "serverargv": "{$_SERVER[\"argv\"][0]}",
-                "name": "api_get_paypal_url",
-                "params": "",
-                "description": "Get the PayPal payment URL for an invoice on a given module.",
-                "function": {
-                    "name": "api_get_paypal_url",
-                    "desc": "Get the PayPal payment URL for an invoice on a given module.",
-                    "input": {
-                        "module": {
-                            "name": "module",
-                            "type": "string",
-                            "description": "the module the invoice is for. use [get_modules](#get_modules) to get a list of modules",
-                            "example": "domains"
-                        },
-                        "invoice": {
-                            "name": "invoice",
-                            "type": "int",
-                            "description": "the invoice id, or a comma separated list of invoice ids to get a payment url for.",
-                            "example": 10000
-                        }
-                    },
-                    "output": {
-                        "return": {
-                            "name": "return",
-                            "type": "string",
-                            "description": "the paypal payment url."
-                        }
-                    },
-                    "example": "<a href=\"https:\/\/www.paypal.com\/cgi-bin\/webscr?cmd=_xclick&business=vps@interserver.net&item_name=%28Repeat+Invoice%3A+385928%29+INTERSERVER-EXTERNAL&custom=INVdomains10000&buyer_credit_promo_code=&buyer_credit_product_category=&buyer_credit_shipping_method=&buyer_credit_user_address_change=&amount=34.00&no_shipping=0&no_note=1&currency_code=USD&lc=US&bn=PP%2dBuyNowBF&charset=UTF%2d8\" target=_blank>Click Here to make a PayPal payment<\/a>"
-                },
-                "input_comment": "* @param module string the module the invoice is for. use [get_modules](#get_modules) to get a list of modules\n* @param invoice int the invoice id, or a comma separated list of invoice ids to get a payment url for.\n",
-                "output_comment": "",
-                "use_sid": false,
-                "hide_comment": true
-            },
             "api_get_prepay_list": {
                 "serverargv": "{$_SERVER[\"argv\"][0]}",
                 "name": "api_get_prepay_list",

@@ -5440,17 +5440,6 @@
         ],
         "fieldtexts": []
     },
-    "api_get_paypal_url": {
-        "name": "api_get_paypal_url",
-        "params": "$module, $invoice",
-        "description": [
-            "Get the PayPal payment URL for an invoice on a given module.",
-            "@param string $module the module the invoice is for. use [get_modules](#get_modules) to get a list of modules",
-            "@param int|string $invoice the invoice id, or a comma separated list of invoice ids to get a payment url for.",
-            "@return string the paypal payment url."
-        ],
-        "fieldtexts": []
-    },
     "api_register_init": {
         "name": "api_register_init",
         "params": "",

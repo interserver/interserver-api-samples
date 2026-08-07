@@ -450,12 +450,6 @@
         "output": "tns:api_make_paymentResponse"
     },
     {
-        "name": "api_get_paypal_url",
-        "desc": "Get the PayPal payment URL for an invoice on a given module.",
-        "input": "tns:api_get_paypal_urlRequest",
-        "output": "tns:api_get_paypal_urlResponse"
-    },
-    {
         "name": "api_get_prepay_remaining",
         "desc": "Get the PrePay amount available for a given module.",
         "input": "tns:api_get_prepay_remainingRequest",

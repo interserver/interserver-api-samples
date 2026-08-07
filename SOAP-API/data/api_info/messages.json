@@ -2407,36 +2407,6 @@
     },
     {
         "attr": {
-            "name": "api_get_paypal_urlRequest"
-        },
-        "part": [
-            {
-                "attr": {
-                    "name": "module",
-                    "type": "xsd:string"
-                }
-            },
-            {
-                "attr": {
-                    "name": "invoice",
-                    "type": "xsd:int"
-                }
-            }
-        ]
-    },
-    {
-        "attr": {
-            "name": "api_get_paypal_urlResponse"
-        },
-        "part": {
-            "attr": {
-                "name": "return",
-                "type": "xsd:string"
-            }
-        }
-    },
-    {
-        "attr": {
             "name": "api_get_prepay_remainingRequest"
         },
         "part": [

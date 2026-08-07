@@ -2032,31 +2032,6 @@
             }
         }
     },
-    "api_get_paypal_urlRequest": {
-        "name": "api_get_paypal_urlRequest",
-        "fields": {
-            "module": {
-                "name": "module",
-                "type": "string",
-                "description": ""
-            },
-            "invoice": {
-                "name": "invoice",
-                "type": "int",
-                "description": ""
-            }
-        }
-    },
-    "api_get_paypal_urlResponse": {
-        "name": "api_get_paypal_urlResponse",
-        "fields": {
-            "return": {
-                "name": "return",
-                "type": "string",
-                "description": ""
-            }
-        }
-    },
     "api_get_prepay_remainingRequest": {
         "name": "api_get_prepay_remainingRequest",
         "fields": {
